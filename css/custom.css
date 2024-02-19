@@ -1,0 +1,11 @@
+.hov-scale-up {
+    scale: 1;
+    position: relative;
+    transition: scale 0.3s ease-in;
+}
+
+.hov-scale-up:hover {
+    z-index: 10;
+    scale: 1.02;
+    box-shadow: 2px 4px 10px #ddd;
+}

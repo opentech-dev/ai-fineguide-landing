@@ -1,0 +1,109 @@
+:root {
+    --chat-widget-height:600px;
+}
+
+#demo-bots {
+    position: relative;
+}
+
+#demo-bots .decoration {
+    /* position:absolute;
+    top: 100px;
+    width: 800px;
+    height: 400px;
+    z-index:2;
+    left: calc(50% - 400px);
+    border: 1px solid #dee2e6; */
+}
+
+#demo-bots .chat-wrapper {
+    position: relative;
+    z-index: 100;
+    width:auto;
+    max-width:450px;
+    height:var(--chat-widget-height);
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0 30px #dcdcdc;
+}
+
+.bots {
+    height:var(--chat-widget-height);
+}
+
+.bots-wrapper {
+    width: auto;
+    /* min-width: 140px;
+    max-width: 180px; */
+    margin: 0 auto;
+    overflow: scroll;
+    cursor:grab;
+    border: 1px solid #dee2e6;
+    background-color: #fbfbfb;
+    border-radius: 15px;
+    height:var(--chat-widget-height);
+    overflow-y: scroll;
+}
+
+.js-bot-profile {
+    background: #fff;
+    padding: 7px 0;
+    cursor:pointer;
+}
+
+.js-bot-profile:hover {
+    background-color: #f5f5f5;
+}
+
+.js-bot-profile .js-bot-avatar img {
+    width: 60%;
+    border-radius: 50%;
+    border: 1px solid #dee2e6;
+}
+
+.js-chatbot-frame {
+    border:none;
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (min-width: 768px) {
+
+    .scrollable-list {
+      display: flex;
+      flex-direction: column;
+      height: var(--chat-widget-height);
+    }
+
+    .js-bot-profile {
+      width:auto;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .scrollable-list {
+      margin: 0 30px 20px;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+    }
+
+    .js-bot-profile {
+      min-width:130px;
+    }
+
+    .bots {
+      height:800px;
+    }
+
+  }
+
+  .list-item {
+    /* Customize the styling of each list item as needed */
+    flex: 0 0 auto; /* Allow items to shrink and grow as needed */
+    margin: 5px; /* Add margin between items */
+  }

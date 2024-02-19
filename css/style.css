@@ -2778,6 +2778,7 @@ b, strong {
   top: 5px;
   left: -15px;
 }
+
 @media (max-width: 991.98px) {
   .pricing_table_1[class^=pb-], .pricing_table_1[class*=" pb-"] {
     padding-bottom: 30px;
