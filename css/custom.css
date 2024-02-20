@@ -2,10 +2,12 @@
     scale: 1;
     position: relative;
     transition: scale 0.3s ease-in;
+    border-radius: 0;
 }
 
 .hov-scale-up:hover {
     z-index: 10;
     scale: 1.02;
     box-shadow: 2px 4px 10px #ddd;
+    border-radius: 10px;
 }
