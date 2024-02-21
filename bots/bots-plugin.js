@@ -2,11 +2,17 @@
   const main = () => {
     const HTMLBotWrapper = document.getElementById('bots-wrapper');
     const HTMLChatWrapper = document.getElementById('chat-wrapper');
+    const HTMLBotDetails = document.getElementById('bot-details')
 
     const chatbots = [{
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/213005ba-c43c-4f78-8bc6-3f0874aa745c.jpeg',
       id: '2e90d7ea-0e1f-4e78-8d87-786bbedfb8bb',
-      name: 'Jack' 
+      name: 'Jack',
+      details: [
+        'Has a role of Customer Support',
+        'Has a strong Scottish accent',
+        'Can provide support on how to setup'
+      ]
     },{
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/a0788d4f-6e08-4f06-8de5-9aced6193cd5.jpeg',
       id: '48ec5509-b301-4bcb-9263-415e7bf5adec',
@@ -50,14 +56,22 @@
         return botHtml;
       }
       HTMLBotWrapper.appendChild(makediv());
-
     }
 
+    const createBotDetails = (bot) => `
+    <h5 class="pb-20">${bot.name}</h5>
+    <div>
+      <ul class="text-left">
+        ${bot.details ? bot.details.map(d => `<li class="pb-30">${d}</li>`).join('') : ''}
+      </ul>
+    </div>
+    `
 
     loadBotChat = (chatbot) => {
       console.log(chatbot)
       const iframe = iframeTemplate(chatbot.id)
       HTMLChatWrapper.innerHTML = iframe
+      HTMLBotDetails.innerHTML = createBotDetails(chatbot)
     }
 
     const selectBot = (chatbot) => {

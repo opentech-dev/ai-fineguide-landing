@@ -11,3 +11,23 @@
     box-shadow: 2px 4px 10px #ddd;
     border-radius: 10px;
 }
+
+.shadow-text {
+    text-shadow: 1px 1px rgba(0,0,0, 0.3);
+}
+
+.newsletter {
+    position:relative;
+}
+
+.newsletter-title {
+    z-index: 10;
+    position: relative;
+}
+
+.newsletter-iframe {
+    width: 250px;
+
+    position:absolute;
+    top: -20px;
+}
