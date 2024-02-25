@@ -1,17 +1,4 @@
 steps:
-  # install dependencies
-  - name: "node"
-    entrypoint: "yarn"
-    args: ["install"]
-  # build
-  - name: "node"
-    entrypoint: "yarn"
-    args: ["build"]
-    env:
-      [
-        "REACT_APP_API_ENDPOINT=$_API_URL",
-        "REACT_APP_CHAT_URL=$_CLIENT_APP_URL",
-      ]
   # build Image
   - name: "gcr.io/cloud-builders/docker"
     args:
