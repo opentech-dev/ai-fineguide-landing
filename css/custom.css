@@ -26,8 +26,6 @@
 }
 
 .newsletter-iframe {
-    width: 250px;
-
-    position:absolute;
-    top: -20px;
+    width: 236px;
+    height:100px;
 }
