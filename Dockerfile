@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # Copy the built Angular app files to the Nginx web server directory
-COPY . /usr/share/nginx/html
+COPY public /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80 for the Nginx web server

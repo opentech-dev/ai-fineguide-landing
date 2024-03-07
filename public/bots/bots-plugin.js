@@ -2,74 +2,73 @@
   const main = () => {
     const HTMLBotWrapper = document.getElementById('bots-wrapper');
     const HTMLChatWrapper = document.getElementById('chat-wrapper');
-    const HTMLBotDetails = document.getElementById('bot-details')
 
     const chatbots = [
       {
         imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/f0783ce0-e42c-4a97-a6eb-44b5ae007d0a.jpeg',
         id: '2e6aa58c-683a-42c7-83fc-30ade0d8a67c',
-        name: 'Willy',
-        details: [
-          'Speaks old English',
-          'Has a role of Customer Support',
-          'Knows all about Fineguide products',
-        ]
+        name: 'Willy the Shaky',
+        details: `
+          Speaks old English
+          Has a role of Customer Support
+          Knows all about Fineguide products
+        `
       },
       {
         imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/a0788d4f-6e08-4f06-8de5-9aced6193cd5.jpeg',
         id: '48ec5509-b301-4bcb-9263-415e7bf5adec',
         name: 'Yoda',
-        details: [
-          'Speaks Yodaish',
-          'Has a role of Customer Support',
-          'Knows all about Fineguide products',
-        ]
+        details: `
+        Speaks old English
+        Has a role of Customer Support
+        Knows all about Fineguide products
+      `
       },
       {
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/213005ba-c43c-4f78-8bc6-3f0874aa745c.jpeg',
       id: '2e90d7ea-0e1f-4e78-8d87-786bbedfb8bb',
-      name: 'Jack',
-      details: [
-        'Has a strong Scottish accent',
-        'Has a role of Customer Support',
-        'Knows all about Fineguide products',
-      ]
+      name: 'Jack, The Scotsman',
+      details: `
+      Speaks old English
+      Has a role of Customer Support
+      Knows all about Fineguide products
+    `
     }, {
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/eddy.jpeg',
       id: '2d940077-6a7a-4227-93a6-6e3345caa8d8',
       name: 'Eddy A. Poe',
-      details: [
-        'Loves ravens and poetry',
-        'Has a role of Customer Support',
-        'Knows all about Fineguide products',
-      ]
+      details: `
+      Speaks old English
+      Has a role of Customer Support
+      Knows all about Fineguide products
+    `
     }, {
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/_731867c0-417f-496c-9f33-0f32c7dc361d.jpeg',
       id: '0f4aa93b-c607-4281-a018-bb2930c61522',
       name: 'Ice-T',
-      details: [
-        'Loves rap music',
-        'Has a role of Customer Support',
-        'Knows all about Fineguide products',
-      ]
+      details: `
+      Speaks old English
+      Has a role of Customer Support
+      Knows all about Fineguide products
+    `
     }, {
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/d3eddc9c-886a-4d1f-b8d2-f92dd1404132.jpeg',
       id: 'ea64ae71-462a-4e1c-93b5-dcbe1b78ab44',
-      name: 'Black Beard',
-      details: [
-        'Has a pirate accent',
-        'Has a role of Customer Support',
-        'Knows all about Fineguide products',
-      ]
+      name: 'Pirate Wilds',
+      details: `
+      Speaks old English
+      Has a role of Customer Support
+      Knows all about Fineguide products
+    `
     },{
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/0ec3bcee-a66b-4872-810c-1ad6c663c834.jpeg',
       id: 'ad0a130b-24b2-4199-bcdf-35d8d7ced770',
       name: 'Wilford',
-      details: [
-        'Has a Cowboy manner of speaking',
-        'Has a role of Customer Support',
-        'Knows all about Fineguide products',
-      ]
+      details: `
+      Speaks old English
+      Has a role of Customer Support
+      Knows all about Fineguide products
+    `
     }];
 
     const iframeTemplate = (id) => `<iframe class="js-chatbot-frame" allow-same-origin src="https://fg-client.optdevtech.com/${id}"></iframe>`;
@@ -78,9 +77,19 @@
       const makediv = () => {
         const botHtml = document.createElement('DIV');
         botHtml.classList.add('js-bot-profile');
+        botHtml.classList.add('row');
 
-        botHtml.innerHTML = `<div class="js-bot-avatar list-item"><img src="${chatbot.imgUrl}" /></div>
-          <div class="js-bot-name f-14">${chatbot.name}</div>`;
+
+
+        botHtml.innerHTML = `
+<div class="js-bot-avatar list-item col-md-4">
+    <img src="${chatbot.imgUrl}" />
+</div>
+<div class="js-bot-details f-15 col-md-8">
+  <div><b>${chatbot.name}</b></div>
+  <div class="d-none d-md-block">${chatbot.details}</div>
+</div>`;
+
         botHtml.addEventListener('click', () => selectBot(chatbot));
         return botHtml;
       }
@@ -100,7 +109,6 @@
       console.log(chatbot)
       const iframe = iframeTemplate(chatbot.id)
       HTMLChatWrapper.innerHTML = iframe
-      HTMLBotDetails.innerHTML = createBotDetails(chatbot)
     }
 
     const selectBot = (chatbot) => {
