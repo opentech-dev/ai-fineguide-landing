@@ -3,7 +3,7 @@ const path = require('path');
 const handlebars = require('handlebars');
 const camelcase = require('lodash.camelcase');
 
-function readFilesInFolder(folderPath) {
+function readFilesInFolder(folderPath, toCamelCase = true) {
     // Join the current working directory with the provided folder path
     const fullPath = path.join(process.cwd(), folderPath);
 
@@ -17,7 +17,7 @@ function readFilesInFolder(folderPath) {
             .map(el => {
                 key = el.split('.')[0];
                 return {
-                    file: camelcase(key),
+                    file: toCamelCase ? camelcase(key) : key,
                     source: fs.readFileSync(`${fullPath}/${el}`, 'utf8')
                 }
             })
@@ -46,8 +46,8 @@ const makePages = (pages, templates) => {
 }
 
 
-const templates = readFilesInFolder('./@templates');
-const pages = readFilesInFolder('./@pages');
+const templates = readFilesInFolder('./@templates', toCamelCase = true);
+const pages = readFilesInFolder('./@pages', toCamelCase = false);
 
 makePages(pages, templates);
 
