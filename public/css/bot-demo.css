@@ -91,7 +91,7 @@
   
   @media (max-width: 767px) {
     :root {
-      --chat-widget-height:880px;
+      --chat-widget-height:800px;
     }
     .scrollable-list {
       margin: 0 30px 20px;
@@ -106,7 +106,7 @@
     }
 
     .bots {
-      height:800px;
+      height:980px;
     }
   }
 
