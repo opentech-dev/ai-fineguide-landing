@@ -7,10 +7,11 @@
     const chatbots = [
       {
         imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/_731867c0-417f-496c-9f33-0f32c7dc361d.jpeg',
-        id: '0f4aa93b-c607-4281-a018-bb2930c61522',
+        id: '2049c529-8a1f-471d-9511-44ca46add579',
         name: 'ByteFlow Mike',
         details: `
-        I'm Byte-Flow Mike, smooth and precise, In the world of chat, I give advice, Sharp as a knife, never think twice.
+        I'm Byte-Flow Mike, smooth and precise 
+        In the world of chat, I give advice.
       `
       },
       {
@@ -26,22 +27,22 @@
         id: 'c3470b06-297f-4a96-bddb-9c7edebfaebb',
         name: 'Joda',
         details: `
-        Helpful and wise, I aim to be, guiding you with answers you seek, hmm.
+        A virtual assistant, I am. Assist you, I will. Hmmm.
       `
       },
     {
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/d3eddc9c-886a-4d1f-b8d2-f92dd1404132.jpeg',
-      id: 'ea64ae71-462a-4e1c-93b5-dcbe1b78ab44',
+      id: 'a80447f4-0bbb-40f9-a052-bd469aef7748',
       name: 'Pirate Wilds',
       details: `
       Ahoy there! I be Captain Wilds, yer trusty virtual assistant, ready t' sail the digital seas with ye! What be yer need, me hearty?
     `
     },{
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/0ec3bcee-a66b-4872-810c-1ad6c663c834.jpeg',
-      id: 'ad0a130b-24b2-4199-bcdf-35d8d7ced770',
+      id: 'd5234b3a-687c-4b9d-8399-50f9b02516a2',
       name: 'Wilford',
       details: `
-      Your chatbot talks like a true cowboy, drawlin' with a Western twang, as if it just rode in from the frontier. Yeehaw!
+      Your chatbot talks like a true cowboy, drawlin' with a Western twang. Yeehaw!
     `
     }];
 
