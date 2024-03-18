@@ -1,52 +1,40 @@
 (() => {
+  const host = "https://client.fineguide.ai";
   const main = () => {
     const HTMLBotWrapper = document.getElementById('bots-wrapper');
     const HTMLChatWrapper = document.getElementById('chat-wrapper');
 
     const chatbots = [
       {
-        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/f0783ce0-e42c-4a97-a6eb-44b5ae007d0a.jpeg',
-        id: '2e6aa58c-683a-42c7-83fc-30ade0d8a67c',
-        name: 'Willy the Shaky',
+        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/_731867c0-417f-496c-9f33-0f32c7dc361d.jpeg',
+        id: '0f4aa93b-c607-4281-a018-bb2930c61522',
+        name: 'ByteFlow Mike',
         details: `
-          Speaks old English, a distinguished gentleman indeed!
-        `
-      },
-      {
-        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/a0788d4f-6e08-4f06-8de5-9aced6193cd5.jpeg',
-        id: '48ec5509-b301-4bcb-9263-415e7bf5adec',
-        name: 'Yoda',
-        details: `
-        Speaks Yodaish, knows how to use the Fineguide Force
+        I'm Byte-Flow Mike, smooth and precise, In the world of chat, I give advice, Sharp as a knife, never think twice.
       `
       },
       {
-      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/213005ba-c43c-4f78-8bc6-3f0874aa745c.jpeg',
-      id: '2e90d7ea-0e1f-4e78-8d87-786bbedfb8bb',
-      name: 'Jack, The Scotsman',
-      details: `
-      Speaks with a distinctive Scottish accent, exuding a touch of authentic Scots charm.
-    `
-    }, {
-      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/eddy.jpeg',
-      id: '2d940077-6a7a-4227-93a6-6e3345caa8d8',
-      name: 'Eddy A. Poe',
-      details: `
-      In the shadowy realm of textual discourse, thy chatbot doth converse, a spectral warden of words
-    `
-    }, {
-      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/_731867c0-417f-496c-9f33-0f32c7dc361d.jpeg',
-      id: '0f4aa93b-c607-4281-a018-bb2930c61522',
-      name: 'Ice-Vanila',
-      details: `
-      Yo! let's kick it! 
-    `
-    }, {
+        imgUrl: 'https://opt.ams3.cdn.digitaloceanspaces.com/fineguide-avatars/13.jpeg',
+        id: 'bb88cf6f-28e1-4968-abca-04386ec6c506',
+        name: 'Willy',
+        details: `
+        Hark! I am Willy, a virtual assistant of Fineguide.ai, here to serve thee with wisdom and guidance. How may I assist thee on this fine day?
+        `
+      },
+      {
+        imgUrl: 'https://opt.ams3.cdn.digitaloceanspaces.com/fineguide-avatars/14.jpeg',
+        id: 'c3470b06-297f-4a96-bddb-9c7edebfaebb',
+        name: 'Joda',
+        details: `
+        Helpful and wise, I aim to be, guiding you with answers you seek, hmm.
+      `
+      },
+    {
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/d3eddc9c-886a-4d1f-b8d2-f92dd1404132.jpeg',
       id: 'ea64ae71-462a-4e1c-93b5-dcbe1b78ab44',
       name: 'Pirate Wilds',
       details: `
-        Yarr matey! Your chatbot be chattin' in true pirate fashion, with a seafaring tongue and a touch of swashbucklin' flair. Arr!
+      Ahoy there! I be Captain Wilds, yer trusty virtual assistant, ready t' sail the digital seas with ye! What be yer need, me hearty?
     `
     },{
       imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/0ec3bcee-a66b-4872-810c-1ad6c663c834.jpeg',
@@ -57,15 +45,13 @@
     `
     }];
 
-    const iframeTemplate = (id) => `<iframe class="js-chatbot-frame" allow-same-origin src="https://fg-client.optdevtech.com/${id}"></iframe>`;
+    const iframeTemplate = (id) => `<iframe class="js-chatbot-frame" allow-same-origin src="${host}/${id}"></iframe>`;
 
     const createBotAvatar = (chatbot) => {
       const makediv = () => {
         const botHtml = document.createElement('DIV');
         botHtml.classList.add('js-bot-profile');
         botHtml.classList.add('row');
-
-
 
         botHtml.innerHTML = `
 <div class="js-bot-avatar list-item col-md-4">
