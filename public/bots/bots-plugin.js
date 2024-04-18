@@ -6,7 +6,7 @@
 
     const chatbots = [
       {
-        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/_731867c0-417f-496c-9f33-0f32c7dc361d.jpeg',
+        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/7f48a681-1fcd-47b4-bad5-9df43e6c7bc4/avatars/0ecf88c0-8943-40be-9c7c-48c5390c59df.blob',
         id: '2049c529-8a1f-471d-9511-44ca46add579',
         name: 'ByteFlow Mike',
         details: `
@@ -15,7 +15,7 @@
       `
       },
       {
-        imgUrl: 'https://opt.ams3.cdn.digitaloceanspaces.com/fineguide-avatars/13.jpeg',
+        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/7f48a681-1fcd-47b4-bad5-9df43e6c7bc4/avatars/09d85803-c63f-4169-beae-79c87c6a9db5.blob',
         id: 'bb88cf6f-28e1-4968-abca-04386ec6c506',
         name: 'Willy',
         details: `
@@ -23,7 +23,7 @@
         `
       },
       {
-        imgUrl: 'https://opt.ams3.cdn.digitaloceanspaces.com/fineguide-avatars/14.jpeg',
+        imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/7f48a681-1fcd-47b4-bad5-9df43e6c7bc4/avatars/6c20603b-d447-4d2e-bfc1-eb60ab15d308.blob',
         id: 'c3470b06-297f-4a96-bddb-9c7edebfaebb',
         name: 'Joda',
         details: `
@@ -31,14 +31,14 @@
       `
       },
     {
-      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/d3eddc9c-886a-4d1f-b8d2-f92dd1404132.jpeg',
+      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/7f48a681-1fcd-47b4-bad5-9df43e6c7bc4/avatars/d0d435f2-7a4f-4f6a-8904-e799f630ff60.blob',
       id: 'a80447f4-0bbb-40f9-a052-bd469aef7748',
       name: 'Pirate Wilds',
       details: `
       Ahoy there! I be Captain Wilds, yer trusty virtual assistant, ready t' sail the digital seas with ye! What be yer need, me hearty?
     `
     },{
-      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/faff609f-d783-4ff0-a068-807fac667a9c/avatars/0ec3bcee-a66b-4872-810c-1ad6c663c834.jpeg',
+      imgUrl: 'https://s3.us-east-2.amazonaws.com/com.publicfiles.aibot/7f48a681-1fcd-47b4-bad5-9df43e6c7bc4/avatars/947acbce-5cc5-4ff1-b964-29e656922620.blob',
       id: 'd5234b3a-687c-4b9d-8399-50f9b02516a2',
       name: 'Wilford',
       details: `
