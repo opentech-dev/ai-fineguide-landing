@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "watch": {
-    "build": "{src,@pages,@templates}/*.*"
+    "build": "{src,@pages,@templates}/**/*.*"
   },
   "scripts": {
     "watch": "npm-watch",
