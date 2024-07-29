@@ -123,10 +123,23 @@
             <a href="https://community.fineguide.ai/" class="link mx-20 color-main">
               Community
             </a>
-            <a href="https://app.fineguide.ai" class="btn ml-20 sm color-main action-white border-action-2">
+            <a href="https://app.fineguide.ai" class="btn ml-20 sm color-main action-white border-action-2" id="signin_link">
               Sign in
             </a>
+            <a href="https://app.fineguide.ai" class="btn ml-20 sm color-main action-white border-action-2 d-none" id="dashboard_link">
+              Dashboard
+            </a>
           </div>
+          <script>
+            $(document).ready(function() {
+              fetch('https://fineguide.ai/api/core/users/@me').then(response => {
+                if (response.status === 200) {
+                  document.getElementById('signin_link').classList.add('d-none');
+                  document.getElementById('dashboard_link').classList.remove('d-none');
+                }
+              });
+            });
+          </script>
         </div>
       </div>
     </nav>
