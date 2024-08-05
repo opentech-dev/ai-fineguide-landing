@@ -68,3 +68,37 @@ table.table-bordered thead th {
 table.table-bordered tbody td {
     border-color:#f0f0f0;
 }
+
+.pricing-table tr td:not(.sticky-column) {
+    width:232px;
+}
+
+.pricing-table tr td.sticky-column {
+    height:130px;
+    vertical-align: middle;
+}
+
+.pricing-table tr td.sticky-column > div {
+    padding:30px 25px 30px 20px;
+    font-size: 14px;
+    text-align: right;
+}
+
+@media (max-width: 768px) { /* Adjust the breakpoint as needed */
+    .pricing-table tr td.sticky-column,
+    .pricing-table th.sticky-column {
+      position: sticky;
+      left: 0; /* Stick to the left edge */
+      background-color: #f8f9fa; /* Match your existing background */ 
+      z-index: 10; /* Ensure it's above other elements */
+      font-size: 12px;
+      width: 90px;
+    }
+
+    .pricing-table tr td.sticky-column > div {
+        padding: 10px 5px;
+        font-size:12px;
+        text-align:center;
+    }
+    
+  }
