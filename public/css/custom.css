@@ -102,3 +102,56 @@ table.table-bordered tbody td {
     }
     
   }
+
+  /* FG Helper */
+
+  .fg-help-button {
+    position: fixed;
+    bottom: 0;
+    right: 5px;
+    padding: 0 10px;
+    background: #7f3bf3;
+    color:#fff;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 3px 20px;
+    border: 1px solid #efefef;
+    border-radius: 9px 9px 0 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor:pointer;
+  }
+
+  .fg-chat-wrapper {
+    position:fixed;
+    right: -400px;
+    top:0;
+    bottom:0;
+    width: 400px;
+    border-left:1px #efefef solid;
+    transition: right 0.2s ease-in;
+  }
+
+  .fg-chat-wrapper.fg__open {
+    right: 0;
+  }
+
+  .fg_close___btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 21px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9999; 
+  }
+
+
+  body {
+    width:100%;
+    transition: width 0.2s ease-in;
+  }
+
+  body.fg__shrink {
+    width: calc(100% - 400px);
+  }
