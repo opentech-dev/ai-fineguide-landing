@@ -1,0 +1,99 @@
+<!-- GDPR Cookie Consent Popup -->
+<div id="gdpr-popup" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+    <div class="bg-white/10 backdrop-blur-md border border-gray-200/10 dark:border-gray-800/10 p-5 md:p-6 rounded-t-lg shadow-lg mx-4 md:mx-8">
+        <div class="container">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-9">
+                    <div class="flex items-start">
+                        <i data-feather="shield" class="h-6 w-6 text-amber-400 mr-3 mt-1"></i>
+                        <div>
+                            <h5 class="text-white text-lg font-semibold mb-2">Privacy & Cookies</h5>
+                            <p class="text-slate-400">
+                                We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies as described in our Cookie Policy. You can manage your preferences by clicking "Cookie Settings".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-3">
+                    <div class="flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
+                        <button id="accept-all-cookies" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-400 border-amber-400 text-white rounded-md hover:bg-amber-500 hover:border-amber-500">Accept All</button>
+                        <button id="cookie-settings" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent border-gray-200/10 dark:border-gray-800/10 text-white rounded-md hover:bg-gray-800 hover:border-gray-800">Cookie Settings</button>
+                        <button id="reject-all-cookies" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent border-gray-200/10 dark:border-gray-800/10 text-white rounded-md hover:bg-gray-800 hover:border-gray-800">Reject All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookie-settings-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="fixed inset-0 bg-black opacity-50"></div>
+        
+        <div class="relative bg-white/10 backdrop-blur-md border border-gray-200/10 dark:border-gray-800/10 rounded-lg shadow-lg w-full max-w-3xl mx-auto p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-white">Cookie Settings</h3>
+                <button id="close-settings" class="text-gray-400 hover:text-white">
+                    <i data-feather="x" class="h-5 w-5"></i>
+                </button>
+            </div>
+            
+            <div class="mb-6">
+                <p class="text-slate-400 mb-4">Manage your cookie preferences. Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website.</p>
+                
+                <div class="space-y-4">
+                    <!-- Necessary Cookies -->
+                    <div class="p-4 border border-gray-200/10 dark:border-gray-800/10 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="necessary-cookies" class="h-4 w-4 text-amber-400 border-gray-300 rounded" checked disabled>
+                                <label for="necessary-cookies" class="ml-2 text-white font-medium">Necessary Cookies</label>
+                            </div>
+                            <span class="text-xs text-slate-400 bg-gray-800 px-2 py-1 rounded">Always Active</span>
+                        </div>
+                        <p class="text-slate-400 text-sm">These cookies are essential for the website to function properly and cannot be disabled.</p>
+                    </div>
+                    
+                    <!-- Analytics Cookies -->
+                    <div class="p-4 border border-gray-200/10 dark:border-gray-800/10 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="analytics-cookies" class="h-4 w-4 text-amber-400 border-gray-300 rounded">
+                                <label for="analytics-cookies" class="ml-2 text-white font-medium">Analytics Cookies</label>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm">These cookies help us understand how visitors interact with our website, helping us improve our services.</p>
+                    </div>
+                    
+                    <!-- Marketing Cookies -->
+                    <div class="p-4 border border-gray-200/10 dark:border-gray-800/10 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="marketing-cookies" class="h-4 w-4 text-amber-400 border-gray-300 rounded">
+                                <label for="marketing-cookies" class="ml-2 text-white font-medium">Marketing Cookies</label>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm">These cookies are used to track visitors across websites to display relevant advertisements.</p>
+                    </div>
+                    
+                    <!-- Preference Cookies -->
+                    <div class="p-4 border border-gray-200/10 dark:border-gray-800/10 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="preference-cookies" class="h-4 w-4 text-amber-400 border-gray-300 rounded">
+                                <label for="preference-cookies" class="ml-2 text-white font-medium">Preference Cookies</label>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm">These cookies enable personal features like remembering your preferences and settings.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                <button id="save-preferences" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-400 border-amber-400 text-white rounded-md hover:bg-amber-500 hover:border-amber-500">Save Preferences</button>
+                <button id="cancel-settings" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent border-gray-200/10 dark:border-gray-800/10 text-white rounded-md hover:bg-gray-800 hover:border-gray-800">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

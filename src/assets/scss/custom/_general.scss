@@ -1,0 +1,113 @@
+/*********************************/
+/*             General           */
+/*===============================*/
+html {
+    @apply scroll-smooth;
+}
+
+p {
+    @apply leading-relaxed;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    @apply font-figtree;
+}
+
+.fineguide-logo-bg {
+    background-image: url(/assets/images/features/fg-logo-faded.png);
+    background-size: 690px;
+    background-repeat: no-repeat;
+    background-position: 80% 49%;
+    background-attachment: fixed;
+}
+
+// @keyframes pulse-shadow {
+//     0%, 100% {
+//         box-shadow: 10px 14px 0px 0px #6e3a4e;
+//     }
+//     50% {
+//         box-shadow: 20px 28px 0px 0px #6e3a4e;
+//     }
+// }
+
+.animate-pulse-shadow {
+    box-shadow: 6px 8px 0px 0px #6e3a4e;
+    animation: pulse-shadow 3s ease-in-out infinite;
+    transition: all 0.5s ease;
+}
+
+.animate-pulse-shadow:hover {
+    box-shadow: 16px 18px 0px 0px #6e3a4e;
+    transform:translate(-8px, -12px)
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+.typing-animation {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid rgba(99, 102, 241, 0.7);
+    white-space: nowrap;
+    animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: rgba(99, 102, 241, 0.7); }
+}
+
+@keyframes chatBubbleAppear {
+    0% { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.chat-bubble-animation {
+    opacity: 0;
+    animation: chatBubbleAppear 0.8s ease-out forwards, bubbleFloat 5s ease-in-out infinite 2.3s;
+}
+
+@keyframes logoFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.logo-float-animation {
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
