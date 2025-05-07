@@ -54,9 +54,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load saved preferences into checkboxes
     function loadSavedPreferences() {
-        analyticsCheckbox.checked = getCookie(ANALYTICS_CONSENT) === 'true';
-        marketingCheckbox.checked = getCookie(MARKETING_CONSENT) === 'true';
-        preferenceCheckbox.checked = getCookie(PREFERENCE_CONSENT) === 'true';
+        // If cookies don't exist yet (first visit), default to checked
+        // Otherwise use the saved preferences
+        const analyticsCookie = getCookie(ANALYTICS_CONSENT);
+        const marketingCookie = getCookie(MARKETING_CONSENT);
+        const preferenceCookie = getCookie(PREFERENCE_CONSENT);
+        
+        analyticsCheckbox.checked = analyticsCookie === '' ? true : analyticsCookie === 'true';
+        marketingCheckbox.checked = marketingCookie === '' ? true : marketingCookie === 'true';
+        preferenceCheckbox.checked = preferenceCookie === '' ? true : preferenceCookie === 'true';
     }
     
     // Accept all cookies
