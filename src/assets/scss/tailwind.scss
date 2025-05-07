@@ -1,0 +1,25 @@
+/* Template Name: Fineguide.ai - AI Writer & Copywriting Tailwind CSS Template
+   Author: Shreethemes
+   Email: support@shreethemes.in
+   Website: https://shreethemes.in
+   Version: 1.0
+   Created: September 2023
+   File: Main Css File
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// FONTS
+@import "custom/fonts";
+
+// general
+@import "custom/general";
+
+// structure
+@import "custom/structure/topnav";
+
+// pages
+@import "custom/pages/helper";
+@import "custom/pages/contact";

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accuracy Gauge Examples</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-8">
+    <h1 class="text-3xl mb-8">Accuracy Gauge Examples</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Average Example -->
+        <div class="w-64 p-6 bg-gray-800 rounded-lg">
+            <div class="flex flex-col items-center">
+                <div class="w-full h-20 w-20">
+                    <svg viewBox="0 0 100 60" class="w-full h-full">
+                        <!-- Gauge background -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-gray-700 fill-none" stroke-width="12" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge segments - smoother curve -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-200 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="0" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-300 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-40" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-400 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-70" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-500 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-100" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge needle for "Average" -->
+                        <line x1="50" y1="50" x2="15" y2="40" class="stroke-white" stroke-width="2" stroke-linecap="round"></line>
+                        <circle cx="50" cy="50" r="4" class="fill-white"></circle>
+                    </svg>
+                </div>
+                <span class="">Average</span>
+            </div>
+        </div>
+        
+        <!-- Good Example -->
+        <div class="w-64 p-6 bg-gray-800 rounded-lg">
+            <div class="flex flex-col items-center">
+                <div class="w-full h-20 w-20">
+                    <svg viewBox="0 0 100 60" class="w-full h-full">
+                        <!-- Gauge background -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-gray-700 fill-none" stroke-width="12" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge segments - smoother curve -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-200 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="0" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-300 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-40" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-400 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-70" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-500 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-100" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge needle for "Good" -->
+                        <line x1="50" y1="50" x2="30" y2="20" class="stroke-white" stroke-width="2" stroke-linecap="round"></line>
+                        <circle cx="50" cy="50" r="4" class="fill-white"></circle>
+                    </svg>
+                </div>
+                <span>Good</span>
+            </div>
+        </div>
+        
+        <!-- Very Good Example -->
+        <div class="w-64 p-6 bg-gray-800 rounded-lg">
+            <div class="flex flex-col items-center">
+                <div class="w-full h-20 w-20">
+                    <svg viewBox="0 0 100 60" class="w-full h-full">
+                        <!-- Gauge background -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-gray-700 fill-none" stroke-width="12" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge segments - smoother curve -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-200 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="0" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-300 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-40" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-400 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-70" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-500 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-100" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge needle for "Very Good" -->
+                        <line x1="50" y1="50" x2="60" y2="15" class="stroke-white" stroke-width="2" stroke-linecap="round"></line>
+                        <circle cx="50" cy="50" r="4" class="fill-white"></circle>
+                    </svg>
+                </div>
+                <span class="">Very Good</span>
+            </div>
+        </div>
+        
+        <!-- Excellent Example -->
+        <div class="w-64 p-6 bg-gray-800 rounded-lg">
+            <div class="flex flex-col items-center">
+                <div class="w-full h-20 w-20">
+                    <svg viewBox="0 0 100 60" class="w-full h-full">
+                        <!-- Gauge background -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-gray-700 fill-none" stroke-width="12" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge segments - smoother curve -->
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-200 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="0" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-300 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-40" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-400 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-70" stroke-linecap="round"></path>
+                        <path d="M10,50 A40,40 0 0,1 90,50" class="stroke-purple-500 fill-none" stroke-color="purple" stroke-width="12" stroke-dasharray="40 110" stroke-dashoffset="-100" stroke-linecap="round"></path>
+                        
+                        <!-- Gauge needle for "Excellent" -->
+                        <line x1="50" y1="50" x2="85" y2="40" class="stroke-white" stroke-width="2" stroke-linecap="round"></line>
+                        <circle cx="50" cy="50" r="4" class="fill-white"></circle>
+                    </svg>
+                </div>
+                <span class="">Excellent</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

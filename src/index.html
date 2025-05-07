@@ -1,0 +1,540 @@
+@@include("partials/main.html")
+    <head>
+        @@include("partials/title-meta.html", {"title": "Fineguide.ai | AI platform for customer service"})
+
+        <!-- Css -->
+        <link href="assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+        @@include("partials/head-css.html")
+    </head>
+    
+    @@include("partials/body.html")
+        
+        @@include("partials/navbar/nav.html")
+        
+        <!-- Start Hero -->
+        <section class="relative table w-full lg:pt-40 lg:pb-20 md:pt-36 md:pb-16 pt-36 pb-14 overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden -z-1">
+                <!-- Ambient Gradients -->
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-slate-950 to-indigo-950/70"></div>
+                <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px]"></div>
+                
+                <!-- Orbital Rings -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-indigo-500/5 rounded-full animate-[spin_240s_linear_infinite]"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] border border-purple-500/5 rounded-full animate-[spin_180s_linear_reverse_infinite]"></div>
+                
+                <!-- Particle Grid -->
+                <div class="absolute inset-0 opacity-10">
+                    <svg width="100%" height="100%" class="opacity-20">
+                        <pattern id="grid-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.3)" />
+                        </pattern>
+                        <rect x="0" y="0" width="100%" height="100%" fill="url(#grid-pattern)" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="container relative z-1">
+                <div class="relative grid lg:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+                    <!-- Left Content -->
+                    <div class="lg:col-span-7">
+                        <div class="lg:me-6 lg:text-start text-center">
+                            <h1 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-6xl mb-5">Smarter AI Agents<br> for Real Results</h1>
+                            <p class="text-lg max-w-xl lg:ms-0 mx-auto">Improve customer satisfaction with intelligent <a href="" class="underline">AI Agents</a> built for accuracy and performance.</p>
+                        
+                            <div class="subcribe-form mt-6 mb-3">
+                                <a href="https://app.fineguide.ai" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-purple-700 hover:bg-violet-700 border border-purple-700 hover:border-violet-700 text-white rounded-md">Sign-up</a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <!-- Right Content - AI Visualization -->
+                    <div class="lg:col-span-5 hidden lg:block">
+                        <div class="relative h-[300px]">
+                            <!-- Central AI Hub - Repositioned -->
+                            <div class="relative mx-auto sm:w-[200px] sm:h-[150px] md:w-[500px] md:h-[300px] flex items-end justify-end">
+                                <!-- Main Container for Centered Content with Hover Effect - Smaller and Repositioned -->
+                                <div class="relative w-[200px] h-[200px] flex items-center justify-center group cursor-pointer mb-[20px] mr-[100px]">
+                                    <!-- Glow Effect -->
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-indigo-600/20 rounded-full blur-xl animate-pulse"></div>
+                                    
+                                    <!-- Enhanced Glow Layers -->
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-purple-600/10 rounded-full blur-xl" style="animation: pulse 8s ease-in-out infinite alternate;"></div>
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-blue-600/5 rounded-full blur-xl" style="animation: pulse 12s ease-in-out infinite alternate-reverse;"></div>
+                                    
+                                    <!-- Subtle Radial Gradient Background -->
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] rounded-full bg-gradient-radial from-indigo-900/10 via-purple-900/5 to-transparent"></div>
+                                    
+                                    <!-- Neural Network Visualization -->
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40">
+                                        <!-- Central Hub with Floating Animation -->
+                                        <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-xl border border-indigo-500/40 rounded-full shadow-lg shadow-indigo-500/20 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:shadow-indigo-500/30 group-hover:border-indigo-500/60 logo-float-animation">
+                                            
+                                            <!-- Logo Overlay with Enhanced Shadow and Glow -->
+                                            <div class="relative z-10 drop-shadow-[0_0_15px_rgba(99,102,241,0.5)] transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(99,102,241,0.7)]">
+                                                <!-- Subtle Glow Behind Logo -->
+                                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-indigo-500/20 rounded-full filter blur-md"></div>
+                                                <img src="assets/images/fg-dark.svg" alt="Fineguide" class="w-28 h-28 p-2 relative z-10">
+                                            </div>
+                                            
+                                            <!-- Subtle Rotating Overlay -->
+                                            <div class="absolute inset-0 border-2 border-indigo-500/10 rounded-full animate-[spin_30s_linear_infinite]"></div>
+                                        </div>
+                                        
+                                        <!-- Chat Bubble - With Floating Animation -->
+                                        <div id="chatBubble" class="absolute -top-36 -left-64 w-[380px] z-20 chat-bubble-animation">
+                                            <!-- Chat Bubble Container -->
+                                            <div class="relative bg-gradient-to-br from-slate-800/95 to-slate-900/95 backdrop-blur-md p-5 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/20">
+                                                <!-- Chat Header -->
+                                                <div class="flex items-center mb-3">
+                                                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-600 to-indigo-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-indigo-800/20 mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                                    </div>
+                                                    <div class="text-white font-medium">Fineguide Assistant</div>
+                                                    <div class="ml-auto flex space-x-1">
+                                                        <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
+                                                        <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" style="animation-delay: 0.3s"></div>
+                                                        <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" style="animation-delay: 0.6s"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Chat Message with Normal Text (No Animation) -->
+                                                <div class="text-slate-200 text-sm leading-relaxed break-words">
+                                                    Hello! I'm your AI assistant. How can I help improve your business with intelligent automation today?
+                                                </div>
+                                                
+                                                <!-- Chat Bubble Tail - Adjusted Left -->
+                                                <div class="absolute -bottom-2 right-12 w-4 h-4 bg-slate-900 border-b border-r border-indigo-500/30 transform rotate-45"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Pulsing Rings with Enhanced Animation -->
+                                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-indigo-500/30 animate-ping opacity-30" style="animation-duration: 3s;"></div>
+                                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border border-purple-500/20 animate-ping opacity-20" style="animation-delay: 0.5s; animation-duration: 4s;"></div>
+                                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-blue-500/10 animate-ping opacity-10" style="animation-delay: 1s; animation-duration: 5s;"></div>
+                                        
+                                        <!-- Data Flow Animation Lines - Only Visible on Hover -->
+                                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] opacity-0 group-hover:opacity-40 transition-all duration-500">
+                                            <svg width="100%" height="100%" viewBox="0 0 320 320" class="opacity-20">
+                                                <!-- Animated Data Paths -->
+                                                <path d="M160,40 Q220,100 160,160" stroke="url(#data-flow-grad)" stroke-width="0.5" fill="none">
+                                                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="8s" repeatCount="indefinite" />
+                                                </path>
+                                                <path d="M160,160 Q100,220 160,280" stroke="url(#data-flow-grad)" stroke-width="0.5" fill="none">
+                                                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="8s" repeatCount="indefinite" />
+                                                </path>
+                                                <path d="M160,160 Q220,220 280,160" stroke="url(#data-flow-grad)" stroke-width="0.5" fill="none">
+                                                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="8s" repeatCount="indefinite" />
+                                                </path>
+                                                <path d="M160,160 Q100,100 40,160" stroke="url(#data-flow-grad)" stroke-width="0.5" fill="none">
+                                                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="8s" repeatCount="indefinite" />
+                                                </path>
+                                                
+                                                <!-- Gradient for Data Flow -->
+                                                <defs>
+                                                    <linearGradient id="data-flow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                        <stop offset="0%" stop-color="rgba(99, 102, 241, 0.1)" />
+                                                        <stop offset="50%" stop-color="rgba(255, 255, 255, 0.3)" />
+                                                        <stop offset="100%" stop-color="rgba(168, 85, 247, 0.1)" />
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="container ">
+                            <!-- Feature Highlights -->
+                            <div class="mt-10 grid md:grid-cols-3 grid-cols-2 gap-4">
+                                <!-- Feature 1 -->
+                                <div class="bg-slate-900/40 backdrop-blur-sm border border-indigo-500/10 rounded-lg p-4 transition-all duration-300 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/10">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-600 to-indigo-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-indigo-800/20">
+                                            <i data-feather="message-circle" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-white text-sm font-medium">Customer Support</h3>
+                                            <p class="text-white/70 text-xs mt-0.5">24/7 automated assistance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Feature 2 -->
+                                <div class="bg-slate-900/40 backdrop-blur-sm border border-pink-500/10 rounded-lg p-4 transition-all duration-300 hover:border-pink-500/30 hover:shadow-lg hover:shadow-pink-500/10">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-600 to-pink-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-pink-800/20">
+                                            <i data-feather="users" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-white text-sm font-medium">Lead Generation</h3>
+                                            <p class="text-white/70 text-xs mt-0.5">Qualify leads automatically</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Feature 3 -->
+                                <div class="bg-slate-900/40 backdrop-blur-sm border border-teal-500/10 rounded-lg p-4 transition-all duration-300 hover:border-teal-500/30 hover:shadow-lg hover:shadow-teal-500/10">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-600 to-teal-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-teal-800/20">
+                                            <i data-feather="globe" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-white text-sm font-medium">Multilingual</h3>
+                                            <p class="text-white/70 text-xs mt-0.5">Chat interface in 23 languages</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Feature 4 -->
+                                <div class="bg-slate-900/40 backdrop-blur-sm border border-amber-500/10 rounded-lg p-4 transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/10">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-600 to-amber-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-amber-800/20">
+                                            <i data-feather="bar-chart-2" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-white text-sm font-medium">Analytics</h3>
+                                            <p class="text-white/70 text-xs mt-0.5">Track performance metrics</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <!-- Feature 6: Widget Support -->
+                                <div class="bg-slate-900/40 backdrop-blur-sm border border-blue-500/10 rounded-lg p-4 transition-all duration-300 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-blue-800/20">
+                                            <i data-feather="layout" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-white text-sm font-medium">Widget Support</h3>
+                                            <p class="text-white/70 text-xs mt-0.5">Maps, YouTube, Calendly</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Feature 5: Custom Actions -->
+                                <div class="bg-slate-900/40 backdrop-blur-sm border border-purple-500/10 rounded-lg p-4 transition-all duration-300 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/10">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-purple-800 flex-shrink-0 flex items-center justify-center shadow-lg shadow-purple-800/20">
+                                            <i data-feather="zap" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-white text-sm font-medium">Custom Actions</h3>
+                                            <p class="text-white/70 text-xs mt-0.5">Perform tasks on your behalf</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+
+            <div class="container relative sm:pb-10 md:pb-14 pt-20">
+                <div><h4 class="text-xs text-gray-400 text-center">Powered by top industry's LLMs</h4></div>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+                    <div class="mx-2 pt-6">
+                        <img src="assets/images/client/openai-lockup.svg" class="h-5 md:h-6" alt="OpenAI">
+                    </div>
+
+                    <div class="mx-2 pt-6">
+                        <img src="assets/images/client/claude.svg" class="h-5 md:h-6" alt="Claude">
+                    </div>
+                    
+                    <div class="mx-2 pt-6">
+                        <img src="assets/images/client/gemini.svg" class="h-5 md:h-6" alt="Gemini">
+                    </div>
+                    
+                    <div class="mx-2 pt-6">
+                        <img src="assets/images/client/xAi.svg" class="h-5 md:h-6" alt="xAI">
+                    </div>
+                    
+                    <div class="mx-2 pt-6">
+                        <img src="assets/images/client/perplexity_logo.svg" class="h-5 md:h-6" alt="Perplexity">
+                    </div>
+                    
+                </div><!--end grid-->
+            </div><!--end container-->
+
+        </section><!--end section-->
+        <!-- End Hero -->
+
+        <!-- Start -->
+        <section class="relative pt-2 md:pb-24 pb-16 overflow-hidden border-b border-slate-800">
+
+            <span class="fixed blur-[200px] w-[500px] h-[500px] rounded-full top-[25%] -start-[20%] bg-gradient-to-tl to-indigo-800  from-purple-600 -z-1"></span>
+            <span class="fixed blur-[200px] w-[500px] h-[500px] rounded-full bottom-[25%] -end-[20%] bg-gradient-to-tl to-indigo-800  from-purple-600 -z-1"></span>
+            
+            <!-- left-text -->
+            <div class="container relative md:mt-24 mt-6 robo-card">
+
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative ps-6 pt-6 lg:me-8">
+                        <img src="assets/images/features/support-roles.png" class="animate-pulse-shadow" style="max-width: 95%; border-radius:40px;"alt="">
+                    </div>
+
+                    <div class="">
+                        <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Pre-Defined Roles: <br> Minimal Configuration</h3>
+                        <p class="text-slate-400 max-w-xl">Fineguide AI Agents come with pre-defined roles, eliminating the need for extensive customization. Whether you need customer support, lead collection, or onboarding assistance, our Agents are ready to work out of the box.</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try for free <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <!-- right-text -->
+            <div class="container relative md:mt-24 mt-16 robo-card">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative order-1 md:order-2">
+                        <div class="relative rounded-lg ps-6 pt-6 lg:me-8">
+                            <img src="assets/images/features/leads.png" class="animate-pulse-shadow"style="max-width: 95%; border-radius:40px;"alt="">
+                        </div>
+                    </div>
+
+                    <div class="order-2 md:order-1">
+                        <h4 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Lead Qualification</h4>
+                        <p class="text-slate-300 pb-5">Fineguide AI Agents can automatically collect and qualify leads during conversations. Using smart prompts and intent detection, they gather key details like name, email, company, and interest — all in real time. This helps you streamline the sales funnel and hand off high-quality leads to your team.</p>
+
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try for free <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end container-->
+
+            <!-- left-text -->
+            <div class="container relative md:mt-24 mt-16 robo-card">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative rounded-lg ps-6 pt-6 lg:me-8">
+                        <img src="assets/images/features/analytics_1.png" class="animate-pulse-shadow" style="max-width: 95%; border-radius:40px;"alt="">
+                    </div>
+
+                    <div class="">
+                        <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Conversation Analytics</h3>
+                        <p class="text-slate-400 max-w-xl">Track and analyze every interaction with your customers, including intent, resolution, and satisfaction. Fineguide provides detailed insights into conversation patterns, customer behavior, and performance metrics.</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try for free <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <!-- right-text -->
+            <div class="container relative md:mt-24 mt-16 robo-card">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative order-1 md:order-2">
+                        <div class="relative rounded-lg ps-6 pt-6 lg:me-8">
+                            <img src="assets/images/features/widgets.png" class="animate-pulse-shadow" style="max-width: 95%; border-radius:40px;"alt="">
+                        </div>
+                    </div>
+
+                    <div class="order-2 md:order-1">
+                        <h4 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Widget Support</h4>
+                        <p class="text-slate-300 pb-5">Fineguide AI Agents support interactive widgets directly within the chat window — including Google Maps, YouTube videos, Calendly booking links, and more. These integrations enhance conversations with relevant context and actions, making the experience more engaging for users.</p>
+
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try for free <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end container-->
+
+
+        </section><!--end section-->
+        <!-- End -->
+        <section class="relative pt-2 md:pb-16 pb-10 overflow-hidden bg-indigo-950/50 fineguide-logo-bg border-b border-slate-800">
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Create an Agent in less than 10 seconds!</span></h3>
+
+                    <p class="text-slate-400 max-w-xl mx-auto">Creating an Ai-Agent takes only a few clicks</p>
+                </div><!--end grid-->
+
+                <div class="grid md:grid-cols-3 grid-cols-1 mt-6 gap-6">
+                    <div class="relative p-6">
+                        <span class="typewrite bg-gradient-to-br from-amber-400 to-fuchsia-600 text-transparent bg-clip-text text-4xl">1.</span>
+
+                        <h5 class="text-xl font-semibold my-5">Pick an Cool name</h5>
+
+                        <p class="text-slate-400">Give your AI Agent a unique name that fits your brand or use case. Whether it's playful, professional, or practical.</p>
+                    </div><!--end content-->
+
+                    <div class="relative p-6">
+                        <span class="typewrite bg-gradient-to-br from-amber-400 to-fuchsia-600 text-transparent bg-clip-text text-4xl">2.</span>
+
+                        <h5 class="text-xl font-semibold my-5">Choose a Role</h5>
+
+                        <p class="text-slate-400">Select a ready-made role like support or sales to instantly match your agent’s behavior to your needs.
+
+                        </p>
+                    </div><!--end content-->
+
+                    <div class="relative p-6">
+                        <span class="typewrite bg-gradient-to-br from-amber-400 to-fuchsia-600 text-transparent bg-clip-text text-4xl">3.</span>
+                        <h5 class="text-xl font-semibold my-5">Add learning resources</h5>
+                        <p class="text-slate-400">Upload FAQs, docs, or links so your agent can start answering questions right away.</p>
+                    </div><!--end content-->
+                </div><!--end grid-->
+            </div><!--end container-->
+
+        </section>
+        <section class="relative table w-full lg:pb-20 md:pb-16 pb-14 overflow-hidden">
+        <div class="container relative md:mt-14 mt-14">
+            <div class="grid grid-cols-1 pb-6 text-center">
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Use Cases</h3>
+
+                <p class="text-slate-400 max-w-xl mx-auto">Our Ai Agents can be used in a variety of use cases, from customer support to lead generation to sales.</p>
+            </div><!--end grid-->
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
+                <!-- Content -->
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 group bg-white dark:bg-slate-900 hover:bg-amber-400/5 dark:hover:bg-amber-400/5 duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden text-transparent -m-3">
+                        <i data-feather="hexagon" class="h-24 w-24 fill-amber-400/10 group-hover:fill-amber-400/20 duration-500"></i>
+                        <div class="absolute top-2/4 -translate-y-2/4 start-9 text-amber-400 rounded-xl text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="moon"></i>
+                        </div>
+                    </div>
+
+                    <div class="content mt-6">
+                        <a href="" class="font-semibold text-xl hover:text-amber-400">After-Hours Client Support</a>
+                        <p class="text-slate-400 mt-3">Let AI Agents handle inquiries when your team is offline - qualifying leads, answering FAQs, or booking appointments overnight so nothing slips through the cracks.
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try now <i class="mdi mdi-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+
+                <!-- Content -->
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 group bg-white dark:bg-slate-900 hover:bg-amber-400/5 dark:hover:bg-amber-400/5 duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden text-transparent -m-3">
+                        <i data-feather="hexagon" class="h-24 w-24 fill-amber-400/10 group-hover:fill-amber-400/20 duration-500"></i>
+                        <div class="absolute top-2/4 -translate-y-2/4 start-9 text-amber-400 rounded-xl text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="user-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="content mt-6">
+                        <a href="" class="font-semibold text-xl hover:text-amber-400">Lead Qualification</a>
+                        <p class="text-slate-400 mt-3">AI Agents can engage visitors, ask qualifying questions, and push only high-quality leads to your CRM or human representatives.</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try now <i class="mdi mdi-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+
+                <!-- Content -->
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 group bg-white dark:bg-slate-900 hover:bg-amber-400/5 dark:hover:bg-amber-400/5 duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden text-transparent -m-3">
+                        <i data-feather="hexagon" class="h-24 w-24 fill-amber-400/10 group-hover:fill-amber-400/20 duration-500"></i>
+                        <div class="absolute top-2/4 -translate-y-2/4 start-9 text-amber-400 rounded-xl text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="calendar"></i>
+                        </div>
+                    </div>
+
+                    <div class="content mt-6">
+                        <a href="" class="font-semibold text-xl hover:text-amber-400">Appointment Scheduling for Service Providers</a>
+                        <p class="text-slate-400 mt-3">Integrate with tools like Calendly or Cal.com to let users book consultations, demos, or service visits directly through the chat.</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try now <i class="mdi mdi-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+
+                <!-- Content -->
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 group bg-white dark:bg-slate-900 hover:bg-amber-400/5 dark:hover:bg-amber-400/5 duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden text-transparent -m-3">
+                        <i data-feather="hexagon" class="h-24 w-24 fill-amber-400/10 group-hover:fill-amber-400/20 duration-500"></i>
+                        <div class="absolute top-2/4 -translate-y-2/4 start-9 text-amber-400 rounded-xl text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="user-plus"></i>
+                        </div>
+                    </div>
+
+                    <div class="content mt-6">
+                        <a href="" class="font-semibold text-xl hover:text-amber-400">Onboarding for SaaS Products</a>
+                        <p class="text-slate-400 mt-3">Guide new users through product setup, answer common questions, and trigger in-app actions or tutorials.</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try now <i class="mdi mdi-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+
+                <!-- Content -->
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 group bg-white dark:bg-slate-900 hover:bg-amber-400/5 dark:hover:bg-amber-400/5 duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden text-transparent -m-3">
+                        <i data-feather="hexagon" class="h-24 w-24 fill-amber-400/10 group-hover:fill-amber-400/20 duration-500"></i>
+                        <div class="absolute top-2/4 -translate-y-2/4 start-9 text-amber-400 rounded-xl text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="shopping-bag"></i>
+                        </div>
+                    </div>
+
+                    <div class="content mt-6">
+                        <a href="" class="font-semibold text-xl hover:text-amber-400">Product Guidance for E-Commerce</a>
+                        <p class="text-slate-400 mt-3">Help customers find the right product by asking about their needs, filtering options, and offering recommendations - just like a smart in-store assistant.</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try now <i class="mdi mdi-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+
+                <!-- Content -->
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 group bg-white dark:bg-slate-900 hover:bg-amber-400/5 dark:hover:bg-amber-400/5 duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden text-transparent -m-3">
+                        <i data-feather="hexagon" class="h-24 w-24 fill-amber-400/10 group-hover:fill-amber-400/20 duration-500"></i>
+                        <div class="absolute top-2/4 -translate-y-2/4 start-9 text-amber-400 rounded-xl text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="book-open"></i>
+                        </div>
+                    </div>
+
+                    <div class="content mt-6">
+                        <a href="" class="font-semibold text-xl hover:text-amber-400">Internal Knowledge Base Assistant</a>
+                        <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                        <div class="mt-4">
+                            <a href="https://app.fineguide.ai/register" class="hover:text-amber-400 font-medium duration-500">Try now <i class="mdi mdi-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+            </div><!--end grid-->
+        </div><!--end container-->
+        </section>
+
+        @@include("partials/footer/footer.html")
+
+<script>
+var FINEGUIDE_CHATBOT_ID = '71ca6dda-ed74-4c4a-a2da-043f682ab8eb';
+var FINEGUIDE_LOGGER = {
+    http: true,
+    dom: true,
+    events: true,
+    location: true,
+    snapshots: true
+};
+</script>
+<script src="https://cdn.fineguide.ai/fineguide.min.js"></script>
+
+        
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        @@include("partials/script-file.html")
+        <script src="assets/js/chat-animation.js"></script>
+        <script>
+            feather.replace();
+        </script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>
