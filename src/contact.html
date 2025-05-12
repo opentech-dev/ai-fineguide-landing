@@ -110,53 +110,38 @@
             
             // Function to submit data to the Fineguide API
             function submitToAPI(name, email, message) {
-                // Replace 'YOUR_BOT_ID' with the actual botId you want to use
-                const botId = '71ca6dda-ed74-4c4a-a2da-043f682ab8eb'; 
-                const apiUrl = `https://fineguide.ai/api/chat/web/${botId}/sessions`;
-                
                 // Show loading state
                 const submitBtn = document.getElementById('submit');
                 const originalBtnText = submitBtn.innerHTML;
                 submitBtn.innerHTML = 'Sending...';
                 submitBtn.disabled = true;
                 
-                // Make the first POST request to create a session
-                fetch(apiUrl, {
+                // Define session ID and fingerprint
+                const session_id = 'fc103e0a-b3d8-4920-96d0-492169ce7d06';
+                const fingerprint = 'fg-website-2234123457';
+
+                // Prepare the API URL and data
+                const url = 'https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/' + session_id + '/tickets';
+                const data = {
+                    "customerEmail": email,
+                    "customerName": name,
+                    "customerMessage": message
+                };
+                
+                // Send the POST request
+                fetch(url, {
                     method: 'POST',
                     headers: {
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json',
-                        'x-fingerprint': 'fg-website-2234123457'
+                        'Origin': 'https://fineguide.ai',
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache',
+                        'Referer': 'https://client.fineguide.ai/',
+                        'x-fingerprint': fingerprint,
+                        'Cookie': '_a45da=c1d1f7e66ba5785f'
                     },
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(sessionData => {
-                    // Extract the session ID from the response
-                    const sessionId = sessionData.id || sessionData.sessionId;
-                    
-                    if (!sessionId) {
-                        throw new Error('No session ID returned from API');
-                    }
-                    
-                    // Prepare data for the second request
-                    const ticketData = {
-                        customerName: name,
-                        customerEmail: email,
-                        customerMessage: message
-                    };
-                    
-                    // Make the second POST request to create a ticket
-                    return fetch(`https://fineguide.ai/api/chat/web/${botId}/sessions/${sessionId}/tickets`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(ticketData)
-                    });
+                    body: JSON.stringify(data)
                 })
                 .then(response => {
                     if (!response.ok) {
