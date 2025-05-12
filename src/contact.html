@@ -132,15 +132,11 @@
                 fetch(url, {
                     method: 'POST',
                     headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Origin': 'https://fineguide.ai',
-                        'Cache-Control': 'no-cache',
-                        'Pragma': 'no-cache',
-                        'Referer': 'https://client.fineguide.ai/',
-                        'x-fingerprint': fingerprint,
-                        'Cookie': '_a45da=c1d1f7e66ba5785f'
+                        'accept': 'application/json',
+                        'content-type': 'application/json',
+                        'x-fingerprint': fingerprint
                     },
+                    credentials: 'include',
                     body: JSON.stringify(data)
                 })
                 .then(response => {
