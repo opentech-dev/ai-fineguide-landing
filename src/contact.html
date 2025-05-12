@@ -117,11 +117,10 @@
                 submitBtn.disabled = true;
                 
                 // Define session ID and fingerprint
-                const session_id = 'fc103e0a-b3d8-4920-96d0-492169ce7d06';
                 const fingerprint = 'fg-website-2234123457';
 
                 // Prepare the API URL and data
-                const url = 'https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/' + session_id + '/tickets';
+                const url = 'https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/fc103e0a-b3d8-4920-96d0-492169ce7d06/tickets';
                 const data = {
                     "customerEmail": email,
                     "customerName": name,
@@ -132,11 +131,8 @@
                 fetch(url, {
                     method: 'POST',
                     headers: {
-                        'accept': 'application/json',
-                        'content-type': 'application/json',
                         'x-fingerprint': fingerprint
                     },
-                    credentials: 'include',
                     body: JSON.stringify(data)
                 })
                 .then(response => {
