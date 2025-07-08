@@ -17,17 +17,55 @@ COPY . .
 # Build the project
 RUN yarn gulp build
 
-# Production stage
-FROM nginx:alpine
+# Production stage with Apache and PHP
+FROM php:8.1-apache
 
-# Copy built files from build stage to nginx
-COPY --from=build /app/dist /usr/share/nginx/html
+# Install required PHP extensions for WordPress
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd mysqli zip exif
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Enable Apache modules
+RUN a2enmod rewrite headers
 
-# Expose port 80 for the Nginx web server
+# Copy built static files from build stage to Apache document root
+COPY --from=build /app/dist /var/www/html/
+
+# Copy WordPress files to the blog directory
+COPY blog/ /var/www/html/blog/
+
+# Create .htaccess file in the root directory to handle HTML files without extensions
+RUN echo '<IfModule mod_rewrite.c>\n\
+RewriteEngine On\n\
+RewriteBase /\n\
+# If the request is not for a file that exists\n\
+RewriteCond %{REQUEST_FILENAME} !-f\n\
+# And not for a directory that exists\n\
+RewriteCond %{REQUEST_FILENAME} !-d\n\
+# And not for a request to the blog directory\n\
+RewriteCond %{REQUEST_URI} !^/blog/\n\
+# And the requested file with .html extension exists\n\
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f\n\
+# Then rewrite to add .html extension internally\n\
+RewriteRule ^(.*)$ $1.html [L]\n\
+</IfModule>' > /var/www/html/.htaccess
+
+# Create .htaccess file for WordPress in blog directory
+RUN echo '<IfModule mod_rewrite.c>\n\
+RewriteEngine On\n\
+RewriteBase /blog/\n\
+RewriteRule ^index\.php$ - [L]\n\
+RewriteCond %{REQUEST_FILENAME} !-f\n\
+RewriteCond %{REQUEST_FILENAME} !-d\n\
+RewriteRule . /blog/index.php [L]\n\
+</IfModule>' > /var/www/html/blog/.htaccess
+
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www/html
+
+# Expose port 80
 EXPOSE 80
-
-# Start the Nginx web server when the container starts
-CMD ["nginx", "-g", "daemon off;"]

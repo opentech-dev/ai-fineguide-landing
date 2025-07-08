@@ -195,7 +195,7 @@
                         
                         // Create iframe loading the iframe-demo.html with the URL and company parameters
                         previewContainer.innerHTML = `
-                            <iframe src="iframe-demo.html?search_domains=${encodeURIComponent(domain)}&company=${encodeURIComponent(company)}" title="Website Preview with Fineguide Agent" allow="microphone" allowfullscreen frameborder="0"></iframe>
+                            <iframe src="iframe-demo?search_domains=${encodeURIComponent(domain)}&company=${encodeURIComponent(company)}" title="Website Preview with Fineguide Agent" allow="microphone" allowfullscreen frameborder="0"></iframe>
                         `;
                         
                         // Scroll to the preview container with smooth animation, accounting for sticky header
