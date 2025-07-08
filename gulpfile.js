@@ -17,7 +17,6 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require("autoprefixer");
 const tailwindcss = require('tailwindcss');
 
-
 const paths = {
     config: {
         tailwind: "./tailwind.config.js",
