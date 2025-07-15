@@ -1,0 +1,159 @@
+/**
+ * Odys Single Column Layout
+ * CSS to ensure the blog displays in a single column with Explore Topics
+ * between the featured post and latest articles
+ */
+
+/* Main container structure */
+.main-content-wrapper {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+/* Single column content */
+.content-column {
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Featured post styling */
+.featured-post-section {
+    margin-bottom: 3rem !important;
+    position: relative !important;
+}
+
+.featured-post {
+    display: flex !important;
+    flex-direction: column !important;
+    background-color: var(--fg-card-bg) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--fg-card-border) !important;
+    box-shadow: 0 4px 10px var(--fg-shadow) !important;
+}
+
+
+/* Category highlights section */
+.category-highlights-section {
+    margin-bottom: 3rem !important;
+    background-color: var(--fg-card-bg) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    border: 1px solid var(--fg-card-border) !important;
+}
+
+.category-highlights-title {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+    color: var(--fg-text) !important;
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.category-highlights-title::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -5px !important;
+    left: 0 !important;
+    width: 40px !important;
+    height: 2px !important;
+    background-color: var(--fg-accent) !important;
+}
+
+.category-highlights {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 1.5rem !important;
+}
+
+@media (min-width: 768px) {
+    .category-highlights {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+.category-highlight-card {
+    display: flex !important;
+    flex-direction: column !important;
+    background-color: rgba(30, 41, 59, 0.5) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--fg-card-border) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.category-highlight-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 15px var(--fg-shadow) !important;
+}
+
+.category-highlight-image {
+    height: 150px !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.category-highlight-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.5s ease !important;
+}
+
+.category-highlight-card:hover .category-highlight-image img {
+    transform: scale(1.05) !important;
+}
+
+.category-highlight-content {
+    padding: 1rem !important;
+}
+
+/* Latest articles section */
+.blog-grid-section {
+    margin-bottom: 1.5rem !important;
+}
+
+.blog-grid-title {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+    color: var(--fg-text) !important;
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.blog-grid-title::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -5px !important;
+    left: 0 !important;
+    width: 40px !important;
+    height: 2px !important;
+    background-color: var(--fg-accent) !important;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .featured-post {
+        flex-direction: row !important;
+    }
+    
+    .featured-post-image {
+        flex: 0 0 40% !important;
+    }
+    
+    .featured-post-content {
+        flex: 0 0 60% !important;
+    }
+}
+
+/* Fix for the Astra theme's default container */
+.ast-container {
+    display: block !important;
+    max-width: 1200px !important;
+    padding: 0 1rem !important;
+}

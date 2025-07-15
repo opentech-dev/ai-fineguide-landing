@@ -1,0 +1,332 @@
+/**
+ * Odys Layout Adjustments
+ * Additional styles to ensure the Odys-inspired layout works correctly with the Astra theme
+ * while maintaining the FineGuide color scheme and branding
+ */
+
+/* Main container adjustments for Odys-inspired layout */
+.ast-container {
+    max-width: 1200px !important;
+    padding: 0 1.5rem !important;
+    margin: 0 auto !important;
+}
+
+/* Adjust site content padding */
+.site-content {
+    padding-top: 0 !important;
+}
+
+/* Remove default Astra margins and paddings */
+.ast-separate-container .ast-article-post, 
+.ast-separate-container .ast-article-single {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Adjust content area background */
+.ast-separate-container {
+    background-color: transparent !important;
+}
+
+/* Adjust sidebar layout */
+.ast-right-sidebar #primary {
+    padding-right: 0 !important;
+    border: none !important;
+}
+
+.ast-right-sidebar #secondary {
+    padding-left: 2rem !important;
+    border: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .blog-header-wrapper {
+        padding: 2rem 0 0 !important;
+    }
+    
+    .blog-header .blog-title {
+        font-size: 2rem !important;
+    }
+    
+    .blog-header .blog-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .featured-post-section {
+        margin-bottom: 3rem !important;
+    }
+    
+    .featured-post-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .blog-grid-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .blog-grid {
+        gap: 1.5rem !important;
+    }
+}
+
+/* Ensure dark mode for all elements */
+body,
+.entry-content,
+.entry-meta,
+.entry-title,
+.page-title,
+.widget-title,
+.site-title,
+.site-description {
+    color: var(--fg-text) !important;
+}
+
+/* Ensure proper spacing between sections */
+.ast-archive-description {
+    margin-bottom: 2rem !important;
+}
+
+/* Improve header styling */
+.site-header {
+    background-color: var(--fg-background) !important;
+    border-bottom: 1px solid var(--fg-border) !important;
+    padding: 1rem 0 !important;
+}
+
+.site-title a,
+.site-description {
+    color: var(--fg-text) !important;
+}
+
+/* Footer styling */
+.site-footer {
+    background-color: var(--fg-background) !important;
+    border-top: 1px solid var(--fg-border) !important;
+    color: var(--fg-text-secondary) !important;
+    padding: 2rem 0 !important;
+}
+
+.site-footer a {
+    color: var(--fg-text) !important;
+}
+
+.site-footer a:hover {
+    color: var(--fg-accent) !important;
+}
+
+/* Adjust widget styling */
+.widget {
+    background-color: var(--fg-card-bg) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    border: 1px solid var(--fg-card-border) !important;
+}
+
+.widget-title {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+    color: var(--fg-text) !important;
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.widget-title::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -5px !important;
+    left: 0 !important;
+    width: 30px !important;
+    height: 2px !important;
+    background-color: var(--fg-accent) !important;
+}
+
+.widget ul li {
+    border-bottom: 1px solid var(--fg-border) !important;
+    padding: 0.5rem 0 !important;
+}
+
+.widget ul li:last-child {
+    border-bottom: none !important;
+}
+
+.widget a {
+    color: var(--fg-text) !important;
+    transition: color 0.3s ease !important;
+}
+
+.widget a:hover {
+    color: var(--fg-accent) !important;
+}
+
+/* Search widget styling */
+.search-form {
+    display: flex !important;
+}
+
+.search-form .search-field {
+    background-color: var(--fg-background) !important;
+    border: 1px solid var(--fg-border) !important;
+    color: var(--fg-text) !important;
+    border-radius: 6px 0 0 6px !important;
+    padding: 0.75rem 1rem !important;
+    flex-grow: 1 !important;
+}
+
+.search-form .search-submit {
+    background-color: var(--fg-primary) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0 6px 6px 0 !important;
+    padding: 0.75rem 1rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.search-form .search-submit:hover {
+    background-color: var(--fg-secondary) !important;
+}
+
+/* Fix for Astra theme specific elements */
+.ast-container .ast-blog-grid-wrap {
+    display: block !important;
+}
+
+/* Ensure proper spacing in single post view */
+
+.single .entry-content {
+    margin-bottom: 3rem !important;
+}
+
+/* Comments section styling */
+.comments-area {
+    background-color: var(--fg-card-bg) !important;
+    border-radius: 8px !important;
+    padding: 2rem !important;
+    margin-top: 3rem !important;
+    border: 1px solid var(--fg-card-border) !important;
+}
+
+.comments-title {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 2rem !important;
+    color: var(--fg-text) !important;
+}
+
+.comment-list {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.comment {
+    border-bottom: 1px solid var(--fg-border) !important;
+    padding: 1.5rem 0 !important;
+}
+
+.comment:last-child {
+    border-bottom: none !important;
+}
+
+.comment-author {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.comment-author .avatar {
+    border-radius: 50% !important;
+    margin-right: 1rem !important;
+}
+
+.comment-metadata {
+    font-size: 0.8rem !important;
+    color: var(--fg-text-secondary) !important;
+    margin-bottom: 1rem !important;
+}
+
+.comment-content p {
+    color: var(--fg-text) !important;
+}
+
+.comment-form {
+    margin-top: 2rem !important;
+}
+
+.comment-form label {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--fg-text) !important;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+    background-color: var(--fg-background) !important;
+    border: 1px solid var(--fg-border) !important;
+    color: var(--fg-text) !important;
+    border-radius: 6px !important;
+    padding: 0.75rem 1rem !important;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+}
+
+.comment-form input[type="submit"] {
+    background-color: var(--fg-primary) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: var(--fg-secondary) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Ensure proper button styling throughout the site */
+.wp-block-button__link,
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background-color: var(--fg-primary) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.wp-block-button__link:hover,
+.button:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background-color: var(--fg-secondary) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Ensure proper link styling throughout the site */
+a {
+    color: var(--fg-primary) !important;
+    transition: color 0.3s ease !important;
+}
+
+a:hover {
+    color: var(--fg-accent) !important;
+}

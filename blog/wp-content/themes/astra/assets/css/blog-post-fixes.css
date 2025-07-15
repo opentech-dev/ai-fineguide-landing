@@ -1,0 +1,51 @@
+/**
+ * Blog Post Layout Fixes
+ * CSS fixes for blog post layout issues
+ */
+
+/* Add padding to the top of the page to prevent content from being hidden behind the fixed header */
+body.single-post #content {
+    padding-top: 90px !important;
+}
+
+/* Fix container padding */
+body.single-post .ast-container {
+    padding-left: 20px ;
+    padding-right: 20px ;
+    max-width: 1140px ;
+}
+
+/* Fix article padding */
+body.single-post .ast-article-single {
+    padding: 0 ;
+    border: none ;
+    box-shadow: none ;
+}
+
+/* Fix entry header alignment */
+body.single-post header.entry-header {
+    padding: 0;
+    margin-bottom: 4rem;
+}
+
+body.single-post .entry-title {
+    font-size: 32px;
+}
+
+/* Fix entry content alignment */
+body.single-post .entry-content {
+    padding: 0 ;
+    margin-bottom: 20px ;
+}
+
+/* Fix comments area alignment */
+body.single-post .comments-area {
+    padding: 0 ;
+    margin-top: 30px ;
+    margin-bottom: 30px ;
+}
+
+/* Fix comment form alignment */
+body.single-post #respond {
+    padding: 0 ;
+}

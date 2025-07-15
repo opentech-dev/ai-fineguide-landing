@@ -1,0 +1,84 @@
+/**
+ * FineGuide Header Override CSS
+ * This file contains styles that override any global link styling for the header
+ */
+
+/* Override any global link styling for the FineGuide header */
+#fineguide-topnav .navigation-menu li a {
+    color: #ffffff !important;
+}
+
+#fineguide-topnav .navigation-menu li a:hover {
+    color: #f59e0b !important; /* Amber color */
+}
+
+#fineguide-topnav .navigation-menu li a.active {
+    color: #f59e0b !important; /* Amber color */
+}
+
+/* Ensure the login button has the right styling */
+#fineguide-topnav .login-button {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 6px 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border-radius: 4px !important;
+}
+
+#fineguide-topnav .login-button:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Ensure the signup button has the right styling */
+#fineguide-topnav .signup-button {
+    background-color: #9333ea !important; /* Purple color */
+    color: white !important;
+    border: 1px solid #9333ea !important;
+    padding: 6px 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border-radius: 4px !important;
+}
+
+#fineguide-topnav .signup-button:hover {
+    background-color: #a855f7 !important; /* Lighter purple on hover */
+    border-color: #a855f7 !important;
+}
+
+/* Ensure the header is loaded after other styles */
+#fineguide-topnav {
+    z-index: 999 !important;
+}
+
+/* Fix button positioning */
+#fineguide-topnav .buy-button {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+/* Use flexbox to properly center the navigation */
+#fineguide-topnav .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Create a three-column layout with flexbox */
+#fineguide-topnav .logo {
+    flex: 0 0 auto !important;
+}
+
+#fineguide-topnav #navigation {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+#fineguide-topnav .buy-button {
+    flex: 0 0 auto !important;
+}

@@ -1,0 +1,2274 @@
+/**
+ * FineGuide Custom Styles
+ * Custom styles to match the ai-fineguide-landing website
+ *
+ * Important: This CSS file overrides the default Astra theme styles
+ * to create a dark theme that matches the FineGuide website.
+ */
+
+:root {
+    /* Main Colors - Matching Fineguide.ai */
+    --fg-primary: #7e22ce; /* Purple 700 */
+    --fg-secondary: #6d28d9; /* Violet 700 */
+    --fg-accent: #fbbf24; /* Amber 400 */
+    --fg-background: #0f172a; /* Slate 900 - Main background */
+    --fg-background-secondary: #1e1b4b; /* Indigo 950 - Secondary background */
+    --fg-text: #f8fafc; /* Slate 50 - Main text */
+    --fg-text-secondary: #94a3b8; /* Slate 400 - Secondary text */
+    --fg-border: #334155; /* Slate 700 - Border color */
+    
+    /* Additional Colors */
+    --fg-card-bg: #1e293b; /* Slate 800 - Card background */
+    --fg-card-border: rgba(99, 102, 241, 0.2); /* Indigo border with opacity */
+    --fg-tag-bg: rgba(251, 191, 36, 0.1); /* Amber with opacity for tags */
+    --fg-tag-text: #fbbf24; /* Amber 400 for tag text */
+    --fg-shadow: rgba(0, 0, 0, 0.25); /* Shadow color */
+    --fg-gradient-start: rgba(126, 34, 206, 0.1); /* Purple with opacity */
+    --fg-gradient-end: rgba(109, 40, 217, 0.1); /* Violet with opacity */
+}
+
+/* Override Astra CSS Variables */
+:root, 
+.ast-theme-transparent-header,
+.ast-separate-container {
+    --ast-global-color-0: var(--fg-primary);
+    --ast-global-color-1: var(--fg-secondary);
+    --ast-global-color-2: var(--fg-text);
+    --ast-global-color-3: var(--fg-text-secondary);
+    --ast-global-color-4: var(--fg-background);
+    --ast-global-color-5: var(--fg-background-secondary);
+    --ast-global-color-6: var(--fg-border);
+    --ast-global-color-7: var(--fg-accent);
+    --ast-global-color-8: var(--fg-accent);
+}
+
+/* Global Dark Theme - Force dark mode throughout the site */
+html,
+body,
+#page,
+.site-content,
+.ast-separate-container,
+.ast-separate-container .ast-article-single,
+.ast-separate-container .ast-archive,
+.ast-separate-container .ast-comment-list li,
+.ast-separate-container .ast-single-related-posts-container,
+.ast-separate-container .ast-author-box,
+.ast-separate-container .ast-woocommerce-container,
+.ast-separate-container .ast-single-related-posts-container,
+.ast-separate-container.ast-right-sidebar .ast-author-box,
+.ast-separate-container.ast-left-sidebar .ast-author-box,
+.ast-separate-container .comment-reply-title,
+.ast-separate-container .comments-count-wrapper,
+.ast-separate-container .comments-area .comments-title,
+.ast-separate-container .comment-respond,
+.ast-separate-container .ast-comment-list li,
+.ast-separate-container .ast-woocommerce-container,
+.ast-separate-container .error-404,
+.ast-separate-container .no-results {
+    background-color: var(--fg-background) !important;
+    color: var(--fg-text) !important;
+    font-family: 'Figtree', sans-serif !important;
+}
+
+/* Background Elements - Matching Fineguide.ai */
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(to bottom, var(--fg-background), var(--fg-background-secondary)) !important;
+    z-index: -2 !important;
+}
+
+/* Ambient Gradients - Matching Fineguide.ai */
+body::after {
+    content: "" !important;
+    position: fixed !important;
+    top: 25% !important;
+    left: 25% !important;
+    width: 600px !important;
+    height: 600px !important;
+    background-color: var(--fg-gradient-start) !important;
+    border-radius: 50% !important;
+    filter: blur(120px) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+/* Second ambient gradient */
+.site-content::before {
+    content: "" !important;
+    position: fixed !important;
+    bottom: 25% !important;
+    right: 25% !important;
+    width: 500px !important;
+    height: 500px !important;
+    background-color: var(--fg-gradient-end) !important;
+    border-radius: 50% !important;
+    filter: blur(100px) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+/* Particle Grid - Matching Fineguide.ai */
+.site-content::after {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+    z-index: -1 !important;
+    opacity: 0.1 !important;
+    pointer-events: none !important;
+}
+
+/* Force dark mode for all content */
+.entry-content,
+.entry-content p,
+.entry-content li,
+.entry-content table,
+.entry-content blockquote,
+.entry-content code,
+.entry-content pre,
+.entry-content div,
+.entry-content span {
+    color: var(--fg-text) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--fg-text);
+    font-family: 'Nunito', sans-serif;
+}
+
+p {
+    color: var(--fg-text);
+}
+
+/* Header Styling - Enhanced with more specific styles */
+.site-header,
+.ast-primary-header-bar,
+.ast-above-header-bar,
+.ast-below-header-bar,
+.ast-mobile-header-wrap .ast-mobile-header-content,
+.ast-desktop-header-content {
+    background-color: var(--fg-background-secondary) !important;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--fg-border) !important;
+    padding: 0.75rem 0 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Site title/logo styling - Enhanced */
+.site-branding {
+    padding: 0.5rem 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Custom logo styling - FineGuide specific */
+.custom-logo-link {
+    margin-right: 1rem !important;
+    transition: transform 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.custom-logo-link:hover {
+    transform: scale(1.05) !important;
+}
+
+.custom-logo {
+    max-height: 40px !important;
+    width: auto !important;
+    filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.5)) !important;
+}
+
+/* Site title styling - FineGuide specific */
+.site-title {
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: -0.5px !important;
+    margin: 0 !important;
+    text-transform: none !important;
+}
+
+.site-title a {
+    color: var(--fg-text) !important;
+    transition: color 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    background: linear-gradient(90deg, #fff, #e2e8f0) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+}
+
+.site-title a:hover {
+    background: linear-gradient(90deg, #fff, var(--fg-accent)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    text-decoration: none !important;
+}
+
+/* Add a subtle glow effect to the site title */
+.site-title a:after {
+    content: "" !important;
+    display: inline-block !important;
+    width: 6px !important;
+    height: 6px !important;
+    background-color: var(--fg-accent) !important;
+    border-radius: 50% !important;
+    margin-left: 0.5rem !important;
+    box-shadow: 0 0 10px 2px var(--fg-accent) !important;
+    animation: pulse 2s infinite !important;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+}
+
+/* Site description styling */
+.site-description {
+    color: var(--fg-text-secondary) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 0.875rem !important;
+    margin-top: 0.25rem !important;
+    opacity: 0.8 !important;
+}
+
+/* Add a subtle gradient background to the header - FineGuide specific */
+.site-header:before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(to right, rgba(126, 34, 206, 0.1), rgba(109, 40, 217, 0.1)) !important;
+    z-index: 0 !important;
+}
+
+/* Add a subtle purple glow to the header */
+.site-header:after {
+    content: "" !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: 25% !important;
+    width: 300px !important;
+    height: 300px !important;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(124, 58, 237, 0) 70%) !important;
+    border-radius: 50% !important;
+    z-index: 0 !important;
+    filter: blur(40px) !important;
+    opacity: 0.8 !important;
+}
+
+/* Hero section for the blog homepage and archive pages */
+.ast-archive-description,
+.ast-author-box,
+.home .site-content .ast-container:before {
+    background-color: var(--fg-background-secondary) !important;
+    background-image: url('../images/fineguide/bg-pages.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin-bottom: 3rem !important;
+    text-align: center !important;
+    border-radius: 0 0 8px 8px !important;
+    overflow: hidden !important;
+}
+
+/* Add overlay to hero section */
+.ast-archive-description:before,
+.ast-author-box:before,
+.home .site-content .ast-container:before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)) !important;
+    z-index: 1 !important;
+}
+
+/* Style hero content */
+.ast-archive-description *,
+.ast-author-box * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: var(--fg-text) !important;
+}
+
+.ast-archive-title,
+.ast-author-box h1 {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+    color: var(--fg-text) !important;
+}
+
+.ast-archive-description p,
+.ast-author-box p {
+    font-size: 1.1rem !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    color: var(--fg-text-secondary) !important;
+}
+
+/* Add a custom hero section to the homepage */
+.home .site-content .ast-container {
+    position: relative !important;
+}
+
+.home .site-content .ast-container:before {
+    content: "" !important;
+    display: block !important;
+    position: relative !important;
+    margin-bottom: 3rem !important;
+}
+
+.home .site-content .ast-container:before:after {
+    content: "FineGuide Blog" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    color: var(--fg-text) !important;
+    z-index: 2 !important;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+/* Ambient Gradients for Header */
+.site-header::before {
+    content: "";
+    position: absolute;
+    top: -300px;
+    left: 25%;
+    width: 600px;
+    height: 600px;
+    background-color: rgba(126, 34, 206, 0.1); /* Purple with opacity */
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.site-header::after {
+    content: "";
+    position: absolute;
+    bottom: -300px;
+    right: 25%;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(109, 40, 217, 0.1); /* Violet with opacity */
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.site-header .ast-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation and Menu Styling - FineGuide specific */
+.main-header-menu,
+.ast-nav-menu {
+    background-color: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.main-header-menu .menu-item {
+    position: relative !important;
+    margin: 0 0.125rem !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Menu links styling - FineGuide specific */
+.main-header-menu .menu-link,
+.ast-header-custom-item a,
+.ast-masthead-custom-menu-items,
+.ast-header-break-point .main-navigation ul .menu-item .menu-link,
+.ast-header-break-point .ast-mobile-header-inline .main-header-bar-navigation .menu-item-has-children > .ast-menu-toggle::before,
+.ast-header-break-point .ast-mobile-header-inline .main-header-bar-navigation .menu-link,
+.ast-button-wrap .menu-toggle .menu-toggle-icon,
+.ast-masthead-custom-menu-items .ast-inline-search form,
+.ast-desktop .main-header-menu .sub-menu .menu-link,
+.ast-header-break-point .main-header-menu .sub-menu .menu-link {
+    color: var(--fg-text) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    padding: 0.5rem 0.75rem !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    border-radius: 4px !important;
+    letter-spacing: 0.2px !important;
+}
+
+/* Add hover effect with underline animation */
+.main-header-menu .menu-link:before,
+.ast-header-custom-item a:before {
+    content: "" !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 2px !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    background-color: var(--fg-accent) !important;
+    transition: all 0.3s ease-in-out !important;
+    transform: translateX(-50%) !important;
+    opacity: 0 !important;
+}
+
+.main-header-menu .menu-item:hover > .menu-link,
+.main-header-menu .menu-item:focus > .menu-link,
+.ast-header-custom-item a:hover,
+.ast-masthead-custom-menu-items a:hover,
+.ast-desktop .main-header-menu .sub-menu .menu-item:hover > .menu-link,
+.ast-desktop .main-header-menu .sub-menu .menu-item:focus > .menu-link {
+    color: var(--fg-accent) !important;
+    background-color: rgba(124, 58, 237, 0.05) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Animate the underline on hover - FineGuide specific */
+.main-header-menu .menu-item:hover > .menu-link:before,
+.main-header-menu .menu-item:focus > .menu-link:before,
+.ast-header-custom-item a:hover:before {
+    width: 60% !important;
+    opacity: 1 !important;
+    box-shadow: 0 0 8px var(--fg-accent) !important;
+    animation: glowPulse 1.5s infinite alternate !important;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 4px var(--fg-accent);
+    }
+    100% {
+        box-shadow: 0 0 8px var(--fg-accent);
+    }
+}
+
+/* Style the submenu - FineGuide specific */
+.ast-desktop .main-header-menu .sub-menu,
+.ast-header-break-point .main-header-menu .sub-menu {
+    background-color: var(--fg-background) !important;
+    border: 1px solid rgba(124, 58, 237, 0.2) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 20px rgba(124, 58, 237, 0.1) !important;
+    padding: 0.5rem 0 !important;
+    margin-top: 0.5rem !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    animation: fadeInSubmenu 0.3s ease-out !important;
+    transform-origin: top center !important;
+}
+
+@keyframes fadeInSubmenu {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Submenu links - FineGuide specific */
+.ast-desktop .main-header-menu .sub-menu .menu-link {
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1) !important;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.9rem !important;
+    transition: all 0.2s ease-in-out !important;
+    margin: 0 0.5rem !important;
+    width: calc(100% - 1rem) !important;
+    border-radius: 4px !important;
+}
+
+.ast-desktop .main-header-menu .sub-menu .menu-item:last-child .menu-link {
+    border-bottom: none !important;
+}
+
+/* Submenu hover effects */
+.ast-desktop .main-header-menu .sub-menu .menu-item:hover > .menu-link {
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    padding-left: 1.5rem !important;
+    border-left: 3px solid var(--fg-accent) !important;
+}
+
+/* Active menu item styling */
+.main-header-menu .current-menu-item > .menu-link,
+.main-header-menu .current_page_item > .menu-link,
+.ast-header-break-point .main-header-menu .current-menu-item > .menu-link {
+    color: var(--fg-accent) !important;
+    background-color: transparent !important;
+    font-weight: 600 !important;
+}
+
+/* Add permanent underline for active menu items */
+.main-header-menu .current-menu-item > .menu-link:before,
+.main-header-menu .current_page_item > .menu-link:before {
+    width: 80% !important;
+    opacity: 1 !important;
+}
+
+/* Add subtle background for active menu items */
+.main-header-menu .current-menu-item > .menu-link,
+.main-header-menu .current_page_item > .menu-link {
+    background-color: rgba(126, 34, 206, 0.1) !important;
+    border-radius: 4px !important;
+}
+
+/* Mobile Menu Toggle and Mobile Navigation */
+.ast-button-wrap .menu-toggle,
+.ast-button-wrap .menu-toggle:hover,
+.ast-button-wrap .menu-toggle:focus {
+    border-color: var(--fg-text) !important;
+    background-color: transparent !important;
+    border-radius: 4px !important;
+    padding: 0.25rem !important;
+}
+
+.ast-button-wrap .menu-toggle .menu-toggle-icon {
+    color: var(--fg-text) !important;
+    font-size: 1.5rem !important;
+    transition: color 0.3s ease !important;
+}
+
+.ast-button-wrap .menu-toggle:hover .menu-toggle-icon {
+    color: var(--fg-accent) !important;
+}
+
+/* Mobile Menu Container */
+.ast-header-break-point .main-header-bar-navigation {
+    background-color: var(--fg-background) !important;
+}
+
+.ast-header-break-point .main-header-menu {
+    background-color: var(--fg-background) !important;
+    border-top: 1px solid var(--fg-border) !important;
+}
+
+/* Blog Hero Section - Matching Mortal.Ai */
+.ast-archive-description {
+    background: linear-gradient(to bottom, var(--fg-background), var(--fg-background-secondary)) !important;
+    padding: 4rem 2rem !important;
+    text-align: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 0 0 8px 8px !important;
+    margin-bottom: 3rem !important;
+}
+
+.ast-archive-description::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+    opacity: 0.2 !important;
+    z-index: 0 !important;
+}
+
+.ast-archive-description::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 20% !important;
+    left: 30% !important;
+    width: 400px !important;
+    height: 400px !important;
+    background-color: var(--fg-primary) !important;
+    opacity: 0.1 !important;
+    border-radius: 50% !important;
+    filter: blur(80px) !important;
+    z-index: 0 !important;
+}
+
+.ast-archive-description .ast-archive-title,
+.ast-archive-description .page-title {
+    color: var(--fg-text) !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.ast-archive-description p {
+    color: var(--fg-text-secondary) !important;
+    font-size: 1.1rem !important;
+    max-width: 700px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Mobile Menu Items */
+.ast-header-break-point .main-navigation ul .menu-item .menu-link {
+    border-bottom-color: var(--fg-border) !important;
+    padding: 0.75rem 1rem !important;
+}
+
+.ast-header-break-point .main-header-menu .sub-menu {
+    background-color: rgba(126, 34, 206, 0.05) !important;
+}
+
+/* Mobile Menu Dropdown Toggle */
+.ast-header-break-point .main-header-menu .ast-menu-toggle {
+    color: var(--fg-text-secondary) !important;
+}
+
+.ast-header-break-point .main-header-menu .ast-menu-toggle:hover {
+    color: var(--fg-accent) !important;
+    background-color: transparent !important;
+}
+
+/* Mobile Menu Animation */
+@media (max-width: 921px) {
+    .main-header-menu {
+        transition: all 0.3s ease-in-out !important;
+    }
+    
+    .ast-main-header-nav-open .main-header-menu {
+        animation: slideDown 0.3s ease-in-out !important;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* Content Styling - FineGuide specific */
+.entry-title,
+.entry-title a {
+    color: var(--fg-text) !important;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    transition: color 0.3s ease !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.5px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-height: 4rem !important;
+}
+
+.entry-title a:hover,
+.entry-title a:focus {
+    color: var(--fg-accent) !important;
+    text-decoration: none !important;
+    background: linear-gradient(90deg, var(--fg-text), var(--fg-accent)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+}
+
+.entry-meta,
+.entry-meta * {
+    color: var(--fg-text-secondary) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 0.3px !important;
+}
+
+.entry-meta a:hover,
+.entry-meta a:focus {
+    color: var(--fg-accent) !important;
+    text-decoration: none !important;
+}
+
+/* Post excerpt styling - Fixed */
+.entry-content {
+    color: var(--fg-text) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.2px !important;
+}
+
+/* Fix content rendering issues */
+.entry-content p,
+.entry-content ul,
+.entry-content ol,
+.entry-content blockquote,
+.entry-content h1,
+.entry-content h2,
+.entry-content h3 {
+
+.entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6 {
+    color: var(--fg-text) !important;
+    margin-top: 1.5em !important;
+    margin-bottom: 0.75em !important;
+    font-weight: 600 !important;
+    font-family: 'Figtree', sans-serif !important;
+    letter-spacing: -0.02em !important;
+}
+
+.entry-content h1 {
+    font-size: 2.5em !important;
+    line-height: 1.2 !important;
+}
+
+.entry-content h2 {
+    font-size: 2em !important;
+    line-height: 1.3 !important;
+}
+
+.entry-content h3 {
+    font-size: 1.75em !important;
+    line-height: 1.4 !important;
+}
+
+.entry-content h4 {
+    font-size: 1.5em !important;
+    line-height: 1.4 !important;
+}
+
+.entry-content h5 {
+    font-size: 1.25em !important;
+    line-height: 1.5 !important;
+}
+
+.entry-content h6 {
+    font-size: 1em !important;
+    line-height: 1.6 !important;
+}
+
+/* Blog Post Lists */
+.entry-content ul, .entry-content ol {
+    margin-left: 1.5em !important;
+    margin-bottom: 1.5em !important;
+    color: var(--fg-text) !important;
+}
+
+.entry-content li {
+    margin-bottom: 0.5em !important;
+    color: var(--fg-text) !important;
+}
+
+/* Blog Post Blockquotes */
+.entry-content blockquote {
+    border-left: 4px solid var(--fg-primary) !important;
+    padding: 1em 1.5em !important;
+    margin: 1.5em 0 !important;
+    background-color: rgba(126, 34, 206, 0.1) !important;
+    border-radius: 0 8px 8px 0 !important;
+}
+
+.entry-content blockquote p {
+    font-style: italic !important;
+    color: var(--fg-text) !important;
+    margin-bottom: 0 !important;
+}
+
+/* Blog Post Code Blocks */
+.entry-content pre {
+    background-color: var(--fg-background) !important;
+    border-radius: 8px !important;
+    padding: 1.5em !important;
+    margin: 1.5em 0 !important;
+    overflow-x: auto !important;
+    border: 1px solid var(--fg-border) !important;
+}
+
+.entry-content code {
+    background-color: var(--fg-background) !important;
+    color: var(--fg-accent) !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 4px !important;
+    font-family: monospace !important;
+    font-size: 0.9em !important;
+}
+
+/* Post excerpt in blog cards */
+.ast-article-post .entry-content p {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-bottom: 1.5rem !important;
+    color: var(--fg-text-secondary) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Empty state for posts without content */
+.ast-article-post.no-content .entry-content p {
+    font-style: italic !important;
+    opacity: 0.7 !important;
+}
+
+/* Blog Grid Layout - Matching Mortal.Ai */
+.ast-blog-grid-wrap,
+.ast-archive-description + .ast-container .ast-blog-grid-wrap,
+.ast-container .ast-blog-grid-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important;
+}
+
+@media (min-width: 768px) {
+    .ast-blog-grid-wrap {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ast-blog-grid-wrap {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Blog Post Card Layout - Matching Mortal.Ai */
+.ast-article-post {
+    display: flex !important;
+    flex-direction: column !important;
+    background-color: var(--fg-card-bg) !important;
+    border: 1px solid var(--fg-card-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin-bottom: 1.5rem !important;
+    box-shadow: 0 4px 10px var(--fg-shadow) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+    height: 100% !important;
+}
+
+/* Featured Image Styling - Matching Mortal.Ai */
+.ast-article-post .post-thumb-img-content,
+.ast-article-post .ast-blog-featured-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    border-radius: 8px 8px 0 0 !important;
+    max-height: 220px !important;
+    min-height: 220px !important;
+    background-color: var(--fg-background-secondary) !important;
+}
+
+.ast-article-post .post-thumb-img-content img,
+.ast-article-post .default-featured-img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    transition: transform 0.5s ease !important;
+}
+
+.ast-article-post:hover .post-thumb-img-content img,
+.ast-article-post:hover .default-featured-img {
+    transform: scale(1.05) !important;
+}
+
+/* Default featured image overlay */
+.ast-article-post .post-thumb-img-content::after,
+.ast-article-post .ast-blog-featured-section::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(to bottom, transparent 60%, rgba(15, 23, 42, 0.5)) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* Post Content Container */
+.ast-article-post .ast-blog-featured-section + .entry-header,
+.ast-article-post .entry-header,
+.ast-article-post .entry-content {
+    padding: 0 1.5rem !important;
+}
+
+.ast-article-post .entry-header {
+    padding-top: 1.5rem !important;
+}
+
+/* Empty state for blog posts without content */
+.ast-no-results {
+    background-color: var(--fg-card-bg) !important;
+    border: 1px solid var(--fg-card-border) !important;
+    border-radius: 8px !important;
+    padding: 3rem 2rem !important;
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 4px 10px var(--fg-shadow) !important;
+}
+
+.ast-no-results .page-title,
+.ast-no-results .page-content p {
+    color: var(--fg-text) !important;
+}
+
+.ast-no-results .page-content p {
+    margin-bottom: 1.5rem !important;
+    color: var(--fg-text-secondary) !important;
+}
+
+.ast-article-post .entry-meta {
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+}
+
+.ast-article-post .entry-meta * {
+    font-size: 0.8rem !important;
+    color: var(--fg-text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+/* Category and Tag Styling - Matching Mortal.Ai */
+.ast-article-post .entry-meta .cat-links a,
+.ast-article-post .entry-meta .tags-links a,
+.ast-article-single .cat-links a,
+.ast-article-single .tags-links a {
+    display: inline-block !important;
+    padding: 0.2rem 0.5rem !important;
+    background-color: var(--fg-tag-bg) !important;
+    color: var(--fg-tag-text) !important;
+    border-radius: 4px !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-right: 0.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.ast-article-post .entry-meta .cat-links a:hover,
+.ast-article-post .entry-meta .tags-links a:hover,
+.ast-article-single .cat-links a:hover,
+.ast-article-single .tags-links a:hover {
+    background-color: var(--fg-primary) !important;
+    color: white !important;
+}
+
+.ast-article-post .entry-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+}
+
+.ast-article-post .entry-content {
+    margin-bottom: 1rem !important;
+    flex-grow: 1 !important;
+}
+
+.ast-article-post .read-more {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    align-self: flex-start !important;
+}
+
+.ast-article-post .read-more a {
+    display: inline-block !important;
+    padding: 0.5rem 1.25rem !important;
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    color: var(--fg-accent) !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.ast-article-post .read-more a:hover {
+    background-color: var(--fg-accent) !important;
+    color: var(--fg-text) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Pagination Styling - Matching Mortal.Ai */
+.ast-pagination,
+.navigation.pagination {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.ast-pagination .page-numbers,
+.navigation.pagination .page-numbers {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: var(--fg-card-bg) !important;
+    color: var(--fg-text) !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    border: 1px solid var(--fg-card-border) !important;
+    transition: all 0.3s ease !important;
+}
+
+.ast-pagination .page-numbers:hover,
+.navigation.pagination .page-numbers:hover {
+    background-color: rgba(126, 34, 206, 0.1) !important;
+    color: var(--fg-primary) !important;
+    border-color: var(--fg-primary) !important;
+}
+
+.ast-pagination .page-numbers.current,
+.navigation.pagination .page-numbers.current {
+    background-color: var(--fg-primary) !important;
+    color: white !important;
+    border-color: var(--fg-primary) !important;
+}
+
+/* Fix list styling */
+.entry-content ul,
+.entry-content ol {
+    padding-left: 2rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.entry-content ul li,
+.entry-content ol li {
+    margin-bottom: 0.5rem !important;
+    position: relative !important;
+}
+
+/* Fix blockquote styling */
+.entry-content blockquote {
+    border-left: 4px solid var(--fg-accent) !important;
+    padding: 1rem 1.5rem !important;
+    margin: 1.5rem 0 !important;
+    background-color: rgba(124, 58, 237, 0.05) !important;
+    border-radius: 0 8px 8px 0 !important;
+    font-style: italic !important;
+}
+
+.entry-content blockquote p {
+    margin-bottom: 0 !important;
+    color: var(--fg-text) !important;
+}
+
+/* Fix code and pre styling */
+.entry-content code,
+.entry-content pre {
+    font-family: monospace !important;
+    background-color: rgba(124, 58, 237, 0.05) !important;
+    border-radius: 4px !important;
+    padding: 0.2rem 0.4rem !important;
+    font-size: 0.9rem !important;
+    color: var(--fg-accent) !important;
+}
+
+.entry-content pre {
+    padding: 1rem !important;
+    overflow-x: auto !important;
+    margin: 1.5rem 0 !important;
+    white-space: pre-wrap !important;
+}
+
+/* Read more button styling */
+.ast-article-post .read-more {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    align-self: flex-start !important;
+}
+
+.ast-article-post .read-more a {
+    display: inline-block !important;
+    padding: 0.5rem 1.25rem !important;
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    color: var(--fg-accent) !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.ast-article-post .read-more a:hover {
+    background-color: var(--fg-accent) !important;
+    color: var(--fg-text) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Add a subtle gradient line between meta and content */
+.entry-content:before {
+    content: "" !important;
+    display: block !important;
+    height: 1px !important;
+    width: 100% !important;
+    background: linear-gradient(to right, transparent, rgba(124, 58, 237, 0.3), transparent) !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Fix table styling */
+.entry-content table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1.5rem 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.entry-content table th,
+.entry-content table td {
+    padding: 0.75rem 1rem !important;
+    border: 1px solid var(--fg-border) !important;
+    text-align: left !important;
+}
+
+.entry-content table th {
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    color: var(--fg-text) !important;
+    font-weight: 600 !important;
+}
+
+.entry-content table tr:nth-child(even) {
+    background-color: rgba(124, 58, 237, 0.03) !important;
+}
+
+/* Fix form styling */
+.entry-content input[type="text"],
+.entry-content input[type="email"],
+.entry-content input[type="url"],
+.entry-content input[type="password"],
+.entry-content input[type="search"],
+.entry-content input[type="number"],
+.entry-content input[type="tel"],
+.entry-content input[type="range"],
+.entry-content input[type="date"],
+.entry-content input[type="month"],
+.entry-content input[type="week"],
+.entry-content input[type="time"],
+.entry-content input[type="datetime"],
+.entry-content input[type="datetime-local"],
+.entry-content input[type="color"],
+.entry-content textarea,
+.entry-content select {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--fg-border) !important;
+    background-color: var(--fg-background) !important;
+    color: var(--fg-text) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 1rem !important;
+}
+
+.entry-content input:focus,
+.entry-content textarea:focus,
+.entry-content select:focus {
+    border-color: var(--fg-accent) !important;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2) !important;
+    outline: none !important;
+}
+
+/* Category and tag styling - FineGuide specific */
+.cat-links,
+.tags-links {
+    display: inline-block !important;
+    margin-right: 1rem !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 0.8rem !important;
+}
+
+.cat-links a,
+.tags-links a {
+    display: inline-block !important;
+    padding: 0.25rem 0.75rem !important;
+    margin: 0.25rem !important;
+    border-radius: 20px !important;
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    color: var(--fg-accent) !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: uppercase !important;
+    font-size: 0.7rem !important;
+}
+
+.cat-links a:hover,
+.tags-links a:hover {
+    background-color: var(--fg-accent) !important;
+    color: var(--fg-text) !important;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Add icons to categories and tags */
+.cat-links:before {
+    content: "\f07b" !important; /* Folder icon */
+    font-family: "dashicons" !important;
+    margin-right: 0.5rem !important;
+    color: var(--fg-accent) !important;
+    vertical-align: middle !important;
+}
+
+.tags-links:before {
+    content: "\f323" !important; /* Tag icon */
+    font-family: "dashicons" !important;
+    margin-right: 0.5rem !important;
+    color: var(--fg-accent) !important;
+    vertical-align: middle !important;
+}
+
+/* Main content layout improvements - FineGuide specific */
+.ast-container {
+    max-width: 1200px !important;
+    padding: 0 2rem !important;
+    display: block !important; /* Reset to block for now */
+}
+
+/* Fix primary and secondary layout */
+#primary {
+    float: left !important;
+    width: calc(100% - 360px) !important;
+    padding-right: 2rem !important;
+}
+
+#secondary {
+    float: right !important;
+    width: 320px !important;
+    margin-left: 40px !important;
+}
+
+/* Make sure the container is full width on mobile */
+@media (max-width: 921px) {
+    .ast-container {
+        grid-template-columns: 1fr !important;
+        padding: 0 1.5rem !important;
+    }
+}
+
+/* Improve primary content area */
+#primary {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Improve secondary sidebar area */
+#secondary {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Sidebar widgets styling */
+.widget-area .widget {
+    background-color: var(--fg-background) !important;
+    border: 1px solid var(--fg-border) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.widget-area .widget:hover {
+    border-color: rgba(124, 58, 237, 0.2) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08), 0 0 15px rgba(124, 58, 237, 0.08) !important;
+}
+
+/* Widget titles */
+.widget-title {
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+    color: var(--fg-text) !important;
+    position: relative !important;
+    padding-bottom: 0.75rem !important;
+}
+
+/* Add accent line below widget titles */
+.widget-title:after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 50px !important;
+    height: 3px !important;
+    background: linear-gradient(to right, var(--fg-primary), var(--fg-accent)) !important;
+    border-radius: 3px !important;
+}
+
+/* Widget lists */
+.widget-area .widget ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.widget-area .widget li {
+    padding: 0.75rem 0 !important;
+    border-bottom: 1px solid var(--fg-border) !important;
+    transition: all 0.3s ease !important;
+}
+
+.widget-area .widget li:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+.widget-area .widget li a {
+    color: var(--fg-text) !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+    position: relative !important;
+    padding-left: 1.25rem !important;
+}
+
+/* Add arrow icon to widget list items */
+.widget-area .widget li a:before {
+    content: "\f345" !important; /* Arrow icon */
+    font-family: "dashicons" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: var(--fg-accent) !important;
+    font-size: 0.9rem !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+}
+
+.widget-area .widget li a:hover {
+    color: var(--fg-accent) !important;
+    padding-left: 1.5rem !important;
+}
+
+.widget-area .widget li a:hover:before {
+    opacity: 1 !important;
+    left: 0.25rem !important;
+}
+
+/* Search widget styling */
+.widget_search .search-form {
+    position: relative !important;
+}
+
+.widget_search .search-field {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    padding-right: 3rem !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--fg-border) !important;
+    background-color: var(--fg-background) !important;
+    color: var(--fg-text) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.widget_search .search-field:focus {
+    border-color: var(--fg-accent) !important;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2) !important;
+    outline: none !important;
+}
+
+.widget_search .search-submit {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    width: 3rem !important;
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--fg-accent) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+.widget_search .search-submit:hover {
+    color: var(--fg-primary) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Calendar widget */
+.widget_calendar table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+.widget_calendar caption {
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--fg-text) !important;
+}
+
+.widget_calendar th,
+.widget_calendar td {
+    text-align: center !important;
+    padding: 0.5rem !important;
+}
+
+.widget_calendar tbody td a {
+    display: block !important;
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    color: var(--fg-accent) !important;
+    border-radius: 50% !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    line-height: 2rem !important;
+    margin: 0 auto !important;
+    transition: all 0.3s ease !important;
+}
+
+.widget_calendar tbody td a:hover {
+    background-color: var(--fg-accent) !important;
+    color: var(--fg-text) !important;
+    transform: scale(1.1) !important;
+}
+
+.ast-separate-container .ast-article-post,
+.ast-separate-container .ast-article-single {
+    padding: 0 !important;
+    margin-bottom: 3rem !important;
+}
+
+/* Reset row layout */
+.ast-row {
+    display: block !important;
+    margin: 0 -15px !important;
+}
+
+/* Fix post card layout */
+.ast-article-post {
+    width: 100% !important;
+    float: left !important;
+    padding: 0 15px !important;
+    margin-bottom: 30px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 921px) {
+    #primary,
+    #secondary {
+        float: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    #secondary {
+        margin-top: 2rem !important;
+    }
+}
+
+/* Clear floats */
+.ast-row:after {
+    content: "" !important;
+    display: table !important;
+    clear: both !important;
+}
+
+/* Blog post cards - FineGuide specific */
+.ast-article-post {
+    background-color: var(--fg-background) !important;
+    border: 1px solid var(--fg-border) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    height: auto !important;
+}
+
+/* Fix article inner structure */
+.ast-article-post .ast-article-inner {
+    display: block !important;
+    height: auto !important;
+    position: relative !important;
+}
+
+/* Fix common column issues */
+.ast-grid-common-col {
+    width: 100% !important;
+    float: none !important;
+}
+
+.ast-article-post:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(124, 58, 237, 0.1) !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+/* Featured image improvements - Fixed */
+.ast-article-post .ast-blog-featured-section {
+    margin-bottom: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Fix single post featured image */
+.single .post-thumb img {
+    width: 100% !important;
+    max-height: 500px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Fix content images */
+.entry-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* Fix image captions */
+.wp-caption {
+    max-width: 100% !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.wp-caption .wp-caption-text {
+    font-size: 0.85rem !important;
+    color: var(--fg-text-secondary) !important;
+    text-align: center !important;
+    padding: 0.5rem 0 !important;
+    font-style: italic !important;
+}
+
+.ast-article-post .ast-blog-featured-section img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    transition: transform 0.5s ease !important;
+}
+
+.ast-article-post:hover .ast-blog-featured-section img {
+    transform: scale(1.05) !important;
+}
+
+/* Add overlay to featured images */
+.ast-article-post .ast-blog-featured-section:before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)) !important;
+    z-index: 1 !important;
+    opacity: 0.7 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.ast-article-post:hover .ast-blog-featured-section:before {
+    opacity: 0.5 !important;
+}
+
+/* Post content structure */
+.ast-article-post .post-content {
+    padding: 1.5rem !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Fix blog layout specific issues */
+.blog-layout-4 .post-content {
+    width: 100% !important;
+}
+
+.blog-layout-4 .ast-blog-featured-section {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* Improve post meta layout */
+.ast-article-post .entry-meta {
+    margin-top: auto !important;
+    padding-top: 1rem !important;
+    border-top: 1px solid var(--fg-border) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    font-size: 0.8rem !important;
+}
+
+/* Fix entry header spacing */
+.ast-article-post .entry-header {
+    margin-bottom: 1rem !important;
+}
+
+/* Fix entry content spacing */
+.ast-article-post .entry-content {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Fix category links position */
+.ast-article-post .cat-links {
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+}
+
+/* Add a subtle gradient border to post thumbnails */
+.ast-article-post .ast-blog-featured-section:after {
+    content: "" !important;
+    display: block !important;
+    height: 3px !important;
+    width: 100% !important;
+    background: linear-gradient(to right, var(--fg-primary), var(--fg-accent)) !important;
+}
+
+/* Links - FineGuide specific */
+a {
+    color: var(--fg-primary) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+a:hover,
+a:focus {
+    color: var(--fg-accent) !important;
+    text-decoration: none !important;
+}
+
+/* Buttons - FineGuide specific */
+.wp-block-button .wp-block-button__link,
+.menu-toggle,
+button,
+.ast-button,
+.button,
+input#submit,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    background-color: var(--fg-primary) !important;
+    color: var(--fg-text) !important;
+    border-color: var(--fg-primary) !important;
+    border-radius: 6px !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+    border: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.wp-block-button .wp-block-button__link:hover,
+.menu-toggle:hover,
+button:hover,
+.ast-button:hover,
+.button:hover,
+input#submit:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: var(--fg-accent) !important;
+    color: var(--fg-text) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 15px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Add a subtle glow effect to buttons */
+.wp-block-button .wp-block-button__link:before,
+.menu-toggle:before,
+button:before,
+.ast-button:before,
+.button:before,
+input#submit:before,
+input[type="button"]:before,
+input[type="submit"]:before,
+input[type="reset"]:before {
+    content: "" !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%) !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.wp-block-button .wp-block-button__link:hover:before,
+.menu-toggle:hover:before,
+button:hover:before,
+.ast-button:hover:before,
+.button:hover:before,
+input#submit:hover:before,
+input[type="button"]:hover:before,
+input[type="submit"]:hover:before,
+input[type="reset"]:hover:before {
+    opacity: 1 !important;
+}
+
+/* Pagination - FineGuide specific */
+.ast-pagination {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.ast-pagination .page-numbers {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background-color: var(--fg-background) !important;
+    border: 1px solid var(--fg-border) !important;
+    color: var(--fg-text) !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.ast-pagination .page-numbers:hover {
+    background-color: rgba(124, 58, 237, 0.1) !important;
+    border-color: var(--fg-accent) !important;
+    color: var(--fg-accent) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ast-pagination .page-numbers.current {
+    background-color: var(--fg-accent) !important;
+    border-color: var(--fg-accent) !important;
+    color: var(--fg-text) !important;
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3) !important;
+}
+
+.wp-block-button .wp-block-button__link:hover,
+.menu-toggle:hover,
+button:hover,
+.ast-button:hover,
+.button:hover,
+input#submit:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: var(--fg-secondary);
+    color: var(--fg-text);
+    border-color: var(--fg-secondary);
+}
+
+/* Blog Cards - Matching Mortal.Ai layout with Fineguide.ai styling */
+.ast-article-post,
+.ast-separate-container .ast-article-post {
+    background-color: var(--fg-card-bg) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 4px 10px var(--fg-shadow) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    border: 1px solid var(--fg-card-border) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Single post styling - Matching Mortal.Ai */
+.ast-article-single,
+.ast-separate-container .ast-article-single {
+    background-color: var(--fg-card-bg) !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 4px 10px var(--fg-shadow) !important;
+    border: 1px solid var(--fg-card-border) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Single post featured image */
+.ast-article-single .post-thumb-img-content,
+.ast-article-single .ast-blog-featured-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    border-radius: 8px 8px 0 0 !important;
+    max-height: 400px !important;
+    background-color: var(--fg-background-secondary) !important;
+}
+
+.ast-article-single .post-thumb-img-content img,
+.ast-article-single .default-featured-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 400px !important;
+    object-fit: cover !important;
+}
+
+/* Single post content container */
+.ast-article-single .entry-header,
+.ast-article-single .entry-content,
+.ast-article-single .ast-comment-container,
+.ast-article-single .ast-single-related-posts-container,
+.ast-article-single .ast-single-navigation {
+    padding: 0 2rem !important;
+}
+
+.ast-article-single .entry-header {
+    padding-top: 2rem !important;
+}
+
+.ast-article-single .entry-content {
+    padding-bottom: 2rem !important;
+}
+
+/* Single post meta */
+.ast-article-single .entry-meta {
+    margin-bottom: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+}
+
+/* Card hover effect */
+.ast-article-post:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 20px var(--fg-shadow) !important;
+    border-color: var(--fg-primary) !important;
+}
+
+.ast-article-post:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.ast-blog-featured-section {
+    margin-bottom: 15px !important;
+}
+
+.ast-blog-featured-section img,
+.entry-content img {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Blog Grid Layout - Inspired by Mortal.Ai */
+@media (min-width: 768px) {
+    .ast-container .ast-blog-grid-2 .ast-article-post,
+    .ast-container .ast-blog-grid-3 .ast-article-post,
+    .ast-container .ast-blog-grid-4 .ast-article-post {
+        width: calc(50% - 20px) !important;
+        margin-right: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .ast-container .ast-blog-grid-3 .ast-article-post {
+        width: calc(33.33% - 20px) !important;
+    }
+    
+    .ast-container .ast-blog-grid-4 .ast-article-post {
+        width: calc(25% - 20px) !important;
+    }
+}
+
+/* Category Tags - Inspired by Mortal.Ai */
+.cat-links a,
+.ast-blog-single-tag a,
+.ast-post-cat-wrap .ast-button {
+    background-color: rgba(251, 191, 36, 0.1) !important;
+    color: var(--fg-accent) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    margin-right: 5px !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    border: none !important;
+    line-height: 1.5 !important;
+    height: auto !important;
+}
+
+.cat-links a:hover,
+.ast-blog-single-tag a:hover,
+.ast-post-cat-wrap .ast-button:hover {
+    background-color: rgba(251, 191, 36, 0.2) !important;
+    color: var(--fg-accent) !important;
+    text-decoration: none !important;
+}
+
+/* Add category style to top of post cards */
+.ast-article-post .ast-post-cat-wrap {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 10px !important;
+}
+
+/* Post Meta - Inspired by Mortal.Ai */
+.entry-meta,
+.ast-post-info {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-top: 15px !important;
+    flex-wrap: wrap !important;
+}
+
+.posted-by,
+.ast-post-author {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.posted-by img,
+.ast-post-author img,
+.ast-post-author .post-author-avatar img {
+    border-radius: 50% !important;
+    margin-right: 8px !important;
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.posted-on,
+.ast-post-date {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Add icons to meta data */
+.ast-post-date:before {
+    content: '\f073'; /* calendar icon */
+    font-family: 'dashicons';
+    margin-right: 5px;
+    color: var(--fg-text-secondary);
+}
+
+.ast-post-author:before {
+    content: '\f110'; /* user icon */
+    font-family: 'dashicons';
+    margin-right: 5px;
+    color: var(--fg-text-secondary);
+    display: none; /* Hide this if author has avatar */
+}
+
+.ast-post-author .post-author-avatar + .post-author-name:before {
+    display: none;
+}
+
+/* Reading time styling */
+.ast-reading-time {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.ast-reading-time:before {
+    content: '\f469'; /* clock icon */
+    font-family: 'dashicons';
+    margin-right: 5px;
+    color: var(--fg-text-secondary);
+    display: inline-block;
+}
+
+/* Style the post title */
+.entry-title,
+.ast-post-title {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.4 !important;
+}
+
+/* Sidebar */
+.sidebar-main {
+    background-color: var(--fg-background-secondary);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.widget-title {
+    color: var(--fg-text);
+    border-bottom: 1px solid var(--fg-border);
+    padding-bottom: 10px;
+}
+
+.widget {
+    color: var(--fg-text);
+    margin-bottom: 30px;
+}
+
+.widget a {
+    color: var(--fg-text-secondary);
+}
+
+.widget a:hover {
+    color: var(--fg-accent);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--fg-background-secondary);
+    color: var(--fg-text);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ambient Gradients for Footer */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: -300px;
+    left: 25%;
+    width: 600px;
+    height: 600px;
+    background-color: rgba(126, 34, 206, 0.1);
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    bottom: -300px;
+    right: 25%;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(109, 40, 217, 0.1);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.site-footer .ast-container {
+    position: relative;
+    z-index: 1;
+}
+
+.site-footer a {
+    color: var(--fg-text-secondary);
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+    color: var(--fg-accent);
+}
+
+/* Comments */
+.comments-area {
+    background-color: var(--fg-background-secondary);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.comment-reply-title,
+.comments-title {
+    color: var(--fg-text);
+}
+
+.comment-metadata a,
+.comment-metadata {
+    color: var(--fg-text-secondary);
+}
+
+.comment-content {
+    color: var(--fg-text);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    background-color: var(--fg-background);
+    color: var(--fg-text);
+    border-color: var(--fg-border);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--fg-primary);
+}
+
+/* Pagination - Styled like Mortal.Ai */
+.ast-pagination,
+.navigation.pagination {
+    margin-top: 2rem !important;
+    text-align: center !important;
+}
+
+.ast-pagination .page-numbers,
+.navigation.pagination .page-numbers {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 2px !important;
+    text-align: center !important;
+    font-size: 0.875rem !important;
+    color: var(--fg-text-secondary) !important;
+    background-color: var(--fg-background-secondary) !important;
+    border: 1px solid var(--fg-border) !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.ast-pagination .page-numbers.prev,
+.ast-pagination .page-numbers.next,
+.navigation.pagination .page-numbers.prev,
+.navigation.pagination .page-numbers.next {
+    border-radius: 50% !important;
+}
+
+.ast-pagination .page-numbers:hover,
+.ast-pagination .page-numbers:focus,
+.navigation.pagination .page-numbers:hover,
+.navigation.pagination .page-numbers:focus {
+    background-color: var(--fg-primary) !important;
+    color: var(--fg-text) !important;
+    border-color: var(--fg-primary) !important;
+}
+
+.ast-pagination .page-numbers.current,
+.navigation.pagination .page-numbers.current {
+    background-color: var(--fg-primary) !important;
+    color: var(--fg-text) !important;
+    border-color: var(--fg-primary) !important;
+}
+
+/* Add pagination icons */
+.ast-pagination .page-numbers.prev:before,
+.navigation.pagination .page-numbers.prev:before {
+    content: '\f341'; /* left arrow */
+    font-family: 'dashicons';
+    display: inline-block;
+}
+
+.ast-pagination .page-numbers.next:before,
+.navigation.pagination .page-numbers.next:before {
+    content: '\f345'; /* right arrow */
+    font-family: 'dashicons';
+}
+
+/* Mobile Menu */
+.ast-header-break-point .main-header-bar {
+    background-color: var(--fg-background-secondary);
+}
+
+.ast-header-break-point .main-header-menu {
+    background-color: var(--fg-background);
+}
+
+/* Hero Section for Blog Index - Inspired by Mortal.Ai */
+.ast-archive-description {
+    background-image: url('../../assets/images/bg-pages.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.ast-archive-description::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, var(--fg-background), rgba(15, 23, 42, 0.7));
+}
+
+.ast-archive-description .ast-archive-title,
+.ast-archive-description .ast-archive-description-content {
+    position: relative;
+    color: var(--fg-text);
+}
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
