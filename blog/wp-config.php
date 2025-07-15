@@ -84,6 +84,10 @@ define( 'WP_DEBUG_LOG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+// Set WordPress to know it's in the /blog subdirectory
+define( 'WP_HOME', 'https://fineguide.ai' );
+define( 'WP_SITEURL', 'https://fineguide.ai/blog' );
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
