@@ -1,0 +1,300 @@
+/**
+ * FineGuide Header CSS
+ * Styles for the custom FineGuide.ai header
+ */
+
+/* Base header styles */
+#fineguide-topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: #0f0821; /* Exact dark blue/purple background */
+    padding: 15px 0;
+    transition: all 0.5s ease;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    font-family: 'Figtree', sans-serif;
+    margin-bottom: 60px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+#fineguide-topnav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Logo */
+#fineguide-topnav .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#fineguide-topnav .logo img {
+    height: 24px;
+    width: auto;
+}
+
+/* Navigation menu */
+#fineguide-topnav #navigation {
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+#fineguide-topnav .navigation-menu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#fineguide-topnav .navigation-menu li {
+    margin: 0 12px;
+    position: relative;
+}
+
+#fineguide-topnav .navigation-menu li a {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#fineguide-topnav .navigation-menu li a:hover {
+    color: #f59e0b; /* Amber color */
+}
+
+#fineguide-topnav .navigation-menu li a.active {
+    color: #f59e0b; /* Amber color */
+    font-weight: 600;
+}
+
+/* Login/Signup buttons */
+#fineguide-topnav .buy-button {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#fineguide-topnav .buy-button li {
+    margin-left: 15px;
+}
+
+#fineguide-topnav .login-button {
+    padding: 8px 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+#fineguide-topnav .login-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+#fineguide-topnav .signup-button {
+    padding: 8px 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #f59e0b; /* Amber color */
+    color: white;
+    border: 1px solid #f59e0b;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+#fineguide-topnav .signup-button:hover {
+    background-color: #d97706; /* Darker amber */
+    border-color: #d97706;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+/* Mobile toggle */
+#fineguide-topnav .menu-extras {
+    display: none;
+}
+
+#fineguide-topnav .navbar-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+#fineguide-topnav .lines {
+    width: 24px;
+    height: 18px;
+    position: relative;
+}
+
+#fineguide-topnav .lines span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #f8fafc;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Add spacing for content below the fixed header */
+.site-content {
+    padding-top: 90px;
+}
+
+/* Background elements */
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.ambient-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(to bottom, #0f172a, #1e1b4b);
+}
+
+.ambient-gradient-1 {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background-color: rgba(99, 102, 241, 0.1);
+    border-radius: 50%;
+    filter: blur(120px);
+}
+
+.ambient-gradient-2 {
+    position: absolute;
+    bottom: 25%;
+    right: 25%;
+    transform: translate(50%, 50%);
+    width: 500px;
+    height: 500px;
+    background-color: rgba(126, 34, 206, 0.1);
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.orbital-ring-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 1200px;
+    border: 1px solid rgba(99, 102, 241, 0.05);
+    border-radius: 50%;
+    animation: spin 240s linear infinite;
+}
+
+.orbital-ring-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    border: 1px solid rgba(126, 34, 206, 0.05);
+    border-radius: 50%;
+    animation: spin-reverse 180s linear infinite;
+}
+
+.particle-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+}
+
+/* Animations */
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin-reverse {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+    #fineguide-topnav .navigation-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 20px;
+        flex-direction: column;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        display: none;
+    }
+    
+    #fineguide-topnav .navigation-menu.open {
+        display: flex;
+    }
+    
+    #fineguide-topnav .navigation-menu li {
+        margin: 10px 0;
+    }
+    
+    #fineguide-topnav .menu-extras {
+        display: block;
+    }
+    
+    #fineguide-topnav .signup-li {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    #fineguide-topnav .menu-extras {
+        display: none;
+    }
+}
