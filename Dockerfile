@@ -36,7 +36,7 @@ RUN a2enmod rewrite headers
 COPY --from=build /app/dist /var/www/html/
 
 # Copy WordPress files to the blog directory
-COPY blog/ /var/www/html/blog/
+COPY blog/ /var/www/html/_blog/
 
 # Create .htaccess file in the root directory to handle HTML files without extensions
 RUN echo '<IfModule mod_rewrite.c>\n\
@@ -54,7 +54,7 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f\n\
 RewriteRule ^(.*)$ $1.html [L]\n\
 </IfModule>' > /var/www/html/.htaccess
 
-# Create .htaccess file for WordPress in blog directory
+# Create .htaccess file for WordPress in _blog directory (template for the mounted blog directory)
 RUN echo '<IfModule mod_rewrite.c>\n\
 RewriteEngine On\n\
 RewriteBase /blog/\n\
@@ -62,10 +62,20 @@ RewriteRule ^index\.php$ - [L]\n\
 RewriteCond %{REQUEST_FILENAME} !-f\n\
 RewriteCond %{REQUEST_FILENAME} !-d\n\
 RewriteRule . /blog/index.php [L]\n\
-</IfModule>' > /var/www/html/blog/.htaccess
+</IfModule>' > /var/www/html/_blog/.htaccess
+
+# Create the blog directory for the volume mount point
+RUN mkdir -p /var/www/html/blog
 
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html
 
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Expose port 80
 EXPOSE 80
+
+# Set entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
