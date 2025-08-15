@@ -1,1 +1,0 @@
-This is a test file to simulate existing content in the persistent volume.

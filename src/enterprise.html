@@ -1,0 +1,749 @@
+@@include("partials/main.html")
+    <head>
+        @@include("partials/title-meta.html", {"title": "Fineguide.ai | Enterprise Solutions", "description": "Secure, on-premises AI customer interaction platform for banking, government, and enterprise organizations requiring isolated environments and advanced data security."})
+
+        <!-- Css -->
+        <link href="assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+        @@include("partials/head-css.html")
+    </head>
+    
+    @@include("partials/body.html")
+        
+        @@include("partials/navbar/nav.html")
+        
+        <!-- Start Hero -->
+        <section class="relative table w-full lg:pt-40 lg:pb-24 md:pt-36 md:pb-20 pt-36 pb-16 overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden -z-1">
+                <!-- Ambient Gradients -->
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-950 via-indigo-950/80 to-purple-950/60"></div>
+                <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-600/15 rounded-full blur-[140px] animate-pulse"></div>
+                <div class="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[120px] animate-pulse"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]"></div>
+            </div>
+
+            <div class="container relative z-1">
+                <div class="relative grid lg:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+                    <!-- Left Content -->
+                    <div class="lg:col-span-7">
+                        <div class="lg:me-6 lg:text-start text-center">
+                            <h1 class="font-bold lg:leading-tight leading-tight text-4xl lg:text-6xl mb-6 text-white">
+                                Enterprise <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600">AI Platform</span><br>
+                                for Secure Environments
+                            </h1>
+                            <p class="text-slate-300 text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                                On-premises AI customer interaction platform designed for banking, government, and enterprise organizations requiring isolated environments and advanced data security.
+                            </p>
+                            
+                            <!-- Key Features -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i data-feather="shield" class="w-4 h-4 text-white"></i>
+                                    </div>
+                                    <span class="text-white font-medium">Isolated Deployment</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i data-feather="server" class="w-4 h-4 text-white"></i>
+                                    </div>
+                                    <span class="text-white font-medium">On-Premises Installation</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i data-feather="settings" class="w-4 h-4 text-white"></i>
+                                    </div>
+                                    <span class="text-white font-medium">Custom Integrations</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i data-feather="headphones" class="w-4 h-4 text-white"></i>
+                                    </div>
+                                    <span class="text-white font-medium">Custom SLA & Support</span>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Buttons -->
+                            <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex">
+                                <a href="schedule-demo.html" class="py-4 px-8 inline-flex items-center justify-center tracking-wider align-middle duration-500 text-base text-center rounded bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 border border-indigo-600 hover:border-indigo-700 text-white font-semibold">
+                                    <i data-feather="calendar" class="w-4 h-4 mr-2"></i>
+                                    Schedule a Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content -->
+                    <div class="lg:col-span-5">
+                        <div class="relative">
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-xl"></div>
+                            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-full blur-lg"></div>
+                            
+                            <div class="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 backdrop-blur-lg border border-indigo-500/30 rounded-3xl p-8 shadow-2xl shadow-indigo-900/20 hover:shadow-indigo-900/30 transition-all duration-500">
+                                <div class="text-center mb-8">
+                                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                        <i data-feather="shield" class="w-8 h-8 text-white"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">Trusted by Secure Organizations</h3>
+                                    <p class="text-indigo-200 text-sm">Enterprise-grade security for sensitive environments</p>
+                                </div>
+                                
+                                <div class="space-y-6">
+                                    <div class="group flex items-center p-4 bg-gradient-to-r from-blue-900/30 to-indigo-900/30 rounded-xl border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300">
+                                        <div class="w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                            <i data-feather="home" class="w-7 h-7 text-white"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="text-white font-bold text-lg">Banking & Financial</div>
+                                            <div class="text-blue-200 text-sm">Secure customer interactions & compliance</div>
+                                        </div>
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                    
+                                    <div class="group flex items-center p-4 bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl border border-green-500/20 hover:border-green-400/40 transition-all duration-300">
+                                        <div class="w-14 h-14 bg-gradient-to-r from-green-600 to-green-700 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                            <i data-feather="flag" class="w-7 h-7 text-white"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="text-white font-bold text-lg">Government Agencies</div>
+                                            <div class="text-green-200 text-sm">Classified data protection & air-gapped deployment</div>
+                                        </div>
+                                        <div class="w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                    
+                                    <div class="group flex items-center p-4 bg-gradient-to-r from-purple-900/30 to-violet-900/30 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
+                                        <div class="w-14 h-14 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                            <i data-feather="briefcase" class="w-7 h-7 text-white"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="text-white font-bold text-lg">Enterprise Corporations</div>
+                                            <div class="text-purple-200 text-sm">Proprietary data security & custom integrations</div>
+                                        </div>
+                                        <div class="w-2 h-2 bg-purple-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bottom accent -->
+                                <div class="mt-6 pt-6 border-t border-indigo-500/20">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <div class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
+                                        <div class="text-indigo-200 text-xs font-medium">Secure • Compliant • Trusted</div>
+                                        <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Hero -->
+
+        <!-- Enterprise Features Section -->
+        <section class="relative py-20 md:py-24 lg:py-28">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-1/4 left-0 w-[300px] h-[300px] bg-indigo-600/5 rounded-full blur-[100px]"></div>
+                <div class="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[120px]"></div>
+            </div>
+            
+            <div class="container relative z-1">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl mb-6 shadow-2xl">
+                        <i data-feather="shield" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="mb-6 md:text-4xl text-3xl lg:leading-normal leading-normal font-bold text-white">Enterprise-Grade Security & Deployment</h3>
+                    <p class="text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed">Fineguide Enterprise provides the security, control, and customization that large organizations require for their AI customer interaction platform in the most sensitive environments.</p>
+                    
+                    <!-- Trust indicators -->
+                    <div class="flex items-center justify-center space-x-8 mt-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                            <span class="text-green-300 text-sm font-medium">Air-Gapped Ready</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                            <span class="text-blue-300 text-sm font-medium">On-Premises Only</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+                            <span class="text-purple-300 text-sm font-medium">Custom SLA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-8">
+                    <!-- Isolated Environment -->
+                    <div class="group relative transition-all duration-500 hover:scale-105">
+                        <div class="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-indigo-900/50 to-purple-900/50 backdrop-blur-lg border border-indigo-500/30 shadow-2xl shadow-indigo-900/20 hover:shadow-indigo-900/40 hover:border-indigo-400/50 transition-all duration-500">
+                            <!-- Floating accent -->
+                            <div class="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-lg"></div>
+                            
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl flex items-center justify-center shadow-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i data-feather="shield" class="w-10 h-10"></i>
+                                </div>
+                                <h5 class="text-xl font-bold text-white mb-4">Isolated Environment</h5>
+                                <p class="text-indigo-200 mb-6 leading-relaxed">Complete data isolation with no external connections. Your data never leaves your infrastructure.</p>
+                                
+                                <div class="space-y-3 text-left">
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-indigo-800/30 to-purple-800/30 rounded-lg border border-indigo-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Air-gapped deployment options</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-indigo-800/30 to-purple-800/30 rounded-lg border border-indigo-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">No cloud dependencies</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-indigo-800/30 to-purple-800/30 rounded-lg border border-indigo-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Custom network configurations</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- On-Premises Installation -->
+                    <div class="group relative transition-all duration-500 hover:scale-105">
+                        <div class="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-purple-900/50 to-indigo-900/50 backdrop-blur-lg border border-purple-500/30 shadow-2xl shadow-purple-900/20 hover:shadow-purple-900/40 hover:border-purple-400/50 transition-all duration-500">
+                            <!-- Floating accent -->
+                            <div class="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-full blur-lg"></div>
+                            
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl flex items-center justify-center shadow-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i data-feather="server" class="w-10 h-10"></i>
+                                </div>
+                                <h5 class="text-xl font-bold text-white mb-4">On-Premises Installation</h5>
+                                <p class="text-purple-200 mb-6 leading-relaxed">Full platform deployment on your own infrastructure with complete administrative control.</p>
+                                
+                                <div class="space-y-3 text-left">
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-lg border border-purple-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Your hardware, your control</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-lg border border-purple-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Custom infrastructure requirements</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-lg border border-purple-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Professional installation support</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Integrations -->
+                    <div class="group relative transition-all duration-500 hover:scale-105">
+                        <div class="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-green-900/50 to-blue-900/50 backdrop-blur-lg border border-green-500/30 shadow-2xl shadow-green-900/20 hover:shadow-green-900/40 hover:border-green-400/50 transition-all duration-500">
+                            <!-- Floating accent -->
+                            <div class="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-r from-green-600/20 to-blue-600/20 rounded-full blur-lg"></div>
+                            
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-2xl flex items-center justify-center shadow-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i data-feather="settings" class="w-10 h-10"></i>
+                                </div>
+                                <h5 class="text-xl font-bold text-white mb-4">Custom Integrations</h5>
+                                <p class="text-green-200 mb-6 leading-relaxed">Tailored integrations with your existing systems, legacy infrastructure, and custom workflows.</p>
+                                
+                                <div class="space-y-3 text-left">
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-green-800/30 to-blue-800/30 rounded-lg border border-green-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Legacy system connections</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-green-800/30 to-blue-800/30 rounded-lg border border-green-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Custom API development</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gradient-to-r from-green-800/30 to-blue-800/30 rounded-lg border border-green-500/20">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i data-feather="check" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="text-white text-sm font-medium">Specialized workflow automation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enterprise Support -->
+        <section class="relative py-20 md:py-24 lg:py-28">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-1/3 right-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-1/3 left-0 w-[350px] h-[350px] bg-indigo-600/5 rounded-full blur-[100px]"></div>
+            </div>
+            
+            <div class="container relative z-1">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl mb-6 shadow-2xl">
+                        <i data-feather="headphones" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="mb-6 md:text-4xl text-3xl lg:leading-normal leading-normal font-bold text-white">Enterprise Support & SLA</h3>
+                    <p class="text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed">Dedicated support team with custom service level agreements tailored to your organization's mission-critical requirements and compliance standards.</p>
+                    
+                    <!-- Trust indicators -->
+                    <div class="flex items-center justify-center space-x-8 mt-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                            <span class="text-green-300 text-sm font-medium">24/7 Availability</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                            <span class="text-blue-300 text-sm font-medium">Dedicated Team</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+                            <span class="text-purple-300 text-sm font-medium">Custom SLA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 grid-cols-1 items-stretch mt-8 gap-8">
+                    <div class="group relative">
+                        <!-- Floating accents -->
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-lg"></div>
+                        
+                        <div class="relative h-full bg-gradient-to-br from-purple-900/50 to-indigo-900/50 backdrop-blur-lg border border-purple-500/30 rounded-3xl p-8 shadow-2xl shadow-purple-900/20 hover:shadow-purple-900/40 hover:border-purple-400/50 transition-all duration-500">
+                            <div class="text-center mb-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <i data-feather="settings" class="w-8 h-8 text-white"></i>
+                                </div>
+                                <h4 class="text-2xl font-bold text-white mb-2">Custom SLA Options</h4>
+                                <p class="text-purple-200 text-sm">Tailored service agreements for your enterprise needs</p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="clock" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Response Time Guarantees</div>
+                                        <div class="text-purple-200 text-sm leading-relaxed">Custom response times based on issue severity and business impact</div>
+                                        <div class="mt-2 flex items-center space-x-4">
+                                            <span class="text-xs bg-blue-600/20 text-blue-300 px-2 py-1 rounded-full">Critical: 15min</span>
+                                            <span class="text-xs bg-green-600/20 text-green-300 px-2 py-1 rounded-full">Standard: 4hrs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="users" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Dedicated Support Team</div>
+                                        <div class="text-purple-200 text-sm leading-relaxed">Assigned support engineers familiar with your specific deployment and requirements</div>
+                                        <div class="mt-2">
+                                            <span class="text-xs bg-green-600/20 text-green-300 px-2 py-1 rounded-full">Named Engineers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="phone" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Priority Support Channels</div>
+                                        <div class="text-purple-200 text-sm leading-relaxed">Direct phone, email, and secure communication channels with escalation paths</div>
+                                        <div class="mt-2 flex items-center space-x-2">
+                                            <span class="text-xs bg-indigo-600/20 text-indigo-300 px-2 py-1 rounded-full">24/7 Hotline</span>
+                                            <span class="text-xs bg-purple-600/20 text-purple-300 px-2 py-1 rounded-full">Secure Chat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-purple-800/30 to-indigo-800/30 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="tool" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Professional Services</div>
+                                        <div class="text-purple-200 text-sm leading-relaxed">Custom training, consulting, and implementation services for your team</div>
+                                        <div class="mt-2 flex items-center space-x-2">
+                                            <span class="text-xs bg-orange-600/20 text-orange-300 px-2 py-1 rounded-full">Training</span>
+                                            <span class="text-xs bg-yellow-600/20 text-yellow-300 px-2 py-1 rounded-full">Consulting</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bottom accent -->
+                            <div class="mt-8 pt-6 border-t border-purple-500/20">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                                    <div class="text-purple-200 text-xs font-medium">Enterprise-Grade • Mission-Critical • Secure</div>
+                                    <div class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <!-- Floating accents -->
+                        <div class="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 rounded-full blur-lg"></div>
+                        
+                        <div class="bg-gradient-to-br from-indigo-900/50 to-blue-900/50 backdrop-blur-lg border border-indigo-500/30 rounded-3xl p-8 shadow-2xl shadow-indigo-900/20 hover:shadow-indigo-900/40 hover:border-indigo-400/50 transition-all duration-500 h-full">
+                            <div class="text-center mb-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                    <i data-feather="shield" class="w-8 h-8 text-white"></i>
+                                </div>
+                                <h4 class="text-2xl font-bold text-white mb-2">Enterprise Benefits</h4>
+                                <p class="text-indigo-200 text-sm">Complete control and security for mission-critical operations</p>
+                            </div>
+                            
+                            <div class="space-y-6 mb-8">
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-indigo-800/30 to-blue-800/30 rounded-xl border border-indigo-500/20 hover:border-indigo-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="lock" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Data Sovereignty</div>
+                                        <div class="text-indigo-200 text-sm leading-relaxed">Complete control over data location, processing, and access policies</div>
+                                        <div class="mt-2">
+                                            <span class="text-xs bg-green-600/20 text-green-300 px-2 py-1 rounded-full">On-Premises</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-indigo-800/30 to-blue-800/30 rounded-xl border border-indigo-500/20 hover:border-indigo-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="file-text" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Regulatory Compliance</div>
+                                        <div class="text-indigo-200 text-sm leading-relaxed">Built-in compliance frameworks for banking, healthcare, and government</div>
+                                        <div class="mt-2 flex items-center space-x-2">
+                                            <span class="text-xs bg-blue-600/20 text-blue-300 px-2 py-1 rounded-full">GDPR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-indigo-800/30 to-blue-800/30 rounded-xl border border-indigo-500/20 hover:border-indigo-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="settings" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Custom Integration</div>
+                                        <div class="text-indigo-200 text-sm leading-relaxed">Seamless integration with existing security infrastructure and workflows</div>
+                                        <div class="mt-2">
+                                            <span class="text-xs bg-purple-600/20 text-purple-300 px-2 py-1 rounded-full">API Ready</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="group/item flex items-start p-4 bg-gradient-to-r from-indigo-800/30 to-blue-800/30 rounded-xl border border-indigo-500/20 hover:border-indigo-400/40 transition-all duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                                        <i data-feather="trending-up" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-white font-bold text-lg mb-1">Enterprise Scale</div>
+                                        <div class="text-indigo-200 text-sm leading-relaxed">Scalable architecture designed for high-volume enterprise workloads</div>
+                                        <div class="mt-2 flex items-center space-x-2">
+                                            <span class="text-xs bg-orange-600/20 text-orange-300 px-2 py-1 rounded-full">High Availability</span>
+                                            <span class="text-xs bg-yellow-600/20 text-yellow-300 px-2 py-1 rounded-full">Load Balanced</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="#contact" class="group relative py-4 px-8 inline-flex items-center justify-center tracking-wider align-middle duration-500 text-base text-center rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 border border-indigo-600 hover:border-indigo-700 text-white font-bold shadow-lg hover:shadow-xl transition-all">
+                                    <span class="mr-2">Discuss Your Requirements</span>
+                                    <i data-feather="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- Bottom accent -->
+                            <div class="mt-8 pt-6 border-t border-indigo-500/20">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <div class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
+                                    <div class="text-indigo-200 text-xs font-medium">Secure • Compliant • Enterprise-Ready</div>
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="relative py-20 md:py-24 lg:py-28" id="contact">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[100px]"></div>
+            </div>
+            
+            <div class="container relative z-1">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl mb-6 shadow-2xl">
+                        <i data-feather="mail" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="mb-6 md:text-4xl text-3xl lg:leading-normal leading-normal font-bold text-white">Ready to Secure Your AI Platform?</h3>
+                    <p class="text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed">Contact our enterprise team to discuss your specific security requirements, compliance needs, and deployment timeline. We'll provide a custom solution tailored to your organization.</p>
+                </div>
+
+                <!-- Enterprise Contact Form -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="group relative">
+                        <!-- Floating accents -->
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-full blur-lg"></div>
+                        
+                        <div class="relative bg-gradient-to-br from-indigo-900/50 to-purple-900/50 backdrop-blur-lg border border-indigo-500/30 rounded-3xl p-8 lg:p-12 shadow-2xl shadow-indigo-900/20 hover:shadow-indigo-900/40 hover:border-indigo-400/50 transition-all duration-500">
+                            <div class="text-center mb-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                    <i data-feather="user" class="w-8 h-8 text-white"></i>
+                                </div>
+                                <h4 class="text-2xl font-bold text-white mb-2">Enterprise Contact Form</h4>
+                                <p class="text-indigo-200 text-sm">Get started with your secure AI deployment</p>
+                            </div>
+                            
+                            <form method="post" name="enterpriseForm" id="enterpriseForm" class="space-y-6">
+                                <p class="mb-0 text-red-400" id="error-msg"></p>
+                                <div id="simple-msg"></div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-white font-medium mb-2" for="name">Full Name *</label>
+                                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-indigo-800/30 border border-indigo-500/30 rounded-xl text-white placeholder-indigo-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300" placeholder="John Doe">
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-medium mb-2" for="email">Business Email *</label>
+                                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-indigo-800/30 border border-indigo-500/30 rounded-xl text-white placeholder-indigo-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300" placeholder="john.doe@company.com">
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-white font-medium mb-2" for="company">Company Name *</label>
+                                        <input type="text" id="company" name="company" required class="w-full px-4 py-3 bg-indigo-800/30 border border-indigo-500/30 rounded-xl text-white placeholder-indigo-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300" placeholder="Your Company">
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-medium mb-2" for="industry">Industry *</label>
+                                        <select id="industry" name="industry" required class="w-full px-4 py-3 bg-indigo-800/30 border border-indigo-500/30 rounded-xl text-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300">
+                                            <option value="" class="bg-slate-800">Select your industry</option>
+                                            <option value="banking" class="bg-slate-800">Banking & Financial Services</option>
+                                            <option value="government" class="bg-slate-800">Government & Public Sector</option>
+                                            <option value="healthcare" class="bg-slate-800">Healthcare & Life Sciences</option>
+                                            <option value="insurance" class="bg-slate-800">Insurance</option>
+                                            <option value="technology" class="bg-slate-800">Technology</option>
+                                            <option value="other" class="bg-slate-800">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-white font-medium mb-2" for="comments">Security Requirements & Use Case *</label>
+                                    <textarea id="comments" name="comments" rows="5" required class="w-full px-4 py-3 bg-indigo-800/30 border border-indigo-500/30 rounded-xl text-white placeholder-indigo-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300 resize-none" placeholder="Please describe your security requirements, compliance needs, and intended use case for the AI platform..."></textarea>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-5 h-5 text-indigo-600 bg-indigo-800/30 border-indigo-500/30 rounded focus:ring-indigo-500 focus:ring-2">
+                                    <label for="privacy" class="text-indigo-200 text-sm leading-relaxed">
+                                        I agree to the <a href="#" class="text-indigo-400 hover:text-indigo-300 underline">Privacy Policy</a> and consent to being contacted about enterprise solutions.
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" id="submit" name="send" class="group w-full py-4 px-8 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2">
+                                    <span>Request Enterprise Consultation</span>
+                                    <i data-feather="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
+                            </form>
+                            
+                            <!-- Bottom accent -->
+                            <div class="mt-8 pt-6 border-t border-indigo-500/20">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <div class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
+                                    <div class="text-indigo-200 text-xs font-medium">Secure • Confidential • Enterprise-Grade</div>
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Direct Contact Info -->
+                            <div class="mt-6 pt-6 border-t border-indigo-500/20 text-center">
+                                <div class="text-indigo-200 text-sm mb-2">Direct Enterprise Contact</div>
+                                <a href="mailto:enterprise@fineguide.ai" class="text-indigo-300 hover:text-indigo-200 font-medium text-lg transition-colors duration-300">enterprise@fineguide.ai</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @@include("partials/footer/footer.html")
+
+        @@include("partials/switcher.html")
+    
+        <!-- JAVASCRIPTS -->
+        @@include("partials/script-file.html")
+        <!-- JAVASCRIPTS -->
+
+        <script>
+            document.getElementById("enterpriseForm").addEventListener("submit", validateEnterpriseForm);
+            
+            // Function to validate the enterprise form
+            function validateEnterpriseForm(event) {
+                event.preventDefault();
+                var name = document.forms["enterpriseForm"]["name"].value;
+                var email = document.forms["enterpriseForm"]["email"].value;
+                var company = document.forms["enterpriseForm"]["company"].value;
+                var industry = document.forms["enterpriseForm"]["industry"].value;
+                var comments = document.forms["enterpriseForm"]["comments"].value;
+                var privacy = document.forms["enterpriseForm"]["privacy"].checked;
+                var errorMsg = document.getElementById("error-msg");
+                
+                errorMsg.innerHTML = "";
+                
+                if (name == "") {
+                    errorMsg.innerHTML = "Name is required";
+                    return false;
+                }
+                
+                if (email == "") {
+                    errorMsg.innerHTML = "Email is required";
+                    return false;
+                } else if (!isValidEmail(email)) {
+                    errorMsg.innerHTML = "Please enter a valid email address";
+                    return false;
+                }
+                
+                if (company == "") {
+                    errorMsg.innerHTML = "Company name is required";
+                    return false;
+                }
+                
+                if (industry == "") {
+                    errorMsg.innerHTML = "Please select your industry";
+                    return false;
+                }
+                
+                if (comments == "") {
+                    errorMsg.innerHTML = "Security requirements and use case description is required";
+                    return false;
+                }
+                
+                if (!privacy) {
+                    errorMsg.innerHTML = "Please agree to the privacy policy";
+                    return false;
+                }
+                
+                // If validation passes, submit the form data to the API
+                var enterpriseMessage = `Enterprise Inquiry from ${company} (${industry}):\n\nContact: ${name}\nEmail: ${email}\n\nSecurity Requirements & Use Case:\n${comments}`;
+                submitToAPI(name, email, enterpriseMessage);
+            }
+            
+            // Function to validate email format
+            function isValidEmail(email) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+             
+            // Function to submit data to the Fineguide API
+            function submitToAPI(name, email, message) {
+                // Show loading state
+                const submitBtn = document.getElementById('submit');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span>Sending...</span><i data-feather="loader" class="w-5 h-5 animate-spin"></i>';
+                submitBtn.disabled = true;
+                
+                // Re-initialize feather icons for the new loader icon
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
+                
+                // Define session ID and fingerprint
+                const fingerprint = 'fg-website-enterprise-2234123457';
+
+                // Prepare the API URL and data
+                const url = 'https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/fc103e0a-b3d8-4920-96d0-492169ce7d06/tickets';
+                const data = {
+                    "customerEmail": email,
+                    "customerName": name,
+                    "customerMessage": message
+                };
+                
+                // Send the POST request
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-fingerprint': fingerprint
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to create enterprise ticket');
+                    }
+                    return response.json();
+                })
+                .then(ticketData => {
+                    // Show success message
+                    document.getElementById('simple-msg').innerHTML = 
+                        '<div class="p-4 bg-green-900/30 border border-green-500/30 text-green-300 rounded-xl mb-6"><div class="flex items-center space-x-2"><i data-feather="check-circle" class="w-5 h-5"></i><span class="font-semibold">Enterprise Inquiry Submitted Successfully!</span></div><div class="text-sm text-green-200 mt-2">Thank you for your interest in Fineguide Enterprise. Our team will review your requirements and contact you within 24-48 hours to discuss your secure AI deployment.</div></div>';
+                    
+                    // Reset the form
+                    document.getElementById('enterpriseForm').reset();
+                    
+                    // Re-initialize feather icons for the success message
+                    if (typeof feather !== 'undefined') {
+                        feather.replace();
+                    }
+                })
+                .catch(error => {
+                    // Show error message
+                    document.getElementById('simple-msg').innerHTML = 
+                        '<div class="p-4 bg-red-900/30 border border-red-500/30 text-red-300 rounded-xl mb-6"><div class="flex items-center space-x-2"><i data-feather="alert-circle" class="w-5 h-5"></i><span class="font-semibold">Error Submitting Enterprise Inquiry</span></div><div class="text-sm text-red-200 mt-2">Sorry, there was an error processing your enterprise inquiry. Please try again later or contact us directly at <a href="mailto:enterprise@fineguide.ai" class="text-red-300 hover:text-red-200 underline">enterprise@fineguide.ai</a>.</div></div>';
+                    console.error('Enterprise form error:', error);
+                    
+                    // Re-initialize feather icons for the error message
+                    if (typeof feather !== 'undefined') {
+                        feather.replace();
+                    }
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.innerHTML = '<span>Request Enterprise Consultation</span><i data-feather="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"></i>';
+                    submitBtn.disabled = false;
+                    
+                    // Re-initialize feather icons for the reset button
+                    if (typeof feather !== 'undefined') {
+                        feather.replace();
+                    }
+                });
+            }
+        </script>
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        @@include("partials/script-file.html")
+    </body>
+    </html>
+    

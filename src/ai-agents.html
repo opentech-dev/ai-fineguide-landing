@@ -1,0 +1,961 @@
+@@include("partials/main.html")
+    <head>
+        @@include("partials/title-meta.html", {"title": "AI + Human Support | Seamless Customer Experience | Fineguide", "description": "Perfect blend of AI efficiency and human expertise. Instant AI responses with seamless human handoff when needed. 24/7 support that scales."})
+
+        <!-- Css -->
+        <link href="assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+        @@include("partials/head-css.html")
+    </head>
+    
+    @@include("partials/body.html")
+        
+        @@include("partials/navbar/nav.html")
+
+        <!-- Hero Section -->
+        <section class="relative py-36 flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-indigo-900/20 to-purple-900/20"></div>
+            <div class="container relative">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <span class="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-sm font-bold px-4 py-2 rounded-full mr-4">
+                                🤖 AI-Powered
+                            </span>
+                            <span class="text-green-400 font-semibold">Always Learning</span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                            Intelligent AI Agents for 
+                            <span class="bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">Every Business Need</span>
+                        </h1>
+                        
+                        <p class="text-xl text-slate-300 mb-8 leading-relaxed">
+                            Deploy customizable AI agents that handle customer interactions, capture leads, manage support tickets, and streamline internal operations. From customer-facing conversations to backend automation - one intelligent platform.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                            <a href="pricing" class="inline-flex items-center justify-center py-4 px-8 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-900/40">
+                                Deploy Your First Agent
+                                <i data-feather="arrow-right" class="w-5 h-5 ml-2"></i>
+                            </a>
+                            <a href="schedule-demo.html" class="inline-flex items-center justify-center py-4 px-8 bg-transparent border border-slate-600 hover:border-slate-500 text-white font-semibold rounded-lg transition-all duration-300">
+                                Schedule a Demo
+                                <i data-feather="calendar" class="w-5 h-5 ml-2"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-6 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-green-400 mb-1">24/7</div>
+                                <div class="text-sm text-slate-400">Always Available</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-blue-400 mb-1">40+</div>
+                                <div class="text-sm text-slate-400">Languages</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-purple-400 mb-1">5min</div>
+                                <div class="text-sm text-slate-400">Setup Time</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg border border-slate-700/30 rounded-2xl p-8 shadow-xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="text-white font-semibold">AI Agent Dashboard</span>
+                                <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded-full text-sm">Live</span>
+                            </div>
+                            
+                            <!-- Agent Types -->
+                            <div class="space-y-4">
+                                <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-green-400 rounded-full mr-3"></div>
+                                            <span class="text-white font-medium">Customer Support Agent</span>
+                                        </div>
+                                        <span class="px-2 py-1 bg-green-600/20 text-green-300 rounded text-xs">Active</span>
+                                    </div>
+                                    <div class="text-green-200 text-sm">Handling 47 conversations</div>
+                                </div>
+                                
+                                <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-blue-400 rounded-full mr-3"></div>
+                                            <span class="text-white font-medium">Lead Capture Agent</span>
+                                        </div>
+                                        <span class="px-2 py-1 bg-blue-600/20 text-blue-300 rounded text-xs">Active</span>
+                                    </div>
+                                    <div class="text-blue-200 text-sm">23 qualified leads today</div>
+                                </div>
+                                
+                                <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-purple-400 rounded-full mr-3"></div>
+                                            <span class="text-white font-medium">Internal Operations Agent</span>
+                                        </div>
+                                        <span class="px-2 py-1 bg-purple-600/20 text-purple-300 rounded text-xs">Active</span>
+                                    </div>
+                                    <div class="text-purple-200 text-sm">Processing 12 workflows</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Solutions Section -->
+        <section class="relative py-20 overflow-hidden border-b border-slate-800">
+            <div class="container relative">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ai Agents Built for Business</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">AI agents that solve actual business challenges and deliver measurable ROI across industries.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
+                    <!-- Customer-Facing Solutions -->
+                    <div class="space-y-8">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-4">Customer-Facing Solutions</h3>
+                            <p class="text-gray-300">Deploy AI agents that interact directly with customers, capture leads, and provide instant support.</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- Lead Capture & Qualification -->
+                            <div class="bg-gradient-to-r from-green-900/20 to-emerald-900/20 border border-green-500/30 rounded-xl p-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="target" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-white mb-2">Lead Capture & Qualification</h4>
+                                        <p class="text-gray-300 text-sm mb-3">Automatically engage website visitors, qualify prospects, and capture high-quality leads 24/7.</p>
+                                        <div class="flex items-center text-green-400 text-sm">
+                                            <span class="font-semibold">ROI:</span>
+                                            <span class="ml-2">3x more qualified leads, 40% higher conversion rates</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Customer Support -->
+                            <div class="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 border border-blue-500/30 rounded-xl p-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="headphones" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-white mb-2">Instant Customer Support</h4>
+                                        <p class="text-gray-300 text-sm mb-3">Handle common inquiries instantly, escalate complex issues to humans with full context.</p>
+                                        <div class="flex items-center text-blue-400 text-sm">
+                                            <span class="font-semibold">ROI:</span>
+                                            <span class="ml-2">70% faster response times, 50% cost reduction</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sales & Product Info -->
+                            <div class="bg-gradient-to-r from-purple-900/20 to-violet-900/20 border border-purple-500/30 rounded-xl p-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="shopping-cart" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-white mb-2">Sales & Product Guidance</h4>
+                                        <p class="text-gray-300 text-sm mb-3">Provide product recommendations, pricing info, and guide customers through purchase decisions.</p>
+                                        <div class="flex items-center text-purple-400 text-sm">
+                                            <span class="font-semibold">ROI:</span>
+                                            <span class="ml-2">25% increase in average order value</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Internal Operations Solutions -->
+                    <div class="space-y-8">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl font-bold text-white mb-4">Internal Operations Solutions</h3>
+                            <p class="text-gray-300">Streamline internal processes, automate workflows, and enhance employee productivity.</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- HR & Employee Support -->
+                            <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-orange-500/30 rounded-xl p-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="users" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-white mb-2">HR & Employee Support</h4>
+                                        <p class="text-gray-300 text-sm mb-3">Handle onboarding, policy questions, benefits inquiries, and HR processes automatically.</p>
+                                        <div class="flex items-center text-orange-400 text-sm">
+                                            <span class="font-semibold">ROI:</span>
+                                            <span class="ml-2">60% reduction in HR ticket volume</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- IT Support & Troubleshooting -->
+                            <div class="bg-gradient-to-r from-indigo-900/20 to-purple-900/20 border border-indigo-500/30 rounded-xl p-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="monitor" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-white mb-2">IT Support & Troubleshooting</h4>
+                                        <p class="text-gray-300 text-sm mb-3">Resolve common IT issues, guide through software problems, escalate complex cases.</p>
+                                        <div class="flex items-center text-indigo-400 text-sm">
+                                            <span class="font-semibold">ROI:</span>
+                                            <span class="ml-2">45% faster issue resolution</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Process Automation -->
+                            <div class="bg-gradient-to-r from-teal-900/20 to-cyan-900/20 border border-teal-500/30 rounded-xl p-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="zap" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-white mb-2">Process Automation</h4>
+                                        <p class="text-gray-300 text-sm mb-3">Trigger workflows, collect data, update systems, and automate repetitive business processes.</p>
+                                        <div class="flex items-center text-teal-400 text-sm">
+                                            <span class="font-semibold">ROI:</span>
+                                            <span class="ml-2">80% reduction in manual tasks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industry Success Stories -->
+                <div class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-white text-center mb-8">Proven Results Across Industries</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-400 mb-2">30%</div>
+                            <div class="text-white font-semibold mb-1">Lead Increase</div>
+                            <div class="text-gray-400 text-sm">SaaS & Technology</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">70%</div>
+                            <div class="text-white font-semibold mb-1">Cost Reduction</div>
+                            <div class="text-gray-400 text-sm">Customer Support</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-400 mb-2">80%</div>
+                            <div class="text-white font-semibold mb-1">Process Automation</div>
+                            <div class="text-gray-400 text-sm">Internal Operations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced AI Technology Section -->
+        <section class="relative py-20 overflow-hidden border-b border-slate-800">
+            <div class="container relative">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Peak Performance AI Technology</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">Our AI agents deliver highly accurate responses through sophisticated multi-LLM architecture and proprietary algorithms.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Multi-LLM Architecture -->
+                    <div class="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-500/30 rounded-xl p-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center mb-6">
+                            <i data-feather="cpu" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Multi-LLM System</h3>
+                        <p class="text-gray-300 mb-4">Not backed by a single LLM. Our AI Agents combines multiple language models to reach peak performance and accuracy.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-blue-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Multiple LLM orchestration</span>
+                            </div>
+                            <div class="flex items-center text-blue-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Intelligent model selection</span>
+                            </div>
+                            <div class="flex items-center text-blue-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Optimized response accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proprietary Algorithms -->
+                    <div class="bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-purple-500/30 rounded-xl p-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-violet-600 rounded-xl flex items-center justify-center mb-6">
+                            <i data-feather="zap" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Proprietary Algorithms</h3>
+                        <p class="text-gray-300 mb-4">Advanced algorithms fine-tune responses, optimize context understanding, and ensure consistent high-quality interactions.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-purple-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Context optimization</span>
+                            </div>
+                            <div class="flex items-center text-purple-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Response quality assurance</span>
+                            </div>
+                            <div class="flex items-center text-purple-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Performance monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- High Accuracy -->
+                    <div class="bg-gradient-to-br from-green-900/20 to-emerald-900/20 border border-green-500/30 rounded-xl p-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                            <i data-feather="target" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Highly Accurate Responses</h3>
+                        <p class="text-gray-300 mb-4">Combining multiple AI models with proprietary algorithms delivers consistently accurate and contextually relevant responses.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-green-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>95%+ response accuracy</span>
+                            </div>
+                            <div class="flex items-center text-green-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Context-aware understanding</span>
+                            </div>
+                            <div class="flex items-center text-green-400 text-sm">
+                                <i data-feather="check-circle" class="w-4 h-4 mr-2"></i>
+                                <span>Consistent quality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Your AI Agents Can Do Section -->
+        <section class="relative py-20 overflow-hidden border-b border-slate-800">
+            <div class="container relative">
+                <div class="text-center mb-20">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">What Your AI Agents Can Do</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">Transform how you interact with customers and grow your business with AI agents that work 24/7.</p>
+                </div>
+                
+                <!-- Business Benefits Layout -->
+                <div class="space-y-20 max-w-6xl mx-auto">
+                    <!-- Never Miss a Customer - Left -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                            <div class="inline-flex items-center bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2 mb-6">
+                                <i data-feather="clock" class="w-4 h-4 text-green-400 mr-2"></i>
+                                <span class="text-green-300 text-sm font-medium">24/7 Availability</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-6">Never Miss a Customer</h3>
+                            <p class="text-gray-300 text-lg mb-8 leading-relaxed">Your AI agents work around the clock, responding to customers instantly whether it's 2 AM or during your busiest hours. No more lost leads or frustrated customers waiting for replies.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Instant Response</h4>
+                                        <p class="text-gray-400 text-sm">Customers get immediate answers, increasing satisfaction and conversion rates</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Weekend & Holiday Coverage</h4>
+                                        <p class="text-gray-400 text-sm">Capture leads and provide support even when your team is offline</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Global Time Zones</h4>
+                                        <p class="text-gray-400 text-sm">Serve international customers in their preferred language and time</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-1 lg:order-2">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-3xl blur-xl"></div>
+                                <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8">
+                                    <h4 class="text-white font-bold mb-8 text-center">Customer Satisfaction Impact</h4>
+                                    <div class="space-y-6 pb-6">
+                                        <div class="text-center">
+                                            <div class="text-4xl font-bold text-green-400 mb-2">95%</div>
+                                            <div class="text-gray-300 text-sm">Customer satisfaction with instant responses</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-4xl font-bold text-blue-400 mb-2">3x</div>
+                                            <div class="text-gray-300 text-sm">More leads captured outside business hours</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-4xl font-bold text-purple-400 mb-2">90%</div>
+                                            <div class="text-gray-300 text-sm">Reduction in customer wait time</div>
+                                        </div>
+                                        <!-- <div class="bg-green-900/30 border border-green-500/30 rounded-xl p-4 mt-6">
+                                            <div class="text-green-300 text-sm font-medium mb-2">💬 Customer Feedback</div>
+                                            <div class="text-white text-sm italic">"Finally, a company that responds instantly! This is exactly what I needed."</div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Increase Sales & Conversions - Right -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-3xl blur-xl"></div>
+                                <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8">
+                                    <h4 class="text-white font-bold mb-8 text-center">Performance Metrics</h4>
+                                    <div class="space-y-6">
+                                        <div class="flex items-center justify-between p-4 bg-blue-900/30 border border-blue-500/30 rounded-xl">
+                                            <div>
+                                                <div class="text-blue-300 text-sm">Lead Qualification</div>
+                                                <div class="text-white font-bold">Before: 15%</div>
+                                            </div>
+                                            <div class="text-2xl text-gray-400">→</div>
+                                            <div>
+                                                <div class="text-blue-300 text-sm">With AI Agents</div>
+                                                <div class="text-green-400 font-bold">After: 45%</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between p-4 bg-green-900/30 border border-green-500/30 rounded-xl">
+                                            <div>
+                                                <div class="text-green-300 text-sm">Response Time</div>
+                                                <div class="text-white font-bold">Before: 4 hours</div>
+                                            </div>
+                                            <div class="text-2xl text-gray-400">→</div>
+                                            <div>
+                                                <div class="text-green-300 text-sm">With AI Agents</div>
+                                                <div class="text-green-400 font-bold">After: Instant</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center p-4 bg-purple-900/30 border border-purple-500/30 rounded-xl">
+                                            <div class="text-purple-300 text-sm mb-2">Customer Satisfaction</div>
+                                            <div class="text-3xl font-bold text-purple-400">92%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="inline-flex items-center bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+                                <i data-feather="trending-up" class="w-4 h-4 text-blue-400 mr-2"></i>
+                                <span class="text-blue-300 text-sm font-medium">Revenue Growth</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-6">Increase Sales & Conversions</h3>
+                            <p class="text-gray-300 text-lg mb-8 leading-relaxed">Turn more website visitors into paying customers. AI agents qualify leads, answer questions instantly, and guide prospects through your sales funnel 24/7.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Smart Lead Qualification</h4>
+                                        <p class="text-gray-400 text-sm">Automatically identify high-value prospects and prioritize hot leads</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Instant Objection Handling</h4>
+                                        <p class="text-gray-400 text-sm">Address customer concerns immediately before they leave your site</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Personalized Recommendations</h4>
+                                        <p class="text-gray-400 text-sm">Suggest the right products or services based on customer needs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Smart Knowledge Base - Left -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                            <div class="inline-flex items-center bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2 mb-6">
+                                <i data-feather="book" class="w-4 h-4 text-purple-400 mr-2"></i>
+                                <span class="text-purple-300 text-sm font-medium">Knowledge AI</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-6">Smart Knowledge Base</h3>
+                            <p class="text-gray-300 text-lg mb-8 leading-relaxed">Train your agent with your specific business knowledge, FAQs, and procedures for accurate responses. Upload documents, create custom knowledge bases, and ensure your AI understands your business inside and out.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Document Upload</h4>
+                                        <p class="text-gray-400 text-sm">Upload PDFs, docs, and FAQs to train your agent on company knowledge</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Context-Aware Responses</h4>
+                                        <p class="text-gray-400 text-sm">AI references your knowledge base to provide accurate, relevant answers</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Continuous Learning</h4>
+                                        <p class="text-gray-400 text-sm">Knowledge base updates automatically improve agent responses over time</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-1 lg:order-2">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-3xl blur-xl"></div>
+                                <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8">
+                                    <h4 class="text-white font-bold mb-6">Knowledge Base Sources</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center p-3 bg-purple-900/30 border border-purple-500/30 rounded-lg">
+                                            <i data-feather="file-text" class="w-5 h-5 text-purple-400 mr-3"></i>
+                                            <div class="flex-1">
+                                                <div class="text-white text-sm font-medium">Company FAQ.pdf</div>
+                                                <div class="text-gray-400 text-xs">142 questions • Updated today</div>
+                                            </div>
+                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center p-3 bg-purple-900/30 border border-purple-500/30 rounded-lg">
+                                            <i data-feather="book" class="w-5 h-5 text-purple-400 mr-3"></i>
+                                            <div class="flex-1">
+                                                <div class="text-white text-sm font-medium">Product Manual</div>
+                                                <div class="text-gray-400 text-xs">89 pages • Processing...</div>
+                                            </div>
+                                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center p-3 bg-purple-900/30 border border-purple-500/30 rounded-lg">
+                                            <i data-feather="globe" class="w-5 h-5 text-purple-400 mr-3"></i>
+                                            <div class="flex-1">
+                                                <div class="text-white text-sm font-medium">Website Content</div>
+                                                <div class="text-gray-400 text-xs">25 pages • Synced</div>
+                                            </div>
+                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation & Deployment Section -->
+        <section class="relative py-16 overflow-hidden border-b border-slate-800">
+            <div class="container relative">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">Flexible Implementation Options</h2>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto">Deploy AI agents across multiple channels with customizable interfaces and seamless integrations.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <!-- Website Chat Widget -->
+                    <div class="bg-gradient-to-br from-indigo-900/20 to-blue-900/20 border border-indigo-500/30 rounded-lg p-6">
+                        <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                            <i data-feather="message-circle" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Website Chat Widget</h3>
+                        <p class="text-gray-300 text-sm mb-3">Customizable chat interface with 3 templates, light/dark mode, and brand integration.</p>
+                        <div class="text-indigo-400 text-xs">5-minute setup</div>
+                    </div>
+                    
+                    <!-- Messenger Integrations -->
+                    <div class="bg-gradient-to-br from-green-900/20 to-emerald-900/20 border border-green-500/30 rounded-lg p-6">
+                        <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mb-4">
+                            <i data-feather="smartphone" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Messenger Platforms</h3>
+                        <p class="text-gray-300 text-sm mb-3">WhatsApp, Telegram, Facebook, Instagram with unified conversation management.</p>
+                        <div class="text-green-400 text-xs">Native integrations</div>
+                    </div>
+                    
+                    <!-- Webhooks -->
+                    <div class="bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-purple-500/30 rounded-lg p-6">
+                        <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                            <i data-feather="send" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Webhooks</h3>
+                        <p class="text-gray-300 text-sm mb-3">Real-time webhook emissions to trigger external workflows and integrations.</p>
+                        <div class="text-purple-400 text-xs">Event-driven</div>
+                    </div>
+                    
+                    <!-- n8n Integration -->
+                    <div class="bg-gradient-to-br from-orange-900/20 to-red-900/20 border border-orange-500/30 rounded-lg p-6">
+                        <div class="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
+                            <img src="assets/images/n8n-color.svg" alt="n8n" class="w-6 h-6">
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">n8n Integration</h3>
+                        <p class="text-gray-300 text-sm mb-3">Connect to 1000+ services with visual workflows. Free community hosting included.</p>
+                        <div class="text-orange-400 text-xs">No-code automation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Actions Section -->
+        <section class="relative py-24 overflow-hidden border-b border-slate-800">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/5 via-purple-900/5 to-pink-900/5"></div>
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+            
+            <div class="container relative z-10">
+                <!-- Section Header -->
+                <div class="text-center mb-20">
+                    <div class="inline-flex items-center bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 rounded-full px-6 py-2 mb-6">
+                        <i data-feather="zap" class="w-4 h-4 text-indigo-400 mr-2"></i>
+                        <span class="text-indigo-300 text-sm font-medium">Advanced Automation</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+                        Custom Actions &
+                        <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">External Execution</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        AI agents seamlessly integrate with your existing systems, calling APIs, triggering workflows, and executing complex business processes in real-time.
+                    </p>
+                </div>
+                
+                <!-- Capabilities Overview -->
+                <div class="mb-24">
+                    <div class="text-center mb-16">
+                        <h3 class="text-3xl font-bold text-white mb-4">Three Ways AI Agents Execute Actions</h3>
+                        <p class="text-gray-400 max-w-2xl mx-auto">From simple API calls to complex multi-system workflows, our AI agents handle it all</p>
+                    </div>
+                    
+                    <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <!-- API Calls -->
+                        <div class="group relative">
+                            <!-- Hover Glow Effect -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
+                            
+                            <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 h-full group-hover:border-blue-500/50 transition-all duration-500">
+                                <!-- Icon -->
+                                <div class="relative mb-8">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl shadow-blue-500/25">
+                                        <i data-feather="globe" class="w-10 h-10 text-white"></i>
+                                    </div>
+                                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <i data-feather="check-circle" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div class="text-center">
+                                    <h4 class="text-2xl font-bold text-white mb-4">Action Tools</h4>
+                                    <p class="text-gray-300 mb-6 leading-relaxed">Direct integration with any REST API endpoint. Update CRMs, fetch data, sync records, and execute functions across your entire tech stack.</p>
+                                    
+                                    <!-- Features -->
+                                    <div class="space-y-3 mb-6">
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                                            <span>Authentication handling</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                                            <span>Error handling & retries</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                                            <span>Real-time data sync</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tag -->
+                                    <div class="inline-flex items-center bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2">
+                                        <span class="text-blue-300 text-sm font-medium">Direct Integration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- n8n Workflows -->
+                        <div class="group relative">
+                            <!-- Hover Glow Effect -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
+                            
+                            <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 h-full group-hover:border-orange-500/50 transition-all duration-500">
+                                <!-- Icon with n8n Logo -->
+                                <div class="relative mb-8">
+                                    <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-2xl shadow-orange-500/25  bg-gradient-to-r from-orange-600 to-orange-700">
+                                        <img src="assets/images/n8n-color.svg" alt="n8n" class="w-12 h-12">
+                                    </div>
+                                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                                        <i data-feather="settings" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div class="text-center">
+                                    <h4 class="text-2xl font-bold text-white mb-4">n8n Workflows</h4>
+                                    <p class="text-gray-300 mb-6 leading-relaxed">Trigger sophisticated multi-step workflows with conditional logic, data transformation, and cross-platform automation.</p>
+                                    
+                                    <!-- Features -->
+                                    <div class="space-y-3 mb-6">
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                                            <span>1000+ pre-built nodes</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                                            <span>Visual workflow builder</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                                            <span>Free community hosting</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tag -->
+                                    <div class="inline-flex items-center bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2">
+                                        <span class="text-orange-300 text-sm font-medium">Complex Automation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Webhooks -->
+                        <div class="group relative">
+                            <!-- Hover Glow Effect -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-violet-600 rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
+                            
+                            <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 h-full group-hover:border-purple-500/50 transition-all duration-500">
+                                <!-- Icon -->
+                                <div class="relative mb-8">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl shadow-purple-500/25">
+                                        <i data-feather="send" class="w-10 h-10 text-white"></i>
+                                    </div>
+                                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                                        <i data-feather="zap" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div class="text-center">
+                                    <h4 class="text-2xl font-bold text-white mb-4">Webhook Events</h4>
+                                    <p class="text-gray-300 mb-6 leading-relaxed">Instant real-time notifications to external systems. Perfect for event-driven architecture and immediate response triggers.</p>
+                                    
+                                    <!-- Features -->
+                                    <div class="space-y-3 mb-6">
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                                            <span>Real-time delivery</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                                            <span>Custom payload data</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-gray-400">
+                                            <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                                            <span>Delivery confirmation</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tag -->
+                                    <div class="inline-flex items-center bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2">
+                                        <span class="text-purple-300 text-sm font-medium">Event-Driven</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                
+                <!-- Real-World Examples - Timeline Layout -->
+                <div class="max-w-5xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white text-center mb-12">Real-World Examples</h3>
+                    
+                    <!-- Timeline Container -->
+                    <div class="relative">
+                        <!-- Central Timeline Line -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 rounded-full"></div>
+                        
+                        <!-- Timeline Items -->
+                        <div class="space-y-12">
+                            <!-- Left Side Item -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-gradient-to-l from-blue-900/40 to-cyan-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-300">
+                                        <div class="flex items-center justify-end mb-3">
+                                            <span class="text-white font-bold mr-3">Support Tickets</span>
+                                            <i data-feather="file-text" class="w-6 h-6 text-blue-400"></i>
+                                        </div>
+                                        <p class="text-gray-300 text-sm">Automatically create and route support tickets based on customer inquiries, with intelligent categorization and priority assignment.</p>
+                                    </div>
+                                </div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center relative z-10 shadow-lg shadow-blue-500/25">
+                                    <span class="text-white font-bold text-sm">1</span>
+                                </div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+                            
+                            <!-- Right Side Item -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center relative z-10 shadow-lg shadow-green-500/25">
+                                    <span class="text-white font-bold text-sm">2</span>
+                                </div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-gradient-to-r from-green-900/40 to-emerald-900/40 backdrop-blur-sm border border-green-500/30 rounded-2xl p-6 hover:border-green-400/50 transition-all duration-300">
+                                        <div class="flex items-center mb-3">
+                                            <i data-feather="database" class="w-6 h-6 text-green-400 mr-3"></i>
+                                            <span class="text-white font-bold">CRM Updates</span>
+                                        </div>
+                                        <p class="text-gray-300 text-sm">Seamlessly update customer records, add notes, and sync contact information across your CRM system in real-time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Left Side Item -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-gradient-to-l from-orange-900/40 to-red-900/40 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-6 hover:border-orange-400/50 transition-all duration-300">
+                                        <div class="flex items-center justify-end mb-3">
+                                            <span class="text-white font-bold mr-3">Team Notifications</span>
+                                            <i data-feather="bell" class="w-6 h-6 text-orange-400"></i>
+                                        </div>
+                                        <p class="text-gray-300 text-sm">Send instant notifications to team channels when specific triggers occur, keeping everyone informed and aligned.</p>
+                                    </div>
+                                </div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center relative z-10 shadow-lg shadow-orange-500/25">
+                                    <span class="text-white font-bold text-sm">3</span>
+                                </div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+                            
+                            <!-- Right Side Item -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full flex items-center justify-center relative z-10 shadow-lg shadow-purple-500/25">
+                                    <span class="text-white font-bold text-sm">4</span>
+                                </div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-gradient-to-r from-purple-900/40 to-violet-900/40 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 hover:border-purple-400/50 transition-all duration-300">
+                                        <div class="flex items-center mb-3">
+                                            <i data-feather="mail" class="w-6 h-6 text-purple-400 mr-3"></i>
+                                            <span class="text-white font-bold">Email Campaigns</span>
+                                        </div>
+                                        <p class="text-gray-300 text-sm">Trigger personalized email sequences based on customer behavior and conversation context for maximum engagement.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Center Final Item -->
+                            <div class="flex justify-center">
+                                <div class="max-w-md">
+                                    <div class="bg-gradient-to-br from-indigo-900/40 to-pink-900/40 backdrop-blur-sm border border-indigo-500/30 rounded-2xl p-6 text-center hover:border-indigo-400/50 transition-all duration-300">
+                                        <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i data-feather="zap" class="w-6 h-6 text-white"></i>
+                                        </div>
+                                        <h4 class="text-white font-bold mb-3">Complex Workflows</h4>
+                                        <p class="text-gray-300 text-sm">Chain multiple actions together for sophisticated business process automation that adapts to your unique requirements.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="py-20 relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-indigo-900/20 to-purple-900/20"></div>
+            <div class="container mx-auto px-6 relative">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                        Ready to Deploy Your AI Agents?
+                    </h2>
+                    <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                        Start with customer-facing agents or internal operations - deploy intelligent AI that understands your business in minutes.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                        <a href="pricing" class="inline-flex items-center justify-center py-4 px-8 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-900/40">
+                            Deploy Your First Agent
+                            <i data-feather="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                        <a href="schedule-demo.html" class="inline-flex items-center justify-center py-4 px-8 bg-transparent border border-slate-600 hover:border-slate-500 text-white font-semibold rounded-lg transition-all duration-300">
+                            Schedule a Demo
+                            <i data-feather="calendar" class="w-5 h-5 ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-green-400 mb-1">5min</div>
+                            <div class="text-sm text-slate-400">Setup Time</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-400 mb-1">24/7</div>
+                            <div class="text-sm text-slate-400">Always Available</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-purple-400 mb-1">40+</div>
+                            <div class="text-sm text-slate-400">Languages</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-amber-400 mb-1">∞</div>
+                            <div class="text-sm text-slate-400">Conversations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @@include("partials/footer/footer.html")
+
+        @@include("partials/fineguide.html")
+
+        
+        <!-- @@include("partials/footer/footer-scripts.html") -->
+        <!-- JAVASCRIPT S -->
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        @@include("partials/script-file.html")
+         
+    </body>
+</html>
