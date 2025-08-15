@@ -89,6 +89,35 @@ gulp.task('browsersync', function (callback) {
         server: {
             baseDir: [paths.dist.base.dir, paths.src.base.dir, paths.base.base.dir]
         },
+        middleware: [
+            function (req, res, next) {
+                // Handle URLs without .html extension
+                if (req.url.indexOf('.') === -1 && req.url !== '/') {
+                    // Try to serve the .html version
+                    const originalUrl = req.url;
+                    req.url = req.url + '.html';
+                    
+                    // Check if the .html file exists by trying to serve it
+                    const fs = require('fs');
+                    const path = require('path');
+                    
+                    // Check in dist directory first, then src
+                    const distPath = path.join(paths.dist.base.dir, req.url);
+                    const srcPath = path.join(paths.src.base.dir, req.url);
+                    
+                    if (fs.existsSync(distPath) || fs.existsSync(srcPath)) {
+                        // File exists, continue with the .html extension
+                        next();
+                    } else {
+                        // File doesn't exist, restore original URL and continue
+                        req.url = originalUrl;
+                        next();
+                    }
+                } else {
+                    next();
+                }
+            }
+        ]
     });
     callback();
 });

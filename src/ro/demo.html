@@ -1,9 +1,9 @@
-@@include("partials/main.html")
+@@include("../partials/main.html")
     <head>
-        @@include("partials/title-meta.html", {"title": "Fineguide | Demo Preview", "description": "Preview how Fineguide AI agents will look and function on your website with our interactive demo tool."})
+        @@include("../partials/title-meta.html", {"title": "Fineguide | Demo Preview", "description": "Preview how Fineguide AI agents will look and function on your website with our interactive demo tool."})
 
         <!-- Css -->
-        @@include("partials/head-css.html")
+        @@include("../partials/head-css.html")
         <style>
             .iframe-container {
                 /* width: 100%; */
@@ -43,9 +43,9 @@
         </style>
     </head>
     
-    @@include("partials/body.html")
+    @@include("../partials/body.html")
         
-        @@include("partials/navbar/nav.html")
+        @@include("../partials/navbar/nav.html")
         
         <!-- Start Demo Section -->
         <section class="relative lg:pt-24 pt-16 pb-0">
@@ -151,10 +151,10 @@
         </section><!--end section-->
         <!-- End Demo Section -->
 
-        @@include("partials/footer/footer.html")
+        @@include("../partials/footer/footer.html")
 
         <!-- JAVASCRIPTS -->
-        @@include("partials/script-file.html")
+        @@include("../partials/script-file.html")
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const demoForm = document.getElementById('demoForm');

@@ -1,0 +1,167 @@
+@@include("../partials/main.html")
+    <head>
+        @@include("../partials/title-meta.html", {"title": "Fineguide | Contacts", "description": "Fineguide.ai delivers enterprise-grade AI agents that understand complex customer inquiries, provide accurate responses and drive measurable outcomes."})
+
+        <!-- Css -->
+        @@include("../partials/head-css.html")
+    </head>
+    
+    @@include("../partials/body.html")
+        
+        @@include("../partials/navbar/nav.html")
+        <!-- Start Section-->
+        <section class="relative lg:py-24 py-16">
+            <div class="container">
+                <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+                    <div class="lg:col-span-7 md:col-span-6">
+                        <img src="/assets/images/contact.svg" alt="">
+                    </div>
+
+                    <div class="lg:col-span-5 md:col-span-6">
+                        <div class="lg:ms-5">
+                            <div class="bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-700 p-6">
+                                <h3 class="mb-6 text-2xl leading-normal font-semibold">Get in touch !</h3>
+
+                                <form method="post" name="myForm" id="myForm">
+                                    <p class="mb-0" id="error-msg"></p>
+                                    <div id="simple-msg"></div>
+                                    <div class="grid lg:grid-cols-12 lg:gap-6">
+                                        <div class="lg:col-span-6 mb-5">
+                                            <label for="name" class="font-semibold">Your Name:</label>
+                                            <input name="name" id="name" type="text" class="form-input w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-amber-400 dark:border-gray-800 dark:focus:border-amber-400 focus:ring-0 mt-2" placeholder="Name :">
+                                        </div>
+        
+                                        <div class="lg:col-span-6 mb-5">
+                                            <label for="email" class="font-semibold">Your Email:</label>
+                                            <input name="email" id="email" type="email" class="form-input w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-amber-400 dark:border-gray-800 dark:focus:border-amber-400 focus:ring-0 mt-2" placeholder="Email :">
+                                        </div>
+                                    </div>
+    
+                                    <div class="grid grid-cols-1">
+    
+                                        <div class="mb-5">
+                                            <label for="comments" class="font-semibold">Message:</label>
+                                            <textarea name="comments" id="comments" class="form-input w-full py-2 px-3 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-amber-400 dark:border-gray-800 dark:focus:border-amber-400 focus:ring-0 mt-2 h-40" placeholder="Message :"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" name="send" class="py-[6px] px-4 inline-block items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-purple-700 hover:bg-violet-700 border border-purple-700 hover:border-violet-700 text-white font-semibold">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end container-->
+            
+        </section><!--end section-->
+        <!-- End Section-->
+
+        @@include("../partials/footer/footer.html")
+
+        @@include("../partials/fineguide.html")
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-amber-400 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
+        <!-- Back to top -->
+
+        <!-- JAVASCRIPTS -->
+        @@include("../partials/script-file.html")
+        <!-- JAVASCRIPTS -->
+
+        <script>
+            document.getElementById("myForm").addEventListener("submit", validateForm);
+            // Function to validate the form
+            function validateForm(event) {
+                event.preventDefault();
+                var name = document.forms["myForm"]["name"].value;
+                var email = document.forms["myForm"]["email"].value;
+                var comments = document.forms["myForm"]["comments"].value;
+                var errorMsg = document.getElementById("error-msg");
+                
+                errorMsg.innerHTML = "";
+                
+                if (name == "") {
+                    errorMsg.innerHTML = "Name is required";
+                    return false;
+                }
+                
+                if (email == "") {
+                    errorMsg.innerHTML = "Email is required";
+                    return false;
+                } else if (!isValidEmail(email)) {
+                    errorMsg.innerHTML = "Please enter a valid email address";
+                    return false;
+                }
+                
+                if (comments == "") {
+                    errorMsg.innerHTML = "Message is required";
+                    return false;
+                }
+                
+                // If validation passes, submit the form data to the API
+                submitToAPI(name, email, comments);
+                return false; // Prevent the default form submission
+            }
+            
+            // Function to validate email format
+            function isValidEmail(email) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Function to submit data to the Fineguide API
+            function submitToAPI(name, email, message) {
+                // Show loading state
+                const submitBtn = document.getElementById('submit');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Define session ID and fingerprint
+                const fingerprint = 'fg-website-2234123457';
+
+                // Prepare the API URL and data
+                const url = 'https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/fc103e0a-b3d8-4920-96d0-492169ce7d06/tickets';
+                const data = {
+                    "customerEmail": email,
+                    "customerName": name,
+                    "customerMessage": message
+                };
+                
+                // Send the POST request
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-fingerprint': fingerprint
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to create ticket');
+                    }
+                    return response.json();
+                })
+                .then(ticketData => {
+                    // Show success message
+                    document.getElementById('simple-msg').innerHTML = 
+                        '<div class="p-3 bg-green-50 text-green-800 rounded mb-4">Thank you! Your message has been sent successfully.</div>';
+                    
+                    // Reset the form
+                    document.getElementById('myForm').reset();
+                })
+                .catch(error => {
+                    // Show error message
+                    document.getElementById('simple-msg').innerHTML = 
+                        '<div class="p-3 bg-red-50 text-red-800 rounded mb-4">Sorry, there was an error sending your message. Please try again later.</div>';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+            }
+        </script>
+    </body>
+</html>
