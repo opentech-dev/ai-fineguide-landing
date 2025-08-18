@@ -603,7 +603,12 @@
         @@include("partials/switcher.html")
     
         <!-- JAVASCRIPTS -->
+        <script src="/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
         @@include("partials/script-file.html")
+        <script>
+            feather.replace();
+        </script>
         <!-- JAVASCRIPTS -->
 
         <script>
@@ -656,8 +661,9 @@
                 }
                 
                 // If validation passes, submit the form data to the API
-                var enterpriseMessage = `Enterprise Inquiry from ${company} (${industry}):\n\nContact: ${name}\nEmail: ${email}\n\nSecurity Requirements & Use Case:\n${comments}`;
+                var enterpriseMessage = `Enterprise Inquiry - ${industry}\n\nCompany: ${company}\nContact: ${name}\nEmail: ${email}\n\nSecurity Requirements & Use Case:\n${comments}`;
                 submitToAPI(name, email, enterpriseMessage);
+                return false;
             }
             
             // Function to validate email format
@@ -671,13 +677,9 @@
                 // Show loading state
                 const submitBtn = document.getElementById('submit');
                 const originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<span>Sending...</span><i data-feather="loader" class="w-5 h-5 animate-spin"></i>';
+                submitBtn.innerHTML = '<span class="flex items-center justify-center"><i data-feather="loader" class="w-4 h-4 mr-2 animate-spin"></i>Sending...</span>';
                 submitBtn.disabled = true;
-                
-                // Re-initialize feather icons for the new loader icon
-                if (typeof feather !== 'undefined') {
-                    feather.replace();
-                }
+                feather.replace();
                 
                 // Define session ID and fingerprint
                 const fingerprint = 'fg-website-enterprise-2234123457';
@@ -708,42 +710,27 @@
                 .then(ticketData => {
                     // Show success message
                     document.getElementById('simple-msg').innerHTML = 
-                        '<div class="p-4 bg-green-900/30 border border-green-500/30 text-green-300 rounded-xl mb-6"><div class="flex items-center space-x-2"><i data-feather="check-circle" class="w-5 h-5"></i><span class="font-semibold">Enterprise Inquiry Submitted Successfully!</span></div><div class="text-sm text-green-200 mt-2">Thank you for your interest in Fineguide Enterprise. Our team will review your requirements and contact you within 24-48 hours to discuss your secure AI deployment.</div></div>';
+                        '<div class="p-4 bg-green-900/40 border border-green-500/30 text-green-300 rounded-lg mb-4 flex items-center"><i data-feather="check-circle" class="w-5 h-5 mr-3"></i><div><div class="font-semibold">Enterprise Inquiry Submitted Successfully!</div><div class="text-sm text-green-200 mt-1">Our team will review your requirements and contact you within 24-48 hours.</div></div></div>';
+                    feather.replace();
                     
                     // Reset the form
                     document.getElementById('enterpriseForm').reset();
-                    
-                    // Re-initialize feather icons for the success message
-                    if (typeof feather !== 'undefined') {
-                        feather.replace();
-                    }
                 })
                 .catch(error => {
                     // Show error message
                     document.getElementById('simple-msg').innerHTML = 
-                        '<div class="p-4 bg-red-900/30 border border-red-500/30 text-red-300 rounded-xl mb-6"><div class="flex items-center space-x-2"><i data-feather="alert-circle" class="w-5 h-5"></i><span class="font-semibold">Error Submitting Enterprise Inquiry</span></div><div class="text-sm text-red-200 mt-2">Sorry, there was an error processing your enterprise inquiry. Please try again later or contact us directly at <a href="mailto:enterprise@fineguide.ai" class="text-red-300 hover:text-red-200 underline">enterprise@fineguide.ai</a>.</div></div>';
+                        '<div class="p-4 bg-red-900/40 border border-red-500/30 text-red-300 rounded-lg mb-4 flex items-center"><i data-feather="alert-circle" class="w-5 h-5 mr-3"></i><div><div class="font-semibold">Error Submitting Enterprise Inquiry</div><div class="text-sm text-red-200 mt-1">Please try again or contact us at <a href="mailto:enterprise@fineguide.ai" class="text-red-300 hover:text-red-200 underline">enterprise@fineguide.ai</a>.</div></div></div>';
+                    feather.replace();
                     console.error('Enterprise form error:', error);
-                    
-                    // Re-initialize feather icons for the error message
-                    if (typeof feather !== 'undefined') {
-                        feather.replace();
-                    }
                 })
                 .finally(() => {
                     // Reset button state
-                    submitBtn.innerHTML = '<span>Request Enterprise Consultation</span><i data-feather="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"></i>';
+                    submitBtn.innerHTML = originalBtnText;
                     submitBtn.disabled = false;
-                    
-                    // Re-initialize feather icons for the reset button
-                    if (typeof feather !== 'undefined') {
-                        feather.replace();
-                    }
+                    feather.replace();
                 });
             }
         </script>
-        <script src="assets/libs/tobii/js/tobii.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        @@include("partials/script-file.html")
     </body>
     </html>
     
