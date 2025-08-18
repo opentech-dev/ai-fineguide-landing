@@ -20,17 +20,33 @@ RUN yarn gulp build
 # Production stage with Apache and PHP
 FROM php:8.1-apache
 
-# Install required PHP extensions for WordPress
+# Install required PHP extensions for WordPress and GeoIP
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
     libzip-dev \
+    libmaxminddb0 \
+    libmaxminddb-dev \
+    libapache2-mod-geoip \
+    wget \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd mysqli zip exif
 
+# Download GeoIP database
+RUN mkdir -p /usr/share/GeoIP && \
+    wget -O /usr/share/GeoIP/GeoIP.dat.gz "https://dl.miyuru.lk/geoip/maxmind/country/maxmind.dat.gz" && \
+    gunzip -f /usr/share/GeoIP/GeoIP.dat.gz
+
 # Enable Apache modules
-RUN a2enmod rewrite headers
+RUN a2enmod rewrite headers geoip
+
+# Configure GeoIP in Apache configuration
+RUN echo '\n\
+<IfModule mod_geoip.c>\n\
+    GeoIPEnable On\n\
+    GeoIPDBFile /usr/share/GeoIP/GeoIP.dat\n\
+</IfModule>' >> /etc/apache2/apache2.conf
 
 # Copy built static files from build stage to Apache document root
 COPY --from=build /app/dist /var/www/html/
@@ -38,10 +54,16 @@ COPY --from=build /app/dist /var/www/html/
 # Copy WordPress files to the blog directory
 COPY blog/ /var/www/html/_blog/
 
-# Create .htaccess file in the root directory to handle HTML files without extensions
+# Create .htaccess file in the root directory with GeoIP redirect and HTML extension handling
 RUN echo '<IfModule mod_rewrite.c>\n\
 RewriteEngine On\n\
 RewriteBase /\n\
+\n\
+# GeoIP redirect for Moldova users to Romanian version (homepage only)\n\
+RewriteCond %{REQUEST_URI} ^/$\n\
+RewriteCond %{ENV:GEOIP_COUNTRY_CODE} ^MD$\n\
+RewriteRule ^(.*)$ /ro/ [R=302,L]\n\
+\n\
 # If the request is not for a file that exists\n\
 RewriteCond %{REQUEST_FILENAME} !-f\n\
 # And not for a directory that exists\n\
