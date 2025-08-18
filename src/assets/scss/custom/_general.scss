@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .carousel-container {
     overflow: hidden;
     width: 100%;
-    max-width: 100vw;
+    max-width: 88vw;
     position: relative;
     mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
@@ -159,6 +159,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
     
     .animate-scroll-continuous {
-        animation-duration: 60s;
+        animation-duration: 30s;
     }
 }
