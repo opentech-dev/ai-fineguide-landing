@@ -507,22 +507,16 @@
         </section>
 
         @@include("partials/footer/footer.html")
+        @@include("partials/fineguide.html")
 
-        <!-- Back to top -->
-        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-purple-700 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
-        <!-- Back to top -->
-
-        <!-- JAVASCRIPTS -->
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/plugins.init.js"></script>
-        <script src="assets/js/app.js"></script>
-        
+        <!-- JAVASCRIPT S -->
+        <script src="/assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="/assets/libs/feather-icons/feather.min.js"></script>
+        @@include("partials/script-file.html")
         <script>
-            // Initialize Feather icons
-            document.addEventListener('DOMContentLoaded', function() {
-                feather.replace();
-            });
+            feather.replace();
         </script>
-        <!-- END JAVASCRIPTS -->
+        <!-- JAVASCRIPTS -->
+         
     </body>
 </html>
