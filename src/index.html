@@ -204,13 +204,14 @@
                     <p class="text-sm text-gray-400 mb-8">Trusted by 500+ growing companies</p>
                     
                     <!-- Logo Carousel -->
-                    <div class="relative carousel-container overflow-hidden">
+                    <div class="relative carousel-container overflow-hidden w-full">
                         <!-- Gradient Fade Edges -->
                         <div class="absolute left-0 top-0 w-8 md:w-20 h-full bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
                         <div class="absolute right-0 top-0 w-8 md:w-20 h-full bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
                         
                         <!-- Scrolling Container -->
-                        <div class="flex items-center gap-6 md:gap-12 lg:gap-16 animate-scroll-continuous">
+                        <div class="animate-scroll-continuous">
+                            <div class="flex items-center gap-6 md:gap-12 lg:gap-16">
                             <!-- First Set -->
                             <div class="flex items-center justify-center w-24 sm:w-32 md:w-40 lg:w-48 h-16 sm:h-18 md:h-20 lg:h-24 hover:bg-white/5 rounded-xl transition-all duration-300 group flex-shrink-0">
                                 <img src="/assets/images/companies/technovator.png" class="max-h-10 sm:max-h-12 md:max-h-16 lg:max-h-20 max-w-full object-contain opacity-60 group-hover:opacity-90 transition-opacity duration-300 filter brightness-0 invert" alt="Technovator">
@@ -262,39 +263,11 @@
                             <div class="flex items-center justify-center w-28 sm:w-36 md:w-44 lg:w-52 h-18 sm:h-20 md:h-22 lg:h-26 hover:bg-white/5 rounded-xl transition-all duration-300 group flex-shrink-0">
                                 <img src="/assets/images/companies/moving_pictures.png" class="max-h-12 sm:max-h-14 md:max-h-18 lg:max-h-22 max-w-full object-contain opacity-60 group-hover:opacity-90 transition-opacity duration-300 filter brightness-0 invert" alt="Moving Pictures">
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- CSS Animation for Carousel -->
-            <style>
-                @keyframes scroll-continuous {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(calc(-100% / 2));
-                    }
-                }
-                
-                .animate-scroll-continuous {
-                    animation: scroll-continuous 80s linear infinite;
-                    will-change: transform;
-                    width: fit-content;
-                }
-                
-                .animate-scroll-continuous:hover {
-                    animation-play-state: paused;
-                }
-                
-                /* Ensure seamless loop by making sure the container is exactly twice the visible content */
-                .carousel-container {
-                    overflow: hidden;
-                    mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
-                    -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
-                }
-            </style>
 
             <!-- Problem/Solution Section -->
             <div class="container relative py-20">
