@@ -13,6 +13,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     @apply font-figtree;
 }
 
+a {
+    cursor: pointer;
+}
+
 .fineguide-logo-bg {
     background-image: url(/assets/images/features/fg-logo-faded.png);
     background-size: 690px;
