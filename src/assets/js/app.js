@@ -137,13 +137,20 @@
      var elements = document.getElementById("navigation").getElementsByTagName("a");
      for (var i = 0, len = elements.length; i < len; i++) {
          elements[i].onclick = function (elem) {
-             if (elem.target.getAttribute("href") === "javascript:void(0)") {
-                 var submenu = elem.target.nextElementSibling.nextElementSibling;
-                 submenu.classList.toggle('open');
-             }
-         }
-     }
- }
+            if (elem.target.getAttribute("href") === "javascript:void(0)") {
+                elem.preventDefault();
+                var parentLi = elem.target.closest('li.has-submenu');
+                if (parentLi) {
+                    var submenu = parentLi.querySelector('.submenu');
+                    if (submenu) {
+                        submenu.classList.toggle('open');
+                        parentLi.classList.toggle('active');
+                    }
+                }
+            }
+        }
+    }
+}
  /*********************/
  /*   Menu Sticky     */
  /*********************/
