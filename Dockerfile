@@ -59,9 +59,9 @@ RUN echo '<IfModule mod_rewrite.c>\n\
 RewriteEngine On\n\
 RewriteBase /\n\
 \n\
-# GeoIP redirect for Moldova users to Romanian version (homepage only)\n\
+# Cloudflare GeoIP redirect for Moldova users to Romanian version (homepage only)\n\
 RewriteCond %{REQUEST_URI} ^/$\n\
-RewriteCond %{ENV:GEOIP_COUNTRY_CODE} ^MD$\n\
+RewriteCond %{HTTP:CF-IPCountry} ^MD$ [NC]\n\
 RewriteRule ^(.*)$ /ro/ [R=302,L]\n\
 \n\
 # If the request is not for a file that exists\n\
