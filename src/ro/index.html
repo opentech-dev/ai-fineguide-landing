@@ -265,35 +265,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- CSS Animation for Carousel -->
-            <style>
-                @keyframes scroll-continuous {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(calc(-100% / 2));
-                    }
-                }
-                
-                .animate-scroll-continuous {
-                    animation: scroll-continuous 80s linear infinite;
-                    will-change: transform;
-                    width: fit-content;
-                }
-                
-                .animate-scroll-continuous:hover {
-                    animation-play-state: paused;
-                }
-                
-                /* Ensure seamless loop by making sure the container is exactly twice the visible content */
-                .carousel-container {
-                    overflow: hidden;
-                    mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
-                    -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
-                }
-            </style>
 
             <!-- Problem/Solution Section -->
             <div class="container relative py-20">
