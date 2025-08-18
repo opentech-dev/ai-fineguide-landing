@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://fineguide.ai/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /build/
+
+# Allow important pages
+Allow: /
+Allow: /pricing
+Allow: /enterprise
+Allow: /contact
+Allow: /schedule-demo
+Allow: /lead-generation
+Allow: /ai-agents
+Allow: /ai-human-support
+Allow: /voice-qa
+Allow: /automation
+Allow: /analytics
+Allow: /ro/
+Allow: /blog/
+
+# Crawl delay (optional)
+Crawl-delay: 1
