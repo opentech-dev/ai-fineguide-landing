@@ -513,6 +513,9 @@
         &.has-submenu.open > a {
           @apply text-amber-400;
         }
+        &.has-submenu.active > .menu-arrow {
+          @apply ltr:rotate-[135deg] rtl:-rotate-[135deg];
+        }
       }
     }
     .menu-extras {
