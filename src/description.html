@@ -1,0 +1,712 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Functionality Description</title><style>
+    /* cspell:disable-file */
+    /* webkit printing magic: print all background colors */
+    html {
+        -webkit-print-color-adjust: exact;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    @media only screen {
+        body {
+            margin: 2em auto;
+            max-width: 900px;
+            color: rgb(55, 53, 47);
+        }
+    }
+    
+    body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+    
+    a,
+    a.visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+    
+    .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+    }
+    
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+    }
+    
+    .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+    }
+    
+    .callout {
+        border-radius: 3px;
+        padding: 1rem;
+    }
+    
+    figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+    }
+    
+    figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+    }
+    
+    mark {
+        background-color: transparent;
+    }
+    
+    .indented {
+        padding-left: 1.5em;
+    }
+    
+    hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    }
+    
+    img {
+        max-width: 100%;
+    }
+    
+    @media only print {
+        img {
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    }
+    
+    @page {
+        margin: 1in;
+    }
+    
+    .collection-content {
+        font-size: 0.875rem;
+    }
+    
+    .collection-content td {
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    
+    .column-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .column {
+        padding: 0 1em;
+    }
+    
+    .column:first-child {
+        padding-left: 0;
+    }
+    
+    .column:last-child {
+        padding-right: 0;
+    }
+    
+    .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+    }
+    
+    .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+    }
+    
+    .table_of_contents-indent-2 {
+        margin-left: 3rem;
+    }
+    
+    .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+    }
+    
+    .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+    }
+    
+    table {
+        border-left: none;
+        border-right: none;
+    }
+    
+    th,
+    td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+    }
+    
+    th {
+        color: rgba(55, 53, 47, 0.6);
+    }
+    
+    ol,
+    ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+    
+    li > ol:first-child,
+    li > ul:first-child {
+        margin-block-start: 0.6em;
+    }
+    
+    ul > li {
+        list-style: disc;
+    }
+    
+    ul.to-do-list {
+        padding-inline-start: 0;
+    }
+    
+    ul.to-do-list > li {
+        list-style: none;
+    }
+    
+    .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+    }
+    
+    ul.toggle > li {
+        list-style: none;
+    }
+    
+    ul {
+        padding-inline-start: 1.7em;
+    }
+    
+    ul > li {
+        padding-left: 0.1em;
+    }
+    
+    ol {
+        padding-inline-start: 1.6em;
+    }
+    
+    ol > li {
+        padding-left: 0.2em;
+    }
+    
+    .mono ol {
+        padding-inline-start: 2em;
+    }
+    
+    .mono ol > li {
+        text-indent: -0.4em;
+    }
+    
+    .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+    }
+    
+    /* Indent toggle children */
+    .toggle > li > details {
+        padding-left: 1.7em;
+    }
+    
+    .toggle > li > details > summary {
+        margin-left: -1.1em;
+    }
+    
+    .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+    }
+    
+    .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+    }
+    
+    .page-description {
+        margin-bottom: 2em;
+    }
+    
+    .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+    }
+    .simple-table td {
+        height: 29px;
+        min-width: 120px;
+    }
+    
+    .simple-table th {
+        height: 29px;
+        min-width: 120px;
+    }
+    
+    .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+    }
+    .simple-table-header {
+        font-weight: 500;
+    }
+    
+    time {
+        opacity: 0.5;
+    }
+    
+    .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
+    
+    img.icon {
+        border-radius: 3px;
+    }
+    
+    .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+    }
+    
+    .user-icon-inner {
+        font-size: 0.8em;
+    }
+    
+    .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+    }
+    
+    .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+    }
+    
+    .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+    }
+    
+    .page-header-icon img {
+        border-radius: 3px;
+    }
+    
+    .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+    }
+    
+    p > .user {
+        opacity: 0.5;
+    }
+    
+    td > .user,
+    td > time {
+        white-space: nowrap;
+    }
+    
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
+    
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+    
+    .code,
+    code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+    }
+    
+    code {
+        color: #eb5757;
+    }
+    
+    .code {
+        padding: 1.5em 1em;
+    }
+    
+    .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+    }
+    
+    blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+    }
+    
+    .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+    }
+    
+    .bookmark-text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+    
+    .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+    }
+    
+    .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+    }
+    
+    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .highlight-default {
+        color: rgba(50, 48, 44, 1);
+    }
+    .highlight-gray {
+        color: rgba(115, 114, 110, 1);
+        fill: rgba(115, 114, 110, 1);
+    }
+    .highlight-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .highlight-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .highlight-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .highlight-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .highlight-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .highlight-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .highlight-red {
+        color: rgba(205, 60, 58, 1);
+        fill: rgba(205, 60, 58, 1);
+    }
+    .highlight-default_background {
+        color: rgba(50, 48, 44, 1);
+    }
+    .highlight-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .highlight-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .highlight-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .highlight-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .highlight-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .highlight-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .highlight-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .highlight-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .highlight-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .block-color-default {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray {
+        color: rgba(115, 114, 110, 1);
+        fill: rgba(115, 114, 110, 1);
+    }
+    .block-color-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .block-color-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .block-color-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .block-color-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .block-color-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .block-color-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .block-color-red {
+        color: rgba(205, 60, 58, 1);
+        fill: rgba(205, 60, 58, 1);
+    }
+    .block-color-default_background {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .block-color-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .block-color-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .block-color-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .block-color-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .block-color-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .block-color-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .block-color-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .block-color-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+    .select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+    .select-value-color-brown { background-color: rgba(142, 58, 1, 0.141); }
+    .select-value-color-orange { background-color: rgba(213, 96, 0, 0.188); }
+    .select-value-color-yellow { background-color: rgba(209, 155, 0, 0.238); }
+    .select-value-color-green { background-color: rgba(1, 104, 42, 0.145); }
+    .select-value-color-blue { background-color: rgba(0, 108, 191, 0.156); }
+    .select-value-color-purple { background-color: rgba(104, 1, 184, 0.125); }
+    .select-value-color-pink { background-color: rgba(204, 1, 88, 0.137); }
+    .select-value-color-red { background-color: rgba(228, 26, 0, 0.148); }
+    
+    .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+    
+    .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+    
+    .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+        
+    </style></head><body><article id="2003e987-04e9-8007-95e3-c6c109fef064" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_tim_peake_spacewalk.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/document_red.svg"/></div><h1 class="page-title">Functionality Description</h1><p class="page-description"></p></header><div class="page-body"><nav id="2463e987-04e9-806d-8360-ccd4af5a03c5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2023e987-04e9-80d2-ba57-fb2f567c4720">Fineguide Functionality Description</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-80dc-bef2-fa37d0f6b8f7"><br/>Conversational Assistants</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-80ee-b68f-e8bb8ff3592b">Assistant knowledge base configuration</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-8063-ad86-de1d7e036e47">Engine features</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-8088-ac11-c0efa9399184">Customizable chat UI</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-8067-85ae-f74b00c97803">Advances user tracking (in-context generation)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-804a-b29a-e2737db0c9cc">External integrations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-8093-ac27-dcffb22b3169">Integrated call-center software</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-80b9-89bf-c249492906c9">Integrated minimal CRM </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-800e-971a-d4e7a96b7845">Proactive interaction </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-80ad-baf6-fcb5c6208ae3">Brand customisation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-80fb-b190-cfe3121bd567">Voice QA</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-804e-9438-e253b69233c1">Advanced analytics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-80a4-b38b-c1aafa765540">Business workflow automation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2023e987-04e9-8054-9ecf-f0fb6fae04f0">Compliance, confidentiality and handling of sensitive data</a></div></nav><h1 id="2023e987-04e9-80d2-ba57-fb2f567c4720" class="">Fineguide Functionality Description</h1><p id="2023e987-04e9-8069-bdd1-e33dfbba8446" class=""><a href="http://fineguide.ai/">Fineguide.ai</a> is a platform that offers a full Ai Customer Support solution for businesses.<br/>This is an AI-driven platform that helps businesses integrate AI chat assistants into their websites for tasks like customer support and lead generation. It enables businesses to offer AI-powered customer service and support without needing to write any code.</p><h2 id="2023e987-04e9-80dc-bef2-fa37d0f6b8f7" class=""><br/>Conversational Assistants</h2><p id="2023e987-04e9-80d2-ab87-fbb5999144e4" class="">The conversational assistant is a AI that is connected to a communication channel that can interact with a user via that communication channel. Various communication channels are supported - via website text/audio, via various 3rd party messengers (fb, whatsapp, insta etc.)</p><ul id="2023e987-04e9-80c8-95fb-f916b8bae148" class="bulleted-list"><li style="list-style-type:disc">Can be placed you your website via a chat bubble.</li></ul><ul id="2023e987-04e9-8082-970f-d7a1173201dd" class="bulleted-list"><li style="list-style-type:disc">Can be connected via 3rd party messengers.<ul id="2023e987-04e9-8036-8f3c-eb02b3cece93" class="bulleted-list"><li style="list-style-type:circle">The list of 3rd party messengers includes all modern channels and messengers.</li></ul><ul id="2023e987-04e9-80c0-9fe0-d48b24ed2a07" class="bulleted-list"><li style="list-style-type:circle">Support for PBX for integration with GSM operators for audio calls.</li></ul><ul id="2023e987-04e9-80f6-a76e-d92ea843102d" class="bulleted-list"><li style="list-style-type:circle">Any new channel can be added on demand.</li></ul></li></ul><ul id="2023e987-04e9-804f-a719-d99b6510e6b6" class="bulleted-list"><li style="list-style-type:disc">Customizable UI, color, branding, icons, locations, messages etc.</li></ul><ul id="2023e987-04e9-8009-b3d6-eba80dcd042e" class="bulleted-list"><li style="list-style-type:disc">Configure the behavior of the assistant<ul id="2023e987-04e9-802d-901e-d478ed775905" class="bulleted-list"><li style="list-style-type:circle">Configure assistant role (customer support, sales etc.)</li></ul><ul id="2023e987-04e9-8011-834c-c0764f87fc16" class="bulleted-list"><li style="list-style-type:circle">Personality (manner of speaking, persuasiveness, verbosity)</li></ul><ul id="2023e987-04e9-80a5-8dff-c6601a9728c0" class="bulleted-list"><li style="list-style-type:circle">Follow up questions</li></ul><ul id="2023e987-04e9-80d1-a0d0-daa33160a8ed" class="bulleted-list"><li style="list-style-type:circle">Additional custom behaviour</li></ul></li></ul><ul id="2023e987-04e9-804f-aca1-f7d81c926507" class="bulleted-list"><li style="list-style-type:disc">Answers customers inquiries based on your data and instructions.</li></ul><ul id="2023e987-04e9-8003-a4af-d0b2d191315f" class="bulleted-list"><li style="list-style-type:disc">Automatically generates follow up suggestions.</li></ul><ul id="2023e987-04e9-806c-b6a2-fd8d910215c2" class="bulleted-list"><li style="list-style-type:disc">Allows to collect customer data (phone, email, locations + other customizable information).<ul id="2023e987-04e9-80f2-8a91-c37b2a5932d1" class="bulleted-list"><li style="list-style-type:circle">Contacts can be saved in the integrated database or synchronized with an external CRM.</li></ul></li></ul><ul id="2023e987-04e9-802d-8f65-d32544701f9b" class="bulleted-list"><li style="list-style-type:disc">Configurable via predefined system prompts + fully configurable system prompts.</li></ul><ul id="2023e987-04e9-8030-baee-dbb564731d77" class="bulleted-list"><li style="list-style-type:disc">Can support text and audio across various communication channels.</li></ul><ul id="2023e987-04e9-8099-9974-e5e340b6d3a2" class="bulleted-list"><li style="list-style-type:disc">Can be integrated with call-center to escalate the issues to a human agent.</li></ul><ul id="2023e987-04e9-803d-a91b-c442a1823682" class="bulleted-list"><li style="list-style-type:disc">Support for custom actions to integrate with complex flows (like user auth, store management etc.)</li></ul><ul id="2023e987-04e9-80b8-b9f7-cafdd18bdd3a" class="bulleted-list"><li style="list-style-type:disc">Creates tickets from menu or automatically from the conversations when it cannot solve a customer problem.</li></ul><ul id="2023e987-04e9-80dd-91fb-d4d5fbb11d47" class="bulleted-list"><li style="list-style-type:disc">Allow or restrict the conversation to assistant area of knowledge.</li></ul><ul id="2023e987-04e9-808e-aa02-edee59dfb1b8" class="bulleted-list"><li style="list-style-type:disc">Widget support (in-chat inserts youtube, stocks data, weather etc.)</li></ul><ul id="2023e987-04e9-803b-b7ad-e9be210ec0ae" class="bulleted-list"><li style="list-style-type:disc">Ability to provide the exact links on the source of information provided.</li></ul><ul id="2023e987-04e9-80e1-a716-cdf94d945a09" class="bulleted-list"><li style="list-style-type:disc">Advanced integrations with external CRMs for lead, contacts and pipeline management.<ul id="2023e987-04e9-805e-9c5e-f0991f4fcf5b" class="bulleted-list"><li style="list-style-type:circle">in CRMs like AmoCRM you can manage the leads, contacts, custom fields etc. can move the lead from one pipeline to another, can update its status.</li></ul></li></ul><ul id="2023e987-04e9-803e-9642-c522c8ef25c0" class="bulleted-list"><li style="list-style-type:disc">Notifications and webhooks. Ex: on new message, on status changed and other custom fields.</li></ul><p id="2023e987-04e9-806f-816e-d8d9f8fd00f4" class="">
+    </p><h2 id="2023e987-04e9-80ee-b68f-e8bb8ff3592b" class="">Assistant knowledge base configuration</h2><p id="2023e987-04e9-80d6-9fa0-ff3e02589beb" class="">Upload any number of documents, links to websites on just dynamically specify what websites to get the information from.</p><p id="2023e987-04e9-80ad-b514-d1911501b124" class="">The process of training the assistant as easy as possible.<br/></p><ul id="2023e987-04e9-80df-a58d-f5b11b75c5e7" class="bulleted-list"><li style="list-style-type:disc">Upload any document to the knowledge base</li></ul><ul id="2023e987-04e9-808b-ad4a-cfff7fb5c4e8" class="bulleted-list"><li style="list-style-type:disc">Add a link to your website to be indexed<br/>The indexing machine can read entire websites recursively, index your data and constantly keep your data in sync in order to have the latest information.</li></ul><ul id="2023e987-04e9-809e-9da6-d5fef33ec675" class="bulleted-list"><li style="list-style-type:disc">Add a link to your document (or google drive, dropbox or similar).</li></ul><ul id="2023e987-04e9-8092-9f98-c90286667a9c" class="bulleted-list"><li style="list-style-type:disc">Support for FAQ: question/answer style of training information input.</li></ul><ul id="2023e987-04e9-80ce-a962-eb20b2d06f24" class="bulleted-list"><li style="list-style-type:disc">Enable web search for grounding<br/>All of the searched can be limited to specific domains only if required.<ul id="2023e987-04e9-80a0-9dbc-d801e9011127" class="bulleted-list"><li style="list-style-type:circle">Integrated google search with document support.<br/>Our integrated search can read javascript enabled websites and documents.</li></ul><ul id="2023e987-04e9-8070-a4dc-c300ed6157cd" class="bulleted-list"><li style="list-style-type:circle">Perplexity search</li></ul><ul id="2023e987-04e9-8055-a083-e8b22f8e13df" class="bulleted-list"><li style="list-style-type:circle">OpenAI, Antropic or Gemini search via API.</li></ul></li></ul><p id="2023e987-04e9-803b-8e7d-cdf51202040f" class="">
+    </p><h2 id="2023e987-04e9-8063-ad86-de1d7e036e47" class="">Engine features</h2><p id="2023e987-04e9-8084-9b24-f0ae20db7c0b" class="">Supported AI Models<div class="indented"><p id="2023e987-04e9-8029-ae0e-c58f18f66c22" class="">The platform supports all major LLM providers: OpenAI, Google Gemini, Anthropic Claude.<br/>On demand integration with private Ollama or OpenRouter instances or other on-premise models.<br/></p></div></p><p id="2023e987-04e9-807f-8235-d7c9f812e325" class="">Indexing engine<div class="indented"><ul id="2023e987-04e9-80f1-b0a2-e6746f10bf05" class="bulleted-list"><li style="list-style-type:disc">The indexing engine can read entire websites recursively</li></ul><ul id="2023e987-04e9-807c-9173-d86d3a94560d" class="bulleted-list"><li style="list-style-type:disc">Can read java script based web-sites like the one build in modern frameworks like React or Angular.</li></ul><ul id="2023e987-04e9-80a5-a977-d744539d6278" class="bulleted-list"><li style="list-style-type:disc">Can read any downloadable documents: pdf, doc, rtf, xml, json, etc.</li></ul><ul id="2023e987-04e9-80c5-9a60-e514324b1a64" class="bulleted-list"><li style="list-style-type:disc">Documents are stored into a searchable vector database which is optimized for LLM lookup operations.</li></ul><ul id="2463e987-04e9-8035-93c2-f80ffc0024e5" class="bulleted-list"><li style="list-style-type:disc">Automatic content sync with the RAG engine.<br/></li></ul></div></p><p id="2023e987-04e9-8057-8d5d-c87a208cd524" class="">Search engines support<div class="indented"><p id="2023e987-04e9-809e-bb98-dbc1ec783fb7" class="">The platform has the ability to use the following engines for search</p><ul id="2023e987-04e9-8056-ba24-eecdf77baee4" class="bulleted-list"><li style="list-style-type:disc">Internal indexing engine (direct google search)</li></ul><ul id="2023e987-04e9-8008-82b9-cbb6274b8b3e" class="bulleted-list"><li style="list-style-type:disc">Perplexity search</li></ul><ul id="2023e987-04e9-804a-9bdf-ddb2ff7217bc" class="bulleted-list"><li style="list-style-type:disc">OpenAI + search via the API</li></ul><ul id="2023e987-04e9-80c2-8abd-e9078a991941" class="bulleted-list"><li style="list-style-type:disc">Anthropic + search via the API</li></ul><ul id="2023e987-04e9-8010-a262-dc70488b5454" class="bulleted-list"><li style="list-style-type:disc">Gemini  + search via the API</li></ul><p id="2023e987-04e9-802e-9d3d-fc7e35ae0d4d" class="">The search engine results can be combined or used </p></div></p><p id="2023e987-04e9-8036-b19d-d905a1ed7794" class="">
+    </p><p id="2023e987-04e9-80fd-aa90-eee7b12928b4" class="">Quality control<div class="indented"><p id="2023e987-04e9-80fb-a3de-d9c0ed08967f" class="">Making sure the AI delivers the best answer, does not hallucinate or somehow alter the information is hard.<br/>Constantly monitoring and improving the quality of our services.<br/>Here are a few approaches we take toward delivering the best quality answers:</p><ul id="2023e987-04e9-8000-b858-caf523f4ab3e" class="bulleted-list"><li style="list-style-type:disc">Logging and tracing for later analysis</li></ul><ul id="2023e987-04e9-8032-9c89-f7115cfa8aab" class="bulleted-list"><li style="list-style-type:disc">RAG engine metric monitoring<ul id="2023e987-04e9-80fd-9cd8-c494690582c4" class="bulleted-list"><li style="list-style-type:circle">Estimate the RAG engine performance based on a predefined set of questions and answers with discrete link to the source document</li></ul><ul id="2023e987-04e9-8097-ba92-cba7eadcf652" class="bulleted-list"><li style="list-style-type:circle">Auto-improving algorithm for sources discovery, a methodology implied for improving the RAG engine performance where the documents descriptions are automatically improved based on the detected failures.</li></ul></li></ul><ul id="2023e987-04e9-80d3-8e75-df2712425dc4" class="bulleted-list"><li style="list-style-type:disc">Advanced RAG methodology<ul id="2023e987-04e9-8038-b369-e88525d0bcc1" class="bulleted-list"><li style="list-style-type:circle">Semanting and sparse keyword search method combined.</li></ul><ul id="2023e987-04e9-80b0-8a61-f61a78289b89" class="bulleted-list"><li style="list-style-type:circle">Hierarchical document parsing for large similar texts like laws or etc.</li></ul><ul id="2023e987-04e9-8002-b4df-e01247a9fd56" class="bulleted-list"><li style="list-style-type:circle">Knowledge graphs and other decomposition algorithms to find hidden relationships in the texts.</li></ul></li></ul><ul id="2463e987-04e9-801b-be0f-db20036a1aea" class="bulleted-list"><li style="list-style-type:disc">Automatic document synchronization with external sources<ul id="2463e987-04e9-80b5-805a-cfcc562b6a66" class="bulleted-list"><li style="list-style-type:circle">Such as websites, google drive, notion, etc.</li></ul></li></ul><ul id="2463e987-04e9-80e4-b532-dab327d75bbc" class="bulleted-list"><li style="list-style-type:disc">Automatic score improvement based on the feedback loop<ul id="2463e987-04e9-808d-abe5-e5c8765a1597" class="bulleted-list"><li style="list-style-type:circle">Automatic re-training based on conversation analytics.<br/>Works by identifying weak areas, getting additional knowledge and adding it to the knowledge base.</li></ul></li></ul></div></p><p id="2023e987-04e9-8003-a5a7-f82343037760" class="">
+    </p><p id="2023e987-04e9-8045-bf9c-cbc50666a723" class="">On-premise engine deployment in a private environment<div class="indented"><p id="2023e987-04e9-8038-b89e-efae26bb65cc" class="">Available on request.<br/>Please contact <a href="mailto:sales@fineguide.ai">sales@fineguide.ai</a> for details.</p><p id="2023e987-04e9-80ee-b766-f5bdc149325c" class="">
+    </p></div></p><p id="2023e987-04e9-8099-a3de-f5b09729b172" class="">Additional features<div class="indented"><p id="2023e987-04e9-805c-878c-e47ec44c18ca" class="">Based on specific requirements it is possible to handle the integration with custom 3rd party system or document storages and tailor the assistants to your specific needs.<br/>It is possible to implement other complex flows again to meet specific requirements.<br/>We can pre-process the knowledge data, provide accuracy estimation metrics, adjust the RAG pipeline to the specifics of your data and so on.</p></div></p><p id="2023e987-04e9-80e6-9b42-e4ea2587a3f8" class="">
+    </p><h2 id="2023e987-04e9-8088-ac11-c0efa9399184" class="">Customizable chat UI</h2><p id="2023e987-04e9-807f-917c-feb21bbde8af" class="">The chat is the part of the platform that interacts with the user, so we pay special attention to the user experience while interacting with it. </p><p id="2023e987-04e9-8000-8af6-cb73c4734218" class="">We try to deliver a modern UI, with fast clean interface, a customizable design, colors, sizes, texts, language to match your brand.</p><p id="2023e987-04e9-80e0-bc6d-c38bccd7c427" class="">Here are some major features we deliver</p><ul id="2023e987-04e9-80e2-9456-f0d3f882a812" class="bulleted-list"><li style="list-style-type:disc">Clean modern design, customizable UI elements, language.</li></ul><ul id="2023e987-04e9-80c4-bd53-f522af5f430a" class="bulleted-list"><li style="list-style-type:disc">Customizable buttons - menu, maximize, close etc.</li></ul><ul id="2463e987-04e9-8008-84c7-f1983cae9736" class="bulleted-list"><li style="list-style-type:disc">Customizable section for domain separation.</li></ul><ul id="2023e987-04e9-8082-bf0f-db45a8a7e2a6" class="bulleted-list"><li style="list-style-type:disc">Voice Support<ul id="2023e987-04e9-80a6-adae-f9b369137f67" class="bulleted-list"><li style="list-style-type:circle">In conversation with an AI agent</li></ul><ul id="2023e987-04e9-8062-980f-d6460c998918" class="bulleted-list"><li style="list-style-type:circle">In conversation with a human from the call-center dashboard</li></ul><ul id="2023e987-04e9-803a-96fc-fa9b5a30d98e" class="bulleted-list"><li style="list-style-type:circle">Using 3rd party channels (PBX, etc.)</li></ul></li></ul><ul id="2023e987-04e9-804a-af50-c2af06512c4a" class="bulleted-list"><li style="list-style-type:disc">File support - for drop in files in the chat</li></ul><ul id="2023e987-04e9-80d7-88e5-d9a0ff140676" class="bulleted-list"><li style="list-style-type:disc">Fast chat with streaming support (text answers streaming)</li></ul><ul id="2023e987-04e9-8048-bac1-ef87a71d9a2c" class="bulleted-list"><li style="list-style-type:disc">Integrated Markdown support</li></ul><ul id="2023e987-04e9-80bf-a8cf-f7de1cd88304" class="bulleted-list"><li style="list-style-type:disc">Support for mathematical formulas</li></ul><ul id="2023e987-04e9-801b-9bcd-df9b9c0fedb9" class="bulleted-list"><li style="list-style-type:disc">Support for widgets<br/>Widgets a customizable iframe inserts directly in the chat, like a video on youtube or a weather report, or a stock chart. You can create your own widgets.</li></ul><ul id="2023e987-04e9-8041-aef4-d198c14af3f3" class="bulleted-list"><li style="list-style-type:disc">Event based customization - dynamic icon change, titles, notifications texts etc.<br/>This feature allows the chat to be modified on the fly - for example a human agent entered the chat → the icon changes and you are in the contact with a human.</li></ul><ul id="2023e987-04e9-8005-a4c4-d85952fd97ca" class="bulleted-list"><li style="list-style-type:disc">Custom input forms<br/>In case you want to collect some data using a form upfront or during a conversation (email, phone etc)</li></ul><ul id="2023e987-04e9-807a-8407-e20cc615f463" class="bulleted-list"><li style="list-style-type:disc">NPS based dialogs, for collecting feedback.</li></ul><ul id="2023e987-04e9-8027-9efb-d09c735efc47" class="bulleted-list"><li style="list-style-type:disc">Custom session expiration time, usually 24hr but can be modified</li></ul><ul id="2023e987-04e9-8058-a75e-d688a1ee2b12" class="bulleted-list"><li style="list-style-type:disc">Natural conversation simulation<br/>Conversation between humans are not question-answer<br/>When an user quickly types in a bunch of messages - does not means he expect back the same amount of answers. We identify this and will provide a single answer thus simulating a closer to human behaviour.</li></ul><ul id="2023e987-04e9-802d-a675-da3a9cf6a915" class="bulleted-list"><li style="list-style-type:disc">Multiple user sessions<br/>Its is possible to have more than one user in the same chat session - rooms with an AI and multiple users</li></ul><ul id="2023e987-04e9-807d-882e-f218847ca287" class="bulleted-list"><li style="list-style-type:disc">Shared sessions<br/>Its is possible to share you session and send it to someone</li></ul><ul id="2463e987-04e9-80bb-92d6-e8ad3f105ed6" class="bulleted-list"><li style="list-style-type:disc">The chat UI is a separate detachable component and can be reused as a react component vian npm.</li></ul><ul id="2463e987-04e9-807d-8476-c1e69c7372ec" class="bulleted-list"><li style="list-style-type:disc">Support for OpenWebUI as the presentation layer</li></ul><ul id="2463e987-04e9-80af-897c-dcd5a17d9269" class="bulleted-list"><li style="list-style-type:disc">Use you own UI with our backend APIs.</li></ul><p id="2023e987-04e9-80f2-979e-fa1eab026b60" class="">
+    </p><h2 id="2023e987-04e9-8067-85ae-f74b00c97803" class="">Advances user tracking (in-context generation)</h2><p id="2463e987-04e9-8032-bd5a-d196464914d6" class=""><em><mark class="highlight-yellow"><mark class="highlight-default_background">(this feature is in progress)</mark></mark></em></p><p id="2023e987-04e9-8063-8441-c7e6f4a90913" class="">These set of features are designed to provide users with help based on a specific information they are looking at right now at this exact moment.</p><p id="2023e987-04e9-80a4-9b93-df9c60fa644d" class="">Example: the user is looking at a service or a product on your platform (like an online store)</p><p id="2023e987-04e9-8042-9a0b-c9868c11dc6f" class="">We can track this information and provide exact details to AI where the user clicked and what is he doing now. If the user is hesitant to buy a product maybe he needs a help with this exact product.</p><p id="2023e987-04e9-80e6-abd0-e938bbda4f19" class="">What are the possibilities:</p><ul id="2023e987-04e9-8005-b872-c2c61a8ce7d4" class="bulleted-list"><li style="list-style-type:disc">Identify what customer looks at currently, open page or product and use this information to provide a more relevant answer.</li></ul><ul id="2023e987-04e9-8015-9618-f9ff6eb0398a" class="bulleted-list"><li style="list-style-type:disc">Track the history of its visits (other pages or products).</li></ul><ul id="2023e987-04e9-80c6-bbf4-ce2a3c12dbe2" class="bulleted-list"><li style="list-style-type:disc">How much time he spend on each visit.</li></ul><ul id="2023e987-04e9-8095-b8ed-d877e7f38a05" class="bulleted-list"><li style="list-style-type:disc">What the customer has clicked on on the pages.</li></ul><ul id="2023e987-04e9-8066-9e85-cdd173e2024a" class="bulleted-list"><li style="list-style-type:disc">Create a virtual profile of the customer to track his preferences to provide enhanced answers.</li></ul><ul id="2023e987-04e9-80dc-8287-e47710857df5" class="bulleted-list"><li style="list-style-type:disc">Connect customer virtual profile to his real account and make this data usable to the platform owners or AI systems.</li></ul><ul id="2023e987-04e9-8050-9ec3-d75d639a7da3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Proactive Engagement (ex: when user is hesitant on checkout page) provide suggestions, recommendations or call to action.</mark></li></ul><p id="2023e987-04e9-800f-be44-ead4f4dac9b3" class="">
+    </p><h2 id="2023e987-04e9-804a-b29a-e2737db0c9cc" class="">External integrations</h2><p id="2023e987-04e9-80fc-9cfe-ca7501444afb" class="">The platform has been built from the start with extensibility in mind and has various options to connect 3rd party tools and constantly working on adding more capabilities.</p><p id="2023e987-04e9-80e8-a424-d2064280f5ec" class="">Integrations via assistants actions and external MCPs</p><ul id="2023e987-04e9-8017-8070-e27d4dac5cae" class="bulleted-list"><li style="list-style-type:disc">Each assistant can trigger api calls from external apis or mcp servers.</li></ul><ul id="2023e987-04e9-80f5-9e20-f434fa277415" class="bulleted-list"><li style="list-style-type:disc">Actions are configurable wrappers around api calls</li></ul><ul id="2023e987-04e9-80b6-a5c5-cff8cf1a81b1" class="bulleted-list"><li style="list-style-type:disc">Each assistant has its own configuration</li></ul><ul id="2023e987-04e9-80df-a131-d34df8fba0c6" class="bulleted-list"><li style="list-style-type:disc">Api calls can be secured via headers, tokens etc.</li></ul><p id="2023e987-04e9-80af-846a-e6aed3d61bbb" class="">
+    </p><p id="2023e987-04e9-801b-81c3-d045e9b121fa" class="">Ticketing Systems</p><ul id="2023e987-04e9-80af-b019-d01394cf4df8" class="bulleted-list"><li style="list-style-type:disc">Automatic integrations with Zendesk, Helpscout and etc.</li></ul><ul id="2023e987-04e9-8018-aee0-d52e62f83453" class="bulleted-list"><li style="list-style-type:disc">Any other integration on demand</li></ul><ul id="2463e987-04e9-8063-8755-cec58547d5a7" class="bulleted-list"><li style="list-style-type:disc">Automatically detect customer problems and create customer support tickets.</li></ul><p id="2023e987-04e9-804c-8cc0-ed6f1ae05c29" class="">
+    </p><p id="2023e987-04e9-801b-a179-d3eee7ee6447" class="">External CRMs</p><ul id="2023e987-04e9-80b9-be3d-ddac50d0c118" class="bulleted-list"><li style="list-style-type:disc">Out of the box integration with AmoCRM and KommoCRM<ul id="2023e987-04e9-809a-b5c1-e2cfaff32cc8" class="bulleted-list"><li style="list-style-type:circle">leads tracking and update: statuses, custom fields, notes, etc.</li></ul><ul id="2023e987-04e9-8087-a617-c854a3552df0" class="bulleted-list"><li style="list-style-type:circle">contacts creation and update: contacts are automatically updated with collected data from the conversations</li></ul><ul id="2023e987-04e9-80b0-bfa4-cba283512291" class="bulleted-list"><li style="list-style-type:circle">full chat messaging support on all the channels supported in the CRM</li></ul><ul id="2023e987-04e9-8055-92a4-e75dab2a636b" class="bulleted-list"><li style="list-style-type:circle">escalation to an human agent</li></ul></li></ul><p id="2023e987-04e9-8082-9c0c-fc47bd99cf39" class="">
+    </p><p id="2023e987-04e9-806b-938e-c45c7bee0f36" class="">External chat provides</p><ul id="2023e987-04e9-803d-9204-da5834a3cdcd" class="bulleted-list"><li style="list-style-type:disc">Jivochat or similar platforms<br/>Those kind of systems are already providing a chat bubble you install on the website and we can add AI support for other features by integration with them on the server side and provide a seamless experience without modifying the existing customer facing UI.</li></ul><p id="2023e987-04e9-801c-b400-e3272084bc5a" class="">
+    </p><p id="2023e987-04e9-8020-be0e-cf019219c0f4" class="">Zapier integration:</p><ul id="2023e987-04e9-801a-96e0-d42415fd36ef" class="bulleted-list"><li style="list-style-type:disc">Use zapier to add any integration you want with our platform</li></ul><p id="2023e987-04e9-80e0-9a98-f81234d906a9" class="">
+    </p><p id="2023e987-04e9-80a2-92d2-d906591fda7b" class="">Webhooks and notifications:</p><p id="2023e987-04e9-8073-91bc-e546ea980cbe" class="">The platform has extensive capability to send out notifications via webhooks when something happens.</p><ul id="2023e987-04e9-8034-bea9-c33ec54a13be" class="bulleted-list"><li style="list-style-type:disc">Configure notifications webhooks globally or per assistant</li></ul><ul id="2023e987-04e9-8037-b0bc-f3cee441dfb9" class="bulleted-list"><li style="list-style-type:disc">Choose what exactly notifications you want to receive</li></ul><ul id="2023e987-04e9-80b0-8d62-d9073f6ec512" class="bulleted-list"><li style="list-style-type:disc">Create custom notifications based on rules and conversation state</li></ul><p id="2023e987-04e9-806f-88f2-d7730bc75788" class="">
+    </p><h2 id="2023e987-04e9-8093-ac27-dcffb22b3169" class="">Integrated call-center software</h2><p id="2463e987-04e9-80b3-8c3a-e3579c3bc46c" class=""><mark class="highlight-yellow">(this feature is in progress)</mark></p><p id="2023e987-04e9-80fd-9ae9-dabe30a3fb1c" class="">The platform has a special UI available to agents that connects and has the ability to monitor, take over an AI session and manually answer user requests.<br/>Create departments with dedicated human support empowered with AI from the start.<br/>Our AI solution seamlessly integrates with call-center operations to reduce the human overhead.</p><p id="2023e987-04e9-8066-8400-dd48a44943bb" class="">Specific features:</p><ul id="2023e987-04e9-8094-a8a4-ebe8251465b3" class="bulleted-list"><li style="list-style-type:disc">Ability to answer customer requests by text or voice<ul id="2023e987-04e9-8045-9c8b-d38b2138dd75" class="bulleted-list"><li style="list-style-type:circle">connect/disconnect the AI when required</li></ul></li></ul><ul id="2023e987-04e9-8025-956d-faaf5ce27b32" class="bulleted-list"><li style="list-style-type:disc">Monitor currently active sessions and manually take over interactively</li></ul><ul id="2023e987-04e9-8019-b9a2-fb41f94b61d0" class="bulleted-list"><li style="list-style-type:disc">Join a session on the customer request</li></ul><ul id="2023e987-04e9-800c-acf7-c5ee22e602c7" class="bulleted-list"><li style="list-style-type:disc">Route the voice calls to customer support agent devices</li></ul><ul id="2023e987-04e9-80fd-a47d-e60e79909204" class="bulleted-list"><li style="list-style-type:disc">Receive voice calls directly from a GSM network<ul id="2023e987-04e9-8008-a834-f2cf31ac9143" class="bulleted-list"><li style="list-style-type:circle">Via the network operator Virtual PBX or Sip Trunk (on demand)</li></ul><ul id="2463e987-04e9-8073-8ff1-f479448b1d18" class="bulleted-list"><li style="list-style-type:circle">Twilio support out of the box.</li></ul></li></ul><ul id="2023e987-04e9-80f7-900a-fc72e65abad1" class="bulleted-list"><li style="list-style-type:disc">Receive voice calls from the chat client or from any other internet chat client with voice support</li></ul><ul id="2023e987-04e9-8006-a76a-dfe92f21a166" class="bulleted-list"><li style="list-style-type:disc">Scheduled outgoing text/calls, for example:<ul id="2023e987-04e9-803e-a605-d15d449d6ad1" class="bulleted-list"><li style="list-style-type:circle">Surveys campaigns</li></ul><ul id="2023e987-04e9-807a-9be0-c2ed8766e218" class="bulleted-list"><li style="list-style-type:circle">Marketing campaigns</li></ul><ul id="2463e987-04e9-80ba-a8cf-d23859d8070b" class="bulleted-list"><li style="list-style-type:circle">Transactional calls</li></ul></li></ul><p id="2023e987-04e9-8017-a68c-fad0c2866dbe" class="">
+    </p><h2 id="2023e987-04e9-80b9-89bf-c249492906c9" class="">Integrated minimal CRM </h2><p id="2463e987-04e9-80d7-938e-eaf2f39058a9" class=""><mark class="highlight-yellow">(this feature is in progress)</mark></p><p id="2023e987-04e9-801f-b2bf-d9fabccce58c" class="">An integrated CRM system for basic needs.</p><ul id="2023e987-04e9-80ed-b32c-c4f840438e16" class="bulleted-list"><li style="list-style-type:disc">Leads management <br/>Identifying and Tracking: help identify and track leads, which are potential customers, through the sales process.<br/>Lead Scoring: Include features to score leads based on their likelihood of conversion.</li></ul><ul id="2023e987-04e9-80a0-8cd5-cb652b4e5216" class="bulleted-list"><li style="list-style-type:disc">Sales pipelines management</li></ul><ul id="2023e987-04e9-80bc-ad91-e668754f702f" class="bulleted-list"><li style="list-style-type:disc">Kanban style funnel visualization</li></ul><ul id="2023e987-04e9-80b7-adbd-fbbafa4c3128" class="bulleted-list"><li style="list-style-type:disc">Tasks and workflow automation, for example:<ul id="2023e987-04e9-806a-84af-db2fb9e268f2" class="bulleted-list"><li style="list-style-type:circle">Send an email when user made a purchase.</li></ul><ul id="2023e987-04e9-80db-a3d7-c9d5488d13fe" class="bulleted-list"><li style="list-style-type:circle">Create a task for an agent that requires a human attention.</li></ul></li></ul><ul id="2023e987-04e9-80e0-9ee1-f42a86824f82" class="bulleted-list"><li style="list-style-type:disc">Statuses and notes for tracking leads</li></ul><ul id="2023e987-04e9-801b-a4ea-c43c39903c9b" class="bulleted-list"><li style="list-style-type:disc">Custom fields + grouping and filtering</li></ul><ul id="2023e987-04e9-80ef-9193-c0152cd8478d" class="bulleted-list"><li style="list-style-type:disc">Search by content, fields, statuses etc.</li></ul><ul id="2023e987-04e9-8060-b379-d0cbc010d920" class="bulleted-list"><li style="list-style-type:disc">Contacts management<ul id="2023e987-04e9-80bb-83c5-f736a1fd9804" class="bulleted-list"><li style="list-style-type:circle">Automatic lead to contact connection</li></ul><ul id="2023e987-04e9-802a-b255-cf87d4c587db" class="bulleted-list"><li style="list-style-type:circle">Contact deduplication</li></ul></li></ul><ul id="2023e987-04e9-80d3-8fdf-d5096786006e" class="bulleted-list"><li style="list-style-type:disc">Reporting and dashboards</li></ul><ul id="2023e987-04e9-8052-a3ca-c76c5188c6f3" class="bulleted-list"><li style="list-style-type:disc">Import/Export and integration with external tools or other CRMs</li></ul><p id="2023e987-04e9-80e8-8e22-cb23d2609c3c" class="">
+    </p><h2 id="2023e987-04e9-800e-971a-d4e7a96b7845" class="">Proactive interaction </h2><p id="2463e987-04e9-809d-a786-f7bc7921b630" class=""><mark class="highlight-yellow">(planned)</mark></p><p id="2023e987-04e9-80a4-8931-ed3d93f7fea8" class="">A set of functionality that is supposed to perform some action based on different triggers.</p><p id="2023e987-04e9-80b0-a4c1-e008f41dc499" class="">These allows to proactively call/text users, organize campaigns surveys, periodic checks or reminders etc. This has the potential to become powerful marketing and automation scripts.</p><ul id="2023e987-04e9-804c-ba1d-d8c820eaae2c" class="bulleted-list"><li style="list-style-type:disc">Triggered by time (contact a user at a specific time, once or multiple times on a schedule).</li></ul><ul id="2023e987-04e9-801d-adab-fd06cb41ef0d" class="bulleted-list"><li style="list-style-type:disc">Triggered by an event, custom or one of the default events. Ex:<ul id="2023e987-04e9-8026-a419-d8180b8405b4" class="bulleted-list"><li style="list-style-type:circle">Call/text a user when something happens</li></ul><ul id="2023e987-04e9-804b-a9de-e564175ea5ab" class="bulleted-list"><li style="list-style-type:circle">Perform another action when something happens</li></ul></li></ul><ul id="2023e987-04e9-80da-b08a-c45b773b770f" class="bulleted-list"><li style="list-style-type:disc">Marketing campaigns</li></ul><ul id="2023e987-04e9-80a9-9560-f858a302248c" class="bulleted-list"><li style="list-style-type:disc">Surveys</li></ul><ul id="2023e987-04e9-806e-bea0-f2979dbc161b" class="bulleted-list"><li style="list-style-type:disc">Reminders</li></ul><ul id="2023e987-04e9-8092-9d63-f1ee00da4470" class="bulleted-list"><li style="list-style-type:disc">Other automated calls/chats with an AI script.</li></ul><p id="2023e987-04e9-8030-bf7c-d8f1915e5dbf" class="">
+    </p><h2 id="2023e987-04e9-80ad-baf6-fcb5c6208ae3" class="">Brand customisation</h2><p id="2023e987-04e9-804f-bc3c-cd34e4a3bffc" class="">It is possible to brand your own website based on our platform and provide AI services as a reseller.</p><ul id="2463e987-04e9-806b-9f31-e931160561d2" class="bulleted-list"><li style="list-style-type:disc">Co-branding with Fineguide.ai</li></ul><ul id="2023e987-04e9-80d1-b290-ed1ec3c7be70" class="bulleted-list"><li style="list-style-type:disc">Branding UI customization.<ul id="2023e987-04e9-800e-8659-d0335777f389" class="bulleted-list"><li style="list-style-type:circle">Set up a logo and a name per your organization</li></ul><ul id="2023e987-04e9-80c2-8a6b-e016dc381cfd" class="bulleted-list"><li style="list-style-type:circle">Change themes colors</li></ul></li></ul><ul id="2023e987-04e9-805a-b40e-c02b9cd5ae50" class="bulleted-list"><li style="list-style-type:disc">Teams and roles<ul id="2023e987-04e9-8020-a5e7-e22f5f6e6cf4" class="bulleted-list"><li style="list-style-type:circle">Add/remove team members</li></ul><ul id="2023e987-04e9-8053-9dd8-c5616db7a7ce" class="bulleted-list"><li style="list-style-type:circle">Assign roles and permissions</li></ul></li></ul><ul id="2023e987-04e9-80f8-902c-e2f05a961231" class="bulleted-list"><li style="list-style-type:disc">Cname (custom domain) and subdomain support<ul id="2023e987-04e9-80fc-94d3-d24134500cae" class="bulleted-list"><li style="list-style-type:circle">Subdomain support by default ex: myorganization.fineguide.ai</li></ul><ul id="2023e987-04e9-804d-af49-e57e0bd7d74d" class="bulleted-list"><li style="list-style-type:circle">Connect your custom domain to our white label solution ex: myorganization.com</li></ul></li></ul><ul id="2023e987-04e9-80b7-aed0-c53a7d423783" class="bulleted-list"><li style="list-style-type:disc">Reseller discount plans and custom payment processing<ul id="2023e987-04e9-8068-a5d8-e603263bb9a1" class="bulleted-list"><li style="list-style-type:circle">Use the platform provided payment system</li></ul><ul id="2023e987-04e9-8025-836b-ff52e5ec60a9" class="bulleted-list"><li style="list-style-type:circle">Use your own payment system for maximum flexibility </li></ul><p id="2023e987-04e9-808f-9ade-f7c2a4d27f58" class="">
+    </p></li></ul><h2 id="2023e987-04e9-80fb-b190-cfe3121bd567" class="">Voice QA</h2><p id="2023e987-04e9-8098-8d88-ce5594e7c889" class="">VoiceQA is a module for analyzing the human agents voice calls.<br/>This is a powerful tool to look inside your call center performance.<br/>The module offers the ability to analyze, track and monitor the performance of a call-center by empowering AI and advanced analytical tools.</p><p id="2023e987-04e9-80d3-9fe0-efdf524f9d88" class="">The audio files can be provided by an external PBX or internal audio call capabilities.<br/>Also it is possible to analyze a bunch of audio recordings by just uploading the files.<br/>How the analysis is made:</p><ol type="1" id="2023e987-04e9-8034-8e17-ff6c1d2fe371" class="numbered-list" start="1"><li>An audio to text engine with automatic identification of the participants transform audio stream into a conversation text.</li></ol><ol type="1" id="2023e987-04e9-8059-80b9-c582cc9642fc" class="numbered-list" start="2"><li>Based on your custom rules a score calculated.<ol type="a" id="2023e987-04e9-8059-9b4a-ce65297f3aa6" class="numbered-list" start="1"><li>Rules can be applied based in individual agent, department, type of call (incoming or outgoing) and the context. </li></ol><ol type="a" id="2023e987-04e9-80d2-8c51-c9bde5ac4516" class="numbered-list" start="2"><li>The context of the conversation is automatically determined from the conversation and respective rule category is applied. Example: general support call, sales call, technical support call, etc.</li></ol><ol type="a" id="2023e987-04e9-8003-9d07-cd1516d7d95d" class="numbered-list" start="3"><li>Dynamic rules weight: each rule has its own scoring weight, some rules might have more weight than other.</li></ol><ol type="a" id="2023e987-04e9-8065-ad85-f9675dcd8161" class="numbered-list" start="4"><li>Each rule upon evaluation provides:<ol type="i" id="2023e987-04e9-8009-add7-c78f750693ab" class="numbered-list" start="1"><li>Evidence (exactly points to the problem in the conversation)</li></ol><ol type="i" id="2023e987-04e9-802c-bd02-f7b1db0dc864" class="numbered-list" start="2"><li>Argumentation (why we think this is a problem)</li></ol><ol type="i" id="2023e987-04e9-8033-8a0d-e3bc329ab80a" class="numbered-list" start="3"><li>Suggestion (how to improve)</li></ol></li></ol></li></ol><ol type="1" id="2023e987-04e9-8001-8fef-e5456bbf7ac8" class="numbered-list" start="3"><li>Additional metrics are computed and provided automatically for the entire conversation.<ol type="a" id="2023e987-04e9-80c9-8fb9-ee7b107644b6" class="numbered-list" start="1"><li>Customer intent</li></ol><ol type="a" id="2023e987-04e9-8049-a859-d1e1ba372f88" class="numbered-list" start="2"><li>Customer satisfaction</li></ol><ol type="a" id="2023e987-04e9-80ac-bab3-df2fe724cf03" class="numbered-list" start="3"><li>Conversation sentiment</li></ol><ol type="a" id="2023e987-04e9-8053-a629-d867cb279205" class="numbered-list" start="4"><li>General evaluation conclusion</li></ol><ol type="a" id="2023e987-04e9-8054-82f4-e5e108750e17" class="numbered-list" start="5"><li>Recommendation for improvement</li></ol><ol type="a" id="2023e987-04e9-808b-b186-d8d0ee43ce25" class="numbered-list" start="6"><li><mark class="highlight-orange">Set Goals for Agents [NEW]</mark></li></ol><ol type="a" id="2023e987-04e9-8090-8372-eb6c0ec1f0c9" class="numbered-list" start="7"><li><mark class="highlight-orange">Industry Standard metrics for agents [NEW] (ex. </mark><a href="https://www.sqmgroup.com/resources/library/blog/quadrant-map-data-efficiency-vs-effectiveness">https://www.sqmgroup.com/resources/library/blog/quadrant-map-data-efficiency-vs-effectiveness</a>)</li></ol><p id="2033e987-04e9-8009-9d85-c2b57d55a1d6" class="">
+    </p></li></ol><p id="2023e987-04e9-80fa-a3c8-e7fd46087901" class="">In addition to individual conversation analysis, VoiceQA module provides different statistics and analytics.</p><ul id="2023e987-04e9-80dc-a2a7-c1c26da10477" class="bulleted-list"><li style="list-style-type:disc">Basic statistics on the number of calls, average scores, agents performance etc</li></ul><ul id="2023e987-04e9-80f5-99ef-ec9308d53dae" class="bulleted-list"><li style="list-style-type:disc">Analytics on common issues, sentiments, topics</li></ul><ul id="2023e987-04e9-80af-b7f8-da970640ca2e" class="bulleted-list"><li style="list-style-type:disc">Agents performance by department or individual agents</li></ul><ul id="2023e987-04e9-8044-be00-fb74816c4ed5" class="bulleted-list"><li style="list-style-type:disc">Rules performance (what are problematic rules)</li></ul><p id="2023e987-04e9-80ef-8299-f8da397632f0" class="">
+    </p><h2 id="2023e987-04e9-804e-9438-e253b69233c1" class="">Advanced analytics</h2><p id="2023e987-04e9-8022-8bbc-f40b6b87cc5d" class="">All conversational logs are stored and can be visualized in the UI.</p><p id="2023e987-04e9-8036-ae24-e428887f80ca" class="">Each assistant performance is tracked and visible in a separate dashboard.</p><p id="2023e987-04e9-8070-a39d-ff0dc63bcbbe" class="">The following are the tools available for tracking assistant performance the platform provides:</p><ul id="2023e987-04e9-8091-ba64-f4b509984f33" class="bulleted-list"><li style="list-style-type:disc">Conversations history</li></ul><ul id="2023e987-04e9-809d-85d0-c8e06f92bbc9" class="bulleted-list"><li style="list-style-type:disc">Sessions statistics<ul id="2023e987-04e9-80ff-a3bd-e72a3784eaba" class="bulleted-list"><li style="list-style-type:circle">Usage metrics</li></ul><ul id="2023e987-04e9-808b-a457-f6b2a0ac4e72" class="bulleted-list"><li style="list-style-type:circle">In-chat likes/dislike stats</li></ul></li></ul><p id="2023e987-04e9-807a-a3fc-ce0d86c330d9" class="">The platform offers advanced analytics based on session aggregation.</p><p id="2023e987-04e9-809c-8560-f30ef8ec14f6" class="">This analytics is very useful to understand the current issues customers a facing, what are their common problems, how helpful is the assistant in helping customer issues, common ares of interests, intent analysis and many more.</p><p id="2023e987-04e9-8058-8159-cd970243381d" class="">You have the ability to track down and find areas where the assistant does not perform good enough and improve them.</p><p id="2023e987-04e9-80c2-9a95-c43770186d1c" class="">Advanced conversational analytics metrics provided:<div class="indented"><ul id="2023e987-04e9-80b4-8af9-ce1ae118f543" class="bulleted-list"><li style="list-style-type:disc">Score distribution statistics</li></ul><ul id="2023e987-04e9-8027-9e56-cc4dd7f61c22" class="bulleted-list"><li style="list-style-type:disc">Common questions or issues</li></ul><ul id="2023e987-04e9-8039-8291-dc9df1775d0c" class="bulleted-list"><li style="list-style-type:disc">Unresolved issues</li></ul><ul id="2023e987-04e9-8073-8b81-f5bb781ef51c" class="bulleted-list"><li style="list-style-type:disc">Trends and Intent analysis</li></ul><ul id="2023e987-04e9-8038-bc39-ff9837545cc9" class="bulleted-list"><li style="list-style-type:disc">Customer satisfaction</li></ul><ul id="2023e987-04e9-801c-befc-daada566fafa" class="bulleted-list"><li style="list-style-type:disc">Improvements suggestions</li></ul><ul id="2023e987-04e9-80f9-9d13-fdc2bcd9a523" class="bulleted-list"><li style="list-style-type:disc">Regular reports by email</li></ul></div></p><h2 id="2023e987-04e9-80a4-b38b-c1aafa765540" class="">Business workflow automation</h2><p id="2453e987-04e9-80ba-8f98-c1e4dbd74c89" class="">Business automation is a feature that allows you to automate tasks and workflows for your business.</p><ul id="2453e987-04e9-8079-8dbf-da19eef7ff83" class="bulleted-list"><li style="list-style-type:disc">Workflow automation using n8n (integrated with our platform)</li></ul><ul id="2453e987-04e9-8088-bc06-e47b0a0f6487" class="bulleted-list"><li style="list-style-type:disc">Internal knowledge base automation</li></ul><ul id="2453e987-04e9-80ce-9891-f655366478da" class="bulleted-list"><li style="list-style-type:disc">Onboarding automation, especially for new hires (if the company has a large number of employees)</li></ul><ul id="2453e987-04e9-80ea-a93f-d0a255069eb3" class="bulleted-list"><li style="list-style-type:disc">Report automation, with tools/actions from our platform connected to your databases and data sources.</li></ul><ul id="2453e987-04e9-8049-8c9d-c2b7556c2884" class="bulleted-list"><li style="list-style-type:disc">Integration with internal tools and custom solution built for the customer.</li></ul><h2 id="2023e987-04e9-8054-9ecf-f0fb6fae04f0" class="">Compliance, confidentiality and handling of sensitive data</h2><p id="2023e987-04e9-808c-ad14-fceb341e2da0" class="">Our commitments provide you with ownership and control over your business and customer data. We aim to build trust in our organization and platform by protecting our customer and user data.</p><ul id="2023e987-04e9-802c-aa04-d65d251ca814" class="bulleted-list"><li style="list-style-type:disc">The platform is compliant with GDPR from the start, and we are able to execute a Data Processing Addendum (DPA) with customers based on their demain.</li></ul><ul id="2023e987-04e9-8076-a2fe-ce42c84ea5d3" class="bulleted-list"><li style="list-style-type:disc">We have the ability to automatically detect PII (personal identifiable information) and encode this information using a NER algorithm.</li></ul><ul id="2023e987-04e9-80bb-9b2a-f9b445b0ba45" class="bulleted-list"><li style="list-style-type:disc">None of the customer or business data is used in any kind of training, improvement, marketing or other activity.</li></ul><ul id="2023e987-04e9-808a-b1fd-cb8b13e9a5b1" class="bulleted-list"><li style="list-style-type:disc">We have the ability to connect and use any proprietary model, on-promise or deployed in a secure execution environment.</li></ul><ul id="2023e987-04e9-808d-8f35-e2c265b4cda2" class="bulleted-list"><li style="list-style-type:disc">We can fully provide and deploy our engine on a private and secure infrastructure on-premise.</li></ul><ul id="2023e987-04e9-809f-aa30-d4dd2b183943" class="bulleted-list"><li style="list-style-type:disc">We are looking forward to implement SOC2 and ISO 27001/27701 certifications in the near future.</li></ul><p id="2023e987-04e9-805a-9cb8-eb1e4fd2821f" class="">
+    </p><p id="2023e987-04e9-80b8-af4e-ea343898a47a" class="">
+    </p><p id="2023e987-04e9-802d-9724-c6847f068aa5" class="">
+    </p><p id="2023e987-04e9-80fd-ba7f-f137dcb398dd" class="">
+    </p><p id="2023e987-04e9-8042-841a-f013cd911d90" class="">
+    </p><p id="2103e987-04e9-80e4-bfbb-ddd1daeec9de" class="">
+    </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
