@@ -30,9 +30,10 @@
                 <div class="md:flex justify-center">
                     <div class="md:w-3/4">
                         <div class="p-6 text-slate-400 rounded-md">
-                            <!-- <div class="mb-40 text-right">
-                              Language: <a href="/ru/privacy-policy">Ru</a>
-                            </div> -->
+                            @@include("partials/privacy-language-links.html")
+                            <style>
+                                .privacy-lang-link[data-lang="en"] { color: #fbbf24; font-weight: 600; }
+                            </style>
                             <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Last updated: February 09, 2024</p>
                             <p class="text-slate-600 dark:text-slate-400 mb-4">This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
                             <p class="text-slate-600 dark:text-slate-400 mb-8">We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
