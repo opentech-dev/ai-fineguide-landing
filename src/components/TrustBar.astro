@@ -1,0 +1,28 @@
+---
+const logos = [
+  { src: '/images/companies/technovator.png', alt: 'Technovator' },
+  { src: '/images/companies/fantastic-eng.webp', alt: 'Fantastic English' },
+  { src: '/images/companies/STMD-logo.webp', alt: 'STMD' },
+  { src: '/images/companies/profmet.png', alt: 'Profmet' },
+  { src: '/images/companies/dev-aid.png', alt: 'Dev Aid' },
+  { src: '/images/companies/moving_pictures.png', alt: 'Moving Pictures' },
+  { src: '/images/companies/unde_io.png', alt: 'Unde.io' },
+  { src: '/images/companies/cadastru.png', alt: 'Cadastru' },
+];
+---
+
+<section class="py-10 md:py-14 px-6 border-b border-[var(--color-border)]">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-center text-xs font-medium uppercase tracking-widest text-[var(--color-muted)] mb-8">Companii care folosesc Fineguide</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+      {logos.map((logo) => (
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          class="h-7 md:h-9 object-contain opacity-40 hover:opacity-70 transition-opacity grayscale hover:grayscale-0"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  </div>
+</section>

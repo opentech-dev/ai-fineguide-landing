@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import VoiceQaHero from '../../components/VoiceQaHero.astro';
+import VoiceQaCurrentState from '../../components/VoiceQaCurrentState.astro';
+import VoiceQaDifferent from '../../components/VoiceQaDifferent.astro';
+import VoiceQaHowItWorks from '../../components/VoiceQaHowItWorks.astro';
+import VoiceQaBenefits from '../../components/VoiceQaBenefits.astro';
+import VoiceQaAudience from '../../components/VoiceQaAudience.astro';
+import PlatformOverview from '../../components/PlatformOverview.astro';
+import Stats from '../../components/Stats.astro';
+import VoiceQaCta from '../../components/VoiceQaCta.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout title={t.voiceQaMeta.title} description={t.voiceQaMeta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+  <VoiceQaHero t={t} lang={lang} />
+  <VoiceQaCurrentState t={t} />
+  <VoiceQaDifferent t={t} />
+  <VoiceQaHowItWorks t={t} />
+  <Stats t={t} />
+  <VoiceQaBenefits t={t} />
+  <VoiceQaAudience t={t} />
+  <PlatformOverview t={t} lang={lang} />
+  <VoiceQaCta t={t} lang={lang} />
+  <Footer t={t} lang={lang} />
+</Layout>

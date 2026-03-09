@@ -1,0 +1,45 @@
+---
+const points = [
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />', title: 'Evaluează instant', desc: 'Fiecare apel este analizat imediat după încheiere fără așteptare, fără coadă.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />', title: 'Aplică aceleași standarde', desc: 'Aceleași reguli, același nivel de exigență pentru fiecare apel, fiecare agent.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />', title: 'Scalează fără efort', desc: '100 sau 10.000 de apeluri pe lună AI le evaluează pe toate, fără costuri suplimentare de personal.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />', title: 'Oferă insight-uri acționabile', desc: 'Nu doar scor evidențe, sugestii și recomandări concrete pentru fiecare agent.' },
+];
+---
+
+<section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/50 relative overflow-hidden">
+  <div class="orb w-[350px] h-[350px] bg-violet-400/10 top-20 -right-20"></div>
+
+  <div class="max-w-5xl mx-auto relative">
+    <div class="text-center mb-16 reveal">
+      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-4">De ce AI</p>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">De ce AI face diferența în QA</h2>
+      <p class="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
+        QA-ul manual e lent, subiectiv și nu scalează. AI evaluează obiectiv, instant și consistent.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-5 mb-12">
+      {points.map((p, i) => (
+        <div class={`glass rounded-2xl p-8 card-hover gradient-border-top reveal reveal-delay-${i + 1}`}>
+          <div class="icon-circle icon-circle-primary w-12 h-12 rounded-xl mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" set:html={p.icon} />
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{p.title}</h3>
+          <p class="text-[var(--color-muted)] leading-relaxed">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex items-center justify-center gap-3 glass rounded-2xl p-6 reveal">
+      <div class="icon-circle icon-circle-primary">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+        </svg>
+      </div>
+      <p class="text-lg font-medium">
+        Scalează calitatea fără să scalezi echipa de QA.
+      </p>
+    </div>
+  </div>
+</section>

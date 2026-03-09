@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout
+  lang={lang}
+  title={t.contactMeta.title}
+  description={t.contactMeta.description}
+>
+  <Navbar t={t} lang={lang} />
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-40 pb-12 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">{t.contact.heading}</h1>
+      <p class="text-[var(--color-muted)] text-lg md:text-xl max-w-2xl mx-auto">
+        {t.contact.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="pb-20 px-6">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-5 gap-12 items-start">
+
+      <!-- Left: Contact Info -->
+      <div class="lg:col-span-2 space-y-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">{t.contact.talkHeading}</h2>
+          <p class="text-[var(--color-muted)] leading-relaxed">
+            {t.contact.talkText}
+          </p>
+        </div>
+
+        <div class="space-y-5">
+          <a href="mailto:support@fineguide.ai" class="flex items-center gap-4 group">
+            <div class="w-11 h-11 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold group-hover:text-[var(--color-primary)] transition-colors">{t.contact.emailLabel}</div>
+              <div class="text-sm text-[var(--color-muted)]">support@fineguide.ai</div>
+            </div>
+          </a>
+
+          <a href="tel:+37360419281" class="flex items-center gap-4 group">
+            <div class="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold group-hover:text-blue-600 transition-colors">{t.contact.phoneLabel}</div>
+              <div class="text-sm text-[var(--color-muted)]">+373 78 005 287</div>
+            </div>
+          </a>
+
+          <a href={getLocalizedPath('/schedule-demo', lang)} class="flex items-center gap-4 group">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold group-hover:text-emerald-600 transition-colors">{t.contact.demoLabel}</div>
+              <div class="text-sm text-[var(--color-muted)]">{t.contact.demoSubtext}</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--color-border)]/50">
+          <p class="text-sm text-[var(--color-muted)] mb-3">{t.contact.responseNote}</p>
+          <div class="flex gap-3">
+            <a
+              href={getLocalizedPath('/schedule-demo', lang)}
+              class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
+              {t.contact.demoCta}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="lg:col-span-3">
+        <div class="border border-[var(--color-border)] rounded-2xl p-8 bg-white shadow-sm">
+          <h3 class="text-xl font-bold mb-6">{t.contact.formHeading}</h3>
+
+          <form id="contact-form" class="space-y-5"
+            data-validation-name={t.contact.validationName}
+            data-validation-email={t.contact.validationEmail}
+            data-validation-message={t.contact.validationMessage}
+            data-submitting={t.contact.submitting}
+            data-success={t.contact.successMessage}
+            data-error={t.contact.errorMessage}
+            data-submit-text={t.contact.submitButton}
+            data-subject-prefix={t.contact.subjectLabel}
+          >
+            <div id="form-error" class="text-sm text-red-600 hidden"></div>
+            <div id="form-success" class="hidden"></div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-1.5">{t.contact.nameLabel}</label>
+                <input
+                  type="text" id="name" name="name" required
+                  placeholder={t.contact.namePlaceholder}
+                  class="w-full px-4 py-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 focus:border-[var(--color-primary)] transition-colors"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium mb-1.5">{t.contact.emailFieldLabel}</label>
+                <input
+                  type="email" id="email" name="email" required
+                  placeholder={t.contact.emailPlaceholder}
+                  class="w-full px-4 py-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 focus:border-[var(--color-primary)] transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-medium mb-1.5">{t.contact.subjectLabel}</label>
+              <select
+                id="subject" name="subject"
+                class="w-full px-4 py-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 focus:border-[var(--color-primary)] transition-colors"
+              >
+                <option value="">{t.contact.subjectDefault}</option>
+                {t.contact.subjectOptions.map((opt) => (
+                  <option value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1.5">{t.contact.messageLabel}</label>
+              <textarea
+                id="message" name="message" rows="5" required
+                placeholder={t.contact.messagePlaceholder}
+                class="w-full px-4 py-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 focus:border-[var(--color-primary)] transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit" id="submit-btn"
+              class="w-full py-3 px-6 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" /></svg>
+              {t.contact.submitButton}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6 border-t border-[var(--color-border)]/50">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.contact.faqHeading}</h2>
+        <p class="text-[var(--color-muted)] text-lg">{t.contact.faqSubheading}</p>
+      </div>
+
+      <div class="space-y-4">
+        {t.contact.faq.map((item) => (
+          <details class="group border border-[var(--color-border)] rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold hover:bg-gray-50 transition-colors">
+              {item.q}
+              <svg class="w-5 h-5 text-[var(--color-muted)] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-[var(--color-muted)] leading-relaxed" set:html={item.a} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer t={t} lang={lang} />
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const errorEl = document.getElementById('form-error')!;
+  const successEl = document.getElementById('form-success')!;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  const validationName = form.dataset.validationName!;
+  const validationEmail = form.dataset.validationEmail!;
+  const validationMessage = form.dataset.validationMessage!;
+  const submittingText = form.dataset.submitting!;
+  const successMessage = form.dataset.success!;
+  const errorMessage = form.dataset.error!;
+  const submitText = form.dataset.submitText!;
+  const subjectPrefix = form.dataset.subjectPrefix!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+    successEl.classList.add('hidden');
+
+    const name = (form.querySelector('#name') as HTMLInputElement).value.trim();
+    const email = (form.querySelector('#email') as HTMLInputElement).value.trim();
+    const subject = (form.querySelector('#subject') as HTMLSelectElement).value;
+    const message = (form.querySelector('#message') as HTMLTextAreaElement).value.trim();
+
+    if (!name) { showError(validationName); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError(validationEmail); return; }
+    if (!message) { showError(validationMessage); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182" /></svg> ${submittingText}`;
+
+    const fullMessage = subject ? `${subjectPrefix}: ${subject}\n\n${message}` : message;
+
+    try {
+      const res = await fetch('https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/fc103e0a-b3d8-4920-96d0-492169ce7d06/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-fingerprint': 'fg-website-2234123457' },
+        body: JSON.stringify({ customerEmail: email, customerName: name, customerMessage: fullMessage }),
+      });
+      if (!res.ok) throw new Error('Request failed');
+
+      successEl.innerHTML = `<div class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg text-sm flex items-center gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>${successMessage}</div>`;
+      successEl.classList.remove('hidden');
+      form.reset();
+    } catch {
+      showError(errorMessage);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" /></svg> ${submitText}`;
+    }
+  });
+
+  function showError(msg: string) {
+    errorEl.textContent = msg;
+    errorEl.classList.remove('hidden');
+  }
+</script>

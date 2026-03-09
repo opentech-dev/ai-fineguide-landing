@@ -1,0 +1,235 @@
+{
+  "workflows": {
+    
+    "first-hello": {
+      "id": "first-hello",
+      "title": "👋 Quick Question",
+      "description": "Engaging opener that identifies user intent",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Hey! Quick question - what brings you to Fineguide today?" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Are you looking to:\n\n🎯 Capture more leads\n💬 Automate customer support\n📞 Improve call center quality\n\nOr just exploring?" }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "pain-support-overwhelm": {
+      "id": "pain-support-overwhelm",
+      "title": "😰 Drowning in Tickets?",
+      "description": "For users struggling with support volume",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "I hear you. Support teams are stretched thin everywhere." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Here's the thing: 70% of support questions are repetitive. Same questions, over and over." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "What if an AI handled those automatically - accurately - so your team only dealt with the complex stuff?" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "That's exactly what we do. Companies using Fineguide cut their ticket volume by 60-80%." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Want to see how it works with YOUR actual support questions? I can show you in 2 minutes." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "pain-losing-leads": {
+      "id": "pain-losing-leads",
+      "title": "💸 Losing Leads?",
+      "description": "For users worried about missed opportunities",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Let me guess - visitors come to your site, have questions, and leave without converting?" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Here's what most businesses don't realize: 78% of leads go to whoever responds FIRST." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "An AI agent responds instantly. 24/7. While qualifying leads and booking meetings for you." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "One of our clients went from capturing 12 leads/month to 89. Same traffic." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Curious what that could look like for your business?" }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "pain-after-hours": {
+      "id": "pain-after-hours",
+      "title": "🌙 Missing After-Hours?",
+      "description": "For users concerned about 24/7 coverage",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Here's a scary stat: 35-40% of website visits happen outside business hours." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "If you're not there, you're losing those people. Period." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "An AI agent works nights, weekends, holidays. Never calls in sick. And it actually KNOWS your business." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "It can answer questions, capture leads, even schedule demos - all while you sleep." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Want me to show you how one client captured 43% more leads just by being 'always on'?" }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "pain-support-cost": {
+      "id": "pain-support-cost",
+      "title": "💰 Support Costs Rising?",
+      "description": "For cost-conscious decision makers",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Support costs keep going up, right? More customers = more tickets = more hires." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "But here's the math: One AI agent handles unlimited conversations for less than one support rep's salary." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "And it handles the boring stuff - FAQs, order status, basic troubleshooting - so your humans do what humans do best." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Most companies see 40-60% cost reduction within 3 months." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Want to run the numbers for your business? Takes 2 minutes." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "pain-call-center": {
+      "id": "pain-call-center",
+      "title": "📞 Call Center Struggles?",
+      "description": "For call center managers",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Managing call center quality is brutal. Listening to recordings, scoring calls, finding patterns..." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "What if AI did all that automatically? Every single call, analyzed instantly." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Our Voice QA catches compliance issues, identifies training gaps, and scores agents - without anyone listening to a single recording." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "One call center found 3x more compliance violations in the first week. Before a customer ever complained." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Curious how it works?" }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "objection-ai-quality": {
+      "id": "objection-ai-quality",
+      "title": "🤔 Will AI be accurate?",
+      "description": "Handling accuracy concerns",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Fair concern. Generic chatbots are terrible. We all hate them." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Fineguide is different. It's trained specifically on YOUR content - your docs, your FAQs, your website." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "It doesn't make stuff up. If it doesn't know something, it says so and escalates to a human." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Plus, you review and improve its responses over time. It gets smarter." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Want to test it? Ask me anything about Fineguide right now - I'm an example of what you'd have." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "objection-setup-hard": {
+      "id": "objection-setup-hard",
+      "title": "⏱️ Is setup complicated?",
+      "description": "Handling implementation concerns",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "I get it. No one wants another 3-month implementation project." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Here's the truth: You can have a working AI agent in about 30 minutes." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Just point it at your website or upload your docs. It learns automatically." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "One line of code to add it to your site. That's it." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Want me to show you the setup process? It's surprisingly simple." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "social-proof": {
+      "id": "social-proof",
+      "title": "📊 Real Results",
+      "description": "Build credibility with results",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Let me share some real numbers from our customers:" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "🏪 E-commerce company: 73% fewer support tickets, $340K saved annually" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "💼 SaaS startup: 89 leads/month (up from 12), 3x faster response time" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "📞 Call center: 95% of calls auto-analyzed, 47% improvement in compliance" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "These aren't cherry-picked. This is typical for companies that actually use the platform." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "What industry are you in? I can share more relevant examples." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "quick-value-demo": {
+      "id": "quick-value-demo",
+      "title": "⚡ See It In Action",
+      "description": "Show immediate value",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Want to see something cool? I can show you exactly how this would work on YOUR website." },
+        { "fn": "FG_NAVIGATE", "args": ["/demo"], "desc": "Going to live demo" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Enter your website URL below and watch an AI agent appear on your site - live." },
+        { "fn": "FG_HIGHLIGHT", "args": ["#websiteUrl"], "desc": "Paste your URL here", "delayAfter": 2000 },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "No signup needed. Just see what it looks like. Takes 10 seconds." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "ready-to-try": {
+      "id": "ready-to-try",
+      "title": "🚀 Let's Get Started",
+      "description": "For users ready to convert",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Ready to try it out? Here's what happens next:" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "1️⃣ Create your free account (2 min)\n2️⃣ Point the AI at your website (it learns automatically)\n3️⃣ Customize the look and behavior\n4️⃣ Add one line of code to go live" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "You get 30 days free. No credit card. Cancel anytime." },
+        { "fn": "FG_SCROLL", "args": ["#topnav"], "desc": "Signup is right here" },
+        { "fn": "FG_HIGHLIGHT", "args": ["a[href*='register']"], "desc": "Click to create your account", "delayAfter": 2500 },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Any questions before you start?" }
+      ],
+      "options": { "highlight": true, "highlightDuration": 2500 }
+    },
+
+    "prefer-human": {
+      "id": "prefer-human",
+      "title": "🤝 Talk to a Human",
+      "description": "For users who want human contact",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Totally get it - some decisions need a real conversation." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "You have two options:" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "📅 Schedule a 30-min demo with our team - they'll answer everything and show you the platform live" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "📧 Or just email us at hello@fineguide.ai - we respond within a few hours" },
+        { "fn": "FG_NAVIGATE", "args": ["/schedule-demo"], "desc": "Here's the calendar" },
+        { "fn": "FG_SCROLL", "args": ["#demo-form"], "desc": "Pick a time that works", "delayAfter": 800 },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "No pressure, no hard sell. Just answers to your questions." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "just-browsing": {
+      "id": "just-browsing",
+      "title": "👀 Just Looking",
+      "description": "For explorers not ready to engage",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "No problem! Browse around, I'm here if you have questions." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Quick tip: the /demo page lets you see our AI on your own website without signing up." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "And if you want the full story, /ai-agents has all the details on what we do." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "I'll be here. Just ask when you need me! 👋" }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "returning-visitor": {
+      "id": "returning-visitor",
+      "title": "👋 Welcome Back",
+      "description": "For returning visitors",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Hey, welcome back! 👋" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Last time you were checking us out. Any new questions I can help with?" },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Or if you're ready to dive in, I can help you get started right now." }
+      ],
+      "options": { "highlight": true }
+    },
+
+    "pricing-context": {
+      "id": "pricing-context",
+      "title": "💰 Pricing Made Simple",
+      "description": "Explain pricing with context",
+      "actions": [
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Our pricing is based on AI interactions - we call them 'credits'." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "One credit = one AI conversation. Simple." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Most small businesses use 5,000-10,000 credits/month. That's $99/mo." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "Growing teams usually need 20-50K credits. That's $249/mo." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "The math usually works out to way less than hiring a support person." },
+        { "fn": "FG_MESSAGE", "args": [], "desc": "What's your current support volume? I can estimate what you'd need." }
+      ],
+      "options": { "highlight": true }
+    }
+  },
+
+  "conversation_starters": {
+    "homepage": "first-hello",
+    "pricing_page": "pricing-context",
+    "returning": "returning-visitor"
+  },
+
+  "intent_mapping": {
+    "support_overwhelmed": "pain-support-overwhelm",
+    "losing_leads": "pain-losing-leads",
+    "after_hours": "pain-after-hours",
+    "reduce_costs": "pain-support-cost",
+    "call_center": "pain-call-center",
+    "ai_accuracy_concern": "objection-ai-quality",
+    "setup_concern": "objection-setup-hard",
+    "want_proof": "social-proof",
+    "see_demo": "quick-value-demo",
+    "ready_to_start": "ready-to-try",
+    "want_human": "prefer-human",
+    "just_browsing": "just-browsing",
+    "pricing_question": "pricing-context"
+  }
+}

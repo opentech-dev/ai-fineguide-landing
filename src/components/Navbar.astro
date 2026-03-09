@@ -1,0 +1,83 @@
+---
+import type { Translations } from '../i18n/utils';
+import { getLocalizedPath } from '../i18n/utils';
+const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-[var(--color-border)]">
+  <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+    <a href="/">
+      <img src="/images/logo/fineguide_lg.svg" alt="Fineguide" class="h-10" />
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.aiAgents}</a>
+      <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.voiceQa}</a>
+      <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
+      <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.contact}</a>
+      <a href="https://fineguide.ai/blog" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.blog}</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors"
+        aria-label={t.nav.menuLabel}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <a
+        href="https://app.fineguide.ai/register"
+        class="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+      >
+        {t.nav.signIn}
+      </a>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden pb-5 border-t border-[var(--color-border)] mx-6 pt-4 bg-white">
+    <div class="flex flex-col gap-1">
+      <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.aiAgents}</a>
+      <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.voiceQa}</a>
+      <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.pricing}</a>
+      <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.contact}</a>
+      <a href="https://fineguide.ai/blog" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.blog}</a>
+      <div class="pt-3 mt-2 border-t border-[var(--color-border)]">
+        <a
+          href="https://app.fineguide.ai/register"
+          class="flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+        >
+          {t.nav.signIn}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    const isOpen = !menu?.classList.contains('hidden');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+  menu?.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    })
+  );
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.focus();
+    }
+  });
+</script>

@@ -1,0 +1,18 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+---
+
+<section class="py-20 md:py-32 px-6 bg-[#1a1f2e] text-white dark-grain">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16">
+      {t.stats.items.map((s) => (
+        <div class="text-center">
+          <p class="text-4xl md:text-6xl font-bold mb-2 tracking-tight">{s.value}</p>
+          <p class="text-sm md:text-base text-gray-300 font-medium mb-1">{s.label}</p>
+          <p class="text-xs text-gray-500">{s.source}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+const icons = [
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />',
+];
+---
+
+<section id="ce-obtii" class="py-20 md:py-32 px-6 border-y border-[var(--color-border)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-12 md:gap-16">
+      <!-- Left: heading + pull-quote -->
+      <div class="md:w-5/12 md:sticky md:top-32 md:self-start">
+        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-4">{t.benefits.label}</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-8">{t.benefits.heading}</h2>
+        <blockquote class="border-l-2 border-[var(--color-primary)] pl-6">
+          <p class="text-xl md:text-2xl font-semibold leading-snug">
+            {t.benefits.quote}
+            <span class="text-[var(--color-primary)]"> {t.benefits.quoteAccent}</span>
+          </p>
+        </blockquote>
+      </div>
+
+      <!-- Right: benefit cards -->
+      <div class="md:w-7/12 space-y-4">
+        {t.benefits.items.map((text, i) => (
+          <div class="bg-white rounded-xl p-6 flex items-center gap-4 border border-[var(--color-border)] shadow-sm card-hover">
+            <div class="icon-circle bg-gray-100 text-gray-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" set:html={icons[i]} />
+            </div>
+            <span class="font-medium">{text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

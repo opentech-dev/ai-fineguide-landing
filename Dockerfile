@@ -1,21 +1,17 @@
 # Build stage
 FROM node:20-alpine AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and yarn.lock (if exists)
-COPY package.json ./
-COPY yarn.lock* ./
+COPY package.json package-lock.json ./
 
-# Install dependencies
-RUN yarn install
+RUN npm ci
 
-# Copy project files
-COPY . .
+COPY src/ src/
+COPY public/ public/
+COPY astro.config.mjs tsconfig.json ./
 
-# Build the project
-RUN yarn gulp build
+RUN npm run build
 
 # Production stage with Apache and PHP
 FROM php:8.1-apache
@@ -61,29 +57,37 @@ COPY --from=build /app/dist /var/www/html/
 # Copy WordPress files to the blog directory
 COPY blog/ /var/www/html/_blog/
 
-# Create .htaccess file in the root directory with GeoIP redirect and HTML extension handling
+# Create .htaccess for Astro static output + GeoIP redirect + blog passthrough
 RUN echo '<IfModule mod_rewrite.c>\n\
 RewriteEngine On\n\
 RewriteBase /\n\
 \n\
-# Cloudflare GeoIP redirect for Moldova users to Romanian version (homepage only)\n\
+# GeoIP redirect for Romania and Moldova to Romanian version (homepage only)\n\
 RewriteCond %{REQUEST_URI} ^/$\n\
-RewriteCond %{HTTP:CF-IPCountry} ^MD$ [NC]\n\
+RewriteCond %{HTTP:CF-IPCountry} ^(MD|RO)$ [NC]\n\
 RewriteRule ^(.*)$ /ro/ [R=302,L]\n\
 \n\
-# If the request is not for a file that exists\n\
-RewriteCond %{REQUEST_FILENAME} !-f\n\
-# And not for a directory that exists\n\
-RewriteCond %{REQUEST_FILENAME} !-d\n\
-# And not for a request to the blog directory\n\
-RewriteCond %{REQUEST_URI} !^/blog/\n\
-# And the requested file with .html extension exists\n\
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f\n\
-# Then rewrite to add .html extension internally\n\
-RewriteRule ^(.*)$ $1.html [L]\n\
-</IfModule>' > /var/www/html/.htaccess
+# Skip blog directory — handled by WordPress\n\
+RewriteCond %{REQUEST_URI} ^/blog\n\
+RewriteRule . - [L]\n\
+\n\
+# If exact file exists, serve it\n\
+RewriteCond %{REQUEST_FILENAME} -f\n\
+RewriteRule . - [L]\n\
+\n\
+# If directory with index.html exists, serve it (Astro clean URLs)\n\
+RewriteCond %{REQUEST_FILENAME}/index.html -f\n\
+RewriteRule ^(.*)/?$ $1/index.html [L]\n\
+\n\
+# Trailing-slash directory index\n\
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f\n\
+RewriteRule ^(.*)$ $1/index.html [L]\n\
+</IfModule>\n\
+\n\
+# Enable directory indexes\n\
+DirectoryIndex index.html' > /var/www/html/.htaccess
 
-# Create .htaccess file for WordPress in _blog directory (template for the mounted blog directory)
+# Create .htaccess file for WordPress in _blog directory
 RUN echo '<IfModule mod_rewrite.c>\n\
 RewriteEngine On\n\
 RewriteBase /blog/\n\
@@ -103,8 +107,6 @@ RUN chown -R www-data:www-data /var/www/html
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Expose port 80
 EXPOSE 80
 
-# Set entrypoint
 ENTRYPOINT ["docker-entrypoint.sh"]

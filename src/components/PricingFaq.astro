@@ -1,0 +1,29 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+---
+
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.pricingFaq.heading}</h2>
+      <p class="text-[var(--color-muted)] text-lg">{t.pricingFaq.subtitle}</p>
+    </div>
+
+    <div class="space-y-4">
+      {t.pricingFaq.items.map((faq: { q: string; a: string }, i: number) => (
+        <details class="group border border-[var(--color-border)] rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-left font-medium text-[var(--color-foreground)] hover:bg-gray-50 transition-colors">
+            <span>{faq.q}</span>
+            <svg class="w-5 h-5 text-[var(--color-muted)] shrink-0 ml-4 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-[var(--color-muted)] leading-relaxed">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

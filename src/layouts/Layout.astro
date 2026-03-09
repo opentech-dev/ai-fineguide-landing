@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+}
+
+const { title, description, lang = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Fineguide.ai" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fineguide.ai/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={lang === 'ro' ? 'ro_RO' : 'en_US'} />
+    <meta property="og:site_name" content="Fineguide.ai" />
+
+    <meta name="theme-color" content="#f7f8fa" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/images/hero-bg.jpg" />
+  </head>
+  <body class="min-h-screen">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--color-primary)] focus:text-white focus:text-sm focus:font-semibold">
+      {lang === 'ro' ? 'Sari la conținut' : 'Skip to content'}
+    </a>
+    <slot />
+
+    <script>
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+
+    <script is:inline>
+      (function() {
+        var pref = localStorage.getItem('fg-lang');
+        if (pref) return;
+
+        var path = window.location.pathname;
+        var isRo = path.startsWith('/ro');
+        var langs = navigator.languages || [navigator.language || ''];
+        var wantsRo = langs.some(function(l) { return l.startsWith('ro'); });
+
+        if (wantsRo && !isRo) {
+          localStorage.setItem('fg-lang', 'ro');
+          window.location.replace('/ro' + (path === '/' ? '' : path));
+        } else if (!wantsRo && isRo) {
+          var enPath = path.replace(/^\/ro/, '') || '/';
+          localStorage.setItem('fg-lang', 'en');
+          window.location.replace(enPath);
+        }
+      })();
+    </script>
+  </body>
+</html>
