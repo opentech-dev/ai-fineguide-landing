@@ -62,10 +62,11 @@ RUN echo '<IfModule mod_rewrite.c>\n\
 RewriteEngine On\n\
 RewriteBase /\n\
 \n\
-# GeoIP redirect for Romania and Moldova to Romanian version (homepage only)\n\
+# GeoIP redirect for Romania and Moldova — only if no language preference cookie\n\
 RewriteCond %{REQUEST_URI} ^/$\n\
+RewriteCond %{HTTP_COOKIE} !fg-lang=\n\
 RewriteCond %{HTTP:CF-IPCountry} ^(MD|RO)$ [NC]\n\
-RewriteRule ^(.*)$ /ro/ [R=302,L]\n\
+RewriteRule ^(.*)$ /ro/ [R=302,L,CO=fg-lang:ro:.fineguide.ai:525600:/]\n\
 \n\
 # Skip blog directory — handled by WordPress\n\
 RewriteCond %{REQUEST_URI} ^/blog\n\

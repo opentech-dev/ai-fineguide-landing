@@ -51,8 +51,16 @@ const { title, description, lang = 'en' } = Astro.props;
 
     <script is:inline>
       (function() {
+        function setLangPref(lang) {
+          localStorage.setItem('fg-lang', lang);
+          document.cookie = 'fg-lang=' + lang + ';path=/;max-age=31536000;SameSite=Lax';
+        }
+
         var pref = localStorage.getItem('fg-lang');
-        if (pref) return;
+        if (pref) {
+          if (document.cookie.indexOf('fg-lang=') === -1) setLangPref(pref);
+          return;
+        }
 
         var path = window.location.pathname;
         var isRo = path.startsWith('/ro');
@@ -60,12 +68,14 @@ const { title, description, lang = 'en' } = Astro.props;
         var wantsRo = langs.some(function(l) { return l.startsWith('ro'); });
 
         if (wantsRo && !isRo) {
-          localStorage.setItem('fg-lang', 'ro');
+          setLangPref('ro');
           window.location.replace('/ro' + (path === '/' ? '' : path));
         } else if (!wantsRo && isRo) {
           var enPath = path.replace(/^\/ro/, '') || '/';
-          localStorage.setItem('fg-lang', 'en');
+          setLangPref('en');
           window.location.replace(enPath);
+        } else {
+          setLangPref(isRo ? 'ro' : 'en');
         }
       })();
     </script>
