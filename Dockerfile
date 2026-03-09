@@ -86,7 +86,7 @@ RewriteRule ^(.*)$ $1/index.html [L]\n\
 </IfModule>\n\
 \n\
 # Enable directory indexes\n\
-DirectoryIndex index.html' > /var/www/html/.htaccess
+DirectoryIndex index.html index.php' > /var/www/html/.htaccess
 
 # Create .htaccess file for WordPress in _blog directory
 RUN echo '<IfModule mod_rewrite.c>\n\
