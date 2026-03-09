@@ -1,0 +1,7 @@
+node_modules
+_backup
+docs
+platform
+.git
+.DS_Store
+*.md
