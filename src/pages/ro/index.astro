@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import CurrentState from '../../components/CurrentState.astro';
+import Different from '../../components/Different.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import Benefits from '../../components/Benefits.astro';
+import Audience from '../../components/Audience.astro';
+import PlatformOverview from '../../components/PlatformOverview.astro';
+import Stats from '../../components/Stats.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout title={t.indexMeta.title} description={t.indexMeta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+  <Hero t={t} />
+  <CurrentState t={t} />
+  <Different t={t} />
+  <HowItWorks t={t} />
+  <Stats t={t} />
+  <Benefits t={t} />
+  <Audience t={t} />
+  <PlatformOverview t={t} lang={lang} />
+  <CtaSection t={t} lang={lang} />
+  <Footer t={t} lang={lang} />
+</Layout>

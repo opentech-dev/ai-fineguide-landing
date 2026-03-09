@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const expectCardIcons = [
+  `<svg class="w-7 h-7 text-[var(--color-primary)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25A2.25 2.25 0 0 1 5.25 3h13.5A2.25 2.25 0 0 1 21 5.25Z" /></svg>`,
+  `<svg class="w-7 h-7 text-[var(--color-primary)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>`,
+  `<svg class="w-7 h-7 text-[var(--color-primary)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>`,
+];
+---
+
+<Layout
+  lang={lang}
+  title={t.scheduleDemoMeta.title}
+  description={t.scheduleDemoMeta.description}
+>
+  <Navbar t={t} lang={lang} />
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-40 pb-12 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" set:html={t.scheduleDemo.heading} />
+      <p class="text-[var(--color-muted)] text-lg md:text-xl max-w-2xl mx-auto mb-10">
+        {t.scheduleDemo.subtitle}
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-8 mb-10">
+        {t.scheduleDemo.stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-2xl md:text-3xl font-bold text-[var(--color-foreground)]">{stat.value}</div>
+            <div class="text-sm text-[var(--color-muted)]">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="flex items-center justify-center gap-6 text-sm text-[var(--color-muted)]">
+        {t.scheduleDemo.bullets.map((bullet) => (
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+            {bullet}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendly Embed -->
+  <section id="demo-form" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="border border-[var(--color-border)] rounded-2xl overflow-hidden bg-white shadow-sm">
+        <div class="text-center pt-8 pb-2 px-6">
+          <h2 class="text-2xl md:text-3xl font-bold mb-2">{t.scheduleDemo.calendarHeading}</h2>
+          <p class="text-[var(--color-muted)]">{t.scheduleDemo.calendarSubtext}</p>
+        </div>
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/fineguide-ai/fineguide-ai?hide_event_type_details=1&hide_gdpr_banner=1"
+          style="min-width:320px;height:700px;"
+        ></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="py-20 px-6 border-t border-[var(--color-border)]/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.scheduleDemo.expectHeading}</h2>
+        <p class="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
+          {t.scheduleDemo.expectSubtext}
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {t.scheduleDemo.expectCards.map((card, i) => (
+          <div class="text-center p-6">
+            <div class="w-14 h-14 mx-auto mb-5 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center">
+              <Fragment set:html={expectCardIcons[i]} />
+            </div>
+            <h3 class="text-lg font-bold mb-2">{card.title}</h3>
+            <p class="text-sm text-[var(--color-muted)] mb-3">
+              {card.text}
+            </p>
+            <span class="text-xs font-semibold text-[var(--color-primary)]">{card.duration}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6 border-t border-[var(--color-border)]/50">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.scheduleDemo.faqHeading}</h2>
+        <p class="text-[var(--color-muted)] text-lg">{t.scheduleDemo.faqSubheading}</p>
+      </div>
+
+      <div class="space-y-4">
+        {t.scheduleDemo.faq.map((item) => (
+          <details class="group border border-[var(--color-border)] rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-[var(--color-foreground)] font-semibold hover:bg-gray-50 transition-colors">
+              {item.q}
+              <svg class="w-5 h-5 text-[var(--color-muted)] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-[var(--color-muted)] leading-relaxed">
+              {item.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer t={t} lang={lang} />
+</Layout>

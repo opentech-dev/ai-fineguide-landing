@@ -1,0 +1,57 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+---
+
+<section id="main-content" class="relative flex items-center justify-center overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 relative z-10 text-center pt-28 pb-16">
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
+      {t.hero.title}
+      <span class="text-[var(--color-primary)]">{t.hero.titleAccent}</span>
+    </h1>
+    <p class="text-lg md:text-xl text-[var(--color-muted)] max-w-2xl mx-auto mb-10 leading-relaxed">
+      {t.hero.subtitle}
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+      <a
+        href="https://app.fineguide.ai/register"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-xl transition-all"
+      >
+        {t.hero.ctaPrimary}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+      </a>
+      <a
+        href="/schedule-demo"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-[var(--color-foreground)] bg-white border border-[var(--color-border)] hover:border-[#d1d5e0] rounded-xl transition-all"
+      >
+        {t.hero.ctaSecondary}
+      </a>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--color-muted)]">
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+        {t.hero.badgeSecure}
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+        {t.hero.badgeSetup}
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+        {t.hero.badgeNoCommitment}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product screenshot -->
+<div class="max-w-5xl mx-auto px-6 pb-16 md:pb-24">
+  <img
+    src="/images/hero-image.png"
+    alt={t.hero.heroAlt}
+    class="w-full h-auto block rounded-xl shadow-lg"
+    loading="eager"
+  />
+</div>

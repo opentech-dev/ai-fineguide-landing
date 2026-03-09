@@ -1,0 +1,56 @@
+---
+import type { Translations } from '../i18n/utils';
+import { getLocalizedPath } from '../i18n/utils';
+const { t, lang } = Astro.props as { t: Translations; lang: string };
+---
+
+<section id="main-content" class="relative flex items-center justify-center overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 relative z-10 pt-28 pb-16">
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+      <div class="md:w-1/2 text-center md:text-left">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+          {t.voiceQaHero.title}
+          <span class="text-[var(--color-primary)]"> {t.voiceQaHero.titleAccent}</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[var(--color-muted)] max-w-lg mb-8 leading-relaxed">
+          {t.voiceQaHero.subtitle}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+          <a
+            href="https://app.fineguide.ai/register"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-xl transition-all"
+          >
+            {t.voiceQaHero.ctaPrimary}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+          </a>
+          <a
+            href={getLocalizedPath('/schedule-demo', lang)}
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-[var(--color-foreground)] bg-white border border-[var(--color-border)] hover:border-[#d1d5e0] rounded-xl transition-all"
+          >
+            {t.voiceQaHero.ctaSecondary}
+          </a>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-6 text-sm text-[var(--color-muted)]">
+          {t.voiceQaHero.features.map((feature: string) => (
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              {feature}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Platform screenshot placeholder -->
+      <div class="md:w-1/2">
+        <img
+          src="/images/voice-qa.png"
+          alt={t.voiceQaHero.heroAlt}
+          class="w-full h-auto block rounded-xl shadow-lg border border-[var(--color-border)]"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>

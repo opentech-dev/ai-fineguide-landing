@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --color-primary: oklch(0.45 0.18 280);
+  --color-primary-foreground: #ffffff;
+  --color-background: #f7f8fa;
+  --color-foreground: #1a1f2e;
+  --color-muted: #6b7194;
+  --color-border: #e2e4ed;
+  --color-card: #ffffff;
+  --color-destructive: #ef4444;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-foreground);
+  background: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background-color: #ddd6fe;
+  color: #2e1065;
+}
+
+/* ── Focus ring for accessibility ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Cards with hover lift ── */
+.card-hover {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5e0;
+}
+
+/* ── Icon circle backgrounds ── */
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+}
+.icon-circle-primary {
+  background: oklch(0.45 0.18 280 / 0.08);
+  color: var(--color-primary);
+}
+.icon-circle-danger {
+  background: #fef2f2;
+  color: var(--color-destructive);
+}
+
+/* ── Scroll reveal disabled content is solid on load ── */
+.reveal {
+  opacity: 1;
+}
+
+/* ── Subtle noise texture for dark sections ── */
+.dark-grain {
+  position: relative;
+}
+.dark-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+}
+
+/* ── Timeline line ── */
+.timeline-line {
+  background: var(--color-border);
+}

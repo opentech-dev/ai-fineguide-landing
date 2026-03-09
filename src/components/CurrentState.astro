@@ -1,0 +1,45 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+const icons = [
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183A1.14 1.14 0 0 1 12.016 16.66c2.482-.142 4.907-.45 7.234-.9C20.826 15.483 22 14.06 22 12.41V6.18c0-1.65-1.174-3.072-2.75-3.35A49 49 0 0 0 12 2.25a49 49 0 0 0-7.25.58C3.174 3.108 2 4.53 2 6.18v5.83Z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M22 10.5h-6m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM4 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.3 12.3 0 0 1 10.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12c1.292 4.338 5.31 7.5 10.066 7.5.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />',
+];
+---
+
+<section class="py-20 md:py-32 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-12 md:gap-16 mb-12 reveal">
+      <div class="md:w-5/12 md:sticky md:top-32 md:self-start">
+        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-4">{t.currentState.label}</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+          {t.currentState.heading}
+        </h2>
+      </div>
+
+      <div class="md:w-7/12">
+        {t.currentState.problems.map((p, i) => (
+          <div class={`py-7 ${i < t.currentState.problems.length - 1 ? 'border-b border-[var(--color-border)]' : ''}`}>
+            <div class="flex items-start gap-4">
+              <span class="text-xs font-mono text-red-400 font-semibold pt-1 shrink-0">0{i + 1}</span>
+              <div>
+                <p class="text-lg font-semibold text-[var(--color-foreground)] mb-1">{p.title}</p>
+                <p class="text-sm text-[var(--color-muted)] leading-relaxed">{p.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="text-center pt-12 pb-4">
+      <div class="w-12 h-px bg-[var(--color-border)] mx-auto mb-10"></div>
+      <p class="text-4xl md:text-6xl font-bold text-[var(--color-foreground)] mb-5" style="letter-spacing: -0.02em;">{t.currentState.resultHeading}</p>
+      <p class="text-[var(--color-muted)] text-xl md:text-2xl max-w-xl mx-auto leading-relaxed">
+        {t.currentState.resultText} <strong class="text-[var(--color-foreground)]">{t.currentState.resultHighCost}</strong> și <strong class="text-[var(--color-foreground)]">{t.currentState.resultLostProfit}</strong>.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+
+const iconPaths: Record<string, string> = {
+  message: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z',
+  mic: 'M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z',
+  grid: 'M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z',
+};
+---
+
+<section class="py-20 md:py-28 px-6 bg-[#f5f3ef]">
+  <div class="max-w-5xl mx-auto">
+    <div class="max-w-2xl mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.pricingCredits.heading}</h2>
+      <p class="text-[var(--color-muted)] text-lg">{t.pricingCredits.subtitle}</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {t.pricingCredits.categories.map((cat: { title: string; icon: string; rows: { label: string; value: string }[] }) => (
+        <div class="bg-white rounded-xl border border-[var(--color-border)] p-6">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-[var(--color-foreground)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[cat.icon]} />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-lg">{cat.title}</h3>
+          </div>
+          <div class="space-y-4">
+            {cat.rows.map((row: { label: string; value: string }) => (
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-[var(--color-muted)]">{row.label}</span>
+                <span class="text-sm font-semibold text-[var(--color-foreground)]">{row.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

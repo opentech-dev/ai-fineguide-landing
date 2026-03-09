@@ -1,0 +1,96 @@
+---
+const testimonials = [
+  {
+    quote: 'Fineguide a redus timpul nostru de răspuns de la 4 ore la sub 2 minute. Echipa se concentrează acum doar pe conversațiile care duc la vânzare restul le gestionează AI-ul.',
+    name: 'Andrei Cebotari',
+    role: 'Director Vânzări',
+    company: 'Technovator',
+    logo: '/images/companies/technovator.png',
+    avatar: '/images/avatars/avatar-andrei.jpg',
+    metric: 'Timp răspuns: 4h → 2min',
+  },
+  {
+    quote: 'Lead-urile din reclamele Facebook ajung acum automat în CRM, calificate și cu scor. Am crescut rata de conversie cu 40% în primele 3 luni.',
+    name: 'Maria Rusu',
+    role: 'Marketing Manager',
+    company: 'Fantastic English',
+    logo: '/images/companies/fantastic-eng.webp',
+    avatar: '/images/avatars/avatar-maria.jpg',
+    metric: '+40% conversie în 3 luni',
+  },
+  {
+    quote: 'Voice QA ne-a arătat că 30% din apeluri nu respectau standardul de calitate. În 2 luni, scorul mediu a crescut de la 6.2 la 8.8 din 10.',
+    name: 'Ion Popescu',
+    role: 'Head of Operations',
+    company: 'STMD',
+    logo: '/images/companies/STMD-logo.webp',
+    avatar: '/images/avatars/avatar-ion.jpg',
+    metric: 'Scor QA: 6.2 → 8.8',
+  },
+];
+---
+
+<section class="py-20 md:py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-4">Testimoniale</p>
+      <h2 class="text-3xl md:text-5xl font-bold">Ce spun clienții noștri</h2>
+    </div>
+
+    <!-- Featured testimonial -->
+    <div class="mb-12 bg-white rounded-2xl border border-[var(--color-border)] shadow-sm overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-between">
+          <div>
+            <svg class="w-12 h-12 text-[var(--color-border)] mb-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-xl md:text-2xl font-medium leading-relaxed text-[var(--color-foreground)] mb-6">
+              {testimonials[0].quote}
+            </p>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+              {testimonials[0].metric}
+            </div>
+          </div>
+          <div class="border-t border-[var(--color-border)] pt-6 mt-8 flex items-center gap-4">
+            <img src={testimonials[0].avatar} alt={testimonials[0].name} class="w-12 h-12 rounded-full object-cover ring-2 ring-[var(--color-border)]" loading="lazy" />
+            <div>
+              <p class="font-semibold">{testimonials[0].name}</p>
+              <p class="text-sm text-[var(--color-muted)]">{testimonials[0].role}, {testimonials[0].company}</p>
+            </div>
+            <img src={testimonials[0].logo} alt={testimonials[0].company} class="h-8 object-contain opacity-50 ml-auto hidden md:block" loading="lazy" />
+          </div>
+        </div>
+        <div class="md:w-5/12 bg-[var(--color-background)] border-t md:border-t-0 md:border-l border-[var(--color-border)] flex items-center justify-center p-8 md:p-12">
+          <p class="text-6xl md:text-8xl font-bold text-[var(--color-foreground)]/10 tracking-tight text-center leading-none">
+            4h→<br/>2min
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary testimonials -->
+    <div class="grid md:grid-cols-2 gap-6">
+      {testimonials.slice(1).map((t) => (
+        <div class="bg-white rounded-2xl p-8 flex flex-col justify-between border border-[var(--color-border)] shadow-sm card-hover">
+          <div>
+            <p class="text-[var(--color-foreground)] leading-relaxed mb-4">{t.quote}</p>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium mb-4">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+              {t.metric}
+            </div>
+          </div>
+          <div class="border-t border-[var(--color-border)] pt-4 flex items-center gap-3">
+            <img src={t.avatar} alt={t.name} class="w-10 h-10 rounded-full object-cover ring-2 ring-[var(--color-border)]" loading="lazy" />
+            <div>
+              <p class="font-semibold text-sm">{t.name}</p>
+              <p class="text-sm text-[var(--color-muted)]">{t.role}, {t.company}</p>
+            </div>
+            <img src={t.logo} alt={t.company} class="h-6 object-contain opacity-50 ml-auto" loading="lazy" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

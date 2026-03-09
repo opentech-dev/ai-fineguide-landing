@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import PricingPlans from '../components/PricingPlans.astro';
+import PricingCredits from '../components/PricingCredits.astro';
+import PricingEnterprise from '../components/PricingEnterprise.astro';
+import PricingFaq from '../components/PricingFaq.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout title={t.pricingMeta.title} description={t.pricingMeta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-40 pb-10 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" set:html={t.pricingPage.heading} />
+      <p class="text-[var(--color-muted)] text-lg md:text-xl max-w-2xl mx-auto mb-8">
+        {t.pricingPage.subtitle}
+      </p>
+      <div class="flex items-center justify-center gap-6 text-sm text-[var(--color-muted)]">
+        {t.pricingPage.bullets.map((bullet: string) => (
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+            {bullet}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PricingPlans t={t} />
+  <PricingCredits t={t} />
+  <PricingEnterprise t={t} lang={lang} />
+  <PricingFaq t={t} />
+  <Footer t={t} lang={lang} />
+</Layout>
