@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fineguide.ai/sitemap.xml
+
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+
+Allow: /
+Allow: /voice-qa
+Allow: /pricing
+Allow: /contact
+Allow: /schedule-demo
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /ro/
+Allow: /blog/
+
+Crawl-delay: 1
