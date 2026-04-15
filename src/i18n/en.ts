@@ -7,6 +7,7 @@ export const en = {
     contact: 'Contact',
     blog: 'Blog',
     signIn: 'Sign in',
+    dashboard: 'Dashboard',
     menuLabel: 'Menu',
   },
 

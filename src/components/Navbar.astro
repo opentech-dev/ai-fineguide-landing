@@ -31,7 +31,9 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
         </svg>
       </button>
       <a
+        id="nav-auth-desktop"
         href="https://app.fineguide.ai/login"
+        data-dashboard-text={t.nav.dashboard}
         class="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
       >
         {t.nav.signIn}
@@ -62,7 +64,9 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
     <a href="https://fineguide.ai/blog" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.blog}</a>
     <div class="pt-4 mt-3 border-t border-[var(--color-border)]">
       <a
+        id="nav-auth-mobile"
         href="https://app.fineguide.ai/login"
+        data-dashboard-text={t.nav.dashboard}
         class="flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
       >
         {t.nav.signIn}
@@ -108,4 +112,37 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
       btn?.focus();
     }
   });
+
+  // Check if user is authenticated and update nav buttons accordingly
+  (async () => {
+    const APP_URL = 'https://app.fineguide.ai';
+    const API_URL = `${APP_URL}/api/core`;
+
+    try {
+      const res = await fetch(`${API_URL}/auth/refresh`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+
+      if (!res.ok) return;
+
+      const desktopBtn = document.getElementById('nav-auth-desktop') as HTMLAnchorElement | null;
+      const mobileBtn = document.getElementById('nav-auth-mobile') as HTMLAnchorElement | null;
+
+      [desktopBtn, mobileBtn].forEach((link) => {
+        if (!link) return;
+        const dashboardText = link.dataset.dashboardText || 'Dashboard';
+        link.href = APP_URL;
+        // Preserve child SVG icon (mobile button), only replace text node
+        const textNode = Array.from(link.childNodes).find((n) => n.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+          textNode.textContent = dashboardText;
+        } else {
+          link.prepend(document.createTextNode(dashboardText));
+        }
+      });
+    } catch {
+      // Auth check failed silently — keep "Sign in" button
+    }
+  })();
 </script>

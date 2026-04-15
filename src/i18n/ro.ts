@@ -7,6 +7,7 @@ export const ro = {
     contact: 'Contacte',
     blog: 'Blog',
     signIn: 'Sign in',
+    dashboard: 'Dashboard',
     menuLabel: 'Meniu',
   },
 
