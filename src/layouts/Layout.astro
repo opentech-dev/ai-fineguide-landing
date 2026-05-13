@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import type { Lang } from '../i18n/utils';
+import { RO_LOCALE_MIRRORS_ENGLISH, type Lang } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -9,10 +9,15 @@ interface Props {
 }
 
 const { title, description, lang = 'en' } = Astro.props;
+
+const htmlLang = lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang;
+const ogLocale =
+  lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'en_US';
+const ogUrl = new URL(Astro.url.pathname, 'https://fineguide.ai').href;
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth" dir="ltr">
+<html lang={htmlLang} class="scroll-smooth" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,10 +27,10 @@ const { title, description, lang = 'en' } = Astro.props;
     <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fineguide.ai/" />
+    <meta property="og:url" content={ogUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:locale" content={lang === 'ro' ? 'ro_RO' : 'en_US'} />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Fineguide.ai" />
 
     <meta name="theme-color" content="#f7f8fa" />
@@ -69,7 +74,7 @@ src="https://www.facebook.com/tr?id=895169123132914&ev=PageView&noscript=1"
   </head>
   <body class="min-h-screen">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--color-primary)] focus:text-white focus:text-sm focus:font-semibold">
-      {lang === 'ro' ? 'Sari la conținut' : 'Skip to content'}
+      {htmlLang === 'en' ? 'Skip to content' : 'Sari la conținut'}
     </a>
     <slot />
 

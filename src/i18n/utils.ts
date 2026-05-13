@@ -4,6 +4,9 @@ import { ro } from './ro';
 export type Lang = 'en' | 'ro';
 export type Translations = typeof en;
 
+/** Set to `false` when `ro.ts` holds real Romanian copy again (not re-exporting `en`). */
+export const RO_LOCALE_MIRRORS_ENGLISH = true;
+
 const translations: Record<Lang, Translations> = { en, ro };
 
 export function getLangFromUrl(url: URL): Lang {
