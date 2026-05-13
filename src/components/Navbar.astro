@@ -10,9 +10,51 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
       <img src="/images/logo/fineguide_lg.svg" alt="Fineguide" class="h-10" />
     </a>
 
-    <div class="hidden md:flex items-center gap-8">
-      <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.aiAgents}</a>
-      <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.voiceQa}</a>
+    <div class="hidden md:flex items-center gap-6">
+      <details class="group relative">
+        <summary
+          class="list-none cursor-pointer text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors flex items-center gap-1 [&::-webkit-details-marker]:hidden"
+        >
+          {t.nav.platform}
+          <svg class="w-3.5 h-3.5 opacity-70 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </summary>
+        <div
+          class="absolute left-0 top-full z-50 mt-2 w-56 rounded-xl border border-[var(--color-border)] bg-white py-2 shadow-lg"
+        >
+          <a
+            href={getLocalizedPath('/', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.overview}</a
+          >
+          <a
+            href={getLocalizedPath('/ai-assistants', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.assistants}</a
+          >
+          <a
+            href={getLocalizedPath('/crm', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.crm}</a
+          >
+          <a
+            href={getLocalizedPath('/voice-qa', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.voiceQa}</a
+          >
+          <a
+            href={getLocalizedPath('/voice-ai', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.voiceAi}</a
+          >
+          <a
+            href={getLocalizedPath('/workspace', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.workspace}</a
+          >
+        </div>
+      </details>
       <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
       <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.contact}</a>
       <a href="https://fineguide.ai/blog" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.blog}</a>
@@ -57,8 +99,14 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
     </button>
   </div>
   <div class="flex flex-col px-4 pt-4 gap-1">
-    <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.aiAgents}</a>
+    <p class="px-3 pt-1 pb-0.5 text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">{t.nav.platform}</p>
+    <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.overview}</a>
+    <a href={getLocalizedPath('/ai-assistants', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.assistants}</a>
+    <a href={getLocalizedPath('/crm', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.crm}</a>
     <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.voiceQa}</a>
+    <a href={getLocalizedPath('/voice-ai', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.voiceAi}</a>
+    <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.workspace}</a>
+    <div class="my-2 border-t border-[var(--color-border)]" />
     <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.pricing}</a>
     <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.contact}</a>
     <a href="https://fineguide.ai/blog" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.blog}</a>

@@ -1,8 +1,13 @@
 export const en = {
   // --- Navbar ---
   nav: {
-    aiAgents: 'AI Agents',
+    overview: 'Overview',
+    platform: 'Platform',
+    assistants: 'AI Assistants',
+    crm: 'CRM',
     voiceQa: 'Voice QA',
+    voiceAi: 'Voice AI',
+    workspace: 'Workspace',
     pricing: 'Pricing',
     contact: 'Contact',
     blog: 'Blog',
@@ -13,7 +18,7 @@ export const en = {
 
   // --- Footer ---
   footer: {
-    tagline: 'AI platform for sales automation — from first message to paying customer.',
+    tagline: 'One AI platform for revenue teams — assistants, CRM, workspace, and voice — from first conversation to closed deal.',
     product: 'Product',
     company: 'Company',
     scheduleDemo: 'Schedule a demo',
@@ -25,15 +30,17 @@ export const en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai — Turn messages into sales. With AI.',
-    description: 'Automatically respond to messages, qualify leads, sync them to CRM, and analyze every interaction — from ad to paying customer.',
+    title: 'Fineguide.ai — Turn conversations into sales. With AI.',
+    description:
+      'Capture and qualify conversations with AI assistants, run pipeline and tasks in CRM, collaborate in workspace, and improve voice touchpoints — one connected platform.',
   },
 
   // --- Hero ---
   hero: {
-    title: 'Turn messages into sales.',
+    title: 'Turn conversations into sales.',
     titleAccent: ' With AI.',
-    subtitle: 'Automatically respond to messages, qualify leads, sync them to CRM, and analyze every interaction — from ad to paying customer.',
+    subtitle:
+      'Capture and qualify conversations with AI assistants, keep CRM and tasks in sync, collaborate in one workspace, and improve every voice touchpoint — from first contact to closed deal.',
     ctaPrimary: 'Get started',
     ctaSecondary: 'Schedule a demo',
     badgeSecure: 'Secure',
@@ -47,7 +54,10 @@ export const en = {
     label: 'The Problem',
     heading: 'What happens today in most companies',
     problems: [
-      { title: 'Messages go unanswered', desc: 'Customers write on WhatsApp, Facebook and Instagram — but don\'t get a timely response.' },
+      {
+        title: 'Conversations slip through the cracks',
+        desc: 'Prospects reach out on chat, social, email, or phone — and too often no one follows up fast enough.',
+      },
       { title: 'Leads aren\'t qualified properly', desc: 'The team wastes time on cold leads and misses the ones with real potential.' },
       { title: 'Data doesn\'t reach CRM completely', desc: 'Conversations stay in chat apps, not in CRM. The team works with incomplete information.' },
       { title: 'Operational costs are too high', desc: 'The team spends hours on repetitive tasks that could be automated — instead of selling.' },
@@ -62,7 +72,7 @@ export const en = {
   different: {
     label: 'The Solution',
     heading: 'What you can do differently',
-    subheading: 'Use AI to connect the entire process. Fully automated. Fully tracked.',
+    subheading: 'Use AI to connect acquisition, CRM, workspace, and voice quality in one operating model — automated and measurable.',
     steps: [
       { label: 'Ad', desc: 'Attract attention on social channels' },
       { label: 'Conversation', desc: 'AI takes over and qualifies the lead' },
@@ -79,9 +89,18 @@ export const en = {
     heading: 'How it works',
     stepPrefix: 'Step ',
     steps: [
-      { title: 'Attract Customers', desc: 'Run an ad on Facebook, Instagram, TikTok, Telegram or from your website. A potential customer messages you.' },
-      { title: 'AI takes the conversation', desc: 'Responds instantly. Asks the right questions. Qualifies the lead. Collects relevant information. The lead is automatically added to CRM.' },
-      { title: 'Team steps in prepared', desc: 'The team sees where the lead came from, their interests, what was already discussed and the level of interest. No context is lost.' },
+      {
+        title: 'Attract customers',
+        desc: 'Run campaigns on social, your website, or partner channels. A prospect starts a conversation — chat or voice.',
+      },
+      {
+        title: 'AI assistants take the first mile',
+        desc: 'Instant responses, smart qualification, and structured data pushed into CRM — without making people wait.',
+      },
+      {
+        title: 'Team steps in prepared',
+        desc: 'Everyone works from one workspace: pipeline, tasks, history, and voice insights — so context never lives in a silo.',
+      },
       { title: 'AI analyzes the result', desc: 'Lead progression is tracked, the call is analyzed, weak points are identified and feedback is provided to the team.' },
       { title: 'You get a clear report', desc: 'See exactly which channels bring real customers, where leads are lost, conversion rates and how the team performs.' },
     ],
@@ -104,12 +123,13 @@ export const en = {
     quote: 'Not just automation.',
     quoteAccent: ' Real control over the sales process.',
     items: [
-      'Automatic response in under 2 seconds, 24/7',
-      'Leads automatically qualified with priority scoring',
-      'CRM synced automatically — zero manual entry',
-      'AI analysis of every call in 30+ languages',
+      'AI coverage on conversations in under 2 seconds, 24/7',
+      'Automatic lead qualification with priority scoring',
+      'CRM, tasks, and pipeline updated without manual busywork',
+      'Voice QA and analytics across 30+ languages',
+      'Workspace and documents so the whole team stays aligned',
       'Concrete insights: what works and what doesn\'t',
-      'Detailed reports by channel, agent and period',
+      'Detailed reports by channel, teammate, and period',
     ],
   },
 
@@ -117,14 +137,14 @@ export const en = {
   audience: {
     label: 'Audience',
     heading: 'Who is it for',
-    subheading: 'For companies that:',
+    subheading: 'For revenue-led companies that:',
     criteria: [
-      'Invest in ads',
-      'Have a sales team',
-      'Receive leads constantly',
-      'Want to optimize conversions',
-      'Want data-driven decisions',
-      'Want to scale without growing the team',
+      'Invest in multi-channel acquisition (ads, web, social, phone)',
+      'Have a sales or success team managing pipelines',
+      'Receive new leads or tickets every day',
+      'Want higher conversion without hiring linearly',
+      'Need one place for conversations, CRM, and documents',
+      'Want measurable coaching on voice and chat quality',
     ],
     closingText: 'If you want more sales without increasing the marketing budget,',
     closingAccent: ' the system becomes a competitive advantage.',
@@ -133,20 +153,47 @@ export const en = {
   // --- PlatformOverview ---
   platform: {
     label: 'Platform',
-    heading: 'A complete ecosystem for sales',
-    subheading: 'All modules work together — from the first message to the final report.',
+    heading: 'Everything revenue teams need in one place',
+    subheading:
+      'AI assistants, CRM, Voice QA, Voice AI, workspace, and automations — connected from first touch to renewal.',
     modules: [
-      { title: 'AI Agents', desc: 'Automatically respond to messages on any channel. Qualify leads and connect them to CRM.', tags: ['Facebook', 'Instagram', 'Telegram', 'Website'] },
-      { title: 'CRM', desc: 'Manage contacts, conversations, pipelines and tasks — all in one place.', tags: ['Lead scoring', 'Pipeline', 'Tasks'] },
-      { title: 'Voice QA', desc: 'Automatically transcribe and evaluate calls. Objective and instant feedback for the team.', tags: ['Moldcell', 'Orange', '30+ languages'] },
-      { title: 'n8n Workflows', desc: 'Connect Fineguide with any tool through visual no-code automations.', tags: ['Google Sheets', 'Slack', 'Webhooks'] },
+      {
+        title: 'AI Assistants',
+        desc: 'Deploy assistants across web chat, social, and messaging. Qualify leads and hand off to humans with full context.',
+        tags: ['Web', 'Facebook', 'Instagram', 'Telegram'],
+      },
+      {
+        title: 'CRM',
+        desc: 'Contacts, pipelines, tasks, and tags — tied to real conversations and outcomes, not scattered spreadsheets.',
+        tags: ['Leads', 'Pipeline', 'Tasks'],
+      },
+      {
+        title: 'Voice QA',
+        desc: 'Transcribe and score calls with your rules. Give agents and managers consistent, data-backed feedback.',
+        tags: ['Moldcell', 'Orange', '30+ languages'],
+      },
+      {
+        title: 'Voice AI',
+        desc: 'Voice experiences and call flows that plug into your stack — automation and quality beyond text alone.',
+        tags: ['Phone', 'Telephony', 'Integrations'],
+      },
+      {
+        title: 'Workspace',
+        desc: 'Documents, context, and teamwork in one workspace so sales and support stop switching tools.',
+        tags: ['Documents', 'Collaboration', 'Context'],
+      },
+      {
+        title: 'n8n Workflows',
+        desc: 'Connect Fineguide to the rest of your stack with visual no-code automations and webhooks.',
+        tags: ['Google Sheets', 'Slack', 'Webhooks'],
+      },
     ],
     integrationsLabel: 'Integrations',
   },
 
   // --- CTA ---
   cta: {
-    heading: 'Ready to turn messages into',
+    heading: 'Ready to turn conversations into',
     headingAccent: ' real sales',
     headingSuffix: '?',
     subtitle: '15-minute demo. No commitment. See how Fineguide.ai can work for your team.',
@@ -155,6 +202,159 @@ export const en = {
     badgeSetup: 'Setup in 24h',
     badgeSecure: 'Secure',
     badgeNoCommitment: 'No commitment',
+  },
+
+  // --- Module landing pages (shared shell) ---
+  assistantsPage: {
+    meta: {
+      title: 'AI Assistants — Automate conversations across channels | Fineguide.ai',
+      description:
+        'Deploy AI assistants on web, social, and messaging. Qualify leads, sync to CRM, and hand off with full context.',
+    },
+    hero: {
+      title: 'AI assistants that',
+      titleAccent: ' never miss a lead.',
+      subtitle:
+        'Answer in seconds, ask the right questions, and push structured outcomes into CRM — so your team sells instead of copy-pasting.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    sections: [
+      {
+        heading: 'Every channel, one playbook',
+        body: 'Bring web chat, social inboxes, and messaging into a single assistant configuration. Brand tone, guardrails, and escalation rules stay consistent everywhere prospects show up.',
+      },
+      {
+        heading: 'Qualification that feeds CRM automatically',
+        body: 'Stop retyping chats into spreadsheets. Assistants capture intent, budget signals, and next steps directly into Fineguide CRM entities your reps already use.',
+      },
+      {
+        heading: 'Human takeover without context loss',
+        body: 'When a conversation needs a person, agents see the transcript, tags, and lead score instantly — so customers never repeat themselves.',
+      },
+    ],
+    pageCta: {
+      heading: 'Ready to launch',
+      headingAccent: ' assistants',
+      headingSuffix: '?',
+      subtitle: 'See how Fineguide assistants plug into your acquisition stack in a 15-minute walkthrough.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
+  crmPage: {
+    meta: {
+      title: 'CRM — Pipelines, tasks, and contacts in one workspace | Fineguide.ai',
+      description:
+        'Manage contacts, leads, pipelines, and tasks with conversation context built in — not scattered across tools.',
+    },
+    hero: {
+      title: 'CRM that stays',
+      titleAccent: ' tied to real conversations.',
+      subtitle:
+        'Pipeline boards, assignments, tags, and timelines reflect what actually happened on chat and voice — so managers forecast from facts, not gut feel.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    sections: [
+      {
+        heading: 'Pipeline visibility for revenue teams',
+        body: 'Kanban boards per pipeline, stage SLAs, and lead ownership keep everyone aligned on what to do next. No more shadow spreadsheets for “the real” funnel.',
+      },
+      {
+        heading: 'Tasks and accountability out of the box',
+        body: 'Create follow-ups from any conversation, assign owners, and track completion alongside deal history — ideal for hybrid sales + support workflows.',
+      },
+      {
+        heading: 'Tags, comments, and collaboration',
+        body: 'Leave structured notes, @mention teammates, and segment leads with org-wide tags so downstream automation in n8n stays accurate.',
+      },
+    ],
+    pageCta: {
+      heading: 'Ready to centralize',
+      headingAccent: ' revenue work',
+      headingSuffix: '?',
+      subtitle: 'Walk through CRM, assistants, and Voice QA together with our team.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
+  voiceAiPage: {
+    meta: {
+      title: 'Voice AI — Call experiences beyond text | Fineguide.ai',
+      description:
+        'Design voice-first journeys that integrate with your telecom stack, assistants, and CRM for measurable outcomes.',
+    },
+    hero: {
+      title: 'Voice AI for',
+      titleAccent: ' real phone traffic.',
+      subtitle:
+        'Orchestrate call flows, capture structured outcomes, and route insights back to CRM and Voice QA — so voice channels perform like digital ones.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    sections: [
+      {
+        heading: 'Automations that understand spoken intent',
+        body: 'Pair speech experiences with the same knowledge and actions as your text assistants. Customers get consistent answers whether they type or call.',
+      },
+      {
+        heading: 'Operational hooks to your stack',
+        body: 'Trigger webhooks, update tickets, or schedule follow-ups from call milestones. Voice AI becomes part of your wider Fineguide automation fabric.',
+      },
+      {
+        heading: 'Quality loops with Voice QA',
+        body: 'Feed recordings into Voice QA for scoring, coaching, and trend analysis — closing the loop between live voice and continuous improvement.',
+      },
+    ],
+    pageCta: {
+      heading: 'Ready to modernize',
+      headingAccent: ' voice',
+      headingSuffix: '?',
+      subtitle: 'Explore Voice AI alongside assistants and Voice QA in one demo.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
+  workspacePage: {
+    meta: {
+      title: 'Workspace & documents — Context for every deal | Fineguide.ai',
+      description:
+        'Keep briefs, collateral, and decisions next to CRM records and conversations so teams stop context-switching.',
+    },
+    hero: {
+      title: 'Workspace where',
+      titleAccent: ' deals stay coherent.',
+      subtitle:
+        'Centralize documents, notes, and approvals next to leads and tasks — so everyone works from the same facts from discovery to close.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    sections: [
+      {
+        heading: 'Documents live next to the customer record',
+        body: 'Upload proposals, call summaries, and compliance files where sales and support already work. Permissions follow org roles, not email attachments.',
+      },
+      {
+        heading: 'Collaboration without tool sprawl',
+        body: 'Fineguide workspace keeps comments, mentions, and tasks tied to entities your CRM already tracks — reducing Slack archaeology when a deal heats up.',
+      },
+      {
+        heading: 'Ready for automation',
+        body: 'When n8n workflows fire, they read the same canonical context from workspace + CRM, so downstream systems stay in sync.',
+      },
+    ],
+    pageCta: {
+      heading: 'Ready to unify',
+      headingAccent: ' context',
+      headingSuffix: '?',
+      subtitle: 'See workspace, CRM, and assistants together in a tailored demo.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
   },
 
   // --- Voice QA Page meta ---
@@ -353,7 +553,7 @@ export const en = {
       { q: 'How do credits work?', a: 'Each AI text message costs 1 credit. Messages with attachments cost 2 credits. VoiceQA analysis uses 12 credits per minute. Document processing, analytics and integrations are included at no extra cost.' },
       { q: 'Do credits expire?', a: 'Monthly subscription credits reset each billing cycle. Extra credit packs never expire.' },
       { q: 'Can I change plans?', a: 'Yes, you can upgrade or downgrade anytime. Changes take effect on the next billing cycle. You can purchase extra credits anytime.' },
-      { q: 'What happens if I run out of credits?', a: 'You can buy extra credits instantly. AI agents will continue to work, and you\'ll be notified when credits are about to run out.' },
+      { q: 'What happens if I run out of credits?', a: 'You can buy extra credits instantly. AI assistants will continue to work, and you\'ll be notified when credits are about to run out.' },
       { q: 'Is there a free trial?', a: 'Yes. All new accounts receive free credits to test the platform. You can explore all features before choosing a paid plan.' },
     ],
   },
@@ -420,7 +620,7 @@ export const en = {
     expectHeading: 'What to expect at your demo',
     expectSubtext: 'Our specialists will present the platform in a session tailored to your needs.',
     expectCards: [
-      { title: 'Platform overview', text: 'Complete walkthrough of all modules: lead generation, AI support, voice analytics and automations.', duration: '~15 minutes' },
+      { title: 'Platform overview', text: 'Walkthrough of AI assistants, CRM, workspace, Voice QA, Voice AI, and n8n automations in one connected story.', duration: '~15 minutes' },
       { title: 'Industry-specific examples', text: 'Real use cases tailored to your industry and business model.', duration: '~10 minutes' },
       { title: 'Q&A session', text: 'Ask about implementation, pricing, integrations and how Fineguide fits your workflow.', duration: '~5 minutes' },
     ],

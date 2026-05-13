@@ -1,0 +1,10 @@
+---
+import ModulePageShell from '../components/ModulePageShell.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<ModulePageShell t={t} lang={lang} page={t.workspacePage} />
