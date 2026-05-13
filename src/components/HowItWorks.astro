@@ -3,8 +3,8 @@ import type { Translations } from '../i18n/utils';
 const { t } = Astro.props as { t: Translations };
 const images = [
   '/images/steps/step-01-attract.jpg',
-  '/images/steps/step-02-engage.jpg',
-  '/images/steps/step-03-qualify.jpg',
+  '/images/steps/step-02-ai-chat.jpg',
+  '/images/steps/step-03-team.jpg',
   '/images/steps/step-04-analyze.jpg',
   '/images/steps/step-05-report.jpg',
 ];
@@ -15,7 +15,7 @@ const steps = t.howItWorks.steps.map((s, i) => ({
 }));
 ---
 
-<section id="cum-functioneaza" class="pt-16 pb-20 md:pt-28 md:pb-40 px-6 bg-white">
+<section id="how-it-works" class="pt-16 pb-20 md:pt-28 md:pb-40 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-20">
       <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-4">{t.howItWorks.label}</p>
