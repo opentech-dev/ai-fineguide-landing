@@ -34,14 +34,14 @@ export const ro: typeof en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | Simplifică fiecare interacțiune dintre afacerea ta și clienți.',
+    title: 'Fineguide.ai | Simplifică fiecare interacțiune cu clienții tăi.',
     description:
       'Platforma de nouă generație pentru operațiuni de business. Unifică conversațiile, CRM-ul, canalele și fluxurile de lucru, totul construit pe AI din temelii.',
   },
 
   // --- Hero ---
   hero: {
-    title: 'Simplifică fiecare interacțiune dintre afacerea ta și clienți.',
+    title: 'Simplifică fiecare interacțiune cu clienții tăi.',
     subtitle:
       'Unifică conversațiile, CRM-ul, canalele și fluxurile de lucru, totul construit pe AI din temelii.',
     ctaPrimary: 'Începe acum',
