@@ -1,0 +1,18 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+---
+
+<section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-8">
+      {t.industries.eyebrow}
+    </p>
+    <p class="text-xl md:text-2xl leading-relaxed text-[var(--color-foreground)] font-light">
+      {t.industries.body}
+    </p>
+    <p class="mt-10 text-base md:text-lg text-[var(--color-muted)] tracking-wide">
+      {t.industries.audiences}
+    </p>
+  </div>
+</section>

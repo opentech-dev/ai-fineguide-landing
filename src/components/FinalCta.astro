@@ -1,0 +1,30 @@
+---
+import type { Translations, Lang } from '../i18n/utils';
+import { getLocalizedPath } from '../i18n/utils';
+const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
+---
+
+<section class="py-24 md:py-36 px-6 border-t border-[var(--color-border)]/60">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+      {t.finalCta.heading}
+    </h2>
+    <p class="mt-6 text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+      {t.finalCta.body}
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="https://app.fineguide.ai/register"
+        class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+      >
+        {t.finalCta.ctaPrimary}
+      </a>
+      <a
+        href={getLocalizedPath('/enterprise', lang)}
+        class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
+      >
+        {t.finalCta.ctaSecondary}
+      </a>
+    </div>
+  </div>
+</section>

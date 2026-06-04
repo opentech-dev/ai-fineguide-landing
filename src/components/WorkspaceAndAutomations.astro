@@ -1,0 +1,49 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+const { workspace, automations } = t.workspaceAutomations;
+---
+
+<section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/60">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-12 lg:gap-x-20">
+    <div>
+      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        {workspace.eyebrow}
+      </p>
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+        {workspace.title}
+      </h2>
+      <p class="mt-5 text-base md:text-lg text-[var(--color-muted)] leading-relaxed">
+        {workspace.body}
+      </p>
+      <ul class="mt-8 space-y-3">
+        {workspace.features.map((f) => (
+          <li class="flex gap-3 text-base text-[var(--color-foreground)]">
+            <span class="text-[var(--color-primary)] mt-1">—</span>
+            <span class="leading-relaxed">{f}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        {automations.eyebrow}
+      </p>
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+        {automations.title}
+      </h2>
+      <p class="mt-5 text-base md:text-lg text-[var(--color-muted)] leading-relaxed">
+        {automations.body}
+      </p>
+      <ul class="mt-8 space-y-3">
+        {automations.features.map((f) => (
+          <li class="flex gap-3 text-base text-[var(--color-foreground)]">
+            <span class="text-[var(--color-primary)] mt-1">—</span>
+            <span class="leading-relaxed">{f}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

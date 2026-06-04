@@ -1,17 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
-import Hero from '../../components/Hero.astro';
-import CurrentState from '../../components/CurrentState.astro';
-import Different from '../../components/Different.astro';
-import HowItWorks from '../../components/HowItWorks.astro';
-import Benefits from '../../components/Benefits.astro';
-import Audience from '../../components/Audience.astro';
-import PlatformOverview from '../../components/PlatformOverview.astro';
-import Stats from '../../components/Stats.astro';
-import CtaSection from '../../components/CtaSection.astro';
+import EditorialHero from '../../components/EditorialHero.astro';
+import OverviewIntro from '../../components/OverviewIntro.astro';
+import ModuleSpread from '../../components/ModuleSpread.astro';
+import VoiceSpread from '../../components/VoiceSpread.astro';
+import WorkspaceAndAutomations from '../../components/WorkspaceAndAutomations.astro';
+import InlineNumbers from '../../components/InlineNumbers.astro';
+import Industries from '../../components/Industries.astro';
+import IntegrationsRibbon from '../../components/IntegrationsRibbon.astro';
+import FinalCta from '../../components/FinalCta.astro';
 import Footer from '../../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
 import type { Lang } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url) as Lang;
@@ -20,14 +20,28 @@ const t = useTranslations(lang);
 
 <Layout title={t.indexMeta.title} description={t.indexMeta.description} lang={lang}>
   <Navbar t={t} lang={lang} />
-  <Hero t={t} />
-  <CurrentState t={t} />
-  <Different t={t} />
-  <HowItWorks t={t} />
-  <Stats t={t} />
-  <Benefits t={t} />
-  <Audience t={t} />
-  <PlatformOverview t={t} lang={lang} />
-  <CtaSection t={t} lang={lang} />
+  <main id="main-content">
+    <EditorialHero t={t} lang={lang} />
+    <OverviewIntro t={t} />
+    <ModuleSpread
+      spread={t.assistantsSpread}
+      image="/images/screenshots/assistants-analytics.png"
+      linkHref={getLocalizedPath('/ai-assistants', lang)}
+      linkLabel="Explore Assistants"
+    />
+    <ModuleSpread
+      spread={t.crmSpread}
+      image="/images/screenshots/crm-tasks.png"
+      reverse={true}
+      linkHref={getLocalizedPath('/crm', lang)}
+      linkLabel="Explore CRM"
+    />
+    <VoiceSpread t={t} />
+    <WorkspaceAndAutomations t={t} />
+    <InlineNumbers t={t} />
+    <Industries t={t} />
+    <IntegrationsRibbon t={t} />
+    <FinalCta t={t} lang={lang} />
+  </main>
   <Footer t={t} lang={lang} />
 </Layout>
