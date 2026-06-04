@@ -32,14 +32,14 @@ export const en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | Transform how your business works with customers.',
+    title: 'Fineguide.ai | Transform how your business interacts with customers.',
     description:
       'The next-generation platform for business operations. Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
   },
 
   // --- Hero ---
   hero: {
-    title: 'Transform how your business works with customers.',
+    title: 'Transform how your business interacts with customers.',
     subtitle:
       'Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
     ctaPrimary: 'Get started',
