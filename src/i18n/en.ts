@@ -678,7 +678,16 @@ export const en = {
     integrationsLabel: 'Integrations',
     mostPopular: 'Most popular',
     ctaButton: 'Get started',
+    freeBanner: 'Start with 1,000 credits on us. No credit card, no commitment.',
+    freeBannerCta: 'Create free account',
+    freeLabel: 'forever',
+    oneTimeCredits: 'One-time credits',
     plans: [
+      {
+        desc: '1,000 free credits on signup, no card required. Buy more only when you need them.',
+        credits: '1,000 credits to explore the platform',
+        features: ['1 member', 'AI modules included (no n8n)', 'Community support', 'Pay-as-you-go top-ups'],
+      },
       {
         desc: 'For small teams looking to automate their first interactions.',
         credits: '≈ 10,000 text conversations or 800+ minutes VoiceQA',

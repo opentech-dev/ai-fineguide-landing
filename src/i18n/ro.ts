@@ -676,7 +676,16 @@ export const ro: typeof en = {
     integrationsLabel: 'Integrări',
     mostPopular: 'Cel mai popular',
     ctaButton: 'Începe acum',
+    freeBanner: 'Începe cu 1.000 de credite din partea noastră. Fără card, fără obligații.',
+    freeBannerCta: 'Creează cont gratuit',
+    freeLabel: 'pentru totdeauna',
+    oneTimeCredits: 'Credite inițiale',
     plans: [
+      {
+        desc: '1.000 de credite gratuite la înregistrare, fără card. Cumperi mai multe doar când ai nevoie.',
+        credits: '1.000 de credite pentru a explora platforma',
+        features: ['1 membru', 'Module AI incluse (fără n8n)', 'Suport comunitate', 'Reîncărcare pay-as-you-go'],
+      },
       {
         desc: 'Pentru echipe mici care vor să automatizeze primele interacțiuni.',
         credits: '≈ 10.000 de conversații text sau 800+ minute VoiceQA',
