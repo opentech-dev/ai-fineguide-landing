@@ -175,7 +175,7 @@ export const en = {
   },
 
   // --- Industries / Who builds on it ---
-  industries: {
+  industriesBlock: {
     eyebrow: 'Built for',
     body:
       'Sales teams use Fineguide to qualify faster. Support centers use it to handle volume without growing headcount. Call centers use it to evaluate quality and coach in real time. Customer success teams use it to keep accounts coherent across channels.',
@@ -930,5 +930,407 @@ export const en = {
       { q: 'Can I bring my team?', a: 'Absolutely! We encourage you to invite relevant colleagues. The more context we have about your needs, the better we can customize the demo.' },
       { q: 'What if I need to reschedule?', a: 'No problem! Reply to the confirmation email or contact us directly. We\'re flexible and happy to find a time that works for everyone.' },
     ],
+  },
+
+  // --- Industry pages ---
+  industries: {
+    realEstate: {
+      meta: {
+        title: 'AI for Real Estate | Qualify leads and book viewings 24/7 | Fineguide.ai',
+        description: 'Automate property inquiries, qualify buyers and tenants around the clock, and push structured leads into your CRM, all without adding headcount.',
+      },
+      hero: {
+        eyebrow: 'Real Estate',
+        title: 'Qualify buyers and book viewings',
+        titleAccent: ' around the clock.',
+        subtitle: 'Your AI assistant answers property inquiries on every channel, captures budget, timeline, and preferences, then creates CRM leads your agents can act on immediately.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why real estate teams lose deals.',
+        body: 'Leads come in at all hours from portals, social media, and your website. Agents juggle showings, paperwork, and follow-ups, so most inquiries wait hours or fall through entirely.',
+        items: [
+          { title: 'Slow response times', body: 'A buyer who waits more than five minutes is already messaging the next agency. Evening and weekend inquiries sit until Monday morning.' },
+          { title: 'Unqualified pipeline', body: 'Agents spend half their day asking the same screening questions instead of closing deals with serious buyers.' },
+          { title: 'Scattered conversations', body: 'Leads arrive on WhatsApp, Instagram, web forms, and phone. Without a single view, context gets lost between handoffs.' },
+          { title: 'Manual data entry', body: 'Property type, budget, move-in date, and financing status end up in sticky notes or spreadsheets instead of a searchable CRM.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'From inquiry to qualified lead in minutes.',
+        body: 'Fineguide connects an AI assistant to every channel your prospects use, qualifies them against your criteria, and writes a structured lead into CRM before an agent even picks up the phone.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer property questions 24/7, pre-qualify buyers with your screening criteria, and schedule viewings automatically.' },
+          { name: 'CRM', benefit: 'Every lead includes property preferences, budget range, timeline, and conversation history in one record.' },
+          { name: 'Voice QA', benefit: 'Score agent calls on listing presentations, objection handling, and compliance so managers can coach effectively.' },
+          { name: 'Automations', benefit: 'Trigger follow-up sequences, assign leads by territory, and sync listings with your property management system.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Structured data from every conversation.',
+        body: 'Your assistant extracts the details agents need before they pick up the phone, so every callback starts with context.',
+        items: ['Property type', 'Bedrooms', 'Budget range', 'Move-in date', 'Financing status', 'Preferred location', 'Contact method'],
+      },
+      finalCta: {
+        heading: 'Ready to close more deals?',
+        body: 'See Fineguide configured for a real estate operation in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    healthcare: {
+      meta: {
+        title: 'AI for Healthcare | Automate patient intake and triage | Fineguide.ai',
+        description: 'Reduce front-desk load, automate appointment scheduling, and capture patient information accurately, across web, WhatsApp, and phone.',
+      },
+      hero: {
+        eyebrow: 'Healthcare',
+        title: 'Automate patient intake',
+        titleAccent: ' without losing the human touch.',
+        subtitle: 'Your AI assistant handles appointment requests, collects insurance details, and routes patients to the right department, so your staff can focus on care.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why clinics and practices struggle with volume.',
+        body: 'Front desks are overwhelmed with calls, messages, and walk-ins. Patients wait on hold, staff re-enter data manually, and scheduling errors create downstream chaos.',
+        items: [
+          { title: 'Phone bottlenecks', body: 'Patients call during the same morning window. Lines back up, voicemails pile up, and callbacks happen too late.' },
+          { title: 'Repetitive intake questions', body: 'Staff ask the same insurance, symptoms, and availability questions hundreds of times a week, manually keying responses into the EHR.' },
+          { title: 'No-shows and scheduling gaps', body: 'Without automated reminders and easy rescheduling, no-show rates stay high and open slots go unfilled.' },
+          { title: 'Fragmented patient communication', body: 'Messages arrive on the website, WhatsApp, and phone with no unified view, so context is lost between departments.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Streamlined intake, accurate records, happier patients.',
+        body: 'Fineguide puts an AI assistant on every patient-facing channel, collects structured information before the visit, and feeds it into your systems so staff can skip the clipboard.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer patient questions, collect symptoms and insurance info, and book appointments across web and messaging channels.' },
+          { name: 'CRM', benefit: 'Maintain a unified patient communication record with every interaction, referral source, and service request in one place.' },
+          { name: 'Voice QA', benefit: 'Evaluate front-desk and call center calls for empathy, accuracy, and compliance with intake protocols.' },
+          { name: 'Automations', benefit: 'Send appointment confirmations, reminders, and follow-up surveys without manual effort.' },
+          { name: 'Workspace', benefit: 'Store intake protocols, triage guidelines, and department playbooks where staff can find them instantly.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Patient details, collected before the visit.',
+        body: 'The assistant gathers the information your team needs so appointments start with context, not a clipboard.',
+        items: ['Service requested', 'Insurance provider', 'Preferred date and time', 'Specialist preference', 'Referral source', 'Symptoms or reason for visit'],
+      },
+      finalCta: {
+        heading: 'Ready to reduce front-desk load?',
+        body: 'See Fineguide configured for a healthcare practice in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    saas: {
+      meta: {
+        title: 'AI for B2B SaaS | Qualify trials and accelerate pipeline | Fineguide.ai',
+        description: 'Convert website visitors into qualified pipeline, automate trial onboarding, and give sales reps full context before the first call.',
+      },
+      hero: {
+        eyebrow: 'B2B SaaS',
+        title: 'Convert visitors into',
+        titleAccent: ' qualified pipeline.',
+        subtitle: 'Your AI assistant engages trial signups and website visitors, qualifies them by company size and use case, and hands warm leads to sales with full context.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why SaaS teams leave revenue on the table.',
+        body: 'Most website visitors leave without talking to anyone. Trial users churn before they see value. Sales reps waste cycles on leads that were never a fit.',
+        items: [
+          { title: 'Low visitor-to-lead conversion', body: 'Pricing pages and feature pages get traffic, but most visitors bounce without engaging. Static forms capture a fraction of intent.' },
+          { title: 'Trial abandonment', body: 'Users sign up, poke around for ten minutes, and never come back. Without proactive guidance, activation rates stay low.' },
+          { title: 'Unqualified handoffs to sales', body: 'Marketing passes volume, not quality. Reps spend hours on discovery calls only to learn the prospect is the wrong size or segment.' },
+          { title: 'Disconnected tools', body: 'Chat lives in one tool, CRM in another, support in a third. Reps piece together context from three tabs before every call.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Engage, qualify, and hand off, automatically.',
+        body: 'Fineguide puts an AI assistant on your website and messaging channels that qualifies visitors in real time, guides trial users to activation, and creates CRM leads with the context reps need.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Engage visitors with product answers, qualify by company size, use case, and timeline, and book demos directly.' },
+          { name: 'CRM', benefit: 'Every lead includes company details, current tools, decision timeline, and full conversation history.' },
+          { name: 'Voice QA', benefit: 'Score sales calls on discovery quality, demo delivery, and objection handling to sharpen the team.' },
+          { name: 'Automations', benefit: 'Route leads by segment, trigger onboarding sequences, and sync data with your existing sales stack.' },
+          { name: 'Workspace', benefit: 'Centralize battle cards, competitive briefs, and playbooks where reps access them during calls.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Lead intelligence, captured mid-conversation.',
+        body: 'Your assistant extracts the qualifying details sales reps need so every first call starts informed.',
+        items: ['Company size', 'Use case', 'Decision timeline', 'Current tools', 'Budget range', 'Pilot interest'],
+      },
+      finalCta: {
+        heading: 'Ready to accelerate your pipeline?',
+        body: 'See Fineguide configured for a SaaS sales motion in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    education: {
+      meta: {
+        title: 'AI for Education | Automate enrollment inquiries and student support | Fineguide.ai',
+        description: 'Answer prospective student questions around the clock, streamline enrollment, and give admissions teams structured applicant data from every channel.',
+      },
+      hero: {
+        eyebrow: 'Education',
+        title: 'Streamline enrollment',
+        titleAccent: ' and student support.',
+        subtitle: 'Your AI assistant answers program questions on your website and messaging channels, collects applicant details, and routes inquiries to the right department.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why institutions lose prospective students.',
+        body: 'Admissions teams field the same questions hundreds of times during enrollment season. Prospective students expect instant answers, but staff are stretched thin across campus visits, applications, and advising.',
+        items: [
+          { title: 'Repetitive inquiries', body: 'Program details, tuition, deadlines, and campus life questions repeat endlessly. Staff answer the same thing in email, chat, and phone.' },
+          { title: 'Slow admissions response', body: 'Prospective students compare multiple institutions. A 48-hour reply window means they have already committed elsewhere.' },
+          { title: 'Disconnected channels', body: 'Inquiries come through the website, Instagram, WhatsApp, and phone. Without a unified view, follow-ups fall through the cracks.' },
+          { title: 'Manual application tracking', body: 'Admissions counselors track applicants in spreadsheets, losing visibility into where each prospect stands in the funnel.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Instant answers, structured applicant records.',
+        body: 'Fineguide gives prospective students immediate, accurate answers on any channel and feeds structured applicant data into your admissions workflow.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer program, tuition, and deadline questions 24/7, collect applicant details, and schedule campus visits.' },
+          { name: 'CRM', benefit: 'Track every prospective student from first inquiry through enrollment with full conversation history.' },
+          { name: 'Voice QA', benefit: 'Evaluate admissions calls for warmth, accuracy, and compliance with institutional messaging guidelines.' },
+          { name: 'Automations', benefit: 'Send application reminders, deadline alerts, and onboarding sequences to admitted students automatically.' },
+          { name: 'Workspace', benefit: 'Maintain program guides, scholarship details, and advising resources in one searchable knowledge base.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Applicant data, collected at first contact.',
+        body: 'The assistant captures key details so admissions counselors start every follow-up with full context.',
+        items: ['Program of interest', 'Academic background', 'Start term', 'Scholarship interest', 'Campus visit preference', 'Contact method', 'Referral source'],
+      },
+      finalCta: {
+        heading: 'Ready to improve enrollment outcomes?',
+        body: 'See Fineguide configured for an admissions workflow in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    ecommerce: {
+      meta: {
+        title: 'AI for E-commerce | Automate customer support and recover abandoned carts | Fineguide.ai',
+        description: 'Handle order inquiries, product questions, and returns at scale with AI assistants that work across your website, WhatsApp, and social channels.',
+      },
+      hero: {
+        eyebrow: 'E-commerce',
+        title: 'Support customers at scale',
+        titleAccent: ' and recover lost revenue.',
+        subtitle: 'Your AI assistant handles order questions, recommends products, and resolves common issues across every channel, so your team focuses on the cases that need a human.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why e-commerce support breaks at scale.',
+        body: 'Order volume spikes are unpredictable. Customers expect instant answers about shipping, returns, and product details, and they will leave a negative review if they do not get one.',
+        items: [
+          { title: 'Ticket volume spikes', body: 'Flash sales, holidays, and shipping delays create surges that overwhelm support teams. Hiring seasonal staff is expensive and slow.' },
+          { title: 'Repetitive order questions', body: '"Where is my order?" and "How do I return this?" account for the majority of tickets, yet each one still requires a human reply.' },
+          { title: 'Abandoned carts', body: 'Shoppers leave items in their cart because a product question goes unanswered. There is no one available to help at 11pm.' },
+          { title: 'Inconsistent experience across channels', body: 'Customers reach out on your website, Instagram, and WhatsApp. Each channel runs on a different tool with different response times.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Instant answers, fewer tickets, more conversions.',
+        body: 'Fineguide handles the repetitive questions automatically, surfaces product recommendations, and escalates complex issues to your team with full order context attached.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer product questions, check order status, process return requests, and recommend related items, on every channel.' },
+          { name: 'CRM', benefit: 'Unify customer interactions across web, social, and messaging with order history and preferences in one record.' },
+          { name: 'Voice QA', benefit: 'Score support calls on resolution quality, upsell execution, and brand tone to maintain service standards.' },
+          { name: 'Automations', benefit: 'Trigger shipping notifications, cart recovery messages, and post-purchase follow-ups automatically.' },
+          { name: 'Workspace', benefit: 'Keep return policies, product FAQs, and seasonal playbooks updated and accessible to both AI and human agents.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Customer intent, captured in every interaction.',
+        body: 'Your assistant collects the details your team needs to resolve issues faster and personalize future interactions.',
+        items: ['Order number', 'Product of interest', 'Issue type', 'Preferred resolution', 'Shipping address', 'Purchase history flag'],
+      },
+      finalCta: {
+        heading: 'Ready to scale support without scaling cost?',
+        body: 'See Fineguide configured for an e-commerce operation in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    financialServices: {
+      meta: {
+        title: 'AI for Financial Services | Automate client onboarding and compliance | Fineguide.ai',
+        description: 'Streamline client inquiries, automate onboarding data collection, and maintain compliance-ready conversation records across every channel.',
+      },
+      hero: {
+        eyebrow: 'Financial Services',
+        title: 'Streamline client onboarding',
+        titleAccent: ' and stay compliant.',
+        subtitle: 'Your AI assistant answers product questions, collects onboarding information, and creates structured client records, while keeping every conversation auditable.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why financial firms lose clients to friction.',
+        body: 'Clients expect fast, personalized service. But compliance requirements, manual paperwork, and siloed systems slow everything down.',
+        items: [
+          { title: 'Slow onboarding', body: 'Collecting KYC documents, verifying details, and opening accounts takes days. Clients drop off or go to a competitor who makes it easier.' },
+          { title: 'Compliance pressure', body: 'Every client interaction needs to be recorded, auditable, and consistent with regulatory requirements. Manual processes leave gaps.' },
+          { title: 'Repetitive product inquiries', body: 'Advisors spend hours answering the same questions about rates, eligibility, and account types instead of building client relationships.' },
+          { title: 'Channel fragmentation', body: 'Clients reach out via branch, phone, WhatsApp, and email. Without a single record, advisors lack the full picture.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Faster onboarding, complete audit trails.',
+        body: 'Fineguide automates the repetitive parts of client engagement, collects structured data at first contact, and keeps a complete, searchable record of every interaction.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer product and eligibility questions, collect onboarding details, and guide clients through application steps.' },
+          { name: 'CRM', benefit: 'Maintain a unified client record with full interaction history, documents, and compliance-relevant metadata.' },
+          { name: 'Voice QA', benefit: 'Score advisor calls for regulatory compliance, disclosure accuracy, and client communication quality.' },
+          { name: 'Automations', benefit: 'Trigger document requests, onboarding reminders, and compliance checks based on client status changes.' },
+          { name: 'Workspace', benefit: 'Store compliance playbooks, product sheets, and regulatory updates in one knowledge base accessible to AI and staff.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Client details, structured from the first message.',
+        body: 'The assistant collects the information your advisors need to move clients through onboarding efficiently.',
+        items: ['Product interest', 'Account type', 'Employment status', 'Annual income range', 'Existing accounts', 'Preferred branch or advisor', 'Document readiness'],
+      },
+      finalCta: {
+        heading: 'Ready to modernize client onboarding?',
+        body: 'See Fineguide configured for a financial services workflow in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    hospitality: {
+      meta: {
+        title: 'AI for Hospitality & Travel | Automate guest communication and bookings | Fineguide.ai',
+        description: 'Answer guest inquiries in real time, automate booking confirmations and upsells, and deliver consistent service across every channel.',
+      },
+      hero: {
+        eyebrow: 'Hospitality & Travel',
+        title: 'Delight guests',
+        titleAccent: ' before they arrive.',
+        subtitle: 'Your AI assistant handles booking inquiries, answers property questions, and manages requests across your website, WhatsApp, and social channels, in the languages your guests speak.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why hospitality teams struggle with guest expectations.',
+        body: 'Guests expect instant, personalized answers at every stage, from booking through checkout. Front desk and reservations teams cannot keep up with volume across time zones and languages.',
+        items: [
+          { title: 'After-hours inquiries', body: 'Travelers browse and book in the evening and on weekends. Unanswered questions mean lost reservations to competitors with faster responses.' },
+          { title: 'Multilingual demand', body: 'International guests message in their own language. Staff who speak it may not be on shift, so replies get delayed or lost in translation.' },
+          { title: 'Repetitive pre-arrival questions', body: 'Check-in time, parking, pool hours, and restaurant menus make up most guest messages. Staff answer the same things hundreds of times a week.' },
+          { title: 'Revenue leakage on upsells', body: 'Room upgrades, late checkout, and spa packages go unmentioned because staff are too busy handling basic requests.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Instant answers, personalized service, more bookings.',
+        body: 'Fineguide puts an AI concierge on every guest-facing channel, handles routine questions and requests, and flags opportunities for your team to add a personal touch.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer availability, amenity, and policy questions 24/7 in 30+ languages, and guide guests to book directly.' },
+          { name: 'CRM', benefit: 'Track every guest interaction, preference, and request in one record that follows them from inquiry through post-stay.' },
+          { name: 'Voice QA', benefit: 'Evaluate reservations and front-desk calls for upsell execution, brand tone, and guest satisfaction.' },
+          { name: 'Automations', benefit: 'Send booking confirmations, pre-arrival info, and post-stay surveys without manual effort.' },
+          { name: 'Workspace', benefit: 'Maintain property guides, local recommendations, and standard operating procedures for staff and AI alike.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Guest details, collected at first contact.',
+        body: 'Your assistant gathers preferences and requirements so every interaction feels personal from the start.',
+        items: ['Check-in and check-out dates', 'Room type preference', 'Number of guests', 'Special requests', 'Loyalty membership', 'Budget range', 'Purpose of visit'],
+      },
+      finalCta: {
+        heading: 'Ready to elevate the guest experience?',
+        body: 'See Fineguide configured for a hospitality operation in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
+
+    automotive: {
+      meta: {
+        title: 'AI for Automotive | Qualify buyers and book test drives 24/7 | Fineguide.ai',
+        description: 'Automate showroom inquiries, qualify buyers by vehicle preference and budget, and schedule test drives across every channel your customers use.',
+      },
+      hero: {
+        eyebrow: 'Automotive',
+        title: 'Sell more vehicles',
+        titleAccent: ' with less friction.',
+        subtitle: 'Your AI assistant answers inventory questions, qualifies buyers by preference and budget, and books test drives, so your sales team spends time closing, not screening.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+      painPoints: {
+        eyebrow: 'The problem',
+        heading: 'Why dealerships miss sales opportunities.',
+        body: 'Buyers research online and expect instant answers. But dealership teams are tied up with walk-ins, paperwork, and follow-ups, so digital inquiries sit unanswered.',
+        items: [
+          { title: 'Slow lead follow-up', body: 'Online inquiries from your website, social ads, and marketplaces pile up. By the time a rep calls back, the buyer has visited another dealership.' },
+          { title: 'Unqualified showroom traffic', body: 'Sales reps spend time with visitors who are not ready to buy while serious buyers wait. There is no pre-qualification before the visit.' },
+          { title: 'Inconsistent communication', body: 'Leads come through the website, WhatsApp, Facebook, and phone. Without a unified system, follow-up is patchy and context is lost.' },
+          { title: 'Service department overload', body: 'Service scheduling, recall inquiries, and maintenance reminders overwhelm the BDC team with repetitive calls and messages.' },
+        ],
+      },
+      solution: {
+        eyebrow: 'How Fineguide helps',
+        heading: 'Qualified buyers, booked test drives, less admin.',
+        body: 'Fineguide puts an AI assistant on every customer-facing channel, qualifies buyers before they walk in, and gives your sales and service teams structured records to work from.',
+        modules: [
+          { name: 'AI Assistants', benefit: 'Answer inventory, pricing, and financing questions 24/7, qualify buyers, and schedule test drives or service appointments.' },
+          { name: 'CRM', benefit: 'Every lead includes vehicle preference, budget, trade-in status, and full conversation history in one record.' },
+          { name: 'Voice QA', benefit: 'Score BDC and sales calls on appointment setting, objection handling, and compliance with OEM standards.' },
+          { name: 'Automations', benefit: 'Trigger follow-up sequences, service reminders, and lead assignments based on vehicle interest and location.' },
+          { name: 'Workspace', benefit: 'Keep inventory specs, financing guides, and sales playbooks accessible to both AI assistants and your sales floor.' },
+        ],
+      },
+      fields: {
+        eyebrow: 'What the assistant captures',
+        heading: 'Buyer details, captured before the test drive.',
+        body: 'Your assistant collects the information your sales team needs to personalize the showroom experience.',
+        items: ['Vehicle type', 'New or pre-owned', 'Budget range', 'Trade-in vehicle', 'Financing preference', 'Preferred test drive date', 'Contact method'],
+      },
+      finalCta: {
+        heading: 'Ready to sell smarter?',
+        body: 'See Fineguide configured for an automotive dealership in a 15-minute walkthrough.',
+        ctaPrimary: 'Get started',
+        ctaSecondary: 'Schedule a demo',
+      },
+    },
   },
 } as const;
