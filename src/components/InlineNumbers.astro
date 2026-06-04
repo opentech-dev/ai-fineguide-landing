@@ -1,0 +1,20 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+---
+
+<section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/60">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-10">
+      {t.numbers.eyebrow}
+    </p>
+    <div class="space-y-10 md:space-y-12">
+      {t.numbers.items.map((it) => (
+        <p class="text-3xl md:text-4xl lg:text-5xl leading-tight text-[var(--color-foreground)] font-light">
+          <span class="font-semibold text-[var(--color-primary)] tracking-tight">{it.figure}</span>
+          <span class="text-[var(--color-muted)]"> &nbsp; {it.prose}</span>
+        </p>
+      ))}
+    </div>
+  </div>
+</section>

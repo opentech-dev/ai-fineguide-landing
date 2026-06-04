@@ -1,0 +1,61 @@
+---
+interface Spread {
+  eyebrow: string;
+  title: string;
+  body: string;
+  features: readonly string[];
+  screenshotAlt: string;
+}
+interface Props {
+  spread: Spread;
+  image: string;
+  reverse?: boolean;
+  linkHref?: string;
+  linkLabel?: string;
+}
+const { spread, image, reverse = false, linkHref, linkLabel } = Astro.props as Props;
+---
+
+<section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/60">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class={`lg:col-span-5 ${reverse ? 'lg:order-2' : ''}`}>
+      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        {spread.eyebrow}
+      </p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+        {spread.title}
+      </h2>
+      <p class="mt-6 text-lg text-[var(--color-muted)] leading-relaxed">
+        {spread.body}
+      </p>
+      <ul class="mt-8 space-y-3">
+        {spread.features.map((f) => (
+          <li class="flex gap-3 text-base text-[var(--color-foreground)]">
+            <span class="text-[var(--color-primary)] mt-1">—</span>
+            <span class="leading-relaxed">{f}</span>
+          </li>
+        ))}
+      </ul>
+      {linkHref && linkLabel && (
+        <a
+          href={linkHref}
+          class="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[var(--color-primary)] hover:underline"
+        >
+          {linkLabel}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+
+    <div class={`lg:col-span-7 ${reverse ? 'lg:order-1' : ''}`}>
+      <img
+        src={image}
+        alt={spread.screenshotAlt}
+        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-xl"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
