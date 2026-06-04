@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import IndustryPage from '../../components/IndustryPage.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const industry = t.industries.realEstate;
+---
+
+<Layout title={industry.meta.title} description={industry.meta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+  <main id="main-content">
+    <IndustryPage industry={industry} lang={lang} image="/images/industries/real-estate.jpg" />
+  </main>
+  <Footer t={t} lang={lang} />
+</Layout>
