@@ -1,0 +1,22 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+---
+
+<section class="py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-6">
+      {t.integrationsRibbon.eyebrow}
+    </p>
+    <p class="text-xl md:text-2xl lg:text-3xl text-[var(--color-foreground)] font-light leading-relaxed">
+      {t.integrationsRibbon.items.map((name, i) => (
+        <>
+          <span class="whitespace-nowrap">{name}</span>
+          {i < t.integrationsRibbon.items.length - 1 && (
+            <span class="text-[var(--color-border)] mx-2 md:mx-3"> · </span>
+          )}
+        </>
+      ))}
+    </p>
+  </div>
+</section>

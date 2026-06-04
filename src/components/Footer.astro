@@ -1,7 +1,7 @@
 ---
 import type { Translations, Lang } from '../i18n/utils';
 import { getLocalizedPath, switchLangPath } from '../i18n/utils';
-const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: string };
+const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 
 const currentPath = Astro.url.pathname;
 const otherLang: Lang = lang === 'ro' ? 'en' : 'ro';
@@ -21,14 +21,19 @@ const switchPath = switchLangPath(currentPath, otherLang);
         <div>
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{t.footer.product}</p>
           <div class="flex flex-col gap-2">
-            <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.aiAgents}</a>
+            <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.overview}</a>
+            <a href={getLocalizedPath('/ai-assistants', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.assistants}</a>
+            <a href={getLocalizedPath('/crm', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.crm}</a>
             <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.voiceQa}</a>
+            <a href={getLocalizedPath('/voice-ai', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.voiceAi}</a>
+            <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.workspace}</a>
             <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
           </div>
         </div>
         <div>
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{t.footer.company}</p>
           <div class="flex flex-col gap-2">
+            <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.enterprise}</a>
             <a href={getLocalizedPath('/schedule-demo', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.scheduleDemo}</a>
             <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.contact}</a>
           </div>
