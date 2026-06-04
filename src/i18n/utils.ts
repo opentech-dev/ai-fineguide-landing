@@ -5,7 +5,7 @@ export type Lang = 'en' | 'ro';
 export type Translations = typeof en;
 
 /** Set to `false` when `ro.ts` holds real Romanian copy again (not re-exporting `en`). */
-export const RO_LOCALE_MIRRORS_ENGLISH = true;
+export const RO_LOCALE_MIRRORS_ENGLISH = false;
 
 const translations: Record<Lang, Translations> = { en, ro };
 

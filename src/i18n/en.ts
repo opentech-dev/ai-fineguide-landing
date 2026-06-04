@@ -1,7 +1,7 @@
 export const en = {
   // --- Navbar ---
   nav: {
-    overview: 'Overview',
+    overview: 'Home',
     platform: 'Platform',
     assistants: 'AI Assistants',
     crm: 'CRM',
@@ -9,6 +9,7 @@ export const en = {
     voiceAi: 'Voice AI',
     workspace: 'Workspace',
     pricing: 'Pricing',
+    enterprise: 'Enterprise',
     contact: 'Contact',
     blog: 'Blog',
     signIn: 'Sign in',
@@ -18,10 +19,11 @@ export const en = {
 
   // --- Footer ---
   footer: {
-    tagline: 'One AI platform for revenue teams — assistants, CRM, workspace, and voice — from first conversation to closed deal.',
+    tagline: 'The next-generation platform for business operations, bringing conversations, CRM, voice, and workspace onto one AI-native spine.',
     product: 'Product',
     company: 'Company',
     scheduleDemo: 'Schedule a demo',
+    enterprise: 'Enterprise',
     contact: 'Contact',
     privacy: 'Privacy',
     terms: 'Terms',
@@ -30,441 +32,636 @@ export const en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai — Turn conversations into sales. With AI.',
+    title: 'Fineguide.ai | Transform how your business works with customers.',
     description:
-      'Capture and qualify conversations with AI assistants, run pipeline and tasks in CRM, collaborate in workspace, and improve voice touchpoints — one connected platform.',
+      'The next-generation platform for business operations. Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
   },
 
   // --- Hero ---
   hero: {
-    title: 'Turn conversations into sales.',
-    titleAccent: ' With AI.',
+    title: 'Transform how your business works with customers.',
     subtitle:
-      'Capture and qualify conversations with AI assistants, keep CRM and tasks in sync, collaborate in one workspace, and improve every voice touchpoint — from first contact to closed deal.',
+      'Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
     ctaPrimary: 'Get started',
     ctaSecondary: 'Schedule a demo',
-    badgeSecure: 'Secure',
-    badgeSetup: 'Setup in 24h',
-    badgeNoCommitment: 'No commitment',
-    heroAlt: 'Fineguide.ai AI platform for sales',
   },
 
-  // --- CurrentState ---
-  currentState: {
-    label: 'The Problem',
-    heading: 'What happens today in most companies',
-    problems: [
-      {
-        title: 'Conversations slip through the cracks',
-        desc: 'Prospects reach out on chat, social, email, or phone — and too often no one follows up fast enough.',
-      },
-      { title: 'Leads aren\'t qualified properly', desc: 'The team wastes time on cold leads and misses the ones with real potential.' },
-      { title: 'Data doesn\'t reach CRM completely', desc: 'Conversations stay in chat apps, not in CRM. The team works with incomplete information.' },
-      { title: 'Operational costs are too high', desc: 'The team spends hours on repetitive tasks that could be automated — instead of selling.' },
-    ],
-    resultHeading: 'The result',
-    resultText: 'Inefficient operations,',
-    resultHighCost: 'high costs',
-    resultLostProfit: 'lost profit',
-  },
-
-  // --- Different ---
-  different: {
-    label: 'The Solution',
-    heading: 'What you can do differently',
-    subheading: 'Use AI to connect acquisition, CRM, workspace, and voice quality in one operating model — automated and measurable.',
-    steps: [
-      { label: 'Ad', desc: 'Attract attention on social channels' },
-      { label: 'Conversation', desc: 'AI takes over and qualifies the lead' },
-      { label: 'CRM', desc: 'Data flows automatically into the pipeline' },
-      { label: 'Sale', desc: 'The team steps in with full context' },
-      { label: 'Analysis', desc: 'Every interaction is measured' },
-      { label: 'Report', desc: 'Decisions based on concrete data' },
-    ],
-  },
-
-  // --- HowItWorks ---
-  howItWorks: {
-    label: 'The Process',
-    heading: 'How it works',
-    stepPrefix: 'Step ',
-    steps: [
-      {
-        title: 'Attract customers',
-        desc: 'Run campaigns on social, your website, or partner channels. A prospect starts a conversation — chat or voice.',
-      },
-      {
-        title: 'AI assistants take the first mile',
-        desc: 'Instant responses, smart qualification, and structured data pushed into CRM — without making people wait.',
-      },
-      {
-        title: 'Team steps in prepared',
-        desc: 'Everyone works from one workspace: pipeline, tasks, history, and voice insights — so context never lives in a silo.',
-      },
-      { title: 'AI analyzes the result', desc: 'Lead progression is tracked, the call is analyzed, weak points are identified and feedback is provided to the team.' },
-      { title: 'You get a clear report', desc: 'See exactly which channels bring real customers, where leads are lost, conversion rates and how the team performs.' },
-    ],
-  },
-
-  // --- Stats ---
-  stats: {
-    items: [
-      { value: '<2s', label: 'Average response time', source: 'Measured across 10,000+ conversations' },
-      { value: '24/7', label: 'Always-on availability', source: 'Including weekends and holidays' },
-      { value: '93%', label: 'Leads qualified correctly', source: 'Average over the last 6 months' },
-      { value: '+40%', label: 'Team conversion rate', source: 'Compared to manual process' },
-    ],
-  },
-
-  // --- Benefits ---
-  benefits: {
-    label: 'Results',
-    heading: 'What you get',
-    quote: 'Not just automation.',
-    quoteAccent: ' Real control over the sales process.',
-    items: [
-      'AI coverage on conversations in under 2 seconds, 24/7',
-      'Automatic lead qualification with priority scoring',
-      'CRM, tasks, and pipeline updated without manual busywork',
-      'Voice QA and analytics across 30+ languages',
-      'Workspace and documents so the whole team stays aligned',
-      'Concrete insights: what works and what doesn\'t',
-      'Detailed reports by channel, teammate, and period',
-    ],
-  },
-
-  // --- Audience ---
-  audience: {
-    label: 'Audience',
-    heading: 'Who is it for',
-    subheading: 'For revenue-led companies that:',
-    criteria: [
-      'Invest in multi-channel acquisition (ads, web, social, phone)',
-      'Have a sales or success team managing pipelines',
-      'Receive new leads or tickets every day',
-      'Want higher conversion without hiring linearly',
-      'Need one place for conversations, CRM, and documents',
-      'Want measurable coaching on voice and chat quality',
-    ],
-    closingText: 'If you want more sales without increasing the marketing budget,',
-    closingAccent: ' the system becomes a competitive advantage.',
-  },
-
-  // --- PlatformOverview ---
-  platform: {
-    label: 'Platform',
-    heading: 'Everything revenue teams need in one place',
-    subheading:
-      'AI assistants, CRM, Voice QA, Voice AI, workspace, and automations — connected from first touch to renewal.',
+  // --- Overview intro (what Fineguide is) ---
+  overview: {
+    eyebrow: 'The platform',
+    body:
+      "Fineguide is a unified system that contains everything your team needs to manage customer relationships: AI Assistants → Leads → CRM → Voice Automations → Analytics. Every conversation across every channel is connected, every customer record, every voice interaction, and every internal document, connected on one platform.",
     modules: [
       {
-        title: 'AI Assistants',
-        desc: 'Deploy assistants across web chat, social, and messaging. Qualify leads and hand off to humans with full context.',
-        tags: ['Web', 'Facebook', 'Instagram', 'Telegram'],
+        name: 'Assistants',
+        desc: 'AI that answers customers on web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord.',
       },
       {
-        title: 'CRM',
-        desc: 'Contacts, pipelines, tasks, and tags — tied to real conversations and outcomes, not scattered spreadsheets.',
-        tags: ['Leads', 'Pipeline', 'Tasks'],
+        name: 'CRM',
+        desc: 'Conversations, contacts, leads, pipelines, tasks, tickets, team inbox, and routing queue.',
       },
       {
-        title: 'Voice QA',
-        desc: 'Transcribe and score calls with your rules. Give agents and managers consistent, data-backed feedback.',
-        tags: ['Moldcell', 'Orange', '30+ languages'],
+        name: 'Voice',
+        desc: 'Quality assurance on every call, with AI-driven telephony arriving next.',
       },
       {
-        title: 'Voice AI',
-        desc: 'Voice experiences and call flows that plug into your stack — automation and quality beyond text alone.',
-        tags: ['Phone', 'Telephony', 'Integrations'],
+        name: 'Workspace',
+        desc: 'Documents, decisions, and team knowledge alongside the customer record.',
       },
       {
-        title: 'Workspace',
-        desc: 'Documents, context, and teamwork in one workspace so sales and support stop switching tools.',
-        tags: ['Documents', 'Collaboration', 'Context'],
+        name: 'Automations',
+        desc: 'Visual workflows that wire Fineguide into the rest of your stack.',
       },
       {
-        title: 'n8n Workflows',
-        desc: 'Connect Fineguide to the rest of your stack with visual no-code automations and webhooks.',
-        tags: ['Google Sheets', 'Slack', 'Webhooks'],
+        name: 'QA & Analytics',
+        desc: 'Score every interaction, track performance across teams, and surface insights that drive improvement.',
       },
     ],
-    integrationsLabel: 'Integrations',
   },
 
-  // --- CTA ---
-  cta: {
-    heading: 'Ready to turn conversations into',
-    headingAccent: ' real sales',
-    headingSuffix: '?',
-    subtitle: '15-minute demo. No commitment. See how Fineguide.ai can work for your team.',
+  // --- Assistants spread ---
+  assistantsSpread: {
+    eyebrow: 'Assistants',
+    title: 'AI that handles conversations, every time.',
+    body:
+      'Deploy assistants that read your knowledge, follow your rules, and capture what matters. They greet customers on every channel where you do business, and turn each conversation into structured records your team can act on.',
+    features: [
+      'Channels: Web · WhatsApp · Telegram · Instagram · Messenger · Slack · Discord',
+      'Knowledge from URLs, documents, and PDFs',
+      'Configurable persona, voice, and escalation rules',
+      'Extracts intent and customer data directly into CRM leads',
+      'Live conversation monitoring, analytics, and feedback loops',
+    ],
+    screenshotAlt: 'Fineguide Assistants analytics dashboard',
+  },
+
+  // --- CRM spread ---
+  crmSpread: {
+    eyebrow: 'CRM',
+    title: 'One customer record. Every team. Every conversation.',
+    body:
+      "Sales sees the deal. Support sees the ticket. The call center sees the queue. Everyone sees the same customer, the same conversation history, the same context, without the export and import dance between tools.",
+    features: [
+      'Pipelines and stages, Kanban and table views',
+      'Tasks, assignments, and due dates',
+      'Tickets and support cases',
+      'Team inbox and routing queue',
+      'Custom fields auto-filled by assistants',
+    ],
+    screenshotAlt: 'Fineguide CRM tasks Kanban board',
+  },
+
+  // --- Voice spread (dark editorial break) ---
+  voiceSpread: {
+    eyebrow: 'Voice',
+    title: 'Every call, scored and structured.',
+    body:
+      "Voice QA evaluates calls automatically, across departments, against your rules, in the languages your team speaks. Voice AI puts the same assistants that handle chat on the other end of the phone.",
+    features: [
+      'Automatic transcription and scoring on every call',
+      'Per-department evaluation criteria and weights',
+      'Agent feedback and trend dashboards',
+      'Telephony integration with major providers',
+      'AI agents on live inbound and outbound calls',
+    ],
+    screenshotAlt: 'Fineguide Voice QA statistics dashboard',
+  },
+
+  // --- Workspace + Automations two-up ---
+  workspaceAutomations: {
+    workspace: {
+      eyebrow: 'Workspace',
+      title: 'Documents that live with the customer.',
+      body:
+        'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts and customers your team is already working with.',
+      features: [
+        'Block editor with slash commands',
+        'Folder hierarchy and drag-drop',
+        'Full-text search across the workspace',
+        'Soft-delete trash with recovery',
+      ],
+    },
+    automations: {
+      eyebrow: 'Automations',
+      title: 'Wire Fineguide into the rest of your stack.',
+      body:
+        'An embedded n8n instance, hosted or bring-your-own, that connects Fineguide to the tools you already use.',
+      features: [
+        'Hosted n8n on Fineguide infrastructure',
+        'Or bring your own n8n instance',
+        'Webhooks on conversations, leads, and tickets',
+        'Hundreds of pre-built integrations',
+      ],
+    },
+  },
+
+  // --- Numbers (inline editorial figures) ---
+  numbers: {
+    eyebrow: 'By the numbers',
+    items: [
+      {
+        figure: '24/7',
+        prose: 'AI coverage in under two seconds, on every channel you have connected.',
+      },
+      {
+        figure: '30+',
+        prose: 'languages supported across voice transcription and customer conversations.',
+      },
+      {
+        figure: 'One',
+        prose: 'platform replacing the seven tools you would otherwise duct-tape together.',
+      },
+    ],
+  },
+
+  // --- Industries / Who builds on it ---
+  industries: {
+    eyebrow: 'Built for',
+    body:
+      'Sales teams use Fineguide to qualify faster. Support centers use it to handle volume without growing headcount. Call centers use it to evaluate quality and coach in real time. Customer success teams use it to keep accounts coherent across channels.',
+    audiences: 'Sales · Support · Customer success · Call center operations',
+  },
+
+  // --- Integrations ribbon ---
+  integrationsRibbon: {
+    eyebrow: 'Integrates with what you already use',
+    items: [
+      'WhatsApp',
+      'Telegram',
+      'Instagram',
+      'Messenger',
+      'Slack',
+      'Discord',
+      'AmoCRM',
+      'Kommo',
+      'Zendesk',
+      'HelpScout',
+      'n8n',
+    ],
+  },
+
+  // --- Final CTA ---
+  finalCta: {
+    heading: 'Ready to consolidate?',
+    body:
+      'See Fineguide running on your operation in a 15-minute walkthrough.',
     ctaPrimary: 'Get started',
-    ctaSecondary: 'Schedule a demo',
-    badgeSetup: 'Setup in 24h',
-    badgeSecure: 'Secure',
-    badgeNoCommitment: 'No commitment',
+    ctaSecondary: 'Talk to sales',
   },
 
-  // --- Module landing pages (shared shell) ---
+  // --- AI Assistants page (custom layout) ---
   assistantsPage: {
     meta: {
-      title: 'AI Assistants — Automate conversations across channels | Fineguide.ai',
+      title: 'AI Assistants | Automate conversations across every channel | Fineguide.ai',
       description:
-        'Deploy AI assistants on web, social, and messaging. Qualify leads, sync to CRM, and hand off with full context.',
+        'Deploy AI assistants that read your knowledge, follow your rules, and capture what matters, across web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord.',
     },
     hero: {
-      title: 'AI assistants that',
-      titleAccent: ' never miss a lead.',
+      title: 'AI assistants that handle',
+      titleAccent: ' conversations.',
       subtitle:
-        'Answer in seconds, ask the right questions, and push structured outcomes into CRM — so your team sells instead of copy-pasting.',
+        'Deploy assistants that read your knowledge, follow your rules, and capture what matters, across every channel where you do business.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
-    sections: [
-      {
-        heading: 'Every channel, one playbook',
-        body: 'Bring web chat, social inboxes, and messaging into a single assistant configuration. Brand tone, guardrails, and escalation rules stay consistent everywhere prospects show up.',
+    intro: {
+      eyebrow: 'The Assistants module',
+      body:
+        'Each assistant is a configurable AI that greets customers, answers questions, qualifies leads, and writes structured records into CRM. You define what it knows, how it sounds, when to escalate, and what to capture, then deploy it on the channels your customers actually use.',
+      screenshotAlt: 'Fineguide assistant analytics, sessions, satisfaction, sentiment',
+    },
+    channels: {
+      eyebrow: 'Channels',
+      heading: 'One assistant. Every channel.',
+      body:
+        'Configure once. The assistant shows up where your customers do, including web widgets, social inboxes, messaging apps, and CRM bridges that put it inside the tools your team already uses.',
+      groups: [
+        {
+          label: 'Direct',
+          items: 'Web widget · WhatsApp · Telegram · Instagram · Messenger · Slack · Discord',
+        },
+        {
+          label: 'CRM bridges',
+          items: 'AmoCRM · Kommo',
+        },
+      ],
+    },
+    configuration: {
+      eyebrow: 'Configuration',
+      heading: 'Tune every dimension.',
+      body:
+        'The defaults work. The depth is there when you need it, across persona, knowledge, voice, extraction, actions, and handoff.',
+      blocks: [
+        {
+          title: 'Persona',
+          body:
+            'System prompt, communication style, and verbosity. Add brand voice or restrict the assistant to a specific role.',
+        },
+        {
+          title: 'Learning Context',
+          body:
+            'Upload documents, link URLs, or attach PDFs. The assistant grounds every answer in what you give it, with no hallucinated facts.',
+        },
+        {
+          title: 'Voice',
+          body:
+            'Text-to-speech voices for spoken responses. Pick from a curated set or use your own clone.',
+        },
+        {
+          title: 'Session Variables',
+          body:
+            'Define the fields the assistant extracts mid-conversation, such as name, intent, budget, and pain point, and they flow into CRM leads automatically.',
+        },
+        {
+          title: 'Actions',
+          body:
+            'Trigger webhooks, API calls, or workflows from within a conversation. Book meetings, create tickets, hand off to humans.',
+        },
+        {
+          title: 'Human Handoff',
+          body:
+            'Rule-based escalation when the customer asks for it or when the assistant hits the limits you have set.',
+        },
+      ],
+    },
+    extraction: {
+      eyebrow: 'From conversation to CRM',
+      heading: 'Every chat becomes a structured record.',
+      body:
+        'What used to require a rep copying notes from a chat window into a spreadsheet now happens automatically, and accurately.',
+      steps: [
+        'Customer starts a conversation on any connected channel',
+        'Assistant identifies intent, extracts the fields you defined, and grounds answers in your knowledge',
+        'A CRM lead is created, or merged with an existing contact, without manual entry',
+        'Custom fields populate the lead so the data is searchable, segmentable, and automation-ready',
+        'Live conversations roll up in the workspace; analytics aggregate by assistant, channel, and time',
+      ],
+    },
+    leadAnatomy: {
+      eyebrow: 'Anatomy of a lead',
+      heading: 'A lead is more than a name and a phone number.',
+      body:
+        'Assistants capture the fields you care about, automatically, on every channel. Identity comes built in. Custom fields like budget, required service, or move-in date are the ones you define for your business.',
+      card: {
+        title: 'Lead #4218',
+        meta: 'WhatsApp · 2 minutes ago',
+        fields: [
+          { label: 'Name', value: 'Maria Popescu', ai: false },
+          { label: 'Phone', value: '+40 720 123 456', ai: false },
+          { label: 'Email', value: 'maria.p@example.com', ai: false },
+          { label: 'Required service', value: 'Voice QA · 5 agents', ai: true },
+          { label: 'Budget', value: '€2,000 – €4,000 / month', ai: true },
+          { label: 'Intent', value: 'Pricing & demo', ai: true },
+          { label: 'Stage', value: 'Qualified', ai: false },
+          { label: 'Next action', value: 'Schedule call', ai: false },
+        ],
+        footerLabel: 'AI',
+        footerNote:
+          'Fields tagged AI are populated by the assistant based on the conversation. Define your own in the assistant configuration.',
       },
-      {
-        heading: 'Qualification that feeds CRM automatically',
-        body: 'Stop retyping chats into spreadsheets. Assistants capture intent, budget signals, and next steps directly into Fineguide CRM entities your reps already use.',
+      industries: {
+        heading: 'Different business, different fields.',
+        body: 'The fields you capture depend on what your team needs to know:',
+        list: [
+          {
+            label: 'Real estate',
+            fields: 'Property type · Bedrooms · Budget · Move-in date · Financing status',
+          },
+          {
+            label: 'B2B SaaS',
+            fields: 'Company size · Use case · Decision timeline · Current tools · Pilot interest',
+          },
+          {
+            label: 'Healthcare',
+            fields: 'Service requested · Insurance · Preferred date · Specialist · Referral source',
+          },
+        ],
       },
-      {
-        heading: 'Human takeover without context loss',
-        body: 'When a conversation needs a person, agents see the transcript, tags, and lead score instantly — so customers never repeat themselves.',
-      },
-    ],
-    pageCta: {
-      heading: 'Ready to launch',
-      headingAccent: ' assistants',
-      headingSuffix: '?',
-      subtitle: 'See how Fineguide assistants plug into your acquisition stack in a 15-minute walkthrough.',
+    },
+    finalCta: {
+      heading: 'Ready to deploy?',
+      body: 'See an assistant configured for your business in a 15-minute walkthrough.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
   },
 
+  // --- CRM page (custom layout) ---
   crmPage: {
     meta: {
-      title: 'CRM — Pipelines, tasks, and contacts in one workspace | Fineguide.ai',
+      title: 'CRM | Conversations, leads, and tasks on one customer record | Fineguide.ai',
       description:
-        'Manage contacts, leads, pipelines, and tasks with conversation context built in — not scattered across tools.',
+        'A CRM built around the customer record, with conversations, contacts, leads, pipelines, tasks, tickets, team inbox, and routing queue, connected to every channel your team operates on.',
     },
     hero: {
-      title: 'CRM that stays',
-      titleAccent: ' tied to real conversations.',
+      title: 'One customer record. Every team.',
+      titleAccent: ' Every conversation.',
       subtitle:
-        'Pipeline boards, assignments, tags, and timelines reflect what actually happened on chat and voice — so managers forecast from facts, not gut feel.',
+        'Sales sees the deal. Support sees the ticket. The call center sees the queue. Everyone sees the same customer, without the export-and-import dance between tools.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
-    sections: [
-      {
-        heading: 'Pipeline visibility for revenue teams',
-        body: 'Kanban boards per pipeline, stage SLAs, and lead ownership keep everyone aligned on what to do next. No more shadow spreadsheets for “the real” funnel.',
-      },
-      {
-        heading: 'Tasks and accountability out of the box',
-        body: 'Create follow-ups from any conversation, assign owners, and track completion alongside deal history — ideal for hybrid sales + support workflows.',
-      },
-      {
-        heading: 'Tags, comments, and collaboration',
-        body: 'Leave structured notes, @mention teammates, and segment leads with org-wide tags so downstream automation in n8n stays accurate.',
-      },
-    ],
-    pageCta: {
-      heading: 'Ready to centralize',
-      headingAccent: ' revenue work',
-      headingSuffix: '?',
-      subtitle: 'Walk through CRM, assistants, and Voice QA together with our team.',
+    intro: {
+      eyebrow: 'The CRM module',
+      body:
+        'Fineguide CRM is the operational hub where assistants feed leads, agents close them, and managers see the truth. Every conversation, every contact, every task, connected to the same customer record, on every channel your business runs.',
+      screenshotAlt: 'Fineguide CRM tasks board with Todo, In Progress, and Done columns',
+    },
+    surfaces: {
+      eyebrow: 'Inside the CRM',
+      heading: 'Eight surfaces, one customer record.',
+      body:
+        'Each surface is a different lens on the same underlying data, so you never duplicate work, never lose context, and never wonder which tool has the latest version.',
+      items: [
+        {
+          name: 'Conversations',
+          desc: 'Live and historical chats from every channel, with the customer profile and lead context attached.',
+        },
+        {
+          name: 'Contacts',
+          desc: 'People and companies you do business with, identified across phone numbers, emails, and channel handles.',
+        },
+        {
+          name: 'Leads',
+          desc: 'Qualified opportunities with structured fields, including custom props extracted by your assistants.',
+        },
+        {
+          name: 'Pipelines',
+          desc: 'Kanban and table views per pipeline. Stages, ownership, and SLAs that reflect how your team actually sells.',
+        },
+        {
+          name: 'Tasks',
+          desc: 'Follow-ups, callbacks, and to-dos with status, priority, and due dates, created from any conversation or lead.',
+        },
+        {
+          name: 'Tickets',
+          desc: 'Support cases routed alongside sales work, so the same customer is never two separate stories.',
+        },
+        {
+          name: 'Team Inbox',
+          desc: 'Shared triage of conversations waiting for a human, where you can claim, reply, or escalate without stepping on each other.',
+        },
+        {
+          name: 'Queue',
+          desc: 'Routing for live conversations and calls, supporting round-robin, ownership, or rule-based, depending on how your team operates.',
+        },
+      ],
+    },
+    customerRecord: {
+      eyebrow: 'The customer record',
+      heading: 'Identity that survives the channel switch.',
+      body:
+        'A customer who messages on WhatsApp Monday and calls on Tuesday is the same customer. Fineguide identifies them across phone numbers, channel handles, and email, and attaches every conversation, lead, and ticket to the same record so context never resets.',
+      bullets: [
+        'Identity merging across phone numbers, emails, and channel handles',
+        'Custom fields (`props`) populated by assistants during conversation',
+        'Complete interaction history, including chats, calls, tickets, and tasks, in one timeline',
+        'Org-wide segmentation that downstream automations and exports can rely on',
+      ],
+    },
+    finalCta: {
+      heading: 'Stop juggling tabs.',
+      body: 'See how Fineguide CRM compares to whatever stack you are running today.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
   },
 
+  // --- Voice AI page (custom layout) ---
   voiceAiPage: {
     meta: {
-      title: 'Voice AI — Call experiences beyond text | Fineguide.ai',
+      title: 'Voice AI | AI agents on live phone calls | Fineguide.ai',
       description:
-        'Design voice-first journeys that integrate with your telecom stack, assistants, and CRM for measurable outcomes.',
+        'The same assistants that handle web chat, on the other end of the phone. Voice AI answers inbound, places outbound, and hands off to humans when it matters.',
     },
     hero: {
-      title: 'Voice AI for',
-      titleAccent: ' real phone traffic.',
+      title: 'AI on the other end',
+      titleAccent: ' of the phone.',
       subtitle:
-        'Orchestrate call flows, capture structured outcomes, and route insights back to CRM and Voice QA — so voice channels perform like digital ones.',
+        'The same assistants that handle web chat, WhatsApp, and Telegram, now picking up the phone. Answer inbound 24/7, place outbound at scale, hand off to humans when it matters.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
-    sections: [
-      {
-        heading: 'Automations that understand spoken intent',
-        body: 'Pair speech experiences with the same knowledge and actions as your text assistants. Customers get consistent answers whether they type or call.',
-      },
-      {
-        heading: 'Operational hooks to your stack',
-        body: 'Trigger webhooks, update tickets, or schedule follow-ups from call milestones. Voice AI becomes part of your wider Fineguide automation fabric.',
-      },
-      {
-        heading: 'Quality loops with Voice QA',
-        body: 'Feed recordings into Voice QA for scoring, coaching, and trend analysis — closing the loop between live voice and continuous improvement.',
-      },
-    ],
-    pageCta: {
-      heading: 'Ready to modernize',
-      headingAccent: ' voice',
-      headingSuffix: '?',
-      subtitle: 'Explore Voice AI alongside assistants and Voice QA in one demo.',
+    intro: {
+      eyebrow: 'The Voice AI module',
+      body:
+        'Voice AI puts the configurable assistants you already deploy on chat onto live phone calls, answering inbound, qualifying outbound, and handing off to humans when it matters. Phone becomes an integrated channel, not a parallel system.',
+    },
+    capabilities: {
+      eyebrow: 'Capabilities',
+      heading: 'A complete voice layer, end to end.',
+      body:
+        'Voice AI builds on the assistants, CRM, and Voice QA you already have, so phone runs on the same configuration, the same customer record, and the same quality dashboards as every other channel.',
+      blocks: [
+        {
+          title: 'Inbound automation',
+          body:
+            'Answer calls 24/7. Route by intent, identify the customer, and resolve common requests without queueing for a human.',
+        },
+        {
+          title: 'Outbound calls',
+          body:
+            'Place qualification, follow-up, or reminder calls at scale. Hand off to a human the moment the conversation requires it.',
+        },
+        {
+          title: 'Telephony integration',
+          body:
+            'Connects to your existing carrier or SIP trunk. Numbers, recording, and compliance follow your existing setup.',
+        },
+        {
+          title: 'CRM and Voice QA loop',
+          body:
+            'Every call writes back to the same customer record, with transcripts ready for Voice QA scoring on the same dashboards.',
+        },
+      ],
+    },
+    finalCta: {
+      heading: 'Bring AI to the phone.',
+      body: 'Walk through Voice AI, Voice QA, and the rest of the platform in one demo.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
   },
 
+  // --- Workspace page (custom layout) ---
   workspacePage: {
     meta: {
-      title: 'Workspace & documents — Context for every deal | Fineguide.ai',
+      title: 'Workspace | A document editor that lives with your customers | Fineguide.ai',
       description:
-        'Keep briefs, collateral, and decisions next to CRM records and conversations so teams stop context-switching.',
+        'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts, leads, and conversations your team is already working with.',
     },
     hero: {
-      title: 'Workspace where',
-      titleAccent: ' deals stay coherent.',
+      title: 'Documents that live',
+      titleAccent: ' with the customer.',
       subtitle:
-        'Centralize documents, notes, and approvals next to leads and tasks — so everyone works from the same facts from discovery to close.',
+        'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts and customers your team is already working with.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
-    sections: [
-      {
-        heading: 'Documents live next to the customer record',
-        body: 'Upload proposals, call summaries, and compliance files where sales and support already work. Permissions follow org roles, not email attachments.',
-      },
-      {
-        heading: 'Collaboration without tool sprawl',
-        body: 'Fineguide workspace keeps comments, mentions, and tasks tied to entities your CRM already tracks — reducing Slack archaeology when a deal heats up.',
-      },
-      {
-        heading: 'Ready for automation',
-        body: 'When n8n workflows fire, they read the same canonical context from workspace + CRM, so downstream systems stay in sync.',
-      },
-    ],
-    pageCta: {
-      heading: 'Ready to unify',
-      headingAccent: ' context',
-      headingSuffix: '?',
-      subtitle: 'See workspace, CRM, and assistants together in a tailored demo.',
+    intro: {
+      eyebrow: 'The Workspace module',
+      body:
+        'Workspace is a structured editor with blocks, hierarchy, and slash commands, built into the same product as your CRM and conversations. Write a playbook once and the people who need it find it where they already work.',
+      screenshotAlt: 'Fineguide Workspace document editor with slash-command menu',
+    },
+    editor: {
+      eyebrow: 'The editor',
+      heading: 'Blocks, not blank pages.',
+      body:
+        'Headings, lists, quotes, code, callouts, and tables. Every block is composable. Slash commands speed up writing. Keyboard shortcuts speed up everything else.',
+      blocks: [
+        {
+          title: 'Block-based structure',
+          body:
+            'Headings, paragraphs, lists, quotes, code, tables, callouts. Drag to reorder, indent to nest, transform between types with a keystroke.',
+        },
+        {
+          title: 'Slash commands',
+          body:
+            'Type `/` to pull up every block type, embed, and shortcut. No menu hunting, no formatting interruptions.',
+        },
+        {
+          title: 'Real-time updates',
+          body:
+            'Edits propagate immediately across the team. Comments and mentions attach to the block, not a stale email thread.',
+        },
+      ],
+    },
+    structure: {
+      eyebrow: 'Organization',
+      heading: 'Hierarchy, search, and recovery.',
+      body:
+        'Workspace organizes itself around the way your team actually thinks, with folders for departments, documents for playbooks, recents and favorites for what you touched last week.',
+      bullets: [
+        'Folder and document hierarchy with drag-and-drop reorder',
+        'Recents and favorites for the docs you live in',
+        'Full-text search across the entire workspace',
+        'Soft-delete trash with recovery, so deleting is not destructive',
+      ],
+    },
+    connected: {
+      eyebrow: 'Connected to your customers',
+      heading: 'Documents that know who they are about.',
+      body:
+        'Link a document to a contact, a lead, or a customer record. The next person who opens that customer in CRM sees the playbook, the call summary, or the proposal that already exists. Nothing gets lost in Slack archaeology.',
+    },
+    finalCta: {
+      heading: 'Ready to consolidate?',
+      body: 'See workspace, CRM, and assistants together in a 15-minute walkthrough.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
   },
 
-  // --- Voice QA Page meta ---
-  voiceQaMeta: {
-    title: 'Voice QA — Automatic call evaluation with AI | Fineguide.ai',
-    description: 'Automatically transcribe, evaluate and analyze every phone call. Provide objective feedback to your team and improve conversation quality with AI.',
-  },
-
-  // --- VoiceQA Hero ---
-  voiceQaHero: {
-    title: 'Turn calls into',
-    titleAccent: ' performance.',
-    subtitle: 'Automatically transcribe, evaluate and analyze every phone call with AI. Provide objective feedback to your team and improve customer experience.',
-    ctaPrimary: 'Get started',
-    ctaSecondary: 'Schedule a demo',
-    features: ['30+ languages supported', 'Automatic AI evaluation', 'Telecom & CRM integration'],
-    heroAlt: 'Fineguide Voice QA — automatic call evaluation',
-  },
-
-  // --- VoiceQA CurrentState ---
-  voiceQaCurrentState: {
-    label: 'The Problem',
-    heading: 'What classic QA looks like in a call center',
-    problems: [
-      { title: 'Manual evaluation takes too long', desc: 'A QA manager can listen to 5-10 calls per day. The rest go unchecked, without feedback.' },
-      { title: 'Criteria applied inconsistently', desc: 'Each evaluator interprets rules differently. Scores vary depending on who listens.' },
-      { title: 'No visibility on quality', desc: 'There\'s no clear dashboard of performance per agent, department or time period.' },
-      { title: 'Feedback arrives too late', desc: 'The agent gets feedback days or weeks later. The coaching impact is lost.' },
-    ],
-    resultHeading: 'The result?',
-    resultText: 'Quality drops, customers are lost, and the team doesn\'t know ',
-    resultTextBold: 'what',
-    resultTextEnd: ' needs to be improved.',
-  },
-
-  // --- VoiceQA Different ---
-  voiceQaDifferent: {
-    label: 'The Solution',
-    heading: 'A different way to do QA',
-    subheading: 'AI takes over evaluation. You focus on coaching and results.',
-    steps: [
-      { label: 'Call', desc: 'The conversation is recorded automatically' },
-      { label: 'Transcription', desc: 'AI transcribes the dialogue to text' },
-      { label: 'AI Evaluation', desc: 'Score based on your rules' },
-      { label: 'Feedback', desc: 'The agent receives concrete suggestions' },
-      { label: 'Report', desc: 'Dashboard with trends and metrics' },
-    ],
-  },
-
-  // --- VoiceQA HowItWorks ---
-  voiceQaHowItWorks: {
-    label: 'The Process',
-    heading: 'How it works',
-    stepPrefix: 'Step ',
-    steps: [
-      { title: 'Connect the call source', desc: 'Integrate with your telecom operator. Calls are captured automatically, without manual intervention.' },
-      { title: 'AI transcribes the conversation', desc: 'Every call is automatically transcribed, supporting 30+ languages. The transcription identifies the speaker and structures the dialogue.' },
-      { title: 'Evaluation based on your rules', desc: 'Define rules and criteria per department. AI evaluates each call according to your standards — fixed or weighted scoring.' },
-      { title: 'The agent gets feedback', desc: 'Score per rule, conversation evidence, improvement suggestions. Everything reaches the agent automatically, without delays.' },
-      { title: 'The manager sees the full picture', desc: 'Dashboard with performance by department, agent, client. Trends, weak points and recommendations — all in one place.' },
-    ],
-  },
-
-  // --- VoiceQA Benefits ---
-  voiceQaBenefits: {
-    label: 'Results',
-    heading: 'What you get',
-    quote: 'Not just monitoring.',
-    quoteAccent: ' Measurable quality, on every call.',
-    items: [
-      'Automatic AI evaluation for every call',
-      'Consistent scores on rules and categories',
-      'Automatic and personalized feedback for agents',
-      'Dashboard with trends and real-time performance',
-      'Identification of weak points with concrete suggestions',
-      'Flexible rules — fixed or weighted scoring by category',
-    ],
-  },
-
-  // --- VoiceQA Audience ---
-  voiceQaAudience: {
-    label: 'Audience',
-    heading: 'Who is Voice QA for',
-    subheading: 'For companies that:',
-    criteria: [
-      'Have a team that talks to customers on the phone',
-      'Want consistent quality standards',
-      'Manage multiple agents or departments',
-      'Want to improve team performance',
-      'Need clear and actionable reports',
-    ],
-    closingText: 'If you want consistent quality without growing the QA team,',
-    closingAccent: ' AI becomes your competitive advantage.',
-  },
-
-  // --- VoiceQA CTA ---
-  voiceQaCta: {
-    heading: 'Ready to turn calls into',
-    headingAccent: ' real performance',
-    headingSuffix: '?',
-    subtitle: '15-minute demo. No commitment. See how Voice QA improves your team\'s quality.',
-    ctaPrimary: 'Get started',
-    ctaSecondary: 'Schedule a demo',
-    features: ['Setup in 24h', '30+ languages supported', 'No commitment'],
+  // --- Voice QA page (custom layout) ---
+  voiceQaPage: {
+    meta: {
+      title: 'Voice QA | Score every call, surface every pattern | Fineguide.ai',
+      description:
+        'Automatic AI evaluation for every phone call, per department, against your rules, in 30+ languages. Surface common issues and emerging trends across thousands of conversations.',
+    },
+    hero: {
+      title: 'Every call, scored',
+      titleAccent: ' and structured.',
+      subtitle:
+        'Automatic AI evaluation on every call, per department, against your rules, in the languages your team speaks. Stop sampling. Start seeing the whole operation.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'The Voice QA module',
+      body:
+        'A QA manager who listens to ten calls a day sees one percent of what is happening on the phone. Voice QA scores all of them, automatically, consistently, and in time for feedback to matter.',
+      screenshotAlt: 'Fineguide Voice QA statistics dashboard, budget, minutes, and trend chart',
+    },
+    process: {
+      eyebrow: 'How it works',
+      heading: 'Five steps. Every call.',
+      body:
+        'Connect a call source, define your rules, and let the platform do the listening. Agents get feedback the same day. Managers see the trend before it becomes a problem.',
+      steps: [
+        'Connect a call source, such as your telecom operator, recording system, or PBX. Calls are captured automatically.',
+        'AI transcribes every conversation in 30+ languages, identifying speakers and structuring the dialogue.',
+        'Each call is evaluated against your per-department rules, with fixed or weighted scoring, no manual sampling.',
+        'The agent receives a score per rule, conversation evidence, and concrete improvement suggestions.',
+        'The manager sees performance by department, agent, and client, with trends and weak points called out.',
+      ],
+    },
+    configuration: {
+      eyebrow: 'Configuration',
+      heading: 'Per-department rules, your scoring model.',
+      body:
+        'Every team has its own quality bar. Voice QA lets you encode it, with different rules and weights per department, with the same engine handling sales calls, support tickets, and retention conversations side by side.',
+      blocks: [
+        {
+          title: 'Departments',
+          body:
+            'Organize by team, location, or function. Each department has its own categories, criteria, and dashboards.',
+        },
+        {
+          title: 'Categories and rules',
+          body:
+            'Define what good looks like, such as opening, discovery, objection handling, and compliance, and how each rule should be scored.',
+        },
+        {
+          title: 'Fixed or weighted',
+          body:
+            'Treat all rules equally or weight the ones that matter most. The math follows your policy, not the other way around.',
+        },
+        {
+          title: 'Agent feedback',
+          body:
+            'Per-rule scoring with conversation evidence. Suggestions reach the agent the same day, not the next quarterly review.',
+        },
+        {
+          title: 'Telephony integration',
+          body:
+            'Connect to your existing phone system or recording infrastructure. No rip-and-replace, no parallel data entry.',
+        },
+        {
+          title: 'CRM linkage',
+          body:
+            'Calls attach to the same customer record as chats and tickets. The customer is one story, not three.',
+        },
+      ],
+    },
+    extraction: {
+      eyebrow: 'Insights',
+      heading: 'Surface issues and emerging trends.',
+      body:
+        'Voice QA turns every call into structured insight, so issues and trends become visible across your whole operation, not just the calls a manager happens to hear.',
+      blocks: [
+        {
+          title: 'Custom extraction',
+          body:
+            'Tell the AI what to capture on every call, such as products mentioned, complaint types, root causes, competitor names.',
+        },
+        {
+          title: 'Common issues',
+          body:
+            'See which products generate the most complaints and which questions agents struggle to answer, across thousands of calls.',
+        },
+        {
+          title: 'Emerging trends',
+          body:
+            'Catch new issues, sentiment shifts, or competitor mentions as they appear, not weeks later.',
+        },
+      ],
+      footer:
+        'Configure per department and feed results into dashboards or webhooks.',
+    },
+    finalCta: {
+      heading: 'Stop sampling. Start scoring.',
+      body: 'See Voice QA running on your calls in a 15-minute walkthrough.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
   },
 
   // --- Pricing Page ---
   pricingMeta: {
-    title: 'Pricing — Fineguide.ai',
-    description: 'Flexible credit-based pricing. Choose the right plan for your team — all AI modules included from the start.',
+    title: 'Pricing | Fineguide.ai',
+    description: 'Flexible credit-based pricing. Choose the right plan for your team, with all AI modules included from the start.',
   },
   pricingPage: {
     heading: 'Pricing built for<br />growing teams',
@@ -558,16 +755,117 @@ export const en = {
     ],
   },
 
+  // --- Enterprise Page ---
+  enterpriseMeta: {
+    title: 'Enterprise | On-premise, adaptation, and consultancy | Fineguide.ai',
+    description:
+      'Dedicated service for enterprise teams: custom plans, on-premise deployment on your infrastructure, platform adaptation, and consultancy that turns the platform into outcomes.',
+  },
+  enterprisePage: {
+    hero: {
+      title: 'Enterprise on your',
+      titleAccent: ' terms.',
+      subtitle:
+        'Dedicated service for teams that operate at scale, with custom plans, on-premise deployment, platform adaptation, and consultancy that turns the platform into outcomes.',
+      cta: 'Contact sales',
+    },
+    service: {
+      eyebrow: 'Dedicated service',
+      heading: 'A team that knows your operation.',
+      body:
+        'Every enterprise deployment is supported by a team that knows your stack, your contracts, and your customers, from onboarding through expansion.',
+      items: [
+        'Dedicated account manager',
+        'Onboarding lead and migration assistance',
+        'Priority support with named SLAs',
+        'Quarterly reviews and roadmap input',
+      ],
+    },
+    onPremise: {
+      eyebrow: 'On-premise deployment',
+      heading: 'Run Fineguide on your infrastructure.',
+      body:
+        'For teams in regulated industries or with strict data sovereignty requirements, Fineguide deploys entirely on your own infrastructure, with your network, your security policies, and your compliance regime. No data leaves your perimeter.',
+      items: [
+        {
+          title: 'Your environment',
+          body: 'Self-hosted on your cloud, private cluster, or bare metal. We support the deployment; you own the infrastructure.',
+        },
+        {
+          title: 'Your perimeter',
+          body: 'Data stays inside your network boundary. No outbound traffic to third-party services unless you allow it.',
+        },
+        {
+          title: 'Your identity layer',
+          body: 'Integrates with your IdP, SSO, and existing access policies. Authentication and audit follow your standards.',
+        },
+        {
+          title: 'Your compliance',
+          body: 'Support for compliance review, security audits, and ongoing assessments, including HIPAA, ISO 27001, regional regulations, and beyond.',
+        },
+      ],
+    },
+    adaptation: {
+      eyebrow: 'Adaptation',
+      heading: 'Shaped to your operation.',
+      body:
+        'No two enterprise operations look the same. We adapt Fineguide to yours, with custom integrations with your internal systems, white-labeled deployments, and workflow customization that matches the way your team actually works.',
+      items: [
+        'Custom integrations with your internal systems',
+        'White-label and brand-aligned deployment',
+        'Bespoke workflows and module customization',
+        'Direct line to product engineering',
+      ],
+    },
+    consultancy: {
+      eyebrow: 'Consultancy',
+      heading: 'Strategy, not just software.',
+      body:
+        'Fineguide consulting works alongside your team, designing assistants, mapping conversations, and tuning the operation so the platform delivers measurable outcomes from day one.',
+      items: [
+        'Implementation and deployment strategy',
+        'Conversation design and assistant tuning',
+        'Operations consulting for sales, support, and call centers',
+        'Training, enablement, and team certification',
+      ],
+    },
+    plans: {
+      eyebrow: 'Plans',
+      heading: 'Pricing that matches your scale.',
+      body:
+        'Volume-based pricing, custom credit packages, and multi-organization deployments, built around your usage, not capped by it.',
+      items: [
+        'Custom credit packages and volume pricing',
+        'Multi-organization deployment across business units',
+        'Annual contracts with flexible renewal terms',
+      ],
+    },
+    contactBlock: {
+      heading: 'Talk to us.',
+      subtitle:
+        'Tell us about your team, and we will come back within one business day with a tailored proposal.',
+      emailLabel: 'Email',
+      email: 'enterprise@fineguide.ai',
+      phoneLabel: 'Phone',
+      ctaLabel: 'Schedule a deeper call',
+    },
+    finalCta: {
+      heading: 'Ready when you are.',
+      subtitle: 'Start a conversation and we will take it from there.',
+      ctaLabel: 'Contact sales',
+    },
+  },
+
   // --- Contact Page ---
   contactMeta: {
-    title: 'Contact — Fineguide.ai',
+    title: 'Contact | Fineguide.ai',
     description: 'Contact the Fineguide team. We\'re here for questions, technical support, or to discuss how the AI platform can help your business.',
   },
   contact: {
     heading: 'Contact us',
     subtitle: 'Want to learn how Fineguide can transform your customer interactions? Write to us and we\'ll respond as soon as possible.',
     talkHeading: 'Let\'s talk',
-    talkText: 'Whether you want to automate support, capture more leads, or integrate AI into your workflow — we\'re here to help.',
+    talkText: 'Whether you want to automate support, capture more leads, or integrate AI into your workflow, we\'re here to help.',
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     demoLabel: 'Schedule a demo',
@@ -602,7 +900,7 @@ export const en = {
 
   // --- Schedule Demo Page ---
   scheduleDemoMeta: {
-    title: 'Schedule a Demo — Fineguide.ai',
+    title: 'Schedule a Demo | Fineguide.ai',
     description: 'Schedule a personalized demo of the Fineguide platform. Discover how we can help you qualify more leads, provide better support and automate workflows.',
   },
   scheduleDemo: {

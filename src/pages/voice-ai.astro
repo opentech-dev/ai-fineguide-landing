@@ -1,10 +1,107 @@
 ---
-import ModulePageShell from '../components/ModulePageShell.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url) as Lang;
 const t = useTranslations(lang);
+const p = t.voiceAiPage;
 ---
 
-<ModulePageShell t={t} lang={lang} page={t.voiceAiPage} />
+<Layout title={p.meta.title} description={p.meta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="pt-36 pb-12 md:pt-44 md:pb-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="lg:w-[42%] flex-shrink-0">
+          <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+            {p.intro.eyebrow}
+          </p>
+          <h1 class="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
+            {p.hero.title}
+            <span class="text-[var(--color-primary)]">{p.hero.titleAccent}</span>
+          </h1>
+          <p class="mt-8 max-w-2xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">
+            {p.hero.subtitle}
+          </p>
+          <div class="mt-12 flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://app.fineguide.ai/register"
+              class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+            >
+              {p.hero.ctaPrimary}
+            </a>
+            <a
+              href={getLocalizedPath('/schedule-demo', lang)}
+              class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
+            >
+              {p.hero.ctaSecondary}
+            </a>
+          </div>
+        </div>
+        <div class="lg:w-[58%]">
+          <p class="text-2xl md:text-3xl leading-relaxed text-[var(--color-muted)] font-light">
+            {p.intro.body}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
+      <div class="max-w-7xl mx-auto">
+        <p class="text-sm font-medium uppercase tracking-widest text-[#c7b8ff] mb-5">
+          {p.capabilities.eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
+          {p.capabilities.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-gray-300 leading-relaxed">
+          {p.capabilities.body}
+        </p>
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {p.capabilities.blocks.map((block) => (
+            <div class="border-t border-white/10 pt-5">
+              <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white">
+                {block.title}
+              </h3>
+              <p class="mt-3 text-base text-gray-300 leading-relaxed">
+                {block.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 md:py-36 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {p.finalCta.heading}
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+          {p.finalCta.body}
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://app.fineguide.ai/register"
+            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+          >
+            {p.finalCta.ctaPrimary}
+          </a>
+          <a
+            href={getLocalizedPath('/schedule-demo', lang)}
+            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
+          >
+            {p.finalCta.ctaSecondary}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>
