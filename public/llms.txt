@@ -1,0 +1,72 @@
+# Fineguide.ai
+
+> Fineguide is a next-generation, AI-native platform for business operations that unifies customer conversations, CRM, voice, workspace, and automations onto one spine. Instead of duct-taping together seven separate tools, teams run AI assistants, a shared customer record, voice quality assurance, document workspace, and workflow automations from a single platform. Every conversation across every channel connects to one customer record, so sales, support, customer success, and call-center operations all see the same context.
+
+The platform is organized into modules that share one customer record:
+
+- **Assistants** — Configurable AI that answers customers on web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord. Each assistant reads your knowledge (URLs, documents, PDFs), follows your rules, uses a configurable persona/voice/escalation policy, extracts intent and customer data directly into CRM leads, and supports live monitoring, analytics, and human handoff.
+- **CRM** — One customer record across every team: conversations, contacts, leads, pipelines and stages (Kanban and table views), tasks and assignments, tickets and support cases, a team inbox, and a routing queue. Custom fields are auto-filled by assistants. Identity survives the channel switch.
+- **Voice** — Voice QA automatically transcribes and scores every call against per-department criteria and weights, in 30+ languages, with agent feedback and trend dashboards. Voice AI (rolling out) puts the same assistants on live inbound and outbound phone calls, integrated with major telephony providers.
+- **Workspace** — A block-based editor (slash commands, folder hierarchy, drag-drop, full-text search, soft-delete recovery) for playbooks, briefs, and team knowledge, connected to the same contacts and customers.
+- **Automations** — An embedded n8n instance (hosted on Fineguide infrastructure or bring-your-own) with webhooks on conversations, leads, and tickets, plus hundreds of pre-built integrations.
+- **QA & Analytics** — Score every interaction, track performance across teams, and surface insights that drive improvement.
+
+## What makes Fineguide different
+
+- **One platform, not a stack.** Conversations, CRM, voice, workspace, and automations share a single customer record, replacing the seven tools teams would otherwise integrate by hand. No export/import dance between systems.
+- **AI-native from the ground up**, not a chatbot bolted onto legacy software. The same configurable assistants run across chat channels and (rolling out) live phone calls.
+- **Channel-agnostic identity.** A customer's record and conversation history persist across web, messaging apps, and voice, so sales, support, customer success, and call-center teams all see the same context.
+- **Automation depth via embedded n8n** (hosted or bring-your-own), with webhooks on conversations, leads, and tickets and hundreds of pre-built integrations.
+- **Enterprise-ready:** on-premise deployment on your own infrastructure, platform adaptation, SLAs, GDPR compliance, and consultancy.
+- **All AI modules included in every plan** — pricing scales on usage (credits) and seats, not on locking features behind tiers.
+
+## Who it's for
+
+- **Sales teams** — qualify leads faster with AI assistants that capture intent and write structured records into CRM.
+- **Support centers** — handle volume without growing headcount.
+- **Call-center operations** — evaluate call quality automatically and coach agents in real time with Voice QA.
+- **Customer success teams** — keep accounts coherent across every channel on one shared record.
+
+## Pricing
+
+Credit-based, with all AI modules included from the start. One subscription per organization. No setup fees, cancel anytime, free trial.
+
+- **Free** — $0/month forever. 1,000 credits to explore the platform, no card required. 1 member, AI modules included (no n8n), community support, pay-as-you-go top-ups ($20 / 1,000 extra credits).
+- **Starter** — $99/month. ~10,000 credits (≈ 10,000 text conversations or 800+ minutes VoiceQA). Up to 5 members, basic admin controls, email support, all AI modules. Extra credits $15 / 1,000.
+- **Business** — $199/month (most popular). ~23,000 credits (≈ 23,000 text conversations or 1,900+ minutes VoiceQA). Up to 10 members, advanced admin controls, priority support, advanced analytics. Extra credits $12 / 1,000.
+- **Premium** — $499/month. ~65,000 credits (≈ 65,000 text conversations or 5,400+ minutes VoiceQA). 20 members, enterprise admin controls, dedicated support, custom reports, API & webhooks access. Extra credits $10 / 1,000.
+- **Enterprise** — custom plans with custom credit packages, volume discounts, priority support & SLA, a dedicated account manager, on-premise deployment, and platform adaptation.
+
+**How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; VoiceQA analysis = 12 credits/minute. Document processing, analytics & reports, team collaboration, and n8n integrations are included free.
+
+## Pricing FAQ
+
+- **Do credits expire?** Monthly subscription credits reset each billing cycle. Extra credit packs never expire.
+- **Can I change plans?** Yes — upgrade or downgrade anytime; changes take effect the next billing cycle. Extra credits can be purchased anytime.
+- **What happens if I run out of credits?** You can buy extra credits instantly; assistants keep working, and you're notified before credits run out.
+- **Is there a free trial?** Yes. All new accounts receive free credits to test the platform before choosing a paid plan.
+
+## Integrations & languages
+
+Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCRM, Kommo, Zendesk, HelpScout, and n8n (plus hundreds more via n8n workflows). The platform supports 30+ languages across voice transcription and customer conversations, and the site is localized in English (`/`) and Romanian (`/ro/`).
+
+## Pages
+
+- [Home](https://fineguide.ai/): Platform overview — unify conversations, CRM, channels, and workflows, powered by AI from the ground up.
+- [AI Assistants](https://fineguide.ai/ai-assistants): Deploy AI assistants that automate conversations across web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord.
+- [CRM](https://fineguide.ai/crm): Conversations, leads, and tasks on one shared customer record for every team.
+- [Voice QA](https://fineguide.ai/voice-qa): Automatic transcription and scoring on every call, with per-department evaluation criteria.
+- [Voice AI](https://fineguide.ai/voice-ai): AI agents on live inbound and outbound phone calls.
+- [Workspace](https://fineguide.ai/workspace): Block-based documents and team knowledge that live alongside the customer record.
+- [Pricing](https://fineguide.ai/pricing): Flexible credit-based pricing with all AI modules included; start free with 1,000 credits.
+- [Enterprise](https://fineguide.ai/enterprise): On-premise deployment, custom plans, platform adaptation, and consultancy for teams at scale.
+- [Schedule a demo](https://fineguide.ai/schedule-demo): Book a 15-minute walkthrough of Fineguide on your operation.
+- [Contact](https://fineguide.ai/contact): Get in touch with the Fineguide team.
+
+## Optional
+
+- [Documentation](https://app.fineguide.ai/docs): Product documentation for active users, admins, and developers.
+- [Blog](https://fineguide.ai/blog/): Articles and updates.
+- [Privacy Policy](https://fineguide.ai/privacy-policy)
+- [Terms of Service](https://fineguide.ai/terms-of-service)
+- [Romanian site](https://fineguide.ai/ro/): Romanian-language version of the platform pages.
