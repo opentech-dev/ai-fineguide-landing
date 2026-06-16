@@ -52,7 +52,7 @@ export const ro: typeof en = {
   overview: {
     eyebrow: 'Platforma',
     body:
-      'Fineguide înlocuiește scotch-ul dintre tool-ul de chat, CRM-ul, sistemul de telefonie și workspace-ul echipei. Fiecare conversație de pe fiecare canal, fiecare fișă de client, fiecare interacțiune vocală și fiecare document intern, conectate pe o singură platformă care învață din ea însăși.',
+      'Fineguide reunește într-o singură platformă asistenți AI, CRM, telefonie, canale de chat și workspace-ul echipei - conectând fiecare conversație, fișă de client, interacțiune vocală și document intern într-un sistem integrat.',
     modules: [
       {
         name: 'Asistenți',
