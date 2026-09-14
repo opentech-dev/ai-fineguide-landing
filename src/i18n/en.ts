@@ -46,6 +46,11 @@ export const en = {
     ctaSecondary: 'Schedule a demo',
   },
 
+  // --- Customer logo strip ---
+  customerLogos: {
+    eyebrow: 'Trusted by teams across Moldova and Romania',
+  },
+
   // --- Overview intro (what Fineguide is) ---
   overview: {
     eyebrow: 'The platform',
@@ -691,17 +696,17 @@ export const en = {
       {
         desc: 'For small teams looking to automate their first interactions.',
         credits: '≈ 10,000 text conversations or 800+ minutes VoiceQA',
-        features: ['Up to 5 members', 'Basic admin controls', 'Email support', 'All AI modules included'],
+        features: ['1 member', 'Basic admin controls', 'Email support', 'All AI modules included'],
       },
       {
         desc: 'For growing companies that need more capacity.',
         credits: '≈ 23,000 text conversations or 1,900+ minutes VoiceQA',
-        features: ['Up to 10 members', 'Advanced admin controls', 'Priority support', 'Advanced analytics'],
+        features: ['Up to 5 members', 'Advanced admin controls', 'Priority support', 'Advanced analytics'],
       },
       {
         desc: 'For large teams with high interaction volume.',
         credits: '≈ 65,000 text conversations or 5,400+ minutes VoiceQA',
-        features: ['20 members', 'Enterprise admin controls', 'Dedicated support', 'Custom reports', 'API & webhooks access'],
+        features: ['Up to 10 members', 'Enterprise admin controls', 'Dedicated support', 'Custom reports', 'API & webhooks access'],
       },
     ],
   },

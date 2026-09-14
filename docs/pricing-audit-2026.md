@@ -1,93 +1,100 @@
 # Pricing & feature audit — landing vs. backoffice
 
 Audited 2026-09-14 against `ai-backoffice-api` and `ai-backoffice-frontend`.
-**No pricing figures were changed.** This document says what is wrong and what
-has to be confirmed before anyone changes them.
 
-## Why the numbers were not updated
+> **Correction.** An earlier version of this document said the landing page
+> overstated credit allowances by 2.6×–5× and had the wrong currency. That was
+> wrong. It compared the site against the **2026 ladder**, which is not the
+> ladder customers are on. Checked against the *active* plans, the prices,
+> credits and top-up rates on the site are **correct**. Only the seat counts
+> were wrong. Details below.
 
-The implemented 2026 ladder lives in
-`ai-backoffice-api/apps/backoffice-api/src/pricing/pricing-config.ts:128-189`
-(`NEW_LADDER_2026`), pinned by a CI spec and seeded by
-`pricing-ladder-seed.service.ts`.
+## Two ladders exist. The site matches the live one.
 
-It was verified live **on fg-dev only**. `PROGRESS.md:207` records phases 0–7
-verified on dev; `PROD-CUTOVER.md` is a runbook with no completion record.
-There is no evidence either way that prod runs the new ladder — and the live
-site currently shows the *legacy* figures, which is consistent with prod not
-having cut over.
+**Legacy ladder — currently `active: true`, `available: true`**
+(`ai-backoffice-api/apps/backoffice-api/src/pricing/__fixtures__/legacy-plan-catalog.ts`,
+pinned in CI so an accidental edit fails loudly):
 
-Publishing €100/€200/€500 while prod still bills $99/$199/$499 would put wrong
-prices in front of customers. That needs a human yes.
+| Plan | alias | credits | price | top-up €/credit | gift | members |
+|---|---|---|---|---|---|---|
+| Free | `free` | 0 | 0 | 0.018 | 1,000 | 1 |
+| Starter | `starter-public-subscription` | 10,000 | 99 | 0.015 | 0 | 1 |
+| Business | `business-public-subscription` | 23,000 | 199 | 0.012 | 0 | 5 |
+| Premium | `premium-public-subscription` | 65,000 | 499 | 0.010 | 0 | 10 |
 
-**Blocking question: has the 2026 ladder been cut over on fg-prod?**
+**2026 ladder** (`pricing-config.ts:128-189`, `NEW_LADDER_2026`) — EUR
+0/100/200/500 with 200/3,000/8,000/25,000 credits. Seeded and verified **on
+fg-dev only**; `PROGRESS.md:207` records phases 0–7 on dev, and `PROD-CUTOVER.md`
+is a runbook with no completion record. Its aliases are all suffixed `-2026` and
+never collide with legacy rows, so seeding is purely additive — both ladders can
+exist at once.
 
-- **If yes** — apply the table below.
-- **If no** — leave prices, but the credit and seat figures are still wrong
-  against *both* ladders and should be checked separately.
+The landing page's $99 / $199 / $499 and 10,000 / 23,000 / 65,000 credits match
+the legacy rows **exactly**, as do the top-up rates ($15/$12/$10 per 1,000 =
+0.015/0.012/0.010). The site is describing the plans customers are actually on.
 
-## The discrepancies
+**Nothing about prices or credits should change until someone confirms the prod
+cutover.** If the 2026 ladder does go live, the whole table above changes at
+once — currency included — and that is a deliberate marketing decision, not a
+sync job.
 
-Landing values are in `src/components/PricingPlans.astro:5-38` (prices, credits,
-top-ups) and `src/i18n/en.ts:681-704` (seats, bonus copy).
+## What was actually wrong, and is now fixed
 
-| | Landing now | Implemented 2026 ladder |
-|---|---|---|
-| Currency | `$` | **EUR** (`currencyCode: 'EUR'`) |
-| Free | $0 · 1,000 credits one-time · $20/1k top-up | €0 · **200/mo** · €0.045 |
-| Starter | $99 · 10,000 credits · $15/1k | €100 · **3,000** · €0.040 |
-| Business | $199 · 23,000 credits · $12/1k | €200 · **8,000** · €0.030 |
-| Premium | $499 · 65,000 credits · $10/1k | €500 · **25,000** · €0.024 |
+**Seat counts — overstated on every paid plan.** The site promised more members
+than the product grants. `ability.service.ts:405` (`const memberLimit =
+plan?.members ?? 5`) confirms `members` is the enforced limit.
 
-Credits are overstated by **2.6×–5×** across every tier. That is the most
-serious error on the page — worse than the prices, because it is the number a
-buyer sizes their usage against.
+| Plan | site claimed | actual | now reads |
+|---|---|---|---|
+| Free | 1 member | 1 | 1 member ✅ was already right |
+| Starter | Up to 5 members | **1** | 1 member |
+| Business | Up to 10 members | **5** | Up to 5 members |
+| Premium | 20 members | **10** | Up to 10 members |
 
-Seats are also wrong. The page sells fixed caps ("Up to 5 members", "20
-members"); the ladder sells *included* seats plus uncapped paid extras —
-Starter 3 + €20/seat, Business 5 + €18, Premium 10 + €15. `members` is set to
-`UNLIMITED_MEMBERS` (999999), so the advertised 20-seat ceiling does not exist.
+These were wrong against *both* ladders, so they were safe to correct without
+resolving the cutover question. Fixed in `src/i18n/en.ts` and `src/i18n/ro.ts`.
 
-Two further copy errors:
+**Free top-up rate.** Site said `$20 / 1.000`; the legacy free plan charges
+0.018/credit. Corrected to `$18 / 1.000` in `PricingPlans.astro`. (The site was
+over-quoting, so no customer was undercharged.)
 
-- **"Start with 1,000 credits on us"** (`en.ts:681`) — `free-2026` sets
-  `giftCredits: 0`. That gift belongs to the frozen legacy free plan.
-- **"n8n integrations: Free"** (`en.ts:735`) — workflow AI nodes now cost
-  1 credit per execution (`WORKFLOW_NODE_CREDITS_DEFAULT`). This is billable.
+**Romanian module list.** The overview listed five modules in Romanian against
+six in English — `QA & Analytics` was missing entirely. Fixed, and the type
+system now enforces equal list lengths between locales.
 
-Unverifiable: the "2 credits per message + attachment" claim (`en.ts:718`). No
-attachment multiplier was found in the API.
+**Two copy bugs.** A Romanian string (`Integrări`) in the English module chips,
+and an English line claiming telephony was "arriving next" when it ships today
+and the Romanian copy already said so.
+
+## Still unverified
+
+- **Whether the 2026 ladder is live on prod.** No public plan endpoint, no
+  cutover commit in `ai-backoffice-api` history, and production still serves
+  dollar prices — consistent with legacy still being live, but not proof.
+- **"n8n integrations: Free"** (`en.ts`). Under the 2026 work, workflow AI nodes
+  cost 1 credit per execution (`WORKFLOW_NODE_CREDITS_DEFAULT`). Whether that
+  billing is active on prod depends on the same cutover question, so the claim
+  was left alone.
+- **"2 credits per message + attachment"** (`en.ts`). No attachment multiplier
+  found anywhere in the API. A negative grep is weak evidence; worth a human
+  checking rather than editing on my guess.
 
 ## Shipped but not marketed
 
 High confidence — each appears in the module registry, the nav rail and the
-router:
+router: **Messages** (standalone agent inbox), **Inbox** (email, with mailboxes
+and domains), **Workspace** (marketed elsewhere but absent from the pricing
+chips), a **native Workflows engine** distinct from the n8n the page sells, plus
+**FineClaw** and **Agency** which appear nowhere in the copy.
 
-- **Messages** — standalone human-agent inbox
-- **Inbox (email)** — mailboxes and domains, with a full email subsystem
-- **Workspace** — marketed elsewhere on the site but missing from the pricing chips
-- **Native Workflows engine** — distinct from n8n, which is all the page sells
-- **FineClaw**, **Agency** — no mention anywhere in the copy
+Real purchasable SKUs with no landing presence: **Storage / Context Packs**
+(+5M characters for €20/mo, self-serve Stripe), **annual billing at 20% off**
+(annual prices provisioned at 960/1920/4800; no annual toggle anywhere on the
+site), the **affiliate programme** (20% first-year commission), and **reseller /
+partner consolidated billing**. Storage Packs and annual are flag-gated and the
+flags were confirmed for fg-dev only — same caveat as the ladder.
 
-Real purchasable SKUs with no landing presence at all:
-
-- **Storage / Context Packs** — +5M KB characters for €20/mo, self-serve Stripe
-- **Annual billing at 20% off** — annual prices provisioned (960/1920/4800);
-  there is no annual toggle anywhere on the site
-- **Affiliate programme** — 20% first-year commission, self-serve
-- **Reseller / partner consolidated billing**
-
-Both Storage Packs and Annual are flag-gated, and the flags were confirmed for
-fg-dev only — same caveat as the ladder.
-
-Also unmarketed: tiered knowledge-base capacity (1M/5M/10M/20M chars per tier),
-which is a genuine per-tier differentiator and absent from the cards; ticketing
-integrations (Zendesk, HelpScout); several chat integrations (AmoCRM, Kommo,
-JivoChat, Notion); and VoiceQA telco integrations (Moldcell, Orange).
-
-## Already fixed
-
-- `PricingPlans.astro:40` — a Romanian string (`Integrări`) in the English
-  module list.
-- `en.ts:65` — "telephony arriving next". Telephony ships today, and the
-  Romanian copy (`ro.ts:67`) already said so.
+Also unmarketed: tiered knowledge-base capacity (1M/5M/10M/20M characters per
+tier), ticketing integrations (Zendesk, HelpScout), several chat integrations
+(AmoCRM, Kommo, JivoChat, Notion), and VoiceQA telco integrations (Moldcell,
+Orange).
