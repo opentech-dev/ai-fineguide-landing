@@ -29,7 +29,7 @@ const t = useTranslations(lang);
       spread={t.assistantsSpread}
       image="/images/screenshots/assistants-analytics.png"
       linkHref={getLocalizedPath('/ai-assistants', lang)}
-      linkLabel="Explore Assistants"
+      linkLabel={t.moduleLinks.assistants}
     />
     <ModuleSpread
       spread={t.crmSpread}
@@ -37,7 +37,7 @@ const t = useTranslations(lang);
       reverse={true}
       tinted={true}
       linkHref={getLocalizedPath('/crm', lang)}
-      linkLabel="Explore CRM"
+      linkLabel={t.moduleLinks.crm}
     />
     <VoiceSpread t={t} />
     <WorkspaceAndAutomations t={t} />

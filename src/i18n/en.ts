@@ -205,6 +205,14 @@ export const en = {
   },
 
   // --- Integrations ribbon ---
+  // Link labels under the module spreads. These lived as hardcoded English
+  // props in both index.astro files, so the Romanian page rendered them in
+  // English.
+  moduleLinks: {
+    assistants: 'Explore Assistants',
+    crm: 'Explore CRM',
+  },
+
   integrationsRibbon: {
     eyebrow: 'Integrates with what you already use',
     items: [
