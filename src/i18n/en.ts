@@ -751,6 +751,48 @@ export const en = {
     ],
   },
 
+  // --- PricingAddons ---
+  pricingAddons: {
+    eyebrow: 'Add-ons',
+    heading: 'Scale any part of the plan on its own',
+    subtitle:
+      'Seats, credits and knowledge-base capacity are priced separately, so you grow the one you actually run out of instead of jumping a tier.',
+    items: [
+      {
+        icon: 'seat',
+        title: 'Extra seats',
+        body: 'Paid plans do not cap your team. The seats in your plan are what the price covers; anyone past that is billed per seat, per month.',
+        rates: [
+          { label: 'Starter', value: '€20 / seat' },
+          { label: 'Business', value: '€18 / seat' },
+          { label: 'Premium', value: '€15 / seat' },
+        ],
+      },
+      {
+        icon: 'credit',
+        title: 'Extra credits',
+        body: 'Top up whenever you need more. Purchased credits stack on top of your monthly allowance and never expire, so nothing is lost at the end of a cycle.',
+        rates: [
+          { label: 'Starter', value: '€40 / 1,000' },
+          { label: 'Business', value: '€30 / 1,000' },
+          { label: 'Premium', value: '€24 / 1,000' },
+        ],
+      },
+      {
+        icon: 'context',
+        title: 'Context Packs',
+        body: 'More room for the documents, pages and PDFs your assistants read. Each pack adds 5 million characters, roughly a thousand documents.',
+        rates: [
+          { label: 'Per pack, per month', value: '€20' },
+          { label: 'Capacity added', value: '+5M characters' },
+          { label: 'Packs per account', value: 'Unlimited' },
+        ],
+      },
+    ],
+    footnote:
+      'Every add-on is billed monthly alongside your plan and can be added or removed at any time. Extra credits are the one exception: once bought they are yours to keep, with no expiry.',
+  },
+
   // --- PricingCredits ---
   pricingCredits: {
     heading: 'How credits work',

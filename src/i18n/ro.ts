@@ -744,6 +744,48 @@ export const ro: Translations = {
     ],
   },
 
+  // --- PricingAddons ---
+  pricingAddons: {
+    eyebrow: 'Extra',
+    heading: 'Extinde exact partea de care ai nevoie',
+    subtitle:
+      'Locurile, creditele și capacitatea bazei de cunoștințe se plătesc separat, așa că extinzi doar ce ți se termină, fără să sari un plan întreg.',
+    items: [
+      {
+        icon: 'seat',
+        title: 'Locuri suplimentare',
+        body: 'Planurile plătite nu îți limitează echipa. Locurile din plan sunt cele acoperite de preț; fiecare persoană peste acest număr se facturează per loc, lunar.',
+        rates: [
+          { label: 'Starter', value: '€20 / loc' },
+          { label: 'Business', value: '€18 / loc' },
+          { label: 'Premium', value: '€15 / loc' },
+        ],
+      },
+      {
+        icon: 'credit',
+        title: 'Credite suplimentare',
+        body: 'Reîncarci oricând ai nevoie. Creditele cumpărate se adaugă peste alocarea lunară și nu expiră niciodată, deci nu pierzi nimic la finalul ciclului.',
+        rates: [
+          { label: 'Starter', value: '€40 / 1.000' },
+          { label: 'Business', value: '€30 / 1.000' },
+          { label: 'Premium', value: '€24 / 1.000' },
+        ],
+      },
+      {
+        icon: 'context',
+        title: 'Pachete de context',
+        body: 'Mai mult spațiu pentru documentele, paginile și PDF-urile pe care le citesc asistenții tăi. Fiecare pachet adaugă 5 milioane de caractere, aproximativ o mie de documente.',
+        rates: [
+          { label: 'Per pachet, lunar', value: '€20' },
+          { label: 'Capacitate adăugată', value: '+5M caractere' },
+          { label: 'Pachete per cont', value: 'Nelimitat' },
+        ],
+      },
+    ],
+    footnote:
+      'Fiecare extra se facturează lunar, alături de planul tău, și poate fi adăugat sau eliminat oricând. Singura excepție sunt creditele suplimentare: odată cumpărate rămân ale tale, fără termen de expirare.',
+  },
+
   // --- PricingCredits ---
   pricingCredits: {
     heading: 'Cum funcționează creditele',

@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import PricingPlans from '../components/PricingPlans.astro';
+import PricingAddons from '../components/PricingAddons.astro';
 import PricingCredits from '../components/PricingCredits.astro';
 import PricingEnterprise from '../components/PricingEnterprise.astro';
 import PricingFaq from '../components/PricingFaq.astro';
@@ -35,6 +36,7 @@ const t = useTranslations(lang);
   </section>
 
   <PricingPlans t={t} />
+  <PricingAddons t={t} />
   <PricingCredits t={t} />
   <PricingEnterprise t={t} lang={lang} />
   <PricingFaq t={t} />
