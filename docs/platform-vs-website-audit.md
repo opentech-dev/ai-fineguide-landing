@@ -5,6 +5,16 @@
 **Scope:** Agency and FineClaw are **out of scope** by direction and are not
 assessed here. Everything below excludes them.
 
+> **Status update — Gaps 1, 2 and 3 are now closed on `redesign/landing-2026`.**
+> The landing page has gained three sections since this audit was written:
+> the workflow builder sold on its 18 shipped step types (`b1e51a6`), a
+> campaigns/telephony section built from the `CampaignType` enum (`690dcad`),
+> and a Messages + Inbox section (`9d250ed`). Each shipped with a guard in
+> `scripts/verify-claims.mjs` that re-derives the claim from source, so the
+> gap analysis below is preserved as the record of *why* those sections exist
+> — not as a list of outstanding work. **Gap 4 is partly closed (see its table);
+> everything from "The company's own feature deck" onward is still open.**
+
 ## Method
 
 Three sources, each checked against code rather than documentation:
@@ -111,11 +121,11 @@ submodule in the registry. The site gives it one sentence.
 
 | Capability | Status in code | Status on site |
 |---|---|---|
-| **Ticketing** | first-class CRM submodule | one word among eight CRM surfaces |
-| **Mailboxes & Domains** | Inbox submodule | absent |
-| **Segments** | 3 pages under telephony | absent |
-| **Number routing** | dedicated page | absent |
-| **Voice QA → Clients** | registry submodule | absent |
+| **Ticketing** | first-class CRM submodule | **still open** — one word among eight CRM surfaces |
+| **Mailboxes & Domains** | Inbox submodule | covered by the Inbox column (`9d250ed`) |
+| **Segments** | 3 pages under telephony | covered by the campaigns section (`690dcad`) |
+| **Number routing** | dedicated page | covered by the campaigns section (`690dcad`) |
+| **Voice QA → Clients** | registry submodule | **still open** — absent |
 
 `Voice QA` having a **Clients** submodule alongside Departments and Agents
 suggests it is usable on behalf of client companies — an agency/BPO framing. The
