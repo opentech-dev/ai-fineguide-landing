@@ -166,15 +166,16 @@ export const ro: Translations = {
     },
     automations: {
       eyebrow: 'Automatizări',
-      title: 'Automatizează munca, în Fineguide sau dincolo de el.',
+      title: 'Citește conversația. Actualizează fișa. Nimeni nu intervine.',
       body:
-        'Un constructor vizual de workflow-uri chiar în produs, plus o instanță n8n încorporată, găzduită de noi sau adusă de tine, pentru tot ce e în afara lui.',
+        'Un constructor vizual de workflow-uri chiar în Fineguide: trage pașii pe canvas, lasă AI-ul să extragă câmpurile din conversație și să le scrie direct în CRM. Plus o instanță n8n încorporată, găzduită de noi sau adusă de tine, pentru tot ce e dincolo.',
       features: [
-        'Constructor vizual de workflow-uri, integrat în Fineguide',
-        'Condiții, variabile tipizate și pași drag-and-drop',
+        'AI-ul extrage câmpuri tipizate din conversația care a declanșat execuția',
+        'Creează, actualizează și găsește contacte, lead-uri și companii',
+        'Mută lead-uri între etapele pipeline-ului, adaugă etichete, deschide sarcini',
+        'Ramifică pe condiții și parcurge în buclă înregistrările găsite',
         'n8n găzduit pe infrastructura Fineguide sau propria ta instanță',
-        'Webhook-uri pe conversații, lead-uri și tickete',
-        'Sute de integrări pre-construite prin n8n',
+        'Webhook-uri și sute de integrări pre-construite prin n8n',
       ],
     },
   },

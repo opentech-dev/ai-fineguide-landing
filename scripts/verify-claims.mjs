@@ -109,5 +109,53 @@ ok(callsWorkflowCredits ? true : wfOffenders.length === 0,
      ? 'workflow credit endpoints now have a caller — pricing workflow steps is allowed'
      : `workflow runs consume no credits (no caller for the credit endpoints), and no surface claims they do${wfOffenders.length ? ' -> ' + wfOffenders.join(', ') : ''}`);
 
+// --- the workflow builder must only be sold on steps that actually run --------
+// engine/registry.ts holds two lists: HANDLERS (steps with a live runtime) and
+// PLANNED_STEP_TYPES (steps the builder can author but the engine cannot run —
+// it pauses the run for human review instead). A step appearing in the builder
+// is therefore NOT evidence it works, and marketing one would promise something
+// that silently stops mid-run.
+//
+// Read both lists from the registry rather than hardcoding them, so when a
+// planned step gains a handler it drops out of PLANNED_STEP_TYPES and this check
+// stops objecting on its own.
+const registryPath = `${API}/modules/workflow/engine/registry.ts`;
+if (fs.existsSync(registryPath)) {
+  const reg = fs.readFileSync(registryPath, 'utf8');
+  const plannedBlock = reg.match(/PLANNED_STEP_TYPES[^=]*=\s*\{([\s\S]*?)\}/);
+  const planned = plannedBlock
+    ? [...plannedBlock[1].matchAll(/^\s*([a-z_]+)\s*:/gm)].map(m => m[1])
+    : [];
+
+  // Phrases that would mean we are selling that step. Deliberately scoped to the
+  // automations copy in src/i18n, not the built HTML: "translate" also appears in
+  // Tailwind's translate-x-* classes, and n8n genuinely does do webhooks, so a
+  // whole-page grep produces false positives on both.
+  const SELLS = {
+    classify:   /\bclassif(y|ies|ication)\b/i,
+    summarize:  /\bsummaris|\bsummariz/i,
+    translate:  /\btranslat(e|es|ion)\b/i,
+    reply:      /\b(auto[- ]?repl|sends? a repl|replies automatically)/i,
+    notify:     /\bnotif(y|ies) the team\b/i,
+    send_email: /\bsends? (an )?email\b/i,
+    webhook:    null,   // n8n webhooks are real and separately implemented
+  };
+
+  const offenders = [];
+  for (const locale of ['en', 'ro']) {
+    const p = `src/i18n/${locale}.ts`;
+    if (!fs.existsSync(p)) continue;
+    const src = fs.readFileSync(p, 'utf8');
+    const block = src.match(/automations:\s*\{([\s\S]*?)\n    \},/);
+    if (!block) continue;
+    for (const step of planned) {
+      const rx = SELLS[step];
+      if (rx && rx.test(block[1])) offenders.push(`${locale}:${step}`);
+    }
+  }
+  ok(offenders.length === 0,
+     `automations copy sells only runnable steps (${planned.length} planned: ${planned.join(', ')})${offenders.length ? ' -> SELLS PLANNED: ' + offenders.join(', ') : ''}`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);
