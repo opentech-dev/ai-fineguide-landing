@@ -4,10 +4,10 @@ const { t } = Astro.props as { t: Translations };
 const { workspace, automations } = t.workspaceAutomations;
 ---
 
-<section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/60">
+<section class="py-20 md:py-28 px-6">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-12 lg:gap-x-20">
     <div>
-      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+      <p class="eyebrow mb-5">
         {workspace.eyebrow}
       </p>
       <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
@@ -27,7 +27,7 @@ const { workspace, automations } = t.workspaceAutomations;
     </div>
 
     <div>
-      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+      <p class="eyebrow mb-5">
         {automations.eyebrow}
       </p>
       <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">

@@ -4,14 +4,14 @@ import { getLocalizedPath } from '../i18n/utils';
 const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 ---
 
-<section class="pt-36 pb-12 md:pt-44 md:pb-20 overflow-hidden">
-  <div class="max-w-[88rem] mx-auto px-6 md:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+<section class="pt-36 pb-12 md:pt-44 md:pb-20 overflow-hidden brand-glow">
+  <div class="relative z-10 max-w-[88rem] mx-auto px-6 md:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
     <!-- Left column: text -->
     <div class="lg:w-[42%] flex-shrink-0">
-      <h1 class="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
+      <h1 class="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)] text-balance">
         {t.hero.title}
       </h1>
-      <p class="mt-8 max-w-2xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">
+      <p class="mt-8 max-w-2xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed text-pretty">
         {t.hero.subtitle}
       </p>
       <div class="mt-12 flex flex-col sm:flex-row gap-4">
@@ -32,15 +32,17 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 
     <!-- Right column: video (overflows right edge) -->
     <div class="lg:w-[58%] lg:mr-[calc(-8vw)] xl:mr-[calc(-14vw)] 2xl:mr-[calc(-18vw)]">
-      <video
-        src="/fineguide-intro.mp4"
-        poster="/images/screenshots/crm-tasks.png"
-        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
-        autoplay
-        loop
-        muted
-        playsinline
-      ></video>
+      <div class="panel-frame">
+        <video
+          src="/fineguide-intro.mp4"
+          poster="/images/screenshots/crm-tasks.png"
+          class="w-full h-auto block"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+      </div>
     </div>
   </div>
 </section>
