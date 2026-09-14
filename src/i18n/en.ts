@@ -8,6 +8,11 @@ export const en = {
     voiceQa: 'Voice QA',
     voiceAi: 'Voice AI',
     workspace: 'Workspace',
+    // Sections on the homepage, not pages of their own. Linked from the footer
+    // so the modules behind them are reachable by something other than scrolling.
+    messages: 'Messages & Inbox',
+    campaigns: 'Campaigns',
+    automations: 'Automations',
     pricing: 'Pricing',
     enterprise: 'Enterprise',
     contact: 'Contact',

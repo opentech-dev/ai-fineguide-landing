@@ -17,6 +17,8 @@ const t = useTranslations(lang);
 <Layout title={t.pricingMeta.title} description={t.pricingMeta.description} lang={lang}>
   <Navbar t={t} lang={lang} />
 
+  <main id="main-content">
+
   <!-- Hero -->
   <section class="pt-32 md:pt-40 pb-10 px-6">
     <div class="max-w-3xl mx-auto text-center">
@@ -40,5 +42,7 @@ const t = useTranslations(lang);
   <PricingCredits t={t} />
   <PricingEnterprise t={t} lang={lang} />
   <PricingFaq t={t} />
+  </main>
+
   <Footer t={t} lang={lang} />
 </Layout>

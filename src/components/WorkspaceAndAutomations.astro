@@ -6,7 +6,10 @@ const { workspace, automations } = t.workspaceAutomations;
 
 <section class="py-20 md:py-28 px-6">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-12 lg:gap-x-20">
-    <div>
+    <!-- Two independent modules share this row, so the anchors go on the
+         columns, not the section: #automations on the section landed the
+         reader at the Workspace heading. -->
+    <div id="workspace-section" class="scroll-mt-24">
       <p class="eyebrow mb-5">
         {workspace.eyebrow}
       </p>
@@ -26,7 +29,7 @@ const { workspace, automations } = t.workspaceAutomations;
       </ul>
     </div>
 
-    <div>
+    <div id="automations" class="scroll-mt-24">
       <p class="eyebrow mb-5">
         {automations.eyebrow}
       </p>

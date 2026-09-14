@@ -10,6 +10,11 @@ export const ro: Translations = {
     voiceQa: 'Voice QA',
     voiceAi: 'Voice AI',
     workspace: 'Workspace',
+    // Secțiuni pe pagina principală, nu pagini separate. Legate din footer ca
+    // modulele din spatele lor să fie accesibile altfel decât prin derulare.
+    messages: 'Mesaje și Inbox',
+    campaigns: 'Campanii',
+    automations: 'Automatizări',
     pricing: 'Prețuri',
     enterprise: 'Enterprise',
     contact: 'Contact',
