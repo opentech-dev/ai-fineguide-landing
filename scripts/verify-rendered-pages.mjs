@@ -26,7 +26,7 @@ const stripScripts = h => h.replace(/<script[\s\S]*?<\/script>/g, '');
 
 let bad = 0;
 const list = pages();
-console.log('route'.padEnd(30) + ' h1 noAlt emptyH undef badLink');
+console.log("route".padEnd(30) + "  h1 noAlt emptyH undef badLink emptyA");
 
 for (const file of list.sort()) {
   const html = fs.readFileSync(file, 'utf8');
@@ -53,18 +53,66 @@ for (const file of list.sort()) {
       + imgs.filter(i => !/\ssrc=/.test(i)).length,
     badLink: [...noScript.matchAll(/href="([^"]*)"/g)].map(m => m[1])
       .filter(u => /undefined|NaN|^\s*$/.test(u)).length,
+    // A link whose href is fine but whose LABEL is empty: invisible and
+    // unclickable, and every check above passes it. This is how three footer
+    // links shipped blank on /ro/ when en.ts gained keys ro.ts did not have -
+    // the missing translation rendered as nothing, not as "undefined".
+    // Icon-only links are legitimate, so anything carrying an image or an
+    // accessible name is exempt.
+    emptyA: [...noScript.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)]
+      .filter(([, attrs, inner]) =>
+        !/<(img|svg|picture|video)\b/i.test(inner) &&
+        !/\b(aria-label|aria-labelledby|title)=/i.test(attrs) &&
+        inner.replace(/<[^>]*>/g, '').replace(/&[a-z]+;|&#\d+;/gi, 'x').trim() === '').length,
   };
 
-  const ok = row.h1 === 1 && !row.noAlt && !row.emptyH && !row.undef && !row.badLink;
+  const ok = row.h1 === 1 && !row.noAlt && !row.emptyH && !row.undef
+    && !row.badLink && !row.emptyA;
   if (!ok) bad++;
   console.log(
     route.padEnd(30) +
     String(row.h1).padStart(3) + String(row.noAlt).padStart(6) +
     String(row.emptyH).padStart(7) + String(row.undef).padStart(6) +
-    String(row.badLink).padStart(8) + (ok ? '' : '   <-- ISSUE')
+    String(row.badLink).padStart(8) + String(row.emptyA).padStart(7) +
+    (ok ? '' : '   <-- ISSUE')
   );
 }
 
-console.log(bad ? `\n${bad} of ${list.length} pages have issues\nFAIL`
-                : `\nall ${list.length} pages structurally clean — exactly one h1, no empty headings, no undefined output`);
-process.exit(bad ? 1 : 0);
+// Every in-site #fragment link must resolve to an element with that id on the
+// page it points at. The footer links to homepage sections from all 24 pages,
+// so renaming one section id breaks 24 links at once and nothing else notices:
+// the href is well-formed, the label is present, the page returns 200.
+const idsOf = f => new Set([...fs.readFileSync(f, 'utf8')
+  .matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
+const fileFor = p => {
+  const c = p.replace(/^\//, '').replace(/\/$/, '');
+  for (const cand of [`dist/${c}/index.html`, `dist/${c}.html`,
+                      c === '' ? 'dist/index.html' : null]) {
+    if (cand && fs.existsSync(cand)) return cand;
+  }
+  return null;
+};
+const idCache = new Map();
+let dead = 0;
+for (const file of list.sort()) {
+  const route = '/' + file.replace(/^dist\/?/, '').replace(/index\.html$/, '');
+  const html = stripScripts(fs.readFileSync(file, 'utf8'));
+  for (const [, href] of html.matchAll(/href="([^"]*#[^"]+)"/g)) {
+    if (/^(https?:|mailto:|tel:)/.test(href)) continue;
+    const [rawPath, frag] = href.split('#');
+    const target = rawPath === '' ? file : fileFor(rawPath);
+    if (!target) { console.log(`  DEAD  ${route} -> ${href} (no such page)`); dead++; continue; }
+    if (!idCache.has(target)) idCache.set(target, idsOf(target));
+    if (!idCache.get(target).has(frag)) {
+      console.log(`  DEAD  ${route} -> ${href} (no id="${frag}" on that page)`);
+      dead++;
+    }
+  }
+}
+console.log(dead ? `\n${dead} dead in-page anchor link(s)`
+                 : `\nall in-page #anchor links resolve to a real element`);
+
+const fail = bad || dead;
+console.log(fail ? `\n${bad} of ${list.length} pages have issues\nFAIL`
+                 : `\nall ${list.length} pages structurally clean — exactly one h1, no empty headings, no undefined output, no dead anchors`);
+process.exit(fail ? 1 : 0);
