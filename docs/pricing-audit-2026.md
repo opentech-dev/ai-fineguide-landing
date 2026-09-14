@@ -145,37 +145,55 @@ instead of offering a purchase that does nothing.
 No behaviour change when the flag is on; when it is off, customers can no
 longer be charged for nothing.
 
-### Status: fixed on a branch, awaiting review
+### Status: fixed end to end on two branches, awaiting review
 
-Applied in `ai-backoffice-api` on branch **`fix/storage-pack-checkout-guard`**
-(commit `ca636dc24`). Not merged and not deployed.
+Neither branch is merged or deployed.
 
-- Two files only: `storage-pack.controller.ts` and a new
-  `storage-pack.controller.spec.ts`.
-- `tsc --noEmit` clean across the app; 23 tests pass across the three
-  storage-pack suites.
-- The spec was checked against the bug rather than merely passing: removing the
-  guard fails the two flag-OFF cases while both flag-ON cases still pass, which
-  is what shows the guard is load-bearing and the enabled path untouched.
-- The repo was on `feat/workflow-engine` with 16 modified and 4 untracked
-  workflow files — another engineer's work in flight. The fix was committed on
-  its own branch, only those two files staged, and that branch restored
-  afterwards with the WIP verified intact.
+**`ai-backoffice-api` → `fix/storage-pack-checkout-guard`** (`ca636dc24`, `d7069c034`)
 
-### Still open
+| Change | Effect |
+|---|---|
+| `POST /storage-packs/checkout` guarded on `storagePacksEnabled()` | 503 instead of a Stripe session while the flag is off — no charge is possible |
+| `GET /storage-packs/catalog` returns `[]` while the flag is off | nothing is advertised as sellable; this is the signal the app uses to hide the UI |
 
-1. **Is the flag on in production?** `STORAGE_PACKS_ENABLED` lives in the
-   `fg-prod` Kubernetes secret, not in any repository file, so it cannot be read
-   from here. If it is already `true`, no customer was ever affected and the
-   guard is defence in depth. If it is `false`, the guard should ship before
-   anyone buys a pack. Flipping it is a deployment decision for a human either
-   way.
-2. **The UI still offers the purchase.** `storagePacksEnabled()` is never sent
-   to a client, so the workspace shows `Billing → Settings → Context Packs`
-   unconditionally; with the guard in place that page's checkout now returns
-   503 rather than charging. Mirroring `annualBillingEnabled` — return the flag
-   from the API and hide the nav item — is the tidy follow-up, and it spans the
-   frontend repo too, so it was filed rather than done.
+`admin-storage-pack.controller` is deliberately **not** gated — it calls
+`getAll(true)` and operators need it to manage SKUs and run `sync-price` before
+the flag goes on. Gating in the service would have broken that, so both checks
+sit in the customer controller.
+
+25 tests pass across the three pack suites; `tsc --noEmit` clean.
+
+**`ai-backoffice-frontend` → `fix/storage-pack-ui-gate`** (`4a1590a3`)
+
+- `Billing → Settings → Context Packs` is hidden when the catalog is empty, so
+  there is no route to a page that only says "not available".
+- Orgs that already own packs keep the entry, the pack list and the remove
+  control — rollback is documented as flag-off *without* deleting anything, so
+  hiding what they are still paying for would be worse than not selling more.
+- Copy now separates a failed request ("try again in a moment") from the flag
+  being off ("not available on your workspace yet").
+- The decision is extracted to `storage-packs/visibility.ts` with 9 assertions
+  in `visibility.test.ts`, following this repo's framework-free test pattern
+  (`npx tsx`). `tsc -b` clean.
+
+Both repos were on `feat/workflow-engine` with another engineer's work in
+flight. Each fix went on its own branch with only its own files staged, and the
+original branch was restored afterwards with their WIP verified intact (API: 12
+modified + 4 untracked; frontend: 4 modified) and nothing of mine left behind.
+
+### Still open — needs production access
+
+**Is `STORAGE_PACKS_ENABLED` set on the `fg-prod` core-api deployment?** It is
+read from a Kubernetes Secret at pod boot (CLAUDE.md, "Pods cache the env from
+the K8s Secret at boot"), so it appears in no repository file and cannot be
+determined from here. Probing production only returns the SPA shell — there is
+no unauthenticated endpoint that reports it.
+
+- If it is already `true`: no customer was ever affected, and both changes are
+  defence in depth.
+- If it is `false`: customers could have bought an inert pack, and these
+  branches should ship. Worth checking Stripe for active subscriptions on the
+  `kb-context-5m` price to see whether anyone did.
 
 ## Built and correctly not advertised
 
