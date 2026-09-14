@@ -1,3 +1,38 @@
+> ## ⚠️ This describes the OLD site. Do not implement it as written.
+>
+> Read this before using any number or recommendation below.
+>
+> It is a December 2024 conversion audit (see its own sign-off near the end) of
+> the **pre-redesign** site — the static HTML now kept read-only in `_backup/`.
+> Every page it analyses (`index.html`, `ai-agents.html`, `lead-generation.html`,
+> `automation.html`, `about.html`) exists only there; §12 literally counts lines
+> of HTML. It was carried into this repo later and never rewritten for the Astro
+> site.
+>
+> **Acting on it would reintroduce bugs that are already fixed:**
+>
+> | It says | Reality | Checked against |
+> |---|---|---|
+> | Team size **5 / 10 / 20** | **1 / 5 / 10** | `ability.service.ts:405` — the site overstated exactly this and it was corrected; see `pricing-audit-2026.md` |
+> | **"30-day free trial"** (×3, incl. "add to all CTAs") | No such thing — the free tier is free **forever** | `en.ts` `freeLabel: 'forever'` |
+> | Three tiers | Four — Free was added | `PricingPlans.astro` |
+> | **"Trusted by 500+ companies"** | Removed deliberately; the doc itself calls it "(unverified claim)" | — |
+> | Salesforce / HubSpot integrations | Neither exists | `BotIntegrationType` in `schema.prisma` |
+> | **40+** languages, **1000+** integrations | Site says 30+ and "hundreds" — revised down on purpose | `en.ts` |
+> | Five modules, no CRM | Eight modules; CRM is the largest in the product at ~37k lines | `pricing-audit-2026.md` |
+> | n8n as the automation story | Native workflow builder leads; n8n is the bridge outward | `modules/workflows/` is 10× `modules/n8n/` |
+>
+> Where this doc collides with `pricing-audit-2026.md`, **that one wins** — it is
+> checked against the backend repos and enforced by `scripts/verify-*.mjs`.
+>
+> **What is still worth taking from it**, because it was right in 2024 and is
+> still right today: no testimonials or case studies, no explicit
+> differentiation section, and no FAQ or objection handling on the landing page.
+> Its fourth recurring point — no security or compliance signal — was closed in
+> this branch by the security strip.
+>
+> Keep it as history. Do not treat it as a spec.
+
 # Fineguide.ai Website Communication Analysis
 
 ## Executive Summary
