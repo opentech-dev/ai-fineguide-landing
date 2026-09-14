@@ -74,5 +74,40 @@ for(const [loc,f] of [['en','dist/index.html'],['ro','dist/ro/index.html']]){
   const links=new RegExp(`href="${loc==='ro'?'/ro/enterprise':'/enterprise'}"`).test(h);
   ok(has && links, `${loc}: security strip present and links to enterprise`);
 }
+// --- workflow runs must not be advertised as consuming credits ---------------
+// .claude/rules/billing-usage.md in the API repo: "Nothing calls the endpoints
+// [...] A workflow run therefore consumes no credits, whatever it does. So copy
+// or comments that say activating a workflow starts charging are wrong."
+// Rather than trust that note, re-derive it: the credit endpoints exist, so the
+// question is whether anything actually posts to them. When a caller appears,
+// this check stops demanding silence and the page may price workflow steps.
+// A caller is a file that REFERENCES the route without declaring it. The
+// controller's own `@Post('preflight-credits')` is the declaration, so skip the
+// file that carries the @Controller decorator for these routes — counting it
+// silently disarms this whole check.
+const scan = (root) => fs.existsSync(root)
+  ? fs.readdirSync(root, { recursive: true })
+      .filter(f => /\.(ts|js)$/.test(f) && !/\.spec\./.test(f))
+      .map(f => { try { return { f, src: fs.readFileSync(`${root}/${f}`, 'utf8') }; } catch { return null; } })
+      .filter(Boolean)
+  : [];
+const dispatcher = '/Users/liviumaftuleac/develop/ai-backoffice-api/apps/dispatcher/src';
+const candidates = [...scan(API), ...scan(dispatcher)]
+  .filter(({ src }) => /(preflight|consume)-credits/.test(src))
+  .filter(({ src }) => !/@Controller\(/.test(src));   // drop the declaring controller
+const callsWorkflowCredits = candidates.length > 0;
+
+const creditClaim = /workflow[^.<]{0,40}?(\d+\s*credit|credit[^.<]{0,20}per step)|(\d+\s*credit)[^.<]{0,30}workflow/i;
+const wfOffenders = [];
+for (const [label, file] of [['en', 'dist/pricing/index.html'], ['ro', 'dist/ro/pricing/index.html'],
+                             ['en-home', 'dist/index.html'], ['llms.txt', 'dist/llms.txt']]) {
+  if (!fs.existsSync(file)) continue;
+  if (creditClaim.test(fs.readFileSync(file, 'utf8'))) wfOffenders.push(label);
+}
+ok(callsWorkflowCredits ? true : wfOffenders.length === 0,
+   callsWorkflowCredits
+     ? 'workflow credit endpoints now have a caller — pricing workflow steps is allowed'
+     : `workflow runs consume no credits (no caller for the credit endpoints), and no surface claims they do${wfOffenders.length ? ' -> ' + wfOffenders.join(', ') : ''}`);
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);

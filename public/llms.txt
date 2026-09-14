@@ -45,7 +45,7 @@ Paid plans do not cap team size: the included seats are what the price covers, a
 - **Extra credits** — €40 / 1,000 on Starter, €30 on Business, €24 on Premium, €45 on Free. Purchased credits stack on the monthly allowance and never expire.
 - **Context Packs** — €20/month per pack, adding 5,000,000 characters (~1,000 documents) of knowledge-base capacity. Unlimited packs per account.
 
-**How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; Voice QA = 12 credits/minute; Voice AI = 10 credits/minute (30 credits/minute on premium voices); each AI step in a workflow = 1 credit. CRM, Inbox, Messages, analytics, reports, team collaboration and integrations are included free.
+**How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; Voice QA = 12 credits/minute; Voice AI = 10 credits/minute (30 credits/minute on premium voices). Everything else is included free and consumes no credits: CRM, Inbox, Messages, workflows, analytics, reports, team collaboration and integrations.
 
 ## Pricing FAQ
 
