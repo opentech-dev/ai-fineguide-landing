@@ -121,15 +121,25 @@ submodule in the registry. The site gives it one sentence.
 
 | Capability | Status in code | Status on site |
 |---|---|---|
-| **Ticketing** | first-class CRM submodule | **still open** — one word among eight CRM surfaces |
+| ~~**Ticketing**~~ | **row was wrong** — `crm/tickets` is a 13-line `<Navigate>` stub: *"Tickets became the Inbox, which is now its own top-level module."* Not a submodule. | resolved differently: the dead `Tickets` surface was replaced with **Companies** (`5f7731c`), which was the real omission — 1,533 lines, absent from the site |
 | **Mailboxes & Domains** | Inbox submodule | covered by the Inbox column (`9d250ed`) |
 | **Segments** | 3 pages under telephony | covered by the campaigns section (`690dcad`) |
 | **Number routing** | dedicated page | covered by the campaigns section (`690dcad`) |
-| **Voice QA → Clients** | registry submodule | **still open** — absent |
+| ~~**Voice QA → Clients**~~ | **row was wrong** — there is no Clients submodule. The only match is `conversations/ClientSearchSelect.tsx`, an async CRM contact picker; its comment records the 2026-04-17 `VoiceQaClient` → `Contact` migration. The agency/BPO reading was unfounded. | n/a — and the site already says calls attach to the same customer record |
+| **Voice QA → Cases** | *found while checking the row above* — `voiceqa/cases` 1,669 lines + `case-categories` 592; a named issue grouping many calls for one contact, with a sentiment arc | covered by the Insights block (`c7b5aaf`) |
 
-`Voice QA` having a **Clients** submodule alongside Departments and Agents
-suggests it is usable on behalf of client companies — an agency/BPO framing. The
-site presents Voice QA purely as internal QA.
+> **Two rows in this table were wrong**, both from the same mistake: inferring a
+> capability from a directory or file name without opening it. `crm/tickets`
+> looked like a ticketing submodule and is a redirect; `ClientSearchSelect`
+> looked like a Clients submodule and is a contact picker. Anything in this
+> document asserted from a path alone deserves the same scrutiny — the line
+> counts and code comments elsewhere were each read directly and are sound.
+
+~~`Voice QA` having a **Clients** submodule alongside Departments and Agents
+suggests it is usable on behalf of client companies — an agency/BPO framing.~~
+**Retracted.** Checked on 2026-09-14: no such submodule exists. `voiceqa/`
+contains api, case-categories, cases, components, conversations, departments,
+integration, staff, statistics, utils. The inference was built on a filename.
 
 ---
 
