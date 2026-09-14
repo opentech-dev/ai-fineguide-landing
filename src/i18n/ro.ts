@@ -151,6 +151,37 @@ export const ro: Translations = {
   },
 
   // --- Campanii (telefonie outbound) ---
+  conversations: {
+    eyebrow: 'Mesaje și Inbox',
+    title: 'Fiecare conversație ajunge undeva unde un om poate prelua.',
+    body:
+      'Chatul și emailul ajung în același spațiu de lucru, cu o coadă, reguli de rutare și departamente în spate. Asistentul rezolvă ce poate. În momentul în care nu mai poate, un om are deja conversația, fișa clientului și istoricul în față.',
+    columns: [
+      {
+        name: 'Inbox comun pentru chat',
+        desc: 'WhatsApp, Telegram, Instagram, Messenger și chat web într-o singură coadă.',
+        features: [
+          'O coadă cu conversațiile neatribuite, plus escaladările care așteaptă să fie acceptate sau refuzate',
+          'Predă o conversație altui departament — se șterge responsabilul și se rerutează către echipa aceea',
+          'Vezi când un coleg are aceeași conversație deschisă sau scrie în ea',
+          'Răspunsuri salvate pe care le folosește toată echipa, inserate cu „/” în casetă',
+          'Program de lucru cu răspuns automat în afara orelor, separat de programul fiecărui agent',
+        ],
+      },
+      {
+        name: 'Email real, nu un formular de contact',
+        desc: 'Căsuțe găzduite de noi sau conectează-le pe ale tale.',
+        features: [
+          'Folosește o căsuță găzduită de noi sau conectează-o pe a ta prin IMAP și SMTP, ca livrabilitatea să rămână a ta',
+          'Trimite de pe domeniul tău — generăm noi înregistrările DKIM și MX',
+          'Regulile se potrivesc după căsuță, expeditor și subiect, apoi atribuie, rutează spre un departament sau etichetează',
+          'AI-ul pe o căsuță este oprit până îl pornești: o căsuță nouă este doar pentru oameni',
+          'Răspunsurile așteaptă puțin înainte să plece, ca un operator să poată prelua conversația',
+          'O limită fermă de răspunsuri AI per conversație — dincolo de ea, conversația merge la un om',
+        ],
+      },
+    ],
+  },
   campaigns: {
     eyebrow: 'Campanii',
     title: 'Apeluri outbound care se desfășoară singure.',

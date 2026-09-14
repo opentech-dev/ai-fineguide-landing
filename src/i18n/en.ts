@@ -149,6 +149,37 @@ export const en = {
   },
 
   // --- Campaigns (outbound telephony) ---
+  conversations: {
+    eyebrow: 'Messages & Inbox',
+    title: 'Every conversation lands somewhere a person can take over.',
+    body:
+      'Chat and email arrive in the same workspace, with a queue, routing rules and departments behind them. The assistant handles what it can. The moment it cannot, a human already has the thread, the customer record and the history in front of them.',
+    columns: [
+      {
+        name: 'Shared inbox for chat',
+        desc: 'WhatsApp, Telegram, Instagram, Messenger and web chat in one queue.',
+        features: [
+          'A pull queue of unassigned conversations, plus escalations waiting to be accepted or declined',
+          'Hand a thread to another department — it drops the assignee and re-routes against that team’s pool',
+          'See when a teammate has the same conversation open, or is typing in it',
+          'Saved replies the whole team shares, inserted with “/” in the composer',
+          'Business hours with an out-of-hours auto-reply, separate from each agent’s own working hours',
+        ],
+      },
+      {
+        name: 'Real email, not a contact form',
+        desc: 'Hosted mailboxes, or connect the ones you already run.',
+        features: [
+          'Use a mailbox we host, or connect your own over IMAP and SMTP so deliverability stays yours',
+          'Send from your own domain — we generate the DKIM and MX records for you',
+          'Rules match on mailbox, sender and subject, then assign, route to a department or tag',
+          'AI on a mailbox is off until you turn it on: a new inbox is human-only',
+          'Replies wait a moment before sending, so an operator can claim the thread first',
+          'A hard cap on AI replies per thread — past it, the thread goes to a human instead',
+        ],
+      },
+    ],
+  },
   campaigns: {
     eyebrow: 'Campaigns',
     title: 'Outbound calling that runs itself.',
