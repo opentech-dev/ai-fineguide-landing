@@ -1,6 +1,6 @@
 # Verification scripts
 
-This project has no test suite. These seven scripts are what stands in for one.
+This project has no test suite. These eight scripts are what stands in for one.
 Run them after `npm run build` — most read `dist/`, not `src/`, so they check
 what actually ships.
 
@@ -10,6 +10,7 @@ node scripts/verify-claims.mjs                        # 45 checks
 node scripts/verify-pricing.mjs                       # 38 checks
 node scripts/verify-brand-marks.mjs
 node scripts/verify-css-tokens.mjs
+node scripts/verify-seo.mjs
 node scripts/verify-rendered-pages.mjs
 node scripts/verify-sitemap.mjs
 node --experimental-strip-types scripts/verify-locale-parity.mjs
@@ -26,6 +27,7 @@ Each exits non-zero on failure, so they chain with `&&`.
 | `verify-css-tokens.mjs` | Every `var(--*)` resolves to a defined token. An undefined custom property does not error — it silently inherits, which once flattened a section's type hierarchy with every other check green. |
 | `verify-rendered-pages.mjs` | Every built page has exactly one `<h1>`, no empty headings, no `undefined` in the output, **no link with a valid href but a blank label**, and **every same-site `#fragment` resolving to a real element on the page it targets**. Catches the class of bug that looks broken to a person and passes every build. The blank-label check exists because a key present in `en.ts` and missing from `ro.ts` renders as *nothing* — not as `undefined` — so it slips past every other check here; the dead-anchor check found the skip-to-content link pointing at a non-existent `#main-content` on 10 pages. |
 | `verify-sitemap.mjs` | `public/sitemap.xml` is hand-maintained, so it drifts: pages added and never listed, entries left behind. Also forces any off-origin URL to be vetted by reading the rendered body — it once carried a `/docs` link at priority 0.8 that returned HTTP 200 while displaying "Page not found". |
+| `verify-seo.mjs` | A unique `<title>` of at most 60 chars and a unique meta description of 120–160 on every page — Google truncates past those, and where two URLs share either it indexes one and drops the other. Plus a canonical matching the route exactly, the `en`/`ro`/`x-default` hreflang triple with `x-default` equal to `en`, an `og:image` whose file actually exists in `dist`, a `twitter:card`, and JSON-LD that parses and carries `@type`. |
 
 **They depend on the sibling repos** being checked out next to this one
 (`../ai-backoffice-api`, `../ai-backoffice-frontend`). `verify-claims` reads the
@@ -38,19 +40,5 @@ overstated against the product, an entire module missing from the Romanian
 site, a logo grid where one cell quietly lost its mark, a price table checked
 against the wrong ladder. The build was green each time.
 
----
-
-Added after the run that wrote them:
-
-| Script | What it protects |
-|---|---|
-| `verify-css-tokens.mjs` | Every `var(--*)` in `src/` resolves to a token defined in `global.css`. An undefined custom property does not error — it silently inherits, so muted text renders at full strength and nothing complains. |
-| `verify-rendered-pages.mjs` | Walks every built page for empty headings, images without alt, `undefined`/`NaN` in output, empty `d=""`/`src=""`, and pages without exactly one `h1`. Catches components reading a field the data does not supply. |
-
-```bash
-node scripts/verify-css-tokens.mjs
-node scripts/verify-rendered-pages.mjs
-```
-
-Both were written after a defect they would have caught, and both were proved
-to fail on that defect before being trusted.
+Every one of them was proved to fail on the defect that prompted it before
+being trusted — a guard that has never been seen to go red is not a guard.

@@ -1,19 +1,87 @@
 ---
 import '../styles/global.css';
-import { RO_LOCALE_MIRRORS_ENGLISH, type Lang } from '../i18n/utils';
+import { RO_LOCALE_MIRRORS_ENGLISH, switchLangPath, type Lang } from '../i18n/utils';
 
 interface Props {
   title: string;
   description: string;
   lang?: Lang;
+  /** Absolute-from-root path to the social card. Defaults to the brand card. */
+  ogImage?: string;
+  /** Extra JSON-LD for this page (SoftwareApplication, FAQPage, …). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Keep a page out of the index (none currently need it, but thank-you
+      pages and the like will). */
+  noindex?: boolean;
 }
 
-const { title, description, lang = 'en' } = Astro.props;
+const {
+  title,
+  description,
+  lang = 'en',
+  ogImage = '/images/og-default.png',
+  jsonLd,
+  noindex = false,
+} = Astro.props;
 
+const SITE = 'https://fineguide.ai';
 const htmlLang = lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang;
 const ogLocale =
   lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'en_US';
-const ogUrl = new URL(Astro.url.pathname, 'https://fineguide.ai').href;
+
+// Astro writes every route as `<path>/index.html`, so the served URL always has
+// a trailing slash. Canonical must match that exactly or it points at a URL that
+// redirects, which is worse than emitting nothing.
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, SITE).href;
+const ogUrl = canonical;
+const ogImageUrl = new URL(ogImage, SITE).href;
+
+// Each page declares its own translation. x-default points at English: it is the
+// fallback for a reader whose language we do not publish.
+// switchLangPath returns "/ro" for the Romanian root, with no trailing slash,
+// while the canonical of that same page is "/ro/". An hreflang cluster that
+// names a different URL than the canonical is self-contradictory, so normalise
+// both alternates the same way the canonical is normalised.
+const withSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
+const enHref = new URL(withSlash(switchLangPath(path, 'en')), SITE).href;
+const roHref = new URL(withSlash(switchLangPath(path, 'ro')), SITE).href;
+
+const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Site-wide identity. Emitted once per page so any page can be the one a
+// crawler happens to land on first.
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Fineguide.ai',
+  url: SITE,
+  logo: `${SITE}/images/fineguide-logo.png`,
+  description:
+    'AI-native platform unifying customer conversations, CRM, voice and workflows for business operations teams.',
+};
+
+// The site is flat — every page is one level under the locale root — so a
+// breadcrumb is fully derivable and no page has to hand-write one. The leaf
+// label is the title up to the first separator, which is how these titles are
+// already written ("CRM | … | Fineguide.ai").
+const isHome = path === '/' || path === '/ro/';
+const leafLabel = title.split('|')[0].trim();
+const breadcrumbLd = isHome
+  ? null
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: new URL(lang === 'ro' ? '/ro/' : '/', SITE).href,
+        },
+        { '@type': 'ListItem', position: 2, name: leafLabel, item: canonical },
+      ],
+    };
 ---
 
 <!doctype html>
@@ -24,7 +92,12 @@ const ogUrl = new URL(Astro.url.pathname, 'https://fineguide.ai').href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Fineguide.ai" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="ro" href={roHref} />
+    <link rel="alternate" hreflang="x-default" href={enHref} />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={ogUrl} />
@@ -32,6 +105,31 @@ const ogUrl = new URL(Astro.url.pathname, 'https://fineguide.ai').href;
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Fineguide.ai" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(organizationLd)}
+    />
+    {
+      breadcrumbLd && (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)} />
+      )
+    }
+    {
+      ldBlocks.map((block) => (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(block)} />
+      ))
+    }
 
     <meta name="theme-color" content="#f7f8fa" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
