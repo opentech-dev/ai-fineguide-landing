@@ -55,6 +55,8 @@ export const en = {
   photos: {
     teamOffice: 'A team at work in an open-plan office',
     channelsPhone: 'A customer messaging a business from their phone',
+    agentHeadset: 'A support agent on a call, working from the customer record',
+    tabletReview: 'Reviewing reports on a tablet',
   },
 
   // --- Overview intro (what Fineguide is) ---

@@ -90,6 +90,21 @@ and the Romanian copy already said so.
   If it reports the 2026 ladder live, the whole price table on the site
   changes at once, currency included. If it reports legacy, the site is
   already correct and nothing needs doing.
+
+  **Every credential-free route was tried and none of them answers it:**
+
+  | Attempt | Result |
+  |---|---|
+  | `GET /pricing-internal/ladder-status` | `InternalGuard`, needs `x-service-token` |
+  | `GET https://fineguide.ai/api/core/subscription-plans` | **401** — the real endpoint, authenticated |
+  | `api.fineguide.ai/subscription-plan(s)` | 404 |
+  | Live app JS bundle (`index-D1gsGx2B.js`, 529 KB) | No plan aliases, no currency codes — it fetches from the API at runtime |
+  | `git log` in `ai-backoffice-api` | No cutover commit |
+  | Live pricing page | Still dollars — consistent with legacy, but not proof |
+
+  There is no public plan endpoint, by design. The question is genuinely
+  unanswerable without the internal token, which is why this audit stops here
+  rather than guessing.
 - **"n8n integrations: Free"** (`en.ts`). Under the 2026 work, workflow AI nodes
   cost 1 credit per execution (`WORKFLOW_NODE_CREDITS_DEFAULT`). Whether that
   billing is active on prod depends on the same cutover question, so the claim
