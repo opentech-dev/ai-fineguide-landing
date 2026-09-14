@@ -207,6 +207,14 @@ export const ro: Translations = {
   },
 
   // --- Integrations ribbon ---
+  security: {
+    eyebrow: 'Securitate',
+    title: 'Datele tale, în condițiile tale.',
+    body:
+      'Rulează Fineguide pe propria infrastructură atunci când ai nevoie: cloud-ul tău, cluster privat sau bare metal. Datele rămân în interiorul rețelei tale, iar noi sprijinim evaluările de conformitate și auditurile de securitate.',
+    linkLabel: 'Vezi implementarea enterprise',
+  },
+
   moduleLinks: {
     assistants: 'Descoperă Asistenții',
     crm: 'Descoperă CRM-ul',

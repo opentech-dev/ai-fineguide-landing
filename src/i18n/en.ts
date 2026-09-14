@@ -205,6 +205,20 @@ export const en = {
   },
 
   // --- Integrations ribbon ---
+  // Security strip. docs/goals.md lists "Security & compliance (high level)"
+  // under what belongs on the website, and the landing page had no mention of
+  // it at all. Every claim here is the enterprise page's own wording, which is
+  // backed by the self-hosted Docker stack in ai-fineguide-project. Note it
+  // says we SUPPORT compliance reviews - it does not claim certification, and
+  // must not start to.
+  security: {
+    eyebrow: 'Security',
+    title: 'Your data, on your terms.',
+    body:
+      'Run Fineguide on your own infrastructure when you need to: your cloud, your private cluster, or bare metal. Data stays inside your network boundary, and we support your compliance reviews and security audits.',
+    linkLabel: 'See enterprise deployment',
+  },
+
   // Link labels under the module spreads. These lived as hardcoded English
   // props in both index.astro files, so the Romanian page rendered them in
   // English.
