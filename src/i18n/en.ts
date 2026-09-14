@@ -820,9 +820,9 @@ export const en = {
         title: 'Platform',
         icon: 'grid',
         rows: [
-          { label: 'Workflow AI step', value: '1 credit' },
           { label: 'CRM, Inbox & Messages', value: 'Free' },
-          { label: 'Analytics & integrations', value: 'Free' },
+          { label: 'Workflows & integrations', value: 'Free' },
+          { label: 'Analytics & reports', value: 'Free' },
         ],
       },
     ],
@@ -846,7 +846,7 @@ export const en = {
     heading: 'Frequently Asked Questions',
     subtitle: 'Everything you need to know about our pricing system.',
     items: [
-      { q: 'How do credits work?', a: 'Each AI text message costs 1 credit, or 2 with an attachment. Voice QA uses 12 credits per minute, Voice AI 10 per minute, and 30 per minute on premium voices. Each AI step in a workflow costs 1 credit. CRM, Inbox, Messages, analytics and integrations are included at no extra cost.' },
+      { q: 'How do credits work?', a: 'Each AI text message costs 1 credit, or 2 with an attachment. Voice QA uses 12 credits per minute, Voice AI 10 per minute, and 30 per minute on premium voices. Everything else — CRM, Inbox, Messages, workflows, analytics and integrations — is included at no extra cost and consumes no credits.' },
       { q: 'Do credits expire?', a: 'Monthly subscription credits reset each billing cycle. Extra credit packs never expire.' },
       { q: 'Can I change plans?', a: 'Yes, you can upgrade or downgrade anytime. Changes take effect on the next billing cycle. You can purchase extra credits anytime.' },
       { q: 'What happens if I run out of credits?', a: 'You can buy extra credits instantly. AI assistants will continue to work, and you\'ll be notified when credits are about to run out.' },
