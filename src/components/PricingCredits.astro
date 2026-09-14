@@ -34,7 +34,7 @@ const iconPaths: Record<string, string> = {
             <h3 class="font-semibold text-lg">{cat.title}</h3>
           </div>
           <div class="space-y-4">
-            {cat.rows.map((row: { label: string; value: string }) => (
+            {cat.rows.map((row) => (
               <div class="flex items-center justify-between">
                 <span class="text-sm text-[var(--color-muted)]">{row.label}</span>
                 <span class="text-sm font-semibold text-[var(--color-foreground)]">{row.value}</span>
