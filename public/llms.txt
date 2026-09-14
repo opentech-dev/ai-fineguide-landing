@@ -39,6 +39,12 @@ Credit-based, with all AI modules included from the start. One subscription per 
 
 Paid plans do not cap team size: the included seats are what the price covers, and further seats are billed per seat at the rate above. Free is owner-only.
 
+**Add-ons** — each part of the plan scales on its own, billed monthly alongside the subscription and removable at any time:
+
+- **Extra seats** — €20/seat on Starter, €18 on Business, €15 on Premium. No cap on team size for paid plans.
+- **Extra credits** — €40 / 1,000 on Starter, €30 on Business, €24 on Premium, €45 on Free. Purchased credits stack on the monthly allowance and never expire.
+- **Context Packs** — €20/month per pack, adding 5,000,000 characters (~1,000 documents) of knowledge-base capacity. Unlimited packs per account.
+
 **How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; Voice QA = 12 credits/minute; Voice AI = 10 credits/minute (30 credits/minute on premium voices); each AI step in a workflow = 1 credit. CRM, Inbox, Messages, analytics, reports, team collaboration and integrations are included free.
 
 ## Pricing FAQ

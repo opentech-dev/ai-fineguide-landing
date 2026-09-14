@@ -80,6 +80,15 @@ for (const [name, t] of Object.entries(truth)) {
      new RegExp(`${m}M (characters|caractere)`).test(html), `${m}M`);
 }
 
+// Context Packs come from a different file than the ladder.
+const packSrc = readFileSync(
+  '/Users/liviumaftuleac/develop/ai-backoffice-api/apps/backoffice-api/src/pricing/storage-packs.ts', 'utf8');
+const packPrice = +packSrc.match(/priceEur:\s*(\d+)/)[1];
+const packCapacity = +packSrc.match(/capacity:\s*([\d_]+)/)[1].replace(/_/g, '');
+ck(`Context Pack €${packPrice}/month`, html.includes(`€${packPrice}`), `€${packPrice}`);
+ck(`Context Pack +${packCapacity / 1e6}M characters`,
+   new RegExp(`\\+${packCapacity / 1e6}M (characters|caractere)`).test(html), `+${packCapacity / 1e6}M`);
+
 ck(`Voice QA ${voiceQa} credits/min`, html.includes(`${voiceQa} credits`), `${voiceQa}`);
 ck(`Voice AI ${voiceAi} credits/min`, html.includes(`${voiceAi} credits`), `${voiceAi}`);
 ck(`Premium voice ${voicePremium} credits/min`, html.includes(`${voicePremium} credits`), `${voicePremium}`);
