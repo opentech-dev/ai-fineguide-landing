@@ -769,6 +769,119 @@ export const ro: Translations = {
     },
   },
 
+  // --- Pagina Mesaje și Inbox ---
+  messagesPage: {
+    meta: {
+      title: 'Inbox comun pentru chat și email | Fineguide',
+      description:
+        'Nouă canale de chat și emailul tău într-o singură coadă, cu rutare, departamente și o predare care îi dă omului toată conversația.',
+    },
+    hero: {
+      title: 'Fiecare conversație ajunge',
+      titleAccent: ' undeva unde un om poate prelua.',
+      subtitle:
+        'Asistentul rezolvă ce poate. În momentul în care nu mai poate, un coleg are deja conversația, fișa clientului și istoricul în față.',
+      ctaPrimary: 'Începe acum',
+      ctaSecondary: 'Programează un demo',
+    },
+    intro: {
+      eyebrow: 'Mesaje și Inbox',
+      screenshotAlt: 'Un client care scrie unei companii de pe telefon',
+    },
+    channels: {
+      eyebrow: 'O singură coadă',
+      heading: 'Nouă canale și niciunul nu este un inbox separat.',
+      body:
+        'Un client care scrie azi pe WhatsApp și săptămâna viitoare pe Instagram este o singură persoană cu un singur istoric. Canalul este un detaliu despre cum a ajuns mesajul, nu un sistem de arhivare.',
+      items: [
+        {
+          name: 'Aplicații de mesagerie',
+          desc: 'WhatsApp, Telegram, Instagram și Messenger, conectate o dată și apoi imposibil de deosebit de restul cozii.',
+        },
+        {
+          name: 'Chat de echipă',
+          desc: 'Slack și Discord, pentru comunitățile și canalele interne unde clienții tăi sunt deja.',
+        },
+        {
+          name: 'Web și widget-uri',
+          desc: 'Site-ul tău, plus JivoChat pentru echipele care îl folosesc deja.',
+        },
+        {
+          name: 'Chat nativ în CRM',
+          desc: 'Conversațiile din amoCRM și Kommo ajung în aceeași coadă ca toate celelalte.',
+        },
+      ],
+    },
+    handover: {
+      eyebrow: 'Predarea',
+      heading: 'Partea pe care majoritatea uneltelor o greșesc.',
+      body:
+        'Escaladarea nu este o notificare. Este o coadă cu reguli, o urmă despre cine a acceptat și o garanție că doi oameni nu răspund niciodată aceluiași client în același timp.',
+      items: [
+        {
+          term: 'O singură coadă',
+          desc: 'Conversațiile neatribuite și escaladările care așteaptă să fie acceptate sau refuzate stau într-o singură coadă, ca nimic să nu aștepte într-un loc unde nu se uită nimeni.',
+        },
+        {
+          term: 'Predare între departamente',
+          desc: 'Mută o conversație la alt departament și se șterge responsabilul curent, rerutând către echipa aceea, în loc să rămână la cineva care a încetat să o citească.',
+        },
+        {
+          term: 'Detectarea coliziunilor',
+          desc: 'Ești anunțat când un coleg are aceeași conversație deschisă — și din nou când începe să scrie în ea.',
+        },
+        {
+          term: 'Răspunsuri salvate',
+          desc: 'Răspunsuri partajate de toată echipa, inserate direct cu „/”, nu copiate dintr-un document pe care nu îl mai actualizează nimeni.',
+        },
+        {
+          term: 'Program de lucru',
+          desc: 'Un răspuns automat în afara orelor pentru toată echipa, ținut separat de programul personal al fiecărui agent, ca cele două să nu se contrazică.',
+        },
+      ],
+    },
+    email: {
+      eyebrow: 'Inbox',
+      heading: 'Email adevărat, nu un formular de contact.',
+      body:
+        'Conectează căsuța de pe care trimiți deja, prin IMAP și SMTP. Pentru că mesajele pleacă de pe serverul tău, nu al nostru, livrabilitatea și reputația de expeditor rămân ale tale.',
+      bullets: [
+        'Conectează-ți propriile căsuțe și propriile domenii prin IMAP și SMTP',
+        'Regulile de rutare decid cărei căsuțe îi aparține un mesaj și cine îl preia',
+        'Semnături per căsuță, ca răspunsurile să pară trimise de persoana care le trimite',
+        'Rapoarte per căsuță, alături de rapoartele de chat, nu într-o unealtă separată',
+        'Conversațiile se atașează aceleiași fișe de client ca fiecare chat și apel',
+      ],
+    },
+    safety: {
+      eyebrow: 'AI pe email, în siguranță',
+      heading: 'Trei limite care vin deja pornite.',
+      body:
+        'Momentul în care lași AI-ul să răspundă la email este cel în care majoritatea echipelor devin nervoase, pe bună dreptate. Acestea sunt valori implicite, nu setări pe care trebuie să le descoperi.',
+      items: [
+        {
+          term: 'Oprit implicit',
+          desc: 'O căsuță nouă este doar pentru oameni. Răspunsurile AI le pornești deliberat, per căsuță, după ce ai citit ce ar fi spus.',
+        },
+        {
+          term: 'O pauză înainte de trimitere',
+          desc: 'Răspunsurile așteaptă înainte să plece, ca un coleg care citește deja conversația să o poată prelua, iar clientul să nu primească două răspunsuri.',
+        },
+        {
+          term: 'O limită fermă per conversație',
+          desc: 'După un număr stabilit de răspunsuri AI într-o conversație, se oprește și predă unui om — schema numește asta asigurare împotriva buclelor, și exact asta este.',
+        },
+      ],
+    },
+    finalCta: {
+      heading: 'Pune fiecare canal într-o singură coadă.',
+      body:
+        'Conectează un canal, urmărește asistentul lucrând și preia oricând vrei. Predarea este partea pe care am construit-o prima.',
+      ctaPrimary: 'Începe acum',
+      ctaSecondary: 'Programează un demo',
+    },
+  },
+
   // --- Pagina Campanii (telefonie outbound) ---
   campaignsPage: {
     meta: {

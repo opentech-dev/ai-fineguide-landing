@@ -776,6 +776,124 @@ export const en = {
     },
   },
 
+  // --- Messages & Inbox Page ---
+  // The nine channels are BotIntegrationType in the Prisma schema. Email is
+  // IMAP/SMTP only — there is no OAuth path in the codebase, so nothing here
+  // may imply one-click Gmail or Outlook. The three AI limits are schema
+  // defaults (aiMode OFF, aiReplyDelaySeconds 120, aiMaxRepliesPerThread 3)
+  // and scripts/verify-claims.mjs fails if any of them changes under us.
+  messagesPage: {
+    meta: {
+      title: 'Shared Inbox for Chat and Email | Fineguide',
+      description:
+        'Nine chat channels and your own email in one queue, with routing, departments and a handover that gives the human the whole conversation.',
+    },
+    hero: {
+      title: 'Every conversation lands',
+      titleAccent: ' somewhere a person can take over.',
+      subtitle:
+        'The assistant handles what it can. The moment it cannot, a colleague already has the thread, the customer record and the history in front of them.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'Messages & Inbox',
+      screenshotAlt: 'A customer messaging a business from their phone',
+    },
+    channels: {
+      eyebrow: 'One queue',
+      heading: 'Nine channels, and none of them is a separate inbox.',
+      body:
+        'A customer who writes on WhatsApp today and Instagram next week is one person with one history. The channel is a detail of how the message arrived, not a filing system.',
+      items: [
+        {
+          name: 'Messaging apps',
+          desc: 'WhatsApp, Telegram, Instagram and Messenger, each connected once and then indistinguishable from the rest of the queue.',
+        },
+        {
+          name: 'Team chat',
+          desc: 'Slack and Discord, for the communities and internal channels where your customers already are.',
+        },
+        {
+          name: 'Web and widgets',
+          desc: 'Your own site, plus JivoChat for teams already running it.',
+        },
+        {
+          name: 'CRM-native chat',
+          desc: 'amoCRM and Kommo conversations flow into the same queue as everything else.',
+        },
+      ],
+    },
+    handover: {
+      eyebrow: 'The handover',
+      heading: 'The part most tools get wrong.',
+      body:
+        'Escalation is not a notification. It is a queue with rules, a record of who accepted, and a guarantee that two people never answer the same customer at once.',
+      items: [
+        {
+          term: 'A single queue',
+          desc: 'Unassigned conversations and escalations waiting to be accepted or declined sit in one pull queue, so nothing is waiting in a place nobody looks.',
+        },
+        {
+          term: 'Department handover',
+          desc: 'Move a thread to another department and it drops the current assignee and re-routes against that team, rather than sitting with someone who has stopped reading it.',
+        },
+        {
+          term: 'Collision detection',
+          desc: 'You are told when a colleague has the same conversation open — and again when they start typing in it.',
+        },
+        {
+          term: 'Saved replies',
+          desc: 'Team-shared canned responses, inserted inline with a "/" rather than pasted from a document nobody keeps current.',
+        },
+        {
+          term: 'Business hours',
+          desc: 'An out-of-hours auto-reply for the whole team, kept separate from each agent’s personal working hours so the two never contradict each other.',
+        },
+      ],
+    },
+    email: {
+      eyebrow: 'Inbox',
+      heading: 'Real email, not a contact form.',
+      body:
+        'Connect the mailbox you already send from over IMAP and SMTP. Because the mail leaves your server rather than ours, your deliverability and sender reputation stay yours.',
+      bullets: [
+        'Connect your own mailboxes and your own domains over IMAP and SMTP',
+        'Routing rules decide which mailbox a message belongs to and who picks it up',
+        'Per-mailbox signatures, so replies look like they came from the person sending them',
+        'Reporting per mailbox alongside the chat reporting, not in a separate tool',
+        'Threads attach to the same customer record as every chat and call',
+      ],
+    },
+    safety: {
+      eyebrow: 'AI on email, safely',
+      heading: 'Three limits that ship switched on.',
+      body:
+        'Letting AI answer email is the point at which most teams get nervous, and reasonably so. These are defaults, not settings you have to discover.',
+      items: [
+        {
+          term: 'Off by default',
+          desc: 'A new mailbox is human-only. AI replies are something you turn on deliberately, per mailbox, once you have read what it would have said.',
+        },
+        {
+          term: 'A pause before sending',
+          desc: 'Replies wait before they go out, so a colleague who is already reading the thread can claim it and the customer never gets two answers.',
+        },
+        {
+          term: 'A hard cap per thread',
+          desc: 'After a set number of AI replies in one conversation, it stops and hands to a human — the schema calls this loop insurance, and that is exactly what it is.',
+        },
+      ],
+    },
+    finalCta: {
+      heading: 'Put every channel in one queue.',
+      body:
+        'Connect a channel, watch the assistant work, and take over whenever you want to. The handover is the part we built first.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
   // --- Campaigns Page (outbound telephony) ---
   // Every claim here is checked against the backoffice by
   // scripts/verify-claims.mjs: the three types are the CampaignType enum and
