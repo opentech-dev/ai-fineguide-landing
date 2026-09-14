@@ -776,6 +776,99 @@ export const en = {
     },
   },
 
+  // --- Campaigns Page (outbound telephony) ---
+  // Every claim here is checked against the backoffice by
+  // scripts/verify-claims.mjs: the three types are the CampaignType enum and
+  // the five providers are the TelephonyProvider enum. Adding a fourth type or
+  // a sixth provider to the copy without it existing in the schema fails.
+  campaignsPage: {
+    meta: {
+      title: 'Outbound Calling That Runs Itself | Fineguide',
+      description:
+        'Build an audience, choose what the call is for, and let AI assistants work the list. Test on your own number first, then watch the campaign run.',
+    },
+    hero: {
+      title: 'Outbound calling',
+      titleAccent: ' that runs itself.',
+      subtitle:
+        'Point a campaign at a list and the assistants dial it — one at a time, at your pace, with every outcome written back to the customer record.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'Campaigns',
+      screenshotAlt: 'A desk phone in an open-plan office, notes beside it',
+    },
+    types: {
+      eyebrow: 'Three kinds of campaign',
+      heading: 'What the call is for changes what happens after it.',
+      body:
+        'A campaign is not just a dialler. Each type ends differently — one leaves a conversation, one leaves a dataset, one leaves a funnel — and the reporting follows from that.',
+      items: [
+        {
+          name: 'Outreach',
+          desc: 'Free-form outbound. The assistant opens the conversation and takes it where it needs to go, then writes the summary and any captured fields back to the contact.',
+        },
+        {
+          name: 'Survey',
+          desc: 'A structured questionnaire. Answers are extracted from each call as it ends and aggregated across the whole run, so you read a result rather than a stack of recordings.',
+        },
+        {
+          name: 'Promotion',
+          desc: 'A time-boxed offer. Every outcome — accepted, declined, callback requested — is captured as a stage, so the campaign reads as a conversion funnel rather than a call log.',
+        },
+      ],
+    },
+    audience: {
+      eyebrow: 'Building the list',
+      heading: 'Who gets called, and what happens when they do not answer.',
+      body:
+        'Audiences come from wherever your contacts already are. Retry behaviour is yours to set, and the one rule that is not configurable is the one that matters: a rejection is never retried.',
+      items: [
+        {
+          term: 'Audiences',
+          desc: 'Upload a CSV, pull from existing contacts, select by tag, or combine all three in one list.',
+        },
+        {
+          term: 'Segments',
+          desc: 'Save a filter as a reusable segment and point future campaigns at it, instead of rebuilding the same list each time.',
+        },
+        {
+          term: 'Retries',
+          desc: 'Retry on no answer or busy, with your own delay per outcome. A contact who declines is never dialled again by that campaign.',
+        },
+        {
+          term: 'Test calls',
+          desc: 'Place the campaign against your own number and hear exactly what a customer would, before a single real contact is dialled.',
+        },
+        {
+          term: 'Live control',
+          desc: 'Pause a running campaign, resume it, or stop it outright. Progress and per-contact status stay visible throughout.',
+        },
+      ],
+    },
+    telephony: {
+      eyebrow: 'Your phone system',
+      heading: 'Bring the numbers you already own.',
+      body:
+        'Campaigns run over your existing telephony rather than a number we rent you, so caller ID, call recording and carrier costs stay where they are today.',
+      bullets: [
+        'Connect Twilio, Asterisk, FreePBX, 3CX, or any generic SIP trunk',
+        'Route inbound numbers to the right assistant or the right team',
+        'Hand a live call to a human at any point, with the transcript already in front of them',
+        'Every call attaches to the same customer record as the chats and emails',
+        'Calls are scored by Voice QA on the same rules as the rest of your telephony',
+      ],
+    },
+    finalCta: {
+      heading: 'Run your first campaign against your own number.',
+      body:
+        'Build a list, place a test call, and listen to what your customers would hear. Nothing reaches a real contact until you say so.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
   // --- Pricing Page ---
   pricingMeta: {
     title: 'Pricing | Fineguide.ai',
