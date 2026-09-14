@@ -150,6 +150,36 @@ export const ro: Translations = {
     screenshotAlt: 'Dashboard statistici Voice QA Fineguide',
   },
 
+  // --- Campanii (telefonie outbound) ---
+  campaigns: {
+    eyebrow: 'Campanii',
+    title: 'Apeluri outbound care se desfășoară singure.',
+    body:
+      'Construiește o audiență, alege scopul apelului și lasă asistenții să parcurgă lista. Dă întâi un apel de test pe propriul număr, urmărește campania în timp ce rulează și oprește-o când vrei.',
+    types: [
+      {
+        name: 'Outreach',
+        desc: 'Apelare outbound liberă. Asistentul deschide conversația și o duce unde trebuie.',
+      },
+      {
+        name: 'Sondaj',
+        desc: 'Un chestionar structurat. Răspunsurile sunt extrase după fiecare apel și agregate într-un raport.',
+      },
+      {
+        name: 'Promoție',
+        desc: 'Prezintă o ofertă limitată în timp și captează fiecare rezultat — acceptat, refuzat sau revenire — ca pâlnie de conversie.',
+      },
+    ],
+    features: [
+      'Construiește audiențe din CSV, din contactele existente, din etichete sau combinat',
+      'Reîncearcă la lipsă de răspuns sau ocupat, niciodată la refuz, cu întârzierea ta per rezultat',
+      'Testează o campanie pe propriul număr înainte să ajungă la un client',
+      'Pune pe pauză, reia sau oprește o campanie în desfășurare, oricând',
+      'Twilio, Asterisk, FreePBX, 3CX sau orice trunk SIP generic',
+      'Direcționează numerele de intrare către asistentul sau echipa potrivită',
+    ],
+  },
+
   // --- Workspace + Automations ---
   workspaceAutomations: {
     workspace: {

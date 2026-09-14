@@ -157,5 +157,62 @@ if (fs.existsSync(registryPath)) {
      `automations copy sells only runnable steps (${planned.length} planned: ${planned.join(', ')})${offenders.length ? ' -> SELLS PLANNED: ' + offenders.join(', ') : ''}`);
 }
 
+// --- campaigns: the three types on the page ARE the CampaignType enum --------
+// The section renders one card per campaign type. That is a structural claim,
+// not a chosen number: if a fourth type ships the page silently understates the
+// product, and if one is removed the page advertises something that no longer
+// exists. Both directions are checked against the schema.
+const schemaPath = `${API}/../prisma/schema.prisma`;
+if (fs.existsSync(schemaPath)) {
+  const schema = fs.readFileSync(schemaPath, 'utf8');
+  const block = schema.match(/enum CampaignType\s*\{([\s\S]*?)\}/);
+  const enumTypes = block
+    ? block[1].split('\n').map(l => l.replace(/\/\/.*/, '').trim()).filter(l => /^[A-Z_]+$/.test(l))
+    : [];
+
+  // enum value -> the English card name that represents it
+  const CARD = { OUTREACH: 'Outreach', SURVEY: 'Survey', PROMOTION: 'Promotion' };
+
+  const home = fs.existsSync('dist/index.html') ? fs.readFileSync('dist/index.html', 'utf8') : '';
+  const missing = enumTypes.filter(e => {
+    const name = CARD[e];
+    return !name || !home.includes(`>${name}<`);
+  });
+  ok(enumTypes.length > 0 && missing.length === 0,
+     `campaigns section covers every CampaignType (${enumTypes.join(', ')})${missing.length ? ' -> NOT ON PAGE: ' + missing.join(', ') : ''}`);
+
+  // Every telephony provider named in the copy must exist in TelephonyProvider.
+  // Parse the names OUT of the copy rather than checking a fixed list against the
+  // enum — a hardcoded map only catches the enum changing under names already
+  // known to this script, and silently passes a brand new invented provider,
+  // which is the failure that actually matters.
+  const provBlock = schema.match(/enum TelephonyProvider\s*\{([\s\S]*?)\}/);
+  const providers = provBlock
+    ? provBlock[1].split('\n').map(l => l.replace(/\/\/.*/, '').trim()).filter(l => /^[A-Z_0-9]+$/.test(l))
+    : [];
+  // enum values are not display names, so normalise both sides
+  const norm = (s) => s.toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/^3CX$/, 'THREECX');
+  const known = new Set(providers.map(norm));
+
+  const bogus = [];
+  for (const locale of ['en', 'ro']) {
+    const p = `src/i18n/${locale}.ts`;
+    if (!fs.existsSync(p)) continue;
+    const camp = fs.readFileSync(p, 'utf8').match(/campaigns:\s*\{([\s\S]*?)\n  \},/);
+    if (!camp) continue;
+    // the provider line: "Twilio, Asterisk, FreePBX, 3CX, or any generic SIP trunk"
+    const line = camp[1].split('\n').find(l => /SIP/.test(l));
+    if (!line) continue;
+    const names = line
+      .replace(/^\s*'|',?\s*$/g, '')
+      .split(/,| or | sau /)
+      .map(x => x.trim())
+      .filter(x => x && !/^(any|orice|generic|SIP)/i.test(x) && !/trunk/i.test(x));
+    for (const n of names) if (!known.has(norm(n))) bogus.push(`${locale}:${n}`);
+  }
+  ok(bogus.length === 0,
+     `every telephony provider named in the copy exists in TelephonyProvider (${providers.join(', ')})${bogus.length ? ' -> NOT IN ENUM: ' + bogus.join(', ') : ''}`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);

@@ -6,6 +6,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 import OverviewIntro from '../components/OverviewIntro.astro';
 import ModuleSpread from '../components/ModuleSpread.astro';
 import VoiceSpread from '../components/VoiceSpread.astro';
+import CampaignsSpread from '../components/CampaignsSpread.astro';
 import WorkspaceAndAutomations from '../components/WorkspaceAndAutomations.astro';
 import InlineNumbers from '../components/InlineNumbers.astro';
 import Industries from '../components/Industries.astro';
@@ -41,6 +42,7 @@ const t = useTranslations(lang);
       linkLabel={t.moduleLinks.crm}
     />
     <VoiceSpread t={t} />
+    <CampaignsSpread t={t} />
     <WorkspaceAndAutomations t={t} />
     <InlineNumbers t={t} />
     <Industries t={t} />

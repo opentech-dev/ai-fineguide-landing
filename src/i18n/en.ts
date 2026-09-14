@@ -148,6 +148,36 @@ export const en = {
     screenshotAlt: 'Fineguide Voice QA statistics dashboard',
   },
 
+  // --- Campaigns (outbound telephony) ---
+  campaigns: {
+    eyebrow: 'Campaigns',
+    title: 'Outbound calling that runs itself.',
+    body:
+      'Build an audience, choose what the call is for, and let your assistants work the list. Place a test call to your own number first, watch the campaign as it runs, and pause it whenever you want.',
+    types: [
+      {
+        name: 'Outreach',
+        desc: 'Free-form outbound dialling. The assistant opens the conversation and takes it where it needs to go.',
+      },
+      {
+        name: 'Survey',
+        desc: 'A structured questionnaire. Answers are extracted after each call and aggregated into a report.',
+      },
+      {
+        name: 'Promotion',
+        desc: 'Pitch a time-boxed offer and capture every outcome — accepted, declined, or callback — as a conversion funnel.',
+      },
+    ],
+    features: [
+      'Build audiences from a CSV, your existing contacts, tags, or a mix of all three',
+      'Retry on no answer or busy, never on a rejection, with your own delay per outcome',
+      'Test a campaign against your own number before it reaches a customer',
+      'Pause, resume, or stop a running campaign at any point',
+      'Twilio, Asterisk, FreePBX, 3CX, or any generic SIP trunk',
+      'Route inbound numbers to the right assistant or team',
+    ],
+  },
+
   // --- Workspace + Automations two-up ---
   workspaceAutomations: {
     workspace: {
