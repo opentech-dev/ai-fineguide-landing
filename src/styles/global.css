@@ -128,7 +128,6 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 0;
 }
 
-/* Gradient CTA panel */
 /* Brand-tinted scrim over the closing photograph. Heavy enough that white
    text clears WCAG AA against the window highlight, translucent enough that
    the golden-hour warmth still reads through. */
