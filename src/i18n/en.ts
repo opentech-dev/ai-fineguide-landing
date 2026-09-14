@@ -78,12 +78,20 @@ export const en = {
         desc: 'Quality assurance on every call, plus AI-driven inbound and outbound telephony.',
       },
       {
+        name: 'Messages',
+        desc: 'A dedicated home for every conversation your assistants handle, with its own reporting.',
+      },
+      {
+        name: 'Inbox',
+        desc: 'Email proper: connect your own mailboxes and domains over IMAP and SMTP, with routing rules.',
+      },
+      {
         name: 'Workspace',
         desc: 'Documents, decisions, and team knowledge alongside the customer record.',
       },
       {
         name: 'Automations',
-        desc: 'Visual workflows that wire Fineguide into the rest of your stack.',
+        desc: 'Build workflows visually inside Fineguide, or connect n8n to wire it into the rest of your stack.',
       },
       {
         name: 'QA & Analytics',
