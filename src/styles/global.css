@@ -5,13 +5,18 @@
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  --color-primary: oklch(0.45 0.18 280);
+  /* Brand — taken from the logo mark (fineguide_lg.svg):
+     deep indigo #30226F and violet #7C3AED. */
+  --color-primary: #30226f;
   --color-primary-foreground: #ffffff;
-  --color-background: #f7f8fa;
-  --color-foreground: #1a1f2e;
+  --color-accent: #7c3aed;
+  --color-accent-soft: #a78bfa;
+  --color-background: #fafafc;
+  --color-foreground: #12132a;
   --color-muted: #6b7194;
-  --color-border: #e2e4ed;
+  --color-border: #e6e4f0;
   --color-card: #ffffff;
+  --color-tint: #f2effc;
   --color-destructive: #ef4444;
 
   --animate-fade-in: fade-in 0.5s ease-out forwards;
@@ -52,11 +57,98 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Cards with hover lift ── */
 .card-hover {
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 .card-hover:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #d1d5e0;
+  box-shadow: 0 18px 34px -20px rgba(48, 34, 111, 0.3);
+  border-color: var(--color-accent-soft);
+  transform: translateY(-3px);
+}
+
+/* ── Redesign 2026 ──────────────────────────────────────────
+   Section rhythm is carried by background changes rather than
+   a border-top on every band. ------------------------------- */
+
+/* Uppercase section label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Same label, on a dark background */
+.eyebrow-light {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+}
+
+/* Violet-tinted band, used instead of a bordered slab */
+.band-tint {
+  background: var(--color-tint);
+}
+
+/* Product screenshot framing — consistent depth across the page */
+.panel-frame {
+  border-radius: 16px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 1px 2px rgba(18, 19, 42, 0.05),
+    0 22px 44px -18px rgba(48, 34, 111, 0.28);
+  overflow: hidden;
+}
+
+/* Soft brand glow behind the hero */
+.brand-glow {
+  position: relative;
+}
+.brand-glow::before {
+  content: '';
+  position: absolute;
+  top: -340px;
+  left: 50%;
+  transform: translateX(-38%);
+  width: 1150px;
+  height: 760px;
+  background: radial-gradient(
+    closest-side,
+    rgba(124, 58, 237, 0.2),
+    rgba(48, 34, 111, 0.1) 52%,
+    transparent 76%
+  );
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gradient CTA panel */
+.cta-gradient {
+  background: linear-gradient(140deg, #30226f 0%, #3d2a86 48%, #7c3aed 118%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    60% 80% at 78% 12%,
+    rgba(255, 255, 255, 0.16),
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+/* Digits that line up in columns */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Icon circle backgrounds ── */
@@ -70,8 +162,8 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 .icon-circle-primary {
-  background: oklch(0.45 0.18 280 / 0.08);
-  color: var(--color-primary);
+  background: var(--color-tint);
+  color: var(--color-accent);
 }
 .icon-circle-danger {
   background: #fef2f2;

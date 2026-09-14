@@ -62,7 +62,7 @@ export const en = {
       },
       {
         name: 'Voice',
-        desc: 'Quality assurance on every call, with AI-driven telephony arriving next.',
+        desc: 'Quality assurance on every call, plus AI-driven inbound and outbound telephony.',
       },
       {
         name: 'Workspace',
