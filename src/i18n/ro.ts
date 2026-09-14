@@ -797,7 +797,7 @@ export const ro: Translations = {
     heading: 'Întrebări frecvente',
     subtitle: 'Tot ce trebuie să știi despre sistemul nostru de prețuri.',
     items: [
-      { q: 'Cum funcționează creditele?', a: 'Fiecare mesaj text AI costă 1 credit. Mesajele cu atașamente costă 2 credite. Analiza VoiceQA folosește 12 credite per minut. Procesarea documentelor, analytics-ul și integrările sunt incluse fără cost suplimentar.' },
+      { q: 'Cum funcționează creditele?', a: 'Fiecare mesaj text AI costă 1 credit, sau 2 cu atașament. Voice QA folosește 12 credite per minut, Voice AI 10 per minut, iar vocile premium 30 per minut. Fiecare pas AI dintr-un workflow costă 1 credit. CRM-ul, Inbox-ul, Mesajele, analytics-ul și integrările sunt incluse fără cost suplimentar.' },
       { q: 'Expiră creditele?', a: 'Creditele din abonamentul lunar se resetează la fiecare ciclu de facturare. Pachetele extra de credite nu expiră niciodată.' },
       { q: 'Pot schimba planul?', a: 'Da, poți upgrada sau downgrada oricând. Modificările intră în vigoare la următorul ciclu de facturare. Poți cumpăra credite suplimentare oricând.' },
       { q: 'Ce se întâmplă dacă rămân fără credite?', a: 'Poți cumpăra credite suplimentare instant. Asistenții AI vor continua să funcționeze și vei fi notificat când creditele sunt aproape de epuizare.' },
