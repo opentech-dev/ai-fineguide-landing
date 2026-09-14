@@ -48,6 +48,11 @@ export const ro: Translations = {
     ctaSecondary: 'Programează un demo',
   },
 
+  // --- Customer logo strip ---
+  customerLogos: {
+    eyebrow: 'Ne aleg echipe din Moldova și România',
+  },
+
   // --- Overview intro ---
   overview: {
     eyebrow: 'Platforma',
@@ -693,17 +698,17 @@ export const ro: Translations = {
       {
         desc: 'Pentru echipe mici care vor să automatizeze primele interacțiuni.',
         credits: '≈ 10.000 de conversații text sau 800+ minute VoiceQA',
-        features: ['Până la 5 membri', 'Control administrativ de bază', 'Suport pe email', 'Toate modulele AI incluse'],
+        features: ['1 membru', 'Control administrativ de bază', 'Suport pe email', 'Toate modulele AI incluse'],
       },
       {
         desc: 'Pentru companii în creștere care au nevoie de mai multă capacitate.',
         credits: '≈ 23.000 de conversații text sau 1.900+ minute VoiceQA',
-        features: ['Până la 10 membri', 'Control administrativ avansat', 'Suport prioritar', 'Analytics avansat'],
+        features: ['Până la 5 membri', 'Control administrativ avansat', 'Suport prioritar', 'Analytics avansat'],
       },
       {
         desc: 'Pentru echipe mari cu volum ridicat de interacțiuni.',
         credits: '≈ 65.000 de conversații text sau 5.400+ minute VoiceQA',
-        features: ['20 de membri', 'Control administrativ enterprise', 'Suport dedicat', 'Rapoarte custom', 'Acces API & webhook-uri'],
+        features: ['Până la 10 membri', 'Control administrativ enterprise', 'Suport dedicat', 'Rapoarte custom', 'Acces API & webhook-uri'],
       },
     ],
   },

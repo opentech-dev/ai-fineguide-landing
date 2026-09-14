@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import EditorialHero from '../components/EditorialHero.astro';
+import CustomerLogos from '../components/CustomerLogos.astro';
 import OverviewIntro from '../components/OverviewIntro.astro';
 import ModuleSpread from '../components/ModuleSpread.astro';
 import VoiceSpread from '../components/VoiceSpread.astro';
@@ -22,6 +23,7 @@ const t = useTranslations(lang);
   <Navbar t={t} lang={lang} />
   <main id="main-content">
     <EditorialHero t={t} lang={lang} />
+    <CustomerLogos t={t} />
     <OverviewIntro t={t} />
     <ModuleSpread
       spread={t.assistantsSpread}
