@@ -78,6 +78,25 @@ not evidence that anyone uses Fineguide.
 | `steps/step-02-ai-chat.jpg` | Same: flat purple illustration, not a photo. |
 | `hero-bg.jpg` | Cyan particle-network abstract — the most overused "AI company" stock image there is, and the cyan fights the indigo/violet brand. It was being **preloaded on all 24 pages while never being displayed**; that preload has been removed. Do not wire it up. |
 | `avatars/avatar-maria.jpg`<br>`avatars/avatar-ion.jpg`<br>`avatars/avatar-andrei.jpg` | Synthetic headshots — flat studio backdrop, flawless skin, generic pose. Referenced nowhere; keep it that way. Beyond looking generated, attaching one to a named testimonial makes a **false claim about a customer** — an honesty problem, not a taste one. |
+| `channels/whatsapp.svg`<br>`channels/telegram.svg`<br>`channels/facebook.svg`<br>`channels/instagram.svg`<br>`channels/chat.svg`<br>`channels/email.svg` | **Not brand logos.** Generic Feather line icons wearing brand filenames — `telegram.svg` is the `send` paper plane, `whatsapp.svg` a plain speech bubble — all single-stroke on a hardcoded `#a5b4fc`. Labelling these as integration logos claims a vendor relationship with a stock icon. Superseded by `brands/` below; referenced nowhere. |
+
+## Brand marks — real vendor logos (`public/images/brands/`)
+
+Used by the integrations grid. These are genuine vendor marks, not stand-ins.
+
+| File | Source |
+|---|---|
+| `whatsapp` `telegram` `instagram` `messenger` `slack` `discord` `zendesk` `helpscout` `n8n` | Extracted from the **Simple Icons** corpus (`@iconify-json/simple-icons` v1.2.43) already vendored in `ai-backoffice-frontend`. Official 24×24 path geometry, recoloured to each vendor's brand hex. |
+| `kommo` | The real Kommo mark the workspace app already ships inline (`AppLogo.tsx`), brand `#005FF9`. Simple Icons has no Kommo entry. |
+| `amocrm` | amoCRM's own wordmark, copied out of `_backup/src/assets/images/AmoCrm.svg` (read-only; nothing there was modified). |
+
+amoCRM is a **wordmark brand** — it has no square glyph, so its cell shows the
+wordmark *as* the label rather than a cropped fragment. Cropping a glyph out of
+a wordmark would mangle the trademark.
+
+Vendor logos are used here to identify supported integrations, which is what
+they are for. If a vendor's brand guidelines require a specific treatment,
+that is worth a check before launch.
 
 ## Not reviewed for content, low risk
 
