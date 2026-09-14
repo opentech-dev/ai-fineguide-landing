@@ -37,7 +37,7 @@ export const en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | Transform how your business interacts with customers.',
+    title: 'Fineguide.ai | AI Platform for Customer Operations',
     description:
       'The next-generation platform for business operations. Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
   },
@@ -325,9 +325,9 @@ export const en = {
   // --- AI Assistants page (custom layout) ---
   assistantsPage: {
     meta: {
-      title: 'AI Assistants | Automate conversations across every channel | Fineguide.ai',
+      title: 'AI Assistants for WhatsApp, Telegram & Web | Fineguide',
       description:
-        'Deploy AI assistants that read your knowledge, follow your rules, and capture what matters, across web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord.',
+        'AI assistants that read your knowledge base, follow your rules and capture what matters, on web chat, WhatsApp, Telegram, Instagram, Slack and Discord.',
     },
     hero: {
       title: 'AI assistants that handle',
@@ -462,9 +462,9 @@ export const en = {
   // --- CRM page (custom layout) ---
   crmPage: {
     meta: {
-      title: 'CRM | Conversations, leads, and tasks on one customer record | Fineguide.ai',
+      title: 'CRM Built on One Customer Record | Fineguide.ai',
       description:
-        'A CRM built around the customer record, with conversations, contacts, companies, leads, pipelines, tasks, team inbox, and routing queue, connected to every channel your team operates on.',
+        'A CRM organised around the customer record: contacts, companies, leads, pipelines and tasks, with every conversation attached to the same person.',
     },
     hero: {
       title: 'One customer record. Every team.',
@@ -599,7 +599,7 @@ export const en = {
   // --- Workspace page (custom layout) ---
   workspacePage: {
     meta: {
-      title: 'Workspace | A document editor that lives with your customers | Fineguide.ai',
+      title: 'Workspace: Documents Beside Your Customers | Fineguide',
       description:
         'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts, leads, and conversations your team is already working with.',
     },
@@ -669,9 +669,9 @@ export const en = {
   // --- Voice QA page (custom layout) ---
   voiceQaPage: {
     meta: {
-      title: 'Voice QA | Score every call, surface every pattern | Fineguide.ai',
+      title: 'Voice QA: Score Every Call Automatically | Fineguide',
       description:
-        'Automatic AI evaluation for every phone call, per department, against your rules, in 30+ languages. Surface common issues and emerging trends across thousands of conversations.',
+        'Automatic AI scoring on every phone call, per department and against your own rules. Stop sampling and see issues and trends across the whole operation.',
     },
     hero: {
       title: 'Every call, scored',
@@ -779,7 +779,8 @@ export const en = {
   // --- Pricing Page ---
   pricingMeta: {
     title: 'Pricing | Fineguide.ai',
-    description: 'Flexible credit-based pricing. Choose the right plan for your team, with all AI modules included from the start.',
+    description:
+      'Credit-based pricing with every AI module included from the first plan. Compare credits, seats and knowledge-base limits, and add capacity as you need it.',
   },
   pricingPage: {
     heading: 'Pricing built for<br />growing teams',
@@ -929,9 +930,9 @@ export const en = {
 
   // --- Enterprise Page ---
   enterpriseMeta: {
-    title: 'Enterprise | On-premise, adaptation, and consultancy | Fineguide.ai',
+    title: 'Enterprise: On-Premise & Consultancy | Fineguide.ai',
     description:
-      'Dedicated service for enterprise teams: custom plans, on-premise deployment on your infrastructure, platform adaptation, and consultancy that turns the platform into outcomes.',
+      'Custom plans, on-premise deployment on your own infrastructure, platform adaptation and consultancy for teams with security or scale requirements.',
   },
   enterprisePage: {
     hero: {

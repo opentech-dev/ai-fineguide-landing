@@ -39,7 +39,7 @@ export const ro: Translations = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | Simplifică fiecare interacțiune cu clienții tăi.',
+    title: 'Fineguide.ai | Platformă AI pentru relația cu clienții',
     description:
       'Platforma de nouă generație pentru operațiuni de business. Unifică conversațiile, CRM-ul, canalele și fluxurile de lucru, totul construit pe AI din temelii.',
   },
@@ -318,7 +318,7 @@ export const ro: Translations = {
   // --- AI Assistants page ---
   assistantsPage: {
     meta: {
-      title: 'Asistenți AI | Automatizează conversațiile pe fiecare canal | Fineguide.ai',
+      title: 'Asistenți AI pentru WhatsApp, Telegram și web | Fineguide',
       description:
         'Asistenți AI care citesc cunoștințele tale, urmează regulile tale și captează ce contează, pe web, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord.',
     },
@@ -455,9 +455,9 @@ export const ro: Translations = {
   // --- CRM page ---
   crmPage: {
     meta: {
-      title: 'CRM | Conversații, lead-uri și task-uri pe o singură fișă a clientului | Fineguide.ai',
+      title: 'CRM construit pe fișa clientului | Fineguide.ai',
       description:
-        'Un CRM construit în jurul fișei clientului, conversații, contacte, companii, lead-uri, pipeline-uri, task-uri, inbox de echipă și coadă de rutare, conectate la fiecare canal pe care operează echipa ta.',
+        'Un CRM organizat în jurul fișei clientului: contacte, companii, lead-uri, pipeline-uri și task-uri, cu fiecare conversație atașată aceleiași persoane.',
     },
     hero: {
       title: 'O singură fișă. Toată echipa.',
@@ -536,9 +536,9 @@ export const ro: Translations = {
   // --- Voice QA page ---
   voiceQaPage: {
     meta: {
-      title: 'Voice QA | Evaluează fiecare apel, descoperă fiecare tipar | Fineguide.ai',
+      title: 'Voice QA: evaluează automat fiecare apel | Fineguide',
       description:
-        'Evaluare AI automată pentru fiecare apel telefonic, pe departamente, conform regulilor tale, în 30+ limbi. Descoperă problemele comune și tendințele emergente pe mii de conversații.',
+        'Evaluare AI automată pe fiecare apel telefonic, pe departamente și după regulile tale. Renunță la eșantionare și vezi problemele din toată operațiunea.',
     },
     hero: {
       title: 'Fiecare apel, evaluat',
@@ -646,9 +646,9 @@ export const ro: Translations = {
   // --- Workspace page ---
   workspacePage: {
     meta: {
-      title: 'Workspace | Un editor de documente care trăiește alături de clienții tăi | Fineguide.ai',
+      title: 'Workspace: documente lângă clienții tăi | Fineguide.ai',
       description:
-        'Un editor bazat pe blocuri pentru playbook-uri, brief-uri și cunoștințe de echipă, conectat la aceleași contacte, lead-uri și conversații cu care echipa ta lucrează deja.',
+        'Editor pe blocuri pentru playbook-uri, brief-uri și cunoștințele echipei, conectat la aceleași contacte, lead-uri și conversații cu care lucrezi deja.',
     },
     hero: {
       title: 'Documente care trăiesc',
@@ -716,9 +716,9 @@ export const ro: Translations = {
   // --- Voice AI page ---
   voiceAiPage: {
     meta: {
-      title: 'Voice AI | Agenți AI pe apeluri telefonice live | Fineguide.ai',
+      title: 'Voice AI: agenți AI pe apeluri live | Fineguide.ai',
       description:
-        'Aceiași asistenți care gestionează chat-ul web, la celălalt capăt al telefonului. Voice AI răspunde la apeluri inbound, sună outbound și predă către oameni atunci când contează.',
+        'Aceiași asistenți care gestionează chat-ul web, la telefon. Voice AI preia apeluri inbound, sună outbound și predă către oameni atunci când contează.',
     },
     hero: {
       title: 'AI la celălalt capăt',
@@ -772,7 +772,7 @@ export const ro: Translations = {
   // --- Pricing Page ---
   pricingMeta: {
     title: 'Prețuri | Fineguide.ai',
-    description: 'Prețuri flexibile bazate pe credite. Alege planul potrivit pentru echipa ta, toate modulele AI incluse de la început.',
+    description: 'Prețuri bazate pe credite, cu toate modulele AI incluse din primul plan. Compară creditele, locurile și limitele de cunoștințe și adaugi capacitate oricând.',
   },
   pricingPage: {
     heading: 'Prețuri construite pentru<br />echipe care cresc',
@@ -922,9 +922,9 @@ export const ro: Translations = {
 
   // --- Enterprise Page ---
   enterpriseMeta: {
-    title: 'Enterprise | On-premise, adaptare și consultanță | Fineguide.ai',
+    title: 'Enterprise: on-premise și consultanță | Fineguide.ai',
     description:
-      'Serviciu dedicat pentru echipe enterprise: planuri custom, deployment on-premise pe infrastructura ta, adaptare a platformei și consultanță care transformă platforma în rezultate.',
+      'Planuri custom, deployment on-premise pe infrastructura ta, adaptarea platformei și consultanță pentru echipe cu cerințe de securitate sau scalare.',
   },
   enterprisePage: {
     hero: {
@@ -1023,7 +1023,9 @@ export const ro: Translations = {
 
   // --- Contact Page ---
   contactMeta: {
-    title: 'Contact | Fineguide.ai',
+    // Must differ from the English title — two URLs with the same <title> make
+    // Google pick one and drop the other from the index.
+    title: 'Contactează echipa Fineguide.ai',
     description: 'Contactează echipa Fineguide. Suntem aici pentru întrebări, suport tehnic sau să discutăm cum platforma AI poate ajuta afacerea ta.',
   },
   contact: {
@@ -1066,7 +1068,7 @@ export const ro: Translations = {
   // --- Schedule Demo Page ---
   scheduleDemoMeta: {
     title: 'Programează un demo | Fineguide.ai',
-    description: 'Programează un demo personalizat al platformei Fineguide. Află cum te putem ajuta să califici mai multe lead-uri, să oferi suport mai bun și să automatizezi workflow-urile.',
+    description: 'Programează un demo personalizat al platformei Fineguide și află cum califici mai multe lead-uri, oferi suport mai bun și automatizezi munca repetitivă.',
   },
   scheduleDemo: {
     heading: 'Programează un demo<br class="hidden sm:block" /> personalizat',
