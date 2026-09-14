@@ -757,7 +757,8 @@ export const en = {
     subtitle: 'The flexible credit system gives you full control over AI usage, across all platform features.',
     categories: [
       {
-        name: 'AI Conversations',
+        title: 'AI Conversations',
+        icon: 'message',
         rows: [
           { label: 'Text message', value: '1 credit' },
           { label: 'Message + attachment', value: '2 credits' },
@@ -765,7 +766,8 @@ export const en = {
         ],
       },
       {
-        name: 'VoiceQA',
+        title: 'VoiceQA',
+        icon: 'mic',
         rows: [
           { label: 'Analysis per minute', value: '12 credits' },
           { label: 'Quality scoring', value: 'Included' },
@@ -773,7 +775,8 @@ export const en = {
         ],
       },
       {
-        name: 'Platform',
+        title: 'Platform',
+        icon: 'grid',
         rows: [
           { label: 'Analytics & reports', value: 'Free' },
           { label: 'Team collaboration', value: 'Free' },

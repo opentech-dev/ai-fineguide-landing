@@ -750,7 +750,8 @@ export const ro: Translations = {
     subtitle: 'Sistemul flexibil de credite îți dă control deplin asupra utilizării AI, pe toate funcționalitățile platformei.',
     categories: [
       {
-        name: 'Conversații AI',
+        title: 'Conversații AI',
+        icon: 'message',
         rows: [
           { label: 'Mesaj text', value: '1 credit' },
           { label: 'Mesaj + atașament', value: '2 credite' },
@@ -758,7 +759,8 @@ export const ro: Translations = {
         ],
       },
       {
-        name: 'VoiceQA',
+        title: 'VoiceQA',
+        icon: 'mic',
         rows: [
           { label: 'Analiză per minut', value: '12 credite' },
           { label: 'Scoring de calitate', value: 'Inclus' },
@@ -766,7 +768,8 @@ export const ro: Translations = {
         ],
       },
       {
-        name: 'Platformă',
+        title: 'Platformă',
+        icon: 'grid',
         rows: [
           { label: 'Analytics & rapoarte', value: 'Gratuit' },
           { label: 'Colaborare în echipă', value: 'Gratuit' },

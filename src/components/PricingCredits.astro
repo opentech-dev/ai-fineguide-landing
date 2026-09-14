@@ -17,7 +17,13 @@ const iconPaths: Record<string, string> = {
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
-      {t.pricingCredits.categories.map((cat: { title: string; icon: string; rows: { label: string; value: string }[] }) => (
+      {/* No inline type annotation here on purpose. There used to be one
+          claiming `{ title: string; icon: string; ... }` while the data
+          actually supplied `name` and no icon at all, so every category
+          rendered an empty <h3> and an icon <path> with no `d`. The annotation
+          asserted the shape instead of checking it, and the typecheck believed
+          it. Letting the real type flow through means a mismatch is an error. */}
+      {t.pricingCredits.categories.map((cat) => (
         <div class="bg-white rounded-xl border border-[var(--color-border)] p-6">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
