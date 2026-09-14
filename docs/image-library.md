@@ -34,6 +34,7 @@ saving with no visible loss).
 | `photos/team-collab.jpg` | Overview | **Generated 2026-09-14** (Nano Banana Pro) | Three colleagues, two mid-conversation. Warm wood, plants, real window light. Screens small and angled away. |
 | `photos/channels-phone.jpg` | Industries | `steps/step-01-attract.jpg` | A hand holding a phone showing real Instagram. Warm light, wooden table. |
 | `photos/tablet-review.jpg` | Workspace | `steps/step-05-report.jpg` | Hands holding a tablet, coffee, warm window light. Chart labels illegible at any size. |
+| `photos/office-golden.jpg` | Closing CTA (background) | **Generated 2026-09-14** (Nano Banana Pro) | Golden-hour office, two colleagues laughing, a third in motion blur. Sits behind a brand-tinted scrim as a decorative background, so it carries `alt=""` and `aria-hidden` — it is texture, not information. Monitors dark throughout. |
 
 ### The two generated images, and why they replaced what was there
 
