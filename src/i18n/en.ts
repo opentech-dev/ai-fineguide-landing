@@ -164,14 +164,15 @@ export const en = {
     },
     automations: {
       eyebrow: 'Automations',
-      title: 'Wire Fineguide into the rest of your stack.',
+      title: 'Automate the work, inside Fineguide or beyond it.',
       body:
-        'An embedded n8n instance, hosted or bring-your-own, that connects Fineguide to the tools you already use.',
+        'A visual workflow builder in the product itself, plus an embedded n8n instance, hosted or bring-your-own, for everything outside it.',
       features: [
-        'Hosted n8n on Fineguide infrastructure',
-        'Or bring your own n8n instance',
+        'Visual workflow builder, built into Fineguide',
+        'Conditions, typed variables, and drag-and-drop steps',
+        'Hosted n8n on Fineguide infrastructure, or bring your own',
         'Webhooks on conversations, leads, and tickets',
-        'Hundreds of pre-built integrations',
+        'Hundreds of pre-built integrations through n8n',
       ],
     },
   },
