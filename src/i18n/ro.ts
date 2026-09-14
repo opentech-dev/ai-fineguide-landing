@@ -80,12 +80,20 @@ export const ro: Translations = {
         desc: 'Quality assurance pe fiecare apel, plus telefonie cu agenți AI.',
       },
       {
+        name: 'Mesaje',
+        desc: 'Un spațiu dedicat pentru fiecare conversație gestionată de asistenți, cu rapoarte proprii.',
+      },
+      {
+        name: 'Inbox',
+        desc: 'Email adevărat: conectează-ți propriile căsuțe și domenii prin IMAP și SMTP, cu reguli de rutare.',
+      },
+      {
         name: 'Workspace',
         desc: 'Documente, decizii și cunoștințe de echipă, alături de fișa clientului.',
       },
       {
         name: 'Automatizări',
-        desc: 'Workflow-uri vizuale care conectează Fineguide la restul stack-ului tău.',
+        desc: 'Construiește workflow-uri vizual direct în Fineguide sau conectează n8n pentru restul stack-ului tău.',
       },
       {
         name: 'QA & Analytics',

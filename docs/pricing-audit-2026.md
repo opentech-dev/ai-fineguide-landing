@@ -137,7 +137,46 @@ and the Romanian copy already said so.
   found anywhere in the API. A negative grep is weak evidence; worth a human
   checking rather than editing on my guess.
 
-## Shipped but not marketed
+## Shipped but not marketed — two now fixed
+
+Measured the workspace app's module directories by size. The result is worth
+seeing, because the landing page was leading with one of the smallest surfaces
+in the product while three of the largest went unmentioned:
+
+| Module | Files | Lines | Was on the landing page? |
+|---|---:|---:|---|
+| `crm` | 123 | 36,848 | yes — CRM |
+| `agents` | 74 | 23,657 | yes — Assistants |
+| `voiceqa` | 42 | 17,333 | yes — QA & Analytics |
+| `telephony` | 51 | 15,652 | yes — Voice |
+| **`messages`** | **59** | **13,746** | **no** |
+| **`workflows`** | **48** | **11,134** | **no** |
+| **`inbox`** | **26** | **6,601** | **no** |
+| `workspace` | 22 | 3,376 | yes — Workspace |
+| `n8n` | 10 | 1,105 | yes — sold as "Automations" |
+
+`Messages` was the fifth-largest module in the product and appeared nowhere.
+`Inbox` is real email — 155 `mailbox` references, plus IMAP, SMTP and domain
+handling, with a rules page. Both are now on the page, in both locales.
+
+`Workflows` is a native drag-and-drop builder with a node registry, conditions,
+typed variables and lineage tracking — an order of magnitude more code than the
+n8n bridge the page sold as "Automations". Rather than add a ninth chip that
+would read as a duplicate of "Automations", the Automations description now
+says both things: build workflows in Fineguide, or connect n8n.
+
+None of the three is behind a feature flag; all are unconditional routes.
+
+**`Campaigns` was deliberately not added.** There is a `/campaigns` route, but
+no `campaigns` module directory exists — it is routed and not built. Marketing
+it would have been a false claim.
+
+Still unmarketed, and left alone on purpose: Storage/Context Packs and annual
+billing are flag-gated and confirmed for fg-dev only, so they carry the same
+caveat as the ladder. FineClaw (2,417 lines) and Agency have no landing
+presence either, but neither is clearly a customer-facing module.
+
+## Original findings
 
 High confidence — each appears in the module registry, the nav rail and the
 router: **Messages** (standalone agent inbox), **Inbox** (email, with mailboxes
