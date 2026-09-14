@@ -149,19 +149,38 @@ longer be charged for nothing.
 
 Neither branch is merged or deployed.
 
-**`ai-backoffice-api` → `fix/storage-pack-checkout-guard`** (`ca636dc24`, `d7069c034`)
+**`ai-backoffice-api` → `fix/storage-pack-checkout-guard`** (`ca636dc24`, `d7069c034`, `6550fca2e`)
 
 | Change | Effect |
 |---|---|
 | `POST /storage-packs/checkout` guarded on `storagePacksEnabled()` | 503 instead of a Stripe session while the flag is off — no charge is possible |
 | `GET /storage-packs/catalog` returns `[]` while the flag is off | nothing is advertised as sellable; this is the signal the app uses to hide the UI |
+| `getRemovalCheck` no longer subtracts an inert pack | an org that already bought one can actually cancel it |
+
+That third one was found while verifying the second, and is the worst of the
+three for anyone already affected. `getRemovalCheck` computed
+`capacityAfter = usage.capacity.effective − onePackCapacity`, but `effective`
+comes from `resolveEffectiveLimit`, which ignores packs while the flag is off.
+Subtracting a pack from a ceiling that never included it floors the result:
+
+| Tier | base | `capacityAfter` (flag off) | removable? |
+|---|---|---|---|
+| Free | 1M | 0 | only at zero usage |
+| Starter | 5M | 0 | only at zero usage |
+| Business | 10M | 5M | if under 5M |
+| Premium | 20M | 15M | if under 15M |
+
+So a Free or Starter org holding one character of context was charged €20/month
+for a pack granting nothing **and** blocked from removing it, with
+`removeOnePack` returning 409. While packs are inert, removing one changes
+capacity by nothing, so the ceiling after removal is the ceiling now.
 
 `admin-storage-pack.controller` is deliberately **not** gated — it calls
 `getAll(true)` and operators need it to manage SKUs and run `sync-price` before
 the flag goes on. Gating in the service would have broken that, so both checks
 sit in the customer controller.
 
-25 tests pass across the three pack suites; `tsc --noEmit` clean.
+29 tests pass across the three pack suites; `tsc --noEmit` clean.
 
 **`ai-backoffice-frontend` → `fix/storage-pack-ui-gate`** (`4a1590a3`)
 
