@@ -2,239 +2,204 @@
 
 **Date:** 2026-09-14
 **Question:** what does the platform do that the website does not say?
+**Scope:** Agency and FineClaw are **out of scope** by direction and are not
+assessed here. Everything below excludes them.
 
 ## Method
 
 Three sources, each checked against code rather than documentation:
 
 1. **`MODULE_DEFINITIONS`** in
-   `ai-backoffice-api/apps/backoffice-api/src/modules/module-registry/module-definitions.ts`
-   — the file names itself "the single source of truth for what modules exist".
+   `ai-backoffice-api/.../module-registry/module-definitions.ts` — the file names
+   itself "the single source of truth for what modules exist".
 2. **Workspace app modules** under
    `ai-backoffice-frontend/apps/ai-workspace/src/modules/`, counted by lines of
-   `.ts`/`.tsx`, cross-checked against `routes/routes.tsx` for what is reachable.
-3. **Website content** — every `title`/`name`/`label` in `src/i18n/en.ts`,
-   page by page.
+   `.ts`/`.tsx` and cross-checked against `routes/routes.tsx` for reachability.
+3. **Website content** — every `title`/`name`/`label` in `src/i18n/en.ts`.
 
-Where the two disagree, code wins.
+Where they disagree, code wins. Where a capability is declared but has no
+runtime, it is called out as planned, not shipped — that distinction is the most
+important thing in this document.
 
-## The platform, as the registry defines it
+## The shape of the gap
 
-Ten modules. Submodules indented.
-
-| Module | Category | Submodules | Workspace LOC |
-|---|---|---|---|
-| CRM | core | Contacts, Leads, Tasks, Pipelines, **Ticketing**, Conversations | 36,848 |
-| AI Agents | core | — | 23,657 |
-| Voice QA | advanced | Rules, Conversations, Departments, Evaluations, Agents, **Clients** | 17,333 |
-| *(telephony)* | *not in registry* | — | 15,652 |
-| Messages | core | — | 13,746 |
-| Workflows | integration | — | 11,134 |
-| Inbox | core | **Mailboxes & Domains** | 6,601 |
-| Billing | core | — | 4,421 |
-| Workspace | core | — | 3,376 |
-| **FineClaw** | advanced | — | 2,417 |
-| **Agency** | advanced | — | *(API-only)* |
-
-## The website, as it stands
-
-Five product pages: AI Assistants, CRM, Voice AI, Voice QA, Workspace. The
-landing page names eight modules; three of them have no page and no nav entry.
-
-| Landing page names | Has a page? |
-|---|---|
-| Assistants, CRM, Voice, Workspace, QA & Analytics | yes |
-| Messages, Inbox, Automations | **no** |
-
----
-
-## Gap 1 — Agency: an entire business model, invisible
-
-**Nothing on the website mentions it.** Not the landing page, not Enterprise,
-not pricing.
-
-`modules/agency/` is a white-label reseller platform. The `Agency` model:
-
-```prisma
-model Agency {
-  name            String?
-  logoUrl         String?
-  description     String?
-  privacyPolicy   String?      // their own legal docs
-  termsOfUse      String?
-  theme           Json?        // their own branding
-  cname           String? @unique   // their own domain
-  loginPageConfig Json?        // their own login page
-  organizations   Organization[]    // many customer orgs beneath them
-}
-```
-
-`agency.config.ts` points at a custom-domain build system
-(`builds.fineguide.ai/build-system/custom_domains`) with a configurable
-`domainSuffix`. The controller exposes `POST /cname`, enrollment endpoints, and
-logo upload. Agency resolution is wired into `auth.service.ts`, so it is live
-request-path infrastructure rather than a prototype.
-
-So the platform supports agencies reselling Fineguide under their own domain,
-branding, login page and legal terms, each owning multiple customer
-organisations — and a visitor cannot discover any of it.
-
-**This is the single largest gap in the audit.** It is not a feature bullet; it
-is a go-to-market channel with no landing surface.
-
-## Gap 2 — FineClaw: a no-code agent builder, invisible
-
-Routed at `/agents/:organizationId/*`, permission-gated like every other module
-(`ModuleGuard` → `useModuleAccess`), not behind a feature flag.
-
-A six-step wizard — Name & Type → Template → Access → Prompt → **Skills** →
-Review — shipping **14 ready-made agent templates**:
-
-> Customer Support · Sales Qualification · HR & Onboarding · Marketing
-> Copywriter · Data Analyst · IT Helpdesk · Writing Assistant · Research Helper
-> · Code Assistant · Health & Fitness Coach · Personal Finance Advisor ·
-> Language Learning Tutor · Creative Brainstorm Partner · Daily Productivity
-> Planner
-
-and **10 tool categories** an agent can be granted:
-
-> CRM Contacts · CRM Leads & Pipelines · CRM Tasks · Chat & Messaging ·
-> Knowledge Base · n8n Workflows · **Web Search & Fetch** · **Product Search** ·
-> Organization & Users · Usage & Analytics
-
-The AI Assistants page describes Persona, Learning Context, Voice, Session
-Variables, Actions and Human Handoff. Its "Actions" is *"trigger webhooks, API
-calls, or workflows"* — webhook plumbing, not tool use. **Nowhere does the site
-say an assistant can search the web, query your product catalogue, or read and
-write CRM records as tools.** That is a materially different and stronger claim
-than what is currently made.
-
-## Gap 3 — Three named modules with nowhere to go
-
-Messages (13,746 LOC), Inbox (6,601) and Workflows (11,134) are named in one
-line each on the landing page and then dead-end. Together that is **31,481
-lines of product** — more than CRM — reachable from no page and no nav entry.
-
-Inbox in particular is real email: mailboxes, your own domains, IMAP/SMTP and
-routing rules. The site's only mention is a landing-page sentence.
-
-## Gap 4 — Features buried as sub-bullets
-
-| Capability | Where it lives | Where the site puts it |
+| Module | Workspace LOC | Website coverage |
 |---|---|---|
-| **Ticketing** | first-class CRM submodule | one word in a list of eight CRM surfaces |
+| CRM | 36,848 | full page |
+| AI Agents | 23,657 | full page |
+| Voice QA | 17,333 | full page |
+| **Telephony** | **15,652** | one bullet ("Outbound calls") |
+| **Messages** | **13,746** | one landing-page sentence |
+| **Workflows** | **11,134** | one landing-page sentence |
+| **Inbox** | **6,601** | one landing-page sentence |
+| Workspace | 3,376 | full page |
+
+**47,133 lines — the four bolded rows — share four sentences and no page.**
+That is more code than CRM and Assistants combined.
+
+---
+
+## Gap 1 — Telephony is a campaign platform, sold as a bullet
+
+`modules/telephony/` is the third-largest module and contains four distinct
+products:
+
+| Area | Pages |
+|---|---|
+| **Campaigns** | List, Wizard, Detail, Report, **Test Call** |
+| **Segments** | List, Create, Detail |
+| **Channels** | List, Form |
+| **Integrations & routing** | List, New, Detail, **Number Routing** |
+
+Backed by 9,247 lines of API (`modules/campaigns/`: dispatcher, import service,
+import consumer) — **roughly 17,000 lines across both repos.**
+
+The website's entire treatment is the Voice AI page's bullet "Outbound calls".
+Audience segmentation, campaign reporting, test calls before you dial a real
+customer, and inbound number routing are all invisible.
+
+This is the largest single gap in scope.
+
+## Gap 2 — The workflow builder: 18 real step types, one sentence
+
+The site says: *"Build workflows visually inside Fineguide, or connect n8n."*
+
+What actually ships — `engine/registry.ts` `HANDLERS`, 18 step types with live
+handlers:
+
+- **AI:** `extract` (pull structured variables out of a conversation)
+- **Logic:** `condition`, `split`, `for_each`
+- **CRM:** `find_contact`, `find_many`, `create`/`update`/`remove` for
+  **contact, lead and company** (9 steps), `move_pipeline`, `add_tags`,
+  `create_task`
+
+So a workflow can read a conversation, extract fields from it, branch on them,
+loop, find or create the contact, create the lead, move it down a pipeline, tag
+it and open a task. None of that is on the website.
+
+### What must NOT be claimed
+
+`registry.ts` also exports `PLANNED_STEP_TYPES` — authorable in the builder,
+**no runtime**:
+
+> `classify` · `summarize` · `translate` · `reply` · `notify` · `send_email` ·
+> `webhook`
+
+The engine pauses such a run for human review with a friendly label rather than
+hard-failing (`workflow-engine.service.ts:410` is the "no handler" path for
+anything else). This is good design, and it means **the builder showing a step
+is not evidence the step works.** Do not market summarise, translate, classify,
+auto-reply or send-email workflow steps.
+
+Related, and already fixed earlier in this run: workflow runs consume no credits
+at all, so no workflow pricing belongs on the site either
+(`.claude/rules/billing-usage.md` states this outright).
+
+## Gap 3 — Messages and Inbox are products, not footnotes
+
+**Messages** (13,746 LOC) — Conversations, **Reports**, and a
+**Manager Settings** surface covering Team, Departments, Routing and Tags. That
+is supervisor tooling: team structure, conversation routing rules, and its own
+reporting. The site gives it one sentence.
+
+**Inbox** (6,601 LOC) — AddMailbox, Mailboxes, MailboxDetail, **Rules**,
+**Signature**. Real email: connect your own mailboxes and domains over IMAP and
+SMTP, with routing rules and signatures. `Mailboxes & Domains` is a first-class
+submodule in the registry. The site gives it one sentence.
+
+## Gap 4 — Capabilities buried as list items
+
+| Capability | Status in code | Status on site |
+|---|---|---|
+| **Ticketing** | first-class CRM submodule | one word among eight CRM surfaces |
 | **Mailboxes & Domains** | Inbox submodule | absent |
-| **Departments / Clients** | Voice QA submodules | "Departments" appears; "Clients" does not |
-| **Voice cloning** | assistants | one clause: "or use your own clone" |
+| **Segments** | 3 pages under telephony | absent |
+| **Number routing** | dedicated page | absent |
+| **Voice QA → Clients** | registry submodule | absent |
 
-Voice QA having a **Clients** submodule suggests it is usable as an agency- or
-BPO-facing product — scoring calls on behalf of client companies. The website
-frames Voice QA purely as internal QA.
-
----
-
-## Defect found while auditing
-
-**`public/sitemap.xml` advertises a dead URL to search engines.** Live on
-production now:
-
-```xml
-<!-- Documentation -->
-<url>
-    <loc>https://app.fineguide.ai/docs</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-```
-
-That URL redirects into the workspace app and renders **"Page not found"** — a
-soft 404, which is worse than a hard one because crawlers index it as a valid
-page at priority 0.8. `https://app.fineguide.ai/help` behaves the same way.
-Neither `fineguide.ai/docs` nor `docs.fineguide.ai` exists (both 404).
-
-There is no public documentation site. The entry should be removed until one
-exists.
+`Voice QA` having a **Clients** submodule alongside Departments and Agents
+suggests it is usable on behalf of client companies — an agency/BPO framing. The
+site presents Voice QA purely as internal QA.
 
 ---
 
-## The company's own feature list says 24. The site covers about 8.
+## The company's own feature deck: 24 features, ~8 covered
 
 `ai-fineguide-project/docs/marketing/FineGuide-Platform-Features.md` (754 lines)
-describes itself as the source for a customer-facing PDF and HTML deck, with a
-Romanian twin (`FineGuide-Functionalitati.md`). It enumerates **24 features in
-7 groups**. The website covers roughly a third of them.
+is the source for a customer-facing PDF, with a Romanian twin
+(`FineGuide-Functionalitati.md`). It lists 24 features in 7 groups.
 
-**Verified as built, and absent or nearly absent from the site:**
+**Verified built, thinly covered or absent on the site:** integrated call centre
+(§6), proactive interaction and campaigns (§11), business process automation and
+external integrations (§18–19), history and analytics (§21).
 
-| # | Feature | Evidence |
+### Deck claims the code does not support
+
+Checked because a sales document can run ahead of the product. These must not be
+copied onto the site:
+
+| § | Claim | Reality |
 |---|---|---|
-| 6 | Integrated call centre | `telephony/` 15,652 LOC, plus a dedicated call-centre client app |
-| 11 | Proactive interaction and **campaigns** | 9,247 LOC API + 7,792 LOC frontend |
-| 18/19 | Business process automation, external integrations | `workflows/` 11,134 LOC |
-| 21 | History, performance and analytics | Voice QA submodules |
-
-**Campaigns deserves its own line.** ~17,000 lines across both repos, reachable
-at `/telephony/:orgId/campaigns/`, comprising a campaign wizard, test calls,
-detail and report pages — plus **audience Segments** (list/create/detail) and
-number routing. The Voice AI page's single "Outbound calls" bullet is the only
-trace of this on the website.
-
-### Claims in that doc which the code does NOT support
-
-Checked because a marketing document can run ahead of the product. These must
-not be copied onto the site:
-
-| # | Claim | Reality |
-|---|---|---|
-| 12 | Product catalogue and AI search | **Not built.** The only `PRODUCT_SEARCH` in the codebase is a storage-pack dimension, commented *"future product-search DB (Milvus)"* and explicitly "unsellable until that service is wired". FineClaw offers a "Product Search" tool category that is ahead of the backend. |
+| 12 | Product catalogue and AI search | Not built. The only `PRODUCT_SEARCH` in the codebase is a storage-pack dimension commented *"future product-search DB (Milvus)"*. |
 | 13 | Brand and reputation monitoring | No module. |
 | 14 | Social media publishing | No module. |
-| 16 | Employee management (HRM) | Marked `Coming soon` in the doc itself. |
-| 17 | Training / certification (LMS) | Marked `Coming soon` in the doc itself. |
-| 22 | Mobile application | **Built but unshippable.** `ai-callcenter-mobile` is a real Flutter app — 11,135 lines of Dart, iOS/Android/macOS targets, "Operator dashboard for managing customer conversations". But its bundle identifier is still Flutter's placeholder `com.example.aiCallcenterMobile`, which neither the App Store nor Play Store will accept. It cannot have shipped. |
+| 16 | Employee management (HRM) | Marked `Coming soon` in the deck itself. |
+| 17 | Training / certification (LMS) | Marked `Coming soon` in the deck itself. |
+| 22 | Mobile application | **Built, unshippable as configured.** `ai-callcenter-mobile` is a real Flutter app — 11,135 lines of Dart, iOS/Android/macOS targets, "Operator dashboard for managing customer conversations" — but its bundle id is still Flutter's placeholder `com.example.aiCallcenterMobile`, which neither store accepts. |
 
-The mobile app is the interesting one: it is genuinely built and genuinely not
-released. Worth a decision — publish it and market it, or stop listing it.
+The mobile app is the one worth a decision: genuinely finished, genuinely not
+released.
+
+---
+
+## Defect found and fixed
+
+**`public/sitemap.xml` advertised a dead URL.** Live on production at priority
+0.8:
+
+```xml
+<loc>https://app.fineguide.ai/docs</loc>
+```
+
+It redirects into the workspace SPA and renders **"Page not found"** while
+returning HTTP 200 — a soft 404, which crawlers index as a real page.
+`/help` behaves identically; neither `fineguide.ai/docs` nor `docs.fineguide.ai`
+exists. Removed, with a comment explaining why so it is not re-added without
+checking the rendered body rather than the status code.
 
 ## Claims I could not verify
 
 - **"30+ languages supported across voice transcription"** — no language list
-  exists anywhere in the API. Neither confirmable nor refutable from code.
+  exists anywhere in the API.
 - **"AI coverage in under two seconds"** — no latency target or measurement in
   the codebase.
 
-Both predate this audit. Flagging them as unsourced, not as wrong.
+Both predate this audit. Flagged as unsourced, not as wrong.
 
 ## What I would do, in order
 
-1. **Build an Agency page.** It is a business model with no front door, and it
-   sells to a different buyer than the rest of the site.
-2. **Give Campaigns real estate.** ~17,000 lines — wizard, segments, test calls,
-   reporting — currently represented by one bullet. This is the most built-out
-   capability with the least coverage.
-3. **Rewrite the AI Assistants page around tools.** "Your assistant can look up
-   a customer, update the CRM record and run a workflow itself" is stronger and
-   truer than "trigger webhooks", and it is already shipped. Do **not** include
-   Product Search — the backend does not exist.
-4. **Give Messages, Inbox and Workflows a page each** — or one honest combined
-   page. 31k lines deserve better than a sentence.
-5. **Remove the dead docs URL from the sitemap.**
-6. Surface Ticketing and Mailboxes as named capabilities, not list items.
+1. **Give telephony a page.** Campaigns, segments, test calls, reporting and
+   number routing — ~17,000 lines currently represented by one bullet.
+2. **Rewrite the Automations section around the 18 shipped steps.** "Extract the
+   budget from the conversation, create the lead, move it to Qualified and tag
+   it" is concrete, true, and shipped. Avoid the seven planned steps.
+3. **Give Messages and Inbox a page** — or one honest combined page covering
+   team routing, departments, mailboxes and rules.
+4. Surface Ticketing, Mailboxes, Segments and Number Routing as named
+   capabilities rather than list items.
 
 ## Decisions that need a person
 
 - **The mobile app**: finished, unreleasable as configured. Ship it or drop it
-  from the feature deck.
-- **Product catalogue / brand monitoring / social publishing**: in the sales
-  deck, absent from the code. Either they are planned and the deck should say
-  so, or the deck is wrong.
-- **FineClaw's "Product Search" tool** promises the same missing backend. Worth
-  checking what happens today when an agent is granted it.
+  from the deck.
+- **Product catalogue, brand monitoring, social publishing**: in the sales deck,
+  absent from the code. Either they are roadmap and the deck should say so, or
+  the deck is wrong.
 
 ## Verification
 
-Every "built" claim above is backed by a file path and a line count taken from
-the repositories, not from documentation. Every "not built" claim is the absence
-of a module plus a code comment saying so. The two live-URL findings were
-checked against production. Nothing here was inferred from the marketing deck —
-the deck is the thing being audited.
+Every "built" claim is backed by a file path and a line count taken from the
+repositories. Every "not built" claim is the absence of a module plus a code
+comment or an explicit `PLANNED_STEP_TYPES` entry saying so. The two live-URL
+findings were checked against production. Nothing was inferred from the
+marketing deck — the deck is the thing being audited.
