@@ -71,6 +71,25 @@ and the Romanian copy already said so.
 - **Whether the 2026 ladder is live on prod.** No public plan endpoint, no
   cutover commit in `ai-backoffice-api` history, and production still serves
   dollar prices — consistent with legacy still being live, but not proof.
+
+  **This is answerable with one command.** The API has a purpose-built
+  endpoint for it — `pricing-internal.controller.ts:75`, commented *"Read-only
+  cutover verification: plan existence, Stripe sync, single default"*:
+
+  ```bash
+  curl -s -H "x-service-token: $INTERNAL_SERVICE_TOKEN" \
+    https://api.fineguide.ai/pricing-internal/ladder-status | jq
+  ```
+
+  It is read-only and safe to run against production. It sits behind
+  `InternalGuard`, which authenticates on the `x-service-token` header
+  (`internal.strategy.ts:19`), so it needs the internal service secret —
+  which is why this audit could not run it. Anyone holding that secret can
+  settle the question in seconds.
+
+  If it reports the 2026 ladder live, the whole price table on the site
+  changes at once, currency included. If it reports legacy, the site is
+  already correct and nothing needs doing.
 - **"n8n integrations: Free"** (`en.ts`). Under the 2026 work, workflow AI nodes
   cost 1 credit per execution (`WORKFLOW_NODE_CREDITS_DEFAULT`). Whether that
   billing is active on prod depends on the same cutover question, so the claim
