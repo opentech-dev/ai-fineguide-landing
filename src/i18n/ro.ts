@@ -219,6 +219,7 @@ export const ro: Translations = {
       'Kommo',
       'Zendesk',
       'HelpScout',
+      'Notion',
       'n8n',
     ],
   },
