@@ -56,5 +56,23 @@ for(const it of items){
 // --- JIVO is real but deliberately unlisted ---
 ok(enumVals.includes('JIVO') && !items.includes('JivoChat'),
    'JivoChat real in schema and deliberately unlisted (no legitimate mark)');
+
+// --- no page may claim a certification we do not hold ---
+// The enterprise page offers SUPPORT for HIPAA / ISO 27001 assessments. That is
+// not the same as holding either certification, and the difference is the kind
+// a regulated buyer acts on. Guard every built page, not just the homepage.
+const CERT=/(iso ?27001|soc ?2|hipaa|pci[- ]?dss|gdpr)[^.<]{0,40}\b(certified|compliant|accredited)\b|\bwe are (certified|compliant)\b|\bfully compliant\b/i;
+const pages=fs.readdirSync('dist',{recursive:true}).filter(f=>f.endsWith('.html'));
+const offenders=pages.filter(p=>CERT.test(fs.readFileSync(`dist/${p}`,'utf8')));
+ok(offenders.length===0,
+   `no certification claim on any of ${pages.length} pages${offenders.length?' -> '+offenders.join(', '):''}`);
+
+// --- the security strip must exist in both locales, and must link onward ---
+for(const [loc,f] of [['en','dist/index.html'],['ro','dist/ro/index.html']]){
+  const h=fs.readFileSync(f,'utf8');
+  const has=/Your data, on your terms|Datele tale, în condițiile tale/.test(h);
+  const links=new RegExp(`href="${loc==='ro'?'/ro/enterprise':'/enterprise'}"`).test(h);
+  ok(has && links, `${loc}: security strip present and links to enterprise`);
+}
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);
