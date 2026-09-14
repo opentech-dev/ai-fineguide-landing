@@ -21,8 +21,13 @@ const MARKS: Record<string, string> = {
 // amoCRM has no square glyph — the brand is a wordmark. Showing it as the
 // label itself is how a wordmark is meant to be used; cropping one out of it
 // would mangle the trademark.
+//
+// Deliberately the PNG, not the SVG sitting in _backup/: that one is the
+// pale-on-dark variant (#8CD7F8 / #C8C9CB) and measures 1.5:1 against this
+// page's near-white background, where every other cell's label reads at 17:1.
+// It was effectively invisible. This is the vendor's standard-colour mark.
 const WORDMARKS: Record<string, string> = {
-  AmoCRM: '/images/brands/amocrm.svg',
+  AmoCRM: '/images/brands/amocrm.png',
 };
 ---
 
