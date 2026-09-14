@@ -217,6 +217,7 @@ export const en = {
       'Kommo',
       'Zendesk',
       'HelpScout',
+      'Notion',
       'n8n',
     ],
   },

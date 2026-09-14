@@ -176,6 +176,27 @@ billing are flag-gated and confirmed for fg-dev only, so they carry the same
 caveat as the ladder. FineClaw (2,417 lines) and Agency have no landing
 presence either, but neither is clearly a customer-facing module.
 
+### Integrations, checked against the schema
+
+The authoritative list is the `BotIntegrationType` enum in `schema.prisma`:
+
+```
+AMOCRM  TELEGRAM  TELEGRAM_USER  JIVO  WHATSAPP  FACEBOOK
+INSTAGRAM  SLACK  DISCORD  NOTION  KOMMO
+```
+
+**Notion was a first-class integration type and was missing from the site.**
+It is now listed, with the real brand mark. Zendesk and HelpScout are not in
+that enum but are real — both have dedicated config modules wired into
+`app.module.ts` — so the existing claims stand.
+
+**JivoChat is real and is still not listed**, for one reason only: no
+legitimate JivoChat mark exists in any repo or in the Simple Icons corpus, and
+fabricating a vendor logo is not an option. Adding it would have shipped the
+one cell in the grid with no logo. Drop the official SVG into
+`public/images/brands/` and add a line to `MARKS` in `IntegrationsRibbon.astro`
+plus the name to both locales — that is the whole job.
+
 ## Original findings
 
 High confidence — each appears in the module registry, the nav rail and the

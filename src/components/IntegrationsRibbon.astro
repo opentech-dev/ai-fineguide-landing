@@ -16,7 +16,14 @@ const MARKS: Record<string, string> = {
   HelpScout: '/images/brands/helpscout.svg',
   n8n: '/images/brands/n8n.svg',
   Kommo: '/images/brands/kommo.svg',
+  Notion: '/images/brands/notion.svg',
 };
+
+// JivoChat is a first-class BotIntegrationType in the schema alongside these,
+// but no legitimate JivoChat mark exists in any repo or in the Simple Icons
+// corpus, and fabricating a vendor logo is not an option. It is left off the
+// grid rather than shipped as the one cell with no mark. Drop the official SVG
+// into public/images/brands/ and add a line here to list it.
 
 // amoCRM has no square glyph — the brand is a wordmark. Showing it as the
 // label itself is how a wordmark is meant to be used; cropping one out of it
