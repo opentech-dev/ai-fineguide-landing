@@ -98,6 +98,8 @@ and the Romanian copy already said so.
   | `GET /pricing-internal/ladder-status` | `InternalGuard`, needs `x-service-token` |
   | `GET https://fineguide.ai/api/core/subscription-plans` | **401** — the real endpoint, authenticated |
   | `api.fineguide.ai/subscription-plan(s)` | 404 |
+  | `api.fineguide.ai` `/health`, `/version`, `/api/health`, `/api/version`, `/actuator/info`, `/` | 404 — no unauthenticated version endpoint to fingerprint the deployed release |
+  | `client.fineguide.ai/pricing`, `/plans`, `/subscription-plans` | 404 shells — byte-identical for any path, so no SSR'd plan data |
   | Live app JS bundle (`index-D1gsGx2B.js`, 529 KB) | No plan aliases, no currency codes — it fetches from the API at runtime |
   | `git log` in `ai-backoffice-api` | No cutover commit |
   | Live pricing page | Still dollars — consistent with legacy, but not proof |
@@ -105,6 +107,28 @@ and the Romanian copy already said so.
   There is no public plan endpoint, by design. The question is genuinely
   unanswerable without the internal token, which is why this audit stops here
   rather than guessing.
+
+  **The cutover is a manual action, not a side-effect of deploying.** This is
+  the strongest indirect evidence available, and it was the last thing checked.
+  The 2026 ladder is *not* applied by a Prisma migration — there is no migration
+  under `prisma/migrations/` that writes it. It is applied by a service,
+  `pricing-ladder-seed.service.ts`, and that service has **no `OnModuleInit`,
+  no `OnApplicationBootstrap`, and no bootstrap hook** — it never runs on its
+  own. Its `seed2026Ladder()` is reachable from exactly two places, both of
+  which require someone to deliberately call them:
+
+  - `admin-subscription-plan.controller.ts:44` (admin-authenticated)
+  - `pricing-internal.controller.ts:68` (`InternalGuard`, service token)
+
+  So shipping the 2026 code to production could never have silently changed
+  what customers are billed. Somebody had to press the button, and no record of
+  that exists. Combined with the legacy catalog still being `active: true` and
+  the live site still quoting dollars, the balance of evidence points clearly
+  at legacy being live — which is what the site currently advertises, and why
+  the figures were left alone.
+
+  This is inference, not proof. `ladder-status` remains the one authoritative
+  answer.
 - **"n8n integrations: Free"** (`en.ts`). Under the 2026 work, workflow AI nodes
   cost 1 credit per execution (`WORKFLOW_NODE_CREDITS_DEFAULT`). Whether that
   billing is active on prod depends on the same cutover question, so the claim
