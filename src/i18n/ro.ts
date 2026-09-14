@@ -207,6 +207,11 @@ export const ro: Translations = {
   },
 
   // --- Integrations ribbon ---
+  moduleLinks: {
+    assistants: 'Descoperă Asistenții',
+    crm: 'Descoperă CRM-ul',
+  },
+
   integrationsRibbon: {
     eyebrow: 'Se integrează cu ce folosești deja',
     items: [
