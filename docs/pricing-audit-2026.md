@@ -63,18 +63,51 @@ both directions at once.
 
 CRM, Inbox, Messages, analytics, reports and integrations consume nothing.
 
-## Built but deliberately not advertised
+## Add-ons (on the page)
 
-Both are implemented and both are behind environment flags that are not set in
-any env file, values file or chart in either repo, so both evaluate to `false`:
+| Add-on | Price | Source |
+|---|---|---|
+| Extra seat | €20 / €18 / €15 per month | `NEW_LADDER_2026[].extraSeatPrice` |
+| Extra credits | €45 / €40 / €30 / €24 per 1,000 | `NEW_LADDER_2026[].additionalMessagePrice` |
+| Context Pack | €20 / month, +5M characters | `STORAGE_PACKS['kb-context-5m']` |
+
+## ⚠️ Open question for the team: Context Packs may be inert
+
+Context Packs are **sold** — the workspace app shows an unconditional
+`Settings → Context Packs` nav item with its own page, and
+`storage-pack.controller.ts` has no flag guard — but whether a purchased pack
+actually does anything depends on `STORAGE_PACKS_ENABLED`:
+
+```ts
+export function resolveEffectiveLimit(baseLimit, packs, dimension) {
+  if (!storagePacksEnabled()) return baseLimit;   // packs contribute nothing
+  return baseLimit + sumPackCapacity(packs, dimension);
+}
+```
+
+The flag's own comment says "with the flag off, packs are inert and the base
+limit is returned unchanged". It is not set in any env file, values file or
+chart in either repository, so it defaults to `false`.
+
+If that reflects production, a customer can buy a €20/month Context Pack and
+receive no additional capacity. **Someone should confirm the flag is set in the
+production environment.** If it is not, either set it or hide the pack UI —
+and until then, treat the pricing page's Context Pack card as ahead of the
+backend.
+
+## Built and correctly not advertised
 
 | Feature | Flag | What it would add |
 |---|---|---|
-| Context Packs | `STORAGE_PACKS_ENABLED` | €20/month per pack, +5M characters of knowledge base (`STORAGE_PACKS`) |
 | Annual billing | `ANNUAL_BILLING_ENABLED` | 20% off the plan (`ANNUAL_DISCOUNT`), 15% off top-ups (`ANNUAL_TOPUP_DISCOUNT`), floored at `TOPUP_FLOOR_EUR_PER_CREDIT` = 0.013 |
 
-Turn either flag on in production and the corresponding section should be added
-to the pricing page in the same change.
+This one genuinely is hidden from customers: `subscription.entity.ts` returns
+`annualBillingEnabled: annualBillingEnabled()` specifically so the UI "shows
+the monthly/annual toggle only when annual billing is actually live
+server-side". With the flag unset there is no toggle, so there is nothing to
+advertise. Turn it on and add a monthly/annual switch to the pricing page in
+the same change — `priceAnnual` is already computed as
+`monthly × 12 × 0.8`, i.e. €960 / €1,920 / €4,800 per year.
 
 ## Not a tier model on paper
 
