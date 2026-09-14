@@ -769,6 +769,107 @@ export const ro: Translations = {
     },
   },
 
+  // --- Pagina Automatizări (motor de workflow + n8n) ---
+  automationsPage: {
+    meta: {
+      title: 'Constructor vizual de workflow-uri | Fineguide',
+      description:
+        'Citește conversația, extrage câmpurile din ea, ramifică după ce găsești și actualizează CRM-ul — douăsprezece declanșatoare și optsprezece acțiuni, fără cod.',
+    },
+    hero: {
+      title: 'Citește conversația.',
+      titleAccent: ' Actualizează fișa. Nimeni nu se atinge de ea.',
+      subtitle:
+        'Un constructor vizual în care un workflow pornește de la ceva ce s-a întâmplat cu adevărat — un apel care se încheie, un lead care apare, un formular care sosește — și se termină cu CRM-ul deja corect.',
+      ctaPrimary: 'Începe acum',
+      ctaSecondary: 'Programează un demo',
+    },
+    intro: {
+      eyebrow: 'Automatizări',
+      screenshotAlt: 'Analiza rapoartelor pe tabletă, la birou',
+    },
+    triggers: {
+      eyebrow: 'Douăsprezece declanșatoare',
+      heading: 'Un workflow pornește de la ceva ce s-a întâmplat.',
+      body:
+        'Nu de la un program despre care speri că se aliniază cu realitatea. Evenimentele pe care platforma ta le emite deja sunt evenimentele de la care poate porni un workflow.',
+      items: [
+        {
+          name: 'Activitatea asistentului',
+          desc: 'O sesiune care începe sau se încheie, un răspuns evaluat, sau asistentul care termină de colectat informațiile cerute.',
+        },
+        {
+          name: 'Fișe care apar',
+          desc: 'Un contact creat dintr-o conversație sau un lead creat oriunde în CRM.',
+        },
+        {
+          name: 'Apeluri și tichete',
+          desc: 'Un apel vocal care se încheie, cu transcrierea disponibilă, sau un tichet deschis.',
+        },
+        {
+          name: 'Din exterior și la cerere',
+          desc: 'Trimiterea unui formular, un webhook primit, un program sau o persoană care apasă „rulează”.',
+        },
+      ],
+    },
+    actions: {
+      eyebrow: 'Optsprezece acțiuni',
+      heading: 'Ce poate face efectiv un workflow astăzi.',
+      body:
+        'Fiecare acțiune listată aici are un runtime și se execută. Constructorul oferă câteva blocuri aflate încă în lucru, iar acelea sunt marcate în produs, nu vândute aici.',
+      items: [
+        {
+          term: 'Citește și extrage',
+          desc: 'Scoate câmpuri structurate dintr-o conversație sau o transcriere cu AI și poartă-le mai departe ca variabile tipizate pe care pasul următor le poate folosi.',
+        },
+        {
+          term: 'Ramifică',
+          desc: 'Condiții pe orice se află în context, inclusiv câmpurile tocmai extrase, ca un singur workflow să acopere toate direcțiile în care poate merge o conversație.',
+        },
+        {
+          term: 'Buclează',
+          desc: 'Parcurge o listă și rulează aceiași pași pentru fiecare element. Motorul ține câte un cadru per iterație, așa că buclele se imbrică corect, nu se aplatizează.',
+        },
+        {
+          term: 'Caută',
+          desc: 'Găsește un contact după orice identificator ai, sau interoghează mai multe fișe deodată și acționează asupra întregului set.',
+        },
+        {
+          term: 'Creează, actualizează, șterge',
+          desc: 'Acces complet de scriere la contacte, lead-uri și companii — nouă acțiuni pe cele trei, ca un workflow să termine treaba, nu să lase o notă pentru altcineva.',
+        },
+        {
+          term: 'Mută și etichetează',
+          desc: 'Avansează un lead la altă etapă din pipeline și aplică etichete, așa se termină majoritatea acestor workflow-uri.',
+        },
+        {
+          term: 'Repartizează munca',
+          desc: 'Creează un task, ca o persoană să preia exact partea care are nevoie de o persoană.',
+        },
+      ],
+    },
+    n8n: {
+      eyebrow: 'Dincolo de platformă',
+      heading: 'Iar când munca iese din Fineguide.',
+      body:
+        'Constructorul integrat acoperă CRM-ul. Pentru tot ce urmează după — sistemul tău de facturare, depozitul, un API intern — puntea n8n preia de unde se oprește el.',
+      bullets: [
+        'Folosește instanța n8n găzduită de noi sau arată-ne una pe care o rulezi deja',
+        'Sute de integrări pe partea de n8n, pe care nu trebuie să le construim noi',
+        'Webhook-uri pe conversații, lead-uri și tichete, pentru orice are un endpoint HTTP',
+        'Rulările de workflow fac parte din planul tău — nu consumă credite',
+        'Fiecare rulare poate fi inspectată pas cu pas, așa că o eroare îți spune la ce pas și de ce',
+      ],
+    },
+    finalCta: {
+      heading: 'Construiește unul și urmărește-l rulând.',
+      body:
+        'Pornește de la un declanșator pe care îl ai deja, adaugă cei doi-trei pași care urmează și nu mai face partea aia manual.',
+      ctaPrimary: 'Începe acum',
+      ctaSecondary: 'Programează un demo',
+    },
+  },
+
   // --- Pagina Mesaje și Inbox ---
   messagesPage: {
     meta: {

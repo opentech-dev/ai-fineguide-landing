@@ -48,6 +48,15 @@
     </url>
 
     <url>
+        <loc>https://fineguide.ai/automations</loc>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fineguide.ai/automations" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://fineguide.ai/ro/automations" />
+    </url>
+
+    <url>
         <loc>https://fineguide.ai/voice-qa</loc>
         <lastmod>2026-06-06</lastmod>
         <changefreq>weekly</changefreq>
@@ -159,6 +168,13 @@
 
     <url>
         <loc>https://fineguide.ai/ro/campaigns</loc>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://fineguide.ai/ro/automations</loc>
         <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
