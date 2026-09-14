@@ -28,12 +28,32 @@ Optimised copies live in `public/images/photos/` (originals were 1.3–1.7 MB fo
 a 1376×768 frame, roughly 10× oversized; re-encoded at quality 72 for an ~86%
 saving with no visible loss).
 
-| Source | Optimised as | Where | Why it is safe |
+| File | Where | Origin | Why it is safe |
 |---|---|---|---|
-| `editorial-office.jpg` | `photos/team-office.jpg` | Overview | Real open-plan office. No legible screens. |
-| `steps/step-01-attract.jpg` | `photos/channels-phone.jpg` | Industries | A hand holding a phone showing real Instagram. Warm light, wooden table. |
-| `steps/step-03-qualify.jpg` | `photos/agent-headset.jpg` | By the numbers | A support agent on a headset in a real office, colleagues behind. Screen UI is present but too small to read, so nothing on it can be wrong. The strongest human image in the library. |
-| `steps/step-05-report.jpg` | `photos/tablet-review.jpg` | Workspace | Hands holding a tablet, coffee, warm window light. Chart labels are illegible at any size. |
+| `photos/agent-call.jpg` | By the numbers | **Generated 2026-09-14** (Nano Banana Pro) | A support agent mid-call, face visible, genuine expression. The monitor faces fully away, so there is no screen content that could be wrong. The only image in the project showing a person's face doing the job the product is for. |
+| `photos/team-collab.jpg` | Overview | **Generated 2026-09-14** (Nano Banana Pro) | Three colleagues, two mid-conversation. Warm wood, plants, real window light. Screens small and angled away. |
+| `photos/channels-phone.jpg` | Industries | `steps/step-01-attract.jpg` | A hand holding a phone showing real Instagram. Warm light, wooden table. |
+| `photos/tablet-review.jpg` | Workspace | `steps/step-05-report.jpg` | Hands holding a tablet, coffee, warm window light. Chart labels illegible at any size. |
+
+### The two generated images, and why they replaced what was there
+
+They superseded `editorial-office.jpg` and `steps/step-03-qualify.jpg`. Both of the old
+ones were weaker on the thing that matters: the office shot showed a *room*, with
+everyone facing away, and the agent shot was taken from behind her shoulder with a
+legible CRM on the monitor.
+
+They were produced with the constraint that makes generation safe here, stated
+explicitly in the prompt:
+
+> `screens angled away or out of focus so no text is readable`
+> `no text anywhere in frame`
+
+Three variants each, first attempt, no retouching. Set that against the failures listed
+below — every one of which is legible invented text, not a failure of light, composition
+or skin. **The technology was never the problem. The prompt was.**
+
+They remain strangers in a generic office. They are honest as mood and texture; they are
+not evidence that anyone uses Fineguide.
 
 ## Safe — optimised, not yet placed
 

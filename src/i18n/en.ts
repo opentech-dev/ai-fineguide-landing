@@ -53,9 +53,9 @@ export const en = {
 
   // --- Photography alt text ---
   photos: {
-    teamOffice: 'A team at work in an open-plan office',
+    teamOffice: 'Colleagues talking at a shared desk in an open-plan office',
     channelsPhone: 'A customer messaging a business from their phone',
-    agentHeadset: 'A support agent on a call, working from the customer record',
+    agentHeadset: 'A support agent mid-call at her desk',
     tabletReview: 'Reviewing reports on a tablet',
   },
 
