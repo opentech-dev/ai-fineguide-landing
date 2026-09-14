@@ -34,12 +34,23 @@ for (const file of list.sort()) {
   const route = '/' + file.replace(/^dist\/?/, '').replace(/index\.html$/, '');
 
   const imgs = [...html.matchAll(/<img[^>]*>/g)].map(m => m[0]);
+
+  // Astro DROPS an attribute whose value is undefined rather than emitting it
+  // empty. So the icon half of the pricing bug rendered `<path ...>` with no
+  // `d` at all - checking for d="" missed it entirely. Count both shapes.
+  const paths = [...noScript.matchAll(/<path\b[^>]*>/g)].map(m => m[0]);
+  const uses = [...noScript.matchAll(/<use\b[^>]*>/g)].map(m => m[0]);
+
   const row = {
     h1: (html.match(/<h1[\s>]/g) || []).length,
     noAlt: imgs.filter(i => !/alt=/.test(i) && !FB_PIXEL.test(i)).length,
     emptyH: (noScript.match(/<h[1-6][^>]*>\s*<\/h[1-6]>/g) || []).length,
-    // an attribute that rendered from undefined data, e.g. d="" or src=""
-    undef: (noScript.match(/>undefined<|\[object Object\]|>NaN<|\sd=""|\ssrc=""/g) || []).length,
+    // data that did not arrive: rendered as text, as an empty attribute, or -
+    // because Astro omits undefined attributes - as a missing one.
+    undef: (noScript.match(/>undefined<|\[object Object\]|>NaN<|\sd=""|\ssrc=""|\shref=""/g) || []).length
+      + paths.filter(p => !/\sd=/.test(p)).length
+      + uses.filter(u => !/(href|xlink:href)=/.test(u)).length
+      + imgs.filter(i => !/\ssrc=/.test(i)).length,
     badLink: [...noScript.matchAll(/href="([^"]*)"/g)].map(m => m[1])
       .filter(u => /undefined|NaN|^\s*$/.test(u)).length,
   };

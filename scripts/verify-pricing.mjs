@@ -1,34 +1,83 @@
+// Asserts every pricing figure rendered on dist/pricing/ against the API's
+// own NEW_LADDER_2026 definition. That constant is what the seeder reads, so
+// it is the source of truth for prices, credits, seats and top-up rates.
+//
+// This previously checked against __fixtures__/legacy-plan-catalog.ts. Both
+// ladders exist in the codebase; the site now advertises the 2026 one, so the
+// legacy catalog is no longer what the page should match.
+//
+// Run after `npm run build`.
 import { readFileSync } from 'node:fs';
-const cat = readFileSync('/Users/liviumaftuleac/develop/ai-backoffice-api/apps/backoffice-api/src/pricing/__fixtures__/legacy-plan-catalog.ts','utf8');
-const want = { free:'Free', 'starter-public-subscription':'Starter', 'business-public-subscription':'Business', 'premium-public-subscription':'Premium' };
+
+const CONFIG = '/Users/liviumaftuleac/develop/ai-backoffice-api/apps/backoffice-api/src/pricing/pricing-config.ts';
+const src = readFileSync(CONFIG, 'utf8');
+
+// Pull the ladder out of the TS source rather than importing it (the API is a
+// separate package with its own build). One object per plan.
 const truth = {};
-for (const line of cat.split('\n')) {
-  const m = line.match(/alias: '([^']+)'.*?active: (true|false).*?messages: (\d+), price: '([^']*)', additionalMessagePrice: '([^']*)', giftCredits: (\d+),.*?members: (\d+), includedSeats: (\d+)/);
-  if (m && want[m[1]] && m[2]==='true') truth[want[m[1]]] = { credits:+m[3], price:+m[4], topup:+m[5], gift:+m[6], members:+m[7] };
+const ladder = src.slice(src.indexOf('NEW_LADDER_2026: NewPlanDef[] = ['));
+for (const block of ladder.split(/\{\s*\n\s*alias:/).slice(1)) {
+  const g = (re) => { const m = block.match(re); return m ? m[1] : null; };
+  const label = g(/label: '([^']+)'/);
+  if (!label) continue;
+  truth[label] = {
+    price: +g(/price: ([\d_]+)/),
+    credits: +g(/messages: ([\d_]+)/),
+    topup: +g(/additionalMessagePrice: ([\d.]+)/),
+    includedSeats: +g(/includedSeats: (\d+)/),
+    extraSeat: +g(/extraSeatPrice: (\d+)/),
+    context: +(g(/contextCharacterLimit: ([\d_]+)/) || '0').replace(/_/g, ''),
+  };
+  if (Object.keys(truth).length === 4) break;
 }
-const html = readFileSync('dist/pricing/index.html','utf8');
+
+// Voice + workflow credit rates, also authoritative in pricing-config.ts
+const voiceQa = +src.match(/qa:\s*(\d+)/)[1];
+const voiceAi = +src.match(/aiGoogle:\s*(\d+)/)[1];
+const voicePremium = +src.match(/aiElevenlabs:\s*(\d+)/)[1];
+const workflowNode = +src.match(/WORKFLOW_NODE_CREDITS_DEFAULT = (\d+)/)[1];
+
+const html = readFileSync('dist/pricing/index.html', 'utf8');
 const checks = [];
 const ck = (label, ok, detail) => checks.push({ label, ok, detail });
-// prices & credits rendered on the page
+
 for (const [name, t] of Object.entries(truth)) {
-  if (t.price > 0) ck(`${name} price $${t.price}`, html.includes(`$${t.price}`), `$${t.price}`);
-  if (t.credits > 0) {
-    const fmt = t.credits.toLocaleString('de-DE'); // 10.000 style used on the page
-    ck(`${name} credits ${fmt}`, html.includes(fmt), fmt);
+  if (t.price > 0) ck(`${name} price €${t.price}`, html.includes(`€${t.price}`), `€${t.price}`);
+
+  const fmt = t.credits.toLocaleString('de-DE'); // 3.000 style used on the page
+  ck(`${name} credits ${fmt}`, html.includes(fmt), fmt);
+
+  // top-up: page renders "€X / 1.000", so X must be topup * 1000
+  const per1000 = Math.round(t.topup * 1000);
+  ck(`${name} top-up €${per1000}/1.000 (= ${t.topup}/credit)`,
+     html.includes(`€${per1000} / 1.000`), `€${per1000} / 1.000`);
+
+  // seats: included + per-extra price, exactly as the ladder defines them
+  if (t.extraSeat > 0) {
+    ck(`${name} ${t.includedSeats} seats included`,
+       new RegExp(`${t.includedSeats} (seats included|locuri incluse)`).test(html), `${t.includedSeats}`);
+    ck(`${name} extra seat €${t.extraSeat}`, html.includes(`€${t.extraSeat}`), `€${t.extraSeat}`);
+  } else {
+    ck(`${name} is single-seat (extraSeatPrice 0)`, t.includedSeats === 1, '1');
   }
+
+  // knowledge-base capacity, rendered as "5M characters"
+  const m = t.context / 1_000_000;
+  ck(`${name} ${m}M character knowledge base`,
+     new RegExp(`${m}M (characters|caractere)`).test(html), `${m}M`);
 }
-// seat claims: what the page now says vs plan.members
-const seatClaims = { Free:1, Starter:1, Business:5, Premium:10 };
-for (const [name, n] of Object.entries(seatClaims)) {
-  ck(`${name} members = ${n} (matches plan.members ${truth[name]?.members})`, truth[name]?.members === n, String(n));
+
+ck(`Voice QA ${voiceQa} credits/min`, html.includes(`${voiceQa} credits`), `${voiceQa}`);
+ck(`Voice AI ${voiceAi} credits/min`, html.includes(`${voiceAi} credits`), `${voiceAi}`);
+ck(`Premium voice ${voicePremium} credits/min`, html.includes(`${voicePremium} credits`), `${voicePremium}`);
+ck(`Workflow AI step ${workflowNode} credit`, html.includes(`${workflowNode} credit`), `${workflowNode}`);
+
+// Nothing from the retired dollar ladder may survive anywhere on the page.
+for (const stale of ['$99', '$199', '$499', '10.000', '23.000', '65.000', '$18 / 1.000', '$15 / 1.000', '$12 / 1.000', '$10 / 1.000']) {
+  ck(`retired legacy figure "${stale}" is gone`, !html.includes(stale), stale);
 }
-// top-up rates: page shows $X / 1.000  => X/1000 must equal additionalMessagePrice
-const topups = { Free:18, Starter:15, Business:12, Premium:10 };
-for (const [name, x] of Object.entries(topups)) {
-  const perCredit = x/1000;
-  ck(`${name} top-up $${x}/1.000 = ${perCredit}`, Math.abs(perCredit - truth[name].topup) < 1e-9, `${perCredit} vs ${truth[name].topup}`);
-  ck(`${name} top-up rendered`, html.includes(`$${x} / 1.000`), `$${x} / 1.000`);
-}
+
 let bad = 0;
-for (const c of checks) { if (!c.ok) bad++; console.log(`${c.ok?'PASS':'FAIL'}  ${c.label}${c.ok?'':'   <-- '+c.detail}`); }
-console.log(bad ? `\n${bad} FAILURES` : `\nALL ${checks.length} PRICING CHECKS PASS`);
+for (const c of checks) { if (!c.ok) bad++; console.log(`${c.ok ? 'PASS' : 'FAIL'}  ${c.label}${c.ok ? '' : '   <-- expected ' + c.detail}`); }
+console.log(bad ? `\n${bad} FAILURES` : `\nALL ${checks.length} PRICING CHECKS PASS (against NEW_LADDER_2026)`);
+process.exit(bad ? 1 : 0);
