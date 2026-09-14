@@ -59,9 +59,23 @@ both directions at once.
 | Voice QA | 12 / min | `VOICE_CREDITS_PER_MIN.qa` |
 | Voice AI | 10 / min | `VOICE_CREDITS_PER_MIN.aiGoogle` |
 | Voice AI, premium voices | 30 / min | `VOICE_CREDITS_PER_MIN.aiElevenlabs` |
-| Workflow AI step | 1 credit | `WORKFLOW_NODE_CREDITS_DEFAULT` |
 
-CRM, Inbox, Messages, analytics, reports and integrations consume nothing.
+CRM, Inbox, Messages, **workflows**, analytics, reports and integrations consume
+nothing.
+
+**Workflow steps are deliberately absent from that table.** An earlier revision
+listed "Workflow AI step — 1 credit" from `WORKFLOW_NODE_CREDITS_DEFAULT`, and
+that constant does exist — but nothing charges it. The endpoints
+`internal/workflow/preflight-credits` and `consume-credits` have no callers, and
+`apps/dispatcher/src/workflow-runs-worker.js` posts only `/advance` and `/fail`.
+The API repo's `.claude/rules/billing-usage.md` states it plainly: *"A workflow
+run therefore consumes no credits, whatever it does. So copy or comments that
+say activating a workflow starts charging are wrong."*
+
+Charging per step is E-8 in the workflows requirements and unshipped. Do not put
+a workflow price back on the site until a caller exists —
+`scripts/verify-claims.mjs` checks for one and will fail the build if the page
+prices workflow steps while none does.
 
 ## Add-ons (on the page)
 
