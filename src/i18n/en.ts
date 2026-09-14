@@ -776,6 +776,112 @@ export const en = {
     },
   },
 
+  // --- Automations Page (workflow engine + n8n) ---
+  // Hard constraint, enforced by scripts/verify-claims.mjs: the seven step
+  // types in PLANNED_STEP_TYPES (classify, summarize, translate, reply, notify,
+  // send_email, webhook) can be authored in the builder but have NO runtime —
+  // the engine pauses the run when it reaches one. None may appear here. Nor
+  // may any per-step credit price: workflow runs do not consume credits.
+  automationsPage: {
+    meta: {
+      title: 'Visual Workflow Builder for CRM | Fineguide',
+      description:
+        'Read a conversation, pull the fields out of it, branch on what you find, and update the CRM — twelve triggers and eighteen actions, no code.',
+    },
+    hero: {
+      title: 'Read the conversation.',
+      titleAccent: ' Update the record. No one touches it.',
+      subtitle:
+        'A visual builder where a workflow starts from something that actually happened — a call ending, a lead landing, a form arriving — and finishes with your CRM already correct.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'Automations',
+      screenshotAlt: 'Reviewing reports on a tablet at a desk',
+    },
+    triggers: {
+      eyebrow: 'Twelve triggers',
+      heading: 'A workflow starts from something that happened.',
+      body:
+        'Not a schedule you hope lines up with reality. The events your platform already emits are the events a workflow can start from.',
+      items: [
+        {
+          name: 'Assistant activity',
+          desc: 'A session starting or ending, a reply being rated, or the assistant finishing collecting the information you asked it for.',
+        },
+        {
+          name: 'Records appearing',
+          desc: 'A contact created from a conversation, or a lead created anywhere in the CRM.',
+        },
+        {
+          name: 'Calls and tickets',
+          desc: 'A voice call ending, with its transcript available, or a ticket being opened.',
+        },
+        {
+          name: 'Outside and on demand',
+          desc: 'A form submission, an inbound webhook, a schedule, or a person pressing run.',
+        },
+      ],
+    },
+    actions: {
+      eyebrow: 'Eighteen actions',
+      heading: 'What a workflow can actually do today.',
+      body:
+        'Every action listed here has a runtime and executes. The builder offers a few blocks that are still being built, and those are marked in the product rather than sold here.',
+      items: [
+        {
+          term: 'Read and extract',
+          desc: 'Pull structured fields out of a conversation or a transcript with AI, and carry them forward as typed variables the next step can use.',
+        },
+        {
+          term: 'Branch',
+          desc: 'Conditions on anything in scope, including the fields you just extracted, so one workflow covers the several ways a conversation can go.',
+        },
+        {
+          term: 'Loop',
+          desc: 'Iterate over a list and run the same steps for each element. The engine keeps a frame per iteration, so loops nest properly rather than flattening.',
+        },
+        {
+          term: 'Find',
+          desc: 'Look up a contact by whatever identifier you have, or query for many records at once and act on the set.',
+        },
+        {
+          term: 'Create, update, remove',
+          desc: 'Full write access to contacts, leads and companies — nine actions across the three, so a workflow can finish the job rather than filing a note for someone.',
+        },
+        {
+          term: 'Move and tag',
+          desc: 'Advance a lead to another pipeline stage and apply tags, which is how most of these workflows end.',
+        },
+        {
+          term: 'Assign work',
+          desc: 'Create a task so a person picks up exactly the part that needs a person.',
+        },
+      ],
+    },
+    n8n: {
+      eyebrow: 'Beyond the platform',
+      heading: 'And when the work leaves Fineguide.',
+      body:
+        'The built-in builder covers the CRM. For everything past it — your billing system, your warehouse, an internal API — the n8n bridge picks up where it stops.',
+      bullets: [
+        'Use the hosted n8n instance, or point us at one you already run',
+        'Hundreds of integrations on the n8n side, none of which we have to build',
+        'Webhooks on conversations, leads and tickets for anything with an HTTP endpoint',
+        'Workflow runs are part of your plan — they do not consume credits',
+        'Every run is inspectable step by step, so a failure tells you which step and why',
+      ],
+    },
+    finalCta: {
+      heading: 'Build one and watch it run.',
+      body:
+        'Start from a trigger you already have, add the two or three steps that follow, and stop doing that part by hand.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
   // --- Messages & Inbox Page ---
   // The nine channels are BotIntegrationType in the Prisma schema. Email is
   // IMAP/SMTP only — there is no OAuth path in the codebase, so nothing here

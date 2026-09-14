@@ -151,11 +151,19 @@ if (fs.existsSync(registryPath)) {
     const p = `src/i18n/${locale}.ts`;
     if (!fs.existsSync(p)) continue;
     const src = fs.readFileSync(p, 'utf8');
-    const block = src.match(/automations:\s*\{([\s\S]*?)\n    \},/);
-    if (!block) continue;
-    for (const step of planned) {
-      const rx = SELLS[step];
-      if (rx && rx.test(block[1])) offenders.push(`${locale}:${step}`);
+    // Both the homepage section (`automations:`) and the dedicated page
+    // (`automationsPage:`). Scanning only the first left the whole /automations
+    // page — the one that actually enumerates steps — unguarded.
+    const blocks = [
+      ['section', src.match(/\n  automations:\s*\{([\s\S]*?)\n  \},/)],
+      ['page', src.match(/\n  automationsPage:\s*\{([\s\S]*?)\n  \},/)],
+    ];
+    for (const [where, block] of blocks) {
+      if (!block) continue;
+      for (const step of planned) {
+        const rx = SELLS[step];
+        if (rx && rx.test(block[1])) offenders.push(`${locale}/${where}:${step}`);
+      }
     }
   }
   ok(offenders.length === 0,
