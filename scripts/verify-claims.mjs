@@ -214,5 +214,48 @@ if (fs.existsSync(schemaPath)) {
      `every telephony provider named in the copy exists in TelephonyProvider (${providers.join(', ')})${bogus.length ? ' -> NOT IN ENUM: ' + bogus.join(', ') : ''}`);
 }
 
+// --- email AI safety rails: the page sells the brakes, so the brakes must exist
+// The Inbox column makes three promises that are the whole reason a cautious
+// buyer would let AI near their email: it is off until you turn it on, replies
+// pause so a human can get there first, and a thread cannot loop forever.
+//
+// Each is a schema DEFAULT, which is exactly the kind of thing that gets flipped
+// during a later feature push without anyone thinking about the marketing site.
+// If aiMode ever defaults to anything but OFF, "a new inbox is human-only"
+// silently becomes false. Check the claim and the guarantee together: the check
+// only fires when the page actually makes the claim.
+{
+  const schema = fs.existsSync(schemaPath) ? fs.readFileSync(schemaPath, 'utf8') : '';
+  const rails = [
+    { claim: /human-only|doar pentru oameni/i,
+      field: /aiMode\s+\w+\s+@default\(OFF\)/,
+      what: 'AI off by default (aiMode @default(OFF))' },
+    { claim: /wait a moment before sending|așteaptă puțin înainte/i,
+      field: /aiReplyDelaySeconds\s+Int\s+@default\(\d+\)/,
+      what: 'a reply delay (aiReplyDelaySeconds)' },
+    { claim: /hard cap on AI replies|limită fermă de răspunsuri/i,
+      field: /aiMaxRepliesPerThread\s+Int\s+@default\(\d+\)/,
+      what: 'a per-thread reply ceiling (aiMaxRepliesPerThread)' },
+  ];
+
+  const pages = ['dist/index.html', 'dist/ro/index.html']
+    .filter(p => fs.existsSync(p))
+    .map(p => fs.readFileSync(p, 'utf8'))
+    .join('\n');
+
+  if (schema && pages) {
+    for (const r of rails) {
+      if (!r.claim.test(pages)) continue;   // page does not claim it -> nothing to guarantee
+      ok(r.field.test(schema),
+         `page promises ${r.what} and EmailInbox still provides it`);
+    }
+    // The "connect your own mailbox" claim rests on a CONNECTED inbox kind.
+    if (/IMAP/i.test(pages)) {
+      ok(/enum EmailInboxKind\s*\{[^}]*CONNECTED/s.test(schema),
+         'page offers connecting your own mailbox and EmailInboxKind still has CONNECTED');
+    }
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);
