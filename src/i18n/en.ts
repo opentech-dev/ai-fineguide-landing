@@ -71,7 +71,7 @@ export const en = {
       },
       {
         name: 'CRM',
-        desc: 'Conversations, contacts, leads, pipelines, tasks, tickets, team inbox, and routing queue.',
+        desc: 'Conversations, contacts, companies, leads, pipelines, tasks, team inbox, and routing queue.',
       },
       {
         name: 'Voice',
@@ -125,7 +125,7 @@ export const en = {
     features: [
       'Pipelines and stages, Kanban and table views',
       'Tasks, assignments, and due dates',
-      'Tickets and support cases',
+      'Company records with their own email and history',
       'Team inbox and routing queue',
       'Custom fields auto-filled by assistants',
     ],
@@ -148,7 +148,7 @@ export const en = {
     screenshotAlt: 'Fineguide Voice QA statistics dashboard',
   },
 
-  // --- Campaigns (outbound telephony) ---
+  // --- Messages & Inbox ---
   conversations: {
     eyebrow: 'Messages & Inbox',
     title: 'Every conversation lands somewhere a person can take over.',
@@ -180,6 +180,7 @@ export const en = {
       },
     ],
   },
+  // --- Campaigns (outbound telephony) ---
   campaigns: {
     eyebrow: 'Campaigns',
     title: 'Outbound calling that runs itself.',
@@ -458,7 +459,7 @@ export const en = {
     meta: {
       title: 'CRM | Conversations, leads, and tasks on one customer record | Fineguide.ai',
       description:
-        'A CRM built around the customer record, with conversations, contacts, leads, pipelines, tasks, tickets, team inbox, and routing queue, connected to every channel your team operates on.',
+        'A CRM built around the customer record, with conversations, contacts, companies, leads, pipelines, tasks, team inbox, and routing queue, connected to every channel your team operates on.',
     },
     hero: {
       title: 'One customer record. Every team.',
@@ -486,7 +487,7 @@ export const en = {
         },
         {
           name: 'Contacts',
-          desc: 'People and companies you do business with, identified across phone numbers, emails, and channel handles.',
+          desc: 'The people you do business with, identified across phone numbers, emails, and channel handles.',
         },
         {
           name: 'Leads',
@@ -501,8 +502,8 @@ export const en = {
           desc: 'Follow-ups, callbacks, and to-dos with status, priority, and due dates, created from any conversation or lead.',
         },
         {
-          name: 'Tickets',
-          desc: 'Support cases routed alongside sales work, so the same customer is never two separate stories.',
+          name: 'Companies',
+          desc: 'Account records with their own email, so mail to info@ or billing@ attaches before you know who sent it. A person can belong to more than one.',
         },
         {
           name: 'Team Inbox',

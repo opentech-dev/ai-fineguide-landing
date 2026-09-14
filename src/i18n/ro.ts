@@ -73,7 +73,7 @@ export const ro: Translations = {
       },
       {
         name: 'CRM',
-        desc: 'Conversații, contacte, lead-uri, pipeline-uri, task-uri, tickete, inbox de echipă și coadă de rutare.',
+        desc: 'Conversații, contacte, companii, lead-uri, pipeline-uri, task-uri, inbox de echipă și coadă de rutare.',
       },
       {
         name: 'Voice',
@@ -127,7 +127,7 @@ export const ro: Translations = {
     features: [
       'Pipeline-uri și etape, vizualizări Kanban și tabel',
       'Task-uri, asignări și deadline-uri',
-      'Tickete și cazuri de suport',
+      'Fișe de companie cu email și istoric propriu',
       'Inbox de echipă și coadă de rutare',
       'Câmpuri custom populate automat de asistenți',
     ],
@@ -150,7 +150,7 @@ export const ro: Translations = {
     screenshotAlt: 'Dashboard statistici Voice QA Fineguide',
   },
 
-  // --- Campanii (telefonie outbound) ---
+  // --- Mesaje și Inbox ---
   conversations: {
     eyebrow: 'Mesaje și Inbox',
     title: 'Fiecare conversație ajunge undeva unde un om poate prelua.',
@@ -182,6 +182,7 @@ export const ro: Translations = {
       },
     ],
   },
+  // --- Campanii (telefonie outbound) ---
   campaigns: {
     eyebrow: 'Campanii',
     title: 'Apeluri outbound care se desfășoară singure.',
@@ -451,7 +452,7 @@ export const ro: Translations = {
     meta: {
       title: 'CRM | Conversații, lead-uri și task-uri pe o singură fișă a clientului | Fineguide.ai',
       description:
-        'Un CRM construit în jurul fișei clientului, conversații, contacte, lead-uri, pipeline-uri, task-uri, tickete, inbox de echipă și coadă de rutare, conectate la fiecare canal pe care operează echipa ta.',
+        'Un CRM construit în jurul fișei clientului, conversații, contacte, companii, lead-uri, pipeline-uri, task-uri, inbox de echipă și coadă de rutare, conectate la fiecare canal pe care operează echipa ta.',
     },
     hero: {
       title: 'O singură fișă. Toată echipa.',
@@ -479,7 +480,7 @@ export const ro: Translations = {
         },
         {
           name: 'Contacte',
-          desc: 'Persoanele și companiile cu care faci business, identificate pe numere de telefon, email-uri și nicknames de pe canale.',
+          desc: 'Persoanele cu care faci business, identificate pe numere de telefon, email-uri și nicknames de pe canale.',
         },
         {
           name: 'Lead-uri',
@@ -494,8 +495,8 @@ export const ro: Translations = {
           desc: 'Follow-up-uri, callback-uri și to-do-uri cu status, prioritate și deadline, create dintr-o conversație sau dintr-un lead.',
         },
         {
-          name: 'Tickete',
-          desc: 'Cazuri de suport rutate alături de munca de vânzări, astfel încât același client să nu fie două povești diferite.',
+          name: 'Companii',
+          desc: 'Fișe de cont cu adresa lor de email, așa că mesajele către info@ sau billing@ se atașează înainte să știi cine le-a trimis. O persoană poate aparține mai multor companii.',
         },
         {
           name: 'Inbox de echipă',
