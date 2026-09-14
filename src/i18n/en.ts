@@ -164,15 +164,16 @@ export const en = {
     },
     automations: {
       eyebrow: 'Automations',
-      title: 'Automate the work, inside Fineguide or beyond it.',
+      title: 'Read the conversation. Update the record. No one touches it.',
       body:
-        'A visual workflow builder in the product itself, plus an embedded n8n instance, hosted or bring-your-own, for everything outside it.',
+        'A visual workflow builder inside Fineguide: drag steps onto a canvas, let AI pull the fields out of a conversation, and write them straight into the CRM. Plus an embedded n8n instance, hosted or bring-your-own, for everything beyond it.',
       features: [
-        'Visual workflow builder, built into Fineguide',
-        'Conditions, typed variables, and drag-and-drop steps',
+        'AI extracts typed fields from the conversation that triggered the run',
+        'Create, update, and find contacts, leads, and companies',
+        'Move leads between pipeline stages, add tags, open tasks',
+        'Branch on conditions and loop over matching records',
         'Hosted n8n on Fineguide infrastructure, or bring your own',
-        'Webhooks on conversations, leads, and tickets',
-        'Hundreds of pre-built integrations through n8n',
+        'Webhooks and hundreds of pre-built integrations through n8n',
       ],
     },
   },
