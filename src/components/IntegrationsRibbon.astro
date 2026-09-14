@@ -5,18 +5,15 @@ const { t } = Astro.props as { t: Translations };
 
 <section class="py-16 md:py-20 px-6">
   <div class="max-w-7xl mx-auto">
-    <p class="eyebrow mb-6">
+    <p class="eyebrow mb-8">
       {t.integrationsRibbon.eyebrow}
     </p>
-    <p class="text-xl md:text-2xl lg:text-3xl text-[var(--color-foreground)] font-light leading-relaxed">
-      {t.integrationsRibbon.items.map((name, i) => (
-        <>
-          <span class="whitespace-nowrap">{name}</span>
-          {i < t.integrationsRibbon.items.length - 1 && (
-            <span class="text-[var(--color-border)] mx-2 md:mx-3"> · </span>
-          )}
-        </>
+    <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-[var(--color-border)] rounded-2xl overflow-hidden">
+      {t.integrationsRibbon.items.map((name) => (
+        <li class="bg-[var(--color-background)] px-5 py-6 md:px-6 md:py-7 text-base md:text-lg text-[var(--color-foreground)] font-medium tracking-tight">
+          {name}
+        </li>
       ))}
-    </p>
+    </ul>
   </div>
 </section>

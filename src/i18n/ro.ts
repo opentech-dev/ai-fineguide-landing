@@ -55,9 +55,9 @@ export const ro: Translations = {
 
   // --- Photography alt text ---
   photos: {
-    teamOffice: 'O echipă la lucru într-un birou open-space',
+    teamOffice: 'Colegi discutând la un birou comun într-un spațiu open-space',
     channelsPhone: 'Un client care scrie unei companii de pe telefon',
-    agentHeadset: 'Un agent de suport în timpul unui apel, cu fișa clientului în față',
+    agentHeadset: 'Un agent de suport în timpul unui apel, la biroul său',
     tabletReview: 'Analiza rapoartelor pe tabletă',
   },
 
