@@ -1,6 +1,6 @@
-import type { en } from './en';
+import type { Translations } from './types';
 
-export const ro: typeof en = {
+export const ro: Translations = {
   // --- Navbar ---
   nav: {
     overview: 'Acasă',
