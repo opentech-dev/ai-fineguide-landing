@@ -4,15 +4,29 @@ const { t } = Astro.props as { t: Translations };
 ---
 
 <section class="py-20 md:py-28 px-6">
-  <div class="max-w-7xl mx-auto">
-    <p class="eyebrow mb-8">
-      {t.industries.eyebrow}
-    </p>
-    <p class="text-xl md:text-2xl leading-relaxed text-[var(--color-foreground)] font-light">
-      {t.industries.body}
-    </p>
-    <p class="mt-10 text-base md:text-lg text-[var(--color-muted)] tracking-wide">
-      {t.industries.audiences}
-    </p>
+  <div class="max-w-7xl mx-auto grid gap-12 md:gap-16 md:grid-cols-2 md:items-center">
+    <div>
+      <p class="eyebrow mb-8">
+        {t.industries.eyebrow}
+      </p>
+      <p class="text-xl md:text-2xl leading-relaxed text-[var(--color-foreground)] font-light">
+        {t.industries.body}
+      </p>
+      <p class="mt-10 text-base md:text-lg text-[var(--color-muted)] tracking-wide">
+        {t.industries.audiences}
+      </p>
+    </div>
+
+    <figure class="md:order-first">
+      <img
+        src="/images/photos/channels-phone.jpg"
+        alt={t.photos.channelsPhone}
+        width="1376"
+        height="768"
+        class="w-full h-[280px] md:h-[440px] object-cover rounded-2xl"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
   </div>
 </section>

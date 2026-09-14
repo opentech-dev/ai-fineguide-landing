@@ -53,6 +53,12 @@ export const ro: Translations = {
     eyebrow: 'Echipe care construiesc deja pe Fineguide',
   },
 
+  // --- Photography alt text ---
+  photos: {
+    teamOffice: 'O echipă la lucru într-un birou open-space',
+    channelsPhone: 'Un client care scrie unei companii de pe telefon',
+  },
+
   // --- Overview intro ---
   overview: {
     eyebrow: 'Platforma',

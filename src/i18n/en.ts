@@ -51,6 +51,12 @@ export const en = {
     eyebrow: 'Teams already building on Fineguide',
   },
 
+  // --- Photography alt text ---
+  photos: {
+    teamOffice: 'A team at work in an open-plan office',
+    channelsPhone: 'A customer messaging a business from their phone',
+  },
+
   // --- Overview intro (what Fineguide is) ---
   overview: {
     eyebrow: 'The platform',
