@@ -2,7 +2,8 @@ import { en } from './en';
 import { ro } from './ro';
 
 export type Lang = 'en' | 'ro';
-export type Translations = typeof en;
+import type { Translations } from './types';
+export type { Translations };
 
 /** Set to `false` when `ro.ts` holds real Romanian copy again (not re-exporting `en`). */
 export const RO_LOCALE_MIRRORS_ENGLISH = false;
