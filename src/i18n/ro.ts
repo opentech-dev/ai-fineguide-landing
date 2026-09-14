@@ -621,6 +621,11 @@ export const ro: Translations = {
           body:
             'Prinde probleme noi, schimbări de sentiment sau menționări de competitori chiar pe măsură ce apar, nu săptămâni mai târziu.',
         },
+        {
+          title: 'Cazuri, nu doar apeluri',
+          body:
+            'Grupează apelurile din spatele unei probleme, pentru un singur client. Sentimentul citit de-a lungul lor transformă o relație în declin într-o tendință vizibilă, nu într-un șir de zile proaste separate.',
+        },
       ],
       footer:
         'Configurează per departament și trimite rezultatele în dashboard-uri sau webhook-uri.',

@@ -754,6 +754,11 @@ export const en = {
           body:
             'Catch new issues, sentiment shifts, or competitor mentions as they appear, not weeks later.',
         },
+        {
+          title: 'Cases, not just calls',
+          body:
+            'Group the calls behind one issue for one customer. Sentiment read across them turns a declining relationship into a visible trend, not a run of separate bad days.',
+        },
       ],
       footer:
         'Configure per department and feed results into dashboards or webhooks.',
