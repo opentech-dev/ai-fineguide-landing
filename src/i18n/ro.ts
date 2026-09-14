@@ -50,7 +50,7 @@ export const ro: Translations = {
 
   // --- Customer logo strip ---
   customerLogos: {
-    eyebrow: 'Ne aleg echipe din Moldova și România',
+    eyebrow: 'Echipe care construiesc deja pe Fineguide',
   },
 
   // --- Overview intro ---

@@ -31,10 +31,10 @@ The platform is organized into modules that share one customer record:
 
 Credit-based, with all AI modules included from the start. One subscription per organization. No setup fees, cancel anytime, free trial.
 
-- **Free** — $0/month forever. 1,000 credits to explore the platform, no card required. 1 member, AI modules included (no n8n), community support, pay-as-you-go top-ups ($20 / 1,000 extra credits).
-- **Starter** — $99/month. ~10,000 credits (≈ 10,000 text conversations or 800+ minutes VoiceQA). Up to 5 members, basic admin controls, email support, all AI modules. Extra credits $15 / 1,000.
-- **Business** — $199/month (most popular). ~23,000 credits (≈ 23,000 text conversations or 1,900+ minutes VoiceQA). Up to 10 members, advanced admin controls, priority support, advanced analytics. Extra credits $12 / 1,000.
-- **Premium** — $499/month. ~65,000 credits (≈ 65,000 text conversations or 5,400+ minutes VoiceQA). 20 members, enterprise admin controls, dedicated support, custom reports, API & webhooks access. Extra credits $10 / 1,000.
+- **Free** — $0/month forever. 1,000 credits to explore the platform, no card required. 1 member, AI modules included (no n8n), community support, pay-as-you-go top-ups ($18 / 1,000 extra credits).
+- **Starter** — $99/month. ~10,000 credits (≈ 10,000 text conversations or 800+ minutes VoiceQA). 1 member, basic admin controls, email support, all AI modules. Extra credits $15 / 1,000.
+- **Business** — $199/month (most popular). ~23,000 credits (≈ 23,000 text conversations or 1,900+ minutes VoiceQA). Up to 5 members, advanced admin controls, priority support, advanced analytics. Extra credits $12 / 1,000.
+- **Premium** — $499/month. ~65,000 credits (≈ 65,000 text conversations or 5,400+ minutes VoiceQA). Up to 10 members, enterprise admin controls, dedicated support, custom reports, API & webhooks access. Extra credits $10 / 1,000.
 - **Enterprise** — custom plans with custom credit packages, volume discounts, priority support & SLA, a dedicated account manager, on-premise deployment, and platform adaptation.
 
 **How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; VoiceQA analysis = 12 credits/minute. Document processing, analytics & reports, team collaboration, and n8n integrations are included free.

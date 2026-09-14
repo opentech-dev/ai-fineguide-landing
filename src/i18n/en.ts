@@ -48,7 +48,7 @@ export const en = {
 
   // --- Customer logo strip ---
   customerLogos: {
-    eyebrow: 'Trusted by teams across Moldova and Romania',
+    eyebrow: 'Teams already building on Fineguide',
   },
 
   // --- Overview intro (what Fineguide is) ---
