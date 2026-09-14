@@ -7,7 +7,12 @@ let pass=0,fail=0;
 const ok=(c,m)=>{ (c?pass++:fail++); console.log((c?'PASS  ':'FAIL  ')+m); };
 
 // --- modules claimed on the page must exist as real modules in the product ---
-const dt=[...html.matchAll(/<dt[^>]*>([^<]+)<\/dt>/g)].map(m=>m[1].trim());
+// Scope to the list that is actually the product-module list. Scraping every
+// <dt> on the page broke the moment a second <dl> appeared (EditorialRows), and
+// reported the three campaign types as unknown modules.
+const modulesDl=html.match(/<dl[^>]*\bdata-product-modules\b[\s\S]*?<\/dl>/);
+if(!modulesDl){ console.log('FAIL  no <dl data-product-modules> on the homepage'); process.exit(1); }
+const dt=[...modulesDl[0].matchAll(/<dt[^>]*>([^<]+)<\/dt>/g)].map(m=>m[1].trim());
 const MAP={Assistants:'agents',CRM:'crm',Voice:'telephony',Messages:'messages',
   Inbox:'inbox',Workspace:'workspace',Automations:'n8n','QA &amp; Analytics':'voiceqa'};
 console.log('modules on page:', dt.join(', '));

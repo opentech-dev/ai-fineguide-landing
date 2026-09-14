@@ -24,7 +24,11 @@ const { t } = Astro.props as { t: Translations };
       />
     </figure>
 
-    <dl class="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+    {/* data-product-modules is the contract scripts/verify-claims.mjs binds to:
+        every <dt> inside this list is asserted to be a real module directory in
+        the workspace app. Other <dl>s on the page (EditorialRows) are not
+        module lists, so the check must not scrape them. */}
+    <dl data-product-modules class="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
       {t.overview.modules.map((m) => (
         <div>
           <dt class="font-[var(--font-display)] text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">
