@@ -71,12 +71,35 @@ CRM, Inbox, Messages, analytics, reports and integrations consume nothing.
 | Extra credits | €45 / €40 / €30 / €24 per 1,000 | `NEW_LADDER_2026[].additionalMessagePrice` |
 | Context Pack | €20 / month, +5M characters | `STORAGE_PACKS['kb-context-5m']` |
 
-## ⚠️ Open question for the team: Context Packs may be inert
+Every Context Pack claim on the page traces to source, so the copy is accurate
+as a product description regardless of the rollout state below:
 
-Context Packs are **sold** — the workspace app shows an unconditional
-`Settings → Context Packs` nav item with its own page, and
-`storage-pack.controller.ts` has no flag guard — but whether a purchased pack
-actually does anything depends on `STORAGE_PACKS_ENABLED`:
+| Page says | Source |
+|---|---|
+| €20 per pack per month | `priceEur: 20` (and the Stripe price is created from this exact value) |
+| +5M characters | `capacity: 5_000_000` |
+| ≈1,000 documents | the product's own `displayHint`, verbatim |
+| billed monthly | `interval: 'month'` |
+| unlimited packs | `StoragePackCheckoutDto.quantity` is `@Min(1)` with no `@Max` |
+
+## 🔴 Backend defect: a Context Pack can be paid for while inert
+
+**This is a billing bug in `ai-backoffice-api`, not a website problem.** Every
+figure on the pricing page is correct as a product description (verified below).
+The defect is that the *purchase* path and the *effect* path are gated
+differently.
+
+### The chain, traced end to end
+
+1. `POST /api/core/storage-packs/checkout` — **no flag guard**
+   (`storage-pack.controller.ts:52`). It calls
+   `stripeService.createStoragePackCheckoutSession`, which calls
+   `syncStoragePackPrice(packKey)` — so the €20/month Stripe price is
+   **provisioned on demand**. Checkout succeeds even if nobody ran the
+   `sync-price` step from PROD-CUTOVER.md.
+2. The customer pays. `checkout.session.completed` grants the `OrgStoragePack`.
+3. Capacity is resolved **only** through `resolveEffectiveLimit`
+   (`usage.service.ts:123` and `:216` are its only callers):
 
 ```ts
 export function resolveEffectiveLimit(baseLimit, packs, dimension) {
@@ -85,15 +108,59 @@ export function resolveEffectiveLimit(baseLimit, packs, dimension) {
 }
 ```
 
-The flag's own comment says "with the flag off, packs are inert and the base
-limit is returned unchanged". It is not set in any env file, values file or
-chart in either repository, so it defaults to `false`.
+With `STORAGE_PACKS_ENABLED` unset, the customer now has a **recurring
+€20/month charge and zero extra capacity**.
 
-If that reflects production, a customer can buy a €20/month Context Pack and
-receive no additional capacity. **Someone should confirm the flag is set in the
-production environment.** If it is not, either set it or hide the pack UI —
-and until then, treat the pricing page's Context Pack card as ahead of the
-backend.
+### Root cause
+
+The same codebase solves this correctly for annual billing and not for packs:
+
+| | Flag | Exposed to the client? | Result |
+|---|---|---|---|
+| Annual billing | `ANNUAL_BILLING_ENABLED` | **Yes** — `subscription.entity.ts:69` returns `annualBillingEnabled`, commented "lets the UI show the monthly/annual toggle only when annual billing is actually live server-side" | Toggle hidden when off. Cannot be bought. Correct. |
+| Storage packs | `STORAGE_PACKS_ENABLED` | **No** — `storagePacksEnabled()` is referenced only inside `resolveEffectiveLimit` | UI shows the pack page unconditionally, checkout is ungated. Can be bought while inert. |
+
+`PROGRESS.md` says packs are "Inert until `STORAGE_PACKS_ENABLED=true`", but
+inert is not the same as unsellable, and the code only implements the first.
+
+### The fix (fail closed)
+
+Guard the customer-facing checkout so the flag means what the docs say:
+
+```ts
+// storage-pack.controller.ts
+@Post('checkout')
+async checkout(@Req() req: RequestWithUser, @Body() body: StoragePackCheckoutDto) {
+  if (!storagePacksEnabled()) {
+    throw new ServiceUnavailableException('Context Packs are not available yet');
+  }
+  ...
+}
+```
+
+and mirror `annualBillingEnabled`'s pattern by returning
+`storagePacksEnabled` to the client so the workspace can hide the nav item
+instead of offering a purchase that does nothing.
+
+No behaviour change when the flag is on; when it is off, customers can no
+longer be charged for nothing.
+
+### Why this was not fixed in this run
+
+- It is in `ai-backoffice-api`, a different repository from this project.
+- That repo is currently on branch `feat/workflow-engine` with **uncommitted
+  changes to the workflow engine** — another engineer's work in flight.
+  Touching payment code there would entangle the two.
+- The production value of `STORAGE_PACKS_ENABLED` lives in the `fg-prod`
+  Kubernetes deployment env, not in any repository file, so it cannot be read
+  from here. The flag may already be on, in which case there is no live
+  customer impact and the fix is still worth making as defence in depth.
+- Flipping a production feature flag is a deployment decision for a human.
+
+**Action for someone with production access:** check whether
+`STORAGE_PACKS_ENABLED=true` is set on the `fg-prod` core-api deployment. If it
+is, no customer has been affected. If it is not, apply the guard above (or set
+the flag) before anyone buys a pack.
 
 ## Built and correctly not advertised
 
