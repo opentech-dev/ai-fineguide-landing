@@ -6,7 +6,7 @@ what actually ships.
 
 ```bash
 npm run build
-node scripts/verify-claims.mjs                        # 34 checks
+node scripts/verify-claims.mjs                        # 45 checks
 node scripts/verify-pricing.mjs                       # 38 checks
 node scripts/verify-brand-marks.mjs
 node scripts/verify-css-tokens.mjs
@@ -24,7 +24,7 @@ Each exits non-zero on failure, so they chain with `&&`.
 | `verify-brand-marks.mjs` | Every integration named in either locale resolves to a logo file that exists. Without it a renamed item silently renders a cell with no mark. |
 | `verify-locale-parity.mjs` | `en` and `ro` stay structurally identical — same keys, same array lengths, same types. A Romanian module list once ran one entry short in production. |
 | `verify-css-tokens.mjs` | Every `var(--*)` resolves to a defined token. An undefined custom property does not error — it silently inherits, which once flattened a section's type hierarchy with every other check green. |
-| `verify-rendered-pages.mjs` | Every built page has exactly one `<h1>`, no empty headings, no `undefined` in the output. Catches the class of bug that looks broken to a person and passes every build. |
+| `verify-rendered-pages.mjs` | Every built page has exactly one `<h1>`, no empty headings, no `undefined` in the output, **no link with a valid href but a blank label**, and **every same-site `#fragment` resolving to a real element on the page it targets**. Catches the class of bug that looks broken to a person and passes every build. The blank-label check exists because a key present in `en.ts` and missing from `ro.ts` renders as *nothing* — not as `undefined` — so it slips past every other check here; the dead-anchor check found the skip-to-content link pointing at a non-existent `#main-content` on 10 pages. |
 | `verify-sitemap.mjs` | `public/sitemap.xml` is hand-maintained, so it drifts: pages added and never listed, entries left behind. Also forces any off-origin URL to be vetted by reading the rendered body — it once carried a `/docs` link at priority 0.8 that returned HTTP 200 while displaying "Page not found". |
 
 **They depend on the sibling repos** being checked out next to this one
