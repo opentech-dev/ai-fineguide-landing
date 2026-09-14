@@ -186,13 +186,25 @@ if (fs.existsSync(schemaPath)) {
   // enum value -> the English card name that represents it
   const CARD = { OUTREACH: 'Outreach', SURVEY: 'Survey', PROMOTION: 'Promotion' };
 
-  const home = fs.existsSync('dist/index.html') ? fs.readFileSync('dist/index.html', 'utf8') : '';
-  const missing = enumTypes.filter(e => {
-    const name = CARD[e];
-    return !name || !home.includes(`>${name}<`);
-  });
+  // The enumeration lives on /campaigns, not the homepage — the homepage block
+  // is a teaser now. Check where the claim actually is, and in both locales,
+  // since a type dropped from only the Romanian page is the same defect.
+  const missing = [];
+  for (const [loc, f] of [['en', 'dist/campaigns/index.html'], ['ro', 'dist/ro/campaigns/index.html']]) {
+    if (!fs.existsSync(f)) { missing.push(`${loc}:PAGE-MISSING`); continue; }
+    const page = fs.readFileSync(f, 'utf8');
+    for (const e of enumTypes) {
+      const name = CARD[e];
+      // Romanian renames Survey/Promotion, so fall back to position: every type
+      // must produce a <dt>, and the count must match the enum.
+      if (!name) { missing.push(`${loc}:${e}`); continue; }
+      if (loc === 'en' && !page.includes(`>${name}<`)) missing.push(`${loc}:${e}`);
+    }
+    const dtCount = (page.match(/<dt\b/g) || []).length;
+    if (dtCount < enumTypes.length) missing.push(`${loc}:only ${dtCount} rows for ${enumTypes.length} types`);
+  }
   ok(enumTypes.length > 0 && missing.length === 0,
-     `campaigns section covers every CampaignType (${enumTypes.join(', ')})${missing.length ? ' -> NOT ON PAGE: ' + missing.join(', ') : ''}`);
+     `/campaigns covers every CampaignType (${enumTypes.join(', ')})${missing.length ? ' -> ' + missing.join(', ') : ''}`);
 
   // Every telephony provider named in the copy must exist in TelephonyProvider.
   // Parse the names OUT of the copy rather than checking a fixed list against the

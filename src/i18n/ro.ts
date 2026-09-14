@@ -160,61 +160,16 @@ export const ro: Translations = {
     eyebrow: 'Mesaje și Inbox',
     title: 'Fiecare conversație ajunge undeva unde un om poate prelua.',
     body:
-      'Chatul și emailul ajung în același spațiu de lucru, cu o coadă, reguli de rutare și departamente în spate. Asistentul rezolvă ce poate. În momentul în care nu mai poate, un om are deja conversația, fișa clientului și istoricul în față.',
-    columns: [
-      {
-        name: 'Inbox comun pentru chat',
-        desc: 'WhatsApp, Telegram, Instagram, Messenger și chat web într-o singură coadă.',
-        features: [
-          'O coadă cu conversațiile neatribuite, plus escaladările care așteaptă să fie acceptate sau refuzate',
-          'Predă o conversație altui departament — se șterge responsabilul și se rerutează către echipa aceea',
-          'Vezi când un coleg are aceeași conversație deschisă sau scrie în ea',
-          'Răspunsuri salvate pe care le folosește toată echipa, inserate cu „/” în casetă',
-          'Program de lucru cu răspuns automat în afara orelor, separat de programul fiecărui agent',
-        ],
-      },
-      {
-        name: 'Email real, nu un formular de contact',
-        desc: 'Căsuțe găzduite de noi sau conectează-le pe ale tale.',
-        features: [
-          'Folosește o căsuță găzduită de noi sau conectează-o pe a ta prin IMAP și SMTP, ca livrabilitatea să rămână a ta',
-          'Trimite de pe domeniul tău — generăm noi înregistrările DKIM și MX',
-          'Regulile se potrivesc după căsuță, expeditor și subiect, apoi atribuie, rutează spre un departament sau etichetează',
-          'AI-ul pe o căsuță este oprit până îl pornești: o căsuță nouă este doar pentru oameni',
-          'Răspunsurile așteaptă puțin înainte să plece, ca un operator să poată prelua conversația',
-          'O limită fermă de răspunsuri AI per conversație — dincolo de ea, conversația merge la un om',
-        ],
-      },
-    ],
+      'Chatul și emailul ajung în același spațiu de lucru, cu o coadă, reguli de rutare și departamente în spate. Asistentul rezolvă ce poate; în momentul în care nu mai poate, un coleg are deja conversația și fișa clientului în față.',
+    linkLabel: 'Descoperă Mesaje și Inbox',
   },
   // --- Campanii (telefonie outbound) ---
   campaigns: {
     eyebrow: 'Campanii',
     title: 'Apeluri outbound care se desfășoară singure.',
     body:
-      'Construiește o audiență, alege scopul apelului și lasă asistenții să parcurgă lista. Dă întâi un apel de test pe propriul număr, urmărește campania în timp ce rulează și oprește-o când vrei.',
-    types: [
-      {
-        name: 'Outreach',
-        desc: 'Apelare outbound liberă. Asistentul deschide conversația și o duce unde trebuie.',
-      },
-      {
-        name: 'Sondaj',
-        desc: 'Un chestionar structurat. Răspunsurile sunt extrase după fiecare apel și agregate într-un raport.',
-      },
-      {
-        name: 'Promoție',
-        desc: 'Prezintă o ofertă limitată în timp și captează fiecare rezultat — acceptat, refuzat sau revenire — ca pâlnie de conversie.',
-      },
-    ],
-    features: [
-      'Construiește audiențe din CSV, din contactele existente, din etichete sau combinat',
-      'Reîncearcă la lipsă de răspuns sau ocupat, niciodată la refuz, cu întârzierea ta per rezultat',
-      'Testează o campanie pe propriul număr înainte să ajungă la un client',
-      'Pune pe pauză, reia sau oprește o campanie în desfășurare, oricând',
-      'Twilio, Asterisk, FreePBX, 3CX sau orice trunk SIP generic',
-      'Direcționează numerele de intrare către asistentul sau echipa potrivită',
-    ],
+      'Construiește o audiență, alege scopul apelului și lasă asistenții să lucreze lista. Testează întâi pe numărul tău, urmărește campania rulând și pune-o pe pauză oricând.',
+    linkLabel: 'Descoperă campaniile',
   },
 
   // --- Workspace + Automations ---
@@ -236,6 +191,7 @@ export const ro: Translations = {
       title: 'Citește conversația. Actualizează fișa. Nimeni nu intervine.',
       body:
         'Un constructor vizual de workflow-uri chiar în Fineguide: trage pașii pe canvas, lasă AI-ul să extragă câmpurile din conversație și să le scrie direct în CRM. Plus o instanță n8n încorporată, găzduită de noi sau adusă de tine, pentru tot ce e dincolo.',
+      linkLabel: 'Descoperă automatizările',
       features: [
         'AI-ul extrage câmpuri tipizate din conversația care a declanșat execuția',
         'Creează, actualizează și găsește contacte, lead-uri și companii',

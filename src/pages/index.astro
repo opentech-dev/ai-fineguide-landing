@@ -42,10 +42,10 @@ const t = useTranslations(lang);
       linkHref={getLocalizedPath('/crm', lang)}
       linkLabel={t.moduleLinks.crm}
     />
-    <ConversationsSpread t={t} />
+    <ConversationsSpread t={t} lang={lang} />
     <VoiceSpread t={t} />
-    <CampaignsSpread t={t} />
-    <WorkspaceAndAutomations t={t} />
+    <CampaignsSpread t={t} lang={lang} />
+    <WorkspaceAndAutomations t={t} lang={lang} />
     <InlineNumbers t={t} />
     <Industries t={t} />
     <IntegrationsRibbon t={t} />

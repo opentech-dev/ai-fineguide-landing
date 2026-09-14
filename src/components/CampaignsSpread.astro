@@ -1,36 +1,36 @@
 ---
-import type { Translations } from '../i18n/utils';
-import EditorialRows from './EditorialRows.astro';
-const { t } = Astro.props as { t: Translations };
+import type { Translations, Lang } from '../i18n/utils';
+import { getLocalizedPath } from '../i18n/utils';
+const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 const s = t.campaigns;
 ---
 
-<section id="campaigns" class="band-tint scroll-mt-24 py-24 md:py-36 px-6">
+{/* Teaser only. The campaign types and their descriptions used to live here as
+    well as on /campaigns, which put near-identical copy on two URLs — the thing
+    that makes a search engine pick one and drop the other. The detail belongs
+    on the page; this says the product exists and points at it. The #campaigns
+    anchor stays so older links still land somewhere sensible. */}
+<section id="campaigns" class="band-tint scroll-mt-24 py-20 md:py-28 px-6">
   <div class="max-w-7xl mx-auto">
     <div class="max-w-3xl">
       <p class="eyebrow mb-5">{s.eyebrow}</p>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]"
+      >
         {s.title}
       </h2>
       <p class="mt-6 text-lg text-[var(--color-muted)] leading-relaxed">
         {s.body}
       </p>
+      <a
+        href={getLocalizedPath('/campaigns', lang)}
+        class="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[var(--color-primary)] hover:underline"
+      >
+        {s.linkLabel}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
     </div>
-
-    {/* The three campaign types are the CampaignType enum, not a chosen number —
-        OUTREACH / SURVEY / PROMOTION. If a fourth is added this list should grow. */}
-    <EditorialRows
-      class="mt-14"
-      items={s.types.map((c) => ({ term: c.name, desc: c.desc }))}
-    />
-
-    <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
-      {s.features.map((f) => (
-        <li class="flex gap-3 text-base text-[var(--color-foreground)]">
-          <span class="text-[var(--color-primary)] mt-1 shrink-0">—</span>
-          <span class="leading-relaxed">{f}</span>
-        </li>
-      ))}
-    </ul>
   </div>
 </section>

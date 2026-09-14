@@ -158,61 +158,16 @@ export const en = {
     eyebrow: 'Messages & Inbox',
     title: 'Every conversation lands somewhere a person can take over.',
     body:
-      'Chat and email arrive in the same workspace, with a queue, routing rules and departments behind them. The assistant handles what it can. The moment it cannot, a human already has the thread, the customer record and the history in front of them.',
-    columns: [
-      {
-        name: 'Shared inbox for chat',
-        desc: 'WhatsApp, Telegram, Instagram, Messenger and web chat in one queue.',
-        features: [
-          'A pull queue of unassigned conversations, plus escalations waiting to be accepted or declined',
-          'Hand a thread to another department — it drops the assignee and re-routes against that team’s pool',
-          'See when a teammate has the same conversation open, or is typing in it',
-          'Saved replies the whole team shares, inserted with “/” in the composer',
-          'Business hours with an out-of-hours auto-reply, separate from each agent’s own working hours',
-        ],
-      },
-      {
-        name: 'Real email, not a contact form',
-        desc: 'Hosted mailboxes, or connect the ones you already run.',
-        features: [
-          'Use a mailbox we host, or connect your own over IMAP and SMTP so deliverability stays yours',
-          'Send from your own domain — we generate the DKIM and MX records for you',
-          'Rules match on mailbox, sender and subject, then assign, route to a department or tag',
-          'AI on a mailbox is off until you turn it on: a new inbox is human-only',
-          'Replies wait a moment before sending, so an operator can claim the thread first',
-          'A hard cap on AI replies per thread — past it, the thread goes to a human instead',
-        ],
-      },
-    ],
+      'Chat and email arrive in the same workspace, with a queue, routing rules and departments behind them. The assistant handles what it can; the moment it cannot, a colleague already has the thread and the customer record in front of them.',
+    linkLabel: 'Explore Messages & Inbox',
   },
   // --- Campaigns (outbound telephony) ---
   campaigns: {
     eyebrow: 'Campaigns',
     title: 'Outbound calling that runs itself.',
     body:
-      'Build an audience, choose what the call is for, and let your assistants work the list. Place a test call to your own number first, watch the campaign as it runs, and pause it whenever you want.',
-    types: [
-      {
-        name: 'Outreach',
-        desc: 'Free-form outbound dialling. The assistant opens the conversation and takes it where it needs to go.',
-      },
-      {
-        name: 'Survey',
-        desc: 'A structured questionnaire. Answers are extracted after each call and aggregated into a report.',
-      },
-      {
-        name: 'Promotion',
-        desc: 'Pitch a time-boxed offer and capture every outcome — accepted, declined, or callback — as a conversion funnel.',
-      },
-    ],
-    features: [
-      'Build audiences from a CSV, your existing contacts, tags, or a mix of all three',
-      'Retry on no answer or busy, never on a rejection, with your own delay per outcome',
-      'Test a campaign against your own number before it reaches a customer',
-      'Pause, resume, or stop a running campaign at any point',
-      'Twilio, Asterisk, FreePBX, 3CX, or any generic SIP trunk',
-      'Route inbound numbers to the right assistant or team',
-    ],
+      'Build an audience, choose what the call is for, and let your assistants work the list. Test against your own number first, watch it run, and pause it whenever you want.',
+    linkLabel: 'Explore campaigns',
   },
 
   // --- Workspace + Automations two-up ---
@@ -234,6 +189,7 @@ export const en = {
       title: 'Read the conversation. Update the record. No one touches it.',
       body:
         'A visual workflow builder inside Fineguide: drag steps onto a canvas, let AI pull the fields out of a conversation, and write them straight into the CRM. Plus an embedded n8n instance, hosted or bring-your-own, for everything beyond it.',
+      linkLabel: 'Explore automations',
       features: [
         'AI extracts typed fields from the conversation that triggered the run',
         'Create, update, and find contacts, leads, and companies',
