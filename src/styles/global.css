@@ -129,19 +129,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Gradient CTA panel */
-.cta-gradient {
-  background: linear-gradient(140deg, #30226f 0%, #3d2a86 48%, #7c3aed 118%);
-  position: relative;
-  overflow: hidden;
-}
-.cta-gradient::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    60% 80% at 78% 12%,
-    rgba(255, 255, 255, 0.16),
-    transparent 62%
+/* Brand-tinted scrim over the closing photograph. Heavy enough that white
+   text clears WCAG AA against the window highlight, translucent enough that
+   the golden-hour warmth still reads through. */
+.cta-scrim {
+  background: linear-gradient(
+    140deg,
+    rgba(32, 22, 74, 0.93) 0%,
+    rgba(48, 34, 111, 0.9) 46%,
+    rgba(76, 44, 158, 0.88) 100%
   );
   pointer-events: none;
 }
