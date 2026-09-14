@@ -11,7 +11,7 @@ const { t } = Astro.props as { t: Translations };
     </div>
 
     <div class="space-y-4">
-      {t.pricingFaq.items.map((faq: { q: string; a: string }, i: number) => (
+      {t.pricingFaq.items.map((faq) => (
         <details class="group border border-[var(--color-border)] rounded-xl overflow-hidden">
           <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-left font-medium text-[var(--color-foreground)] hover:bg-gray-50 transition-colors">
             <span>{faq.q}</span>

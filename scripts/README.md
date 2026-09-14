@@ -31,3 +31,20 @@ Every one of them was written after something shipped wrong: seat counts
 overstated against the product, an entire module missing from the Romanian
 site, a logo grid where one cell quietly lost its mark, a price table checked
 against the wrong ladder. The build was green each time.
+
+---
+
+Added after the run that wrote them:
+
+| Script | What it protects |
+|---|---|
+| `verify-css-tokens.mjs` | Every `var(--*)` in `src/` resolves to a token defined in `global.css`. An undefined custom property does not error — it silently inherits, so muted text renders at full strength and nothing complains. |
+| `verify-rendered-pages.mjs` | Walks every built page for empty headings, images without alt, `undefined`/`NaN` in output, empty `d=""`/`src=""`, and pages without exactly one `h1`. Catches components reading a field the data does not supply. |
+
+```bash
+node scripts/verify-css-tokens.mjs
+node scripts/verify-rendered-pages.mjs
+```
+
+Both were written after a defect they would have caught, and both were proved
+to fail on that defect before being trusted.
