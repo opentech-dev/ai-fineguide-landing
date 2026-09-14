@@ -145,22 +145,37 @@ instead of offering a purchase that does nothing.
 No behaviour change when the flag is on; when it is off, customers can no
 longer be charged for nothing.
 
-### Why this was not fixed in this run
+### Status: fixed on a branch, awaiting review
 
-- It is in `ai-backoffice-api`, a different repository from this project.
-- That repo is currently on branch `feat/workflow-engine` with **uncommitted
-  changes to the workflow engine** — another engineer's work in flight.
-  Touching payment code there would entangle the two.
-- The production value of `STORAGE_PACKS_ENABLED` lives in the `fg-prod`
-  Kubernetes deployment env, not in any repository file, so it cannot be read
-  from here. The flag may already be on, in which case there is no live
-  customer impact and the fix is still worth making as defence in depth.
-- Flipping a production feature flag is a deployment decision for a human.
+Applied in `ai-backoffice-api` on branch **`fix/storage-pack-checkout-guard`**
+(commit `ca636dc24`). Not merged and not deployed.
 
-**Action for someone with production access:** check whether
-`STORAGE_PACKS_ENABLED=true` is set on the `fg-prod` core-api deployment. If it
-is, no customer has been affected. If it is not, apply the guard above (or set
-the flag) before anyone buys a pack.
+- Two files only: `storage-pack.controller.ts` and a new
+  `storage-pack.controller.spec.ts`.
+- `tsc --noEmit` clean across the app; 23 tests pass across the three
+  storage-pack suites.
+- The spec was checked against the bug rather than merely passing: removing the
+  guard fails the two flag-OFF cases while both flag-ON cases still pass, which
+  is what shows the guard is load-bearing and the enabled path untouched.
+- The repo was on `feat/workflow-engine` with 16 modified and 4 untracked
+  workflow files — another engineer's work in flight. The fix was committed on
+  its own branch, only those two files staged, and that branch restored
+  afterwards with the WIP verified intact.
+
+### Still open
+
+1. **Is the flag on in production?** `STORAGE_PACKS_ENABLED` lives in the
+   `fg-prod` Kubernetes secret, not in any repository file, so it cannot be read
+   from here. If it is already `true`, no customer was ever affected and the
+   guard is defence in depth. If it is `false`, the guard should ship before
+   anyone buys a pack. Flipping it is a deployment decision for a human either
+   way.
+2. **The UI still offers the purchase.** `storagePacksEnabled()` is never sent
+   to a client, so the workspace shows `Billing → Settings → Context Packs`
+   unconditionally; with the guard in place that page's checkout now returns
+   503 rather than charging. Mirroring `annualBillingEnabled` — return the flag
+   from the API and hide the nav item — is the tidy follow-up, and it spans the
+   frontend repo too, so it was filed rather than done.
 
 ## Built and correctly not advertised
 
