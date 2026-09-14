@@ -15,7 +15,13 @@ const src = readFileSync(CONFIG, 'utf8');
 // Pull the ladder out of the TS source rather than importing it (the API is a
 // separate package with its own build). One object per plan.
 const truth = {};
-const ladder = src.slice(src.indexOf('NEW_LADDER_2026: NewPlanDef[] = ['));
+const start = src.indexOf('NEW_LADDER_2026: NewPlanDef[] = [');
+if (start < 0) { console.error('FAIL  NEW_LADDER_2026 not found in ' + CONFIG); process.exit(1); }
+// Slice to the end of the array literal rather than stopping after N plans, so
+// a tier added to the ladder is checked instead of silently skipped.
+const end = src.indexOf('\n];', start);
+const ladder = src.slice(start, end < 0 ? undefined : end);
+
 for (const block of ladder.split(/\{\s*\n\s*alias:/).slice(1)) {
   const g = (re) => { const m = block.match(re); return m ? m[1] : null; };
   const label = g(/label: '([^']+)'/);
@@ -28,7 +34,14 @@ for (const block of ladder.split(/\{\s*\n\s*alias:/).slice(1)) {
     extraSeat: +g(/extraSeatPrice: (\d+)/),
     context: +(g(/contextCharacterLimit: ([\d_]+)/) || '0').replace(/_/g, ''),
   };
-  if (Object.keys(truth).length === 4) break;
+}
+
+// The page advertises four tiers. If the ladder gains or loses one, the page
+// is out of date by definition — fail loudly rather than checking a subset.
+const LADDER_SIZE = 4;
+if (Object.keys(truth).length !== LADDER_SIZE) {
+  console.error(`FAIL  ladder has ${Object.keys(truth).length} plans (${Object.keys(truth).join(', ')}), page shows ${LADDER_SIZE}`);
+  process.exit(1);
 }
 
 // Voice + workflow credit rates, also authoritative in pricing-config.ts
