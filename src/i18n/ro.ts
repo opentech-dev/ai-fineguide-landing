@@ -166,14 +166,15 @@ export const ro: Translations = {
     },
     automations: {
       eyebrow: 'Automatizări',
-      title: 'Conectează Fineguide la restul stack-ului tău.',
+      title: 'Automatizează munca, în Fineguide sau dincolo de el.',
       body:
-        'O instanță n8n încorporată, găzduită de noi sau adusă de tine, care conectează Fineguide la tool-urile pe care le folosești deja.',
+        'Un constructor vizual de workflow-uri chiar în produs, plus o instanță n8n încorporată, găzduită de noi sau adusă de tine, pentru tot ce e în afara lui.',
       features: [
-        'n8n găzduit pe infrastructura Fineguide',
-        'Sau adu-ți propria instanță n8n',
+        'Constructor vizual de workflow-uri, integrat în Fineguide',
+        'Condiții, variabile tipizate și pași drag-and-drop',
+        'n8n găzduit pe infrastructura Fineguide sau propria ta instanță',
         'Webhook-uri pe conversații, lead-uri și tickete',
-        'Sute de integrări pre-construite',
+        'Sute de integrări pre-construite prin n8n',
       ],
     },
   },
