@@ -10,6 +10,7 @@ import WorkspaceAndAutomations from '../../components/WorkspaceAndAutomations.as
 import InlineNumbers from '../../components/InlineNumbers.astro';
 import Industries from '../../components/Industries.astro';
 import IntegrationsRibbon from '../../components/IntegrationsRibbon.astro';
+import SecurityStrip from '../../components/SecurityStrip.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import Footer from '../../components/Footer.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
@@ -44,6 +45,7 @@ const t = useTranslations(lang);
     <InlineNumbers t={t} />
     <Industries t={t} />
     <IntegrationsRibbon t={t} />
+    <SecurityStrip t={t} lang={lang} />
     <FinalCta t={t} lang={lang} />
   </main>
   <Footer t={t} lang={lang} />
