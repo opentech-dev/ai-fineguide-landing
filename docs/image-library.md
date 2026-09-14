@@ -1,4 +1,12 @@
-# Check before you use anything in this folder
+# Image library — what is safe to use
+
+Internal notes. Kept in `docs/` rather than `public/`: anything under
+`public/` is copied verbatim into the build and served publicly, so notes
+placed there end up on fineguide.ai.
+
+---
+
+## public/images/steps/ — check before you use anything here
 
 These were generated, not shot, and they are not uniformly safe. Several render
 a fake UI with garbled text, and one carries **a different product's name**.
@@ -35,3 +43,31 @@ image. The failure mode here is not ugliness — it is a visitor zooming in and
 finding that the product in our marketing photo is called something else.
 
 Anything not listed above has not been reviewed. Open it and look before using it.
+
+---
+
+## public/images/avatars/ — do not use
+
+`avatar-maria.jpg`, `avatar-ion.jpg`, `avatar-andrei.jpg` are **synthetic
+headshots** — generated or heavily-retouched stock. Flat studio backdrop,
+flawless skin, generic corporate pose, no visible context.
+
+They are currently referenced nowhere in `src/`. Keep it that way.
+
+Two reasons:
+
+1. **They work against the stated design direction.** The site is being moved
+   away from a machine-generated look toward something authentic and
+   human-centered. Synthetic faces are the single fastest way to undo that —
+   readers recognise them, and one fake face discredits the real material
+   around it.
+2. **Attached to a named testimonial, they stop being an aesthetic problem
+   and become an honesty one.** A quote credited to a person who does not
+   exist is a false claim about a customer.
+
+If you need faces on the site, use photographs of real people who have agreed
+to appear — your own team, or customers with permission. If that is not
+available yet, use no faces at all. The customer logo strip
+(`src/components/CustomerLogos.astro`) carries real social proof from the
+eight genuine customer logos in `public/images/companies/` and needs no
+portraits to work.
