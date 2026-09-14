@@ -257,5 +257,47 @@ if (fs.existsSync(schemaPath)) {
   }
 }
 
+// --- the CRM page counts its own surfaces in the heading ---------------------
+// "Eight surfaces, one customer record." sits directly above the list. Add a
+// ninth item and the heading contradicts the thing beneath it — visible to any
+// reader, invisible to every other check here.
+//
+// Separately: crm/tickets is a 13-line <Navigate> stub ("Tickets became the
+// Inbox, which is now its own top-level module"), so naming Tickets as a CRM
+// surface points a buyer at a redirect. Guard it against the stub rather than
+// against a word list, so that if tickets is ever rebuilt as a real CRM surface
+// this stops objecting on its own.
+{
+  const WORDS = { six:6, seven:7, eight:8, nine:9, ten:10,
+                  șase:6, șapte:7, opt:8, nouă:9, zece:10 };
+  const ticketsDir = `${FE}/crm/tickets`;
+  const ticketsIsStub = fs.existsSync(ticketsDir) && fs.readdirSync(ticketsDir)
+    .every(f => /Redirect/.test(f) || /^\./.test(f));
+
+  for (const locale of ['en', 'ro']) {
+    const p = `src/i18n/${locale}.ts`;
+    if (!fs.existsSync(p)) continue;
+    const src = fs.readFileSync(p, 'utf8');
+    // the CRM "surfaces" block: heading + its items array
+    const block = src.match(/eyebrow: '(?:Inside the CRM|În interiorul CRM[^']*)'[\s\S]*?\n      \],/);
+    if (!block) { ok(false, `${locale}: could not find the CRM surfaces block`); continue; }
+    const b = block[0];
+
+    const heading = b.match(/heading: '([^']*)'/)?.[1] ?? '';
+    const spelled = Object.keys(WORDS).find(w => new RegExp(`\\b${w}\\b`, 'i').test(heading));
+    const items = [...b.matchAll(/\n          name: '([^']+)'/g)].map(m => m[1]);
+
+    if (spelled) {
+      ok(WORDS[spelled] === items.length,
+         `${locale}: CRM heading says "${spelled}" and the list has ${items.length} surfaces`);
+    }
+    if (ticketsIsStub) {
+      const named = items.find(n => /^ticket/i.test(n));
+      ok(!named,
+         `${locale}: no CRM surface named Tickets while crm/tickets is only a redirect${named ? ` -> FOUND "${named}"` : ''}`);
+    }
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);
