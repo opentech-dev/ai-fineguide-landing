@@ -13,7 +13,12 @@
   --color-accent-soft: #a78bfa;
   --color-background: #fafafc;
   --color-foreground: #12132a;
-  --color-muted: #6b7194;
+  /* Darkened 5% from #6b7194. The old value cleared AA on the page background
+     (4.56:1) but not on the tinted bands (4.20:1), so body copy in every
+     tinted section was failing. This passes both — 4.97:1 plain, 4.57:1 on
+     tint — and stays 3.5:1 away from the heading colour, so the hierarchy the
+     muted tone exists for is intact. */
+  --color-muted: #666b8d;
   --color-border: #e6e4f0;
   --color-card: #ffffff;
   --color-tint: #f2effc;
