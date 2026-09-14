@@ -17,8 +17,6 @@ export type Widen<T> = T extends string
     ? number
     : T extends boolean
       ? boolean
-      : T extends readonly (infer U)[]
-        ? readonly Widen<U>[]
-        : { readonly [K in keyof T]: Widen<T[K]> };
+      : { readonly [K in keyof T]: Widen<T[K]> };
 
 export type Translations = Widen<typeof en>;

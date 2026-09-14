@@ -74,6 +74,10 @@ export const ro: Translations = {
         name: 'Automatizări',
         desc: 'Workflow-uri vizuale care conectează Fineguide la restul stack-ului tău.',
       },
+      {
+        name: 'QA & Analytics',
+        desc: 'Evaluează fiecare interacțiune, urmărește performanța echipelor și scoate la suprafață informațiile care aduc îmbunătățiri.',
+      },
     ],
   },
 
