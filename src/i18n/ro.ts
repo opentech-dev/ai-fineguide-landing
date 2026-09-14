@@ -769,6 +769,95 @@ export const ro: Translations = {
     },
   },
 
+  // --- Pagina Campanii (telefonie outbound) ---
+  campaignsPage: {
+    meta: {
+      title: 'Apeluri outbound care se desfășoară singure | Fineguide',
+      description:
+        'Construiește o audiență, alege scopul apelului și lasă asistenții AI să lucreze lista. Testează întâi pe numărul tău, apoi urmărește campania rulând.',
+    },
+    hero: {
+      title: 'Apeluri outbound',
+      titleAccent: ' care se desfășoară singure.',
+      subtitle:
+        'Îndreaptă o campanie către o listă și asistenții o sună — pe rând, în ritmul tău, cu fiecare rezultat scris înapoi în fișa clientului.',
+      ctaPrimary: 'Începe acum',
+      ctaSecondary: 'Programează un demo',
+    },
+    intro: {
+      eyebrow: 'Campanii',
+      screenshotAlt: 'Un telefon de birou într-un spațiu open-space, cu notițe alături',
+    },
+    types: {
+      eyebrow: 'Trei tipuri de campanie',
+      heading: 'Scopul apelului schimbă ce se întâmplă după el.',
+      body:
+        'O campanie nu este doar un dialer. Fiecare tip se termină altfel — unul lasă o conversație, unul lasă un set de date, unul lasă o pâlnie — iar raportarea urmează de acolo.',
+      items: [
+        {
+          name: 'Outreach',
+          desc: 'Outbound liber. Asistentul deschide conversația și o duce unde trebuie, apoi scrie rezumatul și câmpurile captate înapoi în contact.',
+        },
+        {
+          name: 'Sondaj',
+          desc: 'Un chestionar structurat. Răspunsurile sunt extrase la finalul fiecărui apel și agregate pe toată campania, ca să citești un rezultat, nu un teanc de înregistrări.',
+        },
+        {
+          name: 'Promoție',
+          desc: 'O ofertă limitată în timp. Fiecare rezultat — acceptat, refuzat, revenire cerută — devine o etapă, așa că raportul se citește ca o pâlnie de conversie, nu ca un jurnal de apeluri.',
+        },
+      ],
+    },
+    audience: {
+      eyebrow: 'Construirea listei',
+      heading: 'Cine este sunat și ce se întâmplă când nu răspunde.',
+      body:
+        'Audiențele vin de unde sunt deja contactele tale. Comportamentul la reapelare îl stabilești tu, iar singura regulă neconfigurabilă este cea care contează: un refuz nu este niciodată reapelat.',
+      items: [
+        {
+          term: 'Audiențe',
+          desc: 'Încarcă un CSV, trage din contactele existente, selectează după etichetă sau combină-le pe toate trei într-o singură listă.',
+        },
+        {
+          term: 'Segmente',
+          desc: 'Salvează un filtru ca segment reutilizabil și îndreaptă campaniile viitoare către el, în loc să reconstruiești aceeași listă de fiecare dată.',
+        },
+        {
+          term: 'Reapelări',
+          desc: 'Reapelează la lipsă de răspuns sau ocupat, cu propria întârziere per rezultat. Un contact care refuză nu mai este sunat de acea campanie.',
+        },
+        {
+          term: 'Apeluri de test',
+          desc: 'Rulează campania pe numărul tău și ascultă exact ce ar auzi un client, înainte ca vreun contact real să fie sunat.',
+        },
+        {
+          term: 'Control în timp real',
+          desc: 'Pune pe pauză o campanie activă, reia-o sau oprește-o definitiv. Progresul și statusul fiecărui contact rămân vizibile tot timpul.',
+        },
+      ],
+    },
+    telephony: {
+      eyebrow: 'Sistemul tău telefonic',
+      heading: 'Folosește numerele pe care le ai deja.',
+      body:
+        'Campaniile rulează peste telefonia ta existentă, nu peste un număr închiriat de noi, așa că identificarea apelantului, înregistrarea și costurile de carrier rămân unde sunt azi.',
+      bullets: [
+        'Conectează Twilio, Asterisk, FreePBX, 3CX sau orice trunchi SIP generic',
+        'Rutează numerele inbound către asistentul potrivit sau echipa potrivită',
+        'Predă un apel live unui om în orice moment, cu transcrierea deja în față',
+        'Fiecare apel se atașează aceleiași fișe de client ca și chat-urile și emailurile',
+        'Apelurile sunt evaluate de Voice QA după aceleași reguli ca restul telefoniei tale',
+      ],
+    },
+    finalCta: {
+      heading: 'Rulează prima campanie pe propriul tău număr.',
+      body:
+        'Construiește o listă, dă un apel de test și ascultă ce ar auzi clienții tăi. Nimic nu ajunge la un contact real până nu spui tu.',
+      ctaPrimary: 'Începe acum',
+      ctaSecondary: 'Programează un demo',
+    },
+  },
+
   // --- Pricing Page ---
   pricingMeta: {
     title: 'Prețuri | Fineguide.ai',
