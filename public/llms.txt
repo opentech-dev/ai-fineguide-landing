@@ -18,7 +18,7 @@ The platform is organized into modules that share one customer record:
 - **Channel-agnostic identity.** A customer's record and conversation history persist across web, messaging apps, and voice, so sales, support, customer success, and call-center teams all see the same context.
 - **Automation depth via embedded n8n** (hosted or bring-your-own), with webhooks on conversations, leads, and tickets and hundreds of pre-built integrations.
 - **Enterprise-ready:** on-premise deployment on your own infrastructure, platform adaptation, SLAs, GDPR compliance, and consultancy.
-- **All AI modules included in every plan**: pricing scales on usage (credits) and seats, not on locking features behind tiers.
+- **Pricing that scales with use**: plans differ by credits, team seats and knowledge base space, and CRM, Inbox, Messages and workflows never use credits.
 
 ## Who it's for
 
@@ -29,30 +29,34 @@ The platform is organized into modules that share one customer record:
 
 ## Pricing
 
-Credit-based, with all AI modules included from the start. One subscription per organization. No setup fees, cancel anytime, free trial.
+Every plan runs on credits. AI replies and voice minutes use credits; the CRM, Inbox, Messages, workflows, reports and integrations never do. One subscription per organization, prices per month in euro. There is a Free plan (no card needed) and no time-limited trial. No setup fees; cancel anytime.
 
-- **Free**: €0/month forever. 200 credits to explore the platform, no card required. 1 member (hard cap), 1M characters of knowledge base, community support, pay-as-you-go top-ups (€45 / 1,000 extra credits).
-- **Starter**: €100/month. 3,000 credits (≈ 3,000 text conversations or 250 minutes Voice QA). 3 seats included, €20 per extra seat, 5M characters of knowledge base, email support, all AI modules. Extra credits €40 / 1,000.
-- **Business**: €200/month (most popular). 8,000 credits (≈ 8,000 text conversations or 660 minutes Voice QA). 5 seats included, €18 per extra seat, 10M characters of knowledge base, priority support, advanced analytics. Extra credits €30 / 1,000.
-- **Premium**: €500/month. 25,000 credits (≈ 25,000 text conversations or 2,000 minutes Voice QA). 10 seats included, €15 per extra seat, 20M characters of knowledge base, dedicated support, API & webhooks access. Extra credits €24 / 1,000.
+**What a credit buys:** 1 credit = one standard AI reply. Call scoring (Voice QA) = 12 credits a minute. AI phone calls (Voice AI) = 10 credits a minute, or 30 with ElevenLabs voice agents.
+
+- **Free**: €0, forever. 200 credits, given once (they do not renew), about 200 AI replies. You + 1 teammate, no extra seats. Knowledge base about 200 documents (1M characters). Extra credits €45 per 1,000. Community support.
+- **Starter**: €100/month. 3,000 credits every month, about 3,000 AI replies or 250 minutes of call scoring. You + 3 teammates, then €20 per person a month. Knowledge base about 1,000 documents (5M characters). Extra credits €40 per 1,000. Email support.
+- **Business**: €200/month (most popular). 8,000 credits every month, about 8,000 AI replies or 660 minutes of call scoring. You + 5 teammates, then €18 per person a month. Knowledge base about 2,000 documents (10M characters). Extra credits €30 per 1,000. Priority support.
+- **Premium**: €500/month. 25,000 credits every month, about 25,000 AI replies or 2,080 minutes of call scoring. You + 10 teammates, then €15 per person a month. Knowledge base about 4,000 documents (20M characters). Extra credits €24 per 1,000. Dedicated support.
 - **Enterprise**: custom plans with custom credit packages, volume discounts, priority support & SLA, a dedicated account manager, on-premise deployment, and platform adaptation.
 
-Paid plans do not cap team size: the included seats are what the price covers, and further seats are billed per seat at the rate above. Free is owner-only.
+**When credits run out:** AI replies, call scoring and new AI phone calls pause (a call already under way finishes). CRM, Inbox, Messages, workflows and your data keep working. Buy credits at any time and the AI resumes straight away; on paid plans, automatic top-up can add credits before anything pauses, up to a monthly limit you set.
 
-**Add-ons**: each part of the plan scales on its own, billed monthly alongside the subscription and removable at any time:
+**Add-ons**, each bought on its own:
 
-- **Extra seats**: €20/seat on Starter, €18 on Business, €15 on Premium. No cap on team size for paid plans.
-- **Extra credits**: €40 / 1,000 on Starter, €30 on Business, €24 on Premium, €45 on Free. Purchased credits stack on the monthly allowance and never expire.
-- **Context Packs**: €20/month per pack, adding 5,000,000 characters (~1,000 documents) of knowledge-base capacity. Unlimited packs per account.
+- **Extra seats**: €20 per person a month on Starter, €18 on Business, €15 on Premium, billed with the plan. Not available on Free.
+- **Extra credits**: €45 per 1,000 on Free, €40 on Starter, €30 on Business, €24 on Premium. They add to your balance and stay while you keep the same plan.
+- **Context Packs**: €20 a month per pack, +5,000,000 characters (about 1,000 documents) of knowledge base space, on any plan. Each pack is its own monthly charge; a pack can be removed as long as your content still fits without it.
 
-**How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; Voice QA = 12 credits/minute; Voice AI = 10 credits/minute (30 credits/minute on premium voices). Everything else is included free and consumes no credits: CRM, Inbox, Messages, workflows, analytics, reports, team collaboration and integrations.
+**How credits are counted:** a standard AI reply is 1 credit; a reply that needs 2 to 4 actions (such as a lookup or a CRM update) is 2 credits, 5 to 7 actions is 3. Attachments cost nothing extra. Voice QA has a one-minute minimum per call. Voice AI calls are counted from when the call is answered, with a one-minute minimum; voice chats in the website widget count as AI replies.
 
 ## Pricing FAQ
 
-- **Do credits expire?** Monthly subscription credits reset each billing cycle. Extra credit packs never expire.
-- **Can I change plans?** Yes, upgrade or downgrade anytime; changes take effect the next billing cycle. Extra credits can be purchased anytime.
-- **What happens if I run out of credits?** You can buy extra credits instantly; assistants keep working, and you're notified before credits run out.
-- **Is there a free trial?** Yes. All new accounts receive free credits to test the platform before choosing a paid plan.
+- **Do unused credits carry over?** No. Paid plans refresh credits on each billing date; unused credits do not carry over. Free's 200 credits are given once.
+- **What happens to credits I buy?** They have no expiry date but belong to your current plan. If you change plan or cancel, unused bought credits do not move with you.
+- **Can I change plan?** Yes. Free to paid starts straight away. Changes between paid plans, up or down, take effect on your next billing date.
+- **How do I cancel?** From billing settings. The plan runs to the end of the paid month, then the account moves to Free.
+- **Who counts as a seat?** Everyone invited, including pending invitations. The account owner is not counted.
+- **What if the knowledge base is full?** A warning is sent at 85%. When full, new content is not added until you remove some, add a Context Pack or move to a bigger plan.
 
 ## Integrations & languages
 
@@ -66,7 +70,7 @@ Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCR
 - [Voice QA](https://fineguide.ai/voice-qa): Automatic transcription and scoring on every call, with per-department evaluation criteria.
 - [Voice AI](https://fineguide.ai/voice-ai): AI agents on live inbound and outbound phone calls.
 - [Workspace](https://fineguide.ai/workspace): Block-based documents and team knowledge that live alongside the customer record.
-- [Pricing](https://fineguide.ai/pricing): Flexible credit-based pricing with all AI modules included; start free with 200 credits.
+- [Pricing](https://fineguide.ai/pricing): Plans from €0 to €500 a month, what each includes, and what a credit buys; start free with 200 credits.
 - [Enterprise](https://fineguide.ai/enterprise): On-premise deployment, custom plans, platform adaptation, and consultancy for teams at scale.
 - [Schedule a demo](https://fineguide.ai/schedule-demo): Book a 15-minute walkthrough of Fineguide on your operation.
 - [Contact](https://fineguide.ai/contact): Get in touch with the Fineguide team.

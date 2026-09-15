@@ -1122,73 +1122,144 @@ export const en = {
   pricingMeta: {
     title: 'Pricing | Fineguide.ai',
     description:
-      'Credit-based pricing with every AI module included from the first plan. Compare credits, seats and knowledge-base limits, and add capacity as you need it.',
+      'Plans from €0 to €500 a month. See exactly what each plan includes: credits, team seats, knowledge base space and support, and what one credit buys.',
   },
   pricingPage: {
-    heading: 'Pricing built for<br />growing teams',
-    subtitle: 'Start free, scale as you grow. One subscription per organization, with access to all AI modules.',
-    bullets: ['No setup fees', 'Cancel anytime', 'Free trial'],
+    heading: 'Pay for what your AI does.<br /><span class="text-[var(--color-primary)]">Everything else is included.</span>',
+    subtitle:
+      'Every plan runs on credits. AI replies and voice minutes use them. Your CRM, inbox, messages and workflows never do.',
+    bullets: ['Free plan, no card needed', 'No setup fees', 'Cancel anytime'],
   },
 
-  // --- PricingPlans ---
+  // What a credit buys: shown above the plans so their numbers mean something.
+  // Rates: VOICE_CREDITS_PER_MIN in the API's pricing-config.ts.
+  pricingExplainer: {
+    eyebrow: 'What a credit buys',
+    items: [
+      { value: '1 credit', term: 'AI reply', desc: 'A standard reply from an assistant, in any channel.' },
+      { value: '12 credits', term: 'A minute of call scoring', desc: 'Voice QA transcribes a call and scores it against your criteria.' },
+      { value: '10 credits', term: 'A minute of AI phone call', desc: 'Voice AI answering or making a call. 30 a minute with ElevenLabs voice agents.' },
+      { value: '0 credits', term: 'Everything else', desc: 'CRM, Inbox, Messages, workflows and reports.' },
+    ],
+  },
+
+  // Every plan shows the same rows in the same order, so comparing plans is
+  // reading across one line. Figures come from NEW_LADDER_2026 and
+  // STORAGE_PACKS in the API; scripts/verify-pricing.mjs checks them.
+  // Seats: the account owner is not counted (ability.service.ts checks
+  // organizationMember rows only), so "3 included" means you plus 3.
   pricingPlans: {
     perMonth: '/month',
-    monthlyCredits: 'Monthly credits',
-    extraCredits: 'Extra credits: ',
-    modulesIncluded: 'Modules included',
-    integrationsLabel: 'Integrations',
-    mostPopular: 'Most popular',
-    ctaButton: 'Get started',
-    freeBanner: 'Start with 200 credits on us. No credit card, no commitment.',
-    freeBannerCta: 'Create free account',
     freeLabel: 'forever',
-    oneTimeCredits: 'One-time credits',
+    mostPopular: 'Most popular',
+    ctaFree: 'Start free',
+    ctaPaid: 'Get started',
+    labels: {
+      credits: 'Credits',
+      team: 'Team',
+      knowledge: 'Knowledge base',
+      extraCredits: 'Extra credits',
+      support: 'Support',
+    },
+    footnote:
+      'Prices are per month, in euro. Credits and knowledge base space are shared by everyone in your organization.',
     plans: [
       {
-        desc: '200 free credits on signup, no card required. Buy more only when you need them.',
-        credits: '200 credits to explore the platform',
-        features: ['1 member', '1M characters knowledge base', 'Community support', 'Pay-as-you-go top-ups'],
+        name: 'Free',
+        price: '€0',
+        desc: 'Try the platform with your own content.',
+        credits: '200, one time',
+        creditsNote: 'About 200 AI replies. They do not renew.',
+        team: 'You + 1 teammate',
+        teamNote: 'No extra seats on Free',
+        knowledge: 'About 200 documents',
+        knowledgeNote: '1M characters',
+        extraCredits: '€45 per 1,000',
+        support: 'Community',
       },
       {
-        desc: 'For small teams looking to automate their first interactions.',
-        credits: '≈ 3,000 text conversations or 250 minutes Voice QA',
-        features: ['3 seats included, €20 per extra seat', '5M characters knowledge base', 'Email support', 'All AI modules included'],
+        name: 'Starter',
+        price: '€100',
+        desc: 'A small team putting its first assistant to work.',
+        credits: '3,000 every month',
+        creditsNote: 'About 3,000 AI replies, or 250 minutes of call scoring',
+        team: 'You + 3 teammates',
+        teamNote: 'Then €20 per person a month',
+        knowledge: 'About 1,000 documents',
+        knowledgeNote: '5M characters',
+        extraCredits: '€40 per 1,000',
+        support: 'Email',
       },
       {
-        desc: 'For growing companies that need more capacity.',
-        credits: '≈ 8,000 text conversations or 660 minutes Voice QA',
-        features: ['5 seats included, €18 per extra seat', '10M characters knowledge base', 'Priority support', 'Advanced analytics'],
+        name: 'Business',
+        price: '€200',
+        desc: 'A growing team with steady daily volume.',
+        credits: '8,000 every month',
+        creditsNote: 'About 8,000 AI replies, or 660 minutes of call scoring',
+        team: 'You + 5 teammates',
+        teamNote: 'Then €18 per person a month',
+        knowledge: 'About 2,000 documents',
+        knowledgeNote: '10M characters',
+        extraCredits: '€30 per 1,000',
+        support: 'Priority',
       },
       {
-        desc: 'For large teams with high interaction volume.',
-        credits: '≈ 25,000 text conversations or 2,000 minutes Voice QA',
-        features: ['10 seats included, €15 per extra seat', '20M characters knowledge base', 'Dedicated support', 'API & webhooks access'],
+        name: 'Premium',
+        price: '€500',
+        desc: 'Several teams, or a high volume of calls and chats.',
+        credits: '25,000 every month',
+        creditsNote: 'About 25,000 AI replies, or 2,080 minutes of call scoring',
+        team: 'You + 10 teammates',
+        teamNote: 'Then €15 per person a month',
+        knowledge: 'About 4,000 documents',
+        knowledgeNote: '20M characters',
+        extraCredits: '€24 per 1,000',
+        support: 'Dedicated',
       },
     ],
   },
 
-  // --- PricingAddons ---
+  // At zero credits: bot-availability.service.ts stops replies,
+  // voice-qa-credit.service.ts stops scoring, voice-billing.service.ts refuses
+  // new calls. CRM, Inbox, Messages and workflows have no credit check.
+  // Auto top-up is opt-in (isAutoRefillEnabled), capped, and never runs on Free.
+  pricingRunOut: {
+    eyebrow: 'When credits run out',
+    heading: 'Your AI pauses. Your team keeps working.',
+    subtitle:
+      'Buy more credits at any time and the AI picks up again straight away. On a paid plan you can also turn on automatic top-up, so credits are added before it pauses, up to a monthly limit you set.',
+    pausesLabel: 'Pauses',
+    pauses: [
+      'AI replies in every channel',
+      'Call scoring',
+      'New AI phone calls. A call already under way finishes.',
+    ],
+    keepsLabel: 'Keeps working',
+    keeps: ['CRM and contacts', 'Inbox and Messages', 'Workflows', 'Your data and settings'],
+  },
+
   pricingAddons: {
     eyebrow: 'Add-ons',
-    heading: 'Scale any part of the plan on its own',
+    heading: 'Need more of one thing? Add just that.',
     subtitle:
-      'Seats, credits and knowledge-base capacity are priced separately, so you grow the one you actually run out of instead of jumping a tier.',
+      'Seats, credits and knowledge base space are sold separately, so you do not have to change plan to get more of one.',
     items: [
       {
         icon: 'seat',
         title: 'Extra seats',
-        body: 'Paid plans do not cap your team. The seats in your plan are what the price covers; anyone past that is billed per seat, per month.',
+        body: 'Invite more people than your plan covers, at any time. Each extra person is billed monthly with your plan. Free has no extra seats.',
         rates: [
-          { label: 'Starter', value: '€20 / seat' },
-          { label: 'Business', value: '€18 / seat' },
-          { label: 'Premium', value: '€15 / seat' },
+          { label: 'Starter', value: '€20 / person' },
+          { label: 'Business', value: '€18 / person' },
+          { label: 'Premium', value: '€15 / person' },
         ],
       },
       {
         icon: 'credit',
         title: 'Extra credits',
-        body: 'Top up whenever you need more. Purchased credits stack on top of your monthly allowance and never expire, so nothing is lost at the end of a cycle.',
+        body: 'Buy credits whenever you need them, on any plan, Free included. They add to your balance and stay there for as long as you keep the same plan.',
         rates: [
+          { label: 'Free', value: '€45 / 1,000' },
           { label: 'Starter', value: '€40 / 1,000' },
           { label: 'Business', value: '€30 / 1,000' },
           { label: 'Premium', value: '€24 / 1,000' },
@@ -1197,54 +1268,44 @@ export const en = {
       {
         icon: 'context',
         title: 'Context Packs',
-        body: 'More room for the documents, pages and PDFs your assistants read. Each pack adds 5 million characters, roughly a thousand documents.',
+        body: 'More room for the documents, pages and PDFs your assistants read, on any plan. Each pack is its own monthly charge that you can remove when you no longer need it.',
         rates: [
           { label: 'Per pack, per month', value: '€20' },
-          { label: 'Capacity added', value: '+5M characters' },
-          { label: 'Packs per account', value: 'Unlimited' },
+          { label: 'Space added', value: '+5M characters' },
+          { label: 'Roughly', value: '1,000 documents' },
         ],
       },
     ],
     footnote:
-      'Every add-on is billed monthly alongside your plan and can be added or removed at any time. Extra credits are the one exception: once bought they are yours to keep, with no expiry.',
+      'A Context Pack can only be removed if your content still fits without it. Delete some content first if it does not.',
   },
 
-  // --- PricingCredits ---
+  // Message cost: computeMessageCreditUnit in the API's credit-unit.ts,
+  // max(1, round(1 + toolCalls / 3)). Attachments are stored, not charged.
+  // Voice AI: billed from answer, rounded up to the second, 60 s minimum.
   pricingCredits: {
-    heading: 'How credits work',
-    subtitle: 'The flexible credit system gives you full control over AI usage, across all platform features.',
-    categories: [
+    eyebrow: 'The details',
+    heading: 'How credits are counted',
+    items: [
       {
-        title: 'AI Conversations',
-        icon: 'message',
-        rows: [
-          { label: 'Text message', value: '1 credit' },
-          { label: 'Message + attachment', value: '2 credits' },
-          { label: 'Document processing', value: 'Included' },
-        ],
+        term: 'AI replies',
+        desc: 'A standard reply costs 1 credit. When the assistant has to take several actions to answer, such as looking something up or updating the CRM, the reply costs more: 2 credits for 2 to 4 actions, 3 for 5 to 7. Files and images in the chat cost nothing extra.',
       },
       {
-        title: 'Voice',
-        icon: 'mic',
-        rows: [
-          { label: 'Voice QA, per minute', value: '12 credits' },
-          { label: 'Voice AI, per minute', value: '10 credits' },
-          { label: 'Premium voices, per minute', value: '30 credits' },
-        ],
+        term: 'Call scoring',
+        desc: 'Voice QA uses 12 credits for each minute of a call, with a one-minute minimum per call.',
       },
       {
-        title: 'Platform',
-        icon: 'grid',
-        rows: [
-          { label: 'CRM, Inbox & Messages', value: 'Free' },
-          { label: 'Workflows & integrations', value: 'Free' },
-          { label: 'Analytics & reports', value: 'Free' },
-        ],
+        term: 'AI phone calls',
+        desc: 'Counted from the moment the call is answered, not while it rings, with a one-minute minimum. 10 credits a minute, or 30 with ElevenLabs voice agents. Voice chats in your website widget count as AI replies.',
+      },
+      {
+        term: 'Always free',
+        desc: 'CRM, Inbox, Messages, workflows, reports and integrations never use credits.',
       },
     ],
   },
 
-  // --- PricingEnterprise ---
   pricingEnterprise: {
     heading: 'Need an Enterprise plan?',
     subtitle: 'For high volume, custom integrations or specific compliance requirements, we offer tailored solutions.',
@@ -1257,16 +1318,22 @@ export const en = {
     cta: 'Contact us',
   },
 
-  // --- PricingFaq ---
+  // Plan changes: subscription.service.ts swaps the price now and applies the
+  // new plan at the next renewal, for upgrades and downgrades alike. Bought
+  // credits are tied to the subscription record, so a plan change or
+  // cancellation leaves them behind.
   pricingFaq: {
-    heading: 'Frequently Asked Questions',
-    subtitle: 'Everything you need to know about our pricing system.',
+    heading: 'Questions about pricing',
+    subtitle: 'The rules, in plain words.',
     items: [
-      { q: 'How do credits work?', a: 'Each AI text message costs 1 credit, or 2 with an attachment. Voice QA uses 12 credits per minute, Voice AI 10 per minute, and 30 per minute on premium voices. Everything else (CRM, Inbox, Messages, workflows, analytics and integrations) is included at no extra cost and consumes no credits.' },
-      { q: 'Do credits expire?', a: 'Monthly subscription credits reset each billing cycle. Extra credit packs never expire.' },
-      { q: 'Can I change plans?', a: 'Yes, you can upgrade or downgrade anytime. Changes take effect on the next billing cycle. You can purchase extra credits anytime.' },
-      { q: 'What happens if I run out of credits?', a: 'You can buy extra credits instantly. AI assistants will continue to work, and you\'ll be notified when credits are about to run out.' },
-      { q: 'Is there a free trial?', a: 'Yes. All new accounts receive free credits to test the platform. You can explore all features before choosing a paid plan.' },
+      { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 with ElevenLabs voice agents. Everything else on the platform is included in your plan.' },
+      { q: 'Do unused credits carry over?', a: 'No. On a paid plan your credits refresh on each billing date, and anything unused does not carry over. The 200 credits on Free are given once and do not refresh.' },
+      { q: 'What happens to credits I buy?', a: 'They add to your balance and have no expiry date, but they belong to your current plan. If you change plan or cancel, unused credits you bought do not move with you.' },
+      { q: 'Can I change plan?', a: 'Yes, at any time. Moving from Free to a paid plan starts straight away. Moving between paid plans, up or down, takes effect on your next billing date.' },
+      { q: 'How do I cancel?', a: 'Cancel from your billing settings. Your plan keeps running until the end of the month you have paid for, then your account moves to the Free plan.' },
+      { q: 'Who counts as a seat?', a: 'Everyone you invite, including invitations that have not been accepted yet. You, as the account owner, are not counted, so Starter covers you plus 3 teammates.' },
+      { q: 'What if my knowledge base is full?', a: 'You get a warning at 85%. When it is full, new documents and pages are not added until you remove some content, add a Context Pack or move to a bigger plan.' },
+      { q: 'Can I try it before paying?', a: 'Yes. The Free plan is yours to keep, with 200 credits and room for you and one teammate. No card needed.' },
     ],
   },
 

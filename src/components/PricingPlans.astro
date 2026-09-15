@@ -2,132 +2,81 @@
 import type { Translations } from '../i18n/utils';
 const { t } = Astro.props as { t: Translations };
 
-// The 2026 ladder. Every figure below is transcribed from NEW_LADDER_2026 in
-// the API's pricing-config.ts, which is the source of truth the seeder reads:
+// Every card has the same eight rows in the same order, and the cards share
+// one row grid (grid-rows-subgrid), so "Team" on Starter sits level with
+// "Team" on Premium however long a line wraps. Comparing plans is then
+// reading across one line instead of hunting down four cards.
 //
-//   price EUR        0    100    200    500
-//   credits        200   3000   8000  25000
-//   top-up €/cr  0.045  0.040  0.030  0.024   -> x1000 for the per-1.000 rate
-//
-// The ladder is EUR-denominated ("the 2026 ladder is EUR-denominated and
-// handleCreate resolves the plan currency by code"), so the page is in euro.
-// scripts/verify-pricing.mjs asserts these against that file on every run.
-const plans = [
-  {
-    name: 'Free',
-    price: '€0',
-    credits: '200',
-    extraCreditsPrice: '€45 / 1.000',
-    popular: false,
-    free: true,
-  },
-  {
-    name: 'Starter',
-    price: '€100',
-    credits: '3.000',
-    extraCreditsPrice: '€40 / 1.000',
-    popular: false,
-    free: false,
-  },
-  {
-    name: 'Business',
-    price: '€200',
-    credits: '8.000',
-    extraCreditsPrice: '€30 / 1.000',
-    popular: true,
-    free: false,
-  },
-  {
-    name: 'Premium',
-    price: '€500',
-    credits: '25.000',
-    extraCreditsPrice: '€24 / 1.000',
-    popular: false,
-    free: false,
-  },
-];
-
-const modules = ['AI Agents', 'CRM', 'Voice QA', 'Voice AI', 'Workflows', 'Analytics'];
+// The cards used to end in six identical module chips, the same on every plan,
+// with Starter listing "All AI modules included" as if that set it apart.
+// Nothing in the product differs by plan except what these rows show, so the
+// rows are all there is. Figures live in the i18n files (locale-formatted) and
+// scripts/verify-pricing.mjs checks them against the API's NEW_LADDER_2026.
+const p = t.pricingPlans;
+const cards = p.plans.map((plan) => ({
+  plan,
+  rows: [
+    { label: p.labels.credits, value: plan.credits, note: plan.creditsNote },
+    { label: p.labels.team, value: plan.team, note: plan.teamNote },
+    { label: p.labels.knowledge, value: plan.knowledge, note: plan.knowledgeNote },
+    { label: p.labels.extraCredits, value: plan.extraCredits, note: '' },
+    { label: p.labels.support, value: plan.support, note: '' },
+  ],
+}));
 ---
 
-<section class="py-20 md:py-32 px-6">
+<section class="pb-20 md:pb-28 px-6">
   <div class="max-w-7xl mx-auto">
-    <div class="mb-10 flex flex-col sm:flex-row items-center justify-center gap-4 bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/20 rounded-2xl px-8 py-5">
-      <p class="text-lg md:text-xl font-semibold text-[var(--color-foreground)] text-center sm:text-left">
-        {t.pricingPlans.freeBanner}
-      </p>
-      <a
-        href="https://app.fineguide.ai/register"
-        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all whitespace-nowrap"
-      >
-        {t.pricingPlans.freeBannerCta}
-      </a>
-    </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {plans.map((plan, i) => (
-        <div class={`relative rounded-2xl border ${plan.popular ? 'border-[var(--color-primary)] shadow-md' : 'border-[var(--color-border)] shadow-sm'} bg-white overflow-hidden`}>
-          {plan.popular && (
-            <div class="absolute top-0 left-0 right-0 bg-[var(--color-primary)] text-white text-xs font-semibold text-center py-1.5 uppercase tracking-wider">
-              {t.pricingPlans.mostPopular}
-            </div>
-          )}
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6">
+      {cards.map(({ plan, rows }, i) => {
+        const popular = i === 2;
+        const free = i === 0;
+        return (
+          <div
+            class={`relative grid grid-rows-subgrid row-span-8 mb-6 lg:mb-0 rounded-2xl border bg-white px-6 ${
+              popular ? 'border-[var(--color-primary)] shadow-md' : 'border-[var(--color-border)] shadow-sm'
+            }`}
+          >
+            {popular && (
+              <p class="absolute -top-3 left-6 rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
+                {p.mostPopular}
+              </p>
+            )}
 
-          <div class={`p-8 ${plan.popular ? 'pt-12' : ''}`}>
-            <h3 class="text-2xl font-bold mb-1">{plan.name}</h3>
-            <p class="text-sm text-[var(--color-muted)] mb-6">{t.pricingPlans.plans[i].desc}</p>
-
-            <div class="flex items-baseline gap-1 mb-1">
-              <span class="text-4xl font-bold text-[var(--color-foreground)]">{plan.price}</span>
-              <span class="text-[var(--color-muted)] text-sm">{plan.free ? t.pricingPlans.freeLabel : t.pricingPlans.perMonth}</span>
+            <div class="pt-8">
+              <h3 class="text-2xl font-semibold text-[var(--color-foreground)]">{plan.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{plan.desc}</p>
             </div>
 
-            <!-- Credits box -->
-            <div class="bg-[#f5f3ef] rounded-xl p-4 my-6">
-              <div class="flex items-center justify-between mb-1">
-                <span class="text-sm font-medium text-[var(--color-foreground)]">{plan.free ? t.pricingPlans.oneTimeCredits : t.pricingPlans.monthlyCredits}</span>
-                <span class="text-xl font-bold text-[var(--color-foreground)]">{plan.credits}</span>
+            <p class="flex items-baseline gap-1 pt-6 pb-6">
+              <span class="text-4xl font-semibold tracking-tight text-[var(--color-foreground)] tnum">{plan.price}</span>
+              <span class="text-sm text-[var(--color-muted)]">{free ? p.freeLabel : p.perMonth}</span>
+            </p>
+
+            {rows.map((row) => (
+              <div class="border-t border-[var(--color-border)] py-4">
+                <p class="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">{row.label}</p>
+                <p class="mt-1 font-semibold text-[var(--color-foreground)] tnum">{row.value}</p>
+                {row.note && <p class="mt-0.5 text-sm leading-snug text-[var(--color-muted)]">{row.note}</p>}
               </div>
-              <p class="text-xs text-[var(--color-muted)] mb-1">{t.pricingPlans.extraCredits}{plan.extraCreditsPrice}</p>
-              <p class="text-xs text-[var(--color-muted)]">{t.pricingPlans.plans[i].credits}</p>
-            </div>
+            ))}
 
-            <!-- Team & features -->
-            <div class="space-y-3 mb-6">
-              <div class="flex items-center gap-3">
-                <svg class="w-4 h-4 text-[var(--color-foreground)] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>
-                <span class="text-sm font-medium">{t.pricingPlans.plans[i].features[0]}</span>
-              </div>
-              {t.pricingPlans.plans[i].features.slice(1).map((f: string) => (
-                <div class="flex items-center gap-3">
-                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
-                  <span class="text-sm text-[var(--color-muted)]">{f}</span>
-                </div>
-              ))}
+            <div class="self-end pt-2 pb-8">
+              <a
+                href="https://app.fineguide.ai/register"
+                class={`flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all ${
+                  popular
+                    ? 'border border-transparent bg-[var(--color-primary)] text-white hover:opacity-90'
+                    : 'border border-[var(--color-border)] bg-white text-[var(--color-foreground)] hover:border-[#d1d5e0]'
+                }`}
+              >
+                {free ? p.ctaFree : p.ctaPaid}
+              </a>
             </div>
-
-            <!-- Modules -->
-            <div class="mb-8">
-              <p class="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)] mb-3">{t.pricingPlans.modulesIncluded}</p>
-              <div class="flex flex-wrap gap-1.5">
-                {modules.map((m) => (
-                  <span class="text-xs px-2.5 py-1 rounded-md bg-gray-100 text-[var(--color-muted)] font-medium">{m}</span>
-                ))}
-              </div>
-            </div>
-
-            <a
-              href="https://app.fineguide.ai/login"
-              class={`w-full flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl transition-all ${
-                plan.popular
-                  ? 'text-white bg-[var(--color-primary)] hover:opacity-90'
-                  : 'text-[var(--color-foreground)] bg-white border border-[var(--color-border)] hover:border-[#d1d5e0]'
-              }`}
-            >
-              {t.pricingPlans.ctaButton}
-            </a>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
+    <p class="mt-8 text-sm text-[var(--color-muted)]">{p.footnote}</p>
   </div>
 </section>

@@ -1097,73 +1097,134 @@ export const ro: Translations = {
   // --- Pricing Page ---
   pricingMeta: {
     title: 'Prețuri | Fineguide.ai',
-    description: 'Prețuri bazate pe credite, cu toate modulele AI incluse din primul plan. Compară creditele, locurile și limitele de cunoștințe și adaugi capacitate oricând.',
+    description:
+      'Planuri de la €0 la €500 pe lună. Vezi exact ce include fiecare: credite, locuri în echipă, spațiu pentru cunoștințe, suport și ce cumpără un credit.',
   },
   pricingPage: {
-    heading: 'Prețuri construite pentru<br />echipe care cresc',
-    subtitle: 'Începe gratuit, crește pe măsură ce avansezi. Un singur abonament per organizație, cu acces la toate modulele AI.',
-    bullets: ['Fără taxe de setup', 'Anulează oricând', 'Trial gratuit'],
+    heading: 'Plătești pentru ce face AI-ul.<br /><span class="text-[var(--color-primary)]">Restul este inclus.</span>',
+    subtitle:
+      'Fiecare plan funcționează cu credite. Răspunsurile AI și minutele de voce le folosesc. CRM-ul, inboxul, mesajele și workflow-urile nu le folosesc niciodată.',
+    bullets: ['Plan gratuit, fără card', 'Fără taxe de instalare', 'Anulezi oricând'],
   },
 
-  // --- PricingPlans ---
+  pricingExplainer: {
+    eyebrow: 'Ce cumpără un credit',
+    items: [
+      { value: '1 credit', term: 'Un răspuns AI', desc: 'Un răspuns obișnuit al unui asistent, pe orice canal.' },
+      { value: '12 credite', term: 'Un minut de evaluare a apelurilor', desc: 'Voice QA transcrie apelul și îl evaluează după criteriile tale.' },
+      { value: '10 credite', term: 'Un minut de apel telefonic AI', desc: 'Voice AI răspunde sau sună. 30 pe minut cu agenții vocali ElevenLabs.' },
+      { value: '0 credite', term: 'Tot restul', desc: 'CRM, Inbox, Mesaje, workflow-uri și rapoarte.' },
+    ],
+  },
+
   pricingPlans: {
     perMonth: '/lună',
-    monthlyCredits: 'Credite lunare',
-    extraCredits: 'Credite suplimentare: ',
-    modulesIncluded: 'Module incluse',
-    integrationsLabel: 'Integrări',
-    mostPopular: 'Cel mai popular',
-    ctaButton: 'Începe acum',
-    freeBanner: 'Începe cu 200 de credite din partea noastră. Fără card, fără obligații.',
-    freeBannerCta: 'Creează cont gratuit',
     freeLabel: 'pentru totdeauna',
-    oneTimeCredits: 'Credite inițiale',
+    mostPopular: 'Cel mai ales',
+    ctaFree: 'Începe gratuit',
+    ctaPaid: 'Începe acum',
+    labels: {
+      credits: 'Credite',
+      team: 'Echipă',
+      knowledge: 'Bază de cunoștințe',
+      extraCredits: 'Credite suplimentare',
+      support: 'Suport',
+    },
+    footnote:
+      'Prețurile sunt lunare, în euro. Creditele și spațiul pentru cunoștințe sunt comune pentru toată organizația ta.',
     plans: [
       {
-        desc: '200 de credite gratuite la înregistrare, fără card. Cumperi mai multe doar când ai nevoie.',
-        credits: '200 de credite pentru a explora platforma',
-        features: ['1 membru', '1M caractere bază de cunoștințe', 'Suport comunitate', 'Reîncărcare pay-as-you-go'],
+        name: 'Free',
+        price: '€0',
+        desc: 'Încearcă platforma cu propriul tău conținut.',
+        credits: '200, o singură dată',
+        creditsNote: 'Aproximativ 200 de răspunsuri AI. Nu se reînnoiesc.',
+        team: 'Tu + 1 coleg',
+        teamNote: 'Fără locuri suplimentare pe Free',
+        knowledge: 'Aproximativ 200 de documente',
+        knowledgeNote: '1M caractere',
+        extraCredits: '€45 pentru 1.000',
+        support: 'Comunitate',
       },
       {
-        desc: 'Pentru echipe mici care vor să automatizeze primele interacțiuni.',
-        credits: '≈ 3.000 de conversații text sau 250 de minute Voice QA',
-        features: ['3 locuri incluse, €20 pentru fiecare loc în plus', '5M caractere bază de cunoștințe', 'Suport pe email', 'Toate modulele AI incluse'],
+        name: 'Starter',
+        price: '€100',
+        desc: 'O echipă mică ce pune la treabă primul asistent.',
+        credits: '3.000 în fiecare lună',
+        creditsNote: 'Aproximativ 3.000 de răspunsuri AI sau 250 de minute de evaluare a apelurilor',
+        team: 'Tu + 3 colegi',
+        teamNote: 'Apoi €20 de persoană pe lună',
+        knowledge: 'Aproximativ 1.000 de documente',
+        knowledgeNote: '5M caractere',
+        extraCredits: '€40 pentru 1.000',
+        support: 'Email',
       },
       {
-        desc: 'Pentru companii în creștere care au nevoie de mai multă capacitate.',
-        credits: '≈ 8.000 de conversații text sau 660 de minute Voice QA',
-        features: ['5 locuri incluse, €18 pentru fiecare loc în plus', '10M caractere bază de cunoștințe', 'Suport prioritar', 'Analytics avansat'],
+        name: 'Business',
+        price: '€200',
+        desc: 'O echipă în creștere, cu volum zilnic constant.',
+        credits: '8.000 în fiecare lună',
+        creditsNote: 'Aproximativ 8.000 de răspunsuri AI sau 660 de minute de evaluare a apelurilor',
+        team: 'Tu + 5 colegi',
+        teamNote: 'Apoi €18 de persoană pe lună',
+        knowledge: 'Aproximativ 2.000 de documente',
+        knowledgeNote: '10M caractere',
+        extraCredits: '€30 pentru 1.000',
+        support: 'Prioritar',
       },
       {
-        desc: 'Pentru echipe mari cu volum ridicat de interacțiuni.',
-        credits: '≈ 25.000 de conversații text sau 2.000 de minute Voice QA',
-        features: ['10 locuri incluse, €15 pentru fiecare loc în plus', '20M caractere bază de cunoștințe', 'Suport dedicat', 'Acces API & webhook-uri'],
+        name: 'Premium',
+        price: '€500',
+        desc: 'Mai multe echipe sau un volum mare de apeluri și conversații.',
+        credits: '25.000 în fiecare lună',
+        creditsNote: 'Aproximativ 25.000 de răspunsuri AI sau 2.080 de minute de evaluare a apelurilor',
+        team: 'Tu + 10 colegi',
+        teamNote: 'Apoi €15 de persoană pe lună',
+        knowledge: 'Aproximativ 4.000 de documente',
+        knowledgeNote: '20M caractere',
+        extraCredits: '€24 pentru 1.000',
+        support: 'Dedicat',
       },
     ],
   },
 
-  // --- PricingAddons ---
-  pricingAddons: {
-    eyebrow: 'Extra',
-    heading: 'Extinde exact partea de care ai nevoie',
+  pricingRunOut: {
+    eyebrow: 'Când se termină creditele',
+    heading: 'AI-ul se oprește. Echipa ta lucrează în continuare.',
     subtitle:
-      'Locurile, creditele și capacitatea bazei de cunoștințe se plătesc separat, așa că extinzi doar ce ți se termină, fără să sari un plan întreg.',
+      'Cumperi credite oricând și AI-ul pornește din nou imediat. Pe un plan plătit poți activa și reîncărcarea automată, ca să primești credite înainte de oprire, până la o limită lunară pe care o alegi.',
+    pausesLabel: 'Se oprește',
+    pauses: [
+      'Răspunsurile AI, pe toate canalele',
+      'Evaluarea apelurilor',
+      'Apelurile telefonice AI noi. Un apel deja început se termină normal.',
+    ],
+    keepsLabel: 'Funcționează în continuare',
+    keeps: ['CRM și contacte', 'Inbox și Mesaje', 'Workflow-uri', 'Datele și setările tale'],
+  },
+
+  pricingAddons: {
+    eyebrow: 'Suplimente',
+    heading: 'Ai nevoie de mai mult? Adaugi doar ce îți lipsește.',
+    subtitle:
+      'Locurile, creditele și spațiul pentru cunoștințe se vând separat, ca să nu schimbi planul doar pentru că ai nevoie de mai mult dintr-unul.',
     items: [
       {
         icon: 'seat',
         title: 'Locuri suplimentare',
-        body: 'Planurile plătite nu îți limitează echipa. Locurile din plan sunt cele acoperite de preț; fiecare persoană peste acest număr se facturează per loc, lunar.',
+        body: 'Inviți mai multe persoane decât acoperă planul, oricând. Fiecare persoană în plus se facturează lunar, împreună cu planul. Free nu are locuri suplimentare.',
         rates: [
-          { label: 'Starter', value: '€20 / loc' },
-          { label: 'Business', value: '€18 / loc' },
-          { label: 'Premium', value: '€15 / loc' },
+          { label: 'Starter', value: '€20 / persoană' },
+          { label: 'Business', value: '€18 / persoană' },
+          { label: 'Premium', value: '€15 / persoană' },
         ],
       },
       {
         icon: 'credit',
         title: 'Credite suplimentare',
-        body: 'Reîncarci oricând ai nevoie. Creditele cumpărate se adaugă peste alocarea lunară și nu expiră niciodată, deci nu pierzi nimic la finalul ciclului.',
+        body: 'Cumperi credite când ai nevoie, pe orice plan, inclusiv Free. Se adaugă la sold și rămân acolo cât timp păstrezi același plan.',
         rates: [
+          { label: 'Free', value: '€45 / 1.000' },
           { label: 'Starter', value: '€40 / 1.000' },
           { label: 'Business', value: '€30 / 1.000' },
           { label: 'Premium', value: '€24 / 1.000' },
@@ -1171,55 +1232,42 @@ export const ro: Translations = {
       },
       {
         icon: 'context',
-        title: 'Pachete de context',
-        body: 'Mai mult spațiu pentru documentele, paginile și PDF-urile pe care le citesc asistenții tăi. Fiecare pachet adaugă 5 milioane de caractere, aproximativ o mie de documente.',
+        title: 'Context Packs',
+        body: 'Mai mult loc pentru documentele, paginile și PDF-urile pe care le citesc asistenții, pe orice plan. Fiecare pachet este o plată lunară separată, la care poți renunța oricând.',
         rates: [
-          { label: 'Per pachet, lunar', value: '€20' },
-          { label: 'Capacitate adăugată', value: '+5M caractere' },
-          { label: 'Pachete per cont', value: 'Nelimitat' },
+          { label: 'Per pachet, pe lună', value: '€20' },
+          { label: 'Spațiu adăugat', value: '+5M caractere' },
+          { label: 'Aproximativ', value: '1.000 de documente' },
         ],
       },
     ],
     footnote:
-      'Fiecare extra se facturează lunar, alături de planul tău, și poate fi adăugat sau eliminat oricând. Singura excepție sunt creditele suplimentare: odată cumpărate rămân ale tale, fără termen de expirare.',
+      'Un Context Pack poate fi eliminat doar dacă tot conținutul încape fără el. Dacă nu încape, șterge mai întâi o parte din conținut.',
   },
 
-  // --- PricingCredits ---
   pricingCredits: {
-    heading: 'Cum funcționează creditele',
-    subtitle: 'Sistemul flexibil de credite îți dă control deplin asupra utilizării AI, pe toate funcționalitățile platformei.',
-    categories: [
+    eyebrow: 'Detaliile',
+    heading: 'Cum se numără creditele',
+    items: [
       {
-        title: 'Conversații AI',
-        icon: 'message',
-        rows: [
-          { label: 'Mesaj text', value: '1 credit' },
-          { label: 'Mesaj + atașament', value: '2 credite' },
-          { label: 'Procesare documente', value: 'Inclus' },
-        ],
+        term: 'Răspunsuri AI',
+        desc: 'Un răspuns obișnuit costă 1 credit. Când asistentul trebuie să facă mai multe acțiuni ca să răspundă, de exemplu să caute o informație sau să actualizeze CRM-ul, răspunsul costă mai mult: 2 credite pentru 2 până la 4 acțiuni, 3 pentru 5 până la 7. Fișierele și imaginile din chat nu costă nimic în plus.',
       },
       {
-        title: 'Voice',
-        icon: 'mic',
-        rows: [
-          { label: 'Voice QA, per minut', value: '12 credite' },
-          { label: 'Voice AI, per minut', value: '10 credite' },
-          { label: 'Voci premium, per minut', value: '30 credite' },
-        ],
+        term: 'Evaluarea apelurilor',
+        desc: 'Voice QA folosește 12 credite pentru fiecare minut de apel, cu minimum un minut pe apel.',
       },
       {
-        title: 'Platformă',
-        icon: 'grid',
-        rows: [
-          { label: 'CRM, Inbox și Mesaje', value: 'Gratuit' },
-          { label: 'Workflow-uri și integrări', value: 'Gratuit' },
-          { label: 'Analytics și rapoarte', value: 'Gratuit' },
-        ],
+        term: 'Apeluri telefonice AI',
+        desc: 'Se numără din momentul în care se răspunde, nu cât timp sună, cu minimum un minut. 10 credite pe minut sau 30 cu agenții vocali ElevenLabs. Conversațiile vocale din widgetul site-ului se numără ca răspunsuri AI.',
+      },
+      {
+        term: 'Mereu gratuit',
+        desc: 'CRM-ul, Inboxul, Mesajele, workflow-urile, rapoartele și integrările nu folosesc niciodată credite.',
       },
     ],
   },
 
-  // --- PricingEnterprise ---
   pricingEnterprise: {
     heading: 'Ai nevoie de un plan Enterprise?',
     subtitle: 'Pentru volum mare, integrări custom sau cerințe specifice de conformitate, oferim soluții personalizate.',
@@ -1232,16 +1280,18 @@ export const ro: Translations = {
     cta: 'Contactează-ne',
   },
 
-  // --- PricingFaq ---
   pricingFaq: {
-    heading: 'Întrebări frecvente',
-    subtitle: 'Tot ce trebuie să știi despre sistemul nostru de prețuri.',
+    heading: 'Întrebări despre prețuri',
+    subtitle: 'Regulile, pe înțelesul tuturor.',
     items: [
-      { q: 'Cum funcționează creditele?', a: 'Fiecare mesaj text AI costă 1 credit, sau 2 cu atașament. Voice QA folosește 12 credite per minut, Voice AI 10 per minut, iar vocile premium 30 per minut. Restul (CRM, Inbox, Mesaje, workflow-uri, analytics și integrări) este inclus fără cost suplimentar și nu consumă credite.' },
-      { q: 'Expiră creditele?', a: 'Creditele din abonamentul lunar se resetează la fiecare ciclu de facturare. Pachetele extra de credite nu expiră niciodată.' },
-      { q: 'Pot schimba planul?', a: 'Da, poți upgrada sau downgrada oricând. Modificările intră în vigoare la următorul ciclu de facturare. Poți cumpăra credite suplimentare oricând.' },
-      { q: 'Ce se întâmplă dacă rămân fără credite?', a: 'Poți cumpăra credite suplimentare instant. Asistenții AI vor continua să funcționeze și vei fi notificat când creditele sunt aproape de epuizare.' },
-      { q: 'Există un trial gratuit?', a: 'Da. Toate conturile noi primesc credite gratuite pentru a testa platforma. Poți explora toate funcționalitățile înainte de a alege un plan plătit.' },
+      { q: 'Ce este un credit?', a: 'Creditele plătesc munca făcută de AI. Un răspuns AI obișnuit costă 1 credit, un minut de evaluare a apelurilor 12, iar un minut de apel telefonic AI 10, sau 30 cu agenții vocali ElevenLabs. Tot restul platformei este inclus în plan.' },
+      { q: 'Creditele nefolosite se reportează?', a: 'Nu. Pe un plan plătit creditele se reîncarcă la fiecare dată de facturare, iar ce nu ai folosit nu se reportează. Cele 200 de credite de pe Free se primesc o singură dată și nu se reîncarcă.' },
+      { q: 'Ce se întâmplă cu creditele cumpărate?', a: 'Se adaugă la sold și nu au dată de expirare, dar aparțin planului tău actual. Dacă schimbi planul sau anulezi, creditele cumpărate și nefolosite nu se mută cu tine.' },
+      { q: 'Pot schimba planul?', a: 'Da, oricând. Trecerea de la Free la un plan plătit începe imediat. Trecerea între planuri plătite, în sus sau în jos, se aplică de la următoarea dată de facturare.' },
+      { q: 'Cum anulez?', a: 'Anulezi din setările de facturare. Planul rămâne activ până la finalul lunii pe care ai plătit-o, apoi contul trece pe planul Free.' },
+      { q: 'Cine ocupă un loc?', a: 'Toți cei pe care îi inviți, inclusiv invitațiile încă neacceptate. Tu, ca proprietar al contului, nu ești numărat, așa că Starter te acoperă pe tine și pe 3 colegi.' },
+      { q: 'Ce se întâmplă când baza de cunoștințe e plină?', a: 'Primești o avertizare la 85%. Când e plină, documentele și paginile noi nu se mai adaugă până nu ștergi conținut, adaugi un Context Pack sau treci pe un plan mai mare.' },
+      { q: 'Pot încerca înainte să plătesc?', a: 'Da. Planul Free rămâne al tău, cu 200 de credite și loc pentru tine și un coleg. Nu ai nevoie de card.' },
     ],
   },
 
