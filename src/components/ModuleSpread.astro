@@ -8,7 +8,9 @@ interface Spread {
 }
 interface Props {
   spread: Spread;
-  image: string;
+  // Optional: a spread without a clean demo-data screenshot renders text-only
+  // rather than borrowing an image from a live account.
+  image?: string;
   reverse?: boolean;
   linkHref?: string;
   linkLabel?: string;
@@ -18,7 +20,7 @@ const { spread, image, reverse = false, linkHref, linkLabel } = Astro.props as P
 
 <section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/60">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-    <div class={`lg:col-span-5 ${reverse ? 'lg:order-2' : ''}`}>
+    <div class={image ? `lg:col-span-5 ${reverse ? 'lg:order-2' : ''}` : 'lg:col-span-7'}>
       <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
         {spread.eyebrow}
       </p>
@@ -49,13 +51,15 @@ const { spread, image, reverse = false, linkHref, linkLabel } = Astro.props as P
       )}
     </div>
 
-    <div class={`lg:col-span-7 ${reverse ? 'lg:order-1' : ''}`}>
-      <img
-        src={image}
-        alt={spread.screenshotAlt}
-        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-xl"
-        loading="lazy"
-      />
-    </div>
+    {image && (
+      <div class={`lg:col-span-7 ${reverse ? 'lg:order-1' : ''}`}>
+        <img
+          src={image}
+          alt={spread.screenshotAlt}
+          class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-xl"
+          loading="lazy"
+        />
+      </div>
+    )}
   </div>
 </section>
