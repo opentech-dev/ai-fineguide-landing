@@ -25,9 +25,16 @@ for(const name of dt){
       .reduce((n,f)=>{try{return n+fs.readFileSync(`${p}/${f}`,'utf8').split('\n').length}catch{return n}},0):0;
   ok(exists && lines>500, `${name} -> modules/${dir}/ exists, ${lines} lines`);
 }
-// --- a module must NOT be claimed if it is routed but unbuilt ---
-ok(!fs.existsSync(`${FE}/campaigns`) && !dt.includes('Campaigns'),
-   'Campaigns routed-but-unbuilt and correctly NOT claimed');
+// --- Campaigns has its own page, so the module behind it must be built ---
+// This used to assert Campaigns was unbuilt and unclaimed. It kept passing after
+// Campaigns shipped under modules/telephony/campaigns and got a page, because it
+// only looked at the old modules/campaigns path.
+{
+  const p=`${FE}/telephony/campaigns`;
+  const lines=fs.existsSync(p)? fs.readdirSync(p,{recursive:true}).filter(f=>/\.tsx?$/.test(f))
+      .reduce((n,f)=>{try{return n+fs.readFileSync(`${p}/${f}`,'utf8').split('\n').length}catch{return n}},0):0;
+  ok(lines>500, `Campaigns page -> modules/telephony/campaigns/ exists, ${lines} lines`);
+}
 
 // --- specific factual claims in the new copy ---
 const inboxFiles=fs.readdirSync(`${FE}/inbox`,{recursive:true}).filter(f=>/\.tsx?$/.test(f));
@@ -206,37 +213,34 @@ if (fs.existsSync(schemaPath)) {
   ok(enumTypes.length > 0 && missing.length === 0,
      `/campaigns covers every CampaignType (${enumTypes.join(', ')})${missing.length ? ' -> ' + missing.join(', ') : ''}`);
 
-  // Every telephony provider named in the copy must exist in TelephonyProvider.
-  // Parse the names OUT of the copy rather than checking a fixed list against the
-  // enum — a hardcoded map only catches the enum changing under names already
-  // known to this script, and silently passes a brand new invented provider,
-  // which is the failure that actually matters.
-  const provBlock = schema.match(/enum TelephonyProvider\s*\{([\s\S]*?)\}/);
-  const providers = provBlock
-    ? provBlock[1].split('\n').map(l => l.replace(/\/\/.*/, '').trim()).filter(l => /^[A-Z_0-9]+$/.test(l))
-    : [];
-  // enum values are not display names, so normalise both sides
-  const norm = (s) => s.toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/^3CX$/, 'THREECX');
-  const known = new Set(providers.map(norm));
+}
 
-  const bogus = [];
+// --- voice claims the product code contradicts ---------------------------------
+// The previous guard only checked that each provider named in the copy existed in
+// the TelephonyProvider enum. Enum values are not integrations: Asterisk, FreePBX
+// and 3CX are a setup form over plain SIP registration, and Twilio calling sits
+// behind SIP_CARRIER_PROFILE, off by default (voice_ai_go/sip.go). It also read
+// the homepage `campaigns:` block rather than the page, so it checked nothing.
+// These phrases were on the site and are false; each names where the code says so.
+{
+  const BANNED = [
+    [/\b(Twilio|Asterisk|FreePBX|3CX)\b/, 'named phone systems: only generic SIP registration works'],
+    [/\bclon(e|ed|ing|ă)(?!\p{L})/iu, 'voice cloning: no clone API in the app, only existing voices listed'],
+    [/route by intent|rutează pe intenție/i, 'intent routing: a number maps to one assistant (AssistantPhoneNumber)'],
+    [/right team|echipa potrivită/i, 'routing numbers to teams: not implemented'],
+    [/at any point, with the transcript|în orice moment, cu transcrierea/i, 'handoff on any call: transfer is inbound-only (voice_ai_go/handoff.go)'],
+    [/scored by Voice QA|evaluate de Voice QA|ready for Voice QA scoring|gata de scorat în Voice QA/i, 'AI calls scored by Voice QA: auto-scoring covers imported recordings only'],
+    [/writes the summary|scrie rezumatul/i, 'post-call summary: not implemented; extraction is Survey/Promotion only'],
+  ];
+  const hits = [];
   for (const locale of ['en', 'ro']) {
-    const p = `src/i18n/${locale}.ts`;
-    if (!fs.existsSync(p)) continue;
-    const camp = fs.readFileSync(p, 'utf8').match(/campaigns:\s*\{([\s\S]*?)\n  \},/);
-    if (!camp) continue;
-    // the provider line: "Twilio, Asterisk, FreePBX, 3CX, or any generic SIP trunk"
-    const line = camp[1].split('\n').find(l => /SIP/.test(l));
-    if (!line) continue;
-    const names = line
-      .replace(/^\s*'|',?\s*$/g, '')
-      .split(/,| or | sau /)
-      .map(x => x.trim())
-      .filter(x => x && !/^(any|orice|generic|SIP)/i.test(x) && !/trunk/i.test(x));
-    for (const n of names) if (!known.has(norm(n))) bogus.push(`${locale}:${n}`);
+    const lines = fs.readFileSync(`src/i18n/${locale}.ts`, 'utf8').split('\n');
+    lines.forEach((l, i) => {
+      if (/^\s*\/\//.test(l)) return;
+      for (const [re, why] of BANNED) if (re.test(l)) hits.push(`${locale}.ts:${i + 1} ${why}`);
+    });
   }
-  ok(bogus.length === 0,
-     `every telephony provider named in the copy exists in TelephonyProvider (${providers.join(', ')})${bogus.length ? ' -> NOT IN ENUM: ' + bogus.join(', ') : ''}`);
+  ok(hits.length === 0, `no voice claims the code contradicts${hits.length ? ' -> ' + hits.join('; ') : ''}`);
 }
 
 // --- email AI safety rails: the page sells the brakes, so the brakes must exist

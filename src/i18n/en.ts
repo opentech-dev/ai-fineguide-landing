@@ -147,7 +147,7 @@ export const en = {
       'Automatic transcription and scoring on every call',
       'Per-department evaluation criteria and weights',
       'Agent feedback and trend dashboards',
-      'Telephony integration with major providers',
+      'Connects to your phone system over SIP',
       'AI agents on live inbound and outbound calls',
     ],
     screenshotAlt: 'Fineguide Voice QA statistics dashboard',
@@ -334,7 +334,7 @@ export const en = {
         {
           title: 'Voice',
           body:
-            'Text-to-speech voices for spoken responses. Pick from a curated set or use your own clone.',
+            'Text-to-speech voices for spoken responses. Pick a voice, or just a male or female one, and preview it before it goes live.',
         },
         {
           title: 'Session Variables',
@@ -520,27 +520,27 @@ export const en = {
       eyebrow: 'Capabilities',
       heading: 'A complete voice layer, end to end.',
       body:
-        'Voice AI builds on the assistants, CRM, and Voice QA you already have, so phone runs on the same configuration, the same customer record, and the same quality dashboards as every other channel.',
+        'Voice AI builds on the assistants and CRM you already have, so the phone runs on the same configuration and the same customer record as every other channel.',
       blocks: [
         {
           title: 'Inbound automation',
           body:
-            'Answer calls 24/7. Route by intent, identify the customer, and resolve common requests without queueing for a human.',
+            'Answer calls on your own numbers, day and night. Recognise returning callers from the CRM and resolve common requests without a queue.',
         },
         {
           title: 'Outbound calls',
           body:
-            'Place qualification, follow-up, or reminder calls at scale. Hand off to a human the moment the conversation requires it.',
+            'Call a whole list with an outreach, survey or promotion campaign, and hear each one on your own phone before it starts.',
         },
         {
           title: 'Telephony integration',
           body:
-            'Connects to your existing carrier or SIP trunk. Numbers, recording, and compliance follow your existing setup.',
+            'Connects over SIP to the carrier or phone system you already use, so your numbers stay yours.',
         },
         {
-          title: 'CRM and Voice QA loop',
+          title: 'Connected to the CRM',
           body:
-            'Every call writes back to the same customer record, with transcripts ready for Voice QA scoring on the same dashboards.',
+            'Every call is saved to the conversation history as a transcript. An inbound caller who asks for a person is transferred to your team, or leaves a callback request that becomes a CRM task.',
         },
       ],
     },
@@ -748,7 +748,7 @@ export const en = {
       title: 'Read the conversation.',
       titleAccent: ' Update the record. No one touches it.',
       subtitle:
-        'A visual builder where a workflow starts from something that actually happened — a call ending, a lead landing, a form arriving — and finishes with your CRM already correct.',
+        'A visual builder where a workflow starts from something that actually happened — a call going through Voice QA, a lead landing, a form arriving — and finishes with your CRM already correct.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -772,7 +772,7 @@ export const en = {
         },
         {
           name: 'Calls and tickets',
-          desc: 'A voice call ending, with its transcript available, or a ticket being opened.',
+          desc: 'A call finishing in Voice QA, transcribed or scored, or a ticket being opened.',
         },
         {
           name: 'Outside and on demand',
@@ -987,7 +987,7 @@ export const en = {
       items: [
         {
           name: 'Outreach',
-          desc: 'Free-form outbound. The assistant opens the conversation and takes it where it needs to go, then writes the summary and any captured fields back to the contact.',
+          desc: 'Free-form outbound. The assistant opens the conversation and takes it where it needs to go, and the whole exchange is kept as a transcript.',
         },
         {
           name: 'Survey',
@@ -1031,13 +1031,13 @@ export const en = {
       eyebrow: 'Your phone system',
       heading: 'Bring the numbers you already own.',
       body:
-        'Campaigns run over your existing telephony rather than a number we rent you, so caller ID, call recording and carrier costs stay where they are today.',
+        'Campaigns run over your existing telephony rather than a number we rent you, so your numbers, caller ID and carrier costs stay where they are today.',
       bullets: [
-        'Connect Twilio, Asterisk, FreePBX, 3CX, or any generic SIP trunk',
-        'Route inbound numbers to the right assistant or the right team',
-        'Hand a live call to a human at any point, with the transcript already in front of them',
+        'Connect your carrier or PBX with a standard SIP account',
+        'Give each inbound number to the assistant that should answer it',
+        'On inbound calls, transfer the caller to your team, or take a callback request as a CRM task',
         'Every call attaches to the same customer record as the chats and emails',
-        'Calls are scored by Voice QA on the same rules as the rest of your telephony',
+        'Billed per answered minute, with a one-minute minimum',
       ],
     },
     finalCta: {
