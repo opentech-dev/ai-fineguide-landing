@@ -16,7 +16,11 @@
 // forms removed, reduced to visible text. English is checked in four views,
 // Romanian (euro only) in two. Each locale uses its own number format.
 //
-// Dollar figures are the same numbers as euro by decision (src/data/pricing.ts).
+// Dollar figures are the euro figures converted at USD_RATE (src/data/pricing.ts):
+// plan prices rounded up to the next number ending in 9, everything else to the
+// nearest dollar. Yearly dollar amounts use the same formula as euro on the
+// dollar price. The site table is checked against that rule, and the page
+// against the table.
 //
 // Run after `npm run build`.
 import { readFileSync, existsSync } from 'node:fs';
@@ -72,6 +76,9 @@ const CHARS_PER_DOC = 5_000;
 
 const siteData = readFileSync('src/data/pricing.ts', 'utf8');
 const usdBillingLive = /USD_BILLING_LIVE = true/.test(siteData);
+const usdRate = +siteData.match(/USD_RATE = ([\d.]+)/)[1];
+const toUsdPlan = (eur) => (eur === 0 ? 0 : Math.ceil((eur * usdRate - 9) / 10) * 10 + 9);
+const toUsd = (eur) => Math.round(eur * usdRate);
 
 const round2 = (n) => Math.round(n * 100) / 100;
 const yearlyMonthly = (p) => round2((p * 12 * (1 - annualDiscount)) / 12);
@@ -156,6 +163,22 @@ const checks = [];
 const ck = (label, ok, detail) => checks.push({ label, ok, detail });
 const warnings = [];
 
+// The literal dollar table in src/data/pricing.ts must match the rule, and no
+// dollar figure may simply repeat its euro figure (the bug this rule replaced).
+{
+  const rows = [...siteData.matchAll(/\{ monthly: (\d+), usdMonthly: (\d+), topup: (\d+), usdTopup: (\d+), seat: (\d+), usdSeat: (\d+)/g)];
+  ck(`site table has ${LADDER_SIZE} plans`, rows.length === LADDER_SIZE, rows.length);
+  for (const r of rows) {
+    const [monthly, usdMonthly, topup, usdTopup, seat, usdSeat] = r.slice(1).map(Number);
+    ck(`site table €${monthly} -> $${toUsdPlan(monthly)}`, usdMonthly === toUsdPlan(monthly), `$${usdMonthly}`);
+    ck(`site table top-up €${topup} -> $${toUsd(topup)}`, usdTopup === toUsd(topup), `$${usdTopup}`);
+    ck(`site table seat €${seat} -> $${toUsd(seat)}`, usdSeat === toUsd(seat), `$${usdSeat}`);
+    if (monthly > 0) ck(`site table $${usdMonthly} is not just €${monthly} relabelled`, usdMonthly !== monthly && usdTopup !== topup && usdSeat !== seat, `$${usdMonthly}`);
+  }
+  const usdPack = +siteData.match(/USD_PACK_PRICE = (\d+)/)[1];
+  ck(`site table pack €${packPrice} -> $${toUsd(packPrice)}`, usdPack === toUsd(packPrice) && usdPack !== packPrice, `$${usdPack}`);
+}
+
 for (const [loc, L] of Object.entries(LOCALES)) {
   if (!existsSync(L.file)) { ck(`${loc}: ${L.file} exists`, false, 'run npm run build'); continue; }
   const raw = readFileSync(L.file, 'utf8');
@@ -165,6 +188,11 @@ for (const [loc, L] of Object.entries(LOCALES)) {
     const S = currency === 'usd' ? '$' : '€';
     const other = currency === 'usd' ? '€' : '$';
     const m = (x) => `\\${S}${n(x).replace(/\./g, '\\.')}(?![\\d.,]\\d)`;
+    const usd = currency === 'usd';
+    // Figures in this view's currency: euro straight from the API, dollars by rule.
+    const planPrice = (eur) => (usd ? toUsdPlan(eur) : eur);
+    const flat = (eur) => (usd ? toUsd(eur) : eur);
+    const floorPerCredit = usd ? round2(topupFloor * usdRate * 1000) / 1000 : topupFloor;
 
     for (const period of ['monthly', 'yearly']) {
       const tag = `${loc} ${currency} ${period}`;
@@ -174,22 +202,30 @@ for (const [loc, L] of Object.entries(LOCALES)) {
 
       for (const [name, t] of Object.entries(truth)) {
         const paid = t.price > 0;
-        const shown = yearly && paid ? yearlyMonthly(t.price) : t.price;
+        const price = planPrice(t.price);
+        const shown = yearly && paid ? yearlyMonthly(price) : price;
         ck(`${tag} ${name} price ${S}${n(shown)}`, has(m(shown)), `${S}${n(shown)}`);
         if (yearly && paid) {
-          const total = yearlyTotal(t.price);
-          ck(`${tag} ${name} billed ${S}${n(total)} a year, saving ${S}${n(t.price * 12 - total)}`,
-            has(L.billed(m(total), m(round2(t.price * 12 - total)))), `${S}${n(total)}`);
+          const total = yearlyTotal(price);
+          const saving = round2(price * 12 - total);
+          ck(`${tag} ${name} billed ${S}${n(total)} a year, saving ${S}${n(saving)}`,
+            has(L.billed(m(total), m(saving))), `${S}${n(total)}`);
         }
 
-        const per1000 = yearly && paid ? yearlyPer1000(t.topup) : round2(t.topup * 1000);
+        const topupPerCredit = flat(round2(t.topup * 1000)) / 1000;
+        const per1000 = yearly && paid
+          ? round2(Math.max(topupPerCredit * (1 - annualTopupDiscount), floorPerCredit) * 1000)
+          : round2(topupPerCredit * 1000);
         ck(`${tag} ${name} extra credits ${S}${n(per1000)} per 1,000`, has(L.per1000(m(per1000))), `${S}${n(per1000)}`);
 
         // Seats exclude the owner: ability.service.ts counts organizationMember
         // rows, and the owner has none. So includedSeats 3 is "you + 3". Extra
         // seats are billed monthly on every plan (only a monthly seat price exists).
         ck(`${tag} ${name} you + ${t.includedSeats}`, has(L.seats(t.includedSeats)), `+ ${t.includedSeats}`);
-        if (t.extraSeat > 0) ck(`${tag} ${name} extra seat ${S}${t.extraSeat}`, has(L.seatPrice(m(t.extraSeat))), `${S}${t.extraSeat}`);
+        if (t.extraSeat > 0) {
+          const seat = flat(t.extraSeat);
+          ck(`${tag} ${name} extra seat ${S}${seat}`, has(L.seatPrice(m(seat))), `${S}${seat}`);
+        }
 
         ck(`${tag} ${name} credits ${n(t.credits)}`, text.includes(n(t.credits)), n(t.credits));
         const mb = t.context / 1_000_000;
@@ -204,11 +240,11 @@ for (const [loc, L] of Object.entries(LOCALES)) {
         }
       }
 
-      ck(`${tag} Context Pack ${S}${packPrice}`, has(m(packPrice)), `${S}${packPrice}`);
+      ck(`${tag} Context Pack ${S}${flat(packPrice)}`, has(m(flat(packPrice))), `${S}${flat(packPrice)}`);
       ck(`${tag} shows no ${other} amounts`, !new RegExp(`\\${other}\\d`).test(text), (text.match(new RegExp(`.{0,30}\\${other}\\d.{0,20}`)) || [''])[0]);
       ck(`${tag} yearly note ${yearly ? 'shown' : 'hidden'}`, text.includes(L.yearlyNote) === yearly, L.yearlyNote);
       if (currency === 'usd' && !usdBillingLive) {
-        ck(`${tag} says the charge is in euro while USD_BILLING_LIVE is false`, /charged the same amount in euro/.test(text), 'usdNote');
+        ck(`${tag} says the charge is in euro while USD_BILLING_LIVE is false`, /billed in euro, at the euro price/.test(text), 'usdNote');
       }
     }
   }
