@@ -51,11 +51,6 @@ export const en = {
     ctaSecondary: 'Schedule a demo',
   },
 
-  // --- Customer logo strip ---
-  customerLogos: {
-    eyebrow: 'Teams already building on Fineguide',
-  },
-
   // --- Photography alt text ---
   photos: {
     teamOffice: 'Colleagues talking at a shared desk in an open-plan office',
