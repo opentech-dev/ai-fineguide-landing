@@ -34,8 +34,14 @@ const TOPUP_FLOOR_PER_1000 = 13;
  * The figures are written out below rather than computed, so a change to the
  * rate never moves a price by accident. scripts/verify-pricing.mjs recomputes
  * them from this rule and fails if the table and the rule disagree.
- * Yearly dollar amounts follow the product's own formula on the dollar price,
- * exactly as euro does, so they keep their cents ($1,142.40 a year).
+ *
+ * No amount on the page has cents. Yearly figures, in both currencies:
+ *   monthly price   monthly x 12 x (1 - ANNUAL_DISCOUNT) / 12, rounded up
+ *   yearly total    that monthly price x 12, so the two numbers on a card agree
+ *   extra credits   per 1,000 x (1 - ANNUAL_TOPUP_DISCOUNT), rounded up
+ * Rounding up means the page never shows less than billing charges. Euro
+ * yearly plan prices come out whole anyway (€80, €960); euro yearly extra
+ * credits show €26 and €21 where billing charges €25.50 and €20.40.
  */
 export const USD_RATE = 1.17;
 
@@ -57,17 +63,20 @@ export interface Money {
   yearlyUsd?: number;
 }
 
-const round2 = (n: number) => Math.round(n * 100) / 100;
+// Round to the cent first so float noise (80.00000000000001) cannot push a
+// whole number up to the next one, then round up to a whole number.
+const ceilWhole = (n: number) => Math.ceil(Math.round(n * 100) / 100);
 const money = (eur: number, usd: number, yearly?: { eur: number; usd: number }): Money => ({
   eur,
   usd,
   ...(yearly ? { yearlyEur: yearly.eur, yearlyUsd: yearly.usd } : {}),
 });
 
-export const yearlyTotal = (monthly: number) => round2(monthly * 12 * (1 - ANNUAL_DISCOUNT));
+export const yearlyMonthly = (monthly: number) => ceilWhole((monthly * 12 * (1 - ANNUAL_DISCOUNT)) / 12);
+export const yearlyTotal = (monthly: number) => yearlyMonthly(monthly) * 12;
 export const yearlyTopup = (per1000: number, floor = TOPUP_FLOOR_PER_1000) =>
-  Math.max(round2(per1000 * (1 - ANNUAL_TOPUP_DISCOUNT)), floor);
-const USD_TOPUP_FLOOR_PER_1000 = round2(TOPUP_FLOOR_PER_1000 * USD_RATE);
+  ceilWhole(Math.max(per1000 * (1 - ANNUAL_TOPUP_DISCOUNT), floor));
+const USD_TOPUP_FLOOR_PER_1000 = TOPUP_FLOOR_PER_1000 * USD_RATE;
 
 /** Tokens shared by the whole page: {topup1}, {seat2}, {pack} and so on. */
 export function pageTokens(): Record<string, Money> {
@@ -89,18 +98,19 @@ export function planTokens(i: number): Record<string, Money> {
   const eur = yearlyTotal(p.monthly);
   const usd = yearlyTotal(p.usdMonthly);
   return {
-    price: money(p.monthly, p.usdMonthly, p.yearly ? { eur: round2(eur / 12), usd: round2(usd / 12) } : undefined),
+    price: money(p.monthly, p.usdMonthly, p.yearly ? { eur: yearlyMonthly(p.monthly), usd: yearlyMonthly(p.usdMonthly) } : undefined),
     yearTotal: money(eur, usd),
-    yearSaving: money(round2(p.monthly * 12 - eur), round2(p.usdMonthly * 12 - usd)),
+    yearSaving: money(p.monthly * 12 - eur, p.usdMonthly * 12 - usd),
   };
 }
 
-/** "1,920" / "25.50" in English, "1.920" / "25,50" in Romanian. */
+/**
+ * "1,920" in English, "1.920" in Romanian. Whole numbers only: an amount with
+ * cents throws, so it fails the build instead of reaching the page.
+ */
 export function formatAmount(n: number, lang: string): string {
-  return n.toLocaleString(lang === 'ro' ? 'de-DE' : 'en-US', {
-    minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
-    maximumFractionDigits: 2,
-  });
+  if (!Number.isInteger(n)) throw new Error(`Price ${n} has cents; round it in src/data/pricing.ts`);
+  return n.toLocaleString(lang === 'ro' ? 'de-DE' : 'en-US', { maximumFractionDigits: 0 });
 }
 
 /** Split "Then {seat1} per person" into text and token parts. */

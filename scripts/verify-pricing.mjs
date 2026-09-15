@@ -18,9 +18,13 @@
 //
 // Dollar figures are the euro figures converted at USD_RATE (src/data/pricing.ts):
 // plan prices rounded up to the next number ending in 9, everything else to the
-// nearest dollar. Yearly dollar amounts use the same formula as euro on the
-// dollar price. The site table is checked against that rule, and the page
+// nearest dollar. The site table is checked against that rule, and the page
 // against the table.
+//
+// No amount has cents. Yearly figures in both currencies: the monthly price is
+// monthly x 12 x (1 - ANNUAL_DISCOUNT) / 12 rounded up, the yearly total is that
+// x 12, and yearly extra credits per 1,000 are rounded up. Every view is also
+// scanned for any amount with decimals.
 //
 // Run after `npm run build`.
 import { readFileSync, existsSync } from 'node:fs';
@@ -81,9 +85,9 @@ const toUsdPlan = (eur) => (eur === 0 ? 0 : Math.ceil((eur * usdRate - 9) / 10) 
 const toUsd = (eur) => Math.round(eur * usdRate);
 
 const round2 = (n) => Math.round(n * 100) / 100;
-const yearlyMonthly = (p) => round2((p * 12 * (1 - annualDiscount)) / 12);
-const yearlyTotal = (p) => round2(p * 12 * (1 - annualDiscount));
-const yearlyPer1000 = (perCredit) => round2(Math.max(perCredit * (1 - annualTopupDiscount), topupFloor) * 1000);
+const ceilWhole = (n) => Math.ceil(round2(n));
+const yearlyMonthly = (p) => ceilWhole((p * 12 * (1 - annualDiscount)) / 12);
+const yearlyTotal = (p) => yearlyMonthly(p) * 12;
 
 const LOCALES = {
   en: {
@@ -182,7 +186,7 @@ const warnings = [];
 for (const [loc, L] of Object.entries(LOCALES)) {
   if (!existsSync(L.file)) { ck(`${loc}: ${L.file} exists`, false, 'run npm run build'); continue; }
   const raw = readFileSync(L.file, 'utf8');
-  const n = (x) => x.toLocaleString(L.fmt, { minimumFractionDigits: Number.isInteger(x) ? 0 : 2, maximumFractionDigits: 2 });
+  const n = (x) => x.toLocaleString(L.fmt, { maximumFractionDigits: 2 });
 
   for (const currency of L.currencies) {
     const S = currency === 'usd' ? '$' : '€';
@@ -214,7 +218,7 @@ for (const [loc, L] of Object.entries(LOCALES)) {
 
         const topupPerCredit = flat(round2(t.topup * 1000)) / 1000;
         const per1000 = yearly && paid
-          ? round2(Math.max(topupPerCredit * (1 - annualTopupDiscount), floorPerCredit) * 1000)
+          ? ceilWhole(Math.max(topupPerCredit * (1 - annualTopupDiscount), floorPerCredit) * 1000)
           : round2(topupPerCredit * 1000);
         ck(`${tag} ${name} extra credits ${S}${n(per1000)} per 1,000`, has(L.per1000(m(per1000))), `${S}${n(per1000)}`);
 
@@ -241,6 +245,10 @@ for (const [loc, L] of Object.entries(LOCALES)) {
       }
 
       ck(`${tag} Context Pack ${S}${flat(packPrice)}`, has(m(flat(packPrice))), `${S}${flat(packPrice)}`);
+      // A decimal separator followed by exactly two digits is cents; "1,000" and
+      // "1.000" are thousands and have three.
+      const cents = text.match(/[€$]\d[\d.,]*[.,]\d{2}(?!\d)/);
+      ck(`${tag} shows no amount with cents`, !cents, cents ? cents[0] : '');
       ck(`${tag} shows no ${other} amounts`, !new RegExp(`\\${other}\\d`).test(text), (text.match(new RegExp(`.{0,30}\\${other}\\d.{0,20}`)) || [''])[0]);
       ck(`${tag} yearly note ${yearly ? 'shown' : 'hidden'}`, text.includes(L.yearlyNote) === yearly, L.yearlyNote);
       if (currency === 'usd' && !usdBillingLive) {
