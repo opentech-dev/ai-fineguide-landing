@@ -1,6 +1,9 @@
 ---
+import Price from './Price.astro';
+import PriceText from './PriceText.astro';
 import type { Translations } from '../i18n/utils';
-const { t } = Astro.props as { t: Translations };
+import { USD_BILLING_LIVE, pageTokens, planTokens } from '../data/pricing';
+const { t, lang } = Astro.props as { t: Translations; lang: string };
 
 // Every card has the same eight rows in the same order, and the cards share
 // one row grid (grid-rows-subgrid), so "Team" on Starter sits level with
@@ -10,73 +13,159 @@ const { t } = Astro.props as { t: Translations };
 // The cards used to end in six identical module chips, the same on every plan,
 // with Starter listing "All AI modules included" as if that set it apart.
 // Nothing in the product differs by plan except what these rows show, so the
-// rows are all there is. Figures live in the i18n files (locale-formatted) and
-// scripts/verify-pricing.mjs checks them against the API's NEW_LADDER_2026.
+// rows are all there is. Money comes from src/data/pricing.ts (the i18n
+// strings carry {tokens}) and scripts/verify-pricing.mjs checks the rendered
+// page against the API.
+//
+// Monthly / yearly and euro / dollar: every price is in the HTML in all its
+// forms, and the switch below only flips data attributes on <html>. The
+// dollar switch is English only; the Romanian page is in euro.
 const p = t.pricingPlans;
-const cards = p.plans.map((plan) => ({
+const allowUsd = lang === 'en';
+const tokens = pageTokens();
+const cards = p.plans.map((plan, i) => ({
   plan,
+  free: i === 0,
+  popular: i === 2,
+  own: { ...tokens, ...planTokens(i) },
   rows: [
-    { label: p.labels.credits, value: plan.credits, note: plan.creditsNote },
-    { label: p.labels.team, value: plan.team, note: plan.teamNote },
-    { label: p.labels.knowledge, value: plan.knowledge, note: plan.knowledgeNote },
-    { label: p.labels.extraCredits, value: plan.extraCredits, note: '' },
-    { label: p.labels.support, value: plan.support, note: '' },
+    { label: p.labels.credits, value: plan.credits, note: plan.creditsNote, yearlyNote: '' },
+    { label: p.labels.team, value: plan.team, note: plan.teamNote, yearlyNote: '' },
+    { label: p.labels.knowledge, value: plan.knowledge, note: plan.knowledgeNote, yearlyNote: '' },
+    { label: p.labels.extraCredits, value: plan.extraCredits, note: '', yearlyNote: i === 0 ? '' : p.yearlyTopupNote },
+    { label: p.labels.support, value: plan.support, note: '', yearlyNote: '' },
   ],
 }));
+const pill =
+  'rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)] aria-pressed:bg-[var(--color-primary)] aria-pressed:text-white';
 ---
 
 <section class="pb-20 md:pb-28 px-6">
   <div class="max-w-7xl mx-auto">
+    <div class="mb-10 flex flex-wrap items-center gap-4">
+      <div role="group" aria-label={p.periodLabel} class="inline-flex rounded-full border border-[var(--color-border)] bg-white p-1">
+        <button type="button" class={pill} data-set-period="monthly" aria-pressed="true">{p.monthly}</button>
+        <button type="button" class={pill} data-set-period="yearly" aria-pressed="false">
+          {p.yearly} <span class="ml-1 font-medium opacity-80">({p.yearlySave})</span>
+        </button>
+      </div>
+      {allowUsd && (
+        <div role="group" aria-label={p.currencyLabel} class="inline-flex rounded-full border border-[var(--color-border)] bg-white p-1">
+          <button type="button" class={pill} data-set-currency="eur" aria-pressed="true">€ EUR</button>
+          <button type="button" class={pill} data-set-currency="usd" aria-pressed="false">$ USD</button>
+        </div>
+      )}
+    </div>
+
+    {/* Runs while the page is still parsing, before the cards below exist, so a
+        returning visitor's choice (or a US visitor's dollars) is applied without
+        the prices flashing. fg-country is set by the server from Cloudflare's
+        CF-IPCountry header (see Dockerfile). */}
+    <script is:inline define:vars={{ allowUsd }}>
+      (function () {
+        var root = document.documentElement;
+        function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+        function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+        var period = read('fg-period') === 'yearly' ? 'yearly' : 'monthly';
+        var currency = 'eur';
+        if (allowUsd) {
+          var chosen = read('fg-cur');
+          if (chosen === 'usd' || chosen === 'eur') currency = chosen;
+          else if (/(?:^|;\s*)fg-country=US(?:;|$)/i.test(document.cookie)) currency = 'usd';
+        }
+        function apply() {
+          root.setAttribute('data-period', period);
+          root.setAttribute('data-currency', currency);
+          document.querySelectorAll('[data-set-period]').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute('data-set-period') === period));
+          });
+          document.querySelectorAll('[data-set-currency]').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute('data-set-currency') === currency));
+          });
+        }
+        apply();
+        document.addEventListener('click', function (e) {
+          var b = e.target.closest && e.target.closest('[data-set-period],[data-set-currency]');
+          if (!b) return;
+          if (b.hasAttribute('data-set-period')) { period = b.getAttribute('data-set-period'); save('fg-period', period); }
+          else { currency = b.getAttribute('data-set-currency'); save('fg-cur', currency); }
+          apply();
+        });
+      })();
+    </script>
+
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6">
-      {cards.map(({ plan, rows }, i) => {
-        const popular = i === 2;
-        const free = i === 0;
-        return (
-          <div
-            class={`relative grid grid-rows-subgrid row-span-8 mb-6 lg:mb-0 rounded-2xl border bg-white px-6 ${
-              popular ? 'border-[var(--color-primary)] shadow-md' : 'border-[var(--color-border)] shadow-sm'
-            }`}
-          >
-            {popular && (
-              <p class="absolute -top-3 left-6 rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
-                {p.mostPopular}
-              </p>
-            )}
+      {cards.map(({ plan, rows, free, popular, own }) => (
+        <div
+          class={`relative grid grid-rows-subgrid row-span-8 mb-6 lg:mb-0 rounded-2xl border bg-white px-6 ${
+            popular ? 'border-[var(--color-primary)] shadow-md' : 'border-[var(--color-border)] shadow-sm'
+          }`}
+        >
+          {popular && (
+            <p class="absolute -top-3 left-6 rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
+              {p.mostPopular}
+            </p>
+          )}
 
-            <div class="pt-8">
-              <h3 class="text-2xl font-semibold text-[var(--color-foreground)]">{plan.name}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{plan.desc}</p>
-            </div>
+          <div class="pt-8">
+            <h3 class="text-2xl font-semibold text-[var(--color-foreground)]">{plan.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{plan.desc}</p>
+          </div>
 
-            <p class="flex items-baseline gap-1 pt-6 pb-6">
-              <span class="text-4xl font-semibold tracking-tight text-[var(--color-foreground)] tnum">{plan.price}</span>
+          <div class="pt-6 pb-6">
+            <p class="flex items-baseline gap-1">
+              <span class="text-4xl font-semibold tracking-tight text-[var(--color-foreground)] tnum">
+                <Price money={own.price} lang={lang} />
+              </span>
               <span class="text-sm text-[var(--color-muted)]">{free ? p.freeLabel : p.perMonth}</span>
             </p>
-
-            {rows.map((row) => (
-              <div class="border-t border-[var(--color-border)] py-4">
-                <p class="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">{row.label}</p>
-                <p class="mt-1 font-semibold text-[var(--color-foreground)] tnum">{row.value}</p>
-                {row.note && <p class="mt-0.5 text-sm leading-snug text-[var(--color-muted)]">{row.note}</p>}
-              </div>
-            ))}
-
-            <div class="self-end pt-2 pb-8">
-              <a
-                href="https://app.fineguide.ai/register"
-                class={`flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all ${
-                  popular
-                    ? 'border border-transparent bg-[var(--color-primary)] text-white hover:opacity-90'
-                    : 'border border-[var(--color-border)] bg-white text-[var(--color-foreground)] hover:border-[#d1d5e0]'
-                }`}
-              >
-                {free ? p.ctaFree : p.ctaPaid}
-              </a>
-            </div>
+            {/* Two lines reserved: the yearly bill wraps, and the rows below must not jump when the switch flips. */}
+            <p class="mt-1.5 min-h-[2lh] text-sm leading-snug text-[var(--color-muted)] tnum">
+              {free ? (
+                p.freeBilling
+              ) : (
+                <>
+                  <span class="only-monthly">{p.billedMonthly}</span>
+                  <span class="only-yearly"><PriceText text={p.billedYearly} tokens={own} lang={lang} /></span>
+                </>
+              )}
+            </p>
           </div>
-        );
-      })}
+
+          {rows.map((row) => (
+            <div class="border-t border-[var(--color-border)] py-4">
+              <p class="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">{row.label}</p>
+              <p class="mt-1 font-semibold text-[var(--color-foreground)] tnum">
+                <PriceText text={row.value} tokens={own} lang={lang} />
+              </p>
+              {row.note && (
+                <p class="mt-0.5 text-sm leading-snug text-[var(--color-muted)]">
+                  <PriceText text={row.note} tokens={own} lang={lang} />
+                </p>
+              )}
+              {row.yearlyNote && <p class="only-yearly mt-0.5 text-sm leading-snug text-emerald-700">{row.yearlyNote}</p>}
+            </div>
+          ))}
+
+          <div class="self-end pt-2 pb-8">
+            <a
+              href="https://app.fineguide.ai/register"
+              class={`flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all ${
+                popular
+                  ? 'border border-transparent bg-[var(--color-primary)] text-white hover:opacity-90'
+                  : 'border border-[var(--color-border)] bg-white text-[var(--color-foreground)] hover:border-[#d1d5e0]'
+              }`}
+            >
+              {free ? p.ctaFree : p.ctaPaid}
+            </a>
+          </div>
+        </div>
+      ))}
     </div>
-    <p class="mt-8 text-sm text-[var(--color-muted)]">{p.footnote}</p>
+    <div class="mt-8 space-y-1 text-sm text-[var(--color-muted)]">
+      <p class="only-yearly">{p.yearlyNote}</p>
+      <p>{p.footnote}</p>
+      {allowUsd && !USD_BILLING_LIVE && <p class="only-usd font-medium text-[var(--color-foreground)]">{p.usdNote}</p>}
+    </div>
   </div>
 </section>

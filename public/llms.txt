@@ -29,7 +29,9 @@ The platform is organized into modules that share one customer record:
 
 ## Pricing
 
-Every plan runs on credits. AI replies and voice minutes use credits; the CRM, Inbox, Messages, workflows, reports and integrations never do. One subscription per organization, prices per month in euro. There is a Free plan (no card needed) and no time-limited trial. No setup fees; cancel anytime.
+Every plan runs on credits. AI replies and voice minutes use credits; the CRM, Inbox, Messages, workflows, reports and integrations never do. One subscription per organization, prices in euro. There is a Free plan (no card needed) and no time-limited trial. No setup fees; cancel anytime.
+
+**Monthly or yearly:** paid plans can be billed monthly or once a year. Yearly costs 20% less: Starter €960 a year (€80 a month), Business €1,920 (€160), Premium €4,800 (€400). Credits still arrive every month, extra credits are 15% cheaper (€34, €25.50 and €20.40 per 1,000), and extra seats are billed monthly. Monthly or yearly is chosen when subscribing; switching later means cancelling and subscribing again. Free has no yearly option.
 
 **What a credit buys:** 1 credit = one standard AI reply. Call scoring (Voice QA) = 12 credits a minute. AI phone calls (Voice AI) = 10 credits a minute, or 30 with ElevenLabs voice agents.
 
@@ -52,6 +54,7 @@ Every plan runs on credits. AI replies and voice minutes use credits; the CRM, I
 ## Pricing FAQ
 
 - **Do unused credits carry over?** No. Paid plans refresh credits on each billing date; unused credits do not carry over. Free's 200 credits are given once.
+- **Which currency am I charged in?** Euro. The English pricing page can show prices in US dollars (same numbers, shown to US visitors by default); the card is still charged in euro for now.
 - **What happens to credits I buy?** They have no expiry date but belong to your current plan. If you change plan or cancel, unused bought credits do not move with you.
 - **Can I change plan?** Yes. Free to paid starts straight away. Changes between paid plans, up or down, take effect on your next billing date.
 - **How do I cancel?** From billing settings. The plan runs to the end of the paid month, then the account moves to Free.

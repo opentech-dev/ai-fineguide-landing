@@ -1,7 +1,9 @@
 ---
 import Band from './Band.astro';
+import PriceText from './PriceText.astro';
+import { pageTokens } from '../data/pricing';
 import type { Translations } from '../i18n/utils';
-const { t } = Astro.props as { t: Translations };
+const { t, lang } = Astro.props as { t: Translations; lang: string };
 
 // Every figure here comes from the API's own config, same as PricingPlans:
 //   seats    NEW_LADDER_2026[].extraSeatPrice        20 / 18 / 15
@@ -10,6 +12,7 @@ const { t } = Astro.props as { t: Translations };
 // Top-ups and Context Packs have no plan check, so both are sold on Free too.
 // scripts/verify-pricing.mjs asserts the figures against those files.
 const a = t.pricingAddons;
+const tokens = pageTokens();
 ---
 
 <Band tone="tint" eyebrow={a.eyebrow} heading={a.heading} body={a.subtitle}>
@@ -22,7 +25,7 @@ const a = t.pricingAddons;
           {item.rates.map((rate) => (
             <div class="flex items-center justify-between gap-4 border-t border-[var(--color-border)] pt-2">
               <dt class="text-sm text-[var(--color-muted)]">{rate.label}</dt>
-              <dd class="text-sm font-semibold text-[var(--color-foreground)] tnum whitespace-nowrap">{rate.value}</dd>
+              <dd class="text-sm font-semibold text-[var(--color-foreground)] tnum whitespace-nowrap"><PriceText text={rate.value} tokens={tokens} lang={lang} /></dd>
             </div>
           ))}
         </dl>
