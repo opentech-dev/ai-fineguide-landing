@@ -8,7 +8,7 @@ export const ro: Translations = {
     assistants: 'Asistenți AI',
     crm: 'CRM',
     voiceQa: 'Voice QA',
-    voiceAi: 'Voice AI',
+    voiceAi: 'Telefonie AI',
     workspace: 'Workspace',
     // Secțiuni pe pagina principală, nu pagini separate. Legate din footer ca
     // modulele din spatele lor să fie accesibile altfel decât prin derulare.
@@ -139,7 +139,7 @@ export const ro: Translations = {
     eyebrow: 'Voice',
     title: 'Fiecare apel, evaluat și structurat.',
     body:
-      'Voice QA evaluează apelurile automat, pe departamente, după regulile tale și în limbile pe care le vorbește echipa ta. Voice AI îi pune la telefon pe aceiași asistenți care îți gestionează chatul.',
+      'Voice QA evaluează apelurile automat, pe departamente, după regulile tale și în limbile pe care le vorbește echipa ta. Cu Telefonia AI, aceiași asistenți care îți gestionează chatul răspund și la telefon.',
     features: [
       'Transcriere și evaluare automată pe fiecare apel',
       'Criterii de evaluare și ponderi pentru fiecare departament',
@@ -664,12 +664,12 @@ export const ro: Translations = {
     },
   },
 
-  // --- Voice AI page ---
+  // --- Telefonie AI page ---
   voiceAiPage: {
     // Aceleași afirmații ca în en.ts, verificate în cod; lista a ce produsul NU
     // face este impusă de scripts/verify-claims.mjs.
     meta: {
-      title: 'Voice AI: agenți AI care răspund la telefon | Fineguide',
+      title: 'Telefonie AI: agenți AI care răspund la telefon | Fineguide',
       description:
         'Agenți AI pe numerele tale, prin SIP. Recunosc apelanții din CRM, fac legătura cu echipa la cerere și sună liste întregi. Plătești doar minutele convorbite.',
     },
@@ -682,7 +682,7 @@ export const ro: Translations = {
       ctaSecondary: 'Programează un demo',
     },
     intro: {
-      eyebrow: 'Voice AI',
+      eyebrow: 'Telefonie AI',
       screenshotAlt: 'O operatoare de call center cu căști, în mijlocul unei convorbiri',
     },
     inbound: {
@@ -780,7 +780,7 @@ export const ro: Translations = {
     },
     finalCta: {
       heading: 'Ascultă-l chiar pe telefonul tău.',
-      body: 'Conectează un număr, alege o voce și sună-l chiar tu. Sau vezi Voice AI, campaniile și restul platformei într-un singur demo.',
+      body: 'Conectează un număr, alege o voce și sună-l chiar tu. Sau vezi Telefonia AI, campaniile și restul platformei într-un singur demo.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1107,7 +1107,7 @@ export const ro: Translations = {
     items: [
       { value: '1 credit', term: 'Un răspuns AI', desc: 'Un răspuns obișnuit al unui asistent, pe orice canal.' },
       { value: '12 credite', term: 'Un minut de evaluare a apelurilor', desc: 'Voice QA transcrie apelul și îl evaluează după criteriile tale.' },
-      { value: '10 credite', term: 'Un minut de apel telefonic AI', desc: 'Voice AI răspunde sau sună. 30 pe minut cu agenții vocali ElevenLabs.' },
+      { value: '10 credite', term: 'Un minut de apel telefonic AI', desc: 'Telefonia AI răspunde sau sună. 30 pe minut cu agenții vocali ElevenLabs.' },
       { value: '0 credite', term: 'Tot restul', desc: 'CRM, Inbox, Mesaje, workflow-uri și rapoarte.' },
     ],
   },
@@ -1464,7 +1464,7 @@ export const ro: Translations = {
     expectHeading: 'Ce include demo-ul',
     expectSubtext: 'Specialiștii noștri vor prezenta platforma într-o sesiune adaptată nevoilor tale.',
     expectCards: [
-      { title: 'Prezentare a platformei', text: 'Parcurgem asistenții AI, CRM-ul, workspace-ul, Voice QA, Voice AI și automatizările n8n, ca un tot unitar.', duration: '~15 minute' },
+      { title: 'Prezentare a platformei', text: 'Parcurgem asistenții AI, CRM-ul, workspace-ul, Voice QA, Telefonia AI și automatizările n8n, ca un tot unitar.', duration: '~15 minute' },
       { title: 'Exemple din domeniul tău', text: 'Cazuri reale, adaptate domeniului și modelului tău de afaceri.', duration: '~10 minute' },
       { title: 'Întrebări și răspunsuri', text: 'Întreabă despre implementare, prețuri, integrări și cum se potrivește Fineguide în workflow-ul tău.', duration: '~5 minute' },
     ],

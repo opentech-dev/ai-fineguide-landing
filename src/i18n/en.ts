@@ -6,7 +6,7 @@ export const en = {
     assistants: 'AI Assistants',
     crm: 'CRM',
     voiceQa: 'Voice QA',
-    voiceAi: 'Voice AI',
+    voiceAi: 'AI Telephony',
     workspace: 'Workspace',
     // Sections on the homepage, not pages of their own. Linked from the footer
     // so the modules behind them are reachable by something other than scrolling.
@@ -137,7 +137,7 @@ export const en = {
     eyebrow: 'Voice',
     title: 'Every call, scored and structured.',
     body:
-      "Voice QA evaluates calls automatically, across departments, against your rules, in the languages your team speaks. Voice AI puts the same assistants that handle chat on the other end of the phone.",
+      "Voice QA evaluates calls automatically, across departments, against your rules, in the languages your team speaks. AI Telephony puts the same assistants that handle chat on the other end of the phone.",
     features: [
       'Automatic transcription and scoring on every call',
       'Per-department evaluation criteria and weights',
@@ -491,7 +491,7 @@ export const en = {
     },
   },
 
-  // --- Voice AI page (custom layout) ---
+  // --- AI Telephony page (custom layout) ---
   voiceAiPage: {
     // Every claim below was checked against the voice bridge
     // (ai-gptcrawler/voice_ai_go) and the API before it went in. The list of
@@ -499,7 +499,7 @@ export const en = {
     // call summaries, warm or outbound transfer, routing to teams, click-to-call,
     // voice cloning) is enforced in scripts/verify-claims.mjs.
     meta: {
-      title: 'Voice AI: AI Agents That Answer Your Phone | Fineguide',
+      title: 'AI Telephony: AI Agents That Answer Your Phone | Fineguide',
       description:
         'AI agents on your own numbers over SIP. They recognise callers from the CRM, transfer to your team on request, and call whole lists. Billed per answered minute.',
     },
@@ -512,7 +512,7 @@ export const en = {
       ctaSecondary: 'Schedule a demo',
     },
     intro: {
-      eyebrow: 'Voice AI',
+      eyebrow: 'AI Telephony',
       screenshotAlt: 'A call-centre agent on a headset, mid-conversation with a caller',
     },
     inbound: {
@@ -610,7 +610,7 @@ export const en = {
     },
     finalCta: {
       heading: 'Hear it on your own phone.',
-      body: 'Connect a number, pick a voice, and call it yourself. Or see Voice AI, Campaigns and the rest of the platform in one demo.',
+      body: 'Connect a number, pick a voice, and call it yourself. Or see AI Telephony, Campaigns and the rest of the platform in one demo.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -1133,7 +1133,7 @@ export const en = {
     items: [
       { value: '1 credit', term: 'AI reply', desc: 'A standard reply from an assistant, in any channel.' },
       { value: '12 credits', term: 'A minute of call scoring', desc: 'Voice QA transcribes a call and scores it against your criteria.' },
-      { value: '10 credits', term: 'A minute of AI phone call', desc: 'Voice AI answering or making a call. 30 a minute with ElevenLabs voice agents.' },
+      { value: '10 credits', term: 'A minute of AI phone call', desc: 'AI Telephony answering or making a call. 30 a minute with ElevenLabs voice agents.' },
       { value: '0 credits', term: 'Everything else', desc: 'CRM, Inbox, Messages, workflows and reports.' },
     ],
   },
@@ -1284,7 +1284,7 @@ export const en = {
 
   // Message cost: computeMessageCreditUnit in the API's credit-unit.ts,
   // max(1, round(1 + toolCalls / 3)). Attachments are stored, not charged.
-  // Voice AI: billed from answer, rounded up to the second, 60 s minimum.
+  // AI Telephony: billed from answer, rounded up to the second, 60 s minimum.
   pricingCredits: {
     eyebrow: 'The details',
     heading: 'How credits are counted',
@@ -1504,7 +1504,7 @@ export const en = {
     expectHeading: 'What to expect at your demo',
     expectSubtext: 'Our specialists will present the platform in a session tailored to your needs.',
     expectCards: [
-      { title: 'Platform overview', text: 'Walkthrough of AI assistants, CRM, workspace, Voice QA, Voice AI, and n8n automations in one connected story.', duration: '~15 minutes' },
+      { title: 'Platform overview', text: 'Walkthrough of AI assistants, CRM, workspace, Voice QA, AI Telephony, and n8n automations in one connected story.', duration: '~15 minutes' },
       { title: 'Industry-specific examples', text: 'Real use cases tailored to your industry and business model.', duration: '~10 minutes' },
       { title: 'Q&A session', text: 'Ask about implementation, pricing, integrations and how Fineguide fits your workflow.', duration: '~5 minutes' },
     ],
