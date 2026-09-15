@@ -3,7 +3,9 @@ import type { Translations } from '../i18n/utils';
 const { t } = Astro.props as { t: Translations };
 
 /* Real customers, from public/images/companies/. These files were already in
-   the repo but were not rendered anywhere on the site. */
+   the repo but were not rendered anywhere on the site.
+   Several are white on transparent, which vanished on the light background.
+   brightness-0 renders every mark as one dark silhouette, so they read the same. */
 const customers = [
   { name: 'STMD', file: 'STMD-logo.webp' },
   { name: 'Cadastru', file: 'cadastru.png' },
@@ -27,7 +29,7 @@ const customers = [
           <img
             src={`/images/companies/${c.file}`}
             alt={c.name}
-            class="h-7 md:h-8 w-auto object-contain opacity-55 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0"
+            class="h-7 md:h-8 w-auto object-contain brightness-0 opacity-45 transition duration-200 hover:opacity-80"
             loading="lazy"
             decoding="async"
           />

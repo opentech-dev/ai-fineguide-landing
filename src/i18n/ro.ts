@@ -476,7 +476,7 @@ export const ro: Translations = {
         'Un client care îți scrie pe WhatsApp luni și sună marți este același client. Fineguide îl identifică pe numere de telefon, nicknames de pe canale și email-uri, și atașează fiecare conversație, lead și ticket la aceeași fișă, astfel încât contextul să nu se reseteze niciodată.',
       bullets: [
         'Fuzionare de identitate pe numere de telefon, email-uri și nicknames de pe canale',
-        'Câmpuri custom (`props`) populate de asistenți în timpul conversației',
+        'Câmpuri custom completate de asistenți în timpul conversației',
         'Istoric complet de interacțiuni (chat-uri, apeluri, tickete, task-uri) într-un singur timeline',
         'Segmentare la nivel de organizație pe care automatizările și export-urile se pot baza',
       ],
@@ -693,7 +693,7 @@ export const ro: Translations = {
       eyebrow: 'Capabilități',
       heading: 'Un strat de voce complet, end-to-end.',
       body:
-        'Voice AI se sprijină pe asistenții și CRM-ul pe care le ai deja, astfel încât telefonul să ruleze pe aceeași configurare și aceeași fișă a clientului ca orice alt canal.',
+        'Voice AI se sprijină pe asistenții și CRM-ul pe care le ai deja, astfel încât telefonul să ruleze pe aceeași configurare ca orice alt canal, iar apelanții sunt recunoscuți din același CRM.',
       blocks: [
         {
           title: 'Automatizare inbound',
@@ -772,7 +772,7 @@ export const ro: Translations = {
       eyebrow: 'Optsprezece acțiuni',
       heading: 'Ce poate face efectiv un workflow astăzi.',
       body:
-        'Fiecare acțiune listată aici are un runtime și se execută. Constructorul oferă câteva blocuri aflate încă în lucru, iar acelea sunt marcate în produs, nu vândute aici.',
+        'Fiecare acțiune listată aici funcționează azi. Constructorul arată și câteva blocuri aflate încă în lucru; produsul le marchează, iar aici nu le vindem.',
       items: [
         {
           term: 'Citește și extrage',
@@ -784,7 +784,7 @@ export const ro: Translations = {
         },
         {
           term: 'Buclează',
-          desc: 'Parcurge o listă și rulează aceiași pași pentru fiecare element. Motorul ține câte un cadru per iterație, așa că buclele se imbrică corect, nu se aplatizează.',
+          desc: 'Parcurge o listă și rulează aceiași pași pentru fiecare element. Buclele pot sta una în alta, iar fiecare își ține evidența propriului element.',
         },
         {
           term: 'Caută',
@@ -834,8 +834,8 @@ export const ro: Translations = {
         'Nouă canale de chat și emailul tău într-o singură coadă, cu rutare, departamente și o predare care îi dă omului toată conversația.',
     },
     hero: {
-      title: 'Fiecare conversație ajunge',
-      titleAccent: ' undeva unde un om poate prelua.',
+      title: 'Fiecare conversație.',
+      titleAccent: ' Un singur inbox.',
       subtitle:
         'Asistentul rezolvă ce poate. În momentul în care nu mai poate, un coleg are deja conversația, fișa clientului și istoricul în față.',
       ctaPrimary: 'Începe acum',
@@ -907,12 +907,12 @@ export const ro: Translations = {
         'Regulile de rutare decid cărei căsuțe îi aparține un mesaj și cine îl preia',
         'Semnături per căsuță, ca răspunsurile să pară trimise de persoana care le trimite',
         'Rapoarte per căsuță, alături de rapoartele de chat, nu într-o unealtă separată',
-        'Conversațiile se atașează aceleiași fișe de client ca fiecare chat și apel',
+        'Conversațiile se atașează fișei clientului din CRM',
       ],
     },
     safety: {
       eyebrow: 'AI pe email, în siguranță',
-      heading: 'Trei limite care vin deja pornite.',
+      heading: 'Trei protecții pe care nu trebuie să le cauți.',
       body:
         'Momentul în care lași AI-ul să răspundă la email este cel în care majoritatea echipelor devin nervoase, pe bună dreptate. Acestea sunt valori implicite, nu setări pe care trebuie să le descoperi.',
       items: [
@@ -926,7 +926,7 @@ export const ro: Translations = {
         },
         {
           term: 'O limită fermă per conversație',
-          desc: 'După un număr stabilit de răspunsuri AI într-o conversație, se oprește și predă unui om — schema numește asta asigurare împotriva buclelor, și exact asta este.',
+          desc: 'După un număr stabilit de răspunsuri AI într-o conversație, se oprește și predă unui om, ca două sisteme automate să nu-și poată răspunde la nesfârșit.',
         },
       ],
     },
@@ -950,7 +950,7 @@ export const ro: Translations = {
       title: 'Apeluri outbound',
       titleAccent: ' care se desfășoară singure.',
       subtitle:
-        'Îndreaptă o campanie către o listă și asistenții o sună — pe rând, în ritmul tău, cu fiecare rezultat scris înapoi în fișa clientului.',
+        'Îndreaptă o campanie către o listă și asistenții o sună — pe rând, în ritmul tău, cu rezultatul urmărit pentru fiecare contact.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1015,7 +1015,7 @@ export const ro: Translations = {
         'Conectează operatorul sau centrala ta printr-un cont SIP standard',
         'Alocă fiecare număr inbound asistentului care trebuie să răspundă',
         'La apelurile inbound, transferă apelantul către echipa ta sau preia o cerere de revenire ca sarcină în CRM',
-        'Fiecare apel se atașează aceleiași fișe de client ca și chat-urile și emailurile',
+        'Fiecare apel rămâne ca transcriere alături de conversațiile de chat',
         'Taxare pe minut răspuns, cu un minim de un minut',
       ],
     },
