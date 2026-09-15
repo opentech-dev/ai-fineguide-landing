@@ -67,3 +67,49 @@ From `docs/platform-vs-website-audit.md`:
   decisions that need a person: the mobile app (placeholder bundle id), and deck
   features with no code behind them (product catalogue, brand monitoring,
   social publishing).
+
+## Privacy law 195/2024
+
+Moldova's Law No. 195/2024 on personal data protection has applied since
+23 August 2026. On 15 September 2026 the live site (`main`) got, and this branch
+merged in:
+
+- A rewritten privacy policy, in English and in full Romanian
+  (`src/components/legal/PrivacyPolicy.astro`), naming the operator, the legal
+  basis and retention per activity, the vendors, transfers, rights (answer
+  within one month), and the CNPDCP as the place to complain.
+- A cookie choice box (`src/components/CookieConsent.astro`). Google Ads and
+  the Meta Pixel load only after "Accept"; the footer "Cookie settings" button
+  reopens it. The choice lives in the visitor's browser for 12 months.
+- A one-line privacy notice under both contact forms, and Calendly's own
+  consent banner switched back on for the demo pages.
+- "GDPR compliance" removed from `public/llms.txt`.
+
+The law text on legis.md blocked automated access, so the policy was written
+from the regulator's site and law-firm summaries.
+
+### Needs a person
+
+1. **Legal read of both policy texts**, especially the age of 14 for consent,
+   the rule that EU/EEA transfers need no authorisation, and whether standard
+   contractual clauses (or equivalent terms) really exist with each vendor
+   outside the EU: AWS, Cloudflare, OpenAI, Anthropic, Google, ElevenLabs,
+   Stripe, Calendly, Meta.
+2. **Retention periods** for contact tickets, chat logs and server logs. The
+   policy gives criteria, not numbers, until these are set.
+3. **Company legal form and IDNO**, if they should appear under "Who we are".
+4. **Chat widget.** It stores data in the browser as soon as the page loads and
+   is not behind the cookie choice (treated as a feature the visitor uses).
+   Confirm or gate it.
+5. **Consent records.** Choices are kept only in the browser. Decide whether a
+   server-side log is wanted.
+6. **Terms of service** still say "by using our website you consent" and
+   describe cookies loosely. Not changed.
+7. **Security, found on the way:** plain-text WordPress database passwords are
+   committed in `build.config` and `blog/wp-config.php`; the MaxMind GeoIP
+   database is downloaded from a third-party mirror.
+8. **WordPress blog:** check whether comments or Akismet are switched on; the
+   policy mentions comments in case they are.
+9. **Contact page phone link** dials `+37360419281` but shows `+373 78 005 287`.
+10. **Google Fonts** are loaded from Google; self-hosting them would remove one
+    transfer.

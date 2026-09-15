@@ -17,7 +17,7 @@ The platform is organized into modules that share one customer record:
 - **AI-native from the ground up**, not a chatbot bolted onto legacy software. The same configurable assistants run across chat channels and (rolling out) live phone calls.
 - **Channel-agnostic identity.** A customer's record and conversation history persist across web, messaging apps, and voice, so sales, support, customer success, and call-center teams all see the same context.
 - **Automation depth via embedded n8n** (hosted or bring-your-own), with webhooks on conversations, leads, and tickets and hundreds of pre-built integrations.
-- **Enterprise-ready:** on-premise deployment on your own infrastructure, platform adaptation, SLAs, GDPR compliance, and consultancy.
+- **Enterprise-ready:** on-premise deployment on your own infrastructure, platform adaptation, SLAs and consultancy.
 - **Pricing that scales with use**: plans differ by credits, team seats and knowledge base space, and CRM, Inbox, Messages and workflows never use credits.
 
 ## Who it's for
@@ -82,6 +82,6 @@ Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCR
 
 - [Documentation](https://app.fineguide.ai/docs): Product documentation for active users, admins, and developers.
 - [Blog](https://fineguide.ai/blog/): Articles and updates.
-- [Privacy Policy](https://fineguide.ai/privacy-policy)
+- [Privacy Policy](https://fineguide.ai/privacy-policy): personal data is handled under Moldova's Law No. 195/2024 on personal data protection, and the GDPR where it applies. Advertising cookies load only with consent.
 - [Terms of Service](https://fineguide.ai/terms-of-service)
 - [Romanian site](https://fineguide.ai/ro/): Romanian-language version of the platform pages.

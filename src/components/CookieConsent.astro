@@ -1,0 +1,127 @@
+---
+// Cookie consent for the two advertising tags, as Law 195/2024 and Law
+// 284/2004 require: Google Ads and the Meta Pixel load only after the visitor
+// accepts. Everything else the site stores (language, pricing view, the chat
+// widget) is needed to run the page and is listed in the privacy policy.
+// Self-contained on purpose (strings by `lang`, no i18n keys) so the same file
+// works on main and on the redesign branch.
+import { getLocalizedPath, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const copy = {
+  en: {
+    label: 'Cookie choice',
+    body: 'We use the storage this site needs to work. With your permission, we also use Google Ads and the Meta Pixel to measure our advertising. You can change your choice at any time under Cookie settings.',
+    policy: 'Privacy policy',
+    accept: 'Accept',
+    reject: 'Reject',
+  },
+  ro: {
+    label: 'Alegerea privind cookie-urile',
+    body: 'Folosim stocarea de care site-ul are nevoie ca să funcționeze. Cu acordul tău, folosim și Google Ads și Meta Pixel ca să măsurăm eficiența reclamelor. Poți schimba oricând alegerea din Setări cookie.',
+    policy: 'Politica de confidențialitate',
+    accept: 'Accept',
+    reject: 'Refuz',
+  },
+}[lang];
+
+const button =
+  'flex-1 sm:flex-none px-5 py-2.5 text-sm font-semibold rounded-lg border border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent hover:bg-[var(--color-primary)] hover:text-white transition-colors';
+---
+
+<div
+  id="fg-consent"
+  role="region"
+  aria-label={copy.label}
+  hidden
+  class="fixed z-[2147483646] left-3 right-3 bottom-3 sm:left-6 sm:right-auto sm:bottom-6 sm:max-w-md rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5 shadow-lg"
+>
+  <p class="text-sm leading-relaxed text-[var(--color-foreground)]">
+    {copy.body}
+    <a href={getLocalizedPath('/privacy-policy', lang)} class="underline underline-offset-2 text-[var(--color-primary)]">{copy.policy}</a>
+  </p>
+  <div class="mt-4 flex gap-3">
+    <button type="button" data-consent="accept" class={button}>{copy.accept}</button>
+    <button type="button" data-consent="reject" class={button}>{copy.reject}</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'fg-consent';
+    var VERSION = 1;
+    var MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
+    var box = document.getElementById('fg-consent');
+
+    function read() {
+      try {
+        var c = JSON.parse(localStorage.getItem(KEY));
+        if (!c || c.v !== VERSION || !(Date.now() - Date.parse(c.at) < MAX_AGE_MS)) return null;
+        return c;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function loadAds() {
+      if (window.__fgAdsLoaded) return;
+      window.__fgAdsLoaded = true;
+
+      var g = document.createElement('script');
+      g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17102198982';
+      document.head.appendChild(g);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'AW-17102198982');
+
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+        t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', '895169123132914');
+      window.fbq('track', 'PageView');
+    }
+
+    function clearAdCookies() {
+      var host = location.hostname;
+      var domains = ['', host, '.' + host, '.' + host.split('.').slice(-2).join('.')];
+      ['_gcl_au', '_fbp', '_fbc'].forEach(function (name) {
+        domains.forEach(function (d) {
+          document.cookie = name + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+        });
+      });
+    }
+
+    function save(ads) {
+      localStorage.setItem(KEY, JSON.stringify({ v: VERSION, ads: ads, at: new Date().toISOString() }));
+      box.hidden = true;
+      if (ads) {
+        loadAds();
+      } else {
+        clearAdCookies();
+        // Tags already running on this page cannot be unloaded; a reload drops them.
+        if (window.__fgAdsLoaded) location.reload();
+      }
+    }
+
+    box.querySelector('[data-consent="accept"]').addEventListener('click', function () { save(true); });
+    box.querySelector('[data-consent="reject"]').addEventListener('click', function () { save(false); });
+
+    window.fgOpenCookieSettings = function () {
+      box.hidden = false;
+      box.querySelector('[data-consent="accept"]').focus();
+    };
+
+    var choice = read();
+    if (!choice) box.hidden = false;
+    else if (choice.ads) loadAds();
+  })();
+</script>
