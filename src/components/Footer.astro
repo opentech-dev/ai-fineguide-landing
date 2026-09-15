@@ -48,6 +48,7 @@ const switchPath = switchLangPath(currentPath, otherLang);
       <div class="flex items-center gap-4">
         <a href={getLocalizedPath('/privacy-policy', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.privacy}</a>
         <a href={getLocalizedPath('/terms-of-service', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.terms}</a>
+        <button type="button" onclick="window.fgOpenCookieSettings && window.fgOpenCookieSettings()" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{lang === 'ro' ? 'Setări cookie' : 'Cookie settings'}</button>
         <span class="text-[var(--color-border)]">|</span>
         <a
           href={switchPath}

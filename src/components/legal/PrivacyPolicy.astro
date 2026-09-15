@@ -1,0 +1,354 @@
+---
+// Privacy policy body, written against Moldova's Law No. 195/2024 on personal
+// data protection (in force since 23 August 2026). Both languages live in this
+// one file so the styles below reach both, and so the texts stay mirrored:
+// change a section in one language, change it in the other.
+//
+// Facts it states, and where they come from:
+// - trackers, storage keys, lifetimes: src/layouts/Layout.astro,
+//   src/components/CookieConsent.astro, src/components/Navbar.astro,
+//   the chat widget (ai-chat-injector), Dockerfile
+// - hosting: ai-fineguide-project/docs/INFRASTRUCTURE.md (AWS us-east-1 for
+//   the application, dedicated EU servers for the databases, Cloudflare)
+// - vendors: ai-backoffice-api dependencies (Stripe, OpenAI, Anthropic,
+//   Google Gemini, ElevenLabs, AWS S3 and SES)
+// - regulator details: datepersonale.md
+// Never write that we are "compliant" or "certified" (scripts/verify-claims.mjs).
+import type { Lang } from '../../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const updated = lang === 'ro' ? '15 septembrie 2026' : '15 September 2026';
+const email = 'office@fineguide.ai';
+---
+
+<section class="pt-32 md:pt-40 pb-8 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-3xl md:text-4xl font-bold">{lang === 'ro' ? 'Politica de confidențialitate' : 'Privacy Policy'}</h1>
+  </div>
+</section>
+
+<section class="pb-20 md:pb-28 px-6">
+  <div class="max-w-3xl mx-auto prose-legal">
+    {lang === 'ro' ? (
+      <>
+        <p class="text-sm text-[var(--color-muted)] mb-6">Ultima actualizare: {updated}</p>
+
+        <p>Această politică explică ce date cu caracter personal prelucrăm când vizitezi fineguide.ai, ne scrii, programezi un demo, vorbești cu asistentul de pe site sau folosești un cont Fineguide: de ce le prelucrăm, cui le transmitem, cât timp le păstrăm și ce drepturi ai.</p>
+
+        <h2>1. Cine suntem</h2>
+        <p>Operatorul datelor este <strong>Opentech Consulting</strong>, str. 31 August 1989, 91, Chișinău, Republica Moldova („noi”). Pentru orice întrebare sau cerere privind datele tale, scrie-ne la <a href={`mailto:${email}`}>{email}</a>.</p>
+
+        <h2>2. Legile care se aplică</h2>
+        <ul>
+          <li><strong>Legea nr. 195/2024 privind protecția datelor cu caracter personal</strong>, în vigoare din 23 august 2026;</li>
+          <li><strong>Legea nr. 284/2004 privind comerțul electronic</strong>, pentru comunicările comerciale;</li>
+          <li><strong>Regulamentul (UE) 2016/679 (GDPR)</strong>, atunci când se aplică persoanelor din Uniunea Europeană sau Spațiul Economic European.</li>
+        </ul>
+
+        <h2>3. Ce acoperă această politică</h2>
+        <p>Politica acoperă site-ul fineguide.ai (inclusiv blogul de la /blog), formularul de contact, programarea unui demo, asistentul de chat de pe site și conturile Fineguide.</p>
+        <p>Nu acoperă datele pe care clienții noștri le introduc în platformă despre propriii lor clienți (de exemplu conversații, contacte sau apeluri). Pentru acele date, clientul nostru este operatorul, iar noi le prelucrăm doar în numele lui și conform contractului cu el. Dacă ai vorbit cu o companie care folosește Fineguide, politica de confidențialitate a acelei companii se aplică.</p>
+
+        <h2>4. Ce date prelucrăm, de ce și cât timp</h2>
+
+        <h3>Când vizitezi site-ul</h3>
+        <ul>
+          <li><strong>Date:</strong> adresa IP, tipul de browser și dispozitiv, paginile accesate, data și ora.</li>
+          <li><strong>De ce:</strong> ca să afișăm site-ul, să-l protejăm de abuzuri și să rezolvăm erori. Aceste date trec prin serverele noastre și prin Cloudflare.</li>
+          <li><strong>Temei:</strong> interesul nostru legitim de a opera un site sigur.</li>
+          <li><strong>Cât timp:</strong> doar cât este necesar pentru securitate și depanare, apoi sunt șterse.</li>
+        </ul>
+
+        <h3>Stocarea necesară în browserul tău</h3>
+        <p>Aceste elemente sunt necesare ca site-ul să funcționeze așa cum ai cerut și nu sunt folosite pentru publicitate:</p>
+        <ul>
+          <li><strong>fg-lang</strong> (cookie și stocare locală, 1 an): limba aleasă. Pentru vizitatorii din Moldova și România, serverul îl setează la prima vizită, pe baza țării deduse din adresa IP.</li>
+          <li><strong>fg-consent</strong> (stocare locală, 12 luni): alegerea ta privind cookie-urile de publicitate.</li>
+          <li><strong>Asistentul de chat</strong> păstrează în browser setările lui (până la 24 de ore), dacă fereastra e deschisă (1 oră) și dacă ai închis mesajul de întâmpinare.</li>
+          <li><strong>Butonul de cont</strong>: site-ul verifică la app.fineguide.ai dacă ești deja autentificat, ca să afișeze butonul potrivit. Folosește sesiunea existentă și nu creează date noi.</li>
+        </ul>
+        <p><strong>Temei:</strong> interesul nostru legitim de a-ți oferi site-ul în forma cerută.</p>
+
+        <h3>Măsurarea reclamelor (doar cu acordul tău)</h3>
+        <ul>
+          <li><strong>Google Ads</strong> (Google) și <strong>Meta Pixel</strong> (Meta Platforms) se încarcă numai după ce apeși „Accept” în fereastra privind cookie-urile.</li>
+          <li><strong>Date:</strong> adresa IP, browserul, paginile vizitate și identificatori precum cookie-urile _gcl_au și _fbp, pe care Google și Meta le păstrează până la 90 de zile.</li>
+          <li><strong>De ce:</strong> ca să aflăm ce reclame aduc vizitatori pe site.</li>
+          <li><strong>Temei:</strong> consimțământul tău. Îl poți retrage oricând din <strong>Setări cookie</strong>, în subsolul oricărei pagini; retragerea nu afectează prelucrarea făcută înainte.</li>
+        </ul>
+
+        <h3>Când ne scrii prin formularul de contact</h3>
+        <ul>
+          <li><strong>Date:</strong> numele, adresa de email, subiectul și mesajul tău.</li>
+          <li><strong>De ce:</strong> ca să-ți răspundem. Mesajul devine un tichet în sistemul nostru de suport.</li>
+          <li><strong>Temei:</strong> demersurile făcute la cererea ta și interesul nostru legitim de a răspunde solicitărilor.</li>
+          <li><strong>Cât timp:</strong> cât durează discuția și cât mai este necesar pentru eventuale reveniri, apoi este șters.</li>
+          <li>Numele, emailul și mesajul sunt necesare; fără ele nu îți putem răspunde.</li>
+        </ul>
+
+        <h3>Când vorbești cu asistentul de chat de pe site</h3>
+        <ul>
+          <li><strong>Date:</strong> ce scrii în chat și detaliile pe care alegi să le dai.</li>
+          <li><strong>De ce:</strong> ca asistentul să-ți răspundă. Mesajele sunt procesate de furnizorii de modele AI pe care îi folosim ca să genereze răspunsul.</li>
+          <li><strong>Temei:</strong> interesul nostru legitim de a răspunde întrebărilor despre produs.</li>
+          <li><strong>Cât timp:</strong> cât este necesar pentru a urmări solicitarea și a îmbunătăți răspunsurile, apoi sunt șterse.</li>
+          <li>Răspunsurile sunt generate automat. Asistentul nu ia decizii care produc efecte juridice asupra ta.</li>
+        </ul>
+
+        <h3>Când programezi un demo</h3>
+        <ul>
+          <li>Programarea se face prin <strong>Calendly</strong>, care primește numele, emailul, ora aleasă și răspunsurile tale. Calendly îți poate cere separat acordul pentru propriile cookie-uri.</li>
+          <li><strong>Temei:</strong> demersurile făcute la cererea ta înainte de un eventual contract.</li>
+        </ul>
+
+        <h3>Când ai un cont Fineguide</h3>
+        <ul>
+          <li><strong>Date:</strong> numele, emailul, organizația, setările contului, datele de facturare și modul în care folosești serviciul.</li>
+          <li><strong>De ce:</strong> ca să furnizăm serviciul, să facturăm și să oferim suport. Plățile sunt procesate de <strong>Stripe</strong>.</li>
+          <li><strong>Temei:</strong> executarea contractului; obligația legală pentru documentele contabile.</li>
+          <li><strong>Cât timp:</strong> cât timp contul este activ, apoi cât cer legile contabile și fiscale pentru facturi.</li>
+        </ul>
+
+        <h3>Fonturi și imagini</h3>
+        <p>Paginile încarcă fonturi de la <strong>Google Fonts</strong> și o imagine de la <strong>ElevenLabs</strong>. Aceste servicii primesc adresa ta IP când pagina se încarcă. <strong>Temei:</strong> interesul nostru legitim de a afișa site-ul corect.</p>
+
+        <h3>Blogul</h3>
+        <p>Dacă lași un comentariu pe blog, acolo unde comentariile sunt deschise, primim numele, emailul, comentariul și adresa IP, ca să-l publicăm și să prevenim spamul.</p>
+
+        <h3>Emailuri comerciale</h3>
+        <p>Îți trimitem noutăți sau oferte doar dacă ți-ai dat în prealabil acordul. Fiecare astfel de email are un link de dezabonare, iar te poți opune oricând, fără să dai vreun motiv.</p>
+
+        <h2>5. Cui transmitem datele</h2>
+        <p>Nu vindem datele tale. Le transmitem doar furnizorilor care ne ajută să oferim serviciul și care le prelucrează în numele nostru:</p>
+        <ul>
+          <li><strong>Găzduire și rețea:</strong> Amazon Web Services (aplicația, stocarea fișierelor și trimiterea emailurilor), servere dedicate în Uniunea Europeană (bazele de date) și Cloudflare.</li>
+          <li><strong>Modele AI și voce:</strong> OpenAI, Anthropic, Google (Gemini) și ElevenLabs.</li>
+          <li><strong>Plăți:</strong> Stripe.</li>
+          <li><strong>Programări:</strong> Calendly.</li>
+          <li><strong>Publicitate, doar cu acordul tău:</strong> Google și Meta Platforms.</li>
+        </ul>
+        <p>Putem dezvălui date și autorităților, atunci când legea ne obligă.</p>
+
+        <h2>6. Transferuri în afara Republicii Moldova</h2>
+        <p>Unii dintre acești furnizori prelucrează date în Uniunea Europeană sau în Spațiul Economic European, iar alții în Statele Unite ori în alte țări. Transferurile către țări care nu asigură un nivel adecvat de protecție au loc doar pe un temei permis de Legea nr. 195/2024, de exemplu clauze contractuale standard. Ne poți cere detalii la <a href={`mailto:${email}`}>{email}</a>.</p>
+
+        <h2>7. Drepturile tale</h2>
+        <p>Ai dreptul:</p>
+        <ul>
+          <li>să afli ce date avem despre tine și să primești o copie (acces);</li>
+          <li>să ceri corectarea datelor greșite sau incomplete (rectificare);</li>
+          <li>să ceri ștergerea datelor (ștergere);</li>
+          <li>să ceri limitarea prelucrării;</li>
+          <li>să primești datele într-un format structurat sau să ceri trimiterea lor către alt operator (portabilitate);</li>
+          <li>să te opui prelucrării bazate pe interesul nostru legitim și, <strong>oricând și fără motiv, prelucrării în scop de marketing direct</strong>;</li>
+          <li>să îți retragi consimțământul, oricând;</li>
+          <li>să nu faci obiectul unei decizii bazate exclusiv pe prelucrare automată care produce efecte juridice asupra ta.</li>
+        </ul>
+        <p><strong>Cum îți exerciți drepturile:</strong> scrie-ne la <a href={`mailto:${email}`}>{email}</a>. Unele date le poți modifica sau șterge și direct din setările contului. Îți răspundem gratuit, <strong>în cel mult o lună</strong> de la primirea cererii. Dacă cererea este complexă sau primim multe cereri, termenul se poate prelungi cu încă două luni, iar te anunțăm despre asta în prima lună. Putem cere informații suplimentare ca să confirmăm că cererea vine de la tine.</p>
+
+        <h2>8. Dreptul de a depune o plângere</h2>
+        <p>Dacă crezi că îți prelucrăm datele cu încălcarea legii, poți depune o plângere la <strong>Centrul Național pentru Protecția Datelor cu Caracter Personal</strong>:</p>
+        <ul>
+          <li>Adresa: str. Serghei Lazo 48, MD-2004, Chișinău</li>
+          <li>Telefon: (022) 820 801</li>
+          <li>Email: <a href="mailto:centru@datepersonale.md">centru@datepersonale.md</a></li>
+          <li>Site: <a href="https://datepersonale.md">datepersonale.md</a></li>
+        </ul>
+        <p>Te poți adresa și instanței de judecată. Dacă locuiești în Uniunea Europeană sau în Spațiul Economic European, poți depune plângerea și la autoritatea de protecție a datelor din țara ta. Te rugăm să ne scrii mai întâi, ca să încercăm să rezolvăm problema direct.</p>
+
+        <h2>9. Copii</h2>
+        <p>Fineguide este un serviciu pentru companii și nu se adresează copiilor sub 14 ani. Nu colectăm cu bună știință date despre ei. Dacă afli că un copil ne-a transmis date, scrie-ne și le ștergem.</p>
+
+        <h2>10. Securitate și incidente</h2>
+        <p>Protejăm datele prin criptarea conexiunilor, acces limitat pe bază de roluri și firewall. Dacă are loc o încălcare a securității datelor care poate afecta drepturile persoanelor, o notificăm Centrului Național pentru Protecția Datelor cu Caracter Personal în cel mult 72 de ore de la momentul în care aflăm și, dacă riscul este ridicat, te anunțăm și pe tine.</p>
+
+        <h2>11. Modificări</h2>
+        <p>Actualizăm această politică atunci când se schimbă modul în care prelucrăm datele sau legea. Data ultimei actualizări apare la începutul paginii. Dacă modificările sunt importante, le anunțăm vizibil pe site sau prin email.</p>
+      </>
+    ) : (
+      <>
+        <p class="text-sm text-[var(--color-muted)] mb-6">Last updated: {updated}</p>
+
+        <p>This policy explains what personal data we process when you visit fineguide.ai, write to us, book a demo, talk to the assistant on the site or use a Fineguide account: why we process it, who receives it, how long we keep it and what rights you have.</p>
+
+        <h2>1. Who we are</h2>
+        <p>The controller of your data is <strong>Opentech Consulting</strong>, str. 31 August 1989, 91, Chișinău, Republic of Moldova ("we"). For any question or request about your data, write to us at <a href={`mailto:${email}`}>{email}</a>.</p>
+
+        <h2>2. Laws that apply</h2>
+        <ul>
+          <li><strong>Law No. 195/2024 on personal data protection</strong> of the Republic of Moldova, in force since 23 August 2026;</li>
+          <li><strong>Law No. 284/2004 on electronic commerce</strong>, for commercial communications;</li>
+          <li><strong>Regulation (EU) 2016/679 (GDPR)</strong>, where it applies to people in the European Union or the European Economic Area.</li>
+        </ul>
+
+        <h2>3. What this policy covers</h2>
+        <p>It covers the fineguide.ai website (including the blog at /blog), the contact form, demo booking, the chat assistant on the site, and Fineguide accounts.</p>
+        <p>It does not cover the data our customers put into the platform about their own customers, such as conversations, contacts or calls. For that data our customer is the controller, and we process it only on their behalf and under our contract with them. If you talked to a company that uses Fineguide, that company's privacy policy applies.</p>
+
+        <h2>4. What we process, why, and for how long</h2>
+
+        <h3>When you visit the website</h3>
+        <ul>
+          <li><strong>Data:</strong> IP address, browser and device type, pages requested, date and time.</li>
+          <li><strong>Why:</strong> to deliver the site, protect it from abuse and fix errors. This data passes through our servers and Cloudflare.</li>
+          <li><strong>Legal basis:</strong> our legitimate interest in running a secure website.</li>
+          <li><strong>How long:</strong> only as long as needed for security and troubleshooting, then it is deleted.</li>
+        </ul>
+
+        <h3>Storage your browser needs</h3>
+        <p>These are needed for the site to work the way you asked, and are not used for advertising:</p>
+        <ul>
+          <li><strong>fg-lang</strong> (cookie and local storage, 1 year): your language. For visitors from Moldova and Romania, the server sets it on the first visit based on the country derived from the IP address.</li>
+          <li><strong>fg-consent</strong> (local storage, 12 months): your choice about advertising cookies.</li>
+          <li><strong>The chat assistant</strong> keeps its settings (up to 24 hours), whether its window is open (1 hour) and whether you dismissed its greeting.</li>
+          <li><strong>The account button:</strong> the site asks app.fineguide.ai whether you are already signed in, to show the right button. It uses your existing session and creates no new data.</li>
+        </ul>
+        <p><strong>Legal basis:</strong> our legitimate interest in providing the site in the form you requested.</p>
+
+        <h3>Advertising measurement (only with your consent)</h3>
+        <ul>
+          <li><strong>Google Ads</strong> (Google) and the <strong>Meta Pixel</strong> (Meta Platforms) load only after you press "Accept" in the cookie window.</li>
+          <li><strong>Data:</strong> IP address, browser, pages visited, and identifiers such as the _gcl_au and _fbp cookies, which Google and Meta keep for up to 90 days.</li>
+          <li><strong>Why:</strong> to learn which ads bring visitors to the site.</li>
+          <li><strong>Legal basis:</strong> your consent. You can withdraw it at any time under <strong>Cookie settings</strong> in the footer of any page; withdrawing does not affect processing done before.</li>
+        </ul>
+
+        <h3>When you use the contact form</h3>
+        <ul>
+          <li><strong>Data:</strong> your name, email address, subject and message.</li>
+          <li><strong>Why:</strong> to reply to you. Your message becomes a ticket in our support system.</li>
+          <li><strong>Legal basis:</strong> steps taken at your request, and our legitimate interest in answering enquiries.</li>
+          <li><strong>How long:</strong> for as long as the conversation lasts and any follow-up needs it, then it is deleted.</li>
+          <li>Name, email and message are required; without them we cannot reply.</li>
+        </ul>
+
+        <h3>When you talk to the chat assistant on the site</h3>
+        <ul>
+          <li><strong>Data:</strong> what you type in the chat and any details you choose to share.</li>
+          <li><strong>Why:</strong> so the assistant can answer. Messages are processed by the AI model providers we use to generate the reply.</li>
+          <li><strong>Legal basis:</strong> our legitimate interest in answering questions about the product.</li>
+          <li><strong>How long:</strong> as long as needed to follow up on your request and improve answers, then it is deleted.</li>
+          <li>Replies are generated automatically. The assistant makes no decisions that have legal effects on you.</li>
+        </ul>
+
+        <h3>When you book a demo</h3>
+        <ul>
+          <li>Booking happens through <strong>Calendly</strong>, which receives your name, email, the time you choose and your answers. Calendly may ask separately for consent to its own cookies.</li>
+          <li><strong>Legal basis:</strong> steps taken at your request before a possible contract.</li>
+        </ul>
+
+        <h3>When you have a Fineguide account</h3>
+        <ul>
+          <li><strong>Data:</strong> name, email, organisation, account settings, billing details and how you use the service.</li>
+          <li><strong>Why:</strong> to provide the service, bill for it and support you. Payments are processed by <strong>Stripe</strong>.</li>
+          <li><strong>Legal basis:</strong> performance of our contract; legal obligation for accounting records.</li>
+          <li><strong>How long:</strong> while the account is active, then as long as accounting and tax law requires for invoices.</li>
+        </ul>
+
+        <h3>Fonts and images</h3>
+        <p>Pages load fonts from <strong>Google Fonts</strong> and one image from <strong>ElevenLabs</strong>. These services receive your IP address when the page loads. <strong>Legal basis:</strong> our legitimate interest in displaying the site correctly.</p>
+
+        <h3>The blog</h3>
+        <p>If you leave a comment on the blog where comments are open, we receive your name, email, comment and IP address, to publish it and prevent spam.</p>
+
+        <h3>Commercial emails</h3>
+        <p>We send news or offers only if you have given your consent beforehand. Every such email has an unsubscribe link, and you can object at any time without giving a reason.</p>
+
+        <h2>5. Who receives your data</h2>
+        <p>We do not sell your data. We share it only with providers who help us run the service and process it on our behalf:</p>
+        <ul>
+          <li><strong>Hosting and network:</strong> Amazon Web Services (the application, file storage and sending email), dedicated servers in the European Union (databases), and Cloudflare.</li>
+          <li><strong>AI models and voice:</strong> OpenAI, Anthropic, Google (Gemini) and ElevenLabs.</li>
+          <li><strong>Payments:</strong> Stripe.</li>
+          <li><strong>Scheduling:</strong> Calendly.</li>
+          <li><strong>Advertising, only with your consent:</strong> Google and Meta Platforms.</li>
+        </ul>
+        <p>We may also disclose data to public authorities where the law requires us to.</p>
+
+        <h2>6. Transfers outside the Republic of Moldova</h2>
+        <p>Some of these providers process data in the European Union or the European Economic Area, and others in the United States or other countries. Transfers to countries that do not ensure an adequate level of protection take place only on a basis allowed by Law No. 195/2024, for example standard contractual clauses. You can ask us for details at <a href={`mailto:${email}`}>{email}</a>.</p>
+
+        <h2>7. Your rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>find out what data we hold about you and get a copy (access);</li>
+          <li>have inaccurate or incomplete data corrected (rectification);</li>
+          <li>have your data deleted (erasure);</li>
+          <li>have processing restricted;</li>
+          <li>receive your data in a structured format, or have it sent to another controller (portability);</li>
+          <li>object to processing based on our legitimate interest and, <strong>at any time and without giving a reason, to processing for direct marketing</strong>;</li>
+          <li>withdraw your consent at any time;</li>
+          <li>not be subject to a decision based solely on automated processing that has legal effects on you.</li>
+        </ul>
+        <p><strong>How to use them:</strong> write to us at <a href={`mailto:${email}`}>{email}</a>. You can also change or delete some data directly in your account settings. We reply free of charge <strong>within one month</strong> of receiving your request. If a request is complex or we receive many, this can be extended by two more months, and we will tell you so within the first month. We may ask for information to confirm the request comes from you.</p>
+
+        <h2>8. Your right to complain</h2>
+        <p>If you believe we process your data unlawfully, you can lodge a complaint with the <strong>National Center for Personal Data Protection</strong> (Centrul Național pentru Protecția Datelor cu Caracter Personal):</p>
+        <ul>
+          <li>Address: str. Serghei Lazo 48, MD-2004, Chișinău, Republic of Moldova</li>
+          <li>Phone: +373 22 820 801</li>
+          <li>Email: <a href="mailto:centru@datepersonale.md">centru@datepersonale.md</a></li>
+          <li>Website: <a href="https://datepersonale.md">datepersonale.md</a></li>
+        </ul>
+        <p>You can also go to court. If you live in the European Union or the European Economic Area, you can complain to the data protection authority in your own country. We would appreciate the chance to sort things out first, so please write to us.</p>
+
+        <h2>9. Children</h2>
+        <p>Fineguide is a service for businesses and is not aimed at children under 14. We do not knowingly collect their data. If you learn that a child has given us personal data, write to us and we will delete it.</p>
+
+        <h2>10. Security and incidents</h2>
+        <p>We protect data with encrypted connections, role-based access and firewalls. If a personal data breach is likely to affect people's rights, we notify the National Center for Personal Data Protection within 72 hours of becoming aware of it and, where the risk is high, we tell you as well.</p>
+
+        <h2>11. Changes</h2>
+        <p>We update this policy when the way we process data or the law changes. The date of the last update is at the top of the page. If a change is significant, we announce it clearly on the site or by email.</p>
+      </>
+    )}
+  </div>
+</section>
+
+<style>
+  .prose-legal {
+    color: var(--color-muted);
+    line-height: 1.75;
+  }
+  .prose-legal h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose-legal h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal p {
+    margin-bottom: 1rem;
+  }
+  .prose-legal ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .prose-legal ul li {
+    margin-bottom: 0.5rem;
+  }
+  .prose-legal strong {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+  .prose-legal a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-legal a:hover {
+    opacity: 0.8;
+  }
+</style>

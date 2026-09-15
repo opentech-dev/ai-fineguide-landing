@@ -1,0 +1,22 @@
+---
+// The notice Law 195/2024 asks for at the point of collection: what the
+// contact form data is used for, and where to read the rest. No checkbox:
+// the basis is answering the person's own request, not consent.
+import { getLocalizedPath, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const copy = {
+  en: { text: 'We use your name, email and message only to reply to you.', link: 'Privacy policy' },
+  ro: { text: 'Folosim numele, emailul și mesajul tău doar ca să îți răspundem.', link: 'Politica de confidențialitate' },
+}[lang];
+---
+
+<p class="text-xs leading-relaxed text-[var(--color-muted)]">
+  {copy.text}
+  <a href={getLocalizedPath('/privacy-policy', lang)} class="underline underline-offset-2 hover:text-[var(--color-foreground)]">{copy.link}</a>
+</p>
