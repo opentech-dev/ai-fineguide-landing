@@ -8,7 +8,9 @@ interface Spread {
 }
 interface Props {
   spread: Spread;
-  image: string;
+  // Optional: a spread without a clean demo-data screenshot renders text-only
+  // rather than borrowing an image from a live account.
+  image?: string;
   reverse?: boolean;
   linkHref?: string;
   linkLabel?: string;
@@ -21,7 +23,7 @@ const { spread, image, reverse = false, linkHref, linkLabel, tinted = false } = 
 
 <section class={`py-20 md:py-28 px-6 ${tinted ? 'band-tint' : ''}`}>
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-    <div class={`lg:col-span-5 ${reverse ? 'lg:order-2' : ''}`}>
+    <div class={image ? `lg:col-span-5 ${reverse ? 'lg:order-2' : ''}` : 'lg:col-span-7'}>
       <p class="eyebrow mb-5">
         {spread.eyebrow}
       </p>
@@ -54,20 +56,22 @@ const { spread, image, reverse = false, linkHref, linkLabel, tinted = false } = 
       )}
     </div>
 
-    <div class={`lg:col-span-7 ${reverse ? 'lg:order-1' : ''}`}>
-      <figure class="panel-frame">
-        <div class="flex items-center gap-1.5 px-3.5 py-2.5 border-b border-[var(--color-border)] bg-[#fcfcfe]">
-          <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
-          <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
-          <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
-        </div>
-        <img
-          src={image}
-          alt={spread.screenshotAlt}
-          class="w-full h-auto block"
-          loading="lazy"
-        />
-      </figure>
-    </div>
+    {image && (
+      <div class={`lg:col-span-7 ${reverse ? 'lg:order-1' : ''}`}>
+        <figure class="panel-frame">
+          <div class="flex items-center gap-1.5 px-3.5 py-2.5 border-b border-[var(--color-border)] bg-[#fcfcfe]">
+            <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
+            <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
+            <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
+          </div>
+          <img
+            src={image}
+            alt={spread.screenshotAlt}
+            class="w-full h-auto block"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    )}
   </div>
 </section>
