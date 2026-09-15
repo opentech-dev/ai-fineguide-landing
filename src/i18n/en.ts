@@ -483,7 +483,7 @@ export const en = {
         'A customer who messages on WhatsApp Monday and calls on Tuesday is the same customer. Fineguide identifies them across phone numbers, channel handles, and email, and attaches every conversation, lead, and ticket to the same record so context never resets.',
       bullets: [
         'Identity merging across phone numbers, emails, and channel handles',
-        'Custom fields (`props`) populated by assistants during conversation',
+        'Custom fields filled in by assistants during the conversation',
         'Complete interaction history, including chats, calls, tickets, and tasks, in one timeline',
         'Org-wide segmentation that downstream automations and exports can rely on',
       ],
@@ -520,7 +520,7 @@ export const en = {
       eyebrow: 'Capabilities',
       heading: 'A complete voice layer, end to end.',
       body:
-        'Voice AI builds on the assistants and CRM you already have, so the phone runs on the same configuration and the same customer record as every other channel.',
+        'Voice AI builds on the assistants and CRM you already have, so the phone runs on the same configuration as every other channel, and callers are recognised from the same CRM.',
       blocks: [
         {
           title: 'Inbound automation',
@@ -784,7 +784,7 @@ export const en = {
       eyebrow: 'Eighteen actions',
       heading: 'What a workflow can actually do today.',
       body:
-        'Every action listed here has a runtime and executes. The builder offers a few blocks that are still being built, and those are marked in the product rather than sold here.',
+        'Every action listed here runs today. The builder also shows a few blocks that are still being built; the product marks those, and they are not sold here.',
       items: [
         {
           term: 'Read and extract',
@@ -796,7 +796,7 @@ export const en = {
         },
         {
           term: 'Loop',
-          desc: 'Iterate over a list and run the same steps for each element. The engine keeps a frame per iteration, so loops nest properly rather than flattening.',
+          desc: 'Iterate over a list and run the same steps for each element. Loops can sit inside other loops, and each one keeps track of its own item.',
         },
         {
           term: 'Find',
@@ -851,8 +851,8 @@ export const en = {
         'Nine chat channels and your own email in one queue, with routing, departments and a handover that gives the human the whole conversation.',
     },
     hero: {
-      title: 'Every conversation lands',
-      titleAccent: ' somewhere a person can take over.',
+      title: 'Every conversation.',
+      titleAccent: ' One inbox.',
       subtitle:
         'The assistant handles what it can. The moment it cannot, a colleague already has the thread, the customer record and the history in front of them.',
       ctaPrimary: 'Get started',
@@ -924,12 +924,12 @@ export const en = {
         'Routing rules decide which mailbox a message belongs to and who picks it up',
         'Per-mailbox signatures, so replies look like they came from the person sending them',
         'Reporting per mailbox alongside the chat reporting, not in a separate tool',
-        'Threads attach to the same customer record as every chat and call',
+        'Threads attach to the customer record in the CRM',
       ],
     },
     safety: {
       eyebrow: 'AI on email, safely',
-      heading: 'Three limits that ship switched on.',
+      heading: 'Three safeguards you do not have to find.',
       body:
         'Letting AI answer email is the point at which most teams get nervous, and reasonably so. These are defaults, not settings you have to discover.',
       items: [
@@ -943,7 +943,7 @@ export const en = {
         },
         {
           term: 'A hard cap per thread',
-          desc: 'After a set number of AI replies in one conversation, it stops and hands to a human — the schema calls this loop insurance, and that is exactly what it is.',
+          desc: 'After a set number of AI replies in one conversation, it stops and hands to a human, so two automated systems can never reply to each other forever.',
         },
       ],
     },
@@ -971,7 +971,7 @@ export const en = {
       title: 'Outbound calling',
       titleAccent: ' that runs itself.',
       subtitle:
-        'Point a campaign at a list and the assistants dial it — one at a time, at your pace, with every outcome written back to the customer record.',
+        'Point a campaign at a list and the assistants dial it — one at a time, at your pace, with every outcome tracked per contact.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -1036,7 +1036,7 @@ export const en = {
         'Connect your carrier or PBX with a standard SIP account',
         'Give each inbound number to the assistant that should answer it',
         'On inbound calls, transfer the caller to your team, or take a callback request as a CRM task',
-        'Every call attaches to the same customer record as the chats and emails',
+        'Every call is kept as a transcript alongside your chat conversations',
         'Billed per answered minute, with a one-minute minimum',
       ],
     },

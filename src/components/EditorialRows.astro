@@ -23,16 +23,19 @@ interface Props {
   // typecheck, so it only surfaced under astro check.
   items: readonly Item[];
   variant?: 'light' | 'dark';
+  /** Dark variant only. Three items in a two-up grid leave a hole, so a short
+      list can sit in one row of three instead. */
+  columns?: 2 | 3;
   class?: string;
 }
 
-const { items, variant = 'light', class: extraClass = '' } = Astro.props as Props;
+const { items, variant = 'light', columns = 2, class: extraClass = '' } = Astro.props as Props;
 const isDark = variant === 'dark';
 ---
 
 {
   isDark ? (
-    <div class={`grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 ${extraClass}`}>
+    <div class={`grid grid-cols-1 ${columns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-x-12 gap-y-10 ${extraClass}`}>
       {items.map((item) => (
         <div class="border-t border-white/10 pt-5">
           <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white">{item.term}</h3>
