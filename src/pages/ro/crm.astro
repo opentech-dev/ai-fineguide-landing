@@ -43,13 +43,13 @@ const p = t.crmPage;
             </a>
           </div>
         </div>
+        {/* The screenshot here came from a live account and showed internal data.
+            Until one is captured from demo data, the intro sits in its place, as on
+            the Voice AI page. */}
         <div class="lg:w-[58%]">
-          <img
-            src="/images/screenshots/crm-tasks.png"
-            alt={p.intro.screenshotAlt}
-            class="h-auto rounded-xl border border-[var(--color-border)] shadow-2xl relative w-full lg:min-w-[150%]"
-            loading="eager"
-          />
+          <p class="text-2xl md:text-3xl leading-relaxed text-[var(--color-muted)] font-light">
+            {p.intro.body}
+          </p>
         </div>
       </div>
     </section>
