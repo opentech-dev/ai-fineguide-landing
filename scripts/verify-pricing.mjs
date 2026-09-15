@@ -37,7 +37,7 @@ for (const block of ladder.split(/\{\s*\n\s*alias:/).slice(1)) {
 }
 
 // The page advertises four tiers. If the ladder gains or loses one, the page
-// is out of date by definition — fail loudly rather than checking a subset.
+// is out of date by definition - fail loudly rather than checking a subset.
 const LADDER_SIZE = 4;
 if (Object.keys(truth).length !== LADDER_SIZE) {
   console.error(`FAIL  ladder has ${Object.keys(truth).length} plans (${Object.keys(truth).join(', ')}), page shows ${LADDER_SIZE}`);

@@ -372,7 +372,7 @@ export const ro: Translations = {
           { label: 'Telefon', value: '+40 720 123 456', ai: false },
           { label: 'Email', value: 'maria.p@example.com', ai: false },
           { label: 'Serviciu solicitat', value: 'Voice QA · 5 agenți', ai: true },
-          { label: 'Buget', value: '€2.000 – €4.000 / lună', ai: true },
+          { label: 'Buget', value: '€2.000 - €4.000 / lună', ai: true },
           { label: 'Intenție', value: 'Prețuri & demo', ai: true },
           { label: 'Etapă', value: 'Calificat', ai: false },
           { label: 'Următoarea acțiune', value: 'Programează apel', ai: false },
@@ -796,13 +796,13 @@ export const ro: Translations = {
     meta: {
       title: 'Constructor vizual de workflow-uri | Fineguide',
       description:
-        'Citește conversația, extrage câmpurile din ea, ramifică după ce găsești și actualizează CRM-ul — douăsprezece declanșatoare și optsprezece acțiuni, fără cod.',
+        'Citește conversația, extrage câmpurile din ea, ramifică după ce găsești și actualizează CRM-ul. Douăsprezece declanșatoare și optsprezece acțiuni, fără cod.',
     },
     hero: {
       title: 'Citește conversația.',
       titleAccent: ' Actualizează fișa. Nimeni nu se atinge de ea.',
       subtitle:
-        'Un constructor vizual în care un workflow pornește de la ceva ce s-a întâmplat cu adevărat — un apel trecut prin Voice QA, un lead care apare, un formular care sosește — și se termină cu CRM-ul deja corect.',
+        'Un constructor vizual în care un workflow pornește de la ceva ce s-a întâmplat cu adevărat (un apel trecut prin Voice QA, un lead care apare, un formular care sosește) și se termină cu CRM-ul deja corect.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -858,7 +858,7 @@ export const ro: Translations = {
         },
         {
           term: 'Creează, actualizează, șterge',
-          desc: 'Acces complet de scriere la contacte, lead-uri și companii — nouă acțiuni pe cele trei, ca un workflow să termine treaba, nu să lase o notă pentru altcineva.',
+          desc: 'Acces complet de scriere la contacte, lead-uri și companii: nouă acțiuni pe cele trei, ca un workflow să termine treaba, nu să lase o notă pentru altcineva.',
         },
         {
           term: 'Mută și etichetează',
@@ -874,12 +874,12 @@ export const ro: Translations = {
       eyebrow: 'Dincolo de platformă',
       heading: 'Iar când munca iese din Fineguide.',
       body:
-        'Constructorul integrat acoperă CRM-ul. Pentru tot ce urmează după — sistemul tău de facturare, depozitul, un API intern — puntea n8n preia de unde se oprește el.',
+        'Constructorul integrat acoperă CRM-ul. Pentru tot ce urmează după, cum ar fi sistemul tău de facturare, depozitul sau un API intern, puntea n8n preia de unde se oprește el.',
       bullets: [
         'Folosește instanța n8n găzduită de noi sau arată-ne una pe care o rulezi deja',
         'Sute de integrări pe partea de n8n, pe care nu trebuie să le construim noi',
         'Webhook-uri pe conversații, lead-uri și tichete, pentru orice are un endpoint HTTP',
-        'Rulările de workflow fac parte din planul tău — nu consumă credite',
+        'Rulările de workflow fac parte din planul tău, așa că nu consumă credite',
         'Fiecare rulare poate fi inspectată pas cu pas, așa că o eroare îți spune la ce pas și de ce',
       ],
     },
@@ -951,7 +951,7 @@ export const ro: Translations = {
         },
         {
           term: 'Detectarea coliziunilor',
-          desc: 'Ești anunțat când un coleg are aceeași conversație deschisă — și din nou când începe să scrie în ea.',
+          desc: 'Ești anunțat când un coleg are aceeași conversație deschisă și din nou când începe să scrie în ea.',
         },
         {
           term: 'Răspunsuri salvate',
@@ -1016,7 +1016,7 @@ export const ro: Translations = {
       title: 'Apeluri outbound',
       titleAccent: ' care se desfășoară singure.',
       subtitle:
-        'Îndreaptă o campanie către o listă și asistenții o sună — pe rând, în ritmul tău, cu rezultatul urmărit pentru fiecare contact.',
+        'Îndreaptă o campanie către o listă și asistenții o sună pe rând, în ritmul tău, cu rezultatul urmărit pentru fiecare contact.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1028,7 +1028,7 @@ export const ro: Translations = {
       eyebrow: 'Trei tipuri de campanie',
       heading: 'Scopul apelului schimbă ce se întâmplă după el.',
       body:
-        'O campanie nu este doar un dialer. Fiecare tip se termină altfel — unul lasă o conversație, unul lasă un set de date, unul lasă o pâlnie — iar raportarea urmează de acolo.',
+        'O campanie nu este doar un dialer. Fiecare tip se termină altfel: unul lasă o conversație, altul un set de date, altul o pâlnie. Raportarea urmează de acolo.',
       items: [
         {
           name: 'Outreach',
@@ -1040,7 +1040,7 @@ export const ro: Translations = {
         },
         {
           name: 'Promoție',
-          desc: 'O ofertă limitată în timp. Fiecare rezultat — acceptat, refuzat, revenire cerută — devine o etapă, așa că raportul se citește ca o pâlnie de conversie, nu ca un jurnal de apeluri.',
+          desc: 'O ofertă limitată în timp. Fiecare rezultat (acceptat, refuzat, revenire cerută) devine o etapă, așa că raportul se citește ca o pâlnie de conversie, nu ca un jurnal de apeluri.',
         },
       ],
     },
@@ -1237,7 +1237,7 @@ export const ro: Translations = {
     heading: 'Întrebări frecvente',
     subtitle: 'Tot ce trebuie să știi despre sistemul nostru de prețuri.',
     items: [
-      { q: 'Cum funcționează creditele?', a: 'Fiecare mesaj text AI costă 1 credit, sau 2 cu atașament. Voice QA folosește 12 credite per minut, Voice AI 10 per minut, iar vocile premium 30 per minut. Restul — CRM, Inbox, Mesaje, workflow-uri, analytics și integrări — este inclus fără cost suplimentar și nu consumă credite.' },
+      { q: 'Cum funcționează creditele?', a: 'Fiecare mesaj text AI costă 1 credit, sau 2 cu atașament. Voice QA folosește 12 credite per minut, Voice AI 10 per minut, iar vocile premium 30 per minut. Restul (CRM, Inbox, Mesaje, workflow-uri, analytics și integrări) este inclus fără cost suplimentar și nu consumă credite.' },
       { q: 'Expiră creditele?', a: 'Creditele din abonamentul lunar se resetează la fiecare ciclu de facturare. Pachetele extra de credite nu expiră niciodată.' },
       { q: 'Pot schimba planul?', a: 'Da, poți upgrada sau downgrada oricând. Modificările intră în vigoare la următorul ciclu de facturare. Poți cumpăra credite suplimentare oricând.' },
       { q: 'Ce se întâmplă dacă rămân fără credite?', a: 'Poți cumpăra credite suplimentare instant. Asistenții AI vor continua să funcționeze și vei fi notificat când creditele sunt aproape de epuizare.' },
@@ -1348,7 +1348,7 @@ export const ro: Translations = {
 
   // --- Contact Page ---
   contactMeta: {
-    // Must differ from the English title — two URLs with the same <title> make
+    // Must differ from the English title - two URLs with the same <title> make
     // Google pick one and drop the other from the index.
     title: 'Contactează echipa Fineguide.ai',
     description: 'Contactează echipa Fineguide. Suntem aici pentru întrebări, suport tehnic sau să discutăm cum platforma AI poate ajuta afacerea ta.',

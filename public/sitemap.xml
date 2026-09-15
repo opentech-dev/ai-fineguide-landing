@@ -246,7 +246,7 @@
     <!--
       Documentation: intentionally not listed. https://app.fineguide.ai/docs was
       submitted here at priority 0.8, but it redirects into the workspace SPA and
-      renders "Page not found" while still returning HTTP 200 — a soft 404, which
+      renders "Page not found" while still returning HTTP 200 - a soft 404, which
       crawlers index as a real page. /help behaves the same way, and neither
       fineguide.ai/docs nor docs.fineguide.ai exists. Re-add when a public docs
       site does, and check it renders content rather than trusting the status code.

@@ -21,4 +21,4 @@ if(gone.length){console.log('  MISSING FILES:',gone.join(', '));bad=1;}
 const onDisk=fs.readdirSync('public/images/brands');
 const orphanFiles=onDisk.filter(f=>!refs.some(r=>r.endsWith('/'+f)));
 if(orphanFiles.length) console.log('files on disk referenced by nothing:', orphanFiles.join(', '));
-console.log(bad? 'CONTRACT FAIL':'CONTRACT OK — no cell can silently lose its logo');
+console.log(bad? 'CONTRACT FAIL':'CONTRACT OK - no cell can silently lose its logo');

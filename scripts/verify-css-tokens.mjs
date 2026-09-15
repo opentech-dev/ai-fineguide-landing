@@ -34,4 +34,4 @@ if (offenders.length) {
   console.log('\nFAIL');
   process.exit(1);
 }
-console.log('all var(--*) references resolve to a defined token — OK');
+console.log('all var(--*) references resolve to a defined token - OK');

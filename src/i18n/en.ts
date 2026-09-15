@@ -379,7 +379,7 @@ export const en = {
           { label: 'Phone', value: '+40 720 123 456', ai: false },
           { label: 'Email', value: 'maria.p@example.com', ai: false },
           { label: 'Required service', value: 'Voice QA · 5 agents', ai: true },
-          { label: 'Budget', value: '€2,000 – €4,000 / month', ai: true },
+          { label: 'Budget', value: '€2,000 - €4,000 / month', ai: true },
           { label: 'Intent', value: 'Pricing & demo', ai: true },
           { label: 'Stage', value: 'Qualified', ai: false },
           { label: 'Next action', value: 'Schedule call', ai: false },
@@ -804,20 +804,20 @@ export const en = {
   // --- Automations Page (workflow engine + n8n) ---
   // Hard constraint, enforced by scripts/verify-claims.mjs: the seven step
   // types in PLANNED_STEP_TYPES (classify, summarize, translate, reply, notify,
-  // send_email, webhook) can be authored in the builder but have NO runtime —
+  // send_email, webhook) can be authored in the builder but have NO runtime -
   // the engine pauses the run when it reaches one. None may appear here. Nor
   // may any per-step credit price: workflow runs do not consume credits.
   automationsPage: {
     meta: {
       title: 'Visual Workflow Builder for CRM | Fineguide',
       description:
-        'Read a conversation, pull the fields out of it, branch on what you find, and update the CRM — twelve triggers and eighteen actions, no code.',
+        'Read a conversation, pull the fields out of it, branch on what you find, and update the CRM. Twelve triggers and eighteen actions, no code.',
     },
     hero: {
       title: 'Read the conversation.',
       titleAccent: ' Update the record. No one touches it.',
       subtitle:
-        'A visual builder where a workflow starts from something that actually happened — a call going through Voice QA, a lead landing, a form arriving — and finishes with your CRM already correct.',
+        'A visual builder where a workflow starts from something that actually happened (a call going through Voice QA, a lead landing, a form arriving) and finishes with your CRM already correct.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -873,7 +873,7 @@ export const en = {
         },
         {
           term: 'Create, update, remove',
-          desc: 'Full write access to contacts, leads and companies — nine actions across the three, so a workflow can finish the job rather than filing a note for someone.',
+          desc: 'Full write access to contacts, leads and companies: nine actions across the three, so a workflow can finish the job rather than filing a note for someone.',
         },
         {
           term: 'Move and tag',
@@ -889,12 +889,12 @@ export const en = {
       eyebrow: 'Beyond the platform',
       heading: 'And when the work leaves Fineguide.',
       body:
-        'The built-in builder covers the CRM. For everything past it — your billing system, your warehouse, an internal API — the n8n bridge picks up where it stops.',
+        'The built-in builder covers the CRM. For everything past it, such as your billing system, your warehouse or an internal API, the n8n bridge picks up where it stops.',
       bullets: [
         'Use the hosted n8n instance, or point us at one you already run',
         'Hundreds of integrations on the n8n side, none of which we have to build',
         'Webhooks on conversations, leads and tickets for anything with an HTTP endpoint',
-        'Workflow runs are part of your plan — they do not consume credits',
+        'Workflow runs are part of your plan, so they do not consume credits',
         'Every run is inspectable step by step, so a failure tells you which step and why',
       ],
     },
@@ -909,7 +909,7 @@ export const en = {
 
   // --- Messages & Inbox Page ---
   // The nine channels are BotIntegrationType in the Prisma schema. Email is
-  // IMAP/SMTP only — there is no OAuth path in the codebase, so nothing here
+  // IMAP/SMTP only - there is no OAuth path in the codebase, so nothing here
   // may imply one-click Gmail or Outlook. The three AI limits are schema
   // defaults (aiMode OFF, aiReplyDelaySeconds 120, aiMaxRepliesPerThread 3)
   // and scripts/verify-claims.mjs fails if any of them changes under us.
@@ -971,7 +971,7 @@ export const en = {
         },
         {
           term: 'Collision detection',
-          desc: 'You are told when a colleague has the same conversation open — and again when they start typing in it.',
+          desc: 'You are told when a colleague has the same conversation open, and again when they start typing in it.',
         },
         {
           term: 'Saved replies',
@@ -1040,7 +1040,7 @@ export const en = {
       title: 'Outbound calling',
       titleAccent: ' that runs itself.',
       subtitle:
-        'Point a campaign at a list and the assistants dial it — one at a time, at your pace, with every outcome tracked per contact.',
+        'Point a campaign at a list and the assistants dial it one at a time, at your pace, with every outcome tracked per contact.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -1052,7 +1052,7 @@ export const en = {
       eyebrow: 'Three kinds of campaign',
       heading: 'What the call is for changes what happens after it.',
       body:
-        'A campaign is not just a dialler. Each type ends differently — one leaves a conversation, one leaves a dataset, one leaves a funnel — and the reporting follows from that.',
+        'A campaign is not just a dialler. Each type ends differently: one leaves a conversation, one a dataset, one a funnel. The reporting follows from that.',
       items: [
         {
           name: 'Outreach',
@@ -1064,7 +1064,7 @@ export const en = {
         },
         {
           name: 'Promotion',
-          desc: 'A time-boxed offer. Every outcome — accepted, declined, callback requested — is captured as a stage, so the campaign reads as a conversion funnel rather than a call log.',
+          desc: 'A time-boxed offer. Every outcome (accepted, declined, callback requested) is captured as a stage, so the campaign reads as a conversion funnel rather than a call log.',
         },
       ],
     },
@@ -1262,7 +1262,7 @@ export const en = {
     heading: 'Frequently Asked Questions',
     subtitle: 'Everything you need to know about our pricing system.',
     items: [
-      { q: 'How do credits work?', a: 'Each AI text message costs 1 credit, or 2 with an attachment. Voice QA uses 12 credits per minute, Voice AI 10 per minute, and 30 per minute on premium voices. Everything else — CRM, Inbox, Messages, workflows, analytics and integrations — is included at no extra cost and consumes no credits.' },
+      { q: 'How do credits work?', a: 'Each AI text message costs 1 credit, or 2 with an attachment. Voice QA uses 12 credits per minute, Voice AI 10 per minute, and 30 per minute on premium voices. Everything else (CRM, Inbox, Messages, workflows, analytics and integrations) is included at no extra cost and consumes no credits.' },
       { q: 'Do credits expire?', a: 'Monthly subscription credits reset each billing cycle. Extra credit packs never expire.' },
       { q: 'Can I change plans?', a: 'Yes, you can upgrade or downgrade anytime. Changes take effect on the next billing cycle. You can purchase extra credits anytime.' },
       { q: 'What happens if I run out of credits?', a: 'You can buy extra credits instantly. AI assistants will continue to work, and you\'ll be notified when credits are about to run out.' },

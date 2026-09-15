@@ -1,6 +1,6 @@
 // Asserts the head of every built page is fit to be indexed.
 //
-// Everything here is offline and deterministic — no network, no live server.
+// Everything here is offline and deterministic - no network, no live server.
 // Run after `npm run build`.
 //
 // The limits are Google's rendering limits, not style preferences: a title past
@@ -47,7 +47,7 @@ for (const file of list) {
   if (title.n !== 1) bad(route, `expected 1 <title>, found ${title.n}`);
   else if (!title.v.trim()) bad(route, 'empty <title>');
   else if (title.v.length > TITLE_MAX)
-    bad(route, `title ${title.v.length} chars (max ${TITLE_MAX}) — truncated in results`);
+    bad(route, `title ${title.v.length} chars (max ${TITLE_MAX}) - truncated in results`);
 
   // --- description ---
   const desc = one(html, /<meta name="description" content="([^"]*)"/g);

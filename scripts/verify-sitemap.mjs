@@ -5,7 +5,7 @@
  * public/sitemap.xml is hand-maintained, so it drifts from the build silently:
  * a page gets added and never listed, a page gets removed and the entry lingers.
  * It also carried https://app.fineguide.ai/docs at priority 0.8, which returns
- * HTTP 200 and renders "Page not found" — a soft 404, indexed by crawlers as a
+ * HTTP 200 and renders "Page not found" - a soft 404, indexed by crawlers as a
  * real page. A status-code check would have passed it, so this does not make
  * network calls; it asserts what can be proven offline and forces anything
  * pointing off-origin to be justified.
@@ -27,7 +27,7 @@ const ORIGIN = 'https://fineguide.ai';
 
 /**
  * Off-origin URLs allowed in the sitemap. Each needs a reason, and each must be
- * verified by opening it and reading the rendered body — not by trusting the
+ * verified by opening it and reading the rendered body - not by trusting the
  * status code, which is what let the /docs soft 404 sit here.
  */
 const ALLOWED_OFFSITE = {
@@ -45,7 +45,7 @@ if (!existsSync(sitemapPath)) {
   process.exit(1);
 }
 if (!existsSync(distDir)) {
-  console.error('dist/ not found — run `npm run build` first');
+  console.error('dist/ not found - run `npm run build` first');
   process.exit(1);
 }
 
@@ -91,7 +91,7 @@ for (const loc of locs) {
     if (!(loc in ALLOWED_OFFSITE)) {
       fail.push(
         `off-origin URL not in ALLOWED_OFFSITE: ${loc}\n` +
-          '    Open it and read the rendered body before allowing it — a soft 404 ' +
+          '    Open it and read the rendered body before allowing it - a soft 404 ' +
           'returns HTTP 200 while showing "Page not found".',
       );
     }
@@ -109,5 +109,5 @@ if (fail.length) {
   process.exit(1);
 }
 console.log(
-  `sitemap OK — valid, ${locs.length} URLs, all match the ${built.size} built pages, no unvetted off-origin entries`,
+  `sitemap OK - valid, ${locs.length} URLs, all match the ${built.size} built pages, no unvetted off-origin entries`,
 );
