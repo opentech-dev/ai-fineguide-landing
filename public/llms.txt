@@ -31,13 +31,21 @@ The platform is organized into modules that share one customer record:
 
 Credit-based, with all AI modules included from the start. One subscription per organization. No setup fees, cancel anytime, free trial.
 
-- **Free**: $0/month forever. 1,000 credits to explore the platform, no card required. 1 member, AI modules included (no n8n), community support, pay-as-you-go top-ups ($20 / 1,000 extra credits).
-- **Starter**: $99/month. ~10,000 credits (≈ 10,000 text conversations or 800+ minutes VoiceQA). Up to 5 members, basic admin controls, email support, all AI modules. Extra credits $15 / 1,000.
-- **Business**: $199/month (most popular). ~23,000 credits (≈ 23,000 text conversations or 1,900+ minutes VoiceQA). Up to 10 members, advanced admin controls, priority support, advanced analytics. Extra credits $12 / 1,000.
-- **Premium**: $499/month. ~65,000 credits (≈ 65,000 text conversations or 5,400+ minutes VoiceQA). 20 members, enterprise admin controls, dedicated support, custom reports, API & webhooks access. Extra credits $10 / 1,000.
+- **Free**: €0/month forever. 200 credits to explore the platform, no card required. 1 member (hard cap), 1M characters of knowledge base, community support, pay-as-you-go top-ups (€45 / 1,000 extra credits).
+- **Starter**: €100/month. 3,000 credits (≈ 3,000 text conversations or 250 minutes Voice QA). 3 seats included, €20 per extra seat, 5M characters of knowledge base, email support, all AI modules. Extra credits €40 / 1,000.
+- **Business**: €200/month (most popular). 8,000 credits (≈ 8,000 text conversations or 660 minutes Voice QA). 5 seats included, €18 per extra seat, 10M characters of knowledge base, priority support, advanced analytics. Extra credits €30 / 1,000.
+- **Premium**: €500/month. 25,000 credits (≈ 25,000 text conversations or 2,000 minutes Voice QA). 10 seats included, €15 per extra seat, 20M characters of knowledge base, dedicated support, API & webhooks access. Extra credits €24 / 1,000.
 - **Enterprise**: custom plans with custom credit packages, volume discounts, priority support & SLA, a dedicated account manager, on-premise deployment, and platform adaptation.
 
-**How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; VoiceQA analysis = 12 credits/minute. Document processing, analytics & reports, team collaboration, and n8n integrations are included free.
+Paid plans do not cap team size: the included seats are what the price covers, and further seats are billed per seat at the rate above. Free is owner-only.
+
+**Add-ons**: each part of the plan scales on its own, billed monthly alongside the subscription and removable at any time:
+
+- **Extra seats**: €20/seat on Starter, €18 on Business, €15 on Premium. No cap on team size for paid plans.
+- **Extra credits**: €40 / 1,000 on Starter, €30 on Business, €24 on Premium, €45 on Free. Purchased credits stack on the monthly allowance and never expire.
+- **Context Packs**: €20/month per pack, adding 5,000,000 characters (~1,000 documents) of knowledge-base capacity. Unlimited packs per account.
+
+**How credits are consumed:** text message = 1 credit; message + attachment = 2 credits; Voice QA = 12 credits/minute; Voice AI = 10 credits/minute (30 credits/minute on premium voices). Everything else is included free and consumes no credits: CRM, Inbox, Messages, workflows, analytics, reports, team collaboration and integrations.
 
 ## Pricing FAQ
 
@@ -58,7 +66,7 @@ Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCR
 - [Voice QA](https://fineguide.ai/voice-qa): Automatic transcription and scoring on every call, with per-department evaluation criteria.
 - [Voice AI](https://fineguide.ai/voice-ai): AI agents on live inbound and outbound phone calls.
 - [Workspace](https://fineguide.ai/workspace): Block-based documents and team knowledge that live alongside the customer record.
-- [Pricing](https://fineguide.ai/pricing): Flexible credit-based pricing with all AI modules included; start free with 1,000 credits.
+- [Pricing](https://fineguide.ai/pricing): Flexible credit-based pricing with all AI modules included; start free with 200 credits.
 - [Enterprise](https://fineguide.ai/enterprise): On-premise deployment, custom plans, platform adaptation, and consultancy for teams at scale.
 - [Schedule a demo](https://fineguide.ai/schedule-demo): Book a 15-minute walkthrough of Fineguide on your operation.
 - [Contact](https://fineguide.ai/contact): Get in touch with the Fineguide team.
