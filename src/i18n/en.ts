@@ -121,7 +121,7 @@ export const en = {
       'Automatic transcription and scoring on every call',
       'Per-department evaluation criteria and weights',
       'Agent feedback and trend dashboards',
-      'Telephony integration with major providers',
+      'Connects to your phone system over SIP',
       'AI agents on live inbound and outbound calls',
     ],
     screenshotAlt: 'Fineguide Voice QA statistics dashboard',
@@ -265,7 +265,7 @@ export const en = {
         {
           title: 'Voice',
           body:
-            'Text-to-speech voices for spoken responses. Pick from a curated set or use your own clone.',
+            'Text-to-speech voices for spoken responses. Pick a voice, or just a male or female one, and preview it before it goes live.',
         },
         {
           title: 'Session Variables',
@@ -451,27 +451,27 @@ export const en = {
       eyebrow: 'Capabilities',
       heading: 'A complete voice layer, end to end.',
       body:
-        'Voice AI builds on the assistants, CRM, and Voice QA you already have, so phone runs on the same configuration, the same customer record, and the same quality dashboards as every other channel.',
+        'Voice AI builds on the assistants and CRM you already have, so the phone runs on the same configuration as every other channel, and callers are recognised from the same CRM.',
       blocks: [
         {
           title: 'Inbound automation',
           body:
-            'Answer calls 24/7. Route by intent, identify the customer, and resolve common requests without queueing for a human.',
+            'Answer calls on your own numbers, day and night. Recognise returning callers from the CRM and resolve common requests without a queue.',
         },
         {
           title: 'Outbound calls',
           body:
-            'Place qualification, follow-up, or reminder calls at scale. Hand off to a human the moment the conversation requires it.',
+            'Call a whole list with an outreach, survey or promotion campaign, and hear each one on your own phone before it starts.',
         },
         {
           title: 'Telephony integration',
           body:
-            'Connects to your existing carrier or SIP trunk. Numbers, recording, and compliance follow your existing setup.',
+            'Connects over SIP to the carrier or phone system you already use, so your numbers stay yours.',
         },
         {
-          title: 'CRM and Voice QA loop',
+          title: 'Connected to the CRM',
           body:
-            'Every call writes back to the same customer record, with transcripts ready for Voice QA scoring on the same dashboards.',
+            'Every call is saved to the conversation history as a transcript. An inbound caller who asks for a person is transferred to your team, or leaves a callback request that becomes a CRM task.',
         },
       ],
     },
