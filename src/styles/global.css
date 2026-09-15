@@ -5,7 +5,7 @@
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  /* Brand — taken from the logo mark (fineguide_lg.svg):
+  /* Brand - taken from the logo mark (fineguide_lg.svg):
      deep indigo #30226F and violet #7C3AED. */
   --color-primary: #30226f;
   --color-primary-foreground: #ffffff;
@@ -15,8 +15,8 @@
   --color-foreground: #12132a;
   /* Darkened 5% from #6b7194. The old value cleared AA on the page background
      (4.56:1) but not on the tinted bands (4.20:1), so body copy in every
-     tinted section was failing. This passes both — 4.97:1 plain, 4.57:1 on
-     tint — and stays 3.5:1 away from the heading colour, so the hierarchy the
+     tinted section was failing. This passes both - 4.97:1 plain, 4.57:1 on
+     tint - and stays 3.5:1 away from the heading colour, so the hierarchy the
      muted tone exists for is intact. */
   --color-muted: #666b8d;
   --color-border: #e6e4f0;
@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-tint);
 }
 
-/* Product screenshot framing — consistent depth across the page */
+/* Product screenshot framing - consistent depth across the page */
 .panel-frame {
   border-radius: 16px;
   background: var(--color-card);

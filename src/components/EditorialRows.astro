@@ -19,7 +19,7 @@ interface Item {
 interface Props {
   // readonly because the i18n modules are `as const`, so every array reaching
   // this component is a readonly tuple. Declaring `Item[]` typechecked fine
-  // until a page passed one straight through — `npm run build` does not
+  // until a page passed one straight through - `npm run build` does not
   // typecheck, so it only surfaced under astro check.
   items: readonly Item[];
   variant?: 'light' | 'dark';

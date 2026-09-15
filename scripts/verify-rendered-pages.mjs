@@ -112,7 +112,27 @@ for (const file of list.sort()) {
 console.log(dead ? `\n${dead} dead in-page anchor link(s)`
                  : `\nall in-page #anchor links resolve to a real element`);
 
-const fail = bad || dead;
+// No long dashes anywhere a reader or a crawler sees text: body copy, <title>,
+// meta descriptions, alt text and JSON-LD. House rule: a plain "-" or rewrite
+// the sentence. Scripts are stripped except JSON-LD, which is published text.
+// llms.txt is plain text served to AI crawlers, so it is scanned too.
+const LONG_DASH = /—|–|&mdash;|&ndash;|&#8212;|&#8211;|&#x201[34];/gi;
+let dashes = 0;
+const dashTargets = [...list.sort(), ...['dist/llms.txt'].filter(f => fs.existsSync(f))];
+for (const file of dashTargets) {
+  const route = '/' + file.replace(/^dist\/?/, '').replace(/index\.html$/, '');
+  const text = fs.readFileSync(file, 'utf8')
+    .replace(/<script(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/g, '')
+    .replace(/<style[\s\S]*?<\/style>/g, '');
+  for (const m of text.matchAll(LONG_DASH)) {
+    const around = text.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' ');
+    console.log(`  DASH  ${route}: ...${around}...`);
+    dashes++;
+  }
+}
+console.log(dashes ? `\n${dashes} long dash(es) in published text` : `no long dashes in published text`);
+
+const fail = bad || dead || dashes;
 console.log(fail ? `\n${bad} of ${list.length} pages have issues\nFAIL`
-                 : `\nall ${list.length} pages structurally clean — exactly one h1, no empty headings, no undefined output, no dead anchors`);
+                 : `\nall ${list.length} pages structurally clean - exactly one h1, no empty headings, no undefined output, no dead anchors`);
 process.exit(fail ? 1 : 0);

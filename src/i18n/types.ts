@@ -4,7 +4,7 @@ import type { en } from './en';
  * `en.ts` is declared `as const`, so every string in it has a *literal* type
  * ("Free", "Get started", ...). Typing a translation file as `typeof en` would
  * therefore demand that the Romanian copy be character-identical to the
- * English — unsatisfiable, and the reason `astro check` reported ~500 errors
+ * English - unsatisfiable, and the reason `astro check` reported ~500 errors
  * in `ro.ts`.
  *
  * `Widen` keeps the shape (and the readonly-ness of the `as const` arrays)

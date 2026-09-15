@@ -18,5 +18,5 @@ function walk(a, b, path) {
   if (typeof a !== typeof b) diffs.push(`${path}: TYPE en=${typeof a} ro=${typeof b}`);
 }
 walk(en, ro, 'root');
-console.log(diffs.length ? diffs.join('\n') : 'STRUCTURE IDENTICAL — no length, key, or type drift');
+console.log(diffs.length ? diffs.join('\n') : 'STRUCTURE IDENTICAL - no length, key, or type drift');
 console.log('total diffs:', diffs.length);

@@ -95,7 +95,7 @@ for(const [loc,f] of [['en','dist/index.html'],['ro','dist/ro/index.html']]){
 // this check stops demanding silence and the page may price workflow steps.
 // A caller is a file that REFERENCES the route without declaring it. The
 // controller's own `@Post('preflight-credits')` is the declaration, so skip the
-// file that carries the @Controller decorator for these routes — counting it
+// file that carries the @Controller decorator for these routes - counting it
 // silently disarms this whole check.
 const scan = (root) => fs.existsSync(root)
   ? fs.readdirSync(root, { recursive: true })
@@ -118,12 +118,12 @@ for (const [label, file] of [['en', 'dist/pricing/index.html'], ['ro', 'dist/ro/
 }
 ok(callsWorkflowCredits ? true : wfOffenders.length === 0,
    callsWorkflowCredits
-     ? 'workflow credit endpoints now have a caller — pricing workflow steps is allowed'
+     ? 'workflow credit endpoints now have a caller - pricing workflow steps is allowed'
      : `workflow runs consume no credits (no caller for the credit endpoints), and no surface claims they do${wfOffenders.length ? ' -> ' + wfOffenders.join(', ') : ''}`);
 
 // --- the workflow builder must only be sold on steps that actually run --------
 // engine/registry.ts holds two lists: HANDLERS (steps with a live runtime) and
-// PLANNED_STEP_TYPES (steps the builder can author but the engine cannot run —
+// PLANNED_STEP_TYPES (steps the builder can author but the engine cannot run -
 // it pauses the run for human review instead). A step appearing in the builder
 // is therefore NOT evidence it works, and marketing one would promise something
 // that silently stops mid-run.
@@ -160,7 +160,7 @@ if (fs.existsSync(registryPath)) {
     const src = fs.readFileSync(p, 'utf8');
     // Both the homepage section (`automations:`) and the dedicated page
     // (`automationsPage:`). Scanning only the first left the whole /automations
-    // page — the one that actually enumerates steps — unguarded.
+    // page - the one that actually enumerates steps - unguarded.
     const blocks = [
       ['section', src.match(/\n  automations:\s*\{([\s\S]*?)\n  \},/)],
       ['page', src.match(/\n  automationsPage:\s*\{([\s\S]*?)\n  \},/)],
@@ -193,7 +193,7 @@ if (fs.existsSync(schemaPath)) {
   // enum value -> the English card name that represents it
   const CARD = { OUTREACH: 'Outreach', SURVEY: 'Survey', PROMOTION: 'Promotion' };
 
-  // The enumeration lives on /campaigns, not the homepage — the homepage block
+  // The enumeration lives on /campaigns, not the homepage - the homepage block
   // is a teaser now. Check where the claim actually is, and in both locales,
   // since a type dropped from only the Romanian page is the same defect.
   const missing = [];
@@ -326,7 +326,7 @@ if (fs.existsSync(schemaPath)) {
 
 // --- the CRM page counts its own surfaces in the heading ---------------------
 // "Eight surfaces, one customer record." sits directly above the list. Add a
-// ninth item and the heading contradicts the thing beneath it — visible to any
+// ninth item and the heading contradicts the thing beneath it - visible to any
 // reader, invisible to every other check here.
 //
 // Separately: crm/tickets is a 13-line <Navigate> stub ("Tickets became the
