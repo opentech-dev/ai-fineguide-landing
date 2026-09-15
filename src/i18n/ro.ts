@@ -671,55 +671,121 @@ export const ro: Translations = {
 
   // --- Voice AI page ---
   voiceAiPage: {
+    // Aceleași afirmații ca în en.ts, verificate în cod; lista a ce produsul NU
+    // face este impusă de scripts/verify-claims.mjs.
     meta: {
-      title: 'Voice AI: agenți AI pe apeluri live | Fineguide.ai',
+      title: 'Voice AI: agenți AI care răspund la telefon | Fineguide',
       description:
-        'Aceiași asistenți care gestionează chat-ul web, la telefon. Voice AI preia apeluri inbound, sună outbound și predă către oameni atunci când contează.',
+        'Agenți AI pe numerele tale, prin SIP. Recunosc apelanții din CRM, transferă la echipă la cerere și sună liste întregi. Taxare pe minut răspuns.',
     },
     hero: {
-      title: 'AI la celălalt capăt',
-      titleAccent: ' al telefonului.',
+      title: 'Asistentul care',
+      titleAccent: ' răspunde la telefon.',
       subtitle:
-        'Aceiași asistenți care gestionează chat-ul web, WhatsApp și Telegram, acum răspund la telefon. Inbound 24/7, outbound la scară, predare către oameni atunci când contează.',
+        'Asistenții pe care îi folosești deja în chat, pe numerele tale de telefon. Recunosc cine sună, dau legătura unui om când li se cere și sună liste întregi când ai nevoie.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
     intro: {
-      eyebrow: 'Modulul Voice AI',
-      body:
-        'Voice AI pune asistenții configurabili pe care îi ai deja pe chat în apeluri telefonice live, răspunzând la inbound, calificând outbound și predând către oameni când contează. Telefonul devine un canal integrat, nu un sistem paralel.',
+      eyebrow: 'Voice AI',
+      screenshotAlt: 'O operatoare de call center cu căști, în mijlocul unei convorbiri',
     },
-    capabilities: {
-      eyebrow: 'Capabilități',
-      heading: 'Un strat de voce complet, end-to-end.',
+    inbound: {
+      eyebrow: 'Apeluri primite',
+      heading: 'Numerele tale, preluate de asistentul pe care îl alegi.',
       body:
-        'Voice AI se sprijină pe asistenții și CRM-ul pe care le ai deja, astfel încât telefonul să ruleze pe aceeași configurare ca orice alt canal, iar apelanții sunt recunoscuți din același CRM.',
-      blocks: [
+        'Nimic nu se mută pe un număr închiriat de la noi. Conectezi sistemul telefonic pe care îl ai, alegi ce asistent răspunde la fiecare număr și ce se întâmplă când biroul e închis.',
+      items: [
         {
-          title: 'Automatizare inbound',
-          body:
-            'Răspunde la apeluri pe numerele tale, zi și noapte. Recunoaște apelanții din CRM și rezolvă solicitările comune fără coadă.',
+          name: 'Numerele tale',
+          desc: 'Conectează operatorul sau centrala printr-un cont SIP standard, apoi alocă fiecare număr asistentului care trebuie să răspundă.',
         },
         {
-          title: 'Apeluri outbound',
-          body:
-            'Sună o listă întreagă cu o campanie de outreach, sondaj sau promoție și ascult-o pe propriul telefon înainte să pornească.',
+          name: 'Apelanți recunoscuți',
+          desc: 'Activează salutul pe nume, iar un apelant al cărui număr e în CRM este întâmpinat cu prenumele, cu firma lui deja în fața asistentului.',
         },
         {
-          title: 'Integrare telefonie',
-          body:
-            'Se conectează prin SIP la operatorul sau centrala pe care le folosești deja, așa că numerele rămân ale tale.',
+          name: 'Program de lucru',
+          desc: 'În afara orelor stabilite, lasă apelul să sune, redirecționează-l către alt număr sau răspunde cu un mesaj care preia o cerere de revenire.',
         },
         {
-          title: 'Conectat la CRM',
-          body:
-            'Fiecare apel se salvează în istoricul conversației ca transcriere. Un apelant inbound care cere un om e transferat către echipa ta sau lasă o cerere de revenire care devine sarcină în CRM.',
+          name: 'Un om când contează',
+          desc: 'Un apelant care cere un om e transferat la numărul call center-ului, doar în programul acestuia dacă îl setezi. Altfel lasă o cerere de revenire care ajunge în CRM ca sarcină.',
+        },
+      ],
+    },
+    voice: {
+      eyebrow: 'În timpul apelului',
+      heading: 'Alege motorul, vocea și limbile.',
+      body:
+        'Aceeași configurare a asistentului pe care o folosești în chat, cu alegerile pe care le adaugă un apel. Totul se setează per asistent.',
+      items: [
+        {
+          term: 'Patru motoare',
+          desc: 'OpenAI Realtime, Google Gemini Live, ElevenLabs Agents sau Gemini împreună cu o voce separată de la ElevenLabs, Google Chirp 3 HD, Gemini ori OpenAI.',
+        },
+        {
+          term: 'Voci',
+          desc: 'Alege o voce anume, sau doar o voce masculină ori feminină, și ascult-o înainte ca asistentul să intre live.',
+        },
+        {
+          term: 'Limbi',
+          desc: 'Dă unui asistent mai multe limbi, de la română, engleză și rusă până la arabă, japoneză și chineză. Răspunde în limba în care vorbește apelantul.',
+        },
+        {
+          term: 'Întreruperi',
+          desc: 'Apelantul poate vorbi peste asistent, iar acesta se oprește să asculte, ca un om. Un detector de vorbire împiedică zgomotul de pe linie să-l întrerupă.',
+        },
+        {
+          term: 'Ce știe',
+          desc: 'Baza de cunoștințe, căutarea web și acțiunile custom date asistentului pentru chat funcționează și la telefon, iar el așteaptă rezultatul real înainte să răspundă.',
+        },
+      ],
+    },
+    outbound: {
+      eyebrow: 'Apeluri efectuate',
+      heading: 'Sună o listă, nu câte un număr pe rând.',
+      body:
+        'Apelurile efectuate rulează ca o campanie: o audiență, un script și un program pe care asistenții îl parcurg în ritmul tău.',
+      bullets: [
+        'Campanii de outreach, sondaj și promoție, fiecare raportată cum îi cere tipul',
+        'Răspunsuri la sondaje și rezultate ale promoțiilor extrase din fiecare apel încheiat',
+        'Un apel de test pe propriul telefon înainte să fie sunat vreun contact real',
+        'Reîncercări când nu se răspunde sau e ocupat, cu intervalul ales de tine',
+      ],
+      linkLabel: 'Vezi Campaniile',
+    },
+    afterCall: {
+      eyebrow: 'După apel',
+      heading: 'Ce rămâne în urmă și cât costă.',
+      body:
+        'Un apel lasă un text pe care echipa îl poate citi și un cost pe care îl poți estima înainte de primul apel.',
+      items: [
+        {
+          term: 'Transcriere',
+          desc: 'Fiecare apel telefonic se salvează ca transcriere în istoricul conversațiilor, în același loc cu conversațiile de chat.',
+        },
+        {
+          term: 'Sarcini de revenire',
+          desc: 'Cererile de revenire ajung pe panoul de sarcini cu numărul apelantului și o notă scurtă despre ce a vrut.',
+        },
+        {
+          term: 'Pe minut răspuns',
+          desc: 'Apelurile consumă din portofelul comun de credite din momentul în care se răspunde, niciodată cât sună, rotunjit la secundă, cu un minim de un minut.',
+        },
+        {
+          term: 'Tarife',
+          desc: '10 credite pe minut pe OpenAI, Gemini sau motorul Gemini cu voce separată și 30 pe ElevenLabs Agents, dacă planul tău nu are tarife proprii.',
+        },
+        {
+          term: 'Fără facturi surpriză',
+          desc: 'Un apel pornește doar dacă portofelul acoperă primul minut, așa că un sold gol oprește apelurile în loc să facă datorii.',
         },
       ],
     },
     finalCta: {
-      heading: 'Adu AI la telefon.',
-      body: 'Walkthrough prin Voice AI, Voice QA și restul platformei într-un singur demo.',
+      heading: 'Ascultă-l pe propriul telefon.',
+      body: 'Conectează un număr, alege o voce și sună singur. Sau vezi Voice AI, Campaniile și restul platformei într-un singur demo.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },

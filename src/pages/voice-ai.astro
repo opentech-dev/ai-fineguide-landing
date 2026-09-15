@@ -5,33 +5,67 @@ import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import Band from '../components/Band.astro';
 import EditorialRows from '../components/EditorialRows.astro';
+import RuleList from '../components/RuleList.astro';
 import ClosingCta from '../components/ClosingCta.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url) as Lang;
 const t = useTranslations(lang);
 const p = t.voiceAiPage;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Fineguide Voice AI',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: p.meta.description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+};
 ---
 
-<Layout title={p.meta.title} description={p.meta.description} lang={lang}>
+<Layout title={p.meta.title} description={p.meta.description} lang={lang} jsonLd={jsonLd}>
   <Navbar t={t} lang={lang} />
 
   <main id="main-content">
     <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
-      <p class="text-2xl md:text-3xl leading-relaxed text-[var(--color-muted)] font-light text-pretty">
-        {p.intro.body}
-      </p>
+      <img
+        src="/images/photos/agent-call.jpg"
+        alt={p.intro.screenshotAlt}
+        width="1408"
+        height="768"
+        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
+        loading="eager"
+      />
     </PageHero>
 
-    <Band tone="dark" eyebrow={p.capabilities.eyebrow} heading={p.capabilities.heading} body={p.capabilities.body}>
-      <EditorialRows
-        variant="dark"
-        items={p.capabilities.blocks.map((b) => ({ term: b.title, desc: b.body }))}
-      />
+    <Band tone="dark" eyebrow={p.inbound.eyebrow} heading={p.inbound.heading} body={p.inbound.body}>
+      <EditorialRows variant="dark" items={p.inbound.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
 
-    <ClosingCta lang={lang} {...p.finalCta} />
+    <Band eyebrow={p.voice.eyebrow} heading={p.voice.heading} body={p.voice.body}>
+      <EditorialRows items={p.voice.items} />
+    </Band>
+
+    <Band tone="tint" eyebrow={p.outbound.eyebrow} heading={p.outbound.heading} body={p.outbound.body}>
+      <RuleList items={p.outbound.bullets} />
+      <a
+        href={getLocalizedPath('/campaigns', lang)}
+        class="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[var(--color-primary)] hover:underline"
+      >
+        {p.outbound.linkLabel}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </Band>
+
+    <Band eyebrow={p.afterCall.eyebrow} heading={p.afterCall.heading} body={p.afterCall.body}>
+      <EditorialRows items={p.afterCall.items} />
+    </Band>
+
+    <ClosingCta lang={lang} rule {...p.finalCta} />
   </main>
 
   <Footer t={t} lang={lang} />

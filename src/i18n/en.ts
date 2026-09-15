@@ -498,55 +498,124 @@ export const en = {
 
   // --- Voice AI page (custom layout) ---
   voiceAiPage: {
+    // Every claim below was checked against the voice bridge
+    // (ai-gptcrawler/voice_ai_go) and the API before it went in. The list of
+    // what the product does NOT do (voicemail detection, recordings in the app,
+    // call summaries, warm or outbound transfer, routing to teams, click-to-call,
+    // voice cloning) is enforced in scripts/verify-claims.mjs.
     meta: {
-      title: 'Voice AI | AI agents on live phone calls | Fineguide.ai',
+      title: 'Voice AI: AI Agents That Answer Your Phone | Fineguide',
       description:
-        'The same assistants that handle web chat, on the other end of the phone. Voice AI answers inbound, places outbound, and hands off to humans when it matters.',
+        'AI agents on your own numbers over SIP. They recognise callers from the CRM, transfer to your team on request, and call whole lists. Billed per answered minute.',
     },
     hero: {
-      title: 'AI on the other end',
-      titleAccent: ' of the phone.',
+      title: 'The assistant that',
+      titleAccent: ' answers your phone.',
       subtitle:
-        'The same assistants that handle web chat, WhatsApp, and Telegram, now picking up the phone. Answer inbound 24/7, place outbound at scale, hand off to humans when it matters.',
+        'The assistants you already run on chat, on your own phone numbers. They recognise who is calling, put a person on the line when asked, and call whole lists when you need them to.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
     intro: {
-      eyebrow: 'The Voice AI module',
-      body:
-        'Voice AI puts the configurable assistants you already deploy on chat onto live phone calls, answering inbound, qualifying outbound, and handing off to humans when it matters. Phone becomes an integrated channel, not a parallel system.',
+      eyebrow: 'Voice AI',
+      screenshotAlt: 'A call-centre agent on a headset, mid-conversation with a caller',
     },
-    capabilities: {
-      eyebrow: 'Capabilities',
-      heading: 'A complete voice layer, end to end.',
+    inbound: {
+      eyebrow: 'Inbound calls',
+      heading: 'Your numbers, answered by the assistant you choose.',
       body:
-        'Voice AI builds on the assistants and CRM you already have, so the phone runs on the same configuration as every other channel, and callers are recognised from the same CRM.',
-      blocks: [
+        'Nothing moves to a number we rent you. Connect the phone system you already have, decide which assistant owns each number, and decide what happens when the office is closed.',
+      items: [
         {
-          title: 'Inbound automation',
-          body:
-            'Answer calls on your own numbers, day and night. Recognise returning callers from the CRM and resolve common requests without a queue.',
+          name: 'Your own numbers',
+          desc: 'Connect your carrier or PBX with a standard SIP account, then give each number to the assistant that should answer it.',
         },
         {
-          title: 'Outbound calls',
-          body:
-            'Call a whole list with an outreach, survey or promotion campaign, and hear each one on your own phone before it starts.',
+          name: 'Callers it recognises',
+          desc: 'Turn on greeting by name, and a caller whose number is in the CRM is welcomed by their first name, with their company already in front of the assistant.',
         },
         {
-          title: 'Telephony integration',
-          body:
-            'Connects over SIP to the carrier or phone system you already use, so your numbers stay yours.',
+          name: 'Business hours',
+          desc: 'Outside the hours you set, let the call ring out, forward it to another number, or answer with an after-hours message that takes a callback request.',
         },
         {
-          title: 'Connected to the CRM',
-          body:
-            'Every call is saved to the conversation history as a transcript. An inbound caller who asks for a person is transferred to your team, or leaves a callback request that becomes a CRM task.',
+          name: 'A person when it matters',
+          desc: 'A caller who asks for a human is transferred to your call-centre number, only during its hours if you set them. Otherwise they leave a callback request that lands in the CRM as a task.',
+        },
+      ],
+    },
+    voice: {
+      eyebrow: 'On the call',
+      heading: 'Choose the engine, the voice and the languages.',
+      body:
+        'The same assistant configuration you use for chat, with the choices a phone call adds. Everything here is set per assistant.',
+      items: [
+        {
+          term: 'Four engines',
+          desc: 'OpenAI Realtime, Google Gemini Live, ElevenLabs Agents, or Gemini paired with a separate voice from ElevenLabs, Google Chirp 3 HD, Gemini or OpenAI.',
+        },
+        {
+          term: 'Voices',
+          desc: 'Pick a specific voice, or just a male or female one, and listen to it before the assistant goes live.',
+        },
+        {
+          term: 'Languages',
+          desc: 'Give one assistant several languages, from English, Romanian and Russian to Arabic, Japanese and Chinese. It replies in the language the caller is speaking.',
+        },
+        {
+          term: 'Interruptions',
+          desc: 'Callers can talk over the assistant and it stops to listen, the way a person would. A speech detector keeps line noise from cutting it off.',
+        },
+        {
+          term: 'What it knows',
+          desc: 'Your knowledge base, web search and the custom actions you gave the assistant for chat all work on the call, and it waits for the real result before answering.',
+        },
+      ],
+    },
+    outbound: {
+      eyebrow: 'Outbound calls',
+      heading: 'Call a list, not one number at a time.',
+      body:
+        'Outbound runs as a campaign: an audience, a script, and a schedule the assistants dial through at your pace.',
+      bullets: [
+        'Outreach, survey and promotion campaigns, each reported the way its type needs',
+        'Survey answers and promotion outcomes extracted from every completed call',
+        'A test call to your own phone before any real contact is dialled',
+        'Retries on no answer or busy, with the delay you choose',
+      ],
+      linkLabel: 'See Campaigns',
+    },
+    afterCall: {
+      eyebrow: 'After the call',
+      heading: 'What stays behind, and what it costs.',
+      body:
+        'A call leaves a record your team can read, and a charge you can predict before the first one is placed.',
+      items: [
+        {
+          term: 'Transcript',
+          desc: 'Every phone call is saved as a transcript in the conversation history, in the same place as your chat conversations.',
+        },
+        {
+          term: 'Callback tasks',
+          desc: 'Callback requests arrive on your task board with the caller’s number and a short note of what they wanted.',
+        },
+        {
+          term: 'Per answered minute',
+          desc: 'Calls draw on the shared credit wallet from the moment they are answered, never while ringing, rounded up to the second with a one-minute minimum.',
+        },
+        {
+          term: 'Rates',
+          desc: '10 credits a minute on OpenAI, Gemini or the Gemini-plus-voice engine, and 30 on ElevenLabs Agents, unless your plan sets its own rates.',
+        },
+        {
+          term: 'No surprise bills',
+          desc: 'A call only starts when the wallet can cover its first minute, so an empty balance stops calls rather than running up a debt.',
         },
       ],
     },
     finalCta: {
-      heading: 'Bring AI to the phone.',
-      body: 'Walk through Voice AI, Voice QA, and the rest of the platform in one demo.',
+      heading: 'Hear it on your own phone.',
+      body: 'Connect a number, pick a voice, and call it yourself. Or see Voice AI, Campaigns and the rest of the platform in one demo.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
