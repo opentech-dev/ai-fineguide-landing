@@ -1173,7 +1173,7 @@ export const en = {
     footnote: 'Credits and knowledge base space are shared by everyone in your organization.',
     yearlyNote:
       'Yearly plans are paid once a year. Credits still arrive every month, and extra seats are billed monthly.',
-    usdNote: 'Prices shown in US dollars. For now your card is charged the same amount in euro.',
+    usdNote: 'Dollar prices are shown for reference. For now you are billed in euro, at the euro price.',
     plans: [
       {
         name: 'Free',
@@ -1332,7 +1332,7 @@ export const en = {
   pricingFaq: {
     heading: 'Questions about pricing',
     subtitle: 'The rules, in plain words.',
-    currency: { q: 'Which currency am I charged in?', a: 'Euro. If you view prices in US dollars, your card is charged the same number in euro.' },
+    currency: { q: 'Which currency am I charged in?', a: 'Euro, for now. Dollar prices are the euro prices converted and rounded, shown for reference. If you subscribe, you pay the euro price.' },
     items: [
       { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 with ElevenLabs voice agents. Everything else on the platform is included in your plan.' },
       { q: 'Do unused credits carry over?', a: 'No. On a paid plan your credits refresh on each billing date, and anything unused does not carry over. The 200 credits on Free are given once and do not refresh.' },

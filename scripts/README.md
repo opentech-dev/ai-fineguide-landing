@@ -7,7 +7,7 @@ what actually ships.
 ```bash
 npm run build
 node scripts/verify-claims.mjs                        # 45 checks
-node scripts/verify-pricing.mjs                       # 265 checks
+node scripts/verify-pricing.mjs                       # 282 checks
 node scripts/verify-brand-marks.mjs
 node scripts/verify-css-tokens.mjs
 node scripts/verify-seo.mjs
@@ -21,7 +21,7 @@ Each exits non-zero on failure, so they chain with `&&`.
 | Script | What it protects |
 |---|---|
 | `verify-claims.mjs` | Every module and integration named on the landing page is backed by real source in `ai-backoffice-api` / `ai-backoffice-frontend`. Catches marketing a product that does not exist - including the specific trap that `/campaigns` is a live route with no module behind it, and that workflow steps are not priced while nothing charges for them. |
-| `verify-pricing.mjs` | Every price, credit allowance, seat count, knowledge base size, top-up rate, voice rate and add-on on `/pricing/` and `/ro/pricing/` matches the backoffice config (`NEW_LADDER_2026`, `ANNUAL_DISCOUNT`, `ANNUAL_TOPUP_DISCOUNT`, `VOICE_CREDITS_PER_MIN`, `STORAGE_PACKS`), checked in every view a visitor can switch to (monthly or yearly; euro or, on English, dollars), each in its own number format. Warns while `USD_BILLING_LIVE` in `src/data/pricing.ts` is false. Also fails if the page or llms.txt repeats a statement the billing code contradicts: a free trial, "text conversations", an attachment surcharge, assistants working at zero credits, credits that never expire, per-plan analytics or API access. |
+| `verify-pricing.mjs` | Every price, credit allowance, seat count, knowledge base size, top-up rate, voice rate and add-on on `/pricing/` and `/ro/pricing/` matches the backoffice config (`NEW_LADDER_2026`, `ANNUAL_DISCOUNT`, `ANNUAL_TOPUP_DISCOUNT`, `VOICE_CREDITS_PER_MIN`, `STORAGE_PACKS`), checked in every view a visitor can switch to (monthly or yearly; euro or, on English, dollars), each in its own number format. Dollar figures are checked against the conversion rule in `src/data/pricing.ts` (`USD_RATE`), and must not repeat the euro number. Warns while `USD_BILLING_LIVE` in `src/data/pricing.ts` is false. Also fails if the page or llms.txt repeats a statement the billing code contradicts: a free trial, "text conversations", an attachment surcharge, assistants working at zero credits, credits that never expire, per-plan analytics or API access. |
 | `verify-brand-marks.mjs` | Every integration named in either locale resolves to a logo file that exists. Without it a renamed item silently renders a cell with no mark. |
 | `verify-locale-parity.mjs` | `en` and `ro` stay structurally identical - same keys, same array lengths, same types. A Romanian module list once ran one entry short in production. |
 | `verify-css-tokens.mjs` | Every `var(--*)` resolves to a defined token. An undefined custom property does not error - it silently inherits, which once flattened a section's type hierarchy with every other check green. |
