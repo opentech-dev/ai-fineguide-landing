@@ -38,6 +38,9 @@ in line. The same fixes are merged into the redesign branch.
    `https://fineguide.ai/fineguide-intro.mp4`, `/fineguide-intro.mov`,
    `/images/screenshots/crm-tasks.png`, `/images/screenshots/voiceqa-stats.png`.
    If they still return 200 after Jenkins has deployed, purge them in Cloudflare.
+   At 16:42 on 2026-09-15, after the deploy, three returned 404 but
+   `crm-tasks.png` was still a Cloudflare cache HIT (max-age 4h, age ~58 min),
+   while the origin already returned 404.
 2. **Decide about the exposure.** The video was public for about three months
    (last-modified 2026-06-19). It showed a real contact's name, email and phone,
    a recorded call transcript, real inbox senders and an internal incident
