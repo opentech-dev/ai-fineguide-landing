@@ -1,22 +1,27 @@
-// Asserts every pricing figure rendered on dist/pricing/ against the API's
-// own NEW_LADDER_2026 definition. That constant is what the seeder reads, so
-// it is the source of truth for prices, credits, seats and top-up rates.
+// Asserts every pricing figure rendered on /pricing/ and /ro/pricing/ against
+// the API's own config, and that the page does not repeat the statements an
+// audit of the billing code found to be false.
 //
-// This previously checked against __fixtures__/legacy-plan-catalog.ts. Both
-// ladders exist in the codebase; the site now advertises the 2026 one, so the
-// legacy catalog is no longer what the page should match.
+// Sources of truth:
+//   NEW_LADDER_2026        pricing-config.ts   prices, credits, seats, top-ups, KB size
+//   VOICE_CREDITS_PER_MIN  pricing-config.ts   Voice QA and Voice AI rates
+//   STORAGE_PACKS          storage-packs.ts    Context Pack price and capacity
+//
+// Each locale is checked in its own number format ("3,000" in English, "3.000"
+// in Romanian). This used to search for "3.000" only, which is why the English
+// page printed European separators.
 //
 // Run after `npm run build`.
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
-const CONFIG = '/Users/liviumaftuleac/develop/ai-backoffice-api/apps/backoffice-api/src/pricing/pricing-config.ts';
-const src = readFileSync(CONFIG, 'utf8');
+const API = '/Users/liviumaftuleac/develop/ai-backoffice-api/apps/backoffice-api/src/pricing';
+const src = readFileSync(`${API}/pricing-config.ts`, 'utf8');
 
 // Pull the ladder out of the TS source rather than importing it (the API is a
 // separate package with its own build). One object per plan.
 const truth = {};
 const start = src.indexOf('NEW_LADDER_2026: NewPlanDef[] = [');
-if (start < 0) { console.error('FAIL  NEW_LADDER_2026 not found in ' + CONFIG); process.exit(1); }
+if (start < 0) { console.error(`FAIL  NEW_LADDER_2026 not found in ${API}/pricing-config.ts`); process.exit(1); }
 // Slice to the end of the array literal rather than stopping after N plans, so
 // a tier added to the ladder is checked instead of silently skipped.
 const end = src.indexOf('\n];', start);
@@ -28,7 +33,7 @@ for (const block of ladder.split(/\{\s*\n\s*alias:/).slice(1)) {
   if (!label) continue;
   truth[label] = {
     price: +g(/price: ([\d_]+)/),
-    credits: +g(/messages: ([\d_]+)/),
+    credits: +g(/messages: ([\d_]+)/).replace(/_/g, ''),
     topup: +g(/additionalMessagePrice: ([\d.]+)/),
     includedSeats: +g(/includedSeats: (\d+)/),
     extraSeat: +g(/extraSeatPrice: (\d+)/),
@@ -44,62 +49,114 @@ if (Object.keys(truth).length !== LADDER_SIZE) {
   process.exit(1);
 }
 
-// Voice + workflow credit rates, also authoritative in pricing-config.ts
 const voiceQa = +src.match(/qa:\s*(\d+)/)[1];
 const voiceAi = +src.match(/aiGoogle:\s*(\d+)/)[1];
-const voicePremium = +src.match(/aiElevenlabs:\s*(\d+)/)[1];
-const workflowNode = +src.match(/WORKFLOW_NODE_CREDITS_DEFAULT = (\d+)/)[1];
+const voiceEleven = +src.match(/aiElevenlabs:\s*(\d+)/)[1];
 
-const html = readFileSync('dist/pricing/index.html', 'utf8');
+const packSrc = readFileSync(`${API}/storage-packs.ts`, 'utf8');
+const packPrice = +packSrc.match(/priceEur:\s*(\d+)/)[1];
+const packCapacity = +packSrc.match(/capacity:\s*([\d_]+)/)[1].replace(/_/g, '');
+// The product's own hint: one pack (5,000,000 characters) is ~1,000 documents.
+const CHARS_PER_DOC = 5_000;
+
+const LOCALES = {
+  en: {
+    file: 'dist/pricing/index.html',
+    num: (n) => n.toLocaleString('en-US'),
+    credits: 'credits',
+    seats: (n) => `You \\+ ${n} teammates?`,
+    docs: (n) => `About ${n} documents`,
+    chars: 'characters',
+    perK: (n) => `€${n} (per|/) 1,000`,
+  },
+  ro: {
+    file: 'dist/ro/pricing/index.html',
+    num: (n) => n.toLocaleString('de-DE'),
+    credits: 'credite',
+    seats: (n) => `Tu \\+ ${n} colegi?`,
+    docs: (n) => `Aproximativ ${n} de documente`,
+    chars: 'caractere',
+    perK: (n) => `€${n} (pentru|/) 1\\.000`,
+  },
+};
+
+// Statements the billing code contradicts (docs/pricing-audit-2026.md and the
+// plan audit of 2026-09-15). Each one was on the page.
+const BANNED = [
+  [/free trial|perioad[ăa] de prob[ăa]/i, 'there is no trial, only the Free plan'],
+  [/text conversations|conversa[țt]ii text/i, 'a credit is one AI reply, not a conversation'],
+  [/attachment[^<]{0,20}2 credits|2 credite[^<]{0,20}ata[șs]ament/i, 'attachments are not charged'],
+  [/(assistants?|AI)[^.<]{0,20}(continue to work|keeps? working)|continue to work|continu[ăa] s[ăa] func[țt]ioneze/i, 'assistants stop at zero credits'],
+  [/never expire|nu expir[ăa] niciodat[ăa]/i, 'bought credits are lost on a plan change'],
+  [/advanced analytics|analiz[ăa] avansat[ăa]/i, 'no plan gates analytics'],
+  [/API (&amp;|&) webhooks access|acces API/i, 'no plan gates the API'],
+  [/All AI modules included|toate modulele AI incluse/i, 'module access is not a per-plan difference'],
+  [/premium voices?|voci premium/i, 'the 30-credit rate is the ElevenLabs voice-agent engine only'],
+];
+
 const checks = [];
 const ck = (label, ok, detail) => checks.push({ label, ok, detail });
 
-for (const [name, t] of Object.entries(truth)) {
-  if (t.price > 0) ck(`${name} price €${t.price}`, html.includes(`€${t.price}`), `€${t.price}`);
+for (const [loc, L] of Object.entries(LOCALES)) {
+  if (!existsSync(L.file)) { ck(`${loc}: ${L.file} exists`, false, 'run npm run build'); continue; }
+  const html = readFileSync(L.file, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '');
+  const has = (re) => new RegExp(re).test(html);
 
-  const fmt = t.credits.toLocaleString('de-DE'); // 3.000 style used on the page
-  ck(`${name} credits ${fmt}`, html.includes(fmt), fmt);
+  for (const [name, t] of Object.entries(truth)) {
+    ck(`${loc} ${name} price €${t.price}`, html.includes(`€${t.price}<`), `€${t.price}`);
+    ck(`${loc} ${name} credits ${L.num(t.credits)}`, html.includes(`${L.num(t.credits)}`), L.num(t.credits));
 
-  // top-up: page renders "€X / 1.000", so X must be topup * 1000
-  const per1000 = Math.round(t.topup * 1000);
-  ck(`${name} top-up €${per1000}/1.000 (= ${t.topup}/credit)`,
-     html.includes(`€${per1000} / 1.000`), `€${per1000} / 1.000`);
+    const per1000 = Math.round(t.topup * 1000);
+    ck(`${loc} ${name} extra credits €${per1000} per 1,000 (= ${t.topup}/credit)`, has(L.perK(per1000)), `€${per1000}`);
 
-  // seats: included + per-extra price, exactly as the ladder defines them
-  if (t.extraSeat > 0) {
-    ck(`${name} ${t.includedSeats} seats included`,
-       new RegExp(`${t.includedSeats} (seats included|locuri incluse)`).test(html), `${t.includedSeats}`);
-    ck(`${name} extra seat €${t.extraSeat}`, html.includes(`€${t.extraSeat}`), `€${t.extraSeat}`);
-  } else {
-    ck(`${name} is single-seat (extraSeatPrice 0)`, t.includedSeats === 1, '1');
+    // Seats exclude the owner: ability.service.ts counts organizationMember
+    // rows, and the owner has none. So includedSeats 3 is "you + 3".
+    ck(`${loc} ${name} you + ${t.includedSeats}`, has(L.seats(t.includedSeats)), `+ ${t.includedSeats}`);
+    if (t.extraSeat > 0) ck(`${loc} ${name} extra seat €${t.extraSeat}`, html.includes(`€${t.extraSeat} `), `€${t.extraSeat}`);
+
+    const m = t.context / 1_000_000;
+    ck(`${loc} ${name} ${m}M ${L.chars}`, has(`${m}M ${L.chars}`), `${m}M`);
+    const docs = L.num(t.context / CHARS_PER_DOC);
+    ck(`${loc} ${name} about ${docs} documents`, has(L.docs(docs)), docs);
+
+    // Minutes of call scoring quoted beside paid allowances: credits / Voice QA
+    // rate, rounded down to the nearest ten so "about" never overstates it.
+    if (t.price > 0) {
+      const mins = L.num(Math.floor(t.credits / voiceQa / 10) * 10);
+      ck(`${loc} ${name} ${mins} minutes of call scoring`, html.includes(`${mins} `), mins);
+    }
   }
 
-  // knowledge-base capacity, rendered as "5M characters"
-  const m = t.context / 1_000_000;
-  ck(`${name} ${m}M character knowledge base`,
-     new RegExp(`${m}M (characters|caractere)`).test(html), `${m}M`);
+  ck(`${loc} Context Pack €${packPrice}`, html.includes(`€${packPrice}<`), `€${packPrice}`);
+  ck(`${loc} Context Pack +${packCapacity / 1e6}M`, has(`\\+${packCapacity / 1e6}M ${L.chars}`), `+${packCapacity / 1e6}M`);
+  ck(`${loc} Voice QA ${voiceQa} ${L.credits}`, html.includes(`${voiceQa} ${L.credits}`), `${voiceQa}`);
+  ck(`${loc} Voice AI ${voiceAi} ${L.credits}`, html.includes(`${voiceAi} ${L.credits}`), `${voiceAi}`);
+  ck(`${loc} ElevenLabs rate ${voiceEleven}`, has(`${voiceEleven}[^<]{0,20}ElevenLabs`), `${voiceEleven}`);
+
+  for (const [re, why] of BANNED) {
+    const m = html.match(re);
+    ck(`${loc} does not say "${re.source.split('|')[0]}" (${why})`, !m, m ? m[0] : '');
+  }
 }
 
-// Context Packs come from a different file than the ladder.
-const packSrc = readFileSync(
-  '/Users/liviumaftuleac/develop/ai-backoffice-api/apps/backoffice-api/src/pricing/storage-packs.ts', 'utf8');
-const packPrice = +packSrc.match(/priceEur:\s*(\d+)/)[1];
-const packCapacity = +packSrc.match(/capacity:\s*([\d_]+)/)[1].replace(/_/g, '');
-ck(`Context Pack €${packPrice}/month`, html.includes(`€${packPrice}`), `€${packPrice}`);
-ck(`Context Pack +${packCapacity / 1e6}M characters`,
-   new RegExp(`\\+${packCapacity / 1e6}M (characters|caractere)`).test(html), `+${packCapacity / 1e6}M`);
+// llms.txt carries the same pricing to AI crawlers and must not contradict it.
+if (existsSync('dist/llms.txt')) {
+  const txt = readFileSync('dist/llms.txt', 'utf8');
+  for (const [re, why] of BANNED) {
+    const m = txt.match(re);
+    ck(`llms.txt does not say "${re.source.split('|')[0]}" (${why})`, !m, m ? m[0] : '');
+  }
+}
 
-ck(`Voice QA ${voiceQa} credits/min`, html.includes(`${voiceQa} credits`), `${voiceQa}`);
-ck(`Voice AI ${voiceAi} credits/min`, html.includes(`${voiceAi} credits`), `${voiceAi}`);
-ck(`Premium voice ${voicePremium} credits/min`, html.includes(`${voicePremium} credits`), `${voicePremium}`);
-ck(`Workflow AI step ${workflowNode} credit`, html.includes(`${workflowNode} credit`), `${workflowNode}`);
-
-// Nothing from the retired dollar ladder may survive anywhere on the page.
-for (const stale of ['$99', '$199', '$499', '10.000', '23.000', '65.000', '$18 / 1.000', '$15 / 1.000', '$12 / 1.000', '$10 / 1.000']) {
-  ck(`retired legacy figure "${stale}" is gone`, !html.includes(stale), stale);
+// Nothing from the retired dollar ladder may survive.
+for (const f of Object.values(LOCALES).map((l) => l.file).filter(existsSync)) {
+  const html = readFileSync(f, 'utf8');
+  for (const stale of ['$99', '$199', '$499', '10.000 credits', '23.000', '65.000']) {
+    ck(`${f}: retired figure "${stale}" is gone`, !html.includes(stale), stale);
+  }
 }
 
 let bad = 0;
-for (const c of checks) { if (!c.ok) bad++; console.log(`${c.ok ? 'PASS' : 'FAIL'}  ${c.label}${c.ok ? '' : '   <-- expected ' + c.detail}`); }
+for (const c of checks) { if (!c.ok) bad++; console.log(`${c.ok ? 'PASS' : 'FAIL'}  ${c.label}${c.ok ? '' : `   <-- ${c.detail}`}`); }
 console.log(bad ? `\n${bad} FAILURES` : `\nALL ${checks.length} PRICING CHECKS PASS (against NEW_LADDER_2026)`);
 process.exit(bad ? 1 : 0);

@@ -1,0 +1,26 @@
+---
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+
+// Sits between the hero and the plans. The plan cards quote credits, and a
+// number of credits means nothing until you know what one buys, so the
+// exchange rate comes first.
+const e = t.pricingExplainer;
+---
+
+<section class="pb-16 md:pb-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <p class="eyebrow mb-6">{e.eyebrow}</p>
+    <dl class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
+      {e.items.map((item) => (
+        <div class="border-t border-[var(--color-border)] pt-5">
+          <dt>
+            <span class="block text-3xl font-semibold tracking-tight text-[var(--color-primary)] tnum">{item.value}</span>
+            <span class="mt-2 block font-semibold text-[var(--color-foreground)]">{item.term}</span>
+          </dt>
+          <dd class="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">{item.desc}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

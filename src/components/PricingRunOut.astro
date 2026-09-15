@@ -1,0 +1,30 @@
+---
+import Band from './Band.astro';
+import type { Translations } from '../i18n/utils';
+const { t } = Astro.props as { t: Translations };
+
+// The old FAQ said assistants "continue to work" at zero credits. They stop:
+// that is the one thing a buyer most needs to know about credits, so it gets a
+// section of its own instead of a line in an accordion.
+const r = t.pricingRunOut;
+const lists = [
+  { label: r.pausesLabel, items: r.pauses, mark: 'bg-amber-400' },
+  { label: r.keepsLabel, items: r.keeps, mark: 'bg-emerald-400' },
+];
+---
+
+<Band tone="dark" eyebrow={r.eyebrow} heading={r.heading} body={r.subtitle}>
+  <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+    {lists.map((list) => (
+      <div class="border-t border-white/10 pt-5">
+        <p class="flex items-center gap-2.5 text-lg font-semibold">
+          <span class={`h-2 w-2 rounded-full ${list.mark}`} aria-hidden="true"></span>
+          {list.label}
+        </p>
+        <ul class="mt-4 space-y-2.5 text-gray-300">
+          {list.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Band>
