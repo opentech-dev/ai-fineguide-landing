@@ -190,3 +190,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Timeline line ── */
+/* ── Pricing: period and currency ───────────────────────────
+   Every price is rendered in all its forms (euro and dollar, monthly and
+   yearly). The switch on /pricing sets data-period and data-currency on
+   <html>; these rules hide what does not match. Without JavaScript the page
+   shows euro, monthly. ------------------------------------- */
+html:not([data-period="yearly"]) .only-yearly,
+html[data-period="yearly"] .only-monthly,
+html:not([data-currency="usd"]) .only-usd,
+html[data-currency="usd"] .only-eur {
+  display: none !important;
+}
