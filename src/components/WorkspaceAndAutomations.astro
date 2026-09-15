@@ -23,7 +23,7 @@ const { workspace, automations } = t.workspaceAutomations;
       <ul class="mt-8 space-y-3">
         {workspace.features.map((f) => (
           <li class="flex gap-3 text-base text-[var(--color-foreground)]">
-            <span class="text-[var(--color-primary)] mt-1">—</span>
+            <svg class="w-[18px] h-[18px] mt-1 shrink-0 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5" /></svg>
             <span class="leading-relaxed">{f}</span>
           </li>
         ))}
@@ -43,7 +43,7 @@ const { workspace, automations } = t.workspaceAutomations;
       <ul class="mt-8 space-y-3">
         {automations.features.map((f) => (
           <li class="flex gap-3 text-base text-[var(--color-foreground)]">
-            <span class="text-[var(--color-primary)] mt-1">—</span>
+            <svg class="w-[18px] h-[18px] mt-1 shrink-0 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5" /></svg>
             <span class="leading-relaxed">{f}</span>
           </li>
         ))}

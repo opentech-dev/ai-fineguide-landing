@@ -634,7 +634,7 @@ export const ro: Translations = {
         {
           title: 'Comenzi slash',
           body:
-            'Apasă `/` pentru a deschide fiecare tip de bloc, embed și scurtătură. Fără vânătoare prin meniuri, fără întreruperi de formatare.',
+            'Tastează o bară oblică pentru a deschide fiecare tip de bloc, embed și scurtătură. Fără vânătoare prin meniuri, fără întreruperi de formatare.',
         },
         {
           title: 'Actualizări în timp real',

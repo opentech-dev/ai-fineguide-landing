@@ -587,7 +587,7 @@ export const en = {
         {
           title: 'Slash commands',
           body:
-            'Type `/` to pull up every block type, embed, and shortcut. No menu hunting, no formatting interruptions.',
+            'Type a slash to pull up every block type, embed, and shortcut. No menu hunting, no formatting interruptions.',
         },
         {
           title: 'Real-time updates',
