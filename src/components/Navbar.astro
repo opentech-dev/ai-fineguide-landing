@@ -4,8 +4,10 @@ import { getLocalizedPath } from '../i18n/utils';
 const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-[var(--color-border)]">
-  <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-[var(--color-border)] px-6">
+  {/* Same container as every section (px-6 outside, max-w-7xl inside), so the
+      logo sits on the line the page text starts on. */}
+  <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
     <a href="/">
       <img src="/images/logo/fineguide_lg.svg" alt="Fineguide" class="h-10" />
     </a>

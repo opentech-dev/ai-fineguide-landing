@@ -1,0 +1,48 @@
+---
+/**
+ * The centred call to action that closes a product page. Pass `rule` when the
+ * band before it is also light: without a background change, the hairline is
+ * what shows one section has ended. Under a tint or dark band it reads as a
+ * stray line, so it is off by default.
+ */
+import type { Lang } from '../i18n/utils';
+import { getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  heading: string;
+  body: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  lang: Lang;
+  rule?: boolean;
+}
+
+const { heading, body, ctaPrimary, ctaSecondary, lang, rule = false } = Astro.props as Props;
+---
+
+<section class="px-6">
+  <div class={`max-w-7xl mx-auto py-24 md:py-36 ${rule ? 'border-t border-[var(--color-border)]' : ''}`}>
+    <div class="max-w-4xl mx-auto text-center">
+      <h2
+        class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)] text-balance"
+      >
+        {heading}
+      </h2>
+      <p class="mt-6 text-lg md:text-xl text-[var(--color-muted)] leading-relaxed text-pretty">{body}</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://app.fineguide.ai/register"
+          class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+        >
+          {ctaPrimary}
+        </a>
+        <a
+          href={getLocalizedPath('/schedule-demo', lang)}
+          class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
+        >
+          {ctaSecondary}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

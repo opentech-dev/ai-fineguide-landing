@@ -1,0 +1,59 @@
+---
+/**
+ * The header every product page opens with: eyebrow, headline with an accented
+ * tail, subtitle, the two calls to action, and whatever sits on the right.
+ *
+ * This was copied into sixteen page files with small drifts between them (one
+ * had lost a closing </div>). The padding sits on the section and the width on
+ * the inner container, the same as every band below it, so the headline starts
+ * on the same line as the section text and the nav logo.
+ */
+import type { Lang } from '../i18n/utils';
+import { getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  subtitle: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  lang: Lang;
+}
+
+const { eyebrow, title, titleAccent, subtitle, ctaPrimary, ctaSecondary, lang } = Astro.props as Props;
+---
+
+<section class="pt-36 pb-16 md:pt-44 md:pb-24 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <div class="w-full lg:w-[42%] flex-shrink-0">
+      <p class="eyebrow mb-5">{eyebrow}</p>
+      <h1
+        class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)] text-balance"
+      >
+        {title}
+        <span class="text-[var(--color-primary)]">{titleAccent}</span>
+      </h1>
+      <p class="mt-8 max-w-2xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed text-pretty">
+        {subtitle}
+      </p>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4">
+        <a
+          href="https://app.fineguide.ai/register"
+          class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+        >
+          {ctaPrimary}
+        </a>
+        <a
+          href={getLocalizedPath('/schedule-demo', lang)}
+          class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
+        >
+          {ctaSecondary}
+        </a>
+      </div>
+    </div>
+    <div class="w-full lg:w-[58%]">
+      <slot />
+    </div>
+  </div>
+</section>

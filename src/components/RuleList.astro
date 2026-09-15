@@ -1,0 +1,22 @@
+---
+/**
+ * A list of single statements separated by hairlines, for lists that have no
+ * term to put in a left column. It replaces the em-dash bullets: the rule
+ * already marks where one item ends, so the dash was a second marker.
+ */
+interface Props {
+  items: readonly string[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<ul class="border-b border-[var(--color-border)]">
+  {
+    items.map((item) => (
+      <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">
+        {item}
+      </li>
+    ))
+  }
+</ul>

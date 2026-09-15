@@ -14,6 +14,7 @@ const e = t.enterprisePage;
   <Navbar t={t} lang={lang} />
 
   <main id="main-content">
+    <!-- Hero -->
     <section class="pt-36 pb-20 md:pt-44 md:pb-28 px-6">
       <div class="max-w-7xl mx-auto">
         <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
@@ -34,9 +35,10 @@ const e = t.enterprisePage;
       </div>
     </section>
 
+    <!-- Dedicated service -->
     <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        <p class="eyebrow mb-5">
           {e.service.eyebrow}
         </p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
@@ -47,18 +49,16 @@ const e = t.enterprisePage;
         </p>
         <ul class="mt-12 space-y-5 max-w-3xl">
           {e.service.items.map((item) => (
-            <li class="flex gap-4 text-lg text-[var(--color-foreground)] border-t border-[var(--color-border)]/60 pt-5">
-              <span class="text-[var(--color-primary)] mt-1">—</span>
-              <span class="leading-relaxed">{item}</span>
-            </li>
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
           ))}
         </ul>
       </div>
     </section>
 
+    <!-- On-premise (dark editorial break) -->
     <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
       <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[#c7b8ff] mb-5">
+        <p class="eyebrow-light mb-5">
           {e.onPremise.eyebrow}
         </p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
@@ -82,9 +82,10 @@ const e = t.enterprisePage;
       </div>
     </section>
 
+    <!-- Adaptation -->
     <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        <p class="eyebrow mb-5">
           {e.adaptation.eyebrow}
         </p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
@@ -95,18 +96,16 @@ const e = t.enterprisePage;
         </p>
         <ul class="mt-12 space-y-5 max-w-3xl">
           {e.adaptation.items.map((item) => (
-            <li class="flex gap-4 text-lg text-[var(--color-foreground)] border-t border-[var(--color-border)]/60 pt-5">
-              <span class="text-[var(--color-primary)] mt-1">—</span>
-              <span class="leading-relaxed">{item}</span>
-            </li>
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
           ))}
         </ul>
       </div>
     </section>
 
+    <!-- Consultancy -->
     <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        <p class="eyebrow mb-5">
           {e.consultancy.eyebrow}
         </p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
@@ -117,18 +116,16 @@ const e = t.enterprisePage;
         </p>
         <ul class="mt-12 space-y-5 max-w-3xl">
           {e.consultancy.items.map((item) => (
-            <li class="flex gap-4 text-lg text-[var(--color-foreground)] border-t border-[var(--color-border)]/60 pt-5">
-              <span class="text-[var(--color-primary)] mt-1">—</span>
-              <span class="leading-relaxed">{item}</span>
-            </li>
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
           ))}
         </ul>
       </div>
     </section>
 
+    <!-- Plans -->
     <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+        <p class="eyebrow mb-5">
           {e.plans.eyebrow}
         </p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
@@ -139,15 +136,13 @@ const e = t.enterprisePage;
         </p>
         <ul class="mt-12 space-y-5 max-w-3xl">
           {e.plans.items.map((item) => (
-            <li class="flex gap-4 text-lg text-[var(--color-foreground)] border-t border-[var(--color-border)]/60 pt-5">
-              <span class="text-[var(--color-primary)] mt-1">—</span>
-              <span class="leading-relaxed">{item}</span>
-            </li>
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
           ))}
         </ul>
       </div>
     </section>
 
+    <!-- Contact block (dark) -->
     <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
@@ -159,7 +154,7 @@ const e = t.enterprisePage;
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-12 max-w-3xl">
           <div>
-            <p class="text-sm uppercase tracking-widest text-[#c7b8ff] mb-3">
+            <p class="eyebrow-light mb-3">
               {e.contactBlock.emailLabel}
             </p>
             <a
@@ -170,7 +165,7 @@ const e = t.enterprisePage;
             </a>
           </div>
           <div>
-            <p class="text-sm uppercase tracking-widest text-[#c7b8ff] mb-3">
+            <p class="eyebrow-light mb-3">
               {e.contactBlock.phoneLabel}
             </p>
             <a
@@ -196,6 +191,7 @@ const e = t.enterprisePage;
       </div>
     </section>
 
+    <!-- Final CTA -->
     <section class="py-24 md:py-32 px-6">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
