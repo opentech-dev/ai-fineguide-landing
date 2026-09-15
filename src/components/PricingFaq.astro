@@ -1,6 +1,10 @@
 ---
 import type { Translations } from '../i18n/utils';
-const { t } = Astro.props as { t: Translations };
+import { USD_BILLING_LIVE } from '../data/pricing';
+const { t, lang } = Astro.props as { t: Translations; lang: string };
+// Only the English page offers dollars, so only it needs to say what currency
+// the card is charged in, and only until dollar billing exists.
+const items = lang === 'en' && !USD_BILLING_LIVE ? [...t.pricingFaq.items, t.pricingFaq.currency] : t.pricingFaq.items;
 ---
 
 <section class="py-20 md:py-28 px-6">
@@ -11,7 +15,7 @@ const { t } = Astro.props as { t: Translations };
     </div>
 
     <div class="space-y-4">
-      {t.pricingFaq.items.map((faq: { q: string; a: string }, i: number) => (
+      {items.map((faq) => (
         <details class="group border border-[var(--color-border)] rounded-xl overflow-hidden">
           <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-left font-medium text-[var(--color-foreground)] hover:bg-gray-50 transition-colors">
             <span>{faq.q}</span>

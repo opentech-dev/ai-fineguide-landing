@@ -1,0 +1,58 @@
+---
+/**
+ * Hairline-separated rows: term on the left, description on the right.
+ *
+ * This replaces the three-white-cards-in-a-row pattern. Cards give every item a
+ * floating box of its own, which reads as generic and gives the eye nothing to
+ * scan down; rules give the same content a spine. The dark variant is the
+ * treatment the CRM page's "eight surfaces" band already uses, so this is the
+ * site's own vocabulary rather than a new one.
+ *
+ * `variant="dark"` is for use inside a `bg-[#0f1117] dark-grain` section and
+ * lays out two-up, because dark bands here carry longer item lists.
+ */
+interface Item {
+  term: string;
+  desc: string;
+}
+
+interface Props {
+  // readonly because the i18n modules are `as const`, so every array reaching
+  // this component is a readonly tuple. Declaring `Item[]` typechecked fine
+  // until a page passed one straight through - `npm run build` does not
+  // typecheck, so it only surfaced under astro check.
+  items: readonly Item[];
+  variant?: 'light' | 'dark';
+  /** Dark variant only. Three items in a two-up grid leave a hole, so a short
+      list can sit in one row of three instead. */
+  columns?: 2 | 3;
+  class?: string;
+}
+
+const { items, variant = 'light', columns = 2, class: extraClass = '' } = Astro.props as Props;
+const isDark = variant === 'dark';
+---
+
+{
+  isDark ? (
+    <div class={`grid grid-cols-1 ${columns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-x-12 gap-y-10 ${extraClass}`}>
+      {items.map((item) => (
+        <div class="border-t border-white/10 pt-5">
+          <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white">{item.term}</h3>
+          <p class="mt-3 text-base text-gray-300 leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <dl class={`border-b border-[var(--color-border)] ${extraClass}`}>
+      {items.map((item) => (
+        <div class="grid grid-cols-1 md:grid-cols-[minmax(150px,200px)_1fr] gap-x-10 gap-y-2 border-t border-[var(--color-border)] py-6">
+          <dt class="text-lg font-semibold tracking-tight text-[var(--color-primary)]">
+            {item.term}
+          </dt>
+          <dd class="text-base md:text-lg text-[var(--color-muted)] leading-relaxed">{item.desc}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}

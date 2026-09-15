@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import Band from '../components/Band.astro';
+import EditorialRows from '../components/EditorialRows.astro';
+import RuleList from '../components/RuleList.astro';
+import ClosingCta from '../components/ClosingCta.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const p = t.messagesPage;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Fineguide Messages & Inbox',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: p.meta.description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+};
+---
+
+<Layout title={p.meta.title} description={p.meta.description} lang={lang} jsonLd={jsonLd}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
+      <img
+        src="/images/photos/channels-phone.jpg"
+        alt={p.intro.screenshotAlt}
+        width="1376"
+        height="768"
+        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
+        loading="eager"
+      />
+    </PageHero>
+
+    <Band tone="dark" eyebrow={p.channels.eyebrow} heading={p.channels.heading} body={p.channels.body}>
+      <EditorialRows variant="dark" items={p.channels.items.map((i) => ({ term: i.name, desc: i.desc }))} />
+    </Band>
+
+    <Band eyebrow={p.handover.eyebrow} heading={p.handover.heading} body={p.handover.body}>
+      <EditorialRows items={p.handover.items} />
+    </Band>
+
+    <Band tone="tint" eyebrow={p.email.eyebrow} heading={p.email.heading} body={p.email.body}>
+      <RuleList items={p.email.bullets} />
+    </Band>
+
+    <Band eyebrow={p.safety.eyebrow} heading={p.safety.heading} body={p.safety.body}>
+      <EditorialRows items={p.safety.items} />
+    </Band>
+
+    <ClosingCta lang={lang} rule {...p.finalCta} />
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>

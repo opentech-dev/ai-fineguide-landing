@@ -51,6 +51,18 @@ RUN echo '\n\
     GeoIPDBFile /usr/share/GeoIP/GeoIP.dat\n\
 </IfModule>' >> /etc/apache2/apache2.conf
 
+# Tell the pricing page which country a visitor is in, so US visitors see
+# dollars. Cloudflare sends CF-IPCountry (the RO/MD redirect below uses it too).
+# Scoped to the pricing page: a Set-Cookie on images or CSS would stop
+# Cloudflare caching them.
+RUN echo '\n\
+<IfModule mod_headers.c>\n\
+    SetEnvIf CF-IPCountry "^([A-Za-z]{2})$" FG_COUNTRY=$1\n\
+    <LocationMatch "^/pricing(/|/index\\.html)?$">\n\
+        Header always set Set-Cookie "fg-country=%{FG_COUNTRY}e; Path=/; Max-Age=86400; SameSite=Lax; Secure" env=FG_COUNTRY\n\
+    </LocationMatch>\n\
+</IfModule>' >> /etc/apache2/apache2.conf
+
 # Copy built static files from build stage to Apache document root
 COPY --from=build /app/dist /var/www/html/
 

@@ -2,166 +2,71 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import PageHero from '../components/PageHero.astro';
+import Band from '../components/Band.astro';
+import EditorialRows from '../components/EditorialRows.astro';
+import StepList from '../components/StepList.astro';
+import ClosingCta from '../components/ClosingCta.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url) as Lang;
 const t = useTranslations(lang);
 const p = t.assistantsPage;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Fineguide AI Assistants',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: p.meta.description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+};
 ---
 
-<Layout title={p.meta.title} description={p.meta.description} lang={lang}>
+<Layout title={p.meta.title} description={p.meta.description} lang={lang} jsonLd={jsonLd}>
   <Navbar t={t} lang={lang} />
 
   <main id="main-content">
-    <!-- Hero with screenshot -->
-    <section class="pt-36 pb-12 md:pt-44 md:pb-20 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-        <!-- Left column: text -->
-        <div class="lg:w-[42%] flex-shrink-0">
-          <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
-            {p.intro.eyebrow}
+    <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
+      <figure class="panel-frame">
+        <img
+          src="/images/screenshots/assistants-analytics.png"
+          alt={p.intro.screenshotAlt}
+          class="w-full h-auto block"
+          loading="eager"
+        />
+      </figure>
+    </PageHero>
+
+    <Band tone="tint" eyebrow={p.channels.eyebrow} heading={p.channels.heading} body={p.channels.body}>
+      <EditorialRows items={p.channels.groups.map((g) => ({ term: g.label, desc: g.items }))} />
+    </Band>
+
+    <Band tone="dark" eyebrow={p.configuration.eyebrow} heading={p.configuration.heading} body={p.configuration.body}>
+      <EditorialRows
+        variant="dark"
+        items={p.configuration.blocks.map((b) => ({ term: b.title, desc: b.body }))}
+      />
+    </Band>
+
+    <Band eyebrow={p.extraction.eyebrow} heading={p.extraction.heading} body={p.extraction.body}>
+      <StepList steps={p.extraction.steps} />
+    </Band>
+
+    <Band tone="tint" eyebrow={p.leadAnatomy.eyebrow} heading={p.leadAnatomy.heading} body={p.leadAnatomy.body}>
+      {/* Lead card mockup, built in code so it can never leak real data */}
+      <div class="max-w-2xl mx-auto bg-white border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden">
+        <div class="px-6 py-4 bg-[var(--color-background)] border-b border-[var(--color-border)] flex items-center justify-between">
+          <p class="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--color-foreground)]">
+            {p.leadAnatomy.card.title}
           </p>
-          <h1 class="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
-            {p.hero.title}
-            <span class="text-[var(--color-primary)]">{p.hero.titleAccent}</span>
-          </h1>
-          <p class="mt-8 max-w-2xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">
-            {p.hero.subtitle}
-          </p>
-          <div class="mt-12 flex flex-col sm:flex-row gap-4">
-            <a
-              href="https://app.fineguide.ai/register"
-              class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
-            >
-              {p.hero.ctaPrimary}
-            </a>
-            <a
-              href={getLocalizedPath('/schedule-demo', lang)}
-              class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
-            >
-              {p.hero.ctaSecondary}
-            </a>
-          </div>
+          <p class="text-xs text-[var(--color-muted)]">{p.leadAnatomy.card.meta}</p>
         </div>
-
-        <!-- Right column: screenshot (overflows right edge) -->
-        <div class="lg:w-[58%]">
-          <img
-            src="/images/screenshots/assistants-analytics.png"
-            alt={p.intro.screenshotAlt}
-            class="h-auto rounded-xl border border-[var(--color-border)] shadow-2xl relative w-full lg:min-w-[150%]"
-            loading="eager"
-          />
-      </div>
-    </section>
-
-    <!-- Channels -->
-    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
-          {p.channels.eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
-          {p.channels.heading}
-        </h2>
-        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-          {p.channels.body}
-        </p>
-        <div class="mt-12 space-y-10">
-          {p.channels.groups.map((group) => (
-            <div class="border-t border-[var(--color-border)]/60 pt-6">
-              <p class="text-xs font-medium uppercase tracking-widest text-[var(--color-muted)] mb-3">
-                {group.label}
-              </p>
-              <p class="text-xl md:text-2xl text-[var(--color-foreground)] font-light leading-relaxed">
-                {group.items}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Configuration (dark editorial break) -->
-    <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[#c7b8ff] mb-5">
-          {p.configuration.eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
-          {p.configuration.heading}
-        </h2>
-        <p class="mt-6 max-w-5xl text-lg md:text-xl text-gray-300 leading-relaxed">
-          {p.configuration.body}
-        </p>
-        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {p.configuration.blocks.map((block) => (
-            <div class="border-t border-white/10 pt-5">
-              <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white">
-                {block.title}
-              </h3>
-              <p class="mt-3 text-base text-gray-300 leading-relaxed">
-                {block.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Extraction flow -->
-    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
-          {p.extraction.eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
-          {p.extraction.heading}
-        </h2>
-        <p class="mt-6 text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-          {p.extraction.body}
-        </p>
-        <ol class="mt-12 space-y-8">
-          {p.extraction.steps.map((step, i) => (
-            <li class="flex gap-6 border-t border-[var(--color-border)]/60 pt-6">
-              <span class="font-[var(--font-display)] text-2xl md:text-3xl font-semibold text-[var(--color-primary)] tabular-nums shrink-0 w-10">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span class="text-lg md:text-xl text-[var(--color-foreground)] leading-relaxed font-light">
-                {step}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-
-    <!-- Anatomy of a lead -->
-    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
-          {p.leadAnatomy.eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
-          {p.leadAnatomy.heading}
-        </h2>
-        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-          {p.leadAnatomy.body}
-        </p>
-
-        <!-- Lead card mockup -->
-        <div class="mt-14 max-w-2xl mx-auto bg-white border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden">
-          <div class="px-6 py-4 bg-[var(--color-background)] border-b border-[var(--color-border)] flex items-center justify-between">
-            <p class="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--color-foreground)]">
-              {p.leadAnatomy.card.title}
-            </p>
-            <p class="text-xs text-[var(--color-muted)]">
-              {p.leadAnatomy.card.meta}
-            </p>
-          </div>
-          <dl class="px-6 py-6 space-y-3.5">
-            {p.leadAnatomy.card.fields.map((f) => (
+        <dl class="px-6 py-6 space-y-3.5">
+          {
+            p.leadAnatomy.card.fields.map((f) => (
               <div class="flex items-baseline justify-between gap-4 text-sm md:text-base">
                 <dt class="text-[var(--color-muted)] shrink-0">{f.label}</dt>
                 <dd class="text-[var(--color-foreground)] text-right flex items-center gap-2">
@@ -173,64 +78,29 @@ const p = t.assistantsPage;
                   )}
                 </dd>
               </div>
-            ))}
-          </dl>
-          <div class="px-6 py-4 bg-[var(--color-background)] border-t border-[var(--color-border)]">
-            <p class="text-xs text-[var(--color-muted)] leading-relaxed">
-              {p.leadAnatomy.card.footerNote}
-            </p>
-          </div>
-        </div>
-
-        <!-- Industry examples -->
-        <div class="mt-20 max-w-7xl">
-          <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">
-            {p.leadAnatomy.industries.heading}
-          </h3>
-          <p class="mt-4 text-lg text-[var(--color-muted)] leading-relaxed">
-            {p.leadAnatomy.industries.body}
-          </p>
-          <dl class="mt-10 space-y-6">
-            {p.leadAnatomy.industries.list.map((it) => (
-              <div class="border-t border-[var(--color-border)]/60 pt-5 flex flex-col sm:flex-row sm:items-baseline gap-x-8 gap-y-1">
-                <dt class="text-base md:text-lg font-semibold text-[var(--color-foreground)] sm:w-40 shrink-0">
-                  {it.label}
-                </dt>
-                <dd class="text-base md:text-lg text-[var(--color-muted)] leading-relaxed">
-                  {it.fields}
-                </dd>
-              </div>
-            ))}
-          </dl>
+            ))
+          }
+        </dl>
+        <div class="px-6 py-4 bg-[var(--color-background)] border-t border-[var(--color-border)]">
+          <p class="text-xs text-[var(--color-muted)] leading-relaxed">{p.leadAnatomy.card.footerNote}</p>
         </div>
       </div>
-    </section>
 
-    <!-- Final CTA -->
-    <section class="py-24 md:py-36 px-6 border-t border-[var(--color-border)]/60">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
-          {p.finalCta.heading}
-        </h2>
-        <p class="mt-6 text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-          {p.finalCta.body}
+      <div class="mt-20">
+        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">
+          {p.leadAnatomy.industries.heading}
+        </h3>
+        <p class="mt-4 max-w-4xl text-lg text-[var(--color-muted)] leading-relaxed">
+          {p.leadAnatomy.industries.body}
         </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://app.fineguide.ai/register"
-            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
-          >
-            {p.finalCta.ctaPrimary}
-          </a>
-          <a
-            href={getLocalizedPath('/schedule-demo', lang)}
-            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-foreground)] rounded-lg transition-all"
-          >
-            {p.finalCta.ctaSecondary}
-          </a>
-        </div>
+        <EditorialRows
+          class="mt-10"
+          items={p.leadAnatomy.industries.list.map((it) => ({ term: it.label, desc: it.fields }))}
+        />
       </div>
-    </section>
+    </Band>
+
+    <ClosingCta lang={lang} {...p.finalCta} />
   </main>
 
   <Footer t={t} lang={lang} />

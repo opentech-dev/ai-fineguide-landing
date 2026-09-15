@@ -1,0 +1,17 @@
+---
+/** Renders an i18n string with {tokens}, putting a <Price> where each token is. */
+import Price from './Price.astro';
+import { splitTemplate, type Money } from '../data/pricing';
+
+interface Props {
+  text: string;
+  tokens: Record<string, Money>;
+  lang: string;
+}
+const { text, tokens, lang } = Astro.props as Props;
+const parts = splitTemplate(text);
+for (const part of parts) {
+  if (part.token && !tokens[part.token]) throw new Error(`Unknown price token {${part.token}} in "${text}"`);
+}
+---
+{parts.map((part) => (part.token ? <Price money={tokens[part.token]} lang={lang} /> : part.text))}
