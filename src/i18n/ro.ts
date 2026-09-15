@@ -53,11 +53,6 @@ export const ro: Translations = {
     ctaSecondary: 'Programează un demo',
   },
 
-  // --- Customer logo strip ---
-  customerLogos: {
-    eyebrow: 'Echipe care lucrează deja cu Fineguide',
-  },
-
   // --- Photography alt text ---
   photos: {
     teamOffice: 'Colegi care discută la o masă comună, într-un birou open space',
