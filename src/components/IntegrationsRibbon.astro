@@ -1,22 +1,81 @@
 ---
 import type { Translations } from '../i18n/utils';
 const { t } = Astro.props as { t: Translations };
+
+// Real vendor brand marks, not stand-in line icons. Nine come from the Simple
+// Icons corpus; Kommo is the mark the workspace app already ships. Both locales
+// use the same product names, so keying off the name is safe.
+const MARKS: Record<string, string> = {
+  WhatsApp: '/images/brands/whatsapp.svg',
+  Telegram: '/images/brands/telegram.svg',
+  Instagram: '/images/brands/instagram.svg',
+  Messenger: '/images/brands/messenger.svg',
+  Slack: '/images/brands/slack.svg',
+  Discord: '/images/brands/discord.svg',
+  Zendesk: '/images/brands/zendesk.svg',
+  HelpScout: '/images/brands/helpscout.svg',
+  n8n: '/images/brands/n8n.svg',
+  Kommo: '/images/brands/kommo.svg',
+  Notion: '/images/brands/notion.svg',
+};
+
+// JivoChat is a first-class BotIntegrationType in the schema alongside these,
+// but no legitimate JivoChat mark exists in any repo or in the Simple Icons
+// corpus, and fabricating a vendor logo is not an option. It is left off the
+// grid rather than shipped as the one cell with no mark. Drop the official SVG
+// into public/images/brands/ and add a line here to list it.
+
+// amoCRM has no square glyph - the brand is a wordmark. Showing it as the
+// label itself is how a wordmark is meant to be used; cropping one out of it
+// would mangle the trademark.
+//
+// Deliberately the PNG, not the SVG sitting in _backup/: that one is the
+// pale-on-dark variant (#8CD7F8 / #C8C9CB) and measures 1.5:1 against this
+// page's near-white background, where every other cell's label reads at 17:1.
+// It was effectively invisible. This is the vendor's standard-colour mark.
+const WORDMARKS: Record<string, string> = {
+  AmoCRM: '/images/brands/amocrm.png',
+};
 ---
 
-<section class="py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+<section id="integrations" class="scroll-mt-24 py-16 md:py-20 px-6">
   <div class="max-w-7xl mx-auto">
-    <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-6">
+    <p class="eyebrow mb-8">
       {t.integrationsRibbon.eyebrow}
     </p>
-    <p class="text-xl md:text-2xl lg:text-3xl text-[var(--color-foreground)] font-light leading-relaxed">
-      {t.integrationsRibbon.items.map((name, i) => (
-        <>
-          <span class="whitespace-nowrap">{name}</span>
-          {i < t.integrationsRibbon.items.length - 1 && (
-            <span class="text-[var(--color-border)] mx-2 md:mx-3"> · </span>
+    <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      {t.integrationsRibbon.items.map((name) => (
+        <li class="flex items-center gap-3.5 border border-[var(--color-border)] rounded-xl px-5 py-5 md:px-6 md:py-6 min-h-[72px]">
+          {WORDMARKS[name] ? (
+            <img
+              src={WORDMARKS[name]}
+              alt={name}
+              height="22"
+              class="h-[22px] w-auto shrink-0"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <>
+              {MARKS[name] && (
+                <img
+                  src={MARKS[name]}
+                  alt=""
+                  aria-hidden="true"
+                  width="24"
+                  height="24"
+                  class="w-6 h-6 shrink-0"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <span class="text-base md:text-lg text-[var(--color-foreground)] font-medium tracking-tight">
+                {name}
+              </span>
+            </>
           )}
-        </>
+        </li>
       ))}
-    </p>
+    </ul>
   </div>
 </section>

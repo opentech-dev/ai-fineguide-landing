@@ -4,8 +4,10 @@ import { getLocalizedPath } from '../i18n/utils';
 const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-[var(--color-border)]">
-  <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-[var(--color-border)] px-6">
+  {/* Same container as every section (px-6 outside, max-w-7xl inside), so the
+      logo sits on the line the page text starts on. */}
+  <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
     <a href="/">
       <img src="/images/logo/fineguide_lg.svg" alt="Fineguide" class="h-10" />
     </a>
@@ -39,6 +41,11 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
             >{t.nav.crm}</a
           >
           <a
+            href={getLocalizedPath('/messages', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.messages}</a
+          >
+          <a
             href={getLocalizedPath('/voice-qa', lang)}
             class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
             >{t.nav.voiceQa}</a
@@ -49,9 +56,19 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
             >{t.nav.voiceAi}</a
           >
           <a
+            href={getLocalizedPath('/campaigns', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.campaigns}</a
+          >
+          <a
             href={getLocalizedPath('/workspace', lang)}
             class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
             >{t.nav.workspace}</a
+          >
+          <a
+            href={getLocalizedPath('/automations', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{t.nav.automations}</a
           >
         </div>
       </details>
@@ -90,7 +107,12 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 <div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 
 <!-- Mobile menu panel -->
-<div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80vw] bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-out md:hidden">
+<!-- overflow-y-auto because the panel is h-full: without it the list is simply
+     clipped at the viewport edge and the items past it cannot be reached at
+     all. At 375x667 the content is 777px tall, so "Sign in" sat 110px below
+     the fold with no way to scroll to it. overscroll-contain stops the page
+     behind the panel from scrolling once the list hits its end. -->
+<div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80vw] overflow-y-auto overscroll-contain bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-out md:hidden">
   <div class="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border)]">
     <img src="/images/logo/fineguide_lg.svg" alt="Fineguide" class="h-8" />
     <button id="mobile-menu-close" class="p-2 text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors" aria-label="Close menu">
@@ -104,9 +126,12 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
     <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.overview}</a>
     <a href={getLocalizedPath('/ai-assistants', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.assistants}</a>
     <a href={getLocalizedPath('/crm', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.crm}</a>
+    <a href={getLocalizedPath('/messages', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.messages}</a>
     <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.voiceQa}</a>
     <a href={getLocalizedPath('/voice-ai', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.voiceAi}</a>
+    <a href={getLocalizedPath('/campaigns', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.campaigns}</a>
     <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.workspace}</a>
+    <a href={getLocalizedPath('/automations', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.automations}</a>
     <div class="my-2 border-t border-[var(--color-border)]" />
     <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.pricing}</a>
     <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.enterprise}</a>

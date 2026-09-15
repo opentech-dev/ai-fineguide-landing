@@ -9,7 +9,7 @@ const switchPath = switchLangPath(currentPath, otherLang);
 ---
 
 <footer class="border-t border-[var(--color-border)]/50 py-12 px-6">
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
       <div>
         <img src="/images/logo/fineguide_lg.svg" alt="Fineguide.ai" class="h-7" />
@@ -25,9 +25,12 @@ const switchPath = switchLangPath(currentPath, otherLang);
             <a href={getLocalizedPath('/', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.overview}</a>
             <a href={getLocalizedPath('/ai-assistants', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.assistants}</a>
             <a href={getLocalizedPath('/crm', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.crm}</a>
+            <a href={getLocalizedPath('/messages', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.messages}</a>
             <a href={getLocalizedPath('/voice-qa', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.voiceQa}</a>
             <a href={getLocalizedPath('/voice-ai', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.voiceAi}</a>
+            <a href={getLocalizedPath('/campaigns', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.campaigns}</a>
             <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.workspace}</a>
+            <a href={getLocalizedPath('/automations', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.automations}</a>
             <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
           </div>
         </div>

@@ -48,7 +48,7 @@ The Astro dev server occasionally misses changes in nested `src/components/`. `C
 
 ### Deployment to `fineguide.ai` not picking up
 
-Check the build at Jenkins (`https://builds.fineguide.ai/job/ai-fineguide-landing/...`). The deploy maps `master` → `fg-prod`. cert-manager handles TLS at the ingress level.
+Check the build at Jenkins (`https://builds.fineguide.ai/job/ai-fineguide-landing/...`). The deploy maps `main` → `fg-prod` (`build.config`). cert-manager handles TLS at the ingress level.
 
 ## See also
 

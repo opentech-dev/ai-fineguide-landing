@@ -14,26 +14,31 @@ interface Props {
   reverse?: boolean;
   linkHref?: string;
   linkLabel?: string;
+  /** Sit the spread on the violet tint band instead of the page background.
+      Alternating this replaces the old border-top between every section. */
+  tinted?: boolean;
 }
-const { spread, image, reverse = false, linkHref, linkLabel } = Astro.props as Props;
+const { spread, image, reverse = false, linkHref, linkLabel, tinted = false } = Astro.props as Props;
 ---
 
-<section class="py-20 md:py-32 px-6 border-t border-[var(--color-border)]/60">
+<section class={`py-20 md:py-28 px-6 ${tinted ? 'band-tint' : ''}`}>
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
     <div class={image ? `lg:col-span-5 ${reverse ? 'lg:order-2' : ''}` : 'lg:col-span-7'}>
-      <p class="text-sm font-medium uppercase tracking-widest text-[var(--color-primary)] mb-5">
+      <p class="eyebrow mb-5">
         {spread.eyebrow}
       </p>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.08] text-[var(--color-foreground)] text-balance">
         {spread.title}
       </h2>
       <p class="mt-6 text-lg text-[var(--color-muted)] leading-relaxed">
         {spread.body}
       </p>
-      <ul class="mt-8 space-y-3">
+      <ul class="mt-8 space-y-3.5">
         {spread.features.map((f) => (
           <li class="flex gap-3 text-base text-[var(--color-foreground)]">
-            <span class="text-[var(--color-primary)] mt-1">-</span>
+            <svg class="w-[18px] h-[18px] mt-1 shrink-0 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5" />
+            </svg>
             <span class="leading-relaxed">{f}</span>
           </li>
         ))}
@@ -53,12 +58,19 @@ const { spread, image, reverse = false, linkHref, linkLabel } = Astro.props as P
 
     {image && (
       <div class={`lg:col-span-7 ${reverse ? 'lg:order-1' : ''}`}>
-        <img
-          src={image}
-          alt={spread.screenshotAlt}
-          class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-xl"
-          loading="lazy"
-        />
+        <figure class="panel-frame">
+          <div class="flex items-center gap-1.5 px-3.5 py-2.5 border-b border-[var(--color-border)] bg-[#fcfcfe]">
+            <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
+            <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
+            <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
+          </div>
+          <img
+            src={image}
+            alt={spread.screenshotAlt}
+            class="w-full h-auto block"
+            loading="lazy"
+          />
+        </figure>
       </div>
     )}
   </div>

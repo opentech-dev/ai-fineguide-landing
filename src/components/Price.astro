@@ -1,0 +1,26 @@
+---
+/**
+ * A money amount in every form the pricing page can show: euro or dollar,
+ * monthly or yearly. All of them are in the HTML; global.css hides the ones
+ * that do not match `data-currency` and `data-period` on <html>, so switching
+ * is instant and the page works without JavaScript (euro, monthly).
+ */
+import { formatAmount, type Money } from '../data/pricing';
+
+interface Props {
+  money: Money;
+  lang: string;
+}
+const { money, lang } = Astro.props as Props;
+const eur = (n: number) => `€${formatAmount(n, lang)}`;
+const usd = (n: number) => `$${formatAmount(n, lang)}`;
+const hasYearly = money.yearlyEur !== undefined;
+// Dollars are offered on the English page only; the Romanian page carries no
+// hidden dollar amounts for search engines to quote.
+const withUsd = lang === 'en';
+---
+{hasYearly ? (
+  <><span class="only-monthly"><span class="only-eur">{eur(money.eur)}</span>{withUsd && <span class="only-usd">{usd(money.usd)}</span>}</span><span class="only-yearly"><span class="only-eur">{eur(money.yearlyEur!)}</span>{withUsd && <span class="only-usd">{usd(money.yearlyUsd!)}</span>}</span></>
+) : (
+  <><span class="only-eur">{eur(money.eur)}</span>{withUsd && <span class="only-usd">{usd(money.usd)}</span>}</>
+)}

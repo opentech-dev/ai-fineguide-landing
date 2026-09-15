@@ -11,10 +11,12 @@ const t = useTranslations(lang);
 
 <Layout
   title="Terms of Service | Fineguide.ai"
-  description="Fineguide.ai Terms of Service: the rules and conditions that apply when using our platform."
+  description="The terms that apply when you use the Fineguide.ai platform: your account, acceptable use, billing, liability, and how either side can end the agreement."
   lang={lang}
 >
   <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
 
   <section class="pt-32 md:pt-40 pb-8 px-6">
     <div class="max-w-3xl mx-auto text-center">
@@ -100,6 +102,8 @@ const t = useTranslations(lang);
       <p>Via Email: <a href="mailto:office@fineguide.ai">office@fineguide.ai</a></p>
     </div>
   </section>
+
+  </main>
 
   <Footer t={t} lang={lang} />
 </Layout>

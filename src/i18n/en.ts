@@ -8,6 +8,11 @@ export const en = {
     voiceQa: 'Voice QA',
     voiceAi: 'Voice AI',
     workspace: 'Workspace',
+    // Sections on the homepage, not pages of their own. Linked from the footer
+    // so the modules behind them are reachable by something other than scrolling.
+    messages: 'Messages & Inbox',
+    campaigns: 'Campaigns',
+    automations: 'Automations',
     pricing: 'Pricing',
     enterprise: 'Enterprise',
     contact: 'Contact',
@@ -32,7 +37,7 @@ export const en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | Transform how your business interacts with customers.',
+    title: 'Fineguide.ai | AI Platform for Customer Operations',
     description:
       'The next-generation platform for business operations. Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
   },
@@ -44,6 +49,19 @@ export const en = {
       'Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
     ctaPrimary: 'Get started',
     ctaSecondary: 'Schedule a demo',
+  },
+
+  // --- Customer logo strip ---
+  customerLogos: {
+    eyebrow: 'Teams already building on Fineguide',
+  },
+
+  // --- Photography alt text ---
+  photos: {
+    teamOffice: 'Colleagues talking at a shared desk in an open-plan office',
+    channelsPhone: 'A customer messaging a business from their phone',
+    agentHeadset: 'A support agent mid-call at her desk',
+    tabletReview: 'Reviewing reports on a tablet',
   },
 
   // --- Overview intro (what Fineguide is) ---
@@ -58,11 +76,19 @@ export const en = {
       },
       {
         name: 'CRM',
-        desc: 'Conversations, contacts, leads, pipelines, tasks, tickets, team inbox, and routing queue.',
+        desc: 'Conversations, contacts, companies, leads, pipelines, tasks, team inbox, and routing queue.',
       },
       {
         name: 'Voice',
-        desc: 'Quality assurance on every call, with AI-driven telephony arriving next.',
+        desc: 'Quality assurance on every call, plus AI-driven inbound and outbound telephony.',
+      },
+      {
+        name: 'Messages',
+        desc: 'A dedicated home for every conversation your assistants handle, with its own reporting.',
+      },
+      {
+        name: 'Inbox',
+        desc: 'Email proper: connect your own mailboxes and domains over IMAP and SMTP, with routing rules.',
       },
       {
         name: 'Workspace',
@@ -70,7 +96,7 @@ export const en = {
       },
       {
         name: 'Automations',
-        desc: 'Visual workflows that wire Fineguide into the rest of your stack.',
+        desc: 'Build workflows visually inside Fineguide, or connect n8n to wire it into the rest of your stack.',
       },
       {
         name: 'QA & Analytics',
@@ -104,7 +130,7 @@ export const en = {
     features: [
       'Pipelines and stages, Kanban and table views',
       'Tasks, assignments, and due dates',
-      'Tickets and support cases',
+      'Company records with their own email and history',
       'Team inbox and routing queue',
       'Custom fields auto-filled by assistants',
     ],
@@ -127,6 +153,23 @@ export const en = {
     screenshotAlt: 'Fineguide Voice QA statistics dashboard',
   },
 
+  // --- Messages & Inbox ---
+  conversations: {
+    eyebrow: 'Messages & Inbox',
+    title: 'Every conversation lands somewhere a person can take over.',
+    body:
+      'Chat and email arrive in the same workspace, with a queue, routing rules and departments behind them. The assistant handles what it can; the moment it cannot, a colleague already has the thread and the customer record in front of them.',
+    linkLabel: 'Explore Messages & Inbox',
+  },
+  // --- Campaigns (outbound telephony) ---
+  campaigns: {
+    eyebrow: 'Campaigns',
+    title: 'Outbound calling that runs itself.',
+    body:
+      'Build an audience, choose what the call is for, and let your assistants work the list. Test against your own number first, watch it run, and pause it whenever you want.',
+    linkLabel: 'Explore campaigns',
+  },
+
   // --- Workspace + Automations two-up ---
   workspaceAutomations: {
     workspace: {
@@ -143,14 +186,17 @@ export const en = {
     },
     automations: {
       eyebrow: 'Automations',
-      title: 'Wire Fineguide into the rest of your stack.',
+      title: 'Read the conversation. Update the record. No one touches it.',
       body:
-        'An embedded n8n instance, hosted or bring-your-own, that connects Fineguide to the tools you already use.',
+        'A visual workflow builder inside Fineguide: drag steps onto a canvas, let AI pull the fields out of a conversation, and write them straight into the CRM. Plus an embedded n8n instance, hosted or bring-your-own, for everything beyond it.',
+      linkLabel: 'Explore automations',
       features: [
-        'Hosted n8n on Fineguide infrastructure',
-        'Or bring your own n8n instance',
-        'Webhooks on conversations, leads, and tickets',
-        'Hundreds of pre-built integrations',
+        'AI extracts typed fields from the conversation that triggered the run',
+        'Create, update, and find contacts, leads, and companies',
+        'Move leads between pipeline stages, add tags, open tasks',
+        'Branch on conditions and loop over matching records',
+        'Hosted n8n on Fineguide infrastructure, or bring your own',
+        'Webhooks and hundreds of pre-built integrations through n8n',
       ],
     },
   },
@@ -183,6 +229,28 @@ export const en = {
   },
 
   // --- Integrations ribbon ---
+  // Security strip. docs/goals.md lists "Security & compliance (high level)"
+  // under what belongs on the website, and the landing page had no mention of
+  // it at all. Every claim here is the enterprise page's own wording, which is
+  // backed by the self-hosted Docker stack in ai-fineguide-project. Note it
+  // says we SUPPORT compliance reviews - it does not claim certification, and
+  // must not start to.
+  security: {
+    eyebrow: 'Security',
+    title: 'Your data, on your terms.',
+    body:
+      'Run Fineguide on your own infrastructure when you need to: your cloud, your private cluster, or bare metal. Data stays inside your network boundary, and we support your compliance reviews and security audits.',
+    linkLabel: 'See enterprise deployment',
+  },
+
+  // Link labels under the module spreads. These lived as hardcoded English
+  // props in both index.astro files, so the Romanian page rendered them in
+  // English.
+  moduleLinks: {
+    assistants: 'Explore Assistants',
+    crm: 'Explore CRM',
+  },
+
   integrationsRibbon: {
     eyebrow: 'Integrates with what you already use',
     items: [
@@ -196,6 +264,7 @@ export const en = {
       'Kommo',
       'Zendesk',
       'HelpScout',
+      'Notion',
       'n8n',
     ],
   },
@@ -212,9 +281,9 @@ export const en = {
   // --- AI Assistants page (custom layout) ---
   assistantsPage: {
     meta: {
-      title: 'AI Assistants | Automate conversations across every channel | Fineguide.ai',
+      title: 'AI Assistants for WhatsApp, Telegram & Web | Fineguide',
       description:
-        'Deploy AI assistants that read your knowledge, follow your rules, and capture what matters, across web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord.',
+        'AI assistants that read your knowledge base, follow your rules and capture what matters, on web chat, WhatsApp, Telegram, Instagram, Slack and Discord.',
     },
     hero: {
       title: 'AI assistants that handle',
@@ -349,9 +418,9 @@ export const en = {
   // --- CRM page (custom layout) ---
   crmPage: {
     meta: {
-      title: 'CRM | Conversations, leads, and tasks on one customer record | Fineguide.ai',
+      title: 'CRM Built on One Customer Record | Fineguide.ai',
       description:
-        'A CRM built around the customer record, with conversations, contacts, leads, pipelines, tasks, tickets, team inbox, and routing queue, connected to every channel your team operates on.',
+        'A CRM organised around the customer record: contacts, companies, leads, pipelines and tasks, with every conversation attached to the same person.',
     },
     hero: {
       title: 'One customer record. Every team.',
@@ -379,7 +448,7 @@ export const en = {
         },
         {
           name: 'Contacts',
-          desc: 'People and companies you do business with, identified across phone numbers, emails, and channel handles.',
+          desc: 'The people you do business with, identified across phone numbers, emails, and channel handles.',
         },
         {
           name: 'Leads',
@@ -394,8 +463,8 @@ export const en = {
           desc: 'Follow-ups, callbacks, and to-dos with status, priority, and due dates, created from any conversation or lead.',
         },
         {
-          name: 'Tickets',
-          desc: 'Support cases routed alongside sales work, so the same customer is never two separate stories.',
+          name: 'Companies',
+          desc: 'Account records with their own email, so mail to info@ or billing@ attaches before you know who sent it. A person can belong to more than one.',
         },
         {
           name: 'Team Inbox',
@@ -414,7 +483,7 @@ export const en = {
         'A customer who messages on WhatsApp Monday and calls on Tuesday is the same customer. Fineguide identifies them across phone numbers, channel handles, and email, and attaches every conversation, lead, and ticket to the same record so context never resets.',
       bullets: [
         'Identity merging across phone numbers, emails, and channel handles',
-        'Custom fields (`props`) populated by assistants during conversation',
+        'Custom fields filled in by assistants during the conversation',
         'Complete interaction history, including chats, calls, tickets, and tasks, in one timeline',
         'Org-wide segmentation that downstream automations and exports can rely on',
       ],
@@ -429,55 +498,124 @@ export const en = {
 
   // --- Voice AI page (custom layout) ---
   voiceAiPage: {
+    // Every claim below was checked against the voice bridge
+    // (ai-gptcrawler/voice_ai_go) and the API before it went in. The list of
+    // what the product does NOT do (voicemail detection, recordings in the app,
+    // call summaries, warm or outbound transfer, routing to teams, click-to-call,
+    // voice cloning) is enforced in scripts/verify-claims.mjs.
     meta: {
-      title: 'Voice AI | AI agents on live phone calls | Fineguide.ai',
+      title: 'Voice AI: AI Agents That Answer Your Phone | Fineguide',
       description:
-        'The same assistants that handle web chat, on the other end of the phone. Voice AI answers inbound, places outbound, and hands off to humans when it matters.',
+        'AI agents on your own numbers over SIP. They recognise callers from the CRM, transfer to your team on request, and call whole lists. Billed per answered minute.',
     },
     hero: {
-      title: 'AI on the other end',
-      titleAccent: ' of the phone.',
+      title: 'The assistant that',
+      titleAccent: ' answers your phone.',
       subtitle:
-        'The same assistants that handle web chat, WhatsApp, and Telegram, now picking up the phone. Answer inbound 24/7, place outbound at scale, hand off to humans when it matters.',
+        'The assistants you already run on chat, on your own phone numbers. They recognise who is calling, put a person on the line when asked, and call whole lists when you need them to.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
     intro: {
-      eyebrow: 'The Voice AI module',
-      body:
-        'Voice AI puts the configurable assistants you already deploy on chat onto live phone calls, answering inbound, qualifying outbound, and handing off to humans when it matters. Phone becomes an integrated channel, not a parallel system.',
+      eyebrow: 'Voice AI',
+      screenshotAlt: 'A call-centre agent on a headset, mid-conversation with a caller',
     },
-    capabilities: {
-      eyebrow: 'Capabilities',
-      heading: 'A complete voice layer, end to end.',
+    inbound: {
+      eyebrow: 'Inbound calls',
+      heading: 'Your numbers, answered by the assistant you choose.',
       body:
-        'Voice AI builds on the assistants and CRM you already have, so the phone runs on the same configuration as every other channel, and callers are recognised from the same CRM.',
-      blocks: [
+        'Nothing moves to a number we rent you. Connect the phone system you already have, decide which assistant owns each number, and decide what happens when the office is closed.',
+      items: [
         {
-          title: 'Inbound automation',
-          body:
-            'Answer calls on your own numbers, day and night. Recognise returning callers from the CRM and resolve common requests without a queue.',
+          name: 'Your own numbers',
+          desc: 'Connect your carrier or PBX with a standard SIP account, then give each number to the assistant that should answer it.',
         },
         {
-          title: 'Outbound calls',
-          body:
-            'Call a whole list with an outreach, survey or promotion campaign, and hear each one on your own phone before it starts.',
+          name: 'Callers it recognises',
+          desc: 'Turn on greeting by name, and a caller whose number is in the CRM is welcomed by their first name, with their company already in front of the assistant.',
         },
         {
-          title: 'Telephony integration',
-          body:
-            'Connects over SIP to the carrier or phone system you already use, so your numbers stay yours.',
+          name: 'Business hours',
+          desc: 'Outside the hours you set, let the call ring out, forward it to another number, or answer with an after-hours message that takes a callback request.',
         },
         {
-          title: 'Connected to the CRM',
-          body:
-            'Every call is saved to the conversation history as a transcript. An inbound caller who asks for a person is transferred to your team, or leaves a callback request that becomes a CRM task.',
+          name: 'A person when it matters',
+          desc: 'A caller who asks for a human is transferred to your call-centre number, only during its hours if you set them. Otherwise they leave a callback request that lands in the CRM as a task.',
+        },
+      ],
+    },
+    voice: {
+      eyebrow: 'On the call',
+      heading: 'Choose the engine, the voice and the languages.',
+      body:
+        'The same assistant configuration you use for chat, with the choices a phone call adds. Everything here is set per assistant.',
+      items: [
+        {
+          term: 'Four engines',
+          desc: 'OpenAI Realtime, Google Gemini Live, ElevenLabs Agents, or Gemini paired with a separate voice from ElevenLabs, Google Chirp 3 HD, Gemini or OpenAI.',
+        },
+        {
+          term: 'Voices',
+          desc: 'Pick a specific voice, or just a male or female one, and listen to it before the assistant goes live.',
+        },
+        {
+          term: 'Languages',
+          desc: 'Give one assistant several languages, from English, Romanian and Russian to Arabic, Japanese and Chinese. It replies in the language the caller is speaking.',
+        },
+        {
+          term: 'Interruptions',
+          desc: 'Callers can talk over the assistant and it stops to listen, the way a person would. A speech detector keeps line noise from cutting it off.',
+        },
+        {
+          term: 'What it knows',
+          desc: 'Your knowledge base, web search and the custom actions you gave the assistant for chat all work on the call, and it waits for the real result before answering.',
+        },
+      ],
+    },
+    outbound: {
+      eyebrow: 'Outbound calls',
+      heading: 'Call a list, not one number at a time.',
+      body:
+        'Outbound runs as a campaign: an audience, a script, and a schedule the assistants dial through at your pace.',
+      bullets: [
+        'Outreach, survey and promotion campaigns, each reported the way its type needs',
+        'Survey answers and promotion outcomes extracted from every completed call',
+        'A test call to your own phone before any real contact is dialled',
+        'Retries on no answer or busy, with the delay you choose',
+      ],
+      linkLabel: 'See Campaigns',
+    },
+    afterCall: {
+      eyebrow: 'After the call',
+      heading: 'What stays behind, and what it costs.',
+      body:
+        'A call leaves a record your team can read, and a charge you can predict before the first one is placed.',
+      items: [
+        {
+          term: 'Transcript',
+          desc: 'Every phone call is saved as a transcript in the conversation history, in the same place as your chat conversations.',
+        },
+        {
+          term: 'Callback tasks',
+          desc: 'Callback requests arrive on your task board with the caller’s number and a short note of what they wanted.',
+        },
+        {
+          term: 'Per answered minute',
+          desc: 'Calls draw on the shared credit wallet from the moment they are answered, never while ringing, rounded up to the second with a one-minute minimum.',
+        },
+        {
+          term: 'Rates',
+          desc: '10 credits a minute on OpenAI, Gemini or the Gemini-plus-voice engine, and 30 on ElevenLabs Agents, unless your plan sets its own rates.',
+        },
+        {
+          term: 'No surprise bills',
+          desc: 'A call only starts when the wallet can cover its first minute, so an empty balance stops calls rather than running up a debt.',
         },
       ],
     },
     finalCta: {
-      heading: 'Bring AI to the phone.',
-      body: 'Walk through Voice AI, Voice QA, and the rest of the platform in one demo.',
+      heading: 'Hear it on your own phone.',
+      body: 'Connect a number, pick a voice, and call it yourself. Or see Voice AI, Campaigns and the rest of the platform in one demo.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -486,7 +624,7 @@ export const en = {
   // --- Workspace page (custom layout) ---
   workspacePage: {
     meta: {
-      title: 'Workspace | A document editor that lives with your customers | Fineguide.ai',
+      title: 'Workspace: Documents Beside Your Customers | Fineguide',
       description:
         'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts, leads, and conversations your team is already working with.',
     },
@@ -518,7 +656,7 @@ export const en = {
         {
           title: 'Slash commands',
           body:
-            'Type `/` to pull up every block type, embed, and shortcut. No menu hunting, no formatting interruptions.',
+            'Type a slash to pull up every block type, embed, and shortcut. No menu hunting, no formatting interruptions.',
         },
         {
           title: 'Real-time updates',
@@ -556,9 +694,9 @@ export const en = {
   // --- Voice QA page (custom layout) ---
   voiceQaPage: {
     meta: {
-      title: 'Voice QA | Score every call, surface every pattern | Fineguide.ai',
+      title: 'Voice QA: Score Every Call Automatically | Fineguide',
       description:
-        'Automatic AI evaluation for every phone call, per department, against your rules, in 30+ languages. Surface common issues and emerging trends across thousands of conversations.',
+        'Automatic AI scoring on every phone call, per department and against your own rules. Stop sampling and see issues and trends across the whole operation.',
     },
     hero: {
       title: 'Every call, scored',
@@ -646,6 +784,11 @@ export const en = {
           body:
             'Catch new issues, sentiment shifts, or competitor mentions as they appear, not weeks later.',
         },
+        {
+          title: 'Cases, not just calls',
+          body:
+            'Group the calls behind one issue for one customer. Sentiment read across them turns a declining relationship into a visible trend, not a run of separate bad days.',
+        },
       ],
       footer:
         'Configure per department and feed results into dashboards or webhooks.',
@@ -658,87 +801,518 @@ export const en = {
     },
   },
 
+  // --- Automations Page (workflow engine + n8n) ---
+  // Hard constraint, enforced by scripts/verify-claims.mjs: the seven step
+  // types in PLANNED_STEP_TYPES (classify, summarize, translate, reply, notify,
+  // send_email, webhook) can be authored in the builder but have NO runtime -
+  // the engine pauses the run when it reaches one. None may appear here. Nor
+  // may any per-step credit price: workflow runs do not consume credits.
+  automationsPage: {
+    meta: {
+      title: 'Visual Workflow Builder for CRM | Fineguide',
+      description:
+        'Read a conversation, pull the fields out of it, branch on what you find, and update the CRM. Twelve triggers and eighteen actions, no code.',
+    },
+    hero: {
+      title: 'Read the conversation.',
+      titleAccent: ' Update the record. No one touches it.',
+      subtitle:
+        'A visual builder where a workflow starts from something that actually happened (a call going through Voice QA, a lead landing, a form arriving) and finishes with your CRM already correct.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'Automations',
+      screenshotAlt: 'Reviewing reports on a tablet at a desk',
+    },
+    triggers: {
+      eyebrow: 'Twelve triggers',
+      heading: 'A workflow starts from something that happened.',
+      body:
+        'Not a schedule you hope lines up with reality. The events your platform already emits are the events a workflow can start from.',
+      items: [
+        {
+          name: 'Assistant activity',
+          desc: 'A session starting or ending, a reply being rated, or the assistant finishing collecting the information you asked it for.',
+        },
+        {
+          name: 'Records appearing',
+          desc: 'A contact created from a conversation, or a lead created anywhere in the CRM.',
+        },
+        {
+          name: 'Calls and tickets',
+          desc: 'A call finishing in Voice QA, transcribed or scored, or a ticket being opened.',
+        },
+        {
+          name: 'Outside and on demand',
+          desc: 'A form submission, an inbound webhook, a schedule, or a person pressing run.',
+        },
+      ],
+    },
+    actions: {
+      eyebrow: 'Eighteen actions',
+      heading: 'What a workflow can actually do today.',
+      body:
+        'Every action listed here runs today. The builder also shows a few blocks that are still being built; the product marks those, and they are not sold here.',
+      items: [
+        {
+          term: 'Read and extract',
+          desc: 'Pull structured fields out of a conversation or a transcript with AI, and carry them forward as typed variables the next step can use.',
+        },
+        {
+          term: 'Branch',
+          desc: 'Conditions on anything in scope, including the fields you just extracted, so one workflow covers the several ways a conversation can go.',
+        },
+        {
+          term: 'Loop',
+          desc: 'Iterate over a list and run the same steps for each element. Loops can sit inside other loops, and each one keeps track of its own item.',
+        },
+        {
+          term: 'Find',
+          desc: 'Look up a contact by whatever identifier you have, or query for many records at once and act on the set.',
+        },
+        {
+          term: 'Create, update, remove',
+          desc: 'Full write access to contacts, leads and companies: nine actions across the three, so a workflow can finish the job rather than filing a note for someone.',
+        },
+        {
+          term: 'Move and tag',
+          desc: 'Advance a lead to another pipeline stage and apply tags, which is how most of these workflows end.',
+        },
+        {
+          term: 'Assign work',
+          desc: 'Create a task so a person picks up exactly the part that needs a person.',
+        },
+      ],
+    },
+    n8n: {
+      eyebrow: 'Beyond the platform',
+      heading: 'And when the work leaves Fineguide.',
+      body:
+        'The built-in builder covers the CRM. For everything past it, such as your billing system, your warehouse or an internal API, the n8n bridge picks up where it stops.',
+      bullets: [
+        'Use the hosted n8n instance, or point us at one you already run',
+        'Hundreds of integrations on the n8n side, none of which we have to build',
+        'Webhooks on conversations, leads and tickets for anything with an HTTP endpoint',
+        'Workflow runs are part of your plan, so they do not consume credits',
+        'Every run is inspectable step by step, so a failure tells you which step and why',
+      ],
+    },
+    finalCta: {
+      heading: 'Build one and watch it run.',
+      body:
+        'Start from a trigger you already have, add the two or three steps that follow, and stop doing that part by hand.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
+  // --- Messages & Inbox Page ---
+  // The nine channels are BotIntegrationType in the Prisma schema. Email is
+  // IMAP/SMTP only - there is no OAuth path in the codebase, so nothing here
+  // may imply one-click Gmail or Outlook. The three AI limits are schema
+  // defaults (aiMode OFF, aiReplyDelaySeconds 120, aiMaxRepliesPerThread 3)
+  // and scripts/verify-claims.mjs fails if any of them changes under us.
+  messagesPage: {
+    meta: {
+      title: 'Shared Inbox for Chat and Email | Fineguide',
+      description:
+        'Nine chat channels and your own email in one queue, with routing, departments and a handover that gives the human the whole conversation.',
+    },
+    hero: {
+      title: 'Every conversation.',
+      titleAccent: ' One inbox.',
+      subtitle:
+        'The assistant handles what it can. The moment it cannot, a colleague already has the thread, the customer record and the history in front of them.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'Messages & Inbox',
+      screenshotAlt: 'A customer messaging a business from their phone',
+    },
+    channels: {
+      eyebrow: 'One queue',
+      heading: 'Nine channels, and none of them is a separate inbox.',
+      body:
+        'A customer who writes on WhatsApp today and Instagram next week is one person with one history. The channel is a detail of how the message arrived, not a filing system.',
+      items: [
+        {
+          name: 'Messaging apps',
+          desc: 'WhatsApp, Telegram, Instagram and Messenger, each connected once and then indistinguishable from the rest of the queue.',
+        },
+        {
+          name: 'Team chat',
+          desc: 'Slack and Discord, for the communities and internal channels where your customers already are.',
+        },
+        {
+          name: 'Web and widgets',
+          desc: 'Your own site, plus JivoChat for teams already running it.',
+        },
+        {
+          name: 'CRM-native chat',
+          desc: 'amoCRM and Kommo conversations flow into the same queue as everything else.',
+        },
+      ],
+    },
+    handover: {
+      eyebrow: 'The handover',
+      heading: 'The part most tools get wrong.',
+      body:
+        'Escalation is not a notification. It is a queue with rules, a record of who accepted, and a guarantee that two people never answer the same customer at once.',
+      items: [
+        {
+          term: 'A single queue',
+          desc: 'Unassigned conversations and escalations waiting to be accepted or declined sit in one pull queue, so nothing is waiting in a place nobody looks.',
+        },
+        {
+          term: 'Department handover',
+          desc: 'Move a thread to another department and it drops the current assignee and re-routes against that team, rather than sitting with someone who has stopped reading it.',
+        },
+        {
+          term: 'Collision detection',
+          desc: 'You are told when a colleague has the same conversation open, and again when they start typing in it.',
+        },
+        {
+          term: 'Saved replies',
+          desc: 'Team-shared canned responses, inserted inline with a "/" rather than pasted from a document nobody keeps current.',
+        },
+        {
+          term: 'Business hours',
+          desc: 'An out-of-hours auto-reply for the whole team, kept separate from each agent’s personal working hours so the two never contradict each other.',
+        },
+      ],
+    },
+    email: {
+      eyebrow: 'Inbox',
+      heading: 'Real email, not a contact form.',
+      body:
+        'Connect the mailbox you already send from over IMAP and SMTP. Because the mail leaves your server rather than ours, your deliverability and sender reputation stay yours.',
+      bullets: [
+        'Connect your own mailboxes and your own domains over IMAP and SMTP',
+        'Routing rules decide which mailbox a message belongs to and who picks it up',
+        'Per-mailbox signatures, so replies look like they came from the person sending them',
+        'Reporting per mailbox alongside the chat reporting, not in a separate tool',
+        'Threads attach to the customer record in the CRM',
+      ],
+    },
+    safety: {
+      eyebrow: 'AI on email, safely',
+      heading: 'Three safeguards you do not have to find.',
+      body:
+        'Letting AI answer email is the point at which most teams get nervous, and reasonably so. These are defaults, not settings you have to discover.',
+      items: [
+        {
+          term: 'Off by default',
+          desc: 'A new mailbox is human-only. AI replies are something you turn on deliberately, per mailbox, once you have read what it would have said.',
+        },
+        {
+          term: 'A pause before sending',
+          desc: 'Replies wait before they go out, so a colleague who is already reading the thread can claim it and the customer never gets two answers.',
+        },
+        {
+          term: 'A hard cap per thread',
+          desc: 'After a set number of AI replies in one conversation, it stops and hands to a human, so two automated systems can never reply to each other forever.',
+        },
+      ],
+    },
+    finalCta: {
+      heading: 'Put every channel in one queue.',
+      body:
+        'Connect a channel, watch the assistant work, and take over whenever you want to. The handover is the part we built first.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
+  // --- Campaigns Page (outbound telephony) ---
+  // Every claim here is checked against the backoffice by
+  // scripts/verify-claims.mjs: the three types are the CampaignType enum and
+  // the five providers are the TelephonyProvider enum. Adding a fourth type or
+  // a sixth provider to the copy without it existing in the schema fails.
+  campaignsPage: {
+    meta: {
+      title: 'Outbound Calling That Runs Itself | Fineguide',
+      description:
+        'Build an audience, choose what the call is for, and let AI assistants work the list. Test on your own number first, then watch the campaign run.',
+    },
+    hero: {
+      title: 'Outbound calling',
+      titleAccent: ' that runs itself.',
+      subtitle:
+        'Point a campaign at a list and the assistants dial it one at a time, at your pace, with every outcome tracked per contact.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+    intro: {
+      eyebrow: 'Campaigns',
+      screenshotAlt: 'A desk phone in an open-plan office, notes beside it',
+    },
+    types: {
+      eyebrow: 'Three kinds of campaign',
+      heading: 'What the call is for changes what happens after it.',
+      body:
+        'A campaign is not just a dialler. Each type ends differently: one leaves a conversation, one a dataset, one a funnel. The reporting follows from that.',
+      items: [
+        {
+          name: 'Outreach',
+          desc: 'Free-form outbound. The assistant opens the conversation and takes it where it needs to go, and the whole exchange is kept as a transcript.',
+        },
+        {
+          name: 'Survey',
+          desc: 'A structured questionnaire. Answers are extracted from each call as it ends and aggregated across the whole run, so you read a result rather than a stack of recordings.',
+        },
+        {
+          name: 'Promotion',
+          desc: 'A time-boxed offer. Every outcome (accepted, declined, callback requested) is captured as a stage, so the campaign reads as a conversion funnel rather than a call log.',
+        },
+      ],
+    },
+    audience: {
+      eyebrow: 'Building the list',
+      heading: 'Who gets called, and what happens when they do not answer.',
+      body:
+        'Audiences come from wherever your contacts already are. Retry behaviour is yours to set, and the one rule that is not configurable is the one that matters: a rejection is never retried.',
+      items: [
+        {
+          term: 'Audiences',
+          desc: 'Upload a CSV, pull from existing contacts, select by tag, or combine all three in one list.',
+        },
+        {
+          term: 'Segments',
+          desc: 'Save a filter as a reusable segment and point future campaigns at it, instead of rebuilding the same list each time.',
+        },
+        {
+          term: 'Retries',
+          desc: 'Retry on no answer or busy, with your own delay per outcome. A contact who declines is never dialled again by that campaign.',
+        },
+        {
+          term: 'Test calls',
+          desc: 'Place the campaign against your own number and hear exactly what a customer would, before a single real contact is dialled.',
+        },
+        {
+          term: 'Live control',
+          desc: 'Pause a running campaign, resume it, or stop it outright. Progress and per-contact status stay visible throughout.',
+        },
+      ],
+    },
+    telephony: {
+      eyebrow: 'Your phone system',
+      heading: 'Bring the numbers you already own.',
+      body:
+        'Campaigns run over your existing telephony rather than a number we rent you, so your numbers, caller ID and carrier costs stay where they are today.',
+      bullets: [
+        'Connect your carrier or PBX with a standard SIP account',
+        'Give each inbound number to the assistant that should answer it',
+        'On inbound calls, transfer the caller to your team, or take a callback request as a CRM task',
+        'Every call is kept as a transcript alongside your chat conversations',
+        'Billed per answered minute, with a one-minute minimum',
+      ],
+    },
+    finalCta: {
+      heading: 'Run your first campaign against your own number.',
+      body:
+        'Build a list, place a test call, and listen to what your customers would hear. Nothing reaches a real contact until you say so.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'Schedule a demo',
+    },
+  },
+
   // --- Pricing Page ---
   pricingMeta: {
     title: 'Pricing | Fineguide.ai',
-    description: 'Flexible credit-based pricing. Choose the right plan for your team, with all AI modules included from the start.',
+    description:
+      'Plans from €0 to €500 a month, or 20% less paid yearly. See what each plan includes: credits, team seats, knowledge base space and support.',
   },
   pricingPage: {
-    heading: 'Pricing built for<br />growing teams',
-    subtitle: 'Start free, scale as you grow. One subscription per organization, with access to all AI modules.',
-    bullets: ['No setup fees', 'Cancel anytime', 'Free trial'],
+    heading: 'Pay for what your AI does.<br /><span class="text-[var(--color-primary)]">Everything else is included.</span>',
+    subtitle:
+      'Every plan runs on credits. AI replies and voice minutes use them. Your CRM, inbox, messages and workflows never do.',
+    bullets: ['Free plan, no card needed', 'No setup fees', 'Cancel anytime'],
   },
 
-  // --- PricingPlans ---
+  // What a credit buys: shown above the plans so their numbers mean something.
+  // Rates: VOICE_CREDITS_PER_MIN in the API's pricing-config.ts.
+  pricingExplainer: {
+    eyebrow: 'What a credit buys',
+    items: [
+      { value: '1 credit', term: 'AI reply', desc: 'A standard reply from an assistant, in any channel.' },
+      { value: '12 credits', term: 'A minute of call scoring', desc: 'Voice QA transcribes a call and scores it against your criteria.' },
+      { value: '10 credits', term: 'A minute of AI phone call', desc: 'Voice AI answering or making a call. 30 a minute with ElevenLabs voice agents.' },
+      { value: '0 credits', term: 'Everything else', desc: 'CRM, Inbox, Messages, workflows and reports.' },
+    ],
+  },
+
+  // Every plan shows the same rows in the same order, so comparing plans is
+  // reading across one line. Figures come from NEW_LADDER_2026 and
+  // STORAGE_PACKS in the API; scripts/verify-pricing.mjs checks them.
+  // Seats: the account owner is not counted (ability.service.ts checks
+  // organizationMember rows only), so "3 included" means you plus 3.
   pricingPlans: {
     perMonth: '/month',
-    monthlyCredits: 'Monthly credits',
-    extraCredits: 'Extra credits: ',
-    modulesIncluded: 'Modules included',
-    integrationsLabel: 'Integrations',
-    mostPopular: 'Most popular',
-    ctaButton: 'Get started',
-    freeBanner: 'Start with 1,000 credits on us. No credit card, no commitment.',
-    freeBannerCta: 'Create free account',
     freeLabel: 'forever',
-    oneTimeCredits: 'One-time credits',
+    periodLabel: 'Billing period',
+    monthly: 'Monthly',
+    yearly: 'Yearly',
+    yearlySave: 'save 20%',
+    currencyLabel: 'Currency',
+    billedMonthly: 'Billed monthly',
+    billedYearly: 'Billed {yearTotal} a year. You save {yearSaving}.',
+    freeBilling: 'No card needed',
+    yearlyTopupNote: '15% off on yearly plans',
+    mostPopular: 'Most popular',
+    ctaFree: 'Start free',
+    ctaPaid: 'Get started',
+    labels: {
+      credits: 'Credits',
+      team: 'Team',
+      knowledge: 'Knowledge base',
+      extraCredits: 'Extra credits',
+      support: 'Support',
+    },
+    footnote: 'Credits and knowledge base space are shared by everyone in your organization.',
+    yearlyNote:
+      'Yearly plans are paid once a year. Credits still arrive every month, and extra seats are billed monthly.',
+    usdNote: 'Dollar prices are shown for reference. For now you are billed in euro, at the euro price.',
     plans: [
       {
-        desc: '1,000 free credits on signup, no card required. Buy more only when you need them.',
-        credits: '1,000 credits to explore the platform',
-        features: ['1 member', 'AI modules included (no n8n)', 'Community support', 'Pay-as-you-go top-ups'],
+        name: 'Free',
+        desc: 'Try the platform with your own content.',
+        credits: '200, one time',
+        creditsNote: 'About 200 AI replies. They do not renew.',
+        team: 'You + 1 teammate',
+        teamNote: 'No extra seats on Free',
+        knowledge: 'About 200 documents',
+        knowledgeNote: '1M characters',
+        extraCredits: '{topup0} per 1,000',
+        support: 'Community',
       },
       {
-        desc: 'For small teams looking to automate their first interactions.',
-        credits: '≈ 10,000 text conversations or 800+ minutes VoiceQA',
-        features: ['Up to 5 members', 'Basic admin controls', 'Email support', 'All AI modules included'],
+        name: 'Starter',
+        desc: 'A small team putting its first assistant to work.',
+        credits: '3,000 every month',
+        creditsNote: 'About 3,000 AI replies, or 250 minutes of call scoring',
+        team: 'You + 3 teammates',
+        teamNote: 'Then {seat1} per person a month',
+        knowledge: 'About 1,000 documents',
+        knowledgeNote: '5M characters',
+        extraCredits: '{topup1} per 1,000',
+        support: 'Email',
       },
       {
-        desc: 'For growing companies that need more capacity.',
-        credits: '≈ 23,000 text conversations or 1,900+ minutes VoiceQA',
-        features: ['Up to 10 members', 'Advanced admin controls', 'Priority support', 'Advanced analytics'],
+        name: 'Business',
+        desc: 'A growing team with steady daily volume.',
+        credits: '8,000 every month',
+        creditsNote: 'About 8,000 AI replies, or 660 minutes of call scoring',
+        team: 'You + 5 teammates',
+        teamNote: 'Then {seat2} per person a month',
+        knowledge: 'About 2,000 documents',
+        knowledgeNote: '10M characters',
+        extraCredits: '{topup2} per 1,000',
+        support: 'Priority',
       },
       {
-        desc: 'For large teams with high interaction volume.',
-        credits: '≈ 65,000 text conversations or 5,400+ minutes VoiceQA',
-        features: ['20 members', 'Enterprise admin controls', 'Dedicated support', 'Custom reports', 'API & webhooks access'],
+        name: 'Premium',
+        desc: 'Several teams, or a high volume of calls and chats.',
+        credits: '25,000 every month',
+        creditsNote: 'About 25,000 AI replies, or 2,080 minutes of call scoring',
+        team: 'You + 10 teammates',
+        teamNote: 'Then {seat3} per person a month',
+        knowledge: 'About 4,000 documents',
+        knowledgeNote: '20M characters',
+        extraCredits: '{topup3} per 1,000',
+        support: 'Dedicated',
       },
     ],
   },
 
-  // --- PricingCredits ---
+  // At zero credits: bot-availability.service.ts stops replies,
+  // voice-qa-credit.service.ts stops scoring, voice-billing.service.ts refuses
+  // new calls. CRM, Inbox, Messages and workflows have no credit check.
+  // Auto top-up is opt-in (isAutoRefillEnabled), capped, and never runs on Free.
+  pricingRunOut: {
+    eyebrow: 'When credits run out',
+    heading: 'Your AI pauses. Your team keeps working.',
+    subtitle:
+      'Buy more credits at any time and the AI picks up again straight away. On a paid plan you can also turn on automatic top-up, so credits are added before it pauses, up to a monthly limit you set.',
+    pausesLabel: 'Pauses',
+    pauses: [
+      'AI replies in every channel',
+      'Call scoring',
+      'New AI phone calls. A call already under way finishes.',
+    ],
+    keepsLabel: 'Keeps working',
+    keeps: ['CRM and contacts', 'Inbox and Messages', 'Workflows', 'Your data and settings'],
+  },
+
+  pricingAddons: {
+    eyebrow: 'Add-ons',
+    heading: 'Need more of one thing? Add just that.',
+    subtitle:
+      'Seats, credits and knowledge base space are sold separately, so you do not have to change plan to get more of one.',
+    items: [
+      {
+        icon: 'seat',
+        title: 'Extra seats',
+        body: 'Invite more people than your plan covers, at any time. Each extra person is billed monthly with your plan. Free has no extra seats.',
+        rates: [
+          { label: 'Starter', value: '{seat1} / person' },
+          { label: 'Business', value: '{seat2} / person' },
+          { label: 'Premium', value: '{seat3} / person' },
+        ],
+      },
+      {
+        icon: 'credit',
+        title: 'Extra credits',
+        body: 'Buy credits whenever you need them, on any plan, Free included. They add to your balance and stay there for as long as you keep the same plan. On a yearly plan they cost 15% less.',
+        rates: [
+          { label: 'Free', value: '{topup0} / 1,000' },
+          { label: 'Starter', value: '{topup1} / 1,000' },
+          { label: 'Business', value: '{topup2} / 1,000' },
+          { label: 'Premium', value: '{topup3} / 1,000' },
+        ],
+      },
+      {
+        icon: 'context',
+        title: 'Context Packs',
+        body: 'More room for the documents, pages and PDFs your assistants read, on any plan. Each pack is its own monthly charge that you can remove when you no longer need it.',
+        rates: [
+          { label: 'Per pack, per month', value: '{pack}' },
+          { label: 'Space added', value: '+5M characters' },
+          { label: 'Roughly', value: '1,000 documents' },
+        ],
+      },
+    ],
+    footnote:
+      'A Context Pack can only be removed if your content still fits without it. Delete some content first if it does not.',
+  },
+
+  // Message cost: computeMessageCreditUnit in the API's credit-unit.ts,
+  // max(1, round(1 + toolCalls / 3)). Attachments are stored, not charged.
+  // Voice AI: billed from answer, rounded up to the second, 60 s minimum.
   pricingCredits: {
-    heading: 'How credits work',
-    subtitle: 'The flexible credit system gives you full control over AI usage, across all platform features.',
-    categories: [
+    eyebrow: 'The details',
+    heading: 'How credits are counted',
+    items: [
       {
-        name: 'AI Conversations',
-        rows: [
-          { label: 'Text message', value: '1 credit' },
-          { label: 'Message + attachment', value: '2 credits' },
-          { label: 'Document processing', value: 'Included' },
-        ],
+        term: 'AI replies',
+        desc: 'A standard reply costs 1 credit. When the assistant has to take several actions to answer, such as looking something up or updating the CRM, the reply costs more: 2 credits for 2 to 4 actions, 3 for 5 to 7. Files and images in the chat cost nothing extra.',
       },
       {
-        name: 'VoiceQA',
-        rows: [
-          { label: 'Analysis per minute', value: '12 credits' },
-          { label: 'Quality scoring', value: 'Included' },
-          { label: 'Performance insights', value: 'Included' },
-        ],
+        term: 'Call scoring',
+        desc: 'Voice QA uses 12 credits for each minute of a call, with a one-minute minimum per call.',
       },
       {
-        name: 'Platform',
-        rows: [
-          { label: 'Analytics & reports', value: 'Free' },
-          { label: 'Team collaboration', value: 'Free' },
-          { label: 'n8n integrations', value: 'Free' },
-        ],
+        term: 'AI phone calls',
+        desc: 'Counted from the moment the call is answered, not while it rings, with a one-minute minimum. 10 credits a minute, or 30 with ElevenLabs voice agents. Voice chats in your website widget count as AI replies.',
+      },
+      {
+        term: 'Always free',
+        desc: 'CRM, Inbox, Messages, workflows, reports and integrations never use credits.',
       },
     ],
   },
 
-  // --- PricingEnterprise ---
   pricingEnterprise: {
     heading: 'Need an Enterprise plan?',
     subtitle: 'For high volume, custom integrations or specific compliance requirements, we offer tailored solutions.',
@@ -751,24 +1325,32 @@ export const en = {
     cta: 'Contact us',
   },
 
-  // --- PricingFaq ---
+  // Plan changes: subscription.service.ts swaps the price now and applies the
+  // new plan at the next renewal, for upgrades and downgrades alike. Bought
+  // credits are tied to the subscription record, so a plan change or
+  // cancellation leaves them behind.
   pricingFaq: {
-    heading: 'Frequently Asked Questions',
-    subtitle: 'Everything you need to know about our pricing system.',
+    heading: 'Questions about pricing',
+    subtitle: 'The rules, in plain words.',
+    currency: { q: 'Which currency am I charged in?', a: 'Euro, for now. Dollar prices are the euro prices converted and rounded, shown for reference. If you subscribe, you pay the euro price.' },
     items: [
-      { q: 'How do credits work?', a: 'Each AI text message costs 1 credit. Messages with attachments cost 2 credits. VoiceQA analysis uses 12 credits per minute. Document processing, analytics and integrations are included at no extra cost.' },
-      { q: 'Do credits expire?', a: 'Monthly subscription credits reset each billing cycle. Extra credit packs never expire.' },
-      { q: 'Can I change plans?', a: 'Yes, you can upgrade or downgrade anytime. Changes take effect on the next billing cycle. You can purchase extra credits anytime.' },
-      { q: 'What happens if I run out of credits?', a: 'You can buy extra credits instantly. AI assistants will continue to work, and you\'ll be notified when credits are about to run out.' },
-      { q: 'Is there a free trial?', a: 'Yes. All new accounts receive free credits to test the platform. You can explore all features before choosing a paid plan.' },
+      { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 with ElevenLabs voice agents. Everything else on the platform is included in your plan.' },
+      { q: 'Do unused credits carry over?', a: 'No. On a paid plan your credits refresh on each billing date, and anything unused does not carry over. The 200 credits on Free are given once and do not refresh.' },
+      { q: 'What happens to credits I buy?', a: 'They add to your balance and have no expiry date, but they belong to your current plan. If you change plan or cancel, unused credits you bought do not move with you.' },
+      { q: 'Can I change plan?', a: 'Yes, at any time. Moving from Free to a paid plan starts straight away. Moving between paid plans, up or down, takes effect on your next billing date.' },
+      { q: 'How do I cancel?', a: 'Cancel from your billing settings. Your plan keeps running until the end of the month you have paid for, then your account moves to the Free plan.' },
+      { q: 'Who counts as a seat?', a: 'Everyone you invite, including invitations that have not been accepted yet. You, as the account owner, are not counted, so Starter covers you plus 3 teammates.' },
+      { q: 'What if my knowledge base is full?', a: 'You get a warning at 85%. When it is full, new documents and pages are not added until you remove some content, add a Context Pack or move to a bigger plan.' },
+      { q: 'How does yearly billing work?', a: 'You pay for 12 months at once and save 20%. Credits still arrive every month, extra credits cost 15% less, and extra seats are billed monthly. You choose monthly or yearly when you subscribe; to switch later, cancel and subscribe again with the other option. Free has no yearly option.' },
+      { q: 'Can I try it before paying?', a: 'Yes. The Free plan is yours to keep, with 200 credits and room for you and one teammate. No card needed.' },
     ],
   },
 
   // --- Enterprise Page ---
   enterpriseMeta: {
-    title: 'Enterprise | On-premise, adaptation, and consultancy | Fineguide.ai',
+    title: 'Enterprise: On-Premise & Consultancy | Fineguide.ai',
     description:
-      'Dedicated service for enterprise teams: custom plans, on-premise deployment on your infrastructure, platform adaptation, and consultancy that turns the platform into outcomes.',
+      'Custom plans, on-premise deployment on your own infrastructure, platform adaptation and consultancy for teams with security or scale requirements.',
   },
   enterprisePage: {
     hero: {
