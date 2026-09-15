@@ -308,7 +308,7 @@ export const ro: typeof en = {
           { label: 'Telefon', value: '+40 720 123 456', ai: false },
           { label: 'Email', value: 'maria.p@example.com', ai: false },
           { label: 'Serviciu solicitat', value: 'Voice QA · 5 agenți', ai: true },
-          { label: 'Buget', value: '€2.000 – €4.000 / lună', ai: true },
+          { label: 'Buget', value: '€2.000 - €4.000 / lună', ai: true },
           { label: 'Intenție', value: 'Prețuri & demo', ai: true },
           { label: 'Etapă', value: 'Calificat', ai: false },
           { label: 'Următoarea acțiune', value: 'Programează apel', ai: false },

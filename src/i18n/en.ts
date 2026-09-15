@@ -310,7 +310,7 @@ export const en = {
           { label: 'Phone', value: '+40 720 123 456', ai: false },
           { label: 'Email', value: 'maria.p@example.com', ai: false },
           { label: 'Required service', value: 'Voice QA · 5 agents', ai: true },
-          { label: 'Budget', value: '€2,000 – €4,000 / month', ai: true },
+          { label: 'Budget', value: '€2,000 - €4,000 / month', ai: true },
           { label: 'Intent', value: 'Pricing & demo', ai: true },
           { label: 'Stage', value: 'Qualified', ai: false },
           { label: 'Next action', value: 'Schedule call', ai: false },
