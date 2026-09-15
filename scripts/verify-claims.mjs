@@ -241,6 +241,44 @@ if (fs.existsSync(schemaPath)) {
     });
   }
   ok(hits.length === 0, `no voice claims the code contradicts${hits.length ? ' -> ' + hits.join('; ') : ''}`);
+
+  // The Voice AI page is where these features would naturally be sold, so it
+  // gets a stricter list. These words are fine elsewhere (Voice QA really does
+  // work on recordings), which is why they are scoped to this block only.
+  const VOICE_PAGE_BANNED = [
+    [/recording|înregistr/i, 'call recordings: the URL never reaches the app (roomstate.go room.ended has no recording_url)'],
+    [/summar|rezumat/i, 'post-call summaries: not implemented'],
+    [/voicemail|answering machine|mesagerie vocală|robot telefonic/i, 'voicemail detection: not implemented (voicemail_detection: null)'],
+    [/warm transfer|attended transfer|transfer asistat/i, 'warm transfer: transfer is blind SIP REFER'],
+    [/click[- ]to[- ]call/i, 'click-to-call: nothing in the app starts a single outbound call'],
+    [/noise (suppression|cancell?ation)|echo cancell?ation|suprimare|anulare(a)? (zgomot|ecou)/i, 'echo cancellation / noise suppression: off by default (main.go)'],
+    [/\bAsterisk|FreePBX|3CX|Twilio|Qwen\b/, 'engines and phone systems not available in the product'],
+  ];
+  const pageHits = [];
+  const pageRates = {};
+  for (const locale of ['en', 'ro']) {
+    const block = fs.readFileSync(`src/i18n/${locale}.ts`, 'utf8').match(/\n  voiceAiPage:\s*\{([\s\S]*?)\n  \},/);
+    if (!block) { pageHits.push(`${locale}: no voiceAiPage block`); continue; }
+    const copy = block[1].split('\n').filter((l) => !/^\s*\/\//.test(l)).join('\n');
+    for (const [re, why] of VOICE_PAGE_BANNED) if (re.test(copy)) pageHits.push(`${locale}: ${why}`);
+    const std = copy.match(/(\d+) (?:credits a minute|credite pe minut)/);
+    const premium = copy.match(/(\d+) (?:on|pe) ElevenLabs Agents/);
+    pageRates[locale] = [std?.[1], premium?.[1]];
+  }
+  ok(pageHits.length === 0, `Voice AI page sells nothing the product lacks${pageHits.length ? ' -> ' + pageHits.join('; ') : ''}`);
+
+  // Rates on the page must be the rates in the billing config.
+  const pricing = fs.readFileSync(`${API}/pricing/pricing-config.ts`, 'utf8');
+  const aiStd = pricing.match(/aiGoogle:\s*(\d+)/)?.[1];
+  const aiPremium = pricing.match(/aiElevenlabs:\s*(\d+)/)?.[1];
+  const billing = fs.readFileSync(`${API}/modules/voice/voice-billing.service.ts`, 'utf8');
+  const minSeconds = billing.match(/MINIMUM_BILLABLE_SECONDS = (\d+)/)?.[1];
+  const rateBad = Object.entries(pageRates)
+    .filter(([, [s, p]]) => s !== aiStd || p !== aiPremium)
+    .map(([loc, [s, p]]) => `${loc}: page ${s}/${p}, config ${aiStd}/${aiPremium}`);
+  ok(aiStd && aiPremium && rateBad.length === 0,
+     `Voice AI page rates match pricing-config (${aiStd} standard, ${aiPremium} ElevenLabs Agents)${rateBad.length ? ' -> ' + rateBad.join('; ') : ''}`);
+  ok(minSeconds === '60', `Voice AI page "one-minute minimum" matches MINIMUM_BILLABLE_SECONDS (${minSeconds})`);
 }
 
 // --- email AI safety rails: the page sells the brakes, so the brakes must exist
