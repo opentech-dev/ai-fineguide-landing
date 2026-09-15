@@ -26,7 +26,7 @@ export const ro: Translations = {
 
   // --- Footer ---
   footer: {
-    tagline: 'Platforma de nouă generație pentru operațiuni de business, conversații, CRM, voce și workspace pe o singură coloană vertebrală nativ AI.',
+    tagline: 'Platforma de nouă generație care reunește conversațiile, CRM-ul, apelurile și workspace-ul pe o singură fundație, construită nativ pe AI.',
     product: 'Produs',
     company: 'Companie',
     scheduleDemo: 'Programează un demo',
@@ -41,26 +41,26 @@ export const ro: Translations = {
   indexMeta: {
     title: 'Fineguide.ai | Platformă AI pentru relația cu clienții',
     description:
-      'Platforma de nouă generație pentru operațiuni de business. Unifică conversațiile, CRM-ul, canalele și fluxurile de lucru, totul construit pe AI din temelii.',
+      'Platforma de nouă generație pentru relația cu clienții. Reunește conversațiile, CRM-ul, canalele și fluxurile de lucru, construită pe AI de la bun început.',
   },
 
   // --- Hero ---
   hero: {
-    title: 'Simplifică fiecare interacțiune cu clienții tăi.',
+    title: 'Transformă felul în care afacerea ta comunică cu clienții.',
     subtitle:
-      'Unifică conversațiile, CRM-ul, canalele și fluxurile de lucru, totul construit pe AI din temelii.',
+      'Conversațiile, CRM-ul, canalele și fluxurile de lucru, reunite într-o singură platformă construită pe AI de la bun început.',
     ctaPrimary: 'Începe acum',
     ctaSecondary: 'Programează un demo',
   },
 
   // --- Customer logo strip ---
   customerLogos: {
-    eyebrow: 'Echipe care construiesc deja pe Fineguide',
+    eyebrow: 'Echipe care lucrează deja cu Fineguide',
   },
 
   // --- Photography alt text ---
   photos: {
-    teamOffice: 'Colegi discutând la un birou comun într-un spațiu open-space',
+    teamOffice: 'Colegi care discută la o masă comună, într-un birou open space',
     channelsPhone: 'Un client care scrie unei companii de pe telefon',
     agentHeadset: 'Un agent de suport în timpul unui apel, la biroul său',
     tabletReview: 'Analiza rapoartelor pe tabletă',
@@ -70,7 +70,7 @@ export const ro: Translations = {
   overview: {
     eyebrow: 'Platforma',
     body:
-      'Fineguide reunește într-o singură platformă asistenți AI, CRM, telefonie, canale de chat și workspace-ul echipei - conectând fiecare conversație, fișă de client, interacțiune vocală și document intern într-un sistem integrat.',
+      'Fineguide reunește într-o singură platformă asistenții AI, CRM-ul, telefonia, canalele de chat și workspace-ul echipei. Fiecare conversație, fișă de client, apel și document intern sunt conectate în același sistem.',
     modules: [
       {
         name: 'Asistenți',
@@ -78,11 +78,11 @@ export const ro: Translations = {
       },
       {
         name: 'CRM',
-        desc: 'Conversații, contacte, companii, lead-uri, pipeline-uri, task-uri, inbox de echipă și coadă de rutare.',
+        desc: 'Conversații, contacte, companii, lead-uri, pipeline-uri, sarcini, inbox de echipă și coadă de rutare.',
       },
       {
         name: 'Voice',
-        desc: 'Quality assurance pe fiecare apel, plus telefonie cu agenți AI.',
+        desc: 'Controlul calității pe fiecare apel, plus agenți AI pentru apeluri primite și efectuate.',
       },
       {
         name: 'Mesaje',
@@ -98,11 +98,11 @@ export const ro: Translations = {
       },
       {
         name: 'Automatizări',
-        desc: 'Construiește workflow-uri vizual direct în Fineguide sau conectează n8n pentru restul stack-ului tău.',
+        desc: 'Construiește vizual workflow-uri direct în Fineguide sau conectează n8n la restul aplicațiilor tale.',
       },
       {
         name: 'QA & Analytics',
-        desc: 'Evaluează fiecare interacțiune, urmărește performanța echipelor și scoate la suprafață informațiile care aduc îmbunătățiri.',
+        desc: 'Evaluează fiecare interacțiune, urmărește performanța echipelor și descoperă ce merită îmbunătățit.',
       },
     ],
   },
@@ -110,15 +110,15 @@ export const ro: Translations = {
   // --- Assistants spread ---
   assistantsSpread: {
     eyebrow: 'Asistenți',
-    title: 'AI care gestionează conversațiile, de fiecare dată.',
+    title: 'AI care gestionează fiecare conversație.',
     body:
-      'Asistenți care citesc cunoștințele tale, urmează regulile tale și captează ce contează. Întâmpină clienții pe fiecare canal unde faci business, și transformă fiecare conversație în date structurate cu care echipa ta poate acționa.',
+      'Pune la lucru asistenți care învață din documentele tale, respectă regulile tale și notează ce contează. Îi întâmpină pe clienți pe toate canalele pe care ești prezent și transformă fiecare conversație în date structurate, gata de folosit de echipa ta.',
     features: [
       'Canale: Web · WhatsApp · Telegram · Instagram · Messenger · Slack · Discord',
       'Cunoștințe din URL-uri, documente și PDF-uri',
       'Personalitate, voce și reguli de escaladare configurabile',
       'Extrage intenția și datele clientului direct în lead-urile din CRM',
-      'Monitorizare live a conversațiilor, analiză și bucle de feedback',
+      'Monitorizarea conversațiilor în timp real, rapoarte și feedback continuu',
     ],
     screenshotAlt: 'Dashboard analytics asistenți Fineguide',
   },
@@ -128,15 +128,15 @@ export const ro: Translations = {
     eyebrow: 'CRM',
     title: 'O singură fișă a clientului. Toată echipa. Toate conversațiile.',
     body:
-      'Sales vede deal-ul. Suportul vede ticketul. Call center-ul vede coada. Toți văd același client, același istoric de conversație, același context, fără dansul de export și import dintre tool-uri.',
+      'Vânzările văd tranzacția. Suportul vede tichetul. Call center-ul vede coada. Toată lumea vede același client, același istoric și același context, fără exporturi și importuri între aplicații.',
     features: [
       'Pipeline-uri și etape, vizualizări Kanban și tabel',
-      'Task-uri, asignări și deadline-uri',
+      'Sarcini, responsabili și termene',
       'Fișe de companie cu email și istoric propriu',
       'Inbox de echipă și coadă de rutare',
-      'Câmpuri custom populate automat de asistenți',
+      'Câmpuri personalizate completate automat de asistenți',
     ],
-    screenshotAlt: 'Board CRM Fineguide cu task-uri în coloane Kanban',
+    screenshotAlt: 'Panou CRM Fineguide cu sarcini în coloane Kanban',
   },
 
   // --- Voice spread (dark) ---
@@ -144,13 +144,13 @@ export const ro: Translations = {
     eyebrow: 'Voice',
     title: 'Fiecare apel, evaluat și structurat.',
     body:
-      'Voice QA evaluează apelurile automat, pe departamente, conform regulilor tale, în limbile pe care le vorbește echipa ta. Voice AI pune aceiași asistenți care gestionează chat-ul la celălalt capăt al telefonului.',
+      'Voice QA evaluează apelurile automat, pe departamente, după regulile tale și în limbile pe care le vorbește echipa ta. Voice AI îi pune la telefon pe aceiași asistenți care îți gestionează chatul.',
     features: [
       'Transcriere și evaluare automată pe fiecare apel',
-      'Criterii de evaluare și ponderi per departament',
-      'Feedback pentru agenți și dashboard-uri de tendințe',
+      'Criterii de evaluare și ponderi pentru fiecare departament',
+      'Feedback pentru agenți și dashboard-uri cu evoluția în timp',
       'Se conectează la sistemul tău de telefonie prin SIP',
-      'Agenți AI pe apeluri live inbound și outbound',
+      'Agenți AI în apeluri reale, primite și efectuate',
     ],
     screenshotAlt: 'Dashboard statistici Voice QA Fineguide',
   },
@@ -158,17 +158,17 @@ export const ro: Translations = {
   // --- Mesaje și Inbox ---
   conversations: {
     eyebrow: 'Mesaje și Inbox',
-    title: 'Fiecare conversație ajunge undeva unde un om poate prelua.',
+    title: 'Fiecare conversație ajunge acolo unde un om o poate prelua.',
     body:
-      'Chatul și emailul ajung în același spațiu de lucru, cu o coadă, reguli de rutare și departamente în spate. Asistentul rezolvă ce poate; în momentul în care nu mai poate, un coleg are deja conversația și fișa clientului în față.',
+      'Chatul și emailul ajung în același spațiu de lucru, organizate pe coadă, reguli de rutare și departamente. Asistentul rezolvă ce poate; când nu mai poate, un coleg are deja în față conversația și fișa clientului.',
     linkLabel: 'Descoperă Mesaje și Inbox',
   },
   // --- Campanii (telefonie outbound) ---
   campaigns: {
     eyebrow: 'Campanii',
-    title: 'Apeluri outbound care se desfășoară singure.',
+    title: 'Campanii de apeluri care se derulează singure.',
     body:
-      'Construiește o audiență, alege scopul apelului și lasă asistenții să lucreze lista. Testează întâi pe numărul tău, urmărește campania rulând și pune-o pe pauză oricând.',
+      'Creează o audiență, alege scopul apelului și lasă asistenții să parcurgă lista. Testează mai întâi pe numărul tău, urmărește campania în timp real și pune-o pe pauză oricând.',
     linkLabel: 'Descoperă campaniile',
   },
 
@@ -176,29 +176,29 @@ export const ro: Translations = {
   workspaceAutomations: {
     workspace: {
       eyebrow: 'Workspace',
-      title: 'Documente care trăiesc alături de client.',
+      title: 'Documentele echipei, lângă fișa clientului.',
       body:
         'Un editor bazat pe blocuri pentru playbook-uri, brief-uri și cunoștințe de echipă, conectat la aceleași contacte și clienți cu care echipa ta lucrează deja.',
       features: [
         'Editor cu blocuri și comenzi slash',
-        'Ierarhie de foldere cu drag-and-drop',
+        'Foldere ierarhice, reorganizate prin drag-and-drop',
         'Căutare full-text în întregul workspace',
-        'Coș cu ștergere soft și recuperare',
+        'Coș de gunoi cu recuperare',
       ],
     },
     automations: {
       eyebrow: 'Automatizări',
       title: 'Citește conversația. Actualizează fișa. Nimeni nu intervine.',
       body:
-        'Un constructor vizual de workflow-uri chiar în Fineguide: trage pașii pe canvas, lasă AI-ul să extragă câmpurile din conversație și să le scrie direct în CRM. Plus o instanță n8n încorporată, găzduită de noi sau adusă de tine, pentru tot ce e dincolo.',
+        'Un editor vizual de workflow-uri direct în Fineguide: tragi pașii pe canvas, lași AI-ul să extragă câmpurile din conversație și să le scrie direct în CRM. Pentru tot restul ai n8n integrat, găzduit de noi sau pe propria ta instanță.',
       linkLabel: 'Descoperă automatizările',
       features: [
-        'AI-ul extrage câmpuri tipizate din conversația care a declanșat execuția',
+        'AI-ul extrage câmpuri cu tip definit din conversația care a pornit workflow-ul',
         'Creează, actualizează și găsește contacte, lead-uri și companii',
-        'Mută lead-uri între etapele pipeline-ului, adaugă etichete, deschide sarcini',
-        'Ramifică pe condiții și parcurge în buclă înregistrările găsite',
+        'Mută lead-uri între etapele pipeline-ului, adaugă etichete, creează sarcini',
+        'Ramificații pe condiții și bucle peste fișele găsite',
         'n8n găzduit pe infrastructura Fineguide sau propria ta instanță',
-        'Webhook-uri și sute de integrări pre-construite prin n8n',
+        'Webhook-uri și sute de integrări gata făcute prin n8n',
       ],
     },
   },
@@ -209,24 +209,24 @@ export const ro: Translations = {
     items: [
       {
         figure: '24/7',
-        prose: 'acoperire AI în sub două secunde, pe fiecare canal pe care l-ai conectat.',
+        prose: 'răspuns AI în mai puțin de două secunde, pe fiecare canal conectat.',
       },
       {
         figure: '30+',
-        prose: 'limbi suportate pentru transcriere vocală și conversații cu clienții.',
+        prose: 'limbi disponibile pentru transcrierea apelurilor și conversațiile cu clienții.',
       },
       {
-        figure: 'Una',
-        prose: 'platformă care înlocuiește cele șapte tool-uri pe care altfel le-ai uni cu scotch.',
+        figure: 'O singură',
+        prose: 'platformă în locul celor șapte aplicații pe care altfel le-ai lega cu sârmă.',
       },
     ],
   },
 
   // --- Industries ---
   industries: {
-    eyebrow: 'Construit pentru',
+    eyebrow: 'Gândit pentru',
     body:
-      'Echipele de vânzări folosesc Fineguide pentru a califica mai rapid. Centrele de suport îl folosesc pentru a gestiona volume mari fără să crească echipa. Call center-ele îl folosesc pentru a evalua calitatea și a antrena în timp real. Echipele de customer success îl folosesc pentru a păstra conturile coerente pe toate canalele.',
+      'Cu Fineguide, echipele de vânzări califică lead-urile mai repede. Echipele de suport fac față volumelor mari fără să angajeze mai mulți oameni. Call center-ele evaluează calitatea și îndrumă agenții în timp real. Echipele de customer success păstrează o imagine unitară a fiecărui cont, pe toate canalele.',
     audiences: 'Vânzări · Suport · Customer success · Operațiuni call center',
   },
 
@@ -235,8 +235,8 @@ export const ro: Translations = {
     eyebrow: 'Securitate',
     title: 'Datele tale, în condițiile tale.',
     body:
-      'Rulează Fineguide pe propria infrastructură atunci când ai nevoie: cloud-ul tău, cluster privat sau bare metal. Datele rămân în interiorul rețelei tale, iar noi sprijinim evaluările de conformitate și auditurile de securitate.',
-    linkLabel: 'Vezi implementarea enterprise',
+      'Rulează Fineguide pe propria infrastructură atunci când ai nevoie: în cloud-ul tău, pe un cluster privat sau pe bare metal. Datele nu ies din rețeaua ta, iar noi te sprijinim la evaluările de conformitate și auditurile de securitate.',
+    linkLabel: 'Vezi opțiunile Enterprise',
   },
 
   moduleLinks: {
@@ -245,7 +245,7 @@ export const ro: Translations = {
   },
 
   integrationsRibbon: {
-    eyebrow: 'Se integrează cu ce folosești deja',
+    eyebrow: 'Se integrează cu aplicațiile pe care le folosești deja',
     items: [
       'WhatsApp',
       'Telegram',
@@ -264,11 +264,11 @@ export const ro: Translations = {
 
   // --- Final CTA ---
   finalCta: {
-    heading: 'Gata să consolidezi?',
+    heading: 'Gata să aduci totul într-un singur loc?',
     body:
-      'Vezi Fineguide rulând pe operațiunile tale într-un walkthrough de 15 minute.',
+      'Vezi în 15 minute cum ar funcționa Fineguide în afacerea ta.',
     ctaPrimary: 'Începe acum',
-    ctaSecondary: 'Discută cu vânzările',
+    ctaSecondary: 'Vorbește cu echipa de vânzări',
   },
 
   // --- AI Assistants page ---
@@ -276,58 +276,58 @@ export const ro: Translations = {
     meta: {
       title: 'Asistenți AI pentru WhatsApp, Telegram și web | Fineguide',
       description:
-        'Asistenți AI care citesc cunoștințele tale, urmează regulile tale și captează ce contează, pe web, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord.',
+        'Asistenți AI care învață din documentele tale, respectă regulile tale și rețin ce contează, pe web, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord.',
     },
     hero: {
       title: 'Asistenți AI care gestionează',
       titleAccent: ' conversațiile.',
       subtitle:
-        'Asistenți care citesc cunoștințele tale, urmează regulile tale și captează ce contează, pe fiecare canal unde faci business.',
+        'Asistenți care învață din documentele tale, respectă regulile tale și notează ce contează, pe toate canalele pe care ești prezent.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
     intro: {
       eyebrow: 'Modulul Asistenți',
       body:
-        'Fiecare asistent este un AI configurabil care întâmpină clienții, răspunde la întrebări, califică lead-uri și scrie date structurate în CRM. Tu definești ce știe, cum sună, când escaladează și ce captează, apoi îl pui pe canalele pe care clienții tăi le folosesc deja.',
+        'Fiecare asistent este un AI configurabil care întâmpină clienții, răspunde la întrebări, califică lead-uri și scrie date structurate în CRM. Tu decizi ce știe, cum vorbește, când predă conversația unui om și ce informații reține, apoi îl activezi pe canalele pe care clienții tăi le folosesc deja.',
       screenshotAlt: 'Analytics asistent Fineguide, sesiuni, satisfacție, sentiment',
     },
     channels: {
       eyebrow: 'Canale',
       heading: 'Un singur asistent. Toate canalele.',
       body:
-        'Configurezi o singură dată. Asistentul apare unde apar clienții tăi, widget-uri web, inbox-uri sociale, aplicații de mesagerie și punți CRM care îl pun chiar în interiorul tool-urilor pe care echipa ta le folosește deja.',
+        'Îl configurezi o singură dată. Asistentul apare acolo unde sunt clienții tăi: în widgetul de pe site, în inboxurile rețelelor sociale, în aplicațiile de mesagerie și, prin integrările CRM, chiar în aplicațiile pe care echipa ta le folosește deja.',
       groups: [
         {
           label: 'Direct',
           items: 'Widget web · WhatsApp · Telegram · Instagram · Messenger · Slack · Discord',
         },
         {
-          label: 'Punți CRM',
+          label: 'Integrări CRM',
           items: 'AmoCRM · Kommo',
         },
       ],
     },
     configuration: {
       eyebrow: 'Configurare',
-      heading: 'Ajustează fiecare dimensiune.',
+      heading: 'Ajustează fiecare detaliu.',
       body:
-        'Setările default funcționează. Profunzimea este acolo când ai nevoie de ea, pentru personalitate, cunoștințe, voce, extragere, acțiuni și escaladare.',
+        'Setările implicite funcționează din prima. Când ai nevoie de mai mult, poți ajusta personalitatea, cunoștințele, vocea, extragerea datelor, acțiunile și predarea către un om.',
       blocks: [
         {
           title: 'Personalitate',
           body:
-            'Prompt de sistem, stil de comunicare și nivel de detaliere. Adaugă tonul brandului sau restricționează asistentul la un rol specific.',
+            'Prompt de sistem, stil de comunicare și nivel de detaliu. Adaugă tonul brandului tău sau limitează asistentul la un anumit rol.',
         },
         {
           title: 'Bază de cunoștințe',
           body:
-            'Încarcă documente, conectează URL-uri sau atașează PDF-uri. Asistentul își fundamentează fiecare răspuns în ce îi dai tu, fără fapte halucinate.',
+            'Încarcă documente, adaugă URL-uri sau atașează PDF-uri. Asistentul își bazează fiecare răspuns pe informațiile primite de la tine, fără să inventeze.',
         },
         {
           title: 'Voce',
           body:
-            'Voci text-to-speech pentru răspunsuri vocale. Alege o voce, sau doar o voce masculină ori feminină, și ascult-o înainte să intre live.',
+            'Voci sintetizate pentru răspunsurile vorbite. Alege o voce anume sau doar genul vocii, masculină ori feminină, și ascultă cum sună înainte de lansare.',
         },
         {
           title: 'Variabile de sesiune',
@@ -337,12 +337,12 @@ export const ro: Translations = {
         {
           title: 'Acțiuni',
           body:
-            'Declanșează webhook-uri, apeluri API sau workflow-uri din interiorul unei conversații. Programează întâlniri, creează tickete, predă către oameni.',
+            'Declanșează webhook-uri, apeluri API sau workflow-uri direct din conversație. Programează întâlniri, deschide tichete, transferă conversația unui coleg.',
         },
         {
-          title: 'Predare către om',
+          title: 'Predare către un coleg',
           body:
-            'Escaladare bazată pe reguli atunci când clientul cere sau când asistentul atinge limitele pe care le-ai setat.',
+            'Conversația trece la un om, după reguli clare, când clientul cere asta sau când asistentul ajunge la limitele stabilite de tine.',
         },
       ],
     },
@@ -350,20 +350,20 @@ export const ro: Translations = {
       eyebrow: 'De la conversație la CRM',
       heading: 'Fiecare chat devine o fișă structurată.',
       body:
-        'Ce înainte cerea ca un agent să copieze notițe din fereastra de chat într-o tabelă acum se întâmplă automat, și corect.',
+        'Ce făcea înainte un agent, copiind notițe din chat într-un tabel, se întâmplă acum automat și fără greșeli.',
       steps: [
         'Clientul începe o conversație pe orice canal conectat',
-        'Asistentul identifică intenția, extrage câmpurile pe care le-ai definit și își fundamentează răspunsurile în cunoștințele tale',
+        'Asistentul identifică intenția, extrage câmpurile pe care le-ai definit și răspunde pe baza informațiilor tale',
         'Un lead este creat în CRM, sau fuzionat cu un contact existent, fără introducere manuală',
-        'Câmpurile custom populează lead-ul, astfel încât datele să fie căutabile, segmentabile și gata pentru automatizare',
-        'Conversațiile live se adună în workspace; analytics-ul se agregă per asistent, canal și interval',
+        'Câmpurile personalizate completează lead-ul, așa că datele pot fi căutate, segmentate și folosite în automatizări',
+        'Conversațiile în desfășurare se adună într-un singur loc, iar rapoartele se grupează pe asistent, canal și perioadă',
       ],
     },
     leadAnatomy: {
       eyebrow: 'Anatomia unui lead',
       heading: 'Un lead înseamnă mai mult decât un nume și un număr de telefon.',
       body:
-        'Asistenții captează câmpurile care contează pentru tine, automat, pe fiecare canal. Identitatea vine built-in. Câmpurile custom precum buget, serviciu solicitat sau dată de mutare sunt cele pe care tu le definești pentru afacerea ta.',
+        'Asistenții rețin automat informațiile care contează pentru tine, pe fiecare canal. Datele de identificare sunt incluse. Câmpurile personalizate, precum bugetul, serviciul solicitat sau data mutării, le definești tu, pentru afacerea ta.',
       card: {
         title: 'Lead #4218',
         meta: 'WhatsApp · acum 2 minute',
@@ -373,13 +373,13 @@ export const ro: Translations = {
           { label: 'Email', value: 'maria.p@example.com', ai: false },
           { label: 'Serviciu solicitat', value: 'Voice QA · 5 agenți', ai: true },
           { label: 'Buget', value: '€2.000 - €4.000 / lună', ai: true },
-          { label: 'Intenție', value: 'Prețuri & demo', ai: true },
+          { label: 'Intenție', value: 'Prețuri și demo', ai: true },
           { label: 'Etapă', value: 'Calificat', ai: false },
-          { label: 'Următoarea acțiune', value: 'Programează apel', ai: false },
+          { label: 'Următoarea acțiune', value: 'Programare apel', ai: false },
         ],
         footerLabel: 'AI',
         footerNote:
-          'Câmpurile marcate AI sunt populate de asistent pe baza conversației. Definește-le pe ale tale în configurarea asistentului.',
+          'Câmpurile marcate AI sunt completate de asistent pe baza conversației. Le poți defini pe ale tale în configurarea asistentului.',
       },
       industries: {
         heading: 'Fiecare afacere, alte câmpuri.',
@@ -391,7 +391,7 @@ export const ro: Translations = {
           },
           {
             label: 'B2B SaaS',
-            fields: 'Mărime companie · Caz de utilizare · Orizont de decizie · Tool-uri actuale · Interes pentru pilot',
+            fields: 'Mărimea companiei · Caz de utilizare · Termen de decizie · Instrumente actuale · Interes pentru un pilot',
           },
           {
             label: 'Sănătate',
@@ -401,8 +401,8 @@ export const ro: Translations = {
       },
     },
     finalCta: {
-      heading: 'Gata să implementezi?',
-      body: 'Vezi un asistent configurat pentru afacerea ta într-un walkthrough de 15 minute.',
+      heading: 'Gata să-ți pui asistentul la treabă?',
+      body: 'Vezi în 15 minute un asistent configurat pentru afacerea ta.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -413,77 +413,77 @@ export const ro: Translations = {
     meta: {
       title: 'CRM construit pe fișa clientului | Fineguide.ai',
       description:
-        'Un CRM organizat în jurul fișei clientului: contacte, companii, lead-uri, pipeline-uri și task-uri, cu fiecare conversație atașată aceleiași persoane.',
+        'Un CRM organizat în jurul fișei clientului: contacte, companii, lead-uri, pipeline-uri și sarcini, cu fiecare conversație atașată aceleiași persoane.',
     },
     hero: {
       title: 'O singură fișă. Toată echipa.',
       titleAccent: ' Toate conversațiile.',
       subtitle:
-        'Sales vede deal-ul. Suportul vede ticketul. Call center-ul vede coada. Toți văd același client, fără dansul de export și import dintre tool-uri.',
+        'Vânzările văd tranzacția. Suportul vede tichetul. Call center-ul vede coada. Toată lumea vede același client, fără exporturi și importuri între aplicații.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
     intro: {
       eyebrow: 'Modulul CRM',
       body:
-        'CRM-ul Fineguide este hub-ul operațional unde asistenții alimentează lead-uri, agenții le închid și managerii văd adevărul. Fiecare conversație, fiecare contact, fiecare task, conectate la aceeași fișă a clientului, pe fiecare canal pe care merge afacerea ta.',
-      screenshotAlt: 'Board task-uri CRM Fineguide cu coloanele Todo, În progres și Gata',
+        'CRM-ul Fineguide este centrul operațional în care asistenții aduc lead-uri, agenții le transformă în clienți, iar managerii văd imaginea reală. Fiecare conversație, contact și sarcină este legată de aceeași fișă a clientului, pe toate canalele pe care lucrează afacerea ta.',
+      screenshotAlt: 'Panoul de sarcini din CRM-ul Fineguide, cu coloanele Todo, În progres și Gata',
     },
     surfaces: {
       eyebrow: 'În interiorul CRM-ului',
-      heading: 'Opt suprafețe, o singură fișă a clientului.',
+      heading: 'Opt secțiuni, o singură fișă a clientului.',
       body:
-        'Fiecare suprafață este o altă lentilă peste aceleași date, astfel încât să nu dublezi munca, să nu pierzi contextul și să nu te întrebi niciodată care tool are versiunea cea mai recentă.',
+        'Fiecare secțiune îți arată aceleași date dintr-un alt unghi, așa că nu dublezi munca, nu pierzi contextul și nu te mai întrebi unde e versiunea cea mai recentă.',
       items: [
         {
           name: 'Conversații',
-          desc: 'Chat-uri live și istorice de pe fiecare canal, cu profilul clientului și contextul lead-ului atașate.',
+          desc: 'Conversațiile în curs și cele încheiate, de pe toate canalele, cu profilul clientului și contextul lead-ului atașate.',
         },
         {
           name: 'Contacte',
-          desc: 'Persoanele cu care faci business, identificate pe numere de telefon, email-uri și nicknames de pe canale.',
+          desc: 'Persoanele cu care lucrezi, recunoscute după numărul de telefon, adresa de email și numele de utilizator de pe fiecare canal.',
         },
         {
           name: 'Lead-uri',
-          desc: 'Oportunități calificate cu câmpuri structurate, inclusiv proprietăți custom extrase de asistenții tăi.',
+          desc: 'Oportunități calificate, cu câmpuri structurate, inclusiv câmpuri personalizate extrase de asistenții tăi.',
         },
         {
           name: 'Pipeline-uri',
-          desc: 'Vizualizări Kanban și tabel pe pipeline. Etape, asignări și SLA-uri care reflectă felul în care echipa ta vinde efectiv.',
+          desc: 'Vizualizare Kanban sau tabel pentru fiecare pipeline. Etape, responsabili și SLA-uri care reflectă felul în care vinde, de fapt, echipa ta.',
         },
         {
-          name: 'Task-uri',
-          desc: 'Follow-up-uri, callback-uri și to-do-uri cu status, prioritate și deadline, create dintr-o conversație sau dintr-un lead.',
+          name: 'Sarcini',
+          desc: 'Reveniri, apeluri de urmărire și lucruri de făcut, cu status, prioritate și termen, create din orice conversație sau lead.',
         },
         {
           name: 'Companii',
-          desc: 'Fișe de cont cu adresa lor de email, așa că mesajele către info@ sau billing@ se atașează înainte să știi cine le-a trimis. O persoană poate aparține mai multor companii.',
+          desc: 'Fișe de companie cu propria adresă de email, așa că mesajele trimise la info@ sau billing@ ajung la locul lor chiar înainte să știi cine le-a scris. O persoană poate face parte din mai multe companii.',
         },
         {
           name: 'Inbox de echipă',
-          desc: 'Triere comună a conversațiilor care așteaptă un om, preiei, răspunzi sau escaladezi fără să vă călcați pe picioare.',
+          desc: 'Un loc comun pentru conversațiile care așteaptă un om: le preiei, răspunzi sau le transmiți mai departe, fără să vă încurcați unii pe alții.',
         },
         {
           name: 'Coadă',
-          desc: 'Rutare pentru conversații și apeluri live, round-robin, deținere sau bazată pe reguli, în funcție de cum operează echipa ta.',
+          desc: 'Distribuirea conversațiilor și apelurilor în timp real: prin rotație (round-robin), către responsabilul clientului sau după reguli, în funcție de cum lucrează echipa ta.',
         },
       ],
     },
     customerRecord: {
       eyebrow: 'Fișa clientului',
-      heading: 'Identitate care supraviețuiește schimbării de canal.',
+      heading: 'Clientul rămâne același, oricare ar fi canalul.',
       body:
-        'Un client care îți scrie pe WhatsApp luni și sună marți este același client. Fineguide îl identifică pe numere de telefon, nicknames de pe canale și email-uri, și atașează fiecare conversație, lead și ticket la aceeași fișă, astfel încât contextul să nu se reseteze niciodată.',
+        'Un client care îți scrie luni pe WhatsApp și te sună marți este același client. Fineguide îl recunoaște după numărul de telefon, adresa de email și numele de utilizator de pe canale și atașează fiecare conversație, lead și tichet aceleiași fișe, ca să nu pierzi niciodată contextul.',
       bullets: [
-        'Fuzionare de identitate pe numere de telefon, email-uri și nicknames de pe canale',
-        'Câmpuri custom completate de asistenți în timpul conversației',
-        'Istoric complet de interacțiuni (chat-uri, apeluri, tickete, task-uri) într-un singur timeline',
-        'Segmentare la nivel de organizație pe care automatizările și export-urile se pot baza',
+        'Profiluri unificate automat după numărul de telefon, email și numele de pe canale',
+        'Câmpuri personalizate completate de asistenți în timpul conversației',
+        'Tot istoricul (chat-uri, apeluri, tichete, sarcini) pe o singură cronologie',
+        'Segmentare la nivelul întregii organizații, pe care se pot baza automatizările și exporturile',
       ],
     },
     finalCta: {
-      heading: 'Nu mai jongla cu tab-urile.',
-      body: 'Vezi cum se compară CRM-ul Fineguide cu stack-ul pe care îl folosești astăzi.',
+      heading: 'Nu mai jongla între aplicații.',
+      body: 'Vezi cum se compară CRM-ul Fineguide cu instrumentele pe care le folosești azi.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -494,40 +494,40 @@ export const ro: Translations = {
     meta: {
       title: 'Voice QA: evaluează automat fiecare apel | Fineguide',
       description:
-        'Evaluare AI automată pe fiecare apel telefonic, pe departamente și după regulile tale. Renunță la eșantionare și vezi problemele din toată operațiunea.',
+        'Evaluare AI automată pentru fiecare apel telefonic, pe departamente și după regulile tale. Renunță la eșantioane și vezi problemele din toată activitatea.',
     },
     hero: {
       title: 'Fiecare apel, evaluat',
       titleAccent: ' și structurat.',
       subtitle:
-        'Evaluare AI automată pe fiecare apel, pe departamente, conform regulilor tale, în limbile pe care le vorbește echipa ta. Renunță la eșantion. Începe să vezi toată operațiunea.',
+        'Evaluare AI automată pentru fiecare apel, pe departamente, după regulile tale și în limbile pe care le vorbește echipa ta. Renunță la eșantioane. Vezi tot ce se întâmplă.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
     intro: {
       eyebrow: 'Modulul Voice QA',
       body:
-        'Un manager QA care ascultă zece apeluri pe zi vede unu la sută din ce se întâmplă la telefon. Voice QA le evaluează pe toate, automat, consistent și la timp pentru ca feedback-ul să mai conteze.',
+        'Un manager de calitate care ascultă zece apeluri pe zi vede doar unu la sută din ce se întâmplă la telefon. Voice QA le evaluează pe toate, automat, după aceleași criterii și suficient de repede încât feedback-ul să conteze.',
       screenshotAlt: 'Dashboard statistici Voice QA Fineguide, buget, minute și grafic de tendințe',
     },
     process: {
       eyebrow: 'Cum funcționează',
       heading: 'Cinci pași. Fiecare apel.',
       body:
-        'Conectezi o sursă de apeluri, definești regulile tale și platforma face ascultatul. Agenții primesc feedback în aceeași zi. Managerii văd tendința înainte să devină problemă.',
+        'Conectezi o sursă de apeluri, îți definești regulile, iar platforma ascultă în locul tău. Agenții primesc feedback în aceeași zi. Managerii văd tendința înainte să devină o problemă.',
       steps: [
-        'Conectează o sursă de apeluri, operatorul tău de telefonie, sistemul de înregistrare sau PBX-ul. Apelurile sunt captate automat.',
-        'AI transcrie fiecare conversație în 30+ limbi, identificând vorbitorii și structurând dialogul.',
-        'Fiecare apel este evaluat conform regulilor tale per departament, scorare fixă sau ponderată, fără eșantionare manuală.',
-        'Agentul primește un scor per regulă, dovezi din conversație și sugestii concrete de îmbunătățire.',
-        'Managerul vede performanța per departament, agent și client, cu tendințe și puncte slabe evidențiate.',
+        'Conectează o sursă de apeluri: operatorul de telefonie, sistemul de înregistrare sau centrala telefonică (PBX). Apelurile sunt preluate automat.',
+        'AI-ul transcrie fiecare conversație în peste 30 de limbi, identifică vorbitorii și structurează dialogul.',
+        'Fiecare apel este evaluat după regulile fiecărui departament, cu punctaj fix sau ponderat, fără eșantionare manuală.',
+        'Agentul primește un punctaj pentru fiecare regulă, fragmentele relevante din conversație și sugestii concrete de îmbunătățire.',
+        'Managerul vede performanța pe departamente, agenți și clienți, cu tendințele și punctele slabe scoase în evidență.',
       ],
     },
     configuration: {
       eyebrow: 'Configurare',
-      heading: 'Reguli per departament, modelul tău de scorare.',
+      heading: 'Reguli pe departamente, după propriul tău sistem de punctare.',
       body:
-        'Fiecare echipă are propriul standard de calitate. Voice QA te lasă să-l codifici, reguli și ponderi diferite per departament, cu același motor care procesează apeluri de vânzări, tickete de suport și conversații de retenție în paralel.',
+        'Fiecare echipă are propriul standard de calitate. Voice QA îți permite să-l transpui în reguli și ponderi diferite pentru fiecare departament, iar același motor evaluează în paralel apeluri de vânzări, tichete de suport și conversații de retenție.',
       blocks: [
         {
           title: 'Departamente',
@@ -537,63 +537,63 @@ export const ro: Translations = {
         {
           title: 'Categorii și reguli',
           body:
-            'Definește cum arată un apel bun (deschidere, descoperire, gestionarea obiecțiilor, conformitate) și cum ar trebui scorată fiecare regulă.',
+            'Definește cum arată un apel bun (deschiderea, identificarea nevoilor, gestionarea obiecțiilor, conformitatea) și cum se punctează fiecare regulă.',
         },
         {
           title: 'Fix sau ponderat',
           body:
-            'Tratează toate regulile la fel sau pune greutate pe cele care contează cel mai mult. Matematica urmează politica ta, nu invers.',
+            'Tratează toate regulile la fel sau dă o pondere mai mare celor care contează cel mai mult. Calculul urmează politica ta, nu invers.',
         },
         {
           title: 'Feedback pentru agent',
           body:
-            'Scoring per regulă cu dovezi din conversație. Sugestiile ajung la agent în aceeași zi, nu la următorul review trimestrial.',
+            'Punctaj pe fiecare regulă, cu fragmente din conversație. Sugestiile ajung la agent în aceeași zi, nu la următoarea evaluare trimestrială.',
         },
         {
           title: 'Integrare telefonie',
           body:
-            'Conectează-te la sistemul existent de telefonie sau de înregistrare. Fără rip-and-replace, fără introducere paralelă de date.',
+            'Se conectează la sistemul de telefonie sau de înregistrare pe care îl ai deja. Nu înlocuiești nimic și nu introduci datele de două ori.',
         },
         {
           title: 'Legătură cu CRM',
           body:
-            'Apelurile se atașează la aceeași fișă a clientului ca și chat-urile și ticketele. Clientul este o singură poveste, nu trei.',
+            'Apelurile se atașează aceleiași fișe a clientului ca și chat-urile și tichetele. Clientul este o singură poveste, nu trei.',
         },
       ],
     },
     extraction: {
-      eyebrow: 'Insight-uri',
-      heading: 'Descoperă probleme și tendințe emergente.',
+      eyebrow: 'Informații utile',
+      heading: 'Descoperă problemele și tendințele noi.',
       body:
-        'Voice QA transformă fiecare apel într-un insight structurat, astfel încât problemele și tendințele să devină vizibile în toată operațiunea, nu doar în apelurile pe care un manager le-a auzit din întâmplare.',
+        'Voice QA transformă fiecare apel în informații structurate, ca problemele și tendințele să devină vizibile în toată activitatea, nu doar în apelurile pe care un manager le aude din întâmplare.',
       blocks: [
         {
-          title: 'Extragere custom',
+          title: 'Extragere personalizată',
           body:
-            'Spune AI-ului ce să captureze pe fiecare apel: produse menționate, tipuri de reclamații, cauze profunde, nume de competitori.',
+            'Spune-i AI-ului ce să rețină din fiecare apel: produsele menționate, tipurile de reclamații, cauzele reale, numele concurenților.',
         },
         {
-          title: 'Probleme comune',
+          title: 'Probleme frecvente',
           body:
-            'Vezi ce produse generează cele mai multe reclamații și la ce întrebări se chinuie agenții să răspundă, pe mii de apeluri.',
+            'Vezi ce produse generează cele mai multe reclamații și la ce întrebări le e greu agenților să răspundă, din mii de apeluri.',
         },
         {
-          title: 'Tendințe emergente',
+          title: 'Tendințe noi',
           body:
-            'Prinde probleme noi, schimbări de sentiment sau menționări de competitori chiar pe măsură ce apar, nu săptămâni mai târziu.',
+            'Observă problemele noi, schimbările de atitudine ale clienților sau mențiunile despre concurenți imediat ce apar, nu după câteva săptămâni.',
         },
         {
           title: 'Cazuri, nu doar apeluri',
           body:
-            'Grupează apelurile din spatele unei probleme, pentru un singur client. Sentimentul citit de-a lungul lor transformă o relație în declin într-o tendință vizibilă, nu într-un șir de zile proaste separate.',
+            'Grupează apelurile legate de aceeași problemă a unui client. Tonul urmărit de la un apel la altul arată o relație care se degradează ca pe o tendință clară, nu ca pe un șir de zile proaste fără legătură.',
         },
       ],
       footer:
-        'Configurează per departament și trimite rezultatele în dashboard-uri sau webhook-uri.',
+        'Configurezi totul pe departamente și trimiți rezultatele în dashboard-uri sau prin webhook-uri.',
     },
     finalCta: {
-      heading: 'Renunță la eșantion. Începe să scorezi.',
-      body: 'Vezi Voice QA rulând pe apelurile tale într-un walkthrough de 15 minute.',
+      heading: 'Renunță la eșantioane. Evaluează fiecare apel.',
+      body: 'Vezi în 15 minute cum evaluează Voice QA apelurile tale.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -607,8 +607,8 @@ export const ro: Translations = {
         'Editor pe blocuri pentru playbook-uri, brief-uri și cunoștințele echipei, conectat la aceleași contacte, lead-uri și conversații cu care lucrezi deja.',
     },
     hero: {
-      title: 'Documente care trăiesc',
-      titleAccent: ' alături de client.',
+      title: 'Documentele echipei,',
+      titleAccent: ' lângă fișa clientului.',
       subtitle:
         'Un editor bazat pe blocuri pentru playbook-uri, brief-uri și cunoștințe de echipă, conectat la aceleași contacte și clienți cu care echipa ta lucrează deja.',
       ctaPrimary: 'Începe acum',
@@ -617,29 +617,29 @@ export const ro: Translations = {
     intro: {
       eyebrow: 'Modulul Workspace',
       body:
-        'Workspace este un editor structurat (blocuri, ierarhie, comenzi slash) integrat în același produs cu CRM-ul și conversațiile tale. Scrii un playbook o dată și oamenii care au nevoie de el îl găsesc unde lucrează deja.',
+        'Workspace este un editor structurat (blocuri, ierarhie, comenzi slash) integrat în același produs cu CRM-ul și conversațiile tale. Scrii un playbook o singură dată, iar cei care au nevoie de el îl găsesc acolo unde lucrează deja.',
       screenshotAlt: 'Editor de documente Workspace Fineguide cu meniul de comenzi slash',
     },
     editor: {
       eyebrow: 'Editorul',
       heading: 'Blocuri, nu pagini goale.',
       body:
-        'Titluri, liste, citate, cod, callout-uri, tabele, fiecare bloc este componibil. Comenzile slash accelerează scrisul. Scurtăturile de tastatură accelerează restul.',
+        'Titluri, liste, citate, cod, casete evidențiate și tabele. Blocurile se combină liber între ele. Comenzile slash grăbesc scrisul, iar scurtăturile de tastatură, tot restul.',
       blocks: [
         {
           title: 'Structură pe blocuri',
           body:
-            'Titluri, paragrafe, liste, citate, cod, tabele, callout-uri. Trage pentru a reordona, indentează pentru a încuiba, transformă între tipuri printr-o singură apăsare de tastă.',
+            'Titluri, paragrafe, liste, citate, cod, tabele, casete evidențiate. Tragi ca să reordonezi, indentezi ca să imbrici și schimbi tipul blocului dintr-o singură tastă.',
         },
         {
           title: 'Comenzi slash',
           body:
-            'Tastează o bară oblică pentru a deschide fiecare tip de bloc, embed și scurtătură. Fără vânătoare prin meniuri, fără întreruperi de formatare.',
+            'Tastezi „/” și ai la îndemână toate tipurile de blocuri, elementele încorporate și scurtăturile. Fără căutat prin meniuri, fără pauze de formatare.',
         },
         {
           title: 'Actualizări în timp real',
           body:
-            'Editările se propagă imediat în echipă. Comentariile și menționările se ataşează la bloc, nu la un fir de email învechit.',
+            'Modificările ajung imediat la toată echipa. Comentariile și mențiunile rămân atașate blocului, nu unui fir de email vechi.',
         },
       ],
     },
@@ -647,23 +647,23 @@ export const ro: Translations = {
       eyebrow: 'Organizare',
       heading: 'Ierarhie, căutare și recuperare.',
       body:
-        'Workspace se organizează în jurul felului în care echipa ta gândește efectiv, foldere pentru departamente, documente pentru playbook-uri, recente și favorite pentru ce ai atins săptămâna trecută.',
+        'Workspace se organizează după felul în care gândește echipa ta: foldere pentru departamente, documente pentru playbook-uri, recente și favorite pentru ce ai deschis săptămâna trecută.',
       bullets: [
         'Ierarhie de foldere și documente cu reordonare drag-and-drop',
-        'Recente și favorite pentru documentele în care trăiești',
+        'Recente și favorite pentru documentele pe care le folosești zilnic',
         'Căutare full-text în întregul workspace',
-        'Coș cu ștergere soft și recuperare, ștergerea nu este distructivă',
+        'Coș de gunoi cu recuperare, așa că nimic nu se pierde definitiv la ștergere',
       ],
     },
     connected: {
       eyebrow: 'Conectat la clienții tăi',
-      heading: 'Documente care știu despre cine sunt.',
+      heading: 'Documente care știu despre cine vorbesc.',
       body:
-        'Conectează un document la un contact, un lead sau o fișă de client. Următorul om care deschide acel client în CRM vede playbook-ul, rezumatul apelului sau propunerea care există deja. Nimic nu se pierde în arheologia de Slack.',
+        'Leagă un document de un contact, un lead sau o fișă de client. Următorul coleg care deschide clientul în CRM vede imediat playbook-ul, rezumatul apelului sau oferta deja existentă. Nimic nu se mai pierde prin istoricul din Slack.',
     },
     finalCta: {
-      heading: 'Gata să consolidezi?',
-      body: 'Vezi workspace, CRM și asistenți împreună într-un walkthrough de 15 minute.',
+      heading: 'Gata să aduci totul într-un singur loc?',
+      body: 'Vezi în 15 minute workspace-ul, CRM-ul și asistenții lucrând împreună.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -676,13 +676,13 @@ export const ro: Translations = {
     meta: {
       title: 'Voice AI: agenți AI care răspund la telefon | Fineguide',
       description:
-        'Agenți AI pe numerele tale, prin SIP. Recunosc apelanții din CRM, transferă la echipă la cerere și sună liste întregi. Taxare pe minut răspuns.',
+        'Agenți AI pe numerele tale, prin SIP. Recunosc apelanții din CRM, fac legătura cu echipa la cerere și sună liste întregi. Plătești doar minutele convorbite.',
     },
     hero: {
       title: 'Asistentul care',
       titleAccent: ' răspunde la telefon.',
       subtitle:
-        'Asistenții pe care îi folosești deja în chat, pe numerele tale de telefon. Recunosc cine sună, dau legătura unui om când li se cere și sună liste întregi când ai nevoie.',
+        'Asistenții pe care îi folosești deja în chat, acum pe numerele tale de telefon. Recunosc cine sună, fac legătura cu un coleg când li se cere și sună liste întregi când ai nevoie.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -692,9 +692,9 @@ export const ro: Translations = {
     },
     inbound: {
       eyebrow: 'Apeluri primite',
-      heading: 'Numerele tale, preluate de asistentul pe care îl alegi.',
+      heading: 'La numerele tale răspunde asistentul pe care îl alegi.',
       body:
-        'Nimic nu se mută pe un număr închiriat de la noi. Conectezi sistemul telefonic pe care îl ai, alegi ce asistent răspunde la fiecare număr și ce se întâmplă când biroul e închis.',
+        'Nu trebuie să treci pe un număr închiriat de la noi. Conectezi sistemul telefonic pe care îl ai, alegi ce asistent răspunde la fiecare număr și ce se întâmplă când biroul e închis.',
       items: [
         {
           name: 'Numerele tale',
@@ -702,15 +702,15 @@ export const ro: Translations = {
         },
         {
           name: 'Apelanți recunoscuți',
-          desc: 'Activează salutul pe nume, iar un apelant al cărui număr e în CRM este întâmpinat cu prenumele, cu firma lui deja în fața asistentului.',
+          desc: 'Activează salutul pe nume: un apelant al cărui număr e în CRM este salutat pe prenume, iar asistentul vede deja compania din care sună.',
         },
         {
           name: 'Program de lucru',
-          desc: 'În afara orelor stabilite, lasă apelul să sune, redirecționează-l către alt număr sau răspunde cu un mesaj care preia o cerere de revenire.',
+          desc: 'În afara programului stabilit, lasă apelul să sune în continuare, redirecționează-l către alt număr sau răspunde cu un mesaj care preia o cerere de revenire.',
         },
         {
           name: 'Un om când contează',
-          desc: 'Un apelant care cere un om e transferat la numărul call center-ului, doar în programul acestuia dacă îl setezi. Altfel lasă o cerere de revenire care ajunge în CRM ca sarcină.',
+          desc: 'Un apelant care cere să vorbească cu un om este transferat la numărul call center-ului, doar în programul acestuia, dacă l-ai setat. Altfel, lasă o cerere de revenire care ajunge în CRM ca sarcină.',
         },
       ],
     },
@@ -718,7 +718,7 @@ export const ro: Translations = {
       eyebrow: 'În timpul apelului',
       heading: 'Alege motorul, vocea și limbile.',
       body:
-        'Aceeași configurare a asistentului pe care o folosești în chat, cu alegerile pe care le adaugă un apel. Totul se setează per asistent.',
+        'Aceeași configurare a asistentului pe care o folosești în chat, cu alegerile pe care le adaugă un apel. Totul se setează separat pentru fiecare asistent.',
       items: [
         {
           term: 'Patru motoare',
@@ -726,40 +726,40 @@ export const ro: Translations = {
         },
         {
           term: 'Voci',
-          desc: 'Alege o voce anume, sau doar o voce masculină ori feminină, și ascult-o înainte ca asistentul să intre live.',
+          desc: 'Alege o voce anume sau doar genul vocii, masculină ori feminină, și ascultă cum sună înainte ca asistentul să intre în funcțiune.',
         },
         {
           term: 'Limbi',
-          desc: 'Dă unui asistent mai multe limbi, de la română, engleză și rusă până la arabă, japoneză și chineză. Răspunde în limba în care vorbește apelantul.',
+          desc: 'Un asistent poate vorbi mai multe limbi, de la română, engleză și rusă până la arabă, japoneză și chineză. Răspunde în limba în care vorbește apelantul.',
         },
         {
           term: 'Întreruperi',
-          desc: 'Apelantul poate vorbi peste asistent, iar acesta se oprește să asculte, ca un om. Un detector de vorbire împiedică zgomotul de pe linie să-l întrerupă.',
+          desc: 'Apelantul poate vorbi peste asistent, iar acesta se oprește să asculte, ca un om. Un detector de voce face ca zgomotul de pe linie să nu-l întrerupă.',
         },
         {
           term: 'Ce știe',
-          desc: 'Baza de cunoștințe, căutarea web și acțiunile custom date asistentului pentru chat funcționează și la telefon, iar el așteaptă rezultatul real înainte să răspundă.',
+          desc: 'Baza de cunoștințe, căutarea web și acțiunile personalizate configurate pentru chat funcționează și la telefon, iar asistentul așteaptă rezultatul real înainte să răspundă.',
         },
       ],
     },
     outbound: {
       eyebrow: 'Apeluri efectuate',
-      heading: 'Sună o listă, nu câte un număr pe rând.',
+      heading: 'Sună o listă întreagă, nu număr cu număr.',
       body:
-        'Apelurile efectuate rulează ca o campanie: o audiență, un script și un program pe care asistenții îl parcurg în ritmul tău.',
+        'Apelurile către clienți pornesc ca o campanie: o audiență, un script și un program, parcurse de asistenți în ritmul ales de tine.',
       bullets: [
-        'Campanii de outreach, sondaj și promoție, fiecare raportată cum îi cere tipul',
+        'Campanii de prospectare, sondaj și promoție, fiecare cu raportul potrivit tipului ei',
         'Răspunsuri la sondaje și rezultate ale promoțiilor extrase din fiecare apel încheiat',
         'Un apel de test pe propriul telefon înainte să fie sunat vreun contact real',
         'Reîncercări când nu se răspunde sau e ocupat, cu intervalul ales de tine',
       ],
-      linkLabel: 'Vezi Campaniile',
+      linkLabel: 'Vezi campaniile',
     },
     afterCall: {
       eyebrow: 'După apel',
-      heading: 'Ce rămâne în urmă și cât costă.',
+      heading: 'Ce rămâne și cât costă.',
       body:
-        'Un apel lasă un text pe care echipa îl poate citi și un cost pe care îl poți estima înainte de primul apel.',
+        'Fiecare apel lasă o transcriere pe care echipa o poate citi și un cost pe care îl poți estima dinainte.',
       items: [
         {
           term: 'Transcriere',
@@ -770,8 +770,8 @@ export const ro: Translations = {
           desc: 'Cererile de revenire ajung pe panoul de sarcini cu numărul apelantului și o notă scurtă despre ce a vrut.',
         },
         {
-          term: 'Pe minut răspuns',
-          desc: 'Apelurile consumă din portofelul comun de credite din momentul în care se răspunde, niciodată cât sună, rotunjit la secundă, cu un minim de un minut.',
+          term: 'Pe minut, de la preluare',
+          desc: 'Apelurile consumă din portofelul comun de credite din momentul în care sunt preluate, nu cât timp sună, cu rotunjire la secundă și minimum un minut.',
         },
         {
           term: 'Tarife',
@@ -779,13 +779,13 @@ export const ro: Translations = {
         },
         {
           term: 'Fără facturi surpriză',
-          desc: 'Un apel pornește doar dacă portofelul acoperă primul minut, așa că un sold gol oprește apelurile în loc să facă datorii.',
+          desc: 'Un apel pornește doar dacă portofelul acoperă primul minut, așa că un sold epuizat oprește apelurile, fără să se acumuleze datorii.',
         },
       ],
     },
     finalCta: {
-      heading: 'Ascultă-l pe propriul telefon.',
-      body: 'Conectează un număr, alege o voce și sună singur. Sau vezi Voice AI, Campaniile și restul platformei într-un singur demo.',
+      heading: 'Ascultă-l chiar pe telefonul tău.',
+      body: 'Conectează un număr, alege o voce și sună-l chiar tu. Sau vezi Voice AI, campaniile și restul platformei într-un singur demo.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -794,15 +794,15 @@ export const ro: Translations = {
   // --- Pagina Automatizări (motor de workflow + n8n) ---
   automationsPage: {
     meta: {
-      title: 'Constructor vizual de workflow-uri | Fineguide',
+      title: 'Editor vizual de workflow-uri pentru CRM | Fineguide',
       description:
-        'Citește conversația, extrage câmpurile din ea, ramifică după ce găsești și actualizează CRM-ul. Douăsprezece declanșatoare și optsprezece acțiuni, fără cod.',
+        'Citește conversația, extrage câmpurile, alege ramura potrivită și actualizează CRM-ul. Douăsprezece declanșatoare și optsprezece acțiuni, fără cod.',
     },
     hero: {
       title: 'Citește conversația.',
-      titleAccent: ' Actualizează fișa. Nimeni nu se atinge de ea.',
+      titleAccent: ' Actualizează fișa. Nimeni nu intervine.',
       subtitle:
-        'Un constructor vizual în care un workflow pornește de la ceva ce s-a întâmplat cu adevărat (un apel trecut prin Voice QA, un lead care apare, un formular care sosește) și se termină cu CRM-ul deja corect.',
+        'Un editor vizual în care fiecare workflow pornește de la un eveniment real (un apel trecut prin Voice QA, un lead nou, un formular trimis) și se încheie cu CRM-ul deja actualizat.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -812,16 +812,16 @@ export const ro: Translations = {
     },
     triggers: {
       eyebrow: 'Douăsprezece declanșatoare',
-      heading: 'Un workflow pornește de la ceva ce s-a întâmplat.',
+      heading: 'Un workflow pornește de la un eveniment real.',
       body:
-        'Nu de la un program despre care speri că se aliniază cu realitatea. Evenimentele pe care platforma ta le emite deja sunt evenimentele de la care poate porni un workflow.',
+        'Nu de la o oră fixă despre care speri că se potrivește cu realitatea. Orice eveniment pe care platforma îl generează deja poate porni un workflow.',
       items: [
         {
           name: 'Activitatea asistentului',
-          desc: 'O sesiune care începe sau se încheie, un răspuns evaluat, sau asistentul care termină de colectat informațiile cerute.',
+          desc: 'O sesiune care începe sau se încheie, un răspuns evaluat sau momentul în care asistentul a strâns toate informațiile cerute.',
         },
         {
-          name: 'Fișe care apar',
+          name: 'Fișe noi',
           desc: 'Un contact creat dintr-o conversație sau un lead creat oriunde în CRM.',
         },
         {
@@ -830,27 +830,27 @@ export const ro: Translations = {
         },
         {
           name: 'Din exterior și la cerere',
-          desc: 'Trimiterea unui formular, un webhook primit, un program sau o persoană care apasă „rulează”.',
+          desc: 'Un formular trimis, un webhook primit, o programare orară sau un clic pe „Rulează”.',
         },
       ],
     },
     actions: {
       eyebrow: 'Optsprezece acțiuni',
-      heading: 'Ce poate face efectiv un workflow astăzi.',
+      heading: 'Ce poate face un workflow, deja de azi.',
       body:
-        'Fiecare acțiune listată aici funcționează azi. Constructorul arată și câteva blocuri aflate încă în lucru; produsul le marchează, iar aici nu le vindem.',
+        'Toate acțiunile de mai jos funcționează deja. Editorul afișează și câteva blocuri aflate încă în dezvoltare; sunt marcate ca atare în produs și nu le promovăm aici.',
       items: [
         {
           term: 'Citește și extrage',
-          desc: 'Scoate câmpuri structurate dintr-o conversație sau o transcriere cu AI și poartă-le mai departe ca variabile tipizate pe care pasul următor le poate folosi.',
+          desc: 'Extrage cu AI câmpuri structurate dintr-o conversație sau dintr-o transcriere și transmite-le mai departe ca variabile cu tip definit, gata de folosit în pasul următor.',
         },
         {
           term: 'Ramifică',
-          desc: 'Condiții pe orice se află în context, inclusiv câmpurile tocmai extrase, ca un singur workflow să acopere toate direcțiile în care poate merge o conversație.',
+          desc: 'Condiții pe orice se află în context, inclusiv pe câmpurile tocmai extrase, ca un singur workflow să acopere toate variantele în care poate evolua o conversație.',
         },
         {
-          term: 'Buclează',
-          desc: 'Parcurge o listă și rulează aceiași pași pentru fiecare element. Buclele pot sta una în alta, iar fiecare își ține evidența propriului element.',
+          term: 'Repetă',
+          desc: 'Parcurge o listă și rulează aceiași pași pentru fiecare element. Buclele pot fi imbricate, iar fiecare își urmărește propriul element.',
         },
         {
           term: 'Caută',
@@ -858,35 +858,35 @@ export const ro: Translations = {
         },
         {
           term: 'Creează, actualizează, șterge',
-          desc: 'Acces complet de scriere la contacte, lead-uri și companii: nouă acțiuni pe cele trei, ca un workflow să termine treaba, nu să lase o notă pentru altcineva.',
+          desc: 'Acces complet de scriere la contacte, lead-uri și companii: nouă acțiuni pentru cele trei tipuri de fișe, ca workflow-ul să ducă treaba la capăt, nu să lase o notiță pentru altcineva.',
         },
         {
           term: 'Mută și etichetează',
-          desc: 'Avansează un lead la altă etapă din pipeline și aplică etichete, așa se termină majoritatea acestor workflow-uri.',
+          desc: 'Mută un lead în altă etapă a pipeline-ului și adaugă etichete. Așa se încheie majoritatea workflow-urilor.',
         },
         {
           term: 'Repartizează munca',
-          desc: 'Creează un task, ca o persoană să preia exact partea care are nevoie de o persoană.',
+          desc: 'Creează o sarcină, ca un om să preia exact partea care are nevoie de un om.',
         },
       ],
     },
     n8n: {
       eyebrow: 'Dincolo de platformă',
-      heading: 'Iar când munca iese din Fineguide.',
+      heading: 'Și când treaba continuă în afara Fineguide.',
       body:
-        'Constructorul integrat acoperă CRM-ul. Pentru tot ce urmează după, cum ar fi sistemul tău de facturare, depozitul sau un API intern, puntea n8n preia de unde se oprește el.',
+        'Editorul integrat acoperă CRM-ul. Pentru tot ce vine după, cum ar fi sistemul de facturare, depozitul sau un API intern, integrarea cu n8n preia de unde se oprește acesta.',
       bullets: [
-        'Folosește instanța n8n găzduită de noi sau arată-ne una pe care o rulezi deja',
-        'Sute de integrări pe partea de n8n, pe care nu trebuie să le construim noi',
+        'Folosește instanța n8n găzduită de noi sau conectează-ți propria instanță',
+        'Sute de integrări disponibile deja în n8n',
         'Webhook-uri pe conversații, lead-uri și tichete, pentru orice are un endpoint HTTP',
-        'Rulările de workflow fac parte din planul tău, așa că nu consumă credite',
-        'Fiecare rulare poate fi inspectată pas cu pas, așa că o eroare îți spune la ce pas și de ce',
+        'Rulările de workflow sunt incluse în plan și nu consumă credite',
+        'Fiecare rulare poate fi verificată pas cu pas, așa că la o eroare vezi exact unde a apărut și de ce',
       ],
     },
     finalCta: {
-      heading: 'Construiește unul și urmărește-l rulând.',
+      heading: 'Creează un workflow și urmărește-l cum rulează.',
       body:
-        'Pornește de la un declanșator pe care îl ai deja, adaugă cei doi-trei pași care urmează și nu mai face partea aia manual.',
+        'Pornește de la un declanșator pe care îl ai deja, adaugă cei doi-trei pași care urmează și renunță la munca manuală.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -897,13 +897,13 @@ export const ro: Translations = {
     meta: {
       title: 'Inbox comun pentru chat și email | Fineguide',
       description:
-        'Nouă canale de chat și emailul tău într-o singură coadă, cu rutare, departamente și o predare care îi dă omului toată conversația.',
+        'Nouă canale de chat și emailul tău într-o singură coadă, cu rutare, departamente și o predare prin care colegul primește toată conversația.',
     },
     hero: {
       title: 'Fiecare conversație.',
       titleAccent: ' Un singur inbox.',
       subtitle:
-        'Asistentul rezolvă ce poate. În momentul în care nu mai poate, un coleg are deja conversația, fișa clientului și istoricul în față.',
+        'Asistentul rezolvă ce poate. Când nu mai poate, un coleg are deja în față conversația, fișa clientului și tot istoricul.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -913,17 +913,17 @@ export const ro: Translations = {
     },
     channels: {
       eyebrow: 'O singură coadă',
-      heading: 'Nouă canale și niciunul nu este un inbox separat.',
+      heading: 'Nouă canale, fără niciun inbox separat.',
       body:
-        'Un client care scrie azi pe WhatsApp și săptămâna viitoare pe Instagram este o singură persoană cu un singur istoric. Canalul este un detaliu despre cum a ajuns mesajul, nu un sistem de arhivare.',
+        'Un client care scrie azi pe WhatsApp și săptămâna viitoare pe Instagram este o singură persoană cu un singur istoric. Canalul arată doar pe unde a venit mesajul; nu este un criteriu de arhivare.',
       items: [
         {
           name: 'Aplicații de mesagerie',
-          desc: 'WhatsApp, Telegram, Instagram și Messenger, conectate o dată și apoi imposibil de deosebit de restul cozii.',
+          desc: 'WhatsApp, Telegram, Instagram și Messenger, conectate o singură dată și gestionate apoi exact ca restul cozii.',
         },
         {
           name: 'Chat de echipă',
-          desc: 'Slack și Discord, pentru comunitățile și canalele interne unde clienții tăi sunt deja.',
+          desc: 'Slack și Discord, pentru comunitățile și canalele interne unde se află deja clienții tăi.',
         },
         {
           name: 'Web și widget-uri',
@@ -937,9 +937,9 @@ export const ro: Translations = {
     },
     handover: {
       eyebrow: 'Predarea',
-      heading: 'Partea pe care majoritatea uneltelor o greșesc.',
+      heading: 'Partea la care greșesc cele mai multe aplicații.',
       body:
-        'Escaladarea nu este o notificare. Este o coadă cu reguli, o urmă despre cine a acceptat și o garanție că doi oameni nu răspund niciodată aceluiași client în același timp.',
+        'Escaladarea nu este o notificare. Este o coadă cu reguli, o evidență a celui care a preluat conversația și garanția că doi oameni nu răspund niciodată aceluiași client în același timp.',
       items: [
         {
           term: 'O singură coadă',
@@ -947,11 +947,11 @@ export const ro: Translations = {
         },
         {
           term: 'Predare între departamente',
-          desc: 'Mută o conversație la alt departament și se șterge responsabilul curent, rerutând către echipa aceea, în loc să rămână la cineva care a încetat să o citească.',
+          desc: 'Când muți o conversație la alt departament, responsabilul actual este eliminat și conversația este redistribuită în echipa respectivă, în loc să rămână la cineva care nu o mai urmărește.',
         },
         {
-          term: 'Detectarea coliziunilor',
-          desc: 'Ești anunțat când un coleg are aceeași conversație deschisă și din nou când începe să scrie în ea.',
+          term: 'Detectarea suprapunerilor',
+          desc: 'Afli când un coleg are deschisă aceeași conversație și din nou când începe să scrie în ea.',
         },
         {
           term: 'Răspunsuri salvate',
@@ -959,7 +959,7 @@ export const ro: Translations = {
         },
         {
           term: 'Program de lucru',
-          desc: 'Un răspuns automat în afara orelor pentru toată echipa, ținut separat de programul personal al fiecărui agent, ca cele două să nu se contrazică.',
+          desc: 'Un răspuns automat în afara programului, valabil pentru toată echipa și separat de programul personal al fiecărui agent, ca cele două să nu se contrazică.',
         },
       ],
     },
@@ -971,35 +971,35 @@ export const ro: Translations = {
       bullets: [
         'Conectează-ți propriile căsuțe și propriile domenii prin IMAP și SMTP',
         'Regulile de rutare decid cărei căsuțe îi aparține un mesaj și cine îl preia',
-        'Semnături per căsuță, ca răspunsurile să pară trimise de persoana care le trimite',
-        'Rapoarte per căsuță, alături de rapoartele de chat, nu într-o unealtă separată',
+        'Semnături pentru fiecare căsuță, ca răspunsurile să poarte numele celui care le trimite',
+        'Rapoarte pentru fiecare căsuță, alături de cele de chat, nu într-o aplicație separată',
         'Conversațiile se atașează fișei clientului din CRM',
       ],
     },
     safety: {
       eyebrow: 'AI pe email, în siguranță',
-      heading: 'Trei protecții pe care nu trebuie să le cauți.',
+      heading: 'Trei măsuri de siguranță, active din start.',
       body:
-        'Momentul în care lași AI-ul să răspundă la email este cel în care majoritatea echipelor devin nervoase, pe bună dreptate. Acestea sunt valori implicite, nu setări pe care trebuie să le descoperi.',
+        'Când lasă AI-ul să răspundă la email-uri, cele mai multe echipe devin precaute, pe bună dreptate. De aceea, aceste protecții sunt active implicit, nu setări pe care trebuie să le descoperi singur.',
       items: [
         {
           term: 'Oprit implicit',
-          desc: 'O căsuță nouă este doar pentru oameni. Răspunsurile AI le pornești deliberat, per căsuță, după ce ai citit ce ar fi spus.',
+          desc: 'O căsuță nouă este doar pentru oameni. Răspunsurile AI le activezi intenționat, pentru fiecare căsuță, după ce ai văzut ce ar fi răspuns.',
         },
         {
           term: 'O pauză înainte de trimitere',
           desc: 'Răspunsurile așteaptă înainte să plece, ca un coleg care citește deja conversația să o poată prelua, iar clientul să nu primească două răspunsuri.',
         },
         {
-          term: 'O limită fermă per conversație',
-          desc: 'După un număr stabilit de răspunsuri AI într-o conversație, se oprește și predă unui om, ca două sisteme automate să nu-și poată răspunde la nesfârșit.',
+          term: 'O limită fermă pe conversație',
+          desc: 'După un număr stabilit de răspunsuri AI într-o conversație, AI-ul se oprește și predă conversația unui om, ca două sisteme automate să nu-și răspundă la nesfârșit.',
         },
       ],
     },
     finalCta: {
-      heading: 'Pune fiecare canal într-o singură coadă.',
+      heading: 'Adu toate canalele într-o singură coadă.',
       body:
-        'Conectează un canal, urmărește asistentul lucrând și preia oricând vrei. Predarea este partea pe care am construit-o prima.',
+        'Conectează un canal, urmărește cum lucrează asistentul și preia conversația oricând vrei. Predarea către un om este prima parte pe care am construit-o.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1008,15 +1008,15 @@ export const ro: Translations = {
   // --- Pagina Campanii (telefonie outbound) ---
   campaignsPage: {
     meta: {
-      title: 'Apeluri outbound care se desfășoară singure | Fineguide',
+      title: 'Campanii de apeluri care se derulează singure | Fineguide',
       description:
-        'Construiește o audiență, alege scopul apelului și lasă asistenții AI să lucreze lista. Testează întâi pe numărul tău, apoi urmărește campania rulând.',
+        'Creează o audiență, alege scopul apelului și lasă asistenții AI să parcurgă lista. Testează mai întâi pe numărul tău, apoi urmărește campania în timp real.',
     },
     hero: {
-      title: 'Apeluri outbound',
-      titleAccent: ' care se desfășoară singure.',
+      title: 'Campanii de apeluri',
+      titleAccent: ' care se derulează singure.',
       subtitle:
-        'Îndreaptă o campanie către o listă și asistenții o sună pe rând, în ritmul tău, cu rezultatul urmărit pentru fiecare contact.',
+        'Alegi lista, iar asistenții sună contactele unul câte unul, în ritmul tău, cu rezultatul urmărit pentru fiecare.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1028,11 +1028,11 @@ export const ro: Translations = {
       eyebrow: 'Trei tipuri de campanie',
       heading: 'Scopul apelului schimbă ce se întâmplă după el.',
       body:
-        'O campanie nu este doar un dialer. Fiecare tip se termină altfel: unul lasă o conversație, altul un set de date, altul o pâlnie. Raportarea urmează de acolo.',
+        'O campanie nu înseamnă doar formarea automată a numerelor. Fiecare tip se încheie altfel: unul cu o conversație, altul cu un set de date, altul cu o pâlnie de conversie. Rapoartele urmează această logică.',
       items: [
         {
-          name: 'Outreach',
-          desc: 'Outbound liber. Asistentul deschide conversația și o duce unde trebuie, iar tot schimbul rămâne salvat ca transcriere.',
+          name: 'Prospectare',
+          desc: 'Apeluri fără un format fix. Asistentul deschide conversația și o duce unde trebuie, iar tot dialogul rămâne salvat ca transcriere.',
         },
         {
           name: 'Sondaj',
@@ -1048,19 +1048,19 @@ export const ro: Translations = {
       eyebrow: 'Construirea listei',
       heading: 'Cine este sunat și ce se întâmplă când nu răspunde.',
       body:
-        'Audiențele vin de unde sunt deja contactele tale. Comportamentul la reapelare îl stabilești tu, iar singura regulă neconfigurabilă este cea care contează: un refuz nu este niciodată reapelat.',
+        'Audiențele pornesc de la contactele pe care le ai deja. Tu decizi când se reîncearcă un apel, iar singura regulă fixă este cea care contează: cine refuză nu mai este sunat.',
       items: [
         {
           term: 'Audiențe',
-          desc: 'Încarcă un CSV, trage din contactele existente, selectează după etichetă sau combină-le pe toate trei într-o singură listă.',
+          desc: 'Încarcă un fișier CSV, alege din contactele existente, filtrează după etichetă sau combină toate trei variantele într-o singură listă.',
         },
         {
           term: 'Segmente',
-          desc: 'Salvează un filtru ca segment reutilizabil și îndreaptă campaniile viitoare către el, în loc să reconstruiești aceeași listă de fiecare dată.',
+          desc: 'Salvează un filtru ca segment reutilizabil și folosește-l în campaniile viitoare, în loc să refaci aceeași listă de fiecare dată.',
         },
         {
           term: 'Reapelări',
-          desc: 'Reapelează la lipsă de răspuns sau ocupat, cu propria întârziere per rezultat. Un contact care refuză nu mai este sunat de acea campanie.',
+          desc: 'Contactul este sunat din nou dacă nu răspunde sau are ocupat, după intervalul setat pentru fiecare situație. Un contact care refuză nu mai este sunat în acea campanie.',
         },
         {
           term: 'Apeluri de test',
@@ -1076,19 +1076,19 @@ export const ro: Translations = {
       eyebrow: 'Sistemul tău telefonic',
       heading: 'Folosește numerele pe care le ai deja.',
       body:
-        'Campaniile rulează peste telefonia ta existentă, nu peste un număr închiriat de noi, așa că numerele, identificarea apelantului și costurile de carrier rămân unde sunt azi.',
+        'Campaniile folosesc telefonia pe care o ai deja, nu un număr închiriat de la noi, așa că numerele, ID-ul de apelant și costurile cu operatorul rămân cele de azi.',
       bullets: [
         'Conectează operatorul sau centrala ta printr-un cont SIP standard',
-        'Alocă fiecare număr inbound asistentului care trebuie să răspundă',
-        'La apelurile inbound, transferă apelantul către echipa ta sau preia o cerere de revenire ca sarcină în CRM',
+        'Alocă fiecare număr pentru apeluri primite asistentului care trebuie să răspundă',
+        'La apelurile primite, transferă apelantul către echipa ta sau preia o cerere de revenire ca sarcină în CRM',
         'Fiecare apel rămâne ca transcriere alături de conversațiile de chat',
-        'Taxare pe minut răspuns, cu un minim de un minut',
+        'Taxare pe minut, de la preluarea apelului, cu minimum un minut',
       ],
     },
     finalCta: {
-      heading: 'Rulează prima campanie pe propriul tău număr.',
+      heading: 'Testează prima campanie pe numărul tău.',
       body:
-        'Construiește o listă, dă un apel de test și ascultă ce ar auzi clienții tăi. Nimic nu ajunge la un contact real până nu spui tu.',
+        'Creează o listă, dă un apel de test și ascultă ce ar auzi clienții tăi. Niciun contact real nu este sunat până nu decizi tu.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1103,7 +1103,7 @@ export const ro: Translations = {
   pricingPage: {
     heading: 'Plătești pentru ce face AI-ul.<br /><span class="text-[var(--color-primary)]">Restul este inclus.</span>',
     subtitle:
-      'Fiecare plan funcționează cu credite. Răspunsurile AI și minutele de voce le folosesc. CRM-ul, inboxul, mesajele și workflow-urile nu le folosesc niciodată.',
+      'Fiecare plan funcționează pe bază de credite. Le consumă doar răspunsurile AI și minutele de apel. CRM-ul, inboxul, mesajele și workflow-urile nu consumă niciodată credite.',
     bullets: ['Plan gratuit, fără card', 'Fără taxe de instalare', 'Anulezi oricând'],
   },
 
@@ -1129,7 +1129,7 @@ export const ro: Translations = {
     billedYearly: 'Facturat {yearTotal} pe an. Economisești {yearSaving}.',
     freeBilling: 'Fără card',
     yearlyTopupNote: '15% reducere pe planurile anuale',
-    mostPopular: 'Cel mai ales',
+    mostPopular: 'Cel mai popular',
     ctaFree: 'Începe gratuit',
     ctaPaid: 'Începe acum',
     labels: {
@@ -1211,7 +1211,7 @@ export const ro: Translations = {
   },
 
   pricingAddons: {
-    eyebrow: 'Suplimente',
+    eyebrow: 'Opțiuni suplimentare',
     heading: 'Ai nevoie de mai mult? Adaugi doar ce îți lipsește.',
     subtitle:
       'Locurile, creditele și spațiul pentru cunoștințe se vând separat, ca să nu schimbi planul doar pentru că ai nevoie de mai mult dintr-unul.',
@@ -1277,11 +1277,11 @@ export const ro: Translations = {
 
   pricingEnterprise: {
     heading: 'Ai nevoie de un plan Enterprise?',
-    subtitle: 'Pentru volum mare, integrări custom sau cerințe specifice de conformitate, oferim soluții personalizate.',
+    subtitle: 'Pentru volume mari, integrări personalizate sau cerințe speciale de conformitate, oferim soluții adaptate.',
     features: [
-      'Pachete de credite custom',
-      'Discount-uri pe volum',
-      'Suport prioritar & SLA',
+      'Pachete de credite personalizate',
+      'Reduceri de volum',
+      'Suport prioritar și SLA',
       'Account manager dedicat',
     ],
     cta: 'Contactează-ne',
@@ -1308,61 +1308,61 @@ export const ro: Translations = {
   enterpriseMeta: {
     title: 'Enterprise: on-premise și consultanță | Fineguide.ai',
     description:
-      'Planuri custom, deployment on-premise pe infrastructura ta, adaptarea platformei și consultanță pentru echipe cu cerințe de securitate sau scalare.',
+      'Planuri personalizate, instalare on-premise pe infrastructura ta, adaptarea platformei și consultanță pentru echipe cu cerințe mari de securitate sau scalare.',
   },
   enterprisePage: {
     hero: {
-      title: 'Enterprise în termenii',
-      titleAccent: ' tăi.',
+      title: 'Enterprise, în condițiile',
+      titleAccent: ' tale.',
       subtitle:
-        'Serviciu dedicat pentru echipe care operează la scară, planuri custom, deployment on-premise, adaptare a platformei și consultanță care transformă platforma în rezultate.',
-      cta: 'Contactează vânzările',
+        'Servicii dedicate pentru echipele care lucrează la scară mare: planuri personalizate, instalare on-premise, adaptarea platformei și consultanță care transformă tehnologia în rezultate.',
+      cta: 'Contactează echipa de vânzări',
     },
     service: {
       eyebrow: 'Serviciu dedicat',
-      heading: 'O echipă care îți cunoaște operațiunile.',
+      heading: 'O echipă care îți cunoaște afacerea.',
       body:
-        'Fiecare deployment enterprise este susținut de o echipă care îți cunoaște stack-ul, contractele și clienții, de la onboarding până la expansiune.',
+        'Fiecare implementare enterprise are în spate o echipă care îți cunoaște infrastructura, contractele și clienții, de la onboarding până la extindere.',
       items: [
         'Account manager dedicat',
-        'Lead de onboarding și asistență la migrare',
-        'Suport prioritar cu SLA-uri numite',
-        'Review-uri trimestriale și input pe roadmap',
+        'Responsabil de onboarding și asistență la migrare',
+        'Suport prioritar cu SLA-uri stabilite prin contract',
+        'Evaluări trimestriale și contribuții la roadmap',
       ],
     },
     onPremise: {
-      eyebrow: 'Deployment on-premise',
+      eyebrow: 'Instalare on-premise',
       heading: 'Rulează Fineguide pe infrastructura ta.',
       body:
-        'Pentru echipe din industrii reglementate sau cu cerințe stricte de suveranitate a datelor, Fineguide se instalează în totalitate pe infrastructura ta, rețeaua ta, politicile tale de securitate, regimul tău de conformitate. Nicio dată nu părăsește perimetrul tău.',
+        'Pentru echipele din industrii reglementate sau cu cerințe stricte privind suveranitatea datelor, Fineguide se instalează integral pe infrastructura ta, cu rețeaua, politicile de securitate și regulile de conformitate proprii. Datele nu ies niciodată din perimetrul tău.',
       items: [
         {
           title: 'Mediul tău',
-          body: 'Self-hosted pe cloud-ul tău, cluster privat sau bare metal. Noi susținem deployment-ul; tu deții infrastructura.',
+          body: 'Găzduit în cloud-ul tău, pe un cluster privat sau pe bare metal. Noi te sprijinim la instalare; infrastructura rămâne a ta.',
         },
         {
           title: 'Perimetrul tău',
-          body: 'Datele rămân înăuntrul granițelor rețelei tale. Fără trafic outbound către servicii terțe dacă nu permiți tu.',
+          body: 'Datele rămân în interiorul rețelei tale. Nu există trafic către servicii terțe decât dacă îl permiți tu.',
         },
         {
-          title: 'Stratul tău de identitate',
+          title: 'Autentificarea ta',
           body: 'Se integrează cu IdP-ul, SSO-ul și politicile tale de acces existente. Autentificarea și auditul urmează standardele tale.',
         },
         {
           title: 'Conformitatea ta',
-          body: 'Suport pentru review de conformitate, audituri de securitate și evaluări continue: HIPAA, ISO 27001, reglementări regionale și nu numai.',
+          body: 'Sprijin pentru evaluări de conformitate, audituri de securitate și verificări periodice, inclusiv HIPAA, ISO 27001, reglementări regionale și altele.',
         },
       ],
     },
     adaptation: {
       eyebrow: 'Adaptare',
-      heading: 'Modelat pe operațiunile tale.',
+      heading: 'Adaptat felului în care lucrezi.',
       body:
-        'Niciun deployment enterprise nu arată la fel. Adaptăm Fineguide pe al tău, integrări custom cu sistemele tale interne, deployment-uri white-label și customizare de workflow care se potrivește felului în care echipa ta lucrează cu adevărat.',
+        'Nu există două organizații mari care să funcționeze la fel. Adaptăm Fineguide la a ta, cu integrări personalizate cu sistemele interne, instalări white-label și workflow-uri configurate după felul în care lucrează efectiv echipa ta.',
       items: [
-        'Integrări custom cu sistemele tale interne',
-        'Deployment white-label aliniat cu brandul',
-        'Workflow-uri și module customizate',
+        'Integrări personalizate cu sistemele tale interne',
+        'Instalare white-label, cu identitatea brandului tău',
+        'Workflow-uri și module personalizate',
         'Linie directă către echipa de produs',
       ],
     },
@@ -1370,29 +1370,29 @@ export const ro: Translations = {
       eyebrow: 'Consultanță',
       heading: 'Strategie, nu doar software.',
       body:
-        'Consultanța Fineguide lucrează alături de echipa ta, proiectând asistenți, mapând conversații și ajustând operațiunea astfel încât platforma să livreze rezultate măsurabile încă din prima zi.',
+        'Consultanții Fineguide lucrează alături de echipa ta: proiectează asistenții, analizează fluxul conversațiilor și ajustează procesele, astfel încât platforma să aducă rezultate măsurabile din prima zi.',
       items: [
-        'Strategie de implementare și deployment',
-        'Design de conversație și tuning de asistent',
+        'Strategie de implementare și lansare',
+        'Designul conversațiilor și optimizarea asistenților',
         'Consultanță operațională pentru vânzări, suport și call center',
-        'Training, enablement și certificare de echipă',
+        'Instruire, sprijin pentru adoptare și certificarea echipei',
       ],
     },
     plans: {
       eyebrow: 'Planuri',
-      heading: 'Prețuri pe măsura scării tale.',
+      heading: 'Prețuri pe măsura volumului tău.',
       body:
-        'Prețuri pe volum, pachete de credite custom și deployment-uri multi-organizație, construite în jurul utilizării tale, nu plafonate de ea.',
+        'Prețuri în funcție de volum, pachete de credite personalizate și instalări pentru mai multe organizații, construite în jurul consumului tău, nu limitate de el.',
       items: [
-        'Pachete de credite custom și prețuri pe volum',
-        'Deployment multi-organizație pentru unități de business',
+        'Pachete de credite personalizate și prețuri în funcție de volum',
+        'Instalare pentru mai multe organizații, pe unități de business',
         'Contracte anuale cu termeni flexibili de reînnoire',
       ],
     },
     contactBlock: {
       heading: 'Vorbește cu noi.',
       subtitle:
-        'Spune-ne despre echipa ta, revenim într-o zi lucrătoare cu o propunere personalizată.',
+        'Spune-ne despre echipa ta și revenim în cel mult o zi lucrătoare cu o propunere personalizată.',
       emailLabel: 'Email',
       email: 'enterprise@fineguide.ai',
       phoneLabel: 'Telefon',
@@ -1400,8 +1400,8 @@ export const ro: Translations = {
     },
     finalCta: {
       heading: 'Când ești gata, suntem aici.',
-      subtitle: 'Începe o conversație și preluăm noi de acolo.',
-      ctaLabel: 'Contactează vânzările',
+      subtitle: 'Scrie-ne, iar noi ne ocupăm de rest.',
+      ctaLabel: 'Contactează echipa de vânzări',
     },
   },
 
@@ -1410,17 +1410,17 @@ export const ro: Translations = {
     // Must differ from the English title - two URLs with the same <title> make
     // Google pick one and drop the other from the index.
     title: 'Contactează echipa Fineguide.ai',
-    description: 'Contactează echipa Fineguide. Suntem aici pentru întrebări, suport tehnic sau să discutăm cum platforma AI poate ajuta afacerea ta.',
+    description: 'Contactează echipa Fineguide pentru întrebări, suport tehnic sau ca să discutăm cum te poate ajuta platforma noastră AI în afacerea ta.',
   },
   contact: {
     heading: 'Contactează-ne',
-    subtitle: 'Vrei să afli cum Fineguide poate transforma interacțiunile tale cu clienții? Scrie-ne și răspundem cât mai curând.',
+    subtitle: 'Vrei să afli cum poate Fineguide să schimbe felul în care comunici cu clienții? Scrie-ne și îți răspundem cât mai repede.',
     talkHeading: 'Hai să vorbim',
-    talkText: 'Fie că vrei să automatizezi suportul, să captezi mai multe lead-uri sau să integrezi AI în workflow, suntem aici să te ajutăm.',
+    talkText: 'Fie că vrei să automatizezi suportul, să atragi mai multe lead-uri sau să integrezi AI în procesele tale, suntem aici să te ajutăm.',
     emailLabel: 'Email',
     phoneLabel: 'Telefon',
     demoLabel: 'Programează un demo',
-    demoSubtext: 'Walkthrough personalizat al platformei',
+    demoSubtext: 'Prezentare personalizată a platformei',
     responseNote: 'De obicei răspundem în 2-4 ore în zilele lucrătoare.',
     demoCta: 'Programează demo',
     formHeading: 'Trimite-ne un mesaj',
@@ -1435,7 +1435,7 @@ export const ro: Translations = {
     messagePlaceholder: 'Spune-ne cum te putem ajuta...',
     submitButton: 'Trimite mesaj',
     submitting: 'Se trimite...',
-    successMessage: 'Mulțumim! Mesajul tău a fost trimis cu succes. Revenim cât mai curând.',
+    successMessage: 'Mulțumim! Mesajul tău a fost trimis. Îți răspundem cât mai curând.',
     errorMessage: 'A apărut o eroare. Te rugăm să încerci din nou.',
     validationName: 'Numele este obligatoriu.',
     validationEmail: 'Te rugăm să introduci o adresă de email validă.',
@@ -1443,9 +1443,9 @@ export const ro: Translations = {
     faqHeading: 'Întrebări frecvente',
     faqSubheading: 'Despre procesul de contact și suport',
     faq: [
-      { q: 'Cât de repede primesc răspuns?', a: 'De obicei răspundem în 2-4 ore în zilele lucrătoare (Luni-Vineri, 9:00-18:00). Pentru urgențe, te rugăm să menționezi acest lucru în mesaj.' },
-      { q: 'Pot programa un demo în loc?', a: 'Bineînțeles! Poți <a href="/schedule-demo">programa un demo personalizat</a> pentru a vedea Fineguide în acțiune. Specialiștii noștri vor prezenta platforma pe baza nevoilor tale specifice.' },
-      { q: 'Ce informații ar trebui să includ?', a: 'Include numele companiei, provocările actuale cu clienții și ce vrei să obții cu automatizarea AI. Cu cât mai multe detalii oferi, cu atât mai bine putem adapta răspunsul.' },
+      { q: 'Cât de repede primesc răspuns?', a: 'De obicei răspundem în 2-4 ore în zilele lucrătoare (luni-vineri, 9:00-18:00). Pentru urgențe, te rugăm să menționezi acest lucru în mesaj.' },
+      { q: 'Pot programa un demo în loc?', a: 'Bineînțeles! Poți <a href="/schedule-demo">programa un demo personalizat</a> pentru a vedea Fineguide în acțiune. Specialiștii noștri îți vor prezenta platforma în funcție de nevoile tale.' },
+      { q: 'Ce informații ar trebui să includ?', a: 'Include numele companiei, provocările actuale cu clienții și ce vrei să obții cu automatizarea AI. Cu cât ne dai mai multe detalii, cu atât răspunsul nostru va fi mai util.' },
     ],
   },
 
@@ -1456,30 +1456,30 @@ export const ro: Translations = {
   },
   scheduleDemo: {
     heading: 'Programează un demo<br class="hidden sm:block" /> personalizat',
-    subtitle: 'Află cum Fineguide poate transforma interacțiunile tale cu clienții. Primește o demonstrație adaptată nevoilor și industriei tale.',
+    subtitle: 'Află cum poate Fineguide să schimbe felul în care comunici cu clienții, într-o demonstrație adaptată nevoilor și domeniului tău.',
     stats: [
       { value: '30 min', label: 'Demo personalizat' },
-      { value: 'Live', label: 'Walkthrough al platformei' },
-      { value: 'Custom', label: 'Adaptat industriei tale' },
+      { value: 'Live', label: 'Prezentare a platformei' },
+      { value: 'Pe măsură', label: 'Adaptat domeniului tău' },
       { value: 'Gratuit', label: 'Fără obligații' },
     ],
-    bullets: ['Fără presiune de vânzări', 'Exemple specifice industriei', 'Sesiune Q&A inclusă'],
+    bullets: ['Fără presiune de vânzări', 'Exemple din domeniul tău', 'Sesiune de întrebări și răspunsuri'],
     calendarHeading: 'Alege o dată convenabilă',
     calendarSubtext: 'Folosește calendarul de mai jos pentru a-ți programa demo-ul',
-    expectHeading: 'La ce să te aștepți la demo',
+    expectHeading: 'Ce include demo-ul',
     expectSubtext: 'Specialiștii noștri vor prezenta platforma într-o sesiune adaptată nevoilor tale.',
     expectCards: [
-      { title: 'Prezentare a platformei', text: 'Walkthrough prin asistenți AI, CRM, workspace, Voice QA, Voice AI și automatizări n8n într-o singură poveste conectată.', duration: '~15 minute' },
-      { title: 'Exemple specifice industriei', text: 'Cazuri reale adaptate industriei și modelului tău de business.', duration: '~10 minute' },
-      { title: 'Sesiune Q&A', text: 'Întreabă despre implementare, prețuri, integrări și cum se potrivește Fineguide în workflow-ul tău.', duration: '~5 minute' },
+      { title: 'Prezentare a platformei', text: 'Parcurgem asistenții AI, CRM-ul, workspace-ul, Voice QA, Voice AI și automatizările n8n, ca un tot unitar.', duration: '~15 minute' },
+      { title: 'Exemple din domeniul tău', text: 'Cazuri reale, adaptate domeniului și modelului tău de afaceri.', duration: '~10 minute' },
+      { title: 'Întrebări și răspunsuri', text: 'Întreabă despre implementare, prețuri, integrări și cum se potrivește Fineguide în workflow-ul tău.', duration: '~5 minute' },
     ],
     faqHeading: 'Întrebări frecvente',
     faqSubheading: 'Despre procesul de demo',
     faq: [
-      { q: 'Cât durează demo-ul?', a: 'Demo-ul standard este de 30 de minute, dar putem adapta în funcție de nevoile tale. Ne concentrăm pe funcționalitățile cele mai relevante pentru cazul tău de utilizare.' },
-      { q: 'Este un apel de vânzări?', a: 'Fără presiune! Este o demonstrație de produs care te ajută să înțelegi dacă Fineguide este potrivit pentru afacerea ta. Scopul nostru este să oferim valoare și să răspundem la întrebări.' },
+      { q: 'Cât durează demo-ul?', a: 'Demo-ul standard durează 30 de minute, dar îl putem adapta nevoilor tale. Ne concentrăm pe funcționalitățile cele mai relevante pentru tine.' },
+      { q: 'Este un apel de vânzări?', a: 'Nu te presăm în niciun fel. Este o demonstrație de produs care te ajută să decizi dacă Fineguide se potrivește afacerii tale. Vrem să-ți fim de folos și să-ți răspundem la întrebări.' },
       { q: 'Pot aduce și echipa?', a: 'Absolut! Te încurajăm să inviți colegii relevanți. Cu cât mai mult context avem despre nevoile tale, cu atât mai bine putem personaliza demo-ul.' },
-      { q: 'Ce fac dacă trebuie să reprogramez?', a: 'Nicio problemă! Răspunde la email-ul de confirmare sau contactează-ne direct. Suntem flexibili și bucuroși să găsim un timp care funcționează pentru toți.' },
+      { q: 'Ce fac dacă trebuie să reprogramez?', a: 'Nicio problemă! Răspunde la email-ul de confirmare sau contactează-ne direct. Suntem flexibili și găsim cu plăcere un moment potrivit pentru toată lumea.' },
     ],
   },
 };
