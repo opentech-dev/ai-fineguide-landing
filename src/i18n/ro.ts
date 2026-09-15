@@ -119,7 +119,7 @@ export const ro: typeof en = {
       'Transcriere și evaluare automată pe fiecare apel',
       'Criterii de evaluare și ponderi per departament',
       'Feedback pentru agenți și dashboard-uri de tendințe',
-      'Integrare telefonie cu operatorii principali',
+      'Se conectează la sistemul tău de telefonie prin SIP',
       'Agenți AI pe apeluri live inbound și outbound',
     ],
     screenshotAlt: 'Dashboard statistici Voice QA Fineguide',
@@ -263,7 +263,7 @@ export const ro: typeof en = {
         {
           title: 'Voce',
           body:
-            'Voci text-to-speech pentru răspunsuri vocale. Alege dintr-un set curat sau folosește propria ta clonă.',
+            'Voci text-to-speech pentru răspunsuri vocale. Alege o voce, sau doar o voce masculină ori feminină, și ascult-o înainte să intre live.',
         },
         {
           title: 'Variabile de sesiune',
@@ -624,27 +624,27 @@ export const ro: typeof en = {
       eyebrow: 'Capabilități',
       heading: 'Un strat de voce complet, end-to-end.',
       body:
-        'Voice AI se sprijină pe asistenții, CRM-ul și Voice QA-ul pe care le ai deja, astfel încât telefonul să ruleze pe aceeași configurare, aceeași fișă a clientului și aceleași dashboard-uri de calitate ca orice alt canal.',
+        'Voice AI se sprijină pe asistenții și CRM-ul pe care le ai deja, astfel încât telefonul să ruleze pe aceeași configurare ca orice alt canal, iar apelanții sunt recunoscuți din același CRM.',
       blocks: [
         {
           title: 'Automatizare inbound',
           body:
-            'Răspunde la apeluri 24/7. Rutează pe intenție, identifică clientul și rezolvă solicitările comune fără să țină pe nimeni la coadă.',
+            'Răspunde la apeluri pe numerele tale, zi și noapte. Recunoaște apelanții din CRM și rezolvă solicitările comune fără coadă.',
         },
         {
           title: 'Apeluri outbound',
           body:
-            'Sună pentru calificare, follow-up sau reamintire, la scară. Predă către om în momentul în care conversația o cere.',
+            'Sună o listă întreagă cu o campanie de outreach, sondaj sau promoție și ascult-o pe propriul telefon înainte să pornească.',
         },
         {
           title: 'Integrare telefonie',
           body:
-            'Se conectează la operatorul tău sau la trunk-ul SIP existent. Numerele, înregistrarea și conformitatea urmează configurația ta actuală.',
+            'Se conectează prin SIP la operatorul sau centrala pe care le folosești deja, așa că numerele rămân ale tale.',
         },
         {
-          title: 'Bucla CRM și Voice QA',
+          title: 'Conectat la CRM',
           body:
-            'Fiecare apel scrie înapoi în aceeași fișă a clientului, cu transcrieri gata de scorat în Voice QA pe aceleași dashboard-uri.',
+            'Fiecare apel se salvează în istoricul conversației ca transcriere. Un apelant inbound care cere un om e transferat către echipa ta sau lasă o cerere de revenire care devine sarcină în CRM.',
         },
       ],
     },
