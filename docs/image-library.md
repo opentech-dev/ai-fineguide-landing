@@ -35,6 +35,27 @@ saving with no visible loss).
 | `photos/channels-phone.jpg` | Industries | `steps/step-01-attract.jpg` | A hand holding a phone showing real Instagram. Warm light, wooden table. |
 | `photos/tablet-review.jpg` | Workspace | `steps/step-05-report.jpg` | Hands holding a tablet, coffee, warm window light. Chart labels illegible at any size. |
 | `photos/office-golden.jpg` | Closing CTA (background) | **Generated 2026-09-14** (Nano Banana Pro) | Golden-hour office, two colleagues laughing, a third in motion blur. Sits behind a brand-tinted scrim as a decorative background, so it carries `alt=""` and `aria-hidden` — it is texture, not information. Monitors dark throughout. |
+| `photos/account-review.jpg` | CRM hero | **Generated 2026-09-16** (Nano Banana Pro) | Two colleagues side by side over an open notebook, one pointing. The laptop screen is dark and shows only a room reflection; the notebook page is blank. No logo on the lid. |
+| `photos/call-review.jpg` | Voice QA hero | **Generated 2026-09-16** (Nano Banana Pro) | A reviewer in over-ear headphones marking a blank sheet. The monitor is turned fully back-to-camera and the headphones carry no visible brand mark. Deliberately not a headset with a mic boom, so it cannot be mistaken for `agent-call.jpg` on AI Telephony. |
+
+### The two 2026-09-16 images, and what they replace
+
+CRM and Voice QA were the two pages whose screenshots came from a live account
+and were deleted in `hotfix/remove-leaking-media`. Commit `a627d70` filled the
+gap with flat vector illustrations, which was wrong: every other product page
+uses photography, so those two heroes read as cartoons next to their siblings.
+`public/images/illustrations/` is gone.
+
+Same prompt constraint as the 2026-09-14 pair, and in both chosen frames the
+screen faces away from the camera rather than merely being blurred, which is the
+stronger version of the rule. Three variants each; the rejected ones all failed
+on the same thing, a laptop or monitor angled far enough toward the lens to show
+suggestive interface shapes.
+
+These are still strangers in a generic office. A screenshot captured from a demo
+workspace supersedes both, and would also fill the two matching holes left on
+the homepage (`VoiceSpread.astro`, and the CRM `ModuleSpread` that passes no
+`image`).
 
 ### The two generated images, and why they replaced what was there
 

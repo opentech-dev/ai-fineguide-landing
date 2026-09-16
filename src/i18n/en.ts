@@ -427,7 +427,7 @@ export const en = {
     },
     intro: {
       eyebrow: 'The CRM module',
-      screenshotAlt: 'One customer record, with chat, phone, email and tasks connected to it',
+      screenshotAlt: 'Two colleagues at a desk, going through a client together over a notebook',
     },
     surfaces: {
       eyebrow: 'Inside the CRM',
@@ -746,7 +746,7 @@ export const en = {
     },
     intro: {
       eyebrow: 'The Voice QA module',
-      screenshotAlt: 'A call recording, its transcript with quoted lines, and a scorecard',
+      screenshotAlt: 'A quality manager in headphones, listening back to a call and marking a sheet',
     },
     process: {
       eyebrow: 'How it works',

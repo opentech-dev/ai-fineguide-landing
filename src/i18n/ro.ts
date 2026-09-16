@@ -420,7 +420,7 @@ export const ro: Translations = {
     },
     intro: {
       eyebrow: 'Modulul CRM',
-      screenshotAlt: 'O singură fișă de client, cu chat, telefon, email și sarcini conectate la ea',
+      screenshotAlt: 'Doi colegi la birou, discutând despre un client peste un caiet deschis',
     },
     surfaces: {
       eyebrow: 'În interiorul CRM-ului',
@@ -544,7 +544,7 @@ export const ro: Translations = {
     },
     intro: {
       eyebrow: 'Modulul Voice QA',
-      screenshotAlt: 'O înregistrare de apel, transcrierea cu replici citate și o fișă de evaluare',
+      screenshotAlt: 'Un manager de calitate cu căști, ascultând un apel și notând pe o fișă',
     },
     process: {
       eyebrow: 'Cum funcționează',
