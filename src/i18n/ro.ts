@@ -51,6 +51,8 @@ export const ro: Translations = {
       'Conversațiile, CRM-ul, canalele și fluxurile de lucru, reunite într-o singură platformă construită pe AI de la bun început.',
     ctaPrimary: 'Începe acum',
     ctaSecondary: 'Programează un demo',
+    imageAlt:
+      'Ilustrație cu conversații din chat, telefon și email care intră într-o singură platformă, apoi ies ca fișă de client, sarcină finalizată și scor de calitate',
   },
 
   // --- Photography alt text ---

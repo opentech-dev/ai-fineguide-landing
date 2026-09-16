@@ -24,7 +24,16 @@ const t = useTranslations(lang);
 <Layout title={t.indexMeta.title} description={t.indexMeta.description} lang={lang}>
   <Navbar t={t} lang={lang} />
   <main id="main-content">
-    <EditorialHero t={t} lang={lang} />
+    <EditorialHero
+      t={t}
+      lang={lang}
+      image="/images/illustrations/hero-workflow.webp"
+      imageWidth={1798}
+      imageHeight={949}
+      illustration={true}
+      video="/images/illustrations/hero-workflow-loop.mp4"
+      videoWebm="/images/illustrations/hero-workflow-loop.webm"
+    />
     <OverviewIntro t={t} />
     <ModuleSpread
       spread={t.assistantsSpread}
@@ -36,10 +45,12 @@ const t = useTranslations(lang);
     />
     <ModuleSpread
       spread={t.crmSpread}
-      image="/images/illustrations/crm-record.jpg"
-      imageWidth={1376}
-      imageHeight={768}
+      image="/images/illustrations/crm-record-poster.jpg"
+      imageWidth={1280}
+      imageHeight={712}
       illustration={true}
+      video="/images/illustrations/crm-record-loop.mp4"
+      videoWebm="/images/illustrations/crm-record-loop.webm"
       tinted={true}
       linkHref={getLocalizedPath('/crm', lang)}
       linkLabel={t.moduleLinks.crm}

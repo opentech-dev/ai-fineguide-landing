@@ -49,6 +49,13 @@ export const en = {
       'Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
     ctaPrimary: 'Get started',
     ctaSecondary: 'Schedule a demo',
+    // Alt text for the hero asset. This lived as an English literal inside
+    // EditorialHero.astro, so /ro/ served English alt text to screen readers.
+    // Named imageAlt rather than the house screenshotAlt: the asset is a
+    // drawing, and calling it a screenshot is the thing the bare rendering
+    // exists to avoid.
+    imageAlt:
+      'Illustration of chat, phone and email conversations flowing into one platform, then out as a customer record, a completed task and a quality score',
   },
 
   // --- Photography alt text ---
