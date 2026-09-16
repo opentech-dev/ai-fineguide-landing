@@ -30,15 +30,25 @@ const jsonLd = {
 
   <main id="main-content">
     <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
-      {/* The screenshot here came from a live account and showed internal data.
-          Until one is captured from demo data, the intro sits in its place. */}
-      <p class="text-2xl md:text-3xl leading-relaxed text-[var(--color-muted)] font-light text-pretty">
-        {p.intro.body}
-      </p>
+      {/* A generated illustration, not a screenshot: the product shot that used
+          to sit here came from a live account and showed billing figures.
+          Replace it with a screenshot from the demo workspace when one exists. */}
+      <img
+        src="/images/illustrations/voice-qa-scoring.png"
+        alt={p.intro.screenshotAlt}
+        width="1376"
+        height="768"
+        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
+        loading="eager"
+      />
     </PageHero>
 
     <Band tone="tint" eyebrow={p.process.eyebrow} heading={p.process.heading} body={p.process.body}>
       <StepList steps={p.process.steps} />
+    </Band>
+
+    <Band eyebrow={p.sources.eyebrow} heading={p.sources.heading} body={p.sources.body}>
+      <EditorialRows items={p.sources.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
 
     <Band tone="dark" eyebrow={p.configuration.eyebrow} heading={p.configuration.heading} body={p.configuration.body}>
@@ -48,14 +58,18 @@ const jsonLd = {
       />
     </Band>
 
-    <Band eyebrow={p.extraction.eyebrow} heading={p.extraction.heading} body={p.extraction.body}>
-      <EditorialRows items={p.extraction.blocks.map((b) => ({ term: b.title, desc: b.body }))} />
+    <Band eyebrow={p.callResult.eyebrow} heading={p.callResult.heading} body={p.callResult.body}>
+      <EditorialRows items={p.callResult.blocks.map((b) => ({ term: b.title, desc: b.body }))} />
+    </Band>
+
+    <Band tone="tint" eyebrow={p.reporting.eyebrow} heading={p.reporting.heading} body={p.reporting.body}>
+      <EditorialRows items={p.reporting.blocks.map((b) => ({ term: b.title, desc: b.body }))} />
       <p class="mt-10 max-w-4xl text-base md:text-lg text-[var(--color-muted)] leading-relaxed">
-        {p.extraction.footer}
+        {p.reporting.footer}
       </p>
     </Band>
 
-    <ClosingCta lang={lang} rule {...p.finalCta} />
+    <ClosingCta lang={lang} {...p.finalCta} />
   </main>
 
   <Footer t={t} lang={lang} />

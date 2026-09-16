@@ -406,79 +406,122 @@ export const ro: Translations = {
   // --- CRM page ---
   crmPage: {
     meta: {
-      title: 'CRM construit pe fișa clientului | Fineguide.ai',
+      title: 'CRM construit pe o singură fișă de client | Fineguide.ai',
       description:
-        'Un CRM organizat în jurul fișei clientului: contacte, companii, lead-uri, pipeline-uri și sarcini, cu fiecare conversație atașată aceleiași persoane.',
+        'Un CRM organizat în jurul fișei de client: contacte, companii, tranzacții, sarcini și dubluri, cu asistenți care rețin persoana în timpul conversației.',
     },
     hero: {
-      title: 'O singură fișă. Toată echipa.',
+      title: 'O singură fișă de client. Toate echipele.',
       titleAccent: ' Toate conversațiile.',
       subtitle:
-        'Vânzările văd tranzacția. Suportul vede tichetul. Call center-ul vede coada. Toată lumea vede același client, fără exporturi și importuri între aplicații.',
+        'Asistentul reține persoana și programează revenirea. Echipa ta duce tranzacția mai departe. Toată lumea citește aceeași fișă, fără dansul exporturilor și importurilor între unelte.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
     intro: {
       eyebrow: 'Modulul CRM',
-      body:
-        'CRM-ul Fineguide este centrul operațional în care asistenții aduc lead-uri, agenții le transformă în clienți, iar managerii văd imaginea reală. Fiecare conversație, contact și sarcină este legată de aceeași fișă a clientului, pe toate canalele pe care lucrează afacerea ta.',
-      screenshotAlt: 'Panoul de sarcini din CRM-ul Fineguide, cu coloanele Todo, În progres și Gata',
+      screenshotAlt: 'O singură fișă de client, cu chat, telefon, email și sarcini conectate la ea',
     },
     surfaces: {
       eyebrow: 'În interiorul CRM-ului',
-      heading: 'Opt secțiuni, o singură fișă a clientului.',
+      heading: 'Șase ecrane, o singură fișă de client.',
       body:
-        'Fiecare secțiune îți arată aceleași date dintr-un alt unghi, așa că nu dublezi munca, nu pierzi contextul și nu te mai întrebi unde e versiunea cea mai recentă.',
+        'Fiecare ecran este o altă vedere asupra acelorași date, așa că nu dublezi munca, nu pierzi contextul și nu te întrebi care unealtă are ultima versiune.',
       items: [
         {
-          name: 'Conversații',
-          desc: 'Conversațiile în curs și cele încheiate, de pe toate canalele, cu profilul clientului și contextul lead-ului atașate.',
-        },
-        {
           name: 'Contacte',
-          desc: 'Persoanele cu care lucrezi, recunoscute după numărul de telefon, adresa de email și numele de utilizator de pe fiecare canal.',
-        },
-        {
-          name: 'Lead-uri',
-          desc: 'Oportunități calificate, cu câmpuri structurate, inclusiv câmpuri personalizate extrase de asistenții tăi.',
-        },
-        {
-          name: 'Pipeline-uri',
-          desc: 'Vizualizare Kanban sau tabel pentru fiecare pipeline. Etape, responsabili și SLA-uri care reflectă felul în care vinde, de fapt, echipa ta.',
-        },
-        {
-          name: 'Sarcini',
-          desc: 'Reveniri, apeluri de urmărire și lucruri de făcut, cu status, prioritate și termen, create din orice conversație sau lead.',
+          desc: 'Oamenii cu care lucrezi, fiecare cu toate numerele de telefon pe care le are, cu emailul și cu identitatea de pe fiecare aplicație de mesagerie de unde a scris.',
         },
         {
           name: 'Companii',
-          desc: 'Fișe de companie cu propria adresă de email, așa că mesajele trimise la info@ sau billing@ ajung la locul lor chiar înainte să știi cine le-a scris. O persoană poate face parte din mai multe companii.',
+          desc: 'Fișe de cont cu adresa lor de email, așa că un mesaj de la billing@ ajunge la companie chiar dacă nimeni de acolo nu este încă un contact. O persoană poate aparține mai multor companii.',
         },
         {
-          name: 'Inbox de echipă',
-          desc: 'Un loc comun pentru conversațiile care așteaptă un om: le preiei, răspunzi sau le transmiți mai departe, fără să vă încurcați unii pe alții.',
+          name: 'Tranzacții',
+          desc: 'Pipeline-ul tău ca tablă sau ca tabel, cu valoare, monedă, probabilitate, dată estimată de închidere și un responsabil. Salvezi o vedere și o împarți cu echipa.',
         },
         {
-          name: 'Coadă',
-          desc: 'Distribuirea conversațiilor și apelurilor în timp real: prin rotație (round-robin), către responsabilul clientului sau după reguli, în funcție de cum lucrează echipa ta.',
+          name: 'Sarcini',
+          desc: 'Reveniri și apeluri programate, pe table pe care le denumești tu, ca tabel sau ca un calendar. Fiecare sarcină știe dacă a creat-o un om, un asistent, o conversație sau un flux.',
+        },
+        {
+          name: 'Dubluri',
+          desc: 'Fineguide caută în fundal aceeași persoană înregistrată de două ori și pune perechile aici, cu dovezile, ca cineva să confirme sau să respingă.',
+        },
+        {
+          name: 'Rapoarte',
+          desc: 'Pipeline deschis, prognoză ponderată, rata de câștig, media zilelor până la câștig, tranzacții pe etape și un clasament pe responsabili.',
         },
       ],
     },
     customerRecord: {
-      eyebrow: 'Fișa clientului',
-      heading: 'Clientul rămâne același, oricare ar fi canalul.',
+      eyebrow: 'Fișa de client',
+      heading: 'Identitate care rezistă schimbării de canal.',
       body:
-        'Un client care îți scrie luni pe WhatsApp și te sună marți este același client. Fineguide îl recunoaște după numărul de telefon, adresa de email și numele de utilizator de pe canale și atașează fiecare conversație, lead și tichet aceleiași fișe, ca să nu pierzi niciodată contextul.',
+        'Un client care scrie luni pe WhatsApp și sună marți este același client. Fineguide îl leagă după adresa de email, după numărul de telefon și după identitatea pe care o are în fiecare aplicație de mesagerie, și de acolo ține fișa întreagă.',
       bullets: [
-        'Profiluri unificate automat după numărul de telefon, email și numele de pe canale',
-        'Câmpuri personalizate completate de asistenți în timpul conversației',
-        'Tot istoricul (chat-uri, apeluri, tichete, sarcini) pe o singură cronologie',
-        'Segmentare la nivelul întregii organizații, pe care se pot baza automatizările și exporturile',
+        'Cine scrie de pe Telegram, WhatsApp, Instagram sau Facebook devine automat contact, cu identitatea aceea păstrată lângă celelalte',
+        'Emailul primit așază firul sub fiecare persoană externă din el și creează contactele de care are nevoie',
+        'Dublurile sunt găsite după asemănarea numelui și după semnale clare, cum ar fi un număr de WhatsApp pe care îl ai deja, apoi sunt confirmate de un om, niciodată unite pe ascuns',
+        'O unire mută dintr-o dată toate tranzacțiile, sarcinile, conversațiile, etichetele și fișierele, și păstrează fișa înlocuită în loc să o șteargă',
+        'O pagină per client: ce s-a întâmplat, conversațiile lui, emailul, tranzacțiile, sarcinile, fișierele și comentariile echipei',
+      ],
+    },
+    work: {
+      eyebrow: 'Lucrul pe pipeline',
+      heading: 'O structură pe care echipa chiar o respectă.',
+      body:
+        'Un pipeline este util doar dacă are câmpurile potrivite felului în care vinzi. Etapele, motivele, tipurile de sarcini și câmpurile proprii le definești tu, iar raportarea urmează ce ai setat.',
+      blocks: [
+        {
+          title: 'Etape și prognoză',
+          body:
+            'Fiecare etapă are o probabilitate, iar prognoza ponderează fiecare tranzacție deschisă după etapa în care se află.',
+        },
+        {
+          title: 'De ce se închid tranzacțiile',
+          body:
+            'La câștig sau la pierdere se cere un motiv, din liste definite de organizația ta, ca raportul să spună mai mult decât câte.',
+        },
+        {
+          title: 'Tranzacții care stau pe loc',
+          body:
+            'Stabilești cât poate sta o tranzacție într-o etapă. Peste acest termen, tabla o marchează ca neatinsă, în loc să o lase să se stingă în tăcere.',
+        },
+        {
+          title: 'Câmpurile tale',
+          body:
+            'Adaugi câmpuri la contacte, companii, tranzacții și sarcini: text, număr, dată, bifă sau o listă din care alegi. Filtrezi și cauți după ele. Câmpurile pe care le adună asistentul apar singure aici, marcate ca munca lui.',
+        },
+        {
+          title: 'Tipuri de sarcini',
+          body:
+            'Definești felurile de muncă pe care le face echipa, fiecare cu câmpurile lui și cu valorile implicite pentru prioritate, durată, termen, responsabil și departament.',
+        },
+        {
+          title: 'Calendar',
+          body:
+            'Sarcinile se sincronizează în ambele sensuri cu Google Calendar, așa că o revenire programată în CRM este și în agendă, și invers.',
+        },
+      ],
+    },
+    dataFlow: {
+      eyebrow: 'Datele intră și ies',
+      heading: 'Fără copiat și lipit între sisteme.',
+      body:
+        'Fișele vin din conversațiile pe care le ai oricum, din fișierele pe care le ai deja și din sistemele pe care le folosești deja.',
+      bullets: [
+        'Asistenții rețin persoana în timpul conversației și programează o sarcină de revenire, în loc să lase o notă pe care nu o citește nimeni',
+        'Imporți contacte din CSV, TSV, XLS sau XLSX, potrivești tu coloanele și lași importul să ruleze în fundal',
+        'Exporți în CSV contactele selectate, alegând ce câmpuri și în ce ordine, inclusiv cele proprii',
+        'Fluxurile creează și actualizează contacte, companii și tranzacții, mută o tranzacție în etapa următoare, adaugă etichete și ridică sarcini',
+        'Un API REST cu cheile tale acoperă contacte, companii, tranzacții, sarcini, etichete, comentarii și câmpuri proprii',
+        'Contactele și companiile au un id extern, așa că o sincronizare din ERP-ul sau magazinul tău poate rula din nou fără să facă duplicate',
       ],
     },
     finalCta: {
-      heading: 'Nu mai jongla între aplicații.',
-      body: 'Vezi cum se compară CRM-ul Fineguide cu instrumentele pe care le folosești azi.',
+      heading: 'Gata cu jonglatul între taburi.',
+      body: 'Vezi cum se compară CRM-ul Fineguide cu setul de unelte pe care îl folosești azi.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -487,108 +530,177 @@ export const ro: Translations = {
   // --- Voice QA page ---
   voiceQaPage: {
     meta: {
-      title: 'Voice QA: evaluează automat fiecare apel | Fineguide',
+      title: 'Voice QA: fiecare apel, evaluat automat | Fineguide',
       description:
-        'Evaluare AI automată pentru fiecare apel telefonic, pe departamente și după regulile tale. Renunță la eșantioane și vezi problemele din toată activitatea.',
+        'Evaluare AI pe fiecare apel înregistrat, după regulile tale, pe departamente. Citate din apel în spatele fiecărei note și rapoarte pe agent și regulă.',
     },
     hero: {
       title: 'Fiecare apel, evaluat',
       titleAccent: ' și structurat.',
       subtitle:
-        'Evaluare AI automată pentru fiecare apel, pe departamente, după regulile tale și în limbile pe care le vorbește echipa ta. Renunță la eșantioane. Vezi tot ce se întâmplă.',
+        'Fiecare înregistrare ajunsă în Fineguide este transcrisă și evaluată după regulile tale, cu replicile din apel care justifică fiecare notă. Gata cu ascultatul a zece apeluri pe săptămână.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
     intro: {
       eyebrow: 'Modulul Voice QA',
-      body:
-        'Un manager de calitate care ascultă zece apeluri pe zi vede doar unu la sută din ce se întâmplă la telefon. Voice QA le evaluează pe toate, automat, după aceleași criterii și suficient de repede încât feedback-ul să conteze.',
-      screenshotAlt: 'Dashboard statistici Voice QA Fineguide, buget, minute și grafic de tendințe',
+      screenshotAlt: 'O înregistrare de apel, transcrierea cu replici citate și o fișă de evaluare',
     },
     process: {
       eyebrow: 'Cum funcționează',
       heading: 'Cinci pași. Fiecare apel.',
       body:
-        'Conectezi o sursă de apeluri, îți definești regulile, iar platforma ascultă în locul tău. Agenții primesc feedback în aceeași zi. Managerii văd tendința înainte să devină o problemă.',
+        'Un manager de calitate care ascultă zece apeluri pe zi vede o fărâmă din ce se întâmplă la telefon. Voice QA le ascultă pe toate, aplică de fiecare dată aceleași reguli și are feedbackul gata cât încă mai contează.',
       steps: [
-        'Conectează o sursă de apeluri: operatorul de telefonie, sistemul de înregistrare sau centrala telefonică (PBX). Apelurile sunt preluate automat.',
-        'AI-ul transcrie fiecare conversație în peste 30 de limbi, identifică vorbitorii și structurează dialogul.',
-        'Fiecare apel este evaluat după regulile fiecărui departament, cu punctaj fix sau ponderat, fără eșantionare manuală.',
-        'Agentul primește un punctaj pentru fiecare regulă, fragmentele relevante din conversație și sugestii concrete de îmbunătățire.',
-        'Managerul vede performanța pe departamente, agenți și clienți, cu tendințele și punctele slabe scoase în evidență.',
+        'Apelurile ajung prin încărcare, prin API sau automat, de la un operator conectat.',
+        'AI-ul transcrie apelul și separă cele două părți, ca să citești un dialog între agent și client, nu un perete de text. Detectează singur limba vorbită, chiar și când apelul schimbă limba pe parcurs.',
+        'Apelul este evaluat după regulile departamentului său. AI-ul stabilește întâi despre ce categorii de reguli este vorba, ca o întrebare de facturare să nu fie depunctată fiindcă îi lipsește o regulă de vânzare.',
+        'Fiecare regulă vine cu o notă, cu raționamentul din spate, cu trei până la cinci citate directe din apel și cu o sugestie pentru agent.',
+        'Managerii văd scorul pe departament și pe agent, ce reguli trec și care cad, și cum se mișcă totul de la o săptămână la alta.',
+      ],
+    },
+    sources: {
+      eyebrow: 'Cum ajung apelurile',
+      heading: 'Le încarci, le trimiți sau le lași să vină.',
+      body:
+        'Voice QA evaluează înregistrări. Cum ajung ele în platformă rămâne alegerea ta, iar nimic nu este procesat, sau taxat, până nu ceri tu.',
+      items: [
+        {
+          name: 'Încărcare',
+          desc: 'Adaugi o înregistrare sau un teanc, până la 50 MB fiecare. Păstrarea, transcrierea și evaluarea sunt trei alegeri separate, așa că un clic greșit nu cheltuie credite.',
+        },
+        {
+          name: 'API',
+          desc: 'Trimiți o înregistrare, un link către ea sau o transcriere pe care o ai deja. Tot pe acolo citești scorurile, transcrierile și cifrele din rapoarte.',
+        },
+        {
+          name: 'Operatori conectați',
+          desc: 'Moldcell, Orange Moldova și aplicația Fineguide de înregistrare a apelurilor pentru Android aduc singure apelurile noi, verificate în fiecare minut.',
+        },
+        {
+          name: 'Evaluare automată',
+          desc: 'O activezi pe departament și fiecare apel sosit este evaluat fără ca cineva să îl deschidă. Departamentul are nevoie de cel puțin o regulă înainte să se evalueze ceva.',
+        },
+        {
+          name: 'Numere excluse',
+          desc: 'Excluzi un număr, de exemplu unul intern, iar apelurile lui nu mai sunt procesate și nu mai apar în liste.',
+        },
       ],
     },
     configuration: {
       eyebrow: 'Configurare',
-      heading: 'Reguli pe departamente, după propriul tău sistem de punctare.',
+      heading: 'Reguli pe departament, modelul tău de notare.',
       body:
-        'Fiecare echipă are propriul standard de calitate. Voice QA îți permite să-l transpui în reguli și ponderi diferite pentru fiecare departament, iar același motor evaluează în paralel apeluri de vânzări, tichete de suport și conversații de retenție.',
+        'Fiecare echipă are propriul prag de calitate. Voice QA te lasă să îl scrii, cu reguli și ponderi diferite pe departament, și cu un singur motor care duce în paralel apelurile de vânzări, de suport și de retenție.',
       blocks: [
         {
           title: 'Departamente',
           body:
-            'Organizează pe echipă, locație sau funcție. Fiecare departament are propriile categorii, criterii și dashboard-uri.',
+            'Organizezi pe echipă, pe locație sau pe funcție. Fiecare departament are regulile lui, setările lui și rapoartele lui.',
         },
         {
           title: 'Categorii și reguli',
           body:
-            'Definește cum arată un apel bun (deschiderea, identificarea nevoilor, gestionarea obiecțiilor, conformitatea) și cum se punctează fiecare regulă.',
+            'Scrii cum sună un apel bun: deschiderea, descoperirea nevoii, tratarea obiecțiilor, conformitatea, grupate pe categorii. Până la 50 de reguli per departament.',
         },
         {
           title: 'Fix sau ponderat',
           body:
-            'Tratează toate regulile la fel sau dă o pondere mai mare celor care contează cel mai mult. Calculul urmează politica ta, nu invers.',
+            'Notezi fiecare regulă din același maxim sau dai fiecărei reguli ponderea ei. Procentul final urmează ponderile tale, nu ale noastre.',
         },
         {
-          title: 'Feedback pentru agent',
+          title: 'Reguli care nu se aplică',
           body:
-            'Punctaj pe fiecare regulă, cu fragmente din conversație. Sugestiile ajung la agent în aceeași zi, nu la următoarea evaluare trimestrială.',
+            'O regulă pe care apelul nu a avut ocazia să o atingă este marcată drept neaplicabilă și scoasă din total, în loc să fie notată cu zero. Regulile pot fi puse doar pe apeluri primite, doar pe apeluri date sau pe ambele.',
         },
         {
-          title: 'Integrare telefonie',
+          title: 'Fișa agentului',
           body:
-            'Se conectează la sistemul de telefonie sau de înregistrare pe care îl ai deja. Nu înlocuiești nimic și nu introduci datele de două ori.',
+            'Fișa este gata imediat ce apelul a fost evaluat, cu citatele din spatele fiecărei note și cu o sugestie pentru fiecare regulă, și poate fi trimisă automat agentului pe email.',
         },
         {
-          title: 'Legătură cu CRM',
+          title: 'Fișa de client',
           body:
-            'Apelurile se atașează aceleiași fișe a clientului ca și chat-urile și tichetele. Clientul este o singură poveste, nu trei.',
+            'Apelurile se leagă de un contact după numărul de telefon și ajung pe aceeași cronologie ca discuțiile și tichetele. Clientul este o singură poveste, nu trei.',
         },
       ],
     },
-    extraction: {
-      eyebrow: 'Informații utile',
-      heading: 'Descoperă problemele și tendințele noi.',
+    callResult: {
+      eyebrow: 'La fiecare apel',
+      heading: 'Nota, și motivul din spatele ei.',
       body:
-        'Voice QA transformă fiecare apel în informații structurate, ca problemele și tendințele să devină vizibile în toată activitatea, nu doar în apelurile pe care un manager le aude din întâmplare.',
+        'O cifră singură pornește o ceartă. Fiecare notă dată de Voice QA are în spate cuvintele care au produs-o, așa că discuția cu agentul începe de la dovezi, nu de la păreri.',
       blocks: [
         {
-          title: 'Extragere personalizată',
+          title: 'Transcrierea',
           body:
-            'Spune-i AI-ului ce să rețină din fiecare apel: produsele menționate, tipurile de reclamații, cauzele reale, numele concurenților.',
+            'Ambele părți ale apelului, separate, fără mesajul automat de la început.',
         },
         {
-          title: 'Probleme frecvente',
+          title: 'Regulă cu regulă',
           body:
-            'Vezi ce produse generează cele mai multe reclamații și la ce întrebări le e greu agenților să răspundă, din mii de apeluri.',
+            'O notă, raționamentul, trei până la cinci citate directe și o sugestie concretă. Citatele rămân în limba vorbită de client, chiar dacă raportul este scris în alta.',
         },
         {
-          title: 'Tendințe noi',
+          title: 'Cum s-a simțit clientul',
           body:
-            'Observă problemele noi, schimbările de atitudine ale clienților sau mențiunile despre concurenți imediat ce apar, nu după câteva săptămâni.',
+            'Starea lui urmărită pe tot parcursul apelului, nu doar rezumată la final, o notă de satisfacție și motivul pentru care a sunat.',
         },
         {
-          title: 'Cazuri, nu doar apeluri',
+          title: 'Câmpuri definite de tine',
           body:
-            'Grupează apelurile legate de aceeași problemă a unui client. Tonul urmărit de la un apel la altul arată o relație care se degradează ca pe o tendință clară, nu ca pe un șir de zile proaste fără legătură.',
+            'Îi spui AI-ului ce să mai rețină din fiecare apel, de exemplu produsul menționat, tipul reclamației sau un concurent numit, ca text, număr, da sau nu, ori listă de ales. Numele, compania, telefonul și emailul apelantului vin oricum.',
+        },
+        {
+          title: 'Înregistrarea',
+          body:
+            'Se ascultă chiar lângă notă, ca să auzi tu momentul.',
+        },
+        {
+          title: 'Limba raportului',
+          body:
+            'Concluziile, raționamentele și sugestiile vin în limba pe care o alegi, din 30, indiferent în ce limbă a fost apelul.',
+        },
+      ],
+    },
+    reporting: {
+      eyebrow: 'Cazuri și rapoarte',
+      heading: 'Un apel este un incident. Zece sunt un tipar.',
+      body:
+        'Notele individuale îi spun agentului cum s-a descurcat. Vederile de deasupra lor îți arată unde pierde clienți operațiunea.',
+      blocks: [
+        {
+          title: 'Cazuri',
+          body:
+            'Grupezi până la zece apeluri despre aceeași problemă a aceluiași client și evaluezi cazul ca întreg: dacă s-a rezolvat, cât a durat, cu câți oameni a trebuit să vorbească clientul și cum i s-a schimbat starea de la primul apel la ultimul.',
+        },
+        {
+          title: 'Pe departament și pe agent',
+          body:
+            'Scorul mediu, cum se compară cu luna trecută și cine este cel mai în față și cel mai în urmă.',
+        },
+        {
+          title: 'Pe regulă',
+          body:
+            'Ce reguli trece echipa și pe care cade mereu, ca instruirea să meargă unde este nevoie.',
+        },
+        {
+          title: 'În timp',
+          body:
+            'Scorul, minutele procesate și numărul de apeluri, zi cu zi.',
+        },
+        {
+          title: 'Către sistemele tale',
+          body:
+            'Fiecare apel terminat poate fi trimis către webhookul tău sau către AmoCRM ori Kommo.',
         },
       ],
       footer:
-        'Configurezi totul pe departamente și trimiți rezultatele în dashboard-uri sau prin webhook-uri.',
+        'Evaluarea se taxează pe minut de audio, cu un minim de un minut per apel. Transcrierea fără evaluare costă jumătate.',
     },
     finalCta: {
-      heading: 'Renunță la eșantioane. Evaluează fiecare apel.',
-      body: 'Vezi în 15 minute cum evaluează Voice QA apelurile tale.',
+      heading: 'Gata cu eșantioanele. Începe să evaluezi.',
+      body: 'Vezi Voice QA lucrând pe înregistrările tale, într-un tur de 15 minute.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
