@@ -131,7 +131,7 @@ export const ro: Translations = {
       'Inbox de echipă și coadă de rutare',
       'Câmpuri personalizate completate automat de asistenți',
     ],
-    screenshotAlt: 'Panou CRM Fineguide cu sarcini în coloane Kanban',
+    screenshotAlt: 'Ilustrație a unei fișe de client legate de o conversație, un grafic, o sarcină, o înregistrare de apel și o companie',
   },
 
   // --- Voice spread (dark) ---
@@ -147,7 +147,7 @@ export const ro: Translations = {
       'Se conectează la sistemul tău de telefonie prin SIP',
       'Agenți AI în apeluri reale, primite și efectuate',
     ],
-    screenshotAlt: 'Dashboard statistici Voice QA Fineguide',
+    screenshotAlt: 'Ilustrație: o înregistrare de apel devine transcriere și apoi un scor',
   },
 
   // --- Mesaje și Inbox ---
