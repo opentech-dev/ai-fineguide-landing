@@ -30,22 +30,36 @@ const jsonLd = {
 
   <main id="main-content">
     <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
-      {/* The screenshot here came from a live account and showed internal data.
-          Until one is captured from demo data, the intro sits in its place. */}
-      <p class="text-2xl md:text-3xl leading-relaxed text-[var(--color-muted)] font-light text-pretty">
-        {p.intro.body}
-      </p>
+      {/* A generated illustration, not a screenshot: the product shot that used
+          to sit here came from a live account and showed a customer's data.
+          Replace it with a screenshot from the demo workspace when one exists. */}
+      <img
+        src="/images/illustrations/crm-record.png"
+        alt={p.intro.screenshotAlt}
+        width="1376"
+        height="768"
+        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
+        loading="eager"
+      />
     </PageHero>
 
     <Band tone="dark" eyebrow={p.surfaces.eyebrow} heading={p.surfaces.heading} body={p.surfaces.body}>
       <EditorialRows variant="dark" items={p.surfaces.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
 
-    <Band tone="tint" eyebrow={p.customerRecord.eyebrow} heading={p.customerRecord.heading} body={p.customerRecord.body}>
+    <Band eyebrow={p.customerRecord.eyebrow} heading={p.customerRecord.heading} body={p.customerRecord.body}>
       <RuleList items={p.customerRecord.bullets} />
     </Band>
 
-    <ClosingCta lang={lang} {...p.finalCta} />
+    <Band tone="tint" eyebrow={p.work.eyebrow} heading={p.work.heading} body={p.work.body}>
+      <EditorialRows items={p.work.blocks.map((b) => ({ term: b.title, desc: b.body }))} />
+    </Band>
+
+    <Band eyebrow={p.dataFlow.eyebrow} heading={p.dataFlow.heading} body={p.dataFlow.body}>
+      <RuleList items={p.dataFlow.bullets} />
+    </Band>
+
+    <ClosingCta lang={lang} rule {...p.finalCta} />
   </main>
 
   <Footer t={t} lang={lang} />

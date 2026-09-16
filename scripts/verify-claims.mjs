@@ -363,6 +363,68 @@ if (fs.existsSync(schemaPath)) {
       ok(!named,
          `${locale}: no CRM surface named Tickets while crm/tickets is only a redirect${named ? ` -> FOUND "${named}"` : ''}`);
     }
+
+    // Tickets was not the only redirect sold as a CRM screen. crm/index.tsx
+    // routes conversations, team-inbox and queue to <MessagesRedirect>, and
+    // pipelines and leads to the deals board, so naming any of them here sends
+    // a buyer to a screen that belongs to another module or does not exist.
+    // Read the routes rather than a word list: rebuild one for real and this
+    // stops objecting by itself.
+    const routes = fs.existsSync(`${FE}/crm/index.tsx`) ? fs.readFileSync(`${FE}/crm/index.tsx`, 'utf8') : '';
+    if (routes) {
+      const redirected = [
+        [/path="conversations"[^>]*MessagesRedirect/, ['conversations', 'conversații']],
+        [/path="team-inbox"[^>]*MessagesRedirect/, ['team inbox', 'inbox', 'inbox de echipă']],
+        [/path="queue"[^>]*MessagesRedirect/, ['queue', 'coadă', 'coada']],
+        [/path="pipelines"[^>]*(LegacyRouteRedirect|Navigate)/, ['pipelines', 'pipeline-uri']],
+        [/path="leads"[^>]*Navigate/, ['leads', 'lead-uri']],
+      ];
+      for (const [stub, names] of redirected) {
+        if (!stub.test(routes)) continue;
+        const named = items.find(n => names.includes(n.trim().toLowerCase()));
+        ok(!named,
+           `${locale}: no CRM surface named ${names[0]} while that route only redirects${named ? ` -> FOUND "${named}"` : ''}`);
+      }
+    }
+  }
+}
+
+// --- Voice QA: two claims that had nothing behind them ------------------------
+// The page used to promise "common issues ... across thousands of calls" and
+// "emerging trends ... as they appear". Nothing aggregates extracted values,
+// intents or sentiment: the only groupBy calls in modules/voice-qa are staff
+// counts and per-client averages. It also promised any phone system, where the
+// product has exactly three connectors, and exports, which do not exist.
+// Checked against the built pages, so a rewrite in either language is covered.
+{
+  const qaModule = `${API}/modules/voice-qa`;
+  const aggregates = fs.existsSync(qaModule)
+    ? fs.readdirSync(qaModule, { recursive: true })
+        .filter(f => /\.ts$/.test(f))
+        .some(f => /groupBy\([\s\S]{0,400}?(extraction|intent|sentiment)/.test(fs.readFileSync(`${qaModule}/${f}`, 'utf8')))
+    : true; // module gone: say nothing rather than assert about code we cannot read
+
+  const BANNED = [
+    [/common issues|probleme (comune|frecvente)/i, 'nothing aggregates issues across calls'],
+    [/emerging trends|tendințe (emergente|noi)/i, 'no topic or sentiment trend detection exists'],
+    [/competitor mentions|mențiuni ale concurenț/i, 'competitor mentions are captured per call, never aggregated'],
+    [/any phone system|orice sistem de telefonie|existing phone system|sistemul (tău|tau) de telefonie actual/i,
+     'there are three connectors: Moldcell, Orange and the Android app'],
+    // "export to CSV", "exportat în CSV", "export CSV": one pattern, because the
+    // Romanian verb inflects (exporta / exportă / exportat / exportate).
+    [/export\w*\s+(to|in|în|ca)?\s*(csv|excel|pdf|xlsx)/i, 'Voice QA has no export of any kind'],
+  ];
+
+  for (const file of ['dist/voice-qa/index.html', 'dist/ro/voice-qa/index.html']) {
+    if (!fs.existsSync(file)) continue;
+    const text = fs.readFileSync(file, 'utf8')
+      .replace(/<script[\s\S]*?<\/script>/g, '')
+      .replace(/<[^>]+>/g, ' ');
+    for (const [re, why] of BANNED) {
+      if (re.source.startsWith('common issues') && aggregates) continue;
+      const hit = text.match(re);
+      ok(!hit, `${file.includes('/ro/') ? 'ro' : 'en'} voice-qa does not claim /${re.source.split('|')[0]}/: ${why}${hit ? ` -> FOUND "${hit[0]}"` : ''}`);
+    }
   }
 }
 

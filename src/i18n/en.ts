@@ -415,59 +415,49 @@ export const en = {
     meta: {
       title: 'CRM Built on One Customer Record | Fineguide.ai',
       description:
-        'A CRM organised around the customer record: contacts, companies, leads, pipelines and tasks, with every conversation attached to the same person.',
+        'A CRM organised around the customer record: contacts, companies, deals, tasks and duplicate review, with assistants capturing the person mid-conversation.',
     },
     hero: {
       title: 'One customer record. Every team.',
       titleAccent: ' Every conversation.',
       subtitle:
-        'Sales sees the deal. Support sees the ticket. The call center sees the queue. Everyone sees the same customer, without the export-and-import dance between tools.',
+        'Your assistant captures the person and books the follow-up. Your team works the deal. Everyone reads the same record, without the export-and-import dance between tools.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
     intro: {
       eyebrow: 'The CRM module',
-      body:
-        'Fineguide CRM is the operational hub where assistants feed leads, agents close them, and managers see the truth. Every conversation, every contact, every task, connected to the same customer record, on every channel your business runs.',
-      screenshotAlt: 'Fineguide CRM tasks board with Todo, In Progress, and Done columns',
+      screenshotAlt: 'One customer record, with chat, phone, email and tasks connected to it',
     },
     surfaces: {
       eyebrow: 'Inside the CRM',
-      heading: 'Eight surfaces, one customer record.',
+      heading: 'Six screens, one customer record.',
       body:
-        'Each surface is a different lens on the same underlying data, so you never duplicate work, never lose context, and never wonder which tool has the latest version.',
+        'Each screen is a different view of the same data, so you never duplicate work, never lose context, and never wonder which tool has the latest version.',
       items: [
         {
-          name: 'Conversations',
-          desc: 'Live and historical chats from every channel, with the customer profile and lead context attached.',
-        },
-        {
           name: 'Contacts',
-          desc: 'The people you do business with, identified across phone numbers, emails, and channel handles.',
-        },
-        {
-          name: 'Leads',
-          desc: 'Qualified opportunities with structured fields, including custom props extracted by your assistants.',
-        },
-        {
-          name: 'Pipelines',
-          desc: 'Kanban and table views per pipeline. Stages, ownership, and SLAs that reflect how your team actually sells.',
-        },
-        {
-          name: 'Tasks',
-          desc: 'Follow-ups, callbacks, and to-dos with status, priority, and due dates, created from any conversation or lead.',
+          desc: 'The people you do business with, each holding as many phone numbers as they have, their email, and their handle on every messaging app they wrote from.',
         },
         {
           name: 'Companies',
-          desc: 'Account records with their own email, so mail to info@ or billing@ attaches before you know who sent it. A person can belong to more than one.',
+          desc: 'Account records with their own email address, so mail from billing@ files under the company even when nobody there is a contact yet. A person can belong to more than one.',
         },
         {
-          name: 'Team Inbox',
-          desc: 'Shared triage of conversations waiting for a human, where you can claim, reply, or escalate without stepping on each other.',
+          name: 'Deals',
+          desc: 'Your pipeline as a board or a table, with value, currency, probability, expected close date and an owner. Save a view and share it with the team.',
         },
         {
-          name: 'Queue',
-          desc: 'Routing for live conversations and calls, supporting round-robin, ownership, or rule-based, depending on how your team operates.',
+          name: 'Tasks',
+          desc: 'Follow-ups and callbacks on boards you name yourself, or as a table or a calendar. Every task knows whether a person, an assistant, a conversation or a workflow created it.',
+        },
+        {
+          name: 'Duplicates',
+          desc: 'Fineguide looks for the same person twice in the background and puts the pairs here, with the evidence, for someone to confirm or dismiss.',
+        },
+        {
+          name: 'Reports',
+          desc: 'Open pipeline, weighted forecast, win rate, average days to win, deals by stage, and a leaderboard by owner.',
         },
       ],
     },
@@ -475,12 +465,65 @@ export const en = {
       eyebrow: 'The customer record',
       heading: 'Identity that survives the channel switch.',
       body:
-        'A customer who messages on WhatsApp Monday and calls on Tuesday is the same customer. Fineguide identifies them across phone numbers, channel handles, and email, and attaches every conversation, lead, and ticket to the same record so context never resets.',
+        'A customer who writes on WhatsApp on Monday and calls on Tuesday is the same customer. Fineguide links them by email address, by phone number, and by the identity they carry on each messaging app, and keeps the record whole from there.',
       bullets: [
-        'Identity merging across phone numbers, emails, and channel handles',
-        'Custom fields filled in by assistants during the conversation',
-        'Complete interaction history, including chats, calls, tickets, and tasks, in one timeline',
-        'Org-wide segmentation that downstream automations and exports can rely on',
+        'Someone who writes from Telegram, WhatsApp, Instagram or Facebook becomes a contact automatically, with that handle stored alongside the others',
+        'Inbound email files the thread under every external person on it, creating the contacts it needs',
+        'Duplicates are found by name similarity and by hard signals, such as a WhatsApp number you already have on file, then confirmed by a person, never merged behind your back',
+        'A merge moves every deal, task, conversation, tag and file across in one go, and keeps the record it replaced rather than deleting it',
+        'One page per customer: what happened, their conversations, email, deals, tasks, files and your team comments',
+      ],
+    },
+    work: {
+      eyebrow: 'Working the pipeline',
+      heading: 'Structure your team will actually keep to.',
+      body:
+        'A pipeline is only useful if the fields match the way you sell. Stages, reasons, task types and custom fields are yours to define, and the reporting follows whatever you set.',
+      blocks: [
+        {
+          title: 'Stages and forecast',
+          body:
+            'Each stage carries a probability, and the forecast weights every open deal by the stage it sits in.',
+        },
+        {
+          title: 'Why deals close',
+          body:
+            'Winning or losing a deal asks for a reason, from lists your organisation defines, so the report says more than how many.',
+        },
+        {
+          title: 'Deals going stale',
+          body:
+            'Set how long a deal may sit in a stage. Past that, the board flags it as untouched rather than leaving it to rot quietly.',
+        },
+        {
+          title: 'Your own fields',
+          body:
+            'Add fields to contacts, companies, deals and tasks: text, number, date, checkbox, or a list to pick from. Filter and search on them. Fields your assistant collects appear here on their own, marked as its work.',
+        },
+        {
+          title: 'Task types',
+          body:
+            'Define the kinds of work your team does, each with its own fields and its own defaults for priority, duration, due date, assignee and department.',
+        },
+        {
+          title: 'Calendar',
+          body:
+            'Tasks sync both ways with Google Calendar, so a callback booked in the CRM is in the diary and the other way round.',
+        },
+      ],
+    },
+    dataFlow: {
+      eyebrow: 'Getting data in and out',
+      heading: 'No copy and paste between systems.',
+      body:
+        'Records arrive from the conversations you are already having, from the files you already hold, and from the systems you already run.',
+      bullets: [
+        'Assistants capture the person mid-conversation and book a follow-up task, rather than leaving a note nobody reads',
+        'Import contacts from CSV, TSV, XLS or XLSX, map the columns yourself, and let it run in the background',
+        'Export the contacts you have selected to CSV, choosing which fields and in what order, custom fields included',
+        'Workflows create and update contacts, companies and deals, move a deal to the next stage, add tags and raise tasks',
+        'A REST API with your own keys covers contacts, companies, deals, tasks, tags, comments and custom fields',
+        'Contacts and companies carry an external id, so a sync from your ERP or shop can run again without making copies',
       ],
     },
     finalCta: {
@@ -691,106 +734,175 @@ export const en = {
     meta: {
       title: 'Voice QA: Score Every Call Automatically | Fineguide',
       description:
-        'Automatic AI scoring on every phone call, per department and against your own rules. Stop sampling and see issues and trends across the whole operation.',
+        'AI scoring on every recorded call, against your own rules, per department. Quotes from the call behind every mark, and dashboards by agent, rule and department.',
     },
     hero: {
       title: 'Every call, scored',
       titleAccent: ' and structured.',
       subtitle:
-        'Automatic AI evaluation on every call, per department, against your rules, in the languages your team speaks. Stop sampling. Start seeing the whole operation.',
+        'Every recording that reaches Fineguide is transcribed and scored against your rules, with the lines from the call that justify each mark. Stop sampling ten calls a week.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
     intro: {
       eyebrow: 'The Voice QA module',
-      body:
-        'A QA manager who listens to ten calls a day sees one percent of what is happening on the phone. Voice QA scores all of them, automatically, consistently, and in time for feedback to matter.',
-      screenshotAlt: 'Fineguide Voice QA statistics dashboard, budget, minutes, and trend chart',
+      screenshotAlt: 'A call recording, its transcript with quoted lines, and a scorecard',
     },
     process: {
       eyebrow: 'How it works',
       heading: 'Five steps. Every call.',
       body:
-        'Connect a call source, define your rules, and let the platform do the listening. Agents get feedback the same day. Managers see the trend before it becomes a problem.',
+        'A QA manager who listens to ten calls a day sees a fraction of what happens on the phone. Voice QA listens to all of them, applies the same rules every time, and has the feedback ready while the call still matters.',
       steps: [
-        'Connect a call source, such as your telecom operator, recording system, or PBX. Calls are captured automatically.',
-        'AI transcribes every conversation in 30+ languages, identifying speakers and structuring the dialogue.',
-        'Each call is evaluated against your per-department rules, with fixed or weighted scoring, no manual sampling.',
-        'The agent receives a score per rule, conversation evidence, and concrete improvement suggestions.',
-        'The manager sees performance by department, agent, and client, with trends and weak points called out.',
+        'Calls arrive by upload, through the API, or automatically from a connected carrier.',
+        'The AI transcribes the call and separates the two sides, so you read a dialogue between agent and customer rather than a wall of text. It detects the spoken language itself, even when the call switches language halfway through.',
+        'The call is scored against the rules of its department. The AI first works out which categories of rule the call is even about, so a billing question is not marked down for missing a sales rule.',
+        'Each rule comes back with a score, the reasoning behind it, three to five direct quotes from the call, and a suggestion for the agent.',
+        'Managers see the score by department and by agent, which rules pass and which fail, and how all of it moves week to week.',
+      ],
+    },
+    sources: {
+      eyebrow: 'Getting calls in',
+      heading: 'Upload them, post them, or let them arrive.',
+      body:
+        'Voice QA scores recordings. How they reach the platform is up to you, and nothing is processed, or charged, until you ask for it.',
+      items: [
+        {
+          name: 'Upload',
+          desc: 'Drop in one recording or a batch, up to 50 MB each. Storing, transcribing and scoring are three separate choices, so a stray click cannot spend credits.',
+        },
+        {
+          name: 'API',
+          desc: 'Post a recording, a link to one, or a transcript you already have. Read back scores, transcripts and dashboard figures the same way.',
+        },
+        {
+          name: 'Connected carriers',
+          desc: 'Moldcell, Orange Moldova and the Fineguide call recording app for Android deliver new calls on their own, checked every minute.',
+        },
+        {
+          name: 'Automatic scoring',
+          desc: 'Turn it on per department and every arriving call is scored without anyone opening it. The department needs at least one rule before anything is scored.',
+        },
+        {
+          name: 'Numbers you exclude',
+          desc: 'Exclude a number, an internal one for example, and its calls are never processed and never appear in the views.',
+        },
       ],
     },
     configuration: {
       eyebrow: 'Configuration',
       heading: 'Per-department rules, your scoring model.',
       body:
-        'Every team has its own quality bar. Voice QA lets you encode it, with different rules and weights per department, with the same engine handling sales calls, support tickets, and retention conversations side by side.',
+        'Every team has its own quality bar. Voice QA lets you write it down, with different rules and weights per department, and one engine handling sales calls, support calls and retention calls side by side.',
       blocks: [
         {
           title: 'Departments',
           body:
-            'Organize by team, location, or function. Each department has its own categories, criteria, and dashboards.',
+            'Organise by team, location or function. Each department has its own rules, its own settings and its own dashboards.',
         },
         {
           title: 'Categories and rules',
           body:
-            'Define what good looks like, such as opening, discovery, objection handling, and compliance, and how each rule should be scored.',
+            'Write what good sounds like, such as the opening, discovery, objection handling and compliance, grouped into categories. Up to 50 rules per department.',
         },
         {
           title: 'Fixed or weighted',
           body:
-            'Treat all rules equally or weight the ones that matter most. The math follows your policy, not the other way around.',
+            'Score every rule out of the same number, or give each rule its own weight. The final percentage follows your weights, not ours.',
         },
         {
-          title: 'Agent feedback',
+          title: 'Rules that do not apply',
           body:
-            'Per-rule scoring with conversation evidence. Suggestions reach the agent the same day, not the next quarterly review.',
+            'A rule the call never had the chance to trigger is marked not applicable and left out of the total, instead of scored zero. Rules can also apply to incoming calls only, outgoing only, or both.',
         },
         {
-          title: 'Telephony integration',
+          title: 'Agent scorecards',
           body:
-            'Connect to your existing phone system or recording infrastructure. No rip-and-replace, no parallel data entry.',
+            'The scorecard is ready as soon as the call is scored, with the quotes behind every mark and a suggestion per rule, and it can be emailed to the agent automatically.',
         },
         {
-          title: 'CRM linkage',
+          title: 'The customer record',
           body:
-            'Calls attach to the same customer record as chats and tickets. The customer is one story, not three.',
+            'Calls match to a contact by phone number and land on the same customer timeline as chats and tickets. The customer is one story, not three.',
         },
       ],
     },
-    extraction: {
-      eyebrow: 'Insights',
-      heading: 'Surface issues and emerging trends.',
+    callResult: {
+      eyebrow: 'On every call',
+      heading: 'The score, and the reason for it.',
       body:
-        'Voice QA turns every call into structured insight, so issues and trends become visible across your whole operation, not just the calls a manager happens to hear.',
+        'A number on its own starts an argument. Every mark Voice QA gives is backed by the words that earned it, so a coaching conversation begins with evidence instead of opinion.',
       blocks: [
         {
-          title: 'Custom extraction',
+          title: 'The transcript',
           body:
-            'Tell the AI what to capture on every call, such as products mentioned, complaint types, root causes, competitor names.',
+            'Both sides of the call, separated, with the automated IVR introduction stripped out.',
         },
         {
-          title: 'Common issues',
+          title: 'Rule by rule',
           body:
-            'See which products generate the most complaints and which questions agents struggle to answer, across thousands of calls.',
+            'A score, the reasoning, three to five direct quotes, and one concrete suggestion. Quotes stay in the language the customer used, even when the report is written in another.',
         },
         {
-          title: 'Emerging trends',
+          title: 'How the customer felt',
           body:
-            'Catch new issues, sentiment shifts, or competitor mentions as they appear, not weeks later.',
+            'Their mood tracked across the call rather than summed up at the end, a satisfaction reading, and what they called about.',
         },
         {
-          title: 'Cases, not just calls',
+          title: 'Fields you define',
           body:
-            'Group the calls behind one issue for one customer. Sentiment read across them turns a declining relationship into a visible trend, not a run of separate bad days.',
+            'Tell the AI what else to capture on every call, such as the product mentioned, the complaint type or a competitor named, as text, a number, yes or no, or a pick list. Caller name, company, phone and email come as standard.',
+        },
+        {
+          title: 'The recording',
+          body:
+            'Playable next to the score, so you can hear the moment yourself.',
+        },
+        {
+          title: 'The report language',
+          body:
+            'Conclusions, reasoning and suggestions come back in the language you choose, from 30, whatever language the call was in.',
+        },
+      ],
+    },
+    reporting: {
+      eyebrow: 'Cases and dashboards',
+      heading: 'One call is an incident. Ten is a pattern.',
+      body:
+        'Individual scores tell an agent how they did. The views above them tell you where the operation is losing customers.',
+      blocks: [
+        {
+          title: 'Cases',
+          body:
+            'Group up to ten calls about the same problem for the same customer and score the case as a whole: whether it was resolved, how long it took, how many people the customer had to deal with, and how their mood moved from the first call to the last.',
+        },
+        {
+          title: 'By department and agent',
+          body:
+            'Average score, how it compares with last month, and who is furthest ahead and furthest behind.',
+        },
+        {
+          title: 'By rule',
+          body:
+            'Which rules your team passes and which they keep failing, so training goes where it is needed.',
+        },
+        {
+          title: 'Over time',
+          body:
+            'Score, minutes processed and call volume, day by day.',
+        },
+        {
+          title: 'Out to your systems',
+          body:
+            'Every finished call can be pushed to your own webhook, or to AmoCRM or Kommo.',
         },
       ],
       footer:
-        'Configure per department and feed results into dashboards or webhooks.',
+        'Scoring is charged per minute of audio, with a one-minute minimum per call. Transcribing without scoring costs half.',
     },
     finalCta: {
       heading: 'Stop sampling. Start scoring.',
-      body: 'See Voice QA running on your calls in a 15-minute walkthrough.',
+      body: 'See Voice QA running on your own recordings in a 15-minute walkthrough.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
