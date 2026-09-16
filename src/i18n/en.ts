@@ -129,7 +129,7 @@ export const en = {
       'Team inbox and routing queue',
       'Custom fields auto-filled by assistants',
     ],
-    screenshotAlt: 'Fineguide CRM tasks Kanban board',
+    screenshotAlt: 'Illustration of one customer record linked to a conversation, a chart, a task, a call recording and a company',
   },
 
   // --- Voice spread (dark editorial break) ---
@@ -145,7 +145,7 @@ export const en = {
       'Connects to your phone system over SIP',
       'AI agents on live inbound and outbound calls',
     ],
-    screenshotAlt: 'Fineguide Voice QA statistics dashboard',
+    screenshotAlt: 'Illustration of a call recording becoming a transcript and then a score',
   },
 
   // --- Messages & Inbox ---

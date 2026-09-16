@@ -77,11 +77,46 @@ or skin. **The technology was never the problem. The prompt was.**
 They remain strangers in a generic office. They are honest as mood and texture; they are
 not evidence that anyone uses Fineguide.
 
-## Safe — optimised, not yet placed
+## Safe — optimised
 
-| Source | Optimised as | Why it is safe |
+| Source | Optimised as | Why it is safe | Placed |
+|---|---|---|---|
+| `steps/step-voiceqa-01.jpg` | `photos/voice-desk.jpg` | A real desk phone in a real office, handwritten notes beside it ("Follow up with Sarah"). Nothing on a screen to go wrong. | `/campaigns` hero |
+
+---
+
+## Safe — isometric illustrations (`public/images/illustrations/`)
+
+Added 2026-09-16 to fill the two homepage slots left empty when the leaking
+screenshots were taken down. These are **not** the flat purple vector clip art
+rejected below, and the distinction is the whole point: see the note on that
+table.
+
+| File | Slot | What it shows |
 |---|---|---|
-| `steps/step-voiceqa-01.jpg` | `photos/voice-desk.jpg` | A real desk phone in a real office, handwritten notes beside it ("Follow up with Sarah"). Nothing on a screen to go wrong. |
+| `illustrations/crm-record.jpg` | homepage CRM spread (`ModuleSpread`, tint band) | One customer record on a plinth, ringed by five connected objects: a speech bubble, a bar chart, a tick tile, a sound waveform, stepped blocks. |
+| `illustrations/voiceqa-scoring-dark.jpg` | homepage Voice spread (`VoiceSpread`, dark band) | A recording, a transcript, a score ring, left to right. Rendered on the band's own dark ground. |
+
+**How they were made, so they can be reproduced.** Nano Banana Pro, soft matte 3D
+render, true isometric, camera above and to the left. Form defined purely by
+light with no outlines. One soft key light upper-left, soft contact shadows,
+matte bevelled material, full value range from deep shadow to highlight. Palette
+restricted to `#30226F`, `#7C3AED`, `#A78BFA` and near-white, with pink, mauve,
+rose and magenta named as forbidden in the prompt because the model drifts there
+unprompted. No text of any kind, per the rule at the top of this file.
+
+**Backgrounds are matched to their band on purpose.** A generated image will not
+land on an exact flat hex, and a background that *nearly* matches reads as a
+mistake where an obvious frame would have read as deliberate. Each file was
+measured at its four corners and two edge midpoints against the band colour, and
+`crm-record.jpg` was corrected with a per-channel multiplier until it sat within
+4 of `--color-tint` `#f2effc`. `voiceqa-scoring-dark.jpg` lands within 4 of the
+dark band's `#0f1117` unaided. Re-measure after regenerating either one.
+
+**They render without the browser-chrome frame.** `ModuleSpread` takes an
+`illustration` prop for this. Putting fake window dots around a drawing would
+present it as a real screen capture, which is the same class of dishonesty as the
+synthetic avatars below.
 
 ---
 
@@ -97,6 +132,13 @@ not evidence that anyone uses Fineguide.
 | `steps/ai-agents-01-connect.jpg` | Real WhatsApp / Instagram / Messenger windows, but every message is nonsense ("You hard vestine lovetine anerouct andlross helf"). Passable as a thumbnail, indefensible at full width. |
 | `steps/step-03-team.jpg` | Not a photograph — a flat purple vector illustration. Reads as clip art beside the real photography. |
 | `steps/step-02-ai-chat.jpg` | Same: flat purple illustration, not a photo. |
+
+**Note on those last two, added 2026-09-16.** The fault is *flat vector*, not
+*illustration*. Flat fills have no light source, no shadow and no range from dark
+to light, which is exactly what makes them read as clip art, and four rounds of
+replacements failed until that was named. The isometric set above is a lit 3D
+render and belongs to a different category. The test to apply is not "is it a
+photo" but "does it have a light model".
 | `hero-bg.jpg` | Cyan particle-network abstract — the most overused "AI company" stock image there is, and the cyan fights the indigo/violet brand. It was being **preloaded on all 24 pages while never being displayed**; that preload has been removed. Do not wire it up. |
 | `avatars/avatar-maria.jpg`<br>`avatars/avatar-ion.jpg`<br>`avatars/avatar-andrei.jpg` | Synthetic headshots — flat studio backdrop, flawless skin, generic pose. Referenced nowhere; keep it that way. Beyond looking generated, attaching one to a named testimonial makes a **false claim about a customer** — an honesty problem, not a taste one. |
 | `channels/whatsapp.svg`<br>`channels/telegram.svg`<br>`channels/facebook.svg`<br>`channels/instagram.svg`<br>`channels/chat.svg`<br>`channels/email.svg` | **Not brand logos.** Generic Feather line icons wearing brand filenames — `telegram.svg` is the `send` paper plane, `whatsapp.svg` a plain speech bubble — all single-stroke on a hardcoded `#a5b4fc`. Labelling these as integration logos claims a vendor relationship with a stock icon. Superseded by `brands/` below; referenced nowhere. |
@@ -136,6 +178,17 @@ Fineguide customer, and the strongest images are strong precisely because
 nothing identifiable is on screen.
 
 The layout is ready to receive real photography — four sections now lead with
-an image and swapping a file path is the whole job. Until then, do not fill
-the gap with more generated imagery: the failures catalogued above are what
-that produces.
+an image and swapping a file path is the whole job.
+
+Also still missing: **product screenshots taken from a demo workspace**. The CRM
+and Voice QA shots were deleted for showing a live customer's data, and nothing
+has replaced them. The isometric illustrations stand in on the homepage, but a
+real screen will always beat a drawing of one. This needs a workspace populated
+with invented data and someone logged into it.
+
+The earlier instruction here was "do not fill the gap with more generated
+imagery". That was written after a run of generated images with invented text in
+them, and it holds for anything with a legible screen in frame. It has been
+narrowed rather than kept absolute: the failures in the table above are all
+legible invented text or flat vector clip art, and neither is inherent to
+generating an image. What is not negotiable is the rule at the top of this file.

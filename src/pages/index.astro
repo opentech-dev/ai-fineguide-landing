@@ -29,11 +29,17 @@ const t = useTranslations(lang);
     <ModuleSpread
       spread={t.assistantsSpread}
       image="/images/screenshots/assistants-analytics.png"
+      imageWidth={2880}
+      imageHeight={1454}
       linkHref={getLocalizedPath('/ai-assistants', lang)}
       linkLabel={t.moduleLinks.assistants}
     />
     <ModuleSpread
       spread={t.crmSpread}
+      image="/images/illustrations/crm-record.jpg"
+      imageWidth={1376}
+      imageHeight={768}
+      illustration={true}
       tinted={true}
       linkHref={getLocalizedPath('/crm', lang)}
       linkLabel={t.moduleLinks.crm}
