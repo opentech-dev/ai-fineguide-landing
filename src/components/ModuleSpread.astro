@@ -17,12 +17,6 @@ interface Props {
       inside the browser-chrome frame. Putting fake window dots around a drawing
       would pass it off as a real screenshot. */
   illustration?: boolean;
-  /** An ambient looping clip shown in place of `image`. It is decoration, not
-      media the visitor operates: no controls, no sound, no way to pause it, so
-      it must stay silent and short. `image` is still required alongside it and
-      is what anyone with reduced motion enabled sees instead. */
-  video?: string;
-  videoWebm?: string;
   reverse?: boolean;
   linkHref?: string;
   linkLabel?: string;
@@ -36,8 +30,6 @@ const {
   imageWidth,
   imageHeight,
   illustration = false,
-  video,
-  videoWebm,
   reverse = false,
   linkHref,
   linkLabel,
@@ -90,41 +82,14 @@ const {
               <span class="w-2 h-2 rounded-full bg-[#e2e0ec]"></span>
             </div>
           )}
-          {video ? (
-            <>
-              <video
-                autoplay
-                loop
-                muted
-                playsinline
-                poster={image}
-                width={imageWidth}
-                height={imageHeight}
-                aria-label={spread.screenshotAlt}
-                class="w-full h-auto block motion-reduce:hidden"
-              >
-                {videoWebm && <source src={videoWebm} type="video/webm" />}
-                <source src={video} type="video/mp4" />
-              </video>
-              <img
-                src={image}
-                alt={spread.screenshotAlt}
-                width={imageWidth}
-                height={imageHeight}
-                class="w-full h-auto hidden motion-reduce:block"
-                loading="lazy"
-              />
-            </>
-          ) : (
-            <img
-              src={image}
-              alt={spread.screenshotAlt}
-              width={imageWidth}
-              height={imageHeight}
-              class="w-full h-auto block"
-              loading="lazy"
-            />
-          )}
+          <img
+            src={image}
+            alt={spread.screenshotAlt}
+            width={imageWidth}
+            height={imageHeight}
+            class="w-full h-auto block"
+            loading="lazy"
+          />
         </figure>
       </div>
     )}

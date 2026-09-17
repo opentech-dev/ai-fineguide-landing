@@ -96,7 +96,6 @@ table.
 |---|---|---|
 | `illustrations/crm-record.jpg` | homepage CRM spread (`ModuleSpread`, tint band) | One customer record on a plinth, ringed by five connected objects: a speech bubble, a bar chart, a tick tile, a sound waveform, stepped blocks. |
 | `illustrations/voiceqa-scoring-dark.jpg` | homepage Voice spread (`VoiceSpread`, dark band) | A recording, a transcript, a score ring, left to right. Rendered on the band's own dark ground. |
-| `illustrations/hero-workflow.webp` | homepage hero (`EditorialHero`, both locales) | Hub and spoke: a central platform with six spokes radiating out to a speech bubble, a phone, an envelope, a customer record, a tick tile and a score ring. Every spoke starts at the platform's plinth and terminates at one object's plinth. Transparent background. |
 
 **How they were made, so they can be reproduced.** Nano Banana Pro, soft matte 3D
 render, true isometric, camera above and to the left. Form defined purely by
@@ -106,23 +105,6 @@ restricted to `#30226F`, `#7C3AED`, `#A78BFA` and near-white, with pink, mauve,
 rose and magenta named as forbidden in the prompt because the model drifts there
 unprompted. No text of any kind, per the rule at the top of this file.
 
-**Describe connections as geometry, not as a list of prohibitions.** The hero's
-first version had ribbons that swept past the central platform, crossed the whole
-scene and ended in mid-air, and one object had no connection at all. Two rounds of
-`edit_image` saying "no ribbon may pass behind the platform, none may end in empty
-space" changed almost nothing - an edit preserves the existing routing, and the
-model treats a ban as a style note. Regenerating with the shape named instead,
-"each connector is a spoke on a wheel, starting at the central plinth and ending at
-one object's plinth", got it right on the first attempt. Say what the arrangement
-*is*; do not enumerate what it must not be.
-
-**Match the despill to the key colour actually used.** The transparency tool keys
-on magenta or green depending on the run, and the cleanup that strips magenta
-fringing will happily eat a green-keyed image: brand violet has bright highlights
-where red and blue are near-equal, which is exactly the magenta test. Doing that
-here left every violet spoke speckled and eroded. Count residue by colour before
-despilling, and skip the step entirely when the key came out clean.
-
 **Backgrounds are matched to their band on purpose.** A generated image will not
 land on an exact flat hex, and a background that *nearly* matches reads as a
 mistake where an obvious frame would have read as deliberate. Each file was
@@ -131,109 +113,10 @@ measured at its four corners and two edge midpoints against the band colour, and
 4 of `--color-tint` `#f2effc`. `voiceqa-scoring-dark.jpg` lands within 4 of the
 dark band's `#0f1117` unaided. Re-measure after regenerating either one.
 
-**The hero asset uses alpha instead, because its background is not flat.** The
-hero section carries `brand-glow`, a violet radial gradient. Measured on the
-rendered page, the glow ends 420px below the section top while the image spans
-207px to 651px, so **the top half of the image sits over the wash** and the page
-behind its top edge computes to about `#e4e4fa` against `#fafafc` lower down - a
-delta near 22, far outside the tolerance of 4 above. No flat hex can match a
-gradient, so matching was abandoned in favour of a transparent background and the
-glow simply passes through. Nothing to measure, nothing to correct.
-
-**Keying is the cost of that, and it needs checking every time.** The generator
-produces transparency by rendering on a flat chroma background and keying it out.
-Two defects arrive with it and neither is visible at a glance:
-
-1. A detached strip of raw key pixels along the very bottom, below a band of
-   transparent rows.
-2. A magenta fringe tracing every object silhouette.
-
-Setting `key_color: 'green'` did **not** prevent magenta keying. The fringe is
-delicate to remove because brand violet sits beside magenta on the colour wheel;
-the discriminator that works is the red/blue ratio, since key magenta has red
-roughly equal to blue while brand violet and lavender are firmly blue-dominant.
-Of four candidates, one was destroyed by its own cleanup - it carried eight times
-the fringing, and removing it ate the artwork, leaving the surfaces speckled.
-**Verify a keyed asset by measuring, not by looking**: count magenta pixels, check
-whether they sit on silhouettes or in the interior, and confirm all four corners
-are fully transparent.
-
-**They render without the browser-chrome frame.** `ModuleSpread` and
-`EditorialHero` both take an `illustration` prop for this. Putting fake window
-dots around a drawing would present it as a real screen capture, which is the
-same class of dishonesty as the synthetic avatars below. The hero previously sat
-in `panel-frame`, whose own CSS comment calls it *"Product screenshot framing"*,
-so that wrapper is dropped for the illustration. It takes no replacement class
-either: `ModuleSpread` clips its illustrations with `rounded-xl overflow-hidden`
-because they are opaque, but a transparent asset has no background to clip and a
-rounded corner would only chop the artwork.
-
-### Animating these: the hero loop, and how it finally shipped
-
-The hero now carries an 8 second loop (`hero-workflow-loop.webm` / `.mp4`),
-wired through the `video` / `videoWebm` props on `EditorialHero`. Getting there
-took five paid Veo generations, and the decisive lesson was about the *input*,
-not the prompt.
-
-**Do not feed Veo a green screen. Bake the illustration onto the flat page
-colour instead.** The first three attempts rendered the artwork on a saturated
-green ground so the result could be keyed back to transparency (`chromakey` at
-similarity `0.15` into VP9/WebM, `format=yuva420p` pinned as the last filter or
-ffmpeg silently drops the alpha to `yuv420p`). That keying pipeline *works*, but
-the green plate itself destabilised generation: the model treated it as green
-screen footage and kept adding camera moves and re-interpreting objects. The one
-clip that ever held its composition, the CRM loop, was generated on a normal
-background. So the hero was regenerated on the illustration flattened onto
-`#fafafc` (the page base), opaque, no keying. That immediately stabilised it.
-
-The cost of opaque: a flat colour cannot match the brand-glow gradient, so the
-playing video shows a faint seam (~20) along its top edge where the violet bloom
-darkens the page to about `#e4e4fa`. Accepted as the price of animation. The
-still behind it (`hero-workflow.webp`, the poster and the reduced-motion `<img>`)
-is kept **transparent**, so reduced-motion visitors and the pre-play poster get
-the seamless blend; only the moving, opaque video carries the seam. MP4 is still
-generated (no alpha needed now) so every browser gets the motion.
-
-Mechanics worth keeping: frames-to-video is standard tier only
-(`veo-3.1-generate-preview`), 8 seconds only (a 4 second request is refused),
-`first_frame_image` and `last_frame_image` both set to the same flattened frame
-for a native loop.
-
-Three content failures, in order:
-
-1. **Asking for light produces bloom that destroys objects.** A brief about
-   "highlights travelling along the ribbons" gave white flares that washed out the
-   central panel and erased the contact card, with glow, halo and bloom all banned
-   by name in the same prompt. Bans do not work. Stating "the lighting is fixed,
-   every surface keeps the brightness it has in the first frame" and describing
-   the moving thing as a solid object - a matte capsule, a bead on a wire - fixed
-   it completely on the next attempt.
-
-2. **Pinning the last frame to the first forces out-and-back motion.** This is
-   structural, not bad luck. The model must return to the opening state, and for
-   anything flowing along a path the only way back is to reverse. Measured on the
-   second attempt: capsules travel away from the platform at 0.5s and 1.5s, turn
-   around by 3.5s, and travel toward it at 4.5s, 5.5s and 6.5s. It reads as a
-   rewind. Native looping and continuous flow are in direct tension, so a flowing
-   loop needs either motion that can return by a different path (gentle drift,
-   which is what the CRM clip and the shipped hero both do) or no pinned last
-   frame plus a period-matched cut, which the model gives no control over.
-
-3. **The model invents extra objects, and bans in the prompt do not stop it.**
-   One take added a seventh object (a ring at bottom-centre) that is not in the
-   illustration. Regenerating with the exact object inventory stated positively -
-   "the scene contains exactly seven objects and no others", each one named -
-   removed it. The shipped clip has a residual camera "breathing" (the assembly
-   scales about 10 to 15 percent twice per loop); judged minor and shipped rather
-   than spend a sixth time chasing a fully locked camera the model keeps resisting.
-
-**Check the middle, check direction, and scan every frame - not just the seam.**
-A clip whose last frame matches its first scores perfectly at the wrap no matter
-how wrong the middle is, and a reversed stitch scores *perfectly* by
-construction. Compare frame `t` against frame `T-t`, track something concrete
-across the clip, and to catch an invented object sample *every* frame (an extra
-object is a localised blob of new ink at one spot, camera scaling spreads ink
-evenly around the edges) - a 10-frame spot check misses a brief one.
+**They render without the browser-chrome frame.** `ModuleSpread` takes an
+`illustration` prop for this. Putting fake window dots around a drawing would
+present it as a real screen capture, which is the same class of dishonesty as the
+synthetic avatars below.
 
 ---
 
