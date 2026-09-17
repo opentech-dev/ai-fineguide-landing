@@ -83,14 +83,14 @@ prices workflow steps while none does.
 |---|---|---|
 | Extra seat | €20 / €18 / €15 per month | `NEW_LADDER_2026[].extraSeatPrice` |
 | Extra credits | €45 / €40 / €30 / €24 per 1,000 | `NEW_LADDER_2026[].additionalMessagePrice` |
-| Context Pack | €20 / month, +5M characters | `STORAGE_PACKS['kb-context-5m']` |
+| Context Pack | €5 / month, +5M characters | `StoragePackCatalog` row `kb-context-5m` (admin-editable; `STORAGE_PACKS` in code is the seed default) |
 
 Every Context Pack claim on the page traces to source, so the copy is accurate
 as a product description regardless of the rollout state below:
 
 | Page says | Source |
 |---|---|
-| €20 per pack per month | `priceEur: 20` (and the Stripe price is created from this exact value) |
+| €5 per pack per month | `priceEur: 5` (and the Stripe price is created from this exact value) |
 | +5M characters | `capacity: 5_000_000` |
 | ≈1,000 documents | the product's own `displayHint`, verbatim |
 | billed monthly | `interval: 'month'` |

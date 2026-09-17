@@ -52,8 +52,8 @@ export const PLANS = [
   { monthly: 500, usdMonthly: 589, topup: 24, usdTopup: 28, seat: 15, usdSeat: 18, yearly: true },
 ] as const;
 
-export const PACK_PRICE = 20;
-export const USD_PACK_PRICE = 23;
+export const PACK_PRICE = 5;
+export const USD_PACK_PRICE = 6;
 
 export interface Money {
   eur: number;
