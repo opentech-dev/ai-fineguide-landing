@@ -94,8 +94,11 @@ table.
 
 | File | Slot | What it shows |
 |---|---|---|
-| `illustrations/crm-record.jpg` | homepage CRM spread (`ModuleSpread`, tint band) | One customer record on a plinth, ringed by five connected objects: a speech bubble, a bar chart, a tick tile, a sound waveform, stepped blocks. |
 | `illustrations/voiceqa-scoring-dark.jpg` | homepage Voice spread (`VoiceSpread`, dark band) | A recording, a transcript, a score ring, left to right. Rendered on the band's own dark ground. |
+
+`illustrations/crm-record.jpg` used to sit in the homepage CRM spread. That slot
+is text-only now: `ModuleSpread` widens its text column from 5 to 7 spans when no
+image is passed, so the band still reads as a full section. The file is deleted.
 
 **How they were made, so they can be reproduced.** Nano Banana Pro, soft matte 3D
 render, true isometric, camera above and to the left. Form defined purely by
@@ -108,10 +111,11 @@ unprompted. No text of any kind, per the rule at the top of this file.
 **Backgrounds are matched to their band on purpose.** A generated image will not
 land on an exact flat hex, and a background that *nearly* matches reads as a
 mistake where an obvious frame would have read as deliberate. Each file was
-measured at its four corners and two edge midpoints against the band colour, and
-`crm-record.jpg` was corrected with a per-channel multiplier until it sat within
-4 of `--color-tint` `#f2effc`. `voiceqa-scoring-dark.jpg` lands within 4 of the
-dark band's `#0f1117` unaided. Re-measure after regenerating either one.
+measured at its four corners and two edge midpoints against the band colour.
+`voiceqa-scoring-dark.jpg` lands within 4 of the dark band's `#0f1117` unaided.
+Re-measure after regenerating it. (The now-deleted `crm-record.jpg` needed a
+per-channel multiplier to sit within 4 of `--color-tint` `#f2effc`, which is the
+correction to repeat if another tint-band illustration is ever added.)
 
 **They render without the browser-chrome frame.** `ModuleSpread` takes an
 `illustration` prop for this. Putting fake window dots around a drawing would
