@@ -33,7 +33,7 @@ Every plan runs on credits. AI replies and voice minutes use credits; the CRM, I
 
 **Monthly or yearly:** paid plans can be billed monthly or once a year. Yearly costs 20% less: Starter €960 a year (€80 a month), Business €1,920 (€160), Premium €4,800 (€400). Credits still arrive every month, extra credits are 15% cheaper (€34, €26 and €21 per 1,000), and extra seats are billed monthly. Monthly or yearly is chosen when subscribing; switching later means cancelling and subscribing again. Free has no yearly option.
 
-**What a credit buys:** 1 credit = one standard AI reply. Call scoring (Voice QA) = 12 credits a minute. AI phone calls (AI Telephony) = 10 credits a minute, or 30 with ElevenLabs voice agents.
+**What a credit buys:** 1 credit = one standard AI reply. Call scoring (Voice QA) = 12 credits a minute. AI phone calls (AI Telephony) = 10 credits a minute, or 30 on the premium agent engine.
 
 - **Free**: €0, forever. 200 credits, given once (they do not renew), about 200 AI replies. You + 1 teammate, no extra seats. Knowledge base about 200 documents (1M characters). Extra credits €45 per 1,000. Community support.
 - **Starter**: €100/month. 3,000 credits every month, about 3,000 AI replies or 250 minutes of call scoring. You + 3 teammates, then €20 per person a month. Knowledge base about 1,000 documents (5M characters). Extra credits €40 per 1,000. Email support.
