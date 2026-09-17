@@ -1,38 +1,7 @@
 ---
 import type { Translations, Lang } from '../i18n/utils';
 import { getLocalizedPath } from '../i18n/utils';
-
-interface Props {
-  t: Translations;
-  lang?: Lang;
-  /** Required: unlike a ModuleSpread, the hero is never text-only. Making these
-      required means a page that forgets them fails the type check rather than
-      shipping an empty src. */
-  image: string;
-  imageWidth: number;
-  imageHeight: number;
-  /** An illustration is not a screen capture, so it renders bare instead of
-      inside the product frame. Framing a drawing the same way we frame real
-      screenshots presents it as one. Same reasoning, and same prop name, as
-      ModuleSpread. */
-  illustration?: boolean;
-  /** An ambient looping clip shown in place of `image`. `image` stays required
-      alongside it: it is both the poster and what a visitor with reduced motion
-      sees instead. Silent, no controls - decoration, not media to operate. */
-  video?: string;
-  videoWebm?: string;
-}
-
-const {
-  t,
-  lang = 'en',
-  image,
-  imageWidth,
-  imageHeight,
-  illustration = false,
-  video,
-  videoWebm,
-} = Astro.props as Props;
+const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 ---
 
 <section class="pt-36 pb-12 md:pt-44 md:pb-20 px-6 overflow-hidden brand-glow">
@@ -61,64 +30,21 @@ const {
       </div>
     </div>
 
-    <!-- Right column: hero asset (overflows right edge).
-         This slot once held an intro video recorded on a live account: real
-         contacts, a customer call transcript, internal incident reports. Only
-         demo data or an illustration belongs here, and that holds for `video`
-         below just as much as for `image`. -->
+    <!-- Right column: product screenshot (overflows right edge).
+         This was an intro video recorded on a live account; it showed real
+         contacts, a customer call transcript and internal incident reports.
+         Only images captured from demo data belong here. -->
     <div class="lg:w-[58%] lg:mr-[calc(-8vw)] xl:mr-[calc(-14vw)] 2xl:mr-[calc(-18vw)]">
-      <!-- ModuleSpread's illustration mode clips with `rounded-xl
-           overflow-hidden` because its illustrations are opaque images whose
-           background is matched to the band behind them. This one carries its
-           own alpha and sits directly on the brand-glow gradient, so there is
-           no background to clip and a rounded corner would only chop the
-           artwork. No class at all here. -->
-      <figure class={illustration ? undefined : 'panel-frame'}>
-        {video ? (
-          <>
-            <video
-              autoplay
-              loop
-              muted
-              playsinline
-              poster={image}
-              width={imageWidth}
-              height={imageHeight}
-              aria-label={t.hero.imageAlt}
-              class="w-full h-auto block motion-reduce:hidden"
-            >
-              {videoWebm && <source src={videoWebm} type="video/webm" />}
-              {/* Type follows the extension. A WebM-only asset is deliberate
-                  rather than an oversight: H.264 in MP4 carries no alpha, so a
-                  transparent clip can only ship as VP9. Safari does not decode
-                  it, falls through to the poster, and gets the still - which is
-                  the same artwork, just not moving. */}
-              <source src={video} type={video.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
-            </video>
-            <img
-              src={image}
-              alt={t.hero.imageAlt}
-              width={imageWidth}
-              height={imageHeight}
-              class="w-full h-auto hidden motion-reduce:block"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </>
-        ) : (
-          <img
-            src={image}
-            alt={t.hero.imageAlt}
-            width={imageWidth}
-            height={imageHeight}
-            class="w-full h-auto block"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-        )}
-      </figure>
+      <div class="panel-frame">
+        <img
+          src="/images/hero-image.png"
+          alt="Fineguide assistant analytics: average score, score distribution, satisfaction and sentiment"
+          width="1420"
+          height="851"
+          class="w-full h-auto block"
+          loading="eager"
+        />
+      </div>
     </div>
   </div>
 </section>
