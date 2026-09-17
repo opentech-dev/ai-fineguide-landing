@@ -262,7 +262,7 @@ if (fs.existsSync(schemaPath)) {
     const copy = block[1].split('\n').filter((l) => !/^\s*\/\//.test(l)).join('\n');
     for (const [re, why] of VOICE_PAGE_BANNED) if (re.test(copy)) pageHits.push(`${locale}: ${why}`);
     const std = copy.match(/(\d+) (?:credits a minute|credite pe minut)/);
-    const premium = copy.match(/(\d+) (?:on|pe) ElevenLabs Agents/);
+    const premium = copy.match(/(\d+) (?:on the|pe motorul) premium/);
     pageRates[locale] = [std?.[1], premium?.[1]];
   }
   ok(pageHits.length === 0, `Voice AI page sells nothing the product lacks${pageHits.length ? ' -> ' + pageHits.join('; ') : ''}`);
@@ -277,7 +277,7 @@ if (fs.existsSync(schemaPath)) {
     .filter(([, [s, p]]) => s !== aiStd || p !== aiPremium)
     .map(([loc, [s, p]]) => `${loc}: page ${s}/${p}, config ${aiStd}/${aiPremium}`);
   ok(aiStd && aiPremium && rateBad.length === 0,
-     `Voice AI page rates match pricing-config (${aiStd} standard, ${aiPremium} ElevenLabs Agents)${rateBad.length ? ' -> ' + rateBad.join('; ') : ''}`);
+     `Voice AI page rates match pricing-config (${aiStd} standard, ${aiPremium} premium engine)${rateBad.length ? ' -> ' + rateBad.join('; ') : ''}`);
   ok(minSeconds === '60', `Voice AI page "one-minute minimum" matches MINIMUM_BILLABLE_SECONDS (${minSeconds})`);
 }
 

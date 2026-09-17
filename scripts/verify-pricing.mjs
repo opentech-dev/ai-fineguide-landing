@@ -129,7 +129,7 @@ const BANNED = [
   [/advanced analytics|analiz[ăa] avansat[ăa]/i, 'no plan gates analytics'],
   [/API (&amp;|&) webhooks access|acces API/i, 'no plan gates the API'],
   [/All AI modules included|toate modulele AI incluse/i, 'module access is not a per-plan difference'],
-  [/premium voices?|voci premium/i, 'the 30-credit rate is the ElevenLabs voice-agent engine only'],
+  [/premium voices?|voci premium/i, 'the 30-credit rate is one voice-agent engine, not a voice tier'],
   [/switch (between|from) monthly (and|to) yearly (at any time|anytime)/i, 'an existing subscription cannot change billing period'],
 ];
 
@@ -261,7 +261,7 @@ for (const [loc, L] of Object.entries(LOCALES)) {
   ck(`${loc} Context Pack +${packCapacity / 1e6}M`, new RegExp(`\\+${packCapacity / 1e6}M ${L.chars}`).test(text), `+${packCapacity / 1e6}M`);
   ck(`${loc} Voice QA ${voiceQa} ${L.credits}`, text.includes(`${voiceQa} ${L.credits}`), `${voiceQa}`);
   ck(`${loc} Voice AI ${voiceAi} ${L.credits}`, text.includes(`${voiceAi} ${L.credits}`), `${voiceAi}`);
-  ck(`${loc} ElevenLabs rate ${voiceEleven}`, new RegExp(`${voiceEleven}[^.]{0,20}ElevenLabs`).test(text), `${voiceEleven}`);
+  ck(`${loc} premium-engine rate ${voiceEleven}`, new RegExp(`${voiceEleven}[^.]{0,24}premium`, 'i').test(text), `${voiceEleven}`);
   ck(`${loc} has a monthly/yearly switch`, /data-set-period="yearly"/.test(raw), 'data-set-period');
   ck(`${loc} ${L.currencies.includes('usd') ? 'has' : 'has no'} a currency switch`,
     /data-set-currency="usd"/.test(raw) === L.currencies.includes('usd'), 'data-set-currency');

@@ -643,7 +643,7 @@ export const en = {
         },
         {
           term: 'Rates',
-          desc: '10 credits a minute on OpenAI, Gemini or the Gemini-plus-voice engine, and 30 on ElevenLabs Agents, unless your plan sets its own rates.',
+          desc: '10 credits a minute on OpenAI, Gemini or the Gemini-plus-voice engine, and 30 on the premium agent engine, unless your plan sets its own rates.',
         },
         {
           term: 'No surprise bills',
@@ -1245,7 +1245,7 @@ export const en = {
     items: [
       { value: '1 credit', term: 'AI reply', desc: 'A standard reply from an assistant, in any channel.' },
       { value: '12 credits', term: 'A minute of call scoring', desc: 'Voice QA transcribes a call and scores it against your criteria.' },
-      { value: '10 credits', term: 'A minute of AI phone call', desc: 'AI Telephony answering or making a call. 30 a minute with ElevenLabs voice agents.' },
+      { value: '10 credits', term: 'A minute of AI phone call', desc: 'AI Telephony answering or making a call. 30 a minute on the premium agent engine.' },
       { value: '0 credits', term: 'Everything else', desc: 'CRM, Inbox, Messages, workflows and reports.' },
     ],
   },
@@ -1411,7 +1411,7 @@ export const en = {
       },
       {
         term: 'AI phone calls',
-        desc: 'Counted from the moment the call is answered, not while it rings, with a one-minute minimum. 10 credits a minute, or 30 with ElevenLabs voice agents. Voice chats in your website widget count as AI replies.',
+        desc: 'Counted from the moment the call is answered, not while it rings, with a one-minute minimum. 10 credits a minute, or 30 on the premium agent engine. Voice chats in your website widget count as AI replies.',
       },
       {
         term: 'Always free',
@@ -1441,7 +1441,7 @@ export const en = {
     subtitle: 'The rules, in plain words.',
     currency: { q: 'Which currency am I charged in?', a: 'Euro, for now. Dollar prices are the euro prices converted and rounded, shown for reference. If you subscribe, you pay the euro price.' },
     items: [
-      { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 with ElevenLabs voice agents. Everything else on the platform is included in your plan.' },
+      { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 on the premium agent engine. Everything else on the platform is included in your plan.' },
       { q: 'Do unused credits carry over?', a: 'No. On a paid plan your credits refresh on each billing date, and anything unused does not carry over. The 200 credits on Free are given once and do not refresh.' },
       { q: 'What happens to credits I buy?', a: 'They add to your balance and have no expiry date, but they belong to your current plan. If you change plan or cancel, unused credits you bought do not move with you.' },
       { q: 'Can I change plan?', a: 'Yes, at any time. Moving from Free to a paid plan starts straight away. Moving between paid plans, up or down, takes effect on your next billing date.' },

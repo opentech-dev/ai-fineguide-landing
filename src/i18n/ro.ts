@@ -882,7 +882,7 @@ export const ro: Translations = {
         },
         {
           term: 'Tarife',
-          desc: '10 credite pe minut pe OpenAI, Gemini sau motorul Gemini cu voce separată și 30 pe ElevenLabs Agents, dacă planul tău nu are tarife proprii.',
+          desc: '10 credite pe minut pe OpenAI, Gemini sau motorul Gemini cu voce separată și 30 pe motorul premium de agenți, dacă planul tău nu are tarife proprii.',
         },
         {
           term: 'Fără facturi surpriză',
@@ -1219,7 +1219,7 @@ export const ro: Translations = {
     items: [
       { value: '1 credit', term: 'Un răspuns AI', desc: 'Un răspuns obișnuit al unui asistent, pe orice canal.' },
       { value: '12 credite', term: 'Un minut de evaluare a apelurilor', desc: 'Voice QA transcrie apelul și îl evaluează după criteriile tale.' },
-      { value: '10 credite', term: 'Un minut de apel telefonic AI', desc: 'Telefonia AI răspunde sau sună. 30 pe minut cu agenții vocali ElevenLabs.' },
+      { value: '10 credite', term: 'Un minut de apel telefonic AI', desc: 'Telefonia AI răspunde sau sună. 30 pe minut pe motorul premium de agenți.' },
       { value: '0 credite', term: 'Tot restul', desc: 'CRM, Inbox, Mesaje, workflow-uri și rapoarte.' },
     ],
   },
@@ -1373,7 +1373,7 @@ export const ro: Translations = {
       },
       {
         term: 'Apeluri telefonice AI',
-        desc: 'Se numără din momentul în care se răspunde, nu cât timp sună, cu minimum un minut. 10 credite pe minut sau 30 cu agenții vocali ElevenLabs. Conversațiile vocale din widgetul site-ului se numără ca răspunsuri AI.',
+        desc: 'Se numără din momentul în care se răspunde, nu cât timp sună, cu minimum un minut. 10 credite pe minut sau 30 pe motorul premium de agenți. Conversațiile vocale din widgetul site-ului se numără ca răspunsuri AI.',
       },
       {
         term: 'Mereu gratuit',
@@ -1399,7 +1399,7 @@ export const ro: Translations = {
     subtitle: 'Regulile, pe înțelesul tuturor.',
     currency: { q: 'În ce monedă plătesc?', a: 'În euro. Dacă vezi prețurile în dolari americani, cardul este debitat cu aceeași sumă în euro.' },
     items: [
-      { q: 'Ce este un credit?', a: 'Creditele plătesc munca făcută de AI. Un răspuns AI obișnuit costă 1 credit, un minut de evaluare a apelurilor 12, iar un minut de apel telefonic AI 10, sau 30 cu agenții vocali ElevenLabs. Tot restul platformei este inclus în plan.' },
+      { q: 'Ce este un credit?', a: 'Creditele plătesc munca făcută de AI. Un răspuns AI obișnuit costă 1 credit, un minut de evaluare a apelurilor 12, iar un minut de apel telefonic AI 10, sau 30 pe motorul premium de agenți. Tot restul platformei este inclus în plan.' },
       { q: 'Creditele nefolosite se reportează?', a: 'Nu. Pe un plan plătit creditele se reîncarcă la fiecare dată de facturare, iar ce nu ai folosit nu se reportează. Cele 200 de credite de pe Free se primesc o singură dată și nu se reîncarcă.' },
       { q: 'Ce se întâmplă cu creditele cumpărate?', a: 'Se adaugă la sold și nu au dată de expirare, dar aparțin planului tău actual. Dacă schimbi planul sau anulezi, creditele cumpărate și nefolosite nu se mută cu tine.' },
       { q: 'Pot schimba planul?', a: 'Da, oricând. Trecerea de la Free la un plan plătit începe imediat. Trecerea între planuri plătite, în sus sau în jos, se aplică de la următoarea dată de facturare.' },
