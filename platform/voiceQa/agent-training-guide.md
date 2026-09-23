@@ -490,7 +490,7 @@ A: Performance trends can be viewed in the Statistics tab by adjusting the date 
 - [VoiceQA API Documentation](https://api.fineguide.ai/docs)
 - [Video Tutorials](https://fineguide.ai/tutorials)
 - [Knowledge Base](https://support.fineguide.ai)
-- [Contact Support](mailto:support@fineguide.ai)
+- [Contact Support](mailto:contact@fineguide.ai)
 
 ---
 
