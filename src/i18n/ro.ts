@@ -1515,16 +1515,16 @@ export const ro: Translations = {
 
   // --- Partners Page ---
   partnersMeta: {
-    title: 'Program de parteneriat: recomandă sau revinde | Fineguide.ai',
+    title: 'Program de parteneriat: comision de 30% | Fineguide.ai',
     description:
-      'Devino partener Fineguide. Câștigi 30% din fiecare factură plătită de clienții aduși de tine sau revinzi platforma clienților tăi la prețuri de partener.',
+      'Devino partener Fineguide. Câștigi 30% din fiecare factură plătită de clienții aduși de tine și poți ceda o parte din ea ca reducere pentru ei.',
   },
   partnersPage: {
     hero: {
       title: 'Crește alături de',
       titleAccent: ' Fineguide.',
       subtitle:
-        'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești 30% din fiecare factură pe care o plătesc sau revinzi platforma și gestionezi tu facturarea.',
+        'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești 30% din fiecare factură pe care o plătesc și, dacă vrei, le oferi o parte din ea ca reducere.',
       cta: 'Devino partener',
     },
     commission: {
@@ -1534,21 +1534,19 @@ export const ro: Translations = {
       body:
         'Nu este un bonus unic de recomandare. În fiecare lună în care un client adus de tine plătește Fineguide, 30% din factură este al tău, cât timp rămâne client.',
     },
-    tracks: {
-      eyebrow: 'Două moduri de colaborare',
-      heading: 'Recomanzi clienți sau le revinzi platforma.',
+    discounts: {
+      eyebrow: 'Reduceri pentru clienții tăi',
+      heading: 'Păstrezi tot 30% sau îl împarți.',
       body:
-        'Alege modelul care se potrivește felului în care lucrezi deja cu clienții. Ambele încep cu aceeași discuție scurtă.',
-      items: [
-        {
-          title: 'Partener de recomandare',
-          body: 'Tu aduci clientul, el își face cont și plătește direct către Fineguide. Primești 30% din fiecare factură plătită, cât timp rămâne client.',
-        },
-        {
-          title: 'Revânzător',
-          body: 'Relația cu clientul rămâne a ta. Clienții tăi folosesc Fineguide normal, iar noi îți trimitem o singură situație pe lună pentru tot consumul lor, la prețuri de partener. Tu îți stabilești prețurile și îi facturezi direct.',
-        },
+        'Cei 30% sunt ai tăi și îi împarți cum vrei. Îi păstrezi integral sau oferi clienților aduși de tine o reducere din ei, ca să închizi mai ușor vânzarea. Alegi reducerea pentru fiecare client, iar partea ta se calculează mereu din prețul de listă.',
+      discountLabel: 'Reducere client',
+      keepLabel: 'Păstrezi',
+      rows: [
+        { discount: '0%', keep: '30%' },
+        { discount: '10%', keep: '20%' },
+        { discount: '20%', keep: '10%' },
       ],
+      example: 'La fiecare €100 din prețul de listă, cu o reducere de 10%, clientul tău plătește €90, iar €20 sunt ai tăi.',
     },
     earnings: {
       eyebrow: 'Cum câștigi',
@@ -1574,17 +1572,6 @@ export const ro: Translations = {
         },
       ],
     },
-    reselling: {
-      eyebrow: 'Revânzare',
-      heading: 'Clienții tăi, prețurile tale.',
-      body:
-        'Pentru partenerii care vând Fineguide ca parte din propriile servicii. Stabilim împreună prețurile de partener de la început, măsurăm normal consumul fiecărui client și te facturăm o dată pe lună. Cât le ceri clienților tăi decizi tu.',
-      items: [
-        'Prețuri de partener stabilite cu tine înainte de primul client',
-        'O singură situație lunară pentru toți clienții tăi',
-        'Prețurile tale și contractele tale cu clienții',
-      ],
-    },
     audience: {
       eyebrow: 'Pentru cine este',
       heading: 'Pentru cei care consiliază deja afaceri.',
@@ -1604,11 +1591,11 @@ export const ro: Translations = {
       items: [
         {
           title: 'Spune-ne despre tine',
-          body: 'Compania ta, clienții cu care lucrezi și dacă vrei să recomanzi sau să revinzi.',
+          body: 'Compania ta, clienții cu care lucrezi și cum plănuiești să le aduci Fineguide.',
         },
         {
           title: 'Stabilim condițiile',
-          body: 'Analizăm fiecare cerere și îți stabilim procentul de comision sau prețurile de partener, dacă revinzi.',
+          body: 'Analizăm fiecare cerere și îți activăm contul de partener cu un comision de 30%.',
         },
         {
           title: 'Începi să aduci clienți',
