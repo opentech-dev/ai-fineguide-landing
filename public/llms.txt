@@ -75,7 +75,7 @@ Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCR
 - [Workspace](https://fineguide.ai/workspace): Block-based documents and team knowledge that live alongside the customer record.
 - [Pricing](https://fineguide.ai/pricing): Plans from €0 to €500 a month, what each includes, and what a credit buys; start free with 200 credits.
 - [Enterprise](https://fineguide.ai/enterprise): On-premise deployment, custom plans, platform adaptation, and consultancy for teams at scale.
-- [Partners](https://fineguide.ai/partners): Partner program for agencies, integrators and consultants: earn commission on every invoice of the customers you refer, or resell Fineguide at partner rates.
+- [Partners](https://fineguide.ai/partners): Partner program for agencies, integrators and consultants: earn 30% of every invoice the customers you refer pay, for as long as they stay, or resell Fineguide at partner rates.
 - [Schedule a demo](https://fineguide.ai/schedule-demo): Book a 15-minute walkthrough of Fineguide on your operation.
 - [Contact](https://fineguide.ai/contact): Get in touch with the Fineguide team.
 
