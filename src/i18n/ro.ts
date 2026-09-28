@@ -1548,6 +1548,19 @@ export const ro: Translations = {
       ],
       example: 'La fiecare €100 din prețul de listă, cu o reducere de 10%, clientul tău plătește €90, iar €20 sunt ai tăi.',
     },
+    whyBuy: {
+      eyebrow: 'De ce vor cumpăra clienții tăi',
+      heading: 'Ușor de început, cu o platformă întreagă în care să crească.',
+      body:
+        'Nu vinzi un singur instrument. Fineguide reunește asistenți AI, un CRM comun, apeluri și cunoștințele echipei pe o singură platformă, iar clienții tăi pot începe pe planul Free, cu 200 de credite și fără card, apoi trec la un plan plătit când se amortizează.',
+      items: [
+        { title: 'Asistenți AI', body: 'Răspund clienților pe web, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord.', href: '/ai-assistants' },
+        { title: 'CRM', body: 'Conversațiile, lead-urile și sarcinile pe aceeași fișă de client.', href: '/crm' },
+        { title: 'Voice QA', body: 'Fiecare apel transcris și evaluat după criteriile stabilite de fiecare departament.', href: '/voice-qa' },
+        { title: 'Telefonie AI', body: 'Agenți AI în apeluri live, primite și inițiate.', href: '/voice-ai' },
+      ],
+      linkLabel: 'Descoperă platforma',
+    },
     earnings: {
       eyebrow: 'Cum câștigi',
       heading: 'Comision pe care îl poți verifica, factură cu factură.',
@@ -1601,6 +1614,16 @@ export const ro: Translations = {
           title: 'Începi să aduci clienți',
           body: 'Primești acces la portalul de parteneri și codul tău de recomandare, iar fiecare client adus de tine este urmărit din prima zi.',
         },
+      ],
+    },
+    faq: {
+      heading: 'Întrebări frecvente ale partenerilor',
+      items: [
+        { q: 'Cât timp primesc comision?', a: 'Cât timp clientul continuă să plătească. Nu există o dată de expirare, așa că primești comision lună de lună, nu doar în primul an.' },
+        { q: 'Cum și când sunt plătit?', a: 'Soldul tău crește pe măsură ce clienții plătesc. Când ajunge la €100 îl poți retrage din portalul de parteneri sau poți transforma oricând orice parte din el în credite Fineguide.' },
+        { q: 'Cum funcționează reducerile pentru clienții mei?', a: 'Stabilești în portalul de parteneri o reducere pentru fiecare client, de până la 30%. Ea se scade din partea ta: dacă îi oferi unui client 10% reducere, păstrezi 20% din prețul de listă.' },
+        { q: 'Ce se întâmplă dacă un client renunță?', a: 'Comisionul se oprește când se opresc plățile lui. Tot ce ai câștigat până atunci rămâne în soldul tău.' },
+        { q: 'Costă ceva să devin partener?', a: 'Nu. Parteneriatul este gratuit.' },
       ],
     },
     contactBlock: {
