@@ -73,29 +73,40 @@ const mailto = `mailto:${p.contactBlock.email}?subject=${encodeURIComponent(p.co
       </div>
     </section>
 
-    <!-- Two tracks -->
+    <!-- Client discounts, carved out of the partner's 30% -->
     <section class="py-20 md:py-28 px-6">
-      <div class="max-w-7xl mx-auto">
-        <p class="eyebrow mb-5">
-          {p.tracks.eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
-          {p.tracks.heading}
-        </h2>
-        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-          {p.tracks.body}
-        </p>
-        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {p.tracks.items.map((item) => (
-            <div class="border-t border-[var(--color-border)] pt-5">
-              <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">
-                {item.title}
-              </h3>
-              <p class="mt-3 text-lg text-[var(--color-muted)] leading-relaxed">
-                {item.body}
-              </p>
-            </div>
-          ))}
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-6">
+          <p class="eyebrow mb-5">
+            {p.discounts.eyebrow}
+          </p>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)] text-balance">
+            {p.discounts.heading}
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+            {p.discounts.body}
+          </p>
+        </div>
+        <div class="lg:col-span-6">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-[var(--color-border)]">
+                <th scope="col" class="eyebrow pb-4 font-semibold">{p.discounts.discountLabel}</th>
+                <th scope="col" class="eyebrow pb-4 font-semibold">{p.discounts.keepLabel}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {p.discounts.rows.map((row) => (
+                <tr class="border-b border-[var(--color-border)]">
+                  <td class="py-6 font-[var(--font-display)] text-4xl md:text-5xl font-semibold tracking-tight text-[var(--color-foreground)] tabular-nums">{row.discount}</td>
+                  <td class="py-6 font-[var(--font-display)] text-4xl md:text-5xl font-semibold tracking-tight text-[var(--color-primary)] tabular-nums">{row.keep}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="mt-6 text-base text-[var(--color-muted)] leading-relaxed">
+            {p.discounts.example}
+          </p>
         </div>
       </div>
     </section>
@@ -124,26 +135,6 @@ const mailto = `mailto:${p.contactBlock.email}?subject=${encodeURIComponent(p.co
             </div>
           ))}
         </div>
-      </div>
-    </section>
-
-    <!-- Reselling -->
-    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
-      <div class="max-w-7xl mx-auto">
-        <p class="eyebrow mb-5">
-          {p.reselling.eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
-          {p.reselling.heading}
-        </h2>
-        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-          {p.reselling.body}
-        </p>
-        <ul class="mt-12 space-y-5 max-w-3xl">
-          {p.reselling.items.map((item) => (
-            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
-          ))}
-        </ul>
       </div>
     </section>
 

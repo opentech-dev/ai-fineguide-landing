@@ -1557,22 +1557,23 @@ export const en = {
 
   // --- Partners Page ---
   // Every claim here is backed by the partner module in ai-backoffice-api
-  // (modules/payment/partner). Client discounts are left out on purpose: they sit
-  // behind PARTNER_CLIENT_DISCOUNTS_ENABLED, so the page cannot promise them.
-  // The 30% rate is the business's offer. It is honoured by the commission percent
-  // stamped on each partner at approval, so it must match what admins approve at
-  // (PARTNER_COMMISSION_DEFAULT_PERCENT is what applies when they leave it blank).
+  // (modules/payment/partner). The 30% is the partner's margin: it is stamped on
+  // each partner at approval, so admins must approve at 30%
+  // (PARTNER_COMMISSION_DEFAULT_PERCENT applies when they leave it blank). A
+  // client discount comes out of that margin and commission is taken on list
+  // price (splitMargin / splitInvoice), which is what the discount table shows.
+  // Discounts only reach the client while PARTNER_CLIENT_DISCOUNTS_ENABLED is on.
   partnersMeta: {
-    title: 'Partner Program: Refer or Resell | Fineguide.ai',
+    title: 'Partner Program: Earn 30% Commission | Fineguide.ai',
     description:
-      'Become a Fineguide partner. Earn 30% of every invoice the customers you bring pay, or resell the platform to your clients at partner rates.',
+      'Become a Fineguide partner. Earn 30% of every invoice the customers you bring pay, and pass part of it on to them as a discount if you choose.',
   },
   partnersPage: {
     hero: {
       title: 'Grow with',
       titleAccent: ' Fineguide.',
       subtitle:
-        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn 30% of every invoice they pay, or resell the platform and own the billing yourself.',
+        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn 30% of every invoice they pay, and share part of it with them as a discount if you choose.',
       cta: 'Become a partner',
     },
     commission: {
@@ -1582,21 +1583,19 @@ export const en = {
       body:
         'Not a one-off referral fee. Every month a customer you brought pays Fineguide, 30% of that invoice is yours, for as long as they stay.',
     },
-    tracks: {
-      eyebrow: 'Two ways to partner',
-      heading: 'Refer customers, or resell to them.',
+    discounts: {
+      eyebrow: 'Discounts for your clients',
+      heading: 'Keep all 30%, or share it.',
       body:
-        'Pick the model that fits how you already work with clients. Both start with the same short conversation.',
-      items: [
-        {
-          title: 'Referral partner',
-          body: 'You introduce the customer, they sign up and pay Fineguide directly. You earn 30% of every invoice they pay, for as long as they stay a customer.',
-        },
-        {
-          title: 'Reseller',
-          body: 'You own the client relationship. Your clients use Fineguide as normal, and we send you one statement a month for all of their usage at partner rates. You set your prices and bill them yourself.',
-        },
+        'Your 30% is yours to split. Keep all of it, or give the clients you bring a discount out of it to help close the deal. You choose the discount for each client, and your share is always worked out on the list price.',
+      discountLabel: 'Client discount',
+      keepLabel: 'You keep',
+      rows: [
+        { discount: '0%', keep: '30%' },
+        { discount: '10%', keep: '20%' },
+        { discount: '20%', keep: '10%' },
       ],
+      example: 'For every €100 of list price with a 10% discount, your client pays €90 and €20 is yours.',
     },
     earnings: {
       eyebrow: 'How you earn',
@@ -1622,17 +1621,6 @@ export const en = {
         },
       ],
     },
-    reselling: {
-      eyebrow: 'Reselling',
-      heading: 'Your clients, your prices.',
-      body:
-        'For partners who sell Fineguide as part of their own service. We agree partner rates with you up front, meter each client\'s usage as normal and bill you once a month. What you charge your clients is up to you.',
-      items: [
-        'Partner rates agreed with you before the first client',
-        'One monthly statement covering all of your clients',
-        'Your own pricing and your own client contracts',
-      ],
-    },
     audience: {
       eyebrow: 'Who it is for',
       heading: 'Made for people who already advise businesses.',
@@ -1652,11 +1640,11 @@ export const en = {
       items: [
         {
           title: 'Tell us about you',
-          body: 'Your company, the clients you work with, and whether you want to refer or resell.',
+          body: 'Your company, the clients you work with, and how you plan to bring Fineguide to them.',
         },
         {
           title: 'Agree the terms',
-          body: 'We review every application and set your commission rate, or your partner rates if you resell.',
+          body: 'We review every application and set up your partner account at 30% commission.',
         },
         {
           title: 'Start bringing clients',
