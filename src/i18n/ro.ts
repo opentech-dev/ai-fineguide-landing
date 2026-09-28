@@ -31,6 +31,7 @@ export const ro: Translations = {
     company: 'Companie',
     scheduleDemo: 'Programează un demo',
     enterprise: 'Enterprise',
+    partners: 'Parteneri',
     contact: 'Contact',
     privacy: 'Confidențialitate',
     terms: 'Termeni',
@@ -1509,6 +1510,118 @@ export const ro: Translations = {
       heading: 'Când ești gata, suntem aici.',
       subtitle: 'Scrie-ne, iar noi ne ocupăm de rest.',
       ctaLabel: 'Contactează echipa de vânzări',
+    },
+  },
+
+  // --- Partners Page ---
+  partnersMeta: {
+    title: 'Program de parteneriat: recomandă sau revinde | Fineguide.ai',
+    description:
+      'Devino partener Fineguide. Câștigi comision din fiecare factură plătită de clienții aduși de tine sau revinzi platforma clienților tăi la prețuri de partener.',
+  },
+  partnersPage: {
+    hero: {
+      title: 'Crește alături de',
+      titleAccent: ' Fineguide.',
+      subtitle:
+        'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești o parte din fiecare factură pe care o plătesc sau revinzi platforma și gestionezi tu facturarea.',
+      cta: 'Devino partener',
+    },
+    tracks: {
+      eyebrow: 'Două moduri de colaborare',
+      heading: 'Recomanzi clienți sau le revinzi platforma.',
+      body:
+        'Alege modelul care se potrivește felului în care lucrezi deja cu clienții. Ambele încep cu aceeași discuție scurtă.',
+      items: [
+        {
+          title: 'Partener de recomandare',
+          body: 'Tu aduci clientul, el își face cont și plătește direct către Fineguide. Primești comision din fiecare factură plătită, cât timp rămâne client. Partenerii noi pornesc de la 20%.',
+        },
+        {
+          title: 'Revânzător',
+          body: 'Relația cu clientul rămâne a ta. Clienții tăi folosesc Fineguide normal, iar noi îți trimitem o singură situație pe lună pentru tot consumul lor, la prețuri de partener. Tu îți stabilești prețurile și îi facturezi direct.',
+        },
+      ],
+    },
+    earnings: {
+      eyebrow: 'Cum câștigi',
+      heading: 'Comision pe care îl poți verifica, factură cu factură.',
+      body:
+        'Fiecare factură plătită de un client adus de tine se adaugă la soldul tău. Procentul se înregistrează pe fiecare plată în momentul în care o câștigi, așa că o schimbare ulterioară a procentului nu modifică ce ai câștigat deja.',
+      items: [
+        {
+          title: 'Fără dată de expirare',
+          body: 'Primești comision din fiecare factură pe care o plătește clientul tău, lună de lună, nu doar din prima.',
+        },
+        {
+          title: 'Clienții rămân ai tăi',
+          body: 'Primești un cod de recomandare. Odată legat de tine, un cont rămâne legat de tine și nu este mutat niciodată la alt partener.',
+        },
+        {
+          title: 'Bani sau credite',
+          body: 'Retragi soldul în euro când ajunge la €100 sau transformi orice parte din el în credite Fineguide pentru contul tău.',
+        },
+        {
+          title: 'Un portal doar al tău',
+          body: 'partners.fineguide.ai îți arată clienții, fiecare comision și fiecare plată, și exportă registrul comisioanelor oricând ai nevoie.',
+        },
+      ],
+    },
+    reselling: {
+      eyebrow: 'Revânzare',
+      heading: 'Clienții tăi, prețurile tale.',
+      body:
+        'Pentru partenerii care vând Fineguide ca parte din propriile servicii. Stabilim împreună prețurile de partener de la început, măsurăm normal consumul fiecărui client și te facturăm o dată pe lună. Cât le ceri clienților tăi decizi tu.',
+      items: [
+        'Prețuri de partener stabilite cu tine înainte de primul client',
+        'O singură situație lunară pentru toți clienții tăi',
+        'Prețurile tale și contractele tale cu clienții',
+      ],
+    },
+    audience: {
+      eyebrow: 'Pentru cine este',
+      heading: 'Pentru cei care consiliază deja afaceri.',
+      body:
+        'De obicei, partenerii sunt aproape de client cu mult înaintea noastră. Dacă clienții te întreabă despre suport, vânzări sau call center, Fineguide îți oferă ceva concret de pus în fața lor.',
+      items: [
+        'Agenții digitale și de marketing',
+        'Integratori software și firme de consultanță IT',
+        'Consultanți pentru call center și suport clienți',
+        'Specialiști în CRM și automatizări',
+      ],
+    },
+    steps: {
+      eyebrow: 'Cum te alături',
+      heading: 'Trei pași până la primul client.',
+      items: [
+        {
+          title: 'Spune-ne despre tine',
+          body: 'Compania ta, clienții cu care lucrezi și dacă vrei să recomanzi sau să revinzi.',
+        },
+        {
+          title: 'Stabilim condițiile',
+          body: 'Analizăm fiecare cerere și îți stabilim procentul de comision sau prețurile de partener, dacă revinzi.',
+        },
+        {
+          title: 'Începi să aduci clienți',
+          body: 'Primești acces la portalul de parteneri și codul tău de recomandare, iar fiecare client adus de tine este urmărit din prima zi.',
+        },
+      ],
+    },
+    contactBlock: {
+      heading: 'Devino partener.',
+      subtitle:
+        'Scrie-ne numele companiei, site-ul și ce fel de clienți ai. Revenim în cel mult o zi lucrătoare.',
+      emailLabel: 'Email',
+      email: 'contact@fineguide.ai',
+      emailSubject: 'Parteneriat',
+      callLabel: 'Preferi să vorbim întâi?',
+      ctaLabel: 'Programează o discuție',
+    },
+    finalCta: {
+      heading: 'Adu Fineguide clienților tăi.',
+      subtitle: 'Spune-ne cum lucrezi și construim parteneriatul în jurul acestui lucru.',
+      ctaLabel: 'Devino partener',
     },
   },
 

@@ -102,6 +102,15 @@
     </url>
 
     <url>
+        <loc>https://fineguide.ai/partners</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fineguide.ai/partners" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://fineguide.ai/ro/partners" />
+    </url>
+
+    <url>
         <loc>https://fineguide.ai/schedule-demo</loc>
         <lastmod>2026-06-06</lastmod>
         <changefreq>weekly</changefreq>
@@ -213,6 +222,13 @@
         <lastmod>2026-06-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://fineguide.ai/ro/partners</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 
     <url>
