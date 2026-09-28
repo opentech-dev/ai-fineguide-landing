@@ -16,31 +16,40 @@ const mailto = `mailto:${p.contactBlock.email}?subject=${encodeURIComponent(p.co
 
   <main id="main-content">
     <!-- Hero -->
-    <section class="pt-36 pb-20 md:pt-44 md:pb-28 px-6">
-      <div class="max-w-7xl mx-auto">
-        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
-          {p.hero.title}
-          <span class="text-[var(--color-primary)]">{p.hero.titleAccent}</span>
-        </h1>
-        <p class="mt-8 max-w-5xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">
-          {p.hero.subtitle}
-        </p>
-        <div class="mt-12">
-          <a
-            href={mailto}
-            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
-          >
-            {p.hero.cta}
-          </a>
+    <!-- The photo is decorative behind the headline, so it carries no alt text,
+         the same as the homepage closing band. -->
+    <section class="relative isolate overflow-hidden px-6 pt-40 pb-24 md:pt-48 md:pb-32 min-h-[640px] md:min-h-[88vh] flex items-center">
+      <img
+        src="/images/photos/partner-handshake.jpg"
+        alt=""
+        aria-hidden="true"
+        width="1672"
+        height="941"
+        class="absolute inset-0 -z-20 w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 -z-10 hero-photo-scrim"></div>
+
+      <div class="relative w-full max-w-7xl mx-auto">
+        <div class="max-w-2xl">
+          <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[1.02] text-white">
+            {p.hero.title}
+            <span class="text-[#c7b8ff]">{p.hero.titleAccent}</span>
+          </h1>
+          <p class="mt-8 max-w-xl text-xl md:text-2xl text-white/85 leading-relaxed">
+            {p.hero.subtitle}
+          </p>
+          <div class="mt-12">
+            <a
+              href={mailto}
+              class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[var(--color-primary)] bg-white hover:bg-white/90 rounded-lg transition-all"
+            >
+              {p.hero.cta}
+            </a>
+          </div>
         </div>
-        <img
-          src="/images/photos/partner-handshake.jpg"
-          alt={p.hero.imageAlt}
-          width="1672"
-          height="941"
-          class="mt-16 md:mt-20 w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
-          loading="eager"
-        />
       </div>
     </section>
 
