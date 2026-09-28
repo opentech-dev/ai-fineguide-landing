@@ -1597,6 +1597,19 @@ export const en = {
       ],
       example: 'For every €100 of list price with a 10% discount, your client pays €90 and €20 is yours.',
     },
+    whyBuy: {
+      eyebrow: 'Why your clients will buy',
+      heading: 'Easy to start, with a whole platform to grow into.',
+      body:
+        'You are not selling a single tool. Fineguide brings AI assistants, a shared CRM, voice and team knowledge onto one platform, and your clients can start on the Free plan with 200 credits and no card, then upgrade when it pays for itself.',
+      items: [
+        { title: 'AI Assistants', body: 'Answer customers on the web, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord.', href: '/ai-assistants' },
+        { title: 'CRM', body: 'Conversations, leads and tasks on one shared customer record.', href: '/crm' },
+        { title: 'Voice QA', body: 'Every call transcribed and scored against the criteria each department sets.', href: '/voice-qa' },
+        { title: 'AI Telephony', body: 'AI agents on live inbound and outbound phone calls.', href: '/voice-ai' },
+      ],
+      linkLabel: 'See the platform',
+    },
     earnings: {
       eyebrow: 'How you earn',
       heading: 'Commission you can check, invoice by invoice.',
@@ -1650,6 +1663,16 @@ export const en = {
           title: 'Start bringing clients',
           body: 'You get access to the partner portal and your referral code, and every client you bring is tracked from day one.',
         },
+      ],
+    },
+    faq: {
+      heading: 'Questions partners ask',
+      items: [
+        { q: 'How long do I earn commission?', a: 'For as long as the customer keeps paying. There is no cut-off date, so you earn month after month, not only in the first year.' },
+        { q: 'How and when do I get paid?', a: 'Your balance grows as your customers pay. Once it reaches €100 you can withdraw it from the partner portal, or turn any part of it into Fineguide credits whenever you like.' },
+        { q: 'How do discounts for my clients work?', a: 'You set a discount for each client in the partner portal, up to your 30%. It comes out of your share: give a client 10% off and you keep 20% of the list price.' },
+        { q: 'What happens if a client cancels?', a: 'Commission stops when their payments stop. Everything you earned before that stays in your balance.' },
+        { q: 'Is there a fee to join?', a: 'No. Becoming a partner costs nothing.' },
       ],
     },
     contactBlock: {
