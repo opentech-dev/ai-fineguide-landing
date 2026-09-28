@@ -1554,10 +1554,10 @@ export const ro: Translations = {
       body:
         'Nu vinzi un singur instrument. Fineguide reunește asistenți AI, un CRM comun, apeluri și cunoștințele echipei pe o singură platformă, iar clienții tăi pot începe pe planul Free, cu 200 de credite și fără card, apoi trec la un plan plătit când se amortizează.',
       items: [
-        { title: 'Asistenți AI', body: 'Răspund clienților pe web, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord.', href: '/ai-assistants' },
-        { title: 'CRM', body: 'Conversațiile, lead-urile și sarcinile pe aceeași fișă de client.', href: '/crm' },
-        { title: 'Voice QA', body: 'Fiecare apel transcris și evaluat după criteriile stabilite de fiecare departament.', href: '/voice-qa' },
-        { title: 'Telefonie AI', body: 'Agenți AI în apeluri live, primite și inițiate.', href: '/voice-ai' },
+        { title: 'Asistenți AI', body: 'Răspund clienților pe web, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord.', href: '/ai-assistants', image: '/images/photos/channels-phone.jpg' },
+        { title: 'CRM', body: 'Conversațiile, lead-urile și sarcinile pe aceeași fișă de client.', href: '/crm', image: '/images/photos/account-review.jpg' },
+        { title: 'Voice QA', body: 'Fiecare apel transcris și evaluat după criteriile stabilite de fiecare departament.', href: '/voice-qa', image: '/images/photos/call-review.jpg' },
+        { title: 'Telefonie AI', body: 'Agenți AI în apeluri live, primite și inițiate.', href: '/voice-ai', image: '/images/photos/agent-call.jpg' },
       ],
       linkLabel: 'Descoperă platforma',
     },
@@ -1584,6 +1584,7 @@ export const ro: Translations = {
           body: 'partners.fineguide.ai îți arată clienții, fiecare comision și fiecare plată, și exportă registrul comisioanelor oricând ai nevoie.',
         },
       ],
+      imageAlt: 'Un consultant într-o cafenea, zâmbind în timp ce se uită la telefon',
     },
     audience: {
       eyebrow: 'Pentru cine este',
@@ -1600,6 +1601,7 @@ export const ro: Translations = {
     },
     steps: {
       eyebrow: 'Cum te alături',
+      imageAlt: 'Proprietara unei agenții vorbind la telefon lângă fereastra biroului',
       heading: 'Trei pași până la primul client.',
       items: [
         {
