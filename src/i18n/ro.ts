@@ -1526,6 +1526,7 @@ export const ro: Translations = {
       subtitle:
         'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești o parte din fiecare factură pe care o plătesc sau revinzi platforma și gestionezi tu facturarea.',
       cta: 'Devino partener',
+      imageAlt: 'Doi parteneri de afaceri care își strâng mâna la o masă de ședințe',
     },
     tracks: {
       eyebrow: 'Două moduri de colaborare',
@@ -1589,6 +1590,7 @@ export const ro: Translations = {
         'Consultanți pentru call center și suport clienți',
         'Specialiști în CRM și automatizări',
       ],
+      imageAlt: 'Un consultant care îi explică unei antreprenoare un plan schițat pe hârtie',
     },
     steps: {
       eyebrow: 'Cum te alături',
