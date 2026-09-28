@@ -29,6 +29,7 @@ export const en = {
     company: 'Company',
     scheduleDemo: 'Schedule a demo',
     enterprise: 'Enterprise',
+    partners: 'Partners',
     contact: 'Contact',
     privacy: 'Privacy',
     terms: 'Terms',
@@ -1551,6 +1552,121 @@ export const en = {
       heading: 'Ready when you are.',
       subtitle: 'Start a conversation and we will take it from there.',
       ctaLabel: 'Contact sales',
+    },
+  },
+
+  // --- Partners Page ---
+  // Every claim here is backed by the partner module in ai-backoffice-api
+  // (modules/payment/partner). Client discounts are left out on purpose: they sit
+  // behind PARTNER_CLIENT_DISCOUNTS_ENABLED, so the page cannot promise them.
+  partnersMeta: {
+    title: 'Partner Program: Refer or Resell | Fineguide.ai',
+    description:
+      'Become a Fineguide partner. Earn commission on every invoice the customers you bring pay, or resell the platform to your clients at partner rates.',
+  },
+  partnersPage: {
+    hero: {
+      title: 'Grow with',
+      titleAccent: ' Fineguide.',
+      subtitle:
+        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn a share of every invoice they pay, or resell the platform and own the billing yourself.',
+      cta: 'Become a partner',
+    },
+    tracks: {
+      eyebrow: 'Two ways to partner',
+      heading: 'Refer customers, or resell to them.',
+      body:
+        'Pick the model that fits how you already work with clients. Both start with the same short conversation.',
+      items: [
+        {
+          title: 'Referral partner',
+          body: 'You introduce the customer, they sign up and pay Fineguide directly. You earn a commission on every invoice they pay, for as long as they stay a customer. New partners start at 20%.',
+        },
+        {
+          title: 'Reseller',
+          body: 'You own the client relationship. Your clients use Fineguide as normal, and we send you one statement a month for all of their usage at partner rates. You set your prices and bill them yourself.',
+        },
+      ],
+    },
+    earnings: {
+      eyebrow: 'How you earn',
+      heading: 'Commission you can check, invoice by invoice.',
+      body:
+        'Every paid invoice from a customer you introduced adds to your balance. The rate is recorded on each payment when it is earned, so a later change to your rate never rewrites what you already made.',
+      items: [
+        {
+          title: 'No cut-off date',
+          body: 'Commission is earned on every invoice your customer pays, month after month, not only on the first one.',
+        },
+        {
+          title: 'Customers stay yours',
+          body: 'You get a referral code. Once an account is linked to you it stays linked, and it is never moved to another partner.',
+        },
+        {
+          title: 'Cash or credits',
+          body: 'Withdraw your balance in euros once it reaches €100, or turn any part of it into Fineguide credits for your own account.',
+        },
+        {
+          title: 'A portal of your own',
+          body: 'partners.fineguide.ai shows your clients, every commission and every payout, and exports your commission ledger whenever you need it.',
+        },
+      ],
+    },
+    reselling: {
+      eyebrow: 'Reselling',
+      heading: 'Your clients, your prices.',
+      body:
+        'For partners who sell Fineguide as part of their own service. We agree partner rates with you up front, meter each client\'s usage as normal and bill you once a month. What you charge your clients is up to you.',
+      items: [
+        'Partner rates agreed with you before the first client',
+        'One monthly statement covering all of your clients',
+        'Your own pricing and your own client contracts',
+      ],
+    },
+    audience: {
+      eyebrow: 'Who it is for',
+      heading: 'Made for people who already advise businesses.',
+      body:
+        'Partners are usually close to the customer long before we are. If your clients ask you about support, sales or call-center operations, Fineguide gives you something concrete to put in front of them.',
+      items: [
+        'Digital and marketing agencies',
+        'Software integrators and IT consultancies',
+        'Call-center and customer-support consultants',
+        'CRM and automation specialists',
+      ],
+    },
+    steps: {
+      eyebrow: 'How to join',
+      heading: 'Three steps to your first client.',
+      items: [
+        {
+          title: 'Tell us about you',
+          body: 'Your company, the clients you work with, and whether you want to refer or resell.',
+        },
+        {
+          title: 'Agree the terms',
+          body: 'We review every application and set your commission rate, or your partner rates if you resell.',
+        },
+        {
+          title: 'Start bringing clients',
+          body: 'You get access to the partner portal and your referral code, and every client you bring is tracked from day one.',
+        },
+      ],
+    },
+    contactBlock: {
+      heading: 'Become a partner.',
+      subtitle:
+        'Write to us with your company name, your website and the kind of clients you work with. We will come back to you within one business day.',
+      emailLabel: 'Email',
+      email: 'contact@fineguide.ai',
+      emailSubject: 'Partnership',
+      callLabel: 'Prefer to talk first?',
+      ctaLabel: 'Schedule a call',
+    },
+    finalCta: {
+      heading: 'Bring Fineguide to your clients.',
+      subtitle: 'Tell us how you work and we will shape the partnership around it.',
+      ctaLabel: 'Become a partner',
     },
   },
 

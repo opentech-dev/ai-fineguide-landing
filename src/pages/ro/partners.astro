@@ -1,0 +1,220 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const p = t.partnersPage;
+const mailto = `mailto:${p.contactBlock.email}?subject=${encodeURIComponent(p.contactBlock.emailSubject)}`;
+---
+
+<Layout title={t.partnersMeta.title} description={t.partnersMeta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
+          {p.hero.title}
+          <span class="text-[var(--color-primary)]">{p.hero.titleAccent}</span>
+        </h1>
+        <p class="mt-8 max-w-5xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">
+          {p.hero.subtitle}
+        </p>
+        <div class="mt-12">
+          <a
+            href={mailto}
+            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+          >
+            {p.hero.cta}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two tracks -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          {p.tracks.eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {p.tracks.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+          {p.tracks.body}
+        </p>
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {p.tracks.items.map((item) => (
+            <div class="border-t border-[var(--color-border)] pt-5">
+              <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-lg text-[var(--color-muted)] leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Earnings (dark editorial break) -->
+    <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow-light mb-5">
+          {p.earnings.eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
+          {p.earnings.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-gray-300 leading-relaxed">
+          {p.earnings.body}
+        </p>
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {p.earnings.items.map((item) => (
+            <div class="border-t border-white/10 pt-5">
+              <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-base text-gray-300 leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Reselling -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          {p.reselling.eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {p.reselling.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+          {p.reselling.body}
+        </p>
+        <ul class="mt-12 space-y-5 max-w-3xl">
+          {p.reselling.items.map((item) => (
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Who it is for -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          {p.audience.eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {p.audience.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+          {p.audience.body}
+        </p>
+        <ul class="mt-12 space-y-5 max-w-3xl">
+          {p.audience.items.map((item) => (
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- How to join -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          {p.steps.eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {p.steps.heading}
+        </h2>
+        <ol class="mt-12 max-w-3xl border-b border-[var(--color-border)]">
+          {p.steps.items.map((step, i) => (
+            <li class="flex gap-6 border-t border-[var(--color-border)] py-6">
+              <span class="font-[var(--font-display)] text-2xl md:text-3xl font-semibold text-[var(--color-primary)] tabular-nums shrink-0 w-10">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h3 class="text-lg md:text-xl font-semibold text-[var(--color-foreground)]">{step.title}</h3>
+                <p class="mt-2 text-base md:text-lg text-[var(--color-muted)] leading-relaxed">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Contact block (dark) -->
+    <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
+          {p.contactBlock.heading}
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
+          {p.contactBlock.subtitle}
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-12 max-w-3xl">
+          <div>
+            <p class="eyebrow-light mb-3">
+              {p.contactBlock.emailLabel}
+            </p>
+            <a
+              href={mailto}
+              class="text-xl md:text-2xl text-white hover:text-[#c7b8ff] transition-colors"
+            >
+              {p.contactBlock.email}
+            </a>
+          </div>
+          <div>
+            <p class="eyebrow-light mb-3">
+              {p.contactBlock.callLabel}
+            </p>
+            <a
+              href={getLocalizedPath('/schedule-demo', lang)}
+              class="inline-flex items-center gap-1.5 text-xl md:text-2xl text-[#c7b8ff] hover:underline"
+            >
+              {p.contactBlock.ctaLabel}
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 md:py-32 px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {p.finalCta.heading}
+        </h2>
+        <p class="mt-5 text-lg text-[var(--color-muted)] leading-relaxed">
+          {p.finalCta.subtitle}
+        </p>
+        <div class="mt-10">
+          <a
+            href={mailto}
+            class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
+          >
+            {p.finalCta.ctaLabel}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>

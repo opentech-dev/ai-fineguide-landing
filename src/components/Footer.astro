@@ -37,6 +37,7 @@ const switchPath = switchLangPath(currentPath, otherLang);
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{t.footer.company}</p>
           <div class="flex flex-col gap-2">
             <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.enterprise}</a>
+            <a href={getLocalizedPath('/partners', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.partners}</a>
             <a href={getLocalizedPath('/schedule-demo', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.scheduleDemo}</a>
             <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.contact}</a>
           </div>
