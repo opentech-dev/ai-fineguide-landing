@@ -1559,18 +1559,28 @@ export const en = {
   // Every claim here is backed by the partner module in ai-backoffice-api
   // (modules/payment/partner). Client discounts are left out on purpose: they sit
   // behind PARTNER_CLIENT_DISCOUNTS_ENABLED, so the page cannot promise them.
+  // The 30% rate is the business's offer. It is honoured by the commission percent
+  // stamped on each partner at approval, so it must match what admins approve at
+  // (PARTNER_COMMISSION_DEFAULT_PERCENT is what applies when they leave it blank).
   partnersMeta: {
     title: 'Partner Program: Refer or Resell | Fineguide.ai',
     description:
-      'Become a Fineguide partner. Earn commission on every invoice the customers you bring pay, or resell the platform to your clients at partner rates.',
+      'Become a Fineguide partner. Earn 30% of every invoice the customers you bring pay, or resell the platform to your clients at partner rates.',
   },
   partnersPage: {
     hero: {
       title: 'Grow with',
       titleAccent: ' Fineguide.',
       subtitle:
-        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn a share of every invoice they pay, or resell the platform and own the billing yourself.',
+        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn 30% of every invoice they pay, or resell the platform and own the billing yourself.',
       cta: 'Become a partner',
+    },
+    commission: {
+      eyebrow: 'Partner commission',
+      figure: '30%',
+      heading: 'Of every invoice your customers pay.',
+      body:
+        'Not a one-off referral fee. Every month a customer you brought pays Fineguide, 30% of that invoice is yours, for as long as they stay.',
     },
     tracks: {
       eyebrow: 'Two ways to partner',
@@ -1580,7 +1590,7 @@ export const en = {
       items: [
         {
           title: 'Referral partner',
-          body: 'You introduce the customer, they sign up and pay Fineguide directly. You earn a commission on every invoice they pay, for as long as they stay a customer. New partners start at 20%.',
+          body: 'You introduce the customer, they sign up and pay Fineguide directly. You earn 30% of every invoice they pay, for as long as they stay a customer.',
         },
         {
           title: 'Reseller',

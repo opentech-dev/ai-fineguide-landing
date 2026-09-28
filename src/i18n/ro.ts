@@ -1517,15 +1517,22 @@ export const ro: Translations = {
   partnersMeta: {
     title: 'Program de parteneriat: recomandă sau revinde | Fineguide.ai',
     description:
-      'Devino partener Fineguide. Câștigi comision din fiecare factură plătită de clienții aduși de tine sau revinzi platforma clienților tăi la prețuri de partener.',
+      'Devino partener Fineguide. Câștigi 30% din fiecare factură plătită de clienții aduși de tine sau revinzi platforma clienților tăi la prețuri de partener.',
   },
   partnersPage: {
     hero: {
       title: 'Crește alături de',
       titleAccent: ' Fineguide.',
       subtitle:
-        'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești o parte din fiecare factură pe care o plătesc sau revinzi platforma și gestionezi tu facturarea.',
+        'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești 30% din fiecare factură pe care o plătesc sau revinzi platforma și gestionezi tu facturarea.',
       cta: 'Devino partener',
+    },
+    commission: {
+      eyebrow: 'Comisionul partenerilor',
+      figure: '30%',
+      heading: 'Din fiecare factură plătită de clienții tăi.',
+      body:
+        'Nu este un bonus unic de recomandare. În fiecare lună în care un client adus de tine plătește Fineguide, 30% din factură este al tău, cât timp rămâne client.',
     },
     tracks: {
       eyebrow: 'Două moduri de colaborare',
@@ -1535,7 +1542,7 @@ export const ro: Translations = {
       items: [
         {
           title: 'Partener de recomandare',
-          body: 'Tu aduci clientul, el își face cont și plătește direct către Fineguide. Primești comision din fiecare factură plătită, cât timp rămâne client. Partenerii noi pornesc de la 20%.',
+          body: 'Tu aduci clientul, el își face cont și plătește direct către Fineguide. Primești 30% din fiecare factură plătită, cât timp rămâne client.',
         },
         {
           title: 'Revânzător',
