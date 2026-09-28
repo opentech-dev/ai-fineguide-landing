@@ -1571,7 +1571,6 @@ export const en = {
       subtitle:
         'For agencies, integrators and consultants who bring Fineguide to their clients. Earn a share of every invoice they pay, or resell the platform and own the billing yourself.',
       cta: 'Become a partner',
-      imageAlt: 'Two business partners shaking hands across a meeting table',
     },
     tracks: {
       eyebrow: 'Two ways to partner',

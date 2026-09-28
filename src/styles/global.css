@@ -146,6 +146,25 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+/* Over a full-bleed hero photo: dark under the text on the left, clearing
+   toward the right so the subject of the photo stays visible. On narrow
+   screens the text spans the whole width, so the scrim is even instead. */
+.hero-photo-scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(18, 13, 46, 0.92) 0%,
+    rgba(24, 17, 60, 0.84) 38%,
+    rgba(32, 22, 74, 0.3) 68%,
+    rgba(32, 22, 74, 0.08) 100%
+  );
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .hero-photo-scrim {
+    background: rgba(18, 13, 46, 0.72);
+  }
+}
+
 /* Digits that line up in columns */
 .tnum {
   font-variant-numeric: tabular-nums;
