@@ -1603,10 +1603,10 @@ export const en = {
       body:
         'You are not selling a single tool. Fineguide brings AI assistants, a shared CRM, voice and team knowledge onto one platform, and your clients can start on the Free plan with 200 credits and no card, then upgrade when it pays for itself.',
       items: [
-        { title: 'AI Assistants', body: 'Answer customers on the web, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord.', href: '/ai-assistants' },
-        { title: 'CRM', body: 'Conversations, leads and tasks on one shared customer record.', href: '/crm' },
-        { title: 'Voice QA', body: 'Every call transcribed and scored against the criteria each department sets.', href: '/voice-qa' },
-        { title: 'AI Telephony', body: 'AI agents on live inbound and outbound phone calls.', href: '/voice-ai' },
+        { title: 'AI Assistants', body: 'Answer customers on the web, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord.', href: '/ai-assistants', image: '/images/photos/channels-phone.jpg' },
+        { title: 'CRM', body: 'Conversations, leads and tasks on one shared customer record.', href: '/crm', image: '/images/photos/account-review.jpg' },
+        { title: 'Voice QA', body: 'Every call transcribed and scored against the criteria each department sets.', href: '/voice-qa', image: '/images/photos/call-review.jpg' },
+        { title: 'AI Telephony', body: 'AI agents on live inbound and outbound phone calls.', href: '/voice-ai', image: '/images/photos/agent-call.jpg' },
       ],
       linkLabel: 'See the platform',
     },
@@ -1633,6 +1633,7 @@ export const en = {
           body: 'partners.fineguide.ai shows your clients, every commission and every payout, and exports your commission ledger whenever you need it.',
         },
       ],
+      imageAlt: 'A consultant in a café smiling at his phone',
     },
     audience: {
       eyebrow: 'Who it is for',
@@ -1649,6 +1650,7 @@ export const en = {
     },
     steps: {
       eyebrow: 'How to join',
+      imageAlt: 'An agency owner on a phone call by her office window',
       heading: 'Three steps to your first client.',
       items: [
         {
