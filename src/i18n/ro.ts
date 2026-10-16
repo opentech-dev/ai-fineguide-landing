@@ -1398,7 +1398,7 @@ export const ro: Translations = {
   pricingFaq: {
     heading: 'Întrebări despre prețuri',
     subtitle: 'Regulile, pe înțelesul tuturor.',
-    currency: { q: 'În ce monedă plătesc?', a: 'În euro. Dacă vezi prețurile în dolari americani, cardul este debitat cu aceeași sumă în euro.' },
+    currency: { q: 'În ce monedă plătesc?', a: 'Clienții din Europa plătesc în euro. În restul lumii plata se face în dolari americani, la prețurile în dolari. Țara din datele tale de facturare decide moneda.' },
     items: [
       { q: 'Ce este un credit?', a: 'Creditele plătesc munca făcută de AI. Un răspuns AI obișnuit costă 1 credit, un minut de evaluare a apelurilor 12, iar un minut de apel telefonic AI 10, sau 30 pe motorul premium de agenți. Tot restul platformei este inclus în plan.' },
       { q: 'Creditele nefolosite se reportează?', a: 'Nu. Pe un plan plătit creditele se reîncarcă la fiecare dată de facturare, iar ce nu ai folosit nu se reportează. Cele 200 de credite de pe Free se primesc o singură dată și nu se reîncarcă.' },
@@ -1546,7 +1546,7 @@ export const ro: Translations = {
         { discount: '10%', keep: '20%' },
         { discount: '20%', keep: '10%' },
       ],
-      example: 'La fiecare €100 din prețul de listă, cu o reducere de 10%, clientul tău plătește €90, iar €20 sunt ai tăi.',
+      example: 'La fiecare $100 din prețul de listă, cu o reducere de 10%, clientul tău plătește $90, iar $20 sunt ai tăi.',
     },
     whyBuy: {
       eyebrow: 'De ce vor cumpăra clienții tăi',
@@ -1577,7 +1577,7 @@ export const ro: Translations = {
         },
         {
           title: 'Bani sau credite',
-          body: 'Retragi soldul în euro când ajunge la €100 sau transformi orice parte din el în credite Fineguide pentru contul tău.',
+          body: 'Retragi soldul în dolari americani când ajunge la $200 sau transformi orice parte din el în credite Fineguide pentru contul tău.',
         },
         {
           title: 'Un portal doar al tău',
@@ -1622,7 +1622,7 @@ export const ro: Translations = {
       heading: 'Întrebări frecvente ale partenerilor',
       items: [
         { q: 'Cât timp primesc comision?', a: 'Cât timp clientul continuă să plătească. Nu există o dată de expirare, așa că primești comision lună de lună, nu doar în primul an.' },
-        { q: 'Cum și când sunt plătit?', a: 'Soldul tău crește pe măsură ce clienții plătesc. Când ajunge la €100 îl poți retrage din portalul de parteneri sau poți transforma oricând orice parte din el în credite Fineguide.' },
+        { q: 'Cum și când sunt plătit?', a: 'Soldul tău crește pe măsură ce clienții plătesc. Când ajunge la $200 îl poți retrage din portalul de parteneri sau poți transforma oricând orice parte din el în credite Fineguide.' },
         { q: 'Cum funcționează reducerile pentru clienții mei?', a: 'Stabilești în portalul de parteneri o reducere pentru fiecare client, de până la 30%. Ea se scade din partea ta: dacă îi oferi unui client 10% reducere, păstrezi 20% din prețul de listă.' },
         { q: 'Ce se întâmplă dacă un client renunță?', a: 'Comisionul se oprește când se opresc plățile lui. Tot ce ai câștigat până atunci rămâne în soldul tău.' },
         { q: 'Costă ceva să devin partener?', a: 'Nu. Parteneriatul este gratuit.' },
