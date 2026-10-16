@@ -2,7 +2,7 @@
 import Price from './Price.astro';
 import PriceText from './PriceText.astro';
 import type { Translations } from '../i18n/utils';
-import { USD_BILLING_LIVE, pageTokens, planTokens } from '../data/pricing';
+import { EURO_COUNTRIES, USD_BILLING_LIVE, pageTokens, planTokens } from '../data/pricing';
 const { t, lang } = Astro.props as { t: Translations; lang: string };
 
 // Every card has the same eight rows in the same order, and the cards share
@@ -58,10 +58,11 @@ const pill =
     </div>
 
     {/* Runs while the page is still parsing, before the cards below exist, so a
-        returning visitor's choice (or a US visitor's dollars) is applied without
-        the prices flashing. fg-country is set by the server from Cloudflare's
-        CF-IPCountry header (see Dockerfile). */}
-    <script is:inline define:vars={{ allowUsd }}>
+        returning visitor's choice (or dollars for a visitor outside Europe) is
+        applied without the prices flashing. fg-country is set by the server from
+        Cloudflare's CF-IPCountry header (see Dockerfile). Europe pays in euros
+        and everywhere else in dollars, which is what the app will charge. */}
+    <script is:inline define:vars={{ allowUsd, euroCountries: EURO_COUNTRIES }}>
       (function () {
         var root = document.documentElement;
         function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -70,8 +71,9 @@ const pill =
         var currency = 'eur';
         if (allowUsd) {
           var chosen = read('fg-cur');
+          var country = (document.cookie.match(/(?:^|;\s*)fg-country=([A-Za-z]{2})(?:;|$)/) || [])[1];
           if (chosen === 'usd' || chosen === 'eur') currency = chosen;
-          else if (/(?:^|;\s*)fg-country=US(?:;|$)/i.test(document.cookie)) currency = 'usd';
+          else if (country && euroCountries.indexOf(country.toUpperCase()) < 0) currency = 'usd';
         }
         function apply() {
           root.setAttribute('data-period', period);

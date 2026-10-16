@@ -16,9 +16,9 @@
 // forms removed, reduced to visible text. English is checked in four views,
 // Romanian (euro only) in two. Each locale uses its own number format.
 //
-// Dollar figures are the euro figures converted at USD_RATE (src/data/pricing.ts):
-// plan prices rounded up to the next number ending in 9, everything else to the
-// nearest dollar. The site table is checked against that rule, and the page
+// Dollar figures are the euro figures converted at USD_RATE (src/data/pricing.ts),
+// rounded up: plan prices to the next number ending in 9, everything else to the
+// next whole dollar. The site table is checked against that rule, and the page
 // against the table.
 //
 // No amount has cents. Yearly figures in both currencies: the monthly price is
@@ -82,7 +82,7 @@ const siteData = readFileSync('src/data/pricing.ts', 'utf8');
 const usdBillingLive = /USD_BILLING_LIVE = true/.test(siteData);
 const usdRate = +siteData.match(/USD_RATE = ([\d.]+)/)[1];
 const toUsdPlan = (eur) => (eur === 0 ? 0 : Math.ceil((eur * usdRate - 9) / 10) * 10 + 9);
-const toUsd = (eur) => Math.round(eur * usdRate);
+const toUsd = (eur) => Math.ceil(Math.round(eur * usdRate * 100) / 100);
 
 const round2 = (n) => Math.round(n * 100) / 100;
 const ceilWhole = (n) => Math.ceil(round2(n));

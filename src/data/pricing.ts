@@ -16,24 +16,39 @@
  */
 
 /**
- * The 2026 plans are euro-only in Stripe: there is no dollar price and no
- * `currency_options`. Until dollar prices exist, a US customer who picks a plan
- * is charged its euro price, so the dollar view carries a line saying so. Set this to true
- * once dollar billing is live and the line disappears.
+ * Dollar billing is live: each euro price in Stripe carries its dollar figure
+ * as a `currency_options` entry, and the app charges a customer outside Europe
+ * the dollar price shown here. So the dollar view carries no "billed in euros"
+ * line any more.
  */
-export const USD_BILLING_LIVE = false;
+export const USD_BILLING_LIVE = true;
+
+/**
+ * Countries that pay in euros: the EU, the rest of the EEA, Switzerland, the UK
+ * and the other countries of Europe. Everywhere else pays in dollars. The same
+ * list as the API's `EURO_COUNTRIES` (ai-backoffice-api, src/pricing/currency.ts),
+ * which decides what a customer is actually charged in; change both together.
+ */
+export const EURO_COUNTRIES = [
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU',
+  'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES',
+  'SE', 'IS', 'LI', 'NO', 'CH', 'GB', 'UK', 'GG', 'JE', 'IM', 'GI', 'AD', 'AL',
+  'AX', 'BA', 'BY', 'FO', 'MC', 'MD', 'ME', 'MK', 'RS', 'SM', 'UA', 'VA', 'XK',
+];
 
 export const ANNUAL_DISCOUNT = 0.2;
 export const ANNUAL_TOPUP_DISCOUNT = 0.15;
 const TOPUP_FLOOR_PER_1000 = 13;
 
 /**
- * Dollar prices: the euro price converted at USD_RATE, then rounded.
- *   plan prices     rounded up to the next number ending in 9 (117 -> 119)
- *   everything else rounded to the nearest whole dollar (52.65 -> 53)
- * The figures are written out below rather than computed, so a change to the
- * rate never moves a price by accident. scripts/verify-pricing.mjs recomputes
- * them from this rule and fails if the table and the rule disagree.
+ * Dollar prices: the euro price converted at USD_RATE, then rounded UP, so a
+ * dollar customer never pays less than a European one:
+ *   plan prices     up to the next number ending in 9 (117 -> 119)
+ *   everything else up to the next whole dollar (23.40 -> 24, 35.10 -> 36)
+ * The API charges exactly these (src/pricing/currency.ts, whose spec pins the
+ * same figures). They are written out below rather than computed, so a change
+ * to the rate never moves a price by accident. scripts/verify-pricing.mjs
+ * recomputes them from this rule and fails if the table and the rule disagree.
  *
  * No amount on the page has cents. Yearly figures, in both currencies:
  *   monthly price   monthly x 12 x (1 - ANNUAL_DISCOUNT) / 12, rounded up
@@ -47,9 +62,9 @@ export const USD_RATE = 1.17;
 
 export const PLANS = [
   { monthly: 0, usdMonthly: 0, topup: 45, usdTopup: 53, seat: 0, usdSeat: 0, yearly: false },
-  { monthly: 100, usdMonthly: 119, topup: 40, usdTopup: 47, seat: 20, usdSeat: 23, yearly: true },
-  { monthly: 200, usdMonthly: 239, topup: 30, usdTopup: 35, seat: 18, usdSeat: 21, yearly: true },
-  { monthly: 500, usdMonthly: 589, topup: 24, usdTopup: 28, seat: 15, usdSeat: 18, yearly: true },
+  { monthly: 100, usdMonthly: 119, topup: 40, usdTopup: 47, seat: 20, usdSeat: 24, yearly: true },
+  { monthly: 200, usdMonthly: 239, topup: 30, usdTopup: 36, seat: 18, usdSeat: 22, yearly: true },
+  { monthly: 500, usdMonthly: 589, topup: 24, usdTopup: 29, seat: 15, usdSeat: 18, yearly: true },
 ] as const;
 
 export const PACK_PRICE = 5;

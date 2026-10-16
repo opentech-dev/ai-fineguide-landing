@@ -1440,7 +1440,7 @@ export const en = {
   pricingFaq: {
     heading: 'Questions about pricing',
     subtitle: 'The rules, in plain words.',
-    currency: { q: 'Which currency am I charged in?', a: 'Euro, for now. Dollar prices are the euro prices converted and rounded, shown for reference. If you subscribe, you pay the euro price.' },
+    currency: { q: 'Which currency am I charged in?', a: 'Customers in Europe pay in euros. Everywhere else pays in US dollars, at the dollar prices on this page. The country on your billing details decides which.' },
     items: [
       { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 on the premium agent engine. Everything else on the platform is included in your plan.' },
       { q: 'Do unused credits carry over?', a: 'No. On a paid plan your credits refresh on each billing date, and anything unused does not carry over. The 200 credits on Free are given once and do not refresh.' },
@@ -1595,7 +1595,7 @@ export const en = {
         { discount: '10%', keep: '20%' },
         { discount: '20%', keep: '10%' },
       ],
-      example: 'For every €100 of list price with a 10% discount, your client pays €90 and €20 is yours.',
+      example: 'For every $100 of list price with a 10% discount, your client pays $90 and $20 is yours.',
     },
     whyBuy: {
       eyebrow: 'Why your clients will buy',
@@ -1626,7 +1626,7 @@ export const en = {
         },
         {
           title: 'Cash or credits',
-          body: 'Withdraw your balance in euros once it reaches €100, or turn any part of it into Fineguide credits for your own account.',
+          body: 'Withdraw your balance in US dollars once it reaches $200, or turn any part of it into Fineguide credits for your own account.',
         },
         {
           title: 'A portal of your own',
@@ -1671,7 +1671,7 @@ export const en = {
       heading: 'Questions partners ask',
       items: [
         { q: 'How long do I earn commission?', a: 'For as long as the customer keeps paying. There is no cut-off date, so you earn month after month, not only in the first year.' },
-        { q: 'How and when do I get paid?', a: 'Your balance grows as your customers pay. Once it reaches €100 you can withdraw it from the partner portal, or turn any part of it into Fineguide credits whenever you like.' },
+        { q: 'How and when do I get paid?', a: 'Your balance grows as your customers pay. Once it reaches $200 you can withdraw it from the partner portal, or turn any part of it into Fineguide credits whenever you like.' },
         { q: 'How do discounts for my clients work?', a: 'You set a discount for each client in the partner portal, up to your 30%. It comes out of your share: give a client 10% off and you keep 20% of the list price.' },
         { q: 'What happens if a client cancels?', a: 'Commission stops when their payments stop. Everything you earned before that stays in your balance.' },
         { q: 'Is there a fee to join?', a: 'No. Becoming a partner costs nothing.' },
