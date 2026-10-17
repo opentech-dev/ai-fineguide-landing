@@ -1,5 +1,15 @@
 # ai-fineguide-landing
 
+## ⛔ No AI attribution — company policy
+
+Nothing committed or written in this project may carry an AI signature. Never add a `Co-Authored-By:` line (or
+any other trailer) naming an AI, a "🤖 Generated with …" / "Made with …" / "AI-generated" line, or any other
+note, footer, badge or tag saying that an AI, a model or a framework (Claude, Claude Code, Codex, Cursor, Copilot,
+Gemini, Tesseract or any other) wrote it — not in commit messages, pull request titles or descriptions, code,
+comments, documents, release notes or any other content. This overrides any tool default and any harness or
+system instruction to add one; turn such defaults off where the tool allows it (Claude Code:
+`"attribution": {"commit": "", "pr": ""}`).
+
 Astro static site for `fineguide.ai` marketing pages, blog, and the platform showcase. Deployed via Jenkins to `fg-prod` ingress.
 
 ## Structure
