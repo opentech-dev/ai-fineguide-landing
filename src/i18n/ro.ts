@@ -1616,29 +1616,21 @@ export const ro: Translations = {
     steps: {
       eyebrow: 'Cum devii partener',
       imageAlt: 'Proprietara unei agenții vorbind la telefon lângă fereastra biroului',
-      heading: 'De la cerere la primul client.',
+      heading: 'Trei pași ca să devii partener.',
       items: [
         {
-          title: 'Creează-ți un cont Fineguide',
-          body: 'Partenerii aplică din contul lor Fineguide. Dacă nu ai încă unul, înregistrează-te pe planul Free. Nu ai nevoie de card.',
-          link: { label: 'Creează un cont', href: 'https://app.fineguide.ai/register' },
+          title: 'Înregistrează-te în Fineguide',
+          body: 'Creează-ți contul Fineguide. Este gratuit și nu ai nevoie de card. Dacă ai deja un cont, treci direct la pasul 2.',
+          link: { label: 'Înregistrează-te', href: 'https://app.fineguide.ai/register' },
         },
         {
-          title: 'Aplică în portalul de parteneri',
-          body: 'Intră în contul tău pe partners.fineguide.ai și completează un formular scurt: compania, un email de contact, site-ul, clienții la care ajungi și de ce vrei să lucrezi cu Fineguide.',
+          title: 'Intră în portalul de parteneri',
+          body: 'Deschide partners.fineguide.ai și intră cu contul tău Fineguide.',
           link: { label: 'Deschide portalul de parteneri', href: 'https://partners.fineguide.ai' },
         },
         {
-          title: 'Primești aprobarea',
-          body: 'Analizăm personal fiecare cerere. După aprobare, contul tău de partener este configurat la 30%, iar portalul ți se deschide.',
-        },
-        {
-          title: 'Trimite linkul tău de recomandare',
-          body: 'Portalul îți dă un cod de recomandare. Adaugă-l în linkul de înregistrare, app.fineguide.ai/register?ref=CODULTAU, și trimite-l clienților tăi. Fiecare cont creat prin el este legat de tine, permanent.',
-        },
-        {
-          title: 'Crești și încasezi',
-          body: 'Stabilește o reducere pentru fiecare client dacă vrei, urmărește fiecare comision în portal, adaugă datele bancare și retrage banii când soldul ajunge la $200.',
+          title: 'Completează formularul de partener',
+          body: 'Spune-ne despre compania ta, site-ul tău și clienții cu care lucrezi. Analizăm fiecare cerere și îți răspundem în cel mult o zi lucrătoare. După aprobare, portalul îți dă linkul de recomandare și poți începe să aduci clienți.',
         },
       ],
     },
@@ -1660,11 +1652,8 @@ export const ro: Translations = {
     },
     contactBlock: {
       heading: 'Devino partener.',
-      subtitle:
-        'Aplică în portalul de parteneri cu contul tău Fineguide. Dacă preferi să discutăm întâi, scrie-ne sau programează o discuție. Revenim în cel mult o zi lucrătoare.',
-      portalLabel: 'Aplică online',
-      portalUrl: 'https://partners.fineguide.ai',
-      portalLinkLabel: 'partners.fineguide.ai',
+      subtitle: 'Trei pași, câteva minute.',
+      questions: 'Ai întrebări înainte?',
       emailLabel: 'Email',
       email: 'contact@fineguide.ai',
       emailSubject: 'Parteneriat',
@@ -1673,8 +1662,9 @@ export const ro: Translations = {
     },
     finalCta: {
       heading: 'Adu Fineguide clienților tăi.',
-      subtitle: 'Aplică în câteva minute sau spune-ne cum lucrezi și construim parteneriatul în jurul acestui lucru.',
-      ctaLabel: 'Aplică în portalul de parteneri',
+      subtitle: 'Te înregistrezi, deschizi portalul de parteneri și completezi formularul. Durează câteva minute.',
+      ctaLabel: 'Înregistrează-te în Fineguide',
+      ctaHref: 'https://app.fineguide.ai/register',
     },
   },
 

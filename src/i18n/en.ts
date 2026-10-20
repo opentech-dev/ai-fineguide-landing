@@ -1665,29 +1665,21 @@ export const en = {
     steps: {
       eyebrow: 'How to become a partner',
       imageAlt: 'An agency owner on a phone call by her office window',
-      heading: 'From application to your first client.',
+      heading: 'Three steps to become a partner.',
       items: [
         {
-          title: 'Create a Fineguide account',
-          body: 'Partners apply from a Fineguide account. If you do not have one yet, sign up on the Free plan. No card is needed.',
-          link: { label: 'Create an account', href: 'https://app.fineguide.ai/register' },
+          title: 'Sign up to Fineguide',
+          body: 'Create your Fineguide account. It is free and needs no card. If you already have one, go straight to step 2.',
+          link: { label: 'Sign up', href: 'https://app.fineguide.ai/register' },
         },
         {
-          title: 'Apply in the partner portal',
-          body: 'Sign in at partners.fineguide.ai and fill in a short form: your company, a contact email, your website, the clients you reach and why you want to work with Fineguide.',
+          title: 'Go to the partner portal',
+          body: 'Open partners.fineguide.ai and sign in with your Fineguide account.',
           link: { label: 'Open the partner portal', href: 'https://partners.fineguide.ai' },
         },
         {
-          title: 'Get approved',
-          body: 'We review every application ourselves. Once it is approved, your partner account is set up at 30% and the portal opens for you.',
-        },
-        {
-          title: 'Share your referral link',
-          body: 'The portal gives you a referral code. Add it to the sign-up link, app.fineguide.ai/register?ref=YOURCODE, and send it to your clients. Every account created through it is linked to you, permanently.',
-        },
-        {
-          title: 'Grow and get paid',
-          body: 'Set a discount for each client if you want to, follow every commission in the portal, add your bank details and withdraw once your balance reaches $200.',
+          title: 'Complete the partner form',
+          body: 'Tell us about your company, your website and the clients you work with. We review every application and come back to you within one business day. Once approved, the portal gives you your referral link and you can start bringing clients.',
         },
       ],
     },
@@ -1709,11 +1701,8 @@ export const en = {
     },
     contactBlock: {
       heading: 'Become a partner.',
-      subtitle:
-        'Apply in the partner portal with your Fineguide account. If you would rather talk it through first, write to us or book a call. We come back to you within one business day.',
-      portalLabel: 'Apply online',
-      portalUrl: 'https://partners.fineguide.ai',
-      portalLinkLabel: 'partners.fineguide.ai',
+      subtitle: 'Three steps, a few minutes.',
+      questions: 'Questions first?',
       emailLabel: 'Email',
       email: 'contact@fineguide.ai',
       emailSubject: 'Partnership',
@@ -1722,8 +1711,9 @@ export const en = {
     },
     finalCta: {
       heading: 'Bring Fineguide to your clients.',
-      subtitle: 'Apply in a few minutes, or tell us how you work and we will shape the partnership around it.',
-      ctaLabel: 'Apply in the partner portal',
+      subtitle: 'Sign up, open the partner portal and complete the form. It takes a few minutes.',
+      ctaLabel: 'Sign up to Fineguide',
+      ctaHref: 'https://app.fineguide.ai/register',
     },
   },
 
