@@ -351,44 +351,32 @@ const figureUnit = p.commission.figure.endsWith('%') ? '%' : '';
           {p.contactBlock.subtitle}
         </p>
 
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12 max-w-5xl">
-          <div>
-            <p class="eyebrow-light mb-3">
-              {p.contactBlock.portalLabel}
-            </p>
-            <a
-              href={p.contactBlock.portalUrl}
-              class="text-xl md:text-2xl text-white hover:text-[#c7b8ff] transition-colors"
-            >
-              {p.contactBlock.portalLinkLabel}
-            </a>
-          </div>
-          <div>
-            <p class="eyebrow-light mb-3">
-              {p.contactBlock.emailLabel}
-            </p>
-            <a
-              href={mailto}
-              class="text-xl md:text-2xl text-white hover:text-[#c7b8ff] transition-colors"
-            >
-              {p.contactBlock.email}
-            </a>
-          </div>
-          <div>
-            <p class="eyebrow-light mb-3">
-              {p.contactBlock.callLabel}
-            </p>
-            <a
-              href={getLocalizedPath('/schedule-demo', lang)}
-              class="inline-flex items-center gap-1.5 text-xl md:text-2xl text-[#c7b8ff] hover:underline"
-            >
-              {p.contactBlock.ctaLabel}
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
+        <ol class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {p.steps.items.map((step, i) => (
+            <li class="flex flex-col rounded-xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
+              <span class="font-[var(--font-display)] text-3xl font-semibold text-[#c7b8ff] tabular-nums">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-4 text-xl md:text-2xl font-semibold tracking-tight text-white">{step.title}</h3>
+              <p class="mt-3 text-base text-gray-300 leading-relaxed">{step.body}</p>
+              {'link' in step && step.link && (
+                <a
+                  href={step.link.href}
+                  class="mt-6 self-start inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-[var(--color-primary)] bg-white hover:bg-white/90 rounded-lg transition-all"
+                >
+                  {step.link.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ol>
+
+        <p class="mt-12 text-base md:text-lg text-gray-300">
+          {p.contactBlock.questions}
+          <a href={mailto} class="ml-1 text-white hover:text-[#c7b8ff] underline underline-offset-4">{p.contactBlock.email}</a>
+          <span class="mx-2 text-gray-500" aria-hidden="true">·</span>
+          <a href={getLocalizedPath('/schedule-demo', lang)} class="text-[#c7b8ff] hover:underline">{p.contactBlock.ctaLabel}</a>
+        </p>
       </div>
     </section>
 
@@ -403,7 +391,7 @@ const figureUnit = p.commission.figure.endsWith('%') ? '%' : '';
         </p>
         <div class="mt-10">
           <a
-            href={p.contactBlock.portalUrl}
+            href={p.finalCta.ctaHref}
             class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[var(--color-primary)] hover:opacity-90 rounded-lg transition-all"
           >
             {p.finalCta.ctaLabel}
