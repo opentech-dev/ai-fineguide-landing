@@ -1577,6 +1577,19 @@ export const en = {
         'For agencies, integrators and consultants who bring Fineguide to their clients. Earn 30% of every invoice they pay, and share part of it with them as a discount if you choose.',
       cta: 'Become a partner',
     },
+    intro: {
+      eyebrow: 'The partner program',
+      heading: 'Your expertise, our platform, shared revenue.',
+      paragraphs: [
+        'Fineguide is an AI platform for customer operations: AI assistants on every channel, a shared CRM, AI phone agents and quality checks on every call. Businesses get the most out of it with someone who already knows their systems and their customers. That is where partners come in.',
+        'We work with integrators and service providers who connect Fineguide to their clients\' CRM, phone lines and messaging channels, and help them improve how they engage their customers. You keep the client relationship and the services you build around it. We run the platform, and share the revenue with you for as long as the client stays.',
+      ],
+      points: [
+        { title: 'You', body: 'Bring the client, set Fineguide up around their systems, and charge for your own services.' },
+        { title: 'We', body: 'Run the platform and keep it improving, so what you set up keeps getting better.' },
+        { title: 'Together', body: '30% of what each client pays Fineguide goes to you, month after month.' },
+      ],
+    },
     commission: {
       eyebrow: 'Partner commission',
       figure: '30%',
@@ -1650,30 +1663,46 @@ export const en = {
       imageAlt: 'A consultant walking a business owner through a plan sketched on paper',
     },
     steps: {
-      eyebrow: 'How to join',
+      eyebrow: 'How to become a partner',
       imageAlt: 'An agency owner on a phone call by her office window',
-      heading: 'Three steps to your first client.',
+      heading: 'From application to your first client.',
       items: [
         {
-          title: 'Tell us about you',
-          body: 'Your company, the clients you work with, and how you plan to bring Fineguide to them.',
+          title: 'Create a Fineguide account',
+          body: 'Partners apply from a Fineguide account. If you do not have one yet, sign up on the Free plan. No card is needed.',
+          link: { label: 'Create an account', href: 'https://app.fineguide.ai/register' },
         },
         {
-          title: 'Agree the terms',
-          body: 'We review every application and set up your partner account at 30% commission.',
+          title: 'Apply in the partner portal',
+          body: 'Sign in at partners.fineguide.ai and fill in a short form: your company, a contact email, your website, the clients you reach and why you want to work with Fineguide.',
+          link: { label: 'Open the partner portal', href: 'https://partners.fineguide.ai' },
         },
         {
-          title: 'Start bringing clients',
-          body: 'You get access to the partner portal and your referral code, and every client you bring is tracked from day one.',
+          title: 'Get approved',
+          body: 'We review every application ourselves. Once it is approved, your partner account is set up at 30% and the portal opens for you.',
+        },
+        {
+          title: 'Share your referral link',
+          body: 'The portal gives you a referral code. Add it to the sign-up link, app.fineguide.ai/register?ref=YOURCODE, and send it to your clients. Every account created through it is linked to you, permanently.',
+        },
+        {
+          title: 'Grow and get paid',
+          body: 'Set a discount for each client if you want to, follow every commission in the portal, add your bank details and withdraw once your balance reaches $200.',
         },
       ],
     },
     faq: {
       heading: 'Questions partners ask',
       items: [
+        { q: 'Who can become a partner?', a: 'Integrators, IT consultancies, CRM and automation specialists, customer-support and call-center consultants, and agencies that advise businesses on sales, support or customer operations. If your clients come to you for these, you are a good fit.' },
+        { q: 'Do I need to be a Fineguide customer?', a: 'You need a Fineguide account to apply, and the Free plan is enough. You do not need a paid plan to become a partner.' },
+        { q: 'How are clients linked to me?', a: 'Through your referral link. When a client creates their account from it, that account is linked to you from day one. The first partner an account is linked to is the one that counts, and it is never moved to another partner.' },
+        { q: 'What if a client signs up without my link?', a: 'Write to us at contact@fineguide.ai with the client\'s details. We will check it and link the new account to you.' },
+        { q: 'Can I charge my clients for my own services?', a: 'Yes. Setup, integration, training and ongoing support are your services, priced and invoiced by you. Your 30% commission comes on top.' },
         { q: 'How long do I earn commission?', a: 'For as long as the customer keeps paying. There is no cut-off date, so you earn month after month, not only in the first year.' },
-        { q: 'How and when do I get paid?', a: 'Your balance grows as your customers pay. Once it reaches $200 you can withdraw it from the partner portal, or turn any part of it into Fineguide credits whenever you like.' },
         { q: 'How do discounts for my clients work?', a: 'You set a discount for each client in the partner portal, up to your 30%. It comes out of your share: give a client 10% off and you keep 20% of the list price.' },
+        { q: 'Can I see what my clients pay?', a: 'Yes. The portal lists your clients, their payments and the commission each one earned you, and you can export your commission ledger at any time.' },
+        { q: 'How and when do I get paid?', a: 'Your balance grows as your customers pay. Once it reaches $200 you can withdraw it by bank transfer, to an IBAN, a US bank account or by SWIFT. You can also turn any part of it into Fineguide credits whenever you like.' },
         { q: 'What happens if a client cancels?', a: 'Commission stops when their payments stop. Everything you earned before that stays in your balance.' },
         { q: 'Is there a fee to join?', a: 'No. Becoming a partner costs nothing.' },
       ],
@@ -1681,7 +1710,10 @@ export const en = {
     contactBlock: {
       heading: 'Become a partner.',
       subtitle:
-        'Write to us with your company name, your website and the kind of clients you work with. We will come back to you within one business day.',
+        'Apply in the partner portal with your Fineguide account. If you would rather talk it through first, write to us or book a call. We come back to you within one business day.',
+      portalLabel: 'Apply online',
+      portalUrl: 'https://partners.fineguide.ai',
+      portalLinkLabel: 'partners.fineguide.ai',
       emailLabel: 'Email',
       email: 'contact@fineguide.ai',
       emailSubject: 'Partnership',
@@ -1690,8 +1722,8 @@ export const en = {
     },
     finalCta: {
       heading: 'Bring Fineguide to your clients.',
-      subtitle: 'Tell us how you work and we will shape the partnership around it.',
-      ctaLabel: 'Become a partner',
+      subtitle: 'Apply in a few minutes, or tell us how you work and we will shape the partnership around it.',
+      ctaLabel: 'Apply in the partner portal',
     },
   },
 
