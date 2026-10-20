@@ -15,6 +15,7 @@ export const en = {
     automations: 'Automations',
     pricing: 'Pricing',
     enterprise: 'Enterprise',
+    partners: 'Partners',
     contact: 'Contact',
     blog: 'Blog',
     signIn: 'Sign in',

@@ -17,6 +17,7 @@ export const ro: Translations = {
     automations: 'Automatizări',
     pricing: 'Prețuri',
     enterprise: 'Enterprise',
+    partners: 'Parteneri',
     contact: 'Contact',
     blog: 'Blog',
     signIn: 'Autentificare',
