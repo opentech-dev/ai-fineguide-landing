@@ -1663,8 +1663,8 @@ export const ro: Translations = {
     finalCta: {
       heading: 'Adu Fineguide clienților tăi.',
       subtitle: 'Te înregistrezi, deschizi portalul de parteneri și completezi formularul. Durează câteva minute.',
-      ctaLabel: 'Înregistrează-te în Fineguide',
-      ctaHref: 'https://app.fineguide.ai/register',
+      ctaLabel: 'Mergi la portalul de parteneri',
+      ctaHref: 'https://partners.fineguide.ai',
     },
   },
 

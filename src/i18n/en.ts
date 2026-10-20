@@ -1712,8 +1712,8 @@ export const en = {
     finalCta: {
       heading: 'Bring Fineguide to your clients.',
       subtitle: 'Sign up, open the partner portal and complete the form. It takes a few minutes.',
-      ctaLabel: 'Sign up to Fineguide',
-      ctaHref: 'https://app.fineguide.ai/register',
+      ctaLabel: 'Go to the partner portal',
+      ctaHref: 'https://partners.fineguide.ai',
     },
   },
 
