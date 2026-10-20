@@ -1528,6 +1528,19 @@ export const ro: Translations = {
         'Pentru agenții, integratori și consultanți care le aduc Fineguide clienților lor. Primești 30% din fiecare factură pe care o plătesc și, dacă vrei, le oferi o parte din ea ca reducere.',
       cta: 'Devino partener',
     },
+    intro: {
+      eyebrow: 'Programul de parteneri',
+      heading: 'Expertiza ta, platforma noastră, venituri împărțite.',
+      paragraphs: [
+        'Fineguide este o platformă AI pentru relația cu clienții: asistenți AI pe toate canalele, un CRM comun, agenți AI pentru apeluri telefonice și verificarea calității fiecărui apel. Companiile obțin cel mai mult din ea alături de cineva care le cunoaște deja sistemele și clienții. Aici intervin partenerii.',
+        'Lucrăm cu integratori și furnizori de servicii care conectează Fineguide la CRM-ul, liniile telefonice și canalele de mesagerie ale clienților lor și îi ajută să comunice mai bine cu propriii clienți. Tu păstrezi relația cu clientul și serviciile pe care le construiești în jurul ei. Noi ne ocupăm de platformă și împărțim veniturile cu tine cât timp clientul rămâne.',
+      ],
+      points: [
+        { title: 'Tu', body: 'Aduci clientul, configurezi Fineguide în jurul sistemelor lui și îți facturezi propriile servicii.' },
+        { title: 'Noi', body: 'Ne ocupăm de platformă și o îmbunătățim continuu, așa că ce configurezi tu devine tot mai bun.' },
+        { title: 'Împreună', body: '30% din ce plătește fiecare client către Fineguide ajunge la tine, lună de lună.' },
+      ],
+    },
     commission: {
       eyebrow: 'Comisionul partenerilor',
       figure: '30%',
@@ -1601,30 +1614,46 @@ export const ro: Translations = {
       imageAlt: 'Un consultant care îi explică unei antreprenoare un plan schițat pe hârtie',
     },
     steps: {
-      eyebrow: 'Cum te alături',
+      eyebrow: 'Cum devii partener',
       imageAlt: 'Proprietara unei agenții vorbind la telefon lângă fereastra biroului',
-      heading: 'Trei pași până la primul client.',
+      heading: 'De la cerere la primul client.',
       items: [
         {
-          title: 'Spune-ne despre tine',
-          body: 'Compania ta, clienții cu care lucrezi și cum plănuiești să le aduci Fineguide.',
+          title: 'Creează-ți un cont Fineguide',
+          body: 'Partenerii aplică din contul lor Fineguide. Dacă nu ai încă unul, înregistrează-te pe planul Free. Nu ai nevoie de card.',
+          link: { label: 'Creează un cont', href: 'https://app.fineguide.ai/register' },
         },
         {
-          title: 'Stabilim condițiile',
-          body: 'Analizăm fiecare cerere și îți activăm contul de partener cu un comision de 30%.',
+          title: 'Aplică în portalul de parteneri',
+          body: 'Intră în contul tău pe partners.fineguide.ai și completează un formular scurt: compania, un email de contact, site-ul, clienții la care ajungi și de ce vrei să lucrezi cu Fineguide.',
+          link: { label: 'Deschide portalul de parteneri', href: 'https://partners.fineguide.ai' },
         },
         {
-          title: 'Începi să aduci clienți',
-          body: 'Primești acces la portalul de parteneri și codul tău de recomandare, iar fiecare client adus de tine este urmărit din prima zi.',
+          title: 'Primești aprobarea',
+          body: 'Analizăm personal fiecare cerere. După aprobare, contul tău de partener este configurat la 30%, iar portalul ți se deschide.',
+        },
+        {
+          title: 'Trimite linkul tău de recomandare',
+          body: 'Portalul îți dă un cod de recomandare. Adaugă-l în linkul de înregistrare, app.fineguide.ai/register?ref=CODULTAU, și trimite-l clienților tăi. Fiecare cont creat prin el este legat de tine, permanent.',
+        },
+        {
+          title: 'Crești și încasezi',
+          body: 'Stabilește o reducere pentru fiecare client dacă vrei, urmărește fiecare comision în portal, adaugă datele bancare și retrage banii când soldul ajunge la $200.',
         },
       ],
     },
     faq: {
       heading: 'Întrebări frecvente ale partenerilor',
       items: [
+        { q: 'Cine poate deveni partener?', a: 'Integratori, firme de consultanță IT, specialiști în CRM și automatizări, consultanți pentru suport clienți și call center, precum și agenții care consiliază companii în vânzări, suport sau relația cu clienții. Dacă clienții tăi vin la tine pentru aceste lucruri, ești potrivit.' },
+        { q: 'Trebuie să fiu client Fineguide?', a: 'Ai nevoie de un cont Fineguide ca să aplici, iar planul Free este suficient. Nu ai nevoie de un plan plătit ca să devii partener.' },
+        { q: 'Cum sunt legați clienții de mine?', a: 'Prin linkul tău de recomandare. Când un client își creează contul din el, acel cont este legat de tine din prima zi. Contează primul partener de care este legat un cont, iar contul nu este mutat niciodată la alt partener.' },
+        { q: 'Ce se întâmplă dacă un client se înregistrează fără linkul meu?', a: 'Scrie-ne la contact@fineguide.ai cu datele clientului. Verificăm și legăm noul cont de tine.' },
+        { q: 'Pot să le facturez clienților propriile mele servicii?', a: 'Da. Configurarea, integrarea, instruirea și suportul continuu sunt serviciile tale, cu prețurile și facturile tale. Comisionul de 30% vine în plus.' },
         { q: 'Cât timp primesc comision?', a: 'Cât timp clientul continuă să plătească. Nu există o dată de expirare, așa că primești comision lună de lună, nu doar în primul an.' },
-        { q: 'Cum și când sunt plătit?', a: 'Soldul tău crește pe măsură ce clienții plătesc. Când ajunge la $200 îl poți retrage din portalul de parteneri sau poți transforma oricând orice parte din el în credite Fineguide.' },
         { q: 'Cum funcționează reducerile pentru clienții mei?', a: 'Stabilești în portalul de parteneri o reducere pentru fiecare client, de până la 30%. Ea se scade din partea ta: dacă îi oferi unui client 10% reducere, păstrezi 20% din prețul de listă.' },
+        { q: 'Pot vedea cât plătesc clienții mei?', a: 'Da. Portalul îți arată clienții, plățile lor și comisionul pe care ți l-a adus fiecare, iar registrul de comisioane îl poți exporta oricând.' },
+        { q: 'Cum și când sunt plătit?', a: 'Soldul tău crește pe măsură ce clienții plătesc. Când ajunge la $200 îl poți retrage prin transfer bancar, într-un cont IBAN, un cont bancar din SUA sau prin SWIFT. Poți transforma oricând orice parte din el în credite Fineguide.' },
         { q: 'Ce se întâmplă dacă un client renunță?', a: 'Comisionul se oprește când se opresc plățile lui. Tot ce ai câștigat până atunci rămâne în soldul tău.' },
         { q: 'Costă ceva să devin partener?', a: 'Nu. Parteneriatul este gratuit.' },
       ],
@@ -1632,7 +1661,10 @@ export const ro: Translations = {
     contactBlock: {
       heading: 'Devino partener.',
       subtitle:
-        'Scrie-ne numele companiei, site-ul și ce fel de clienți ai. Revenim în cel mult o zi lucrătoare.',
+        'Aplică în portalul de parteneri cu contul tău Fineguide. Dacă preferi să discutăm întâi, scrie-ne sau programează o discuție. Revenim în cel mult o zi lucrătoare.',
+      portalLabel: 'Aplică online',
+      portalUrl: 'https://partners.fineguide.ai',
+      portalLinkLabel: 'partners.fineguide.ai',
       emailLabel: 'Email',
       email: 'contact@fineguide.ai',
       emailSubject: 'Parteneriat',
@@ -1641,8 +1673,8 @@ export const ro: Translations = {
     },
     finalCta: {
       heading: 'Adu Fineguide clienților tăi.',
-      subtitle: 'Spune-ne cum lucrezi și construim parteneriatul în jurul acestui lucru.',
-      ctaLabel: 'Devino partener',
+      subtitle: 'Aplică în câteva minute sau spune-ne cum lucrezi și construim parteneriatul în jurul acestui lucru.',
+      ctaLabel: 'Aplică în portalul de parteneri',
     },
   },
 
