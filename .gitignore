@@ -2,3 +2,4 @@ node_modules
 .yarn
 dist
 _blog
+.blog-posts.json

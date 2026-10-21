@@ -1,0 +1,33 @@
+---
+/**
+ * A post in a list: its cover (or a violet placeholder with its topic), first category, date, reading time, title
+ * and summary. `lead` is the wide card at the head of the Featured row. `data-search` carries the words the index's
+ * search box matches.
+ */
+import { shortDate, type RenderedPost } from '../../blog';
+
+interface Props {
+  post: RenderedPost;
+  variant?: 'card' | 'lead';
+  /** The first cards on a page load at once; the rest when scrolled to. */
+  eager?: boolean;
+}
+const { post, variant = 'card', eager = false } = Astro.props;
+const topic = post.categories[0];
+const search = [post.title, post.description, ...post.categories, ...post.tags].join(' ').toLowerCase();
+---
+
+<a class:list={['b-card', variant === 'lead' && 'b-card--lead']} href={post.path} data-search={search} lang={post.lang !== 'en' ? post.lang : undefined}>
+  <div class="b-card__media">
+    {post.coverUrl
+      ? <img src={post.coverUrl} alt={post.coverAlt ?? ''} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager && variant === 'lead' ? 'high' : undefined} />
+      : <div class="b-card__ph" aria-hidden="true"><span>{topic ?? 'Fineguide'}</span></div>}
+    {topic && <span class="b-cat">{topic}</span>}
+  </div>
+  <div class="b-card__body">
+    <p class="b-meta"><time datetime={post.publishedAt}>{shortDate(post.publishedAt)}</time><span>{post.minutes} min read</span></p>
+    <h3>{post.title}</h3>
+    <p class="b-card__sum">{post.description}</p>
+    <span class="b-card__more">Read more</span>
+  </div>
+</a>

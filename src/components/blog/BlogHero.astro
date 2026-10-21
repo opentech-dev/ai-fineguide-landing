@@ -1,0 +1,45 @@
+---
+/**
+ * The head of every blog list: the old blog's headline — "Fineguide Blog", its last word in the violet gradient —
+ * under a soft violet sky, then the topics as chips (the current one marked) and, on the index, the search box.
+ */
+import { categoryPath } from '../../blog';
+
+interface Props {
+  eyebrow?: string;
+  /** The headline before its gradient word, and that word. */
+  title: string;
+  accent: string;
+  lede: string;
+  categories: Array<{ label: string; posts: unknown[] }>;
+  /** The category this page lists, or 'all' on the index; none on a tag page. */
+  current?: string;
+  search?: boolean;
+}
+const { eyebrow, title, accent, lede, categories, current, search = false } = Astro.props;
+---
+
+<header class="b-hero">
+  <div class="b-wrap">
+    {eyebrow && <span class="b-eyebrow">{eyebrow}</span>}
+    <h1>{title ? `${title} ` : ''}<span class="b-grad">{accent}</span></h1>
+    <p class="b-lede">{lede}</p>
+    <div class="b-bar">
+      <nav class="b-chips" aria-label="Topics">
+        <a class="b-chip" href="/blog/" aria-current={current === 'all' ? 'page' : undefined}>All</a>
+        {categories.map((c) => (
+          <a class="b-chip" href={categoryPath(c.label)} aria-current={current === c.label ? 'page' : undefined}>
+            {c.label} <small>{c.posts.length}</small>
+          </a>
+        ))}
+      </nav>
+      {search && (
+        <label class="b-search">
+          <span class="sr-only">Search articles</span>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path stroke-linecap="round" d="m20 20-3.5-3.5" /></svg>
+          <input id="b-search" type="search" placeholder="Search articles…" autocomplete="off" />
+        </label>
+      )}
+    </div>
+  </div>
+</header>

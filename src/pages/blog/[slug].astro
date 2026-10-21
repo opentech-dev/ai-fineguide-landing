@@ -1,0 +1,158 @@
+---
+/**
+ * One post — /blog/<slug>/, an address that never changes once it is published (the API refuses a new slug). Built
+ * from the API at deploy time (src/blog.ts), its Markdown rendered and sanitised there. The old blog's article, kept
+ * and calmed: topic and breadcrumb, the headline, its summary, the byline, the cover in a rounded frame, then the
+ * article on night with a table of contents beside it (wide screens, three headings or more), its tags, the one call
+ * to action, and related articles. For search and answer engines: BlogPosting structured data and a breadcrumb,
+ * Open Graph `article` with its dates (the API looks for `article:modified_time` to know a publish has landed), its
+ * cover as the share card, and its Markdown at /blog/<slug>.md.
+ */
+import '../../styles/blog.css';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import BlogCta from '../../components/blog/BlogCta.astro';
+import { useTranslations } from '../../i18n/utils';
+import { absolute, blogPosts, categoryPath, longDate, relatedTo, SITE, tagPath, type RenderedPost } from '../../blog';
+
+export async function getStaticPaths() {
+  const posts = await blogPosts();
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post, all: posts } }));
+}
+
+const { post, all } = Astro.props as { post: RenderedPost; all: RenderedPost[] };
+const t = useTranslations('en');
+const url = `${SITE}${post.path}`;
+// A title Google shows whole: the brand only when it still fits in about 60 characters.
+const title = post.title.length + ' | Fineguide Blog'.length <= 62 ? `${post.title} | Fineguide Blog` : post.title;
+const cover = post.coverUrl ? absolute(post.coverUrl) : undefined;
+// The contents list the post's top heading level and the one under it (some posts start at ###).
+const top = Math.min(...post.headings.map((h) => h.depth).filter((d) => d >= 2), 9);
+const toc = post.headings.filter((h) => h.depth === top || h.depth === top + 1);
+const showToc = toc.filter((h) => h.depth === top).length >= 3;
+const related = relatedTo(post, all);
+const topic = post.categories[0];
+const updated = post.updatedAt.slice(0, 10) !== post.publishedAt.slice(0, 10);
+const initial = post.author.replace(/^The\s+/i, '').charAt(0).toUpperCase();
+---
+
+<Layout
+  title={title}
+  description={post.description}
+  ogImage={cover}
+  contentLang={post.lang}
+  hreflang={false}
+  article={{ publishedTime: post.publishedAt, modifiedTime: post.updatedAt, section: topic, tags: post.tags, author: post.author }}
+  breadcrumb={[['/blog/', 'Blog'], ...(topic ? [[categoryPath(topic), topic] as [string, string]] : []), [post.path, post.title]]}
+  alternates={[
+    { type: 'text/markdown', href: `${post.path.replace(/\/$/, '')}.md`, title: `${post.title} (Markdown)` },
+    { type: 'application/rss+xml', href: '/blog/rss.xml', title: 'Fineguide Blog' },
+  ]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${url}#post`,
+    headline: post.title,
+    name: post.title,
+    description: post.description,
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    ...(cover ? { image: { '@type': 'ImageObject', url: cover, ...(post.coverAlt ? { caption: post.coverAlt } : {}) }, thumbnailUrl: cover } : {}),
+    author: post.author === 'The Fineguide team' ? { '@type': 'Organization', name: 'Fineguide.ai', url: SITE } : { '@type': 'Person', name: post.author },
+    publisher: { '@type': 'Organization', name: 'Fineguide.ai', url: SITE, logo: { '@type': 'ImageObject', url: `${SITE}/images/fineguide-logo.png` } },
+    isPartOf: { '@id': `${SITE}/blog/#blog` },
+    inLanguage: post.lang,
+    ...(topic ? { articleSection: topic } : {}),
+    keywords: [...post.categories, ...post.tags],
+    wordCount: post.words,
+    timeRequired: `PT${post.minutes}M`,
+    isAccessibleForFree: true,
+  }}
+>
+  <Navbar t={t} lang="en" />
+  <main id="main-content" class="blog">
+    <article lang={post.lang}>
+      <header class="b-hero b-post-hero">
+        <div class="b-wrap">
+          <nav class="b-crumbs" aria-label="Breadcrumb">
+            <a href="/blog/">Blog</a>
+            {topic && <><span aria-hidden="true">›</span><a href={categoryPath(topic)}>{topic}</a></>}
+          </nav>
+          <h1>{post.title}</h1>
+          <p class="b-lede">{post.description}</p>
+          <div class="b-byline">
+            <span class="b-avatar" aria-hidden="true">{initial}</span>
+            <span>
+              <b>{post.author}</b>
+              <span class="b-meta">
+                <time datetime={post.publishedAt}>{longDate(post.publishedAt)}</time>
+                <span>{post.minutes} min read</span>
+                {updated && <span>Updated <time datetime={post.updatedAt}>{longDate(post.updatedAt)}</time></span>}
+              </span>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      {post.coverUrl && (
+        <div class="b-wrap">
+          <figure class="b-cover">
+            <img src={post.coverUrl} alt={post.coverAlt ?? ''} fetchpriority="high" decoding="async" />
+          </figure>
+        </div>
+      )}
+
+      <div class="b-wrap">
+        <div class:list={['b-post-layout', showToc && 'b-post-layout--toc']}>
+          {showToc && (
+            <nav class="b-toc" aria-label="On this page">
+              <p>On this page</p>
+              <ol>{toc.map((h) => <li class={h.depth > top ? 'd3' : undefined}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+            </nav>
+          )}
+          <div>
+            <div class="b-prose" set:html={post.html} />
+            {(post.categories.length > 0 || post.tags.length > 0) && (
+              <p class="b-tags">
+                {post.categories.map((c) => <a href={categoryPath(c)} rel="tag">{c}</a>)}
+                {post.tags.map((tg) => <a href={tagPath(tg)} rel="tag">{tg}</a>)}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="b-wrap">
+      <section class="b-section"><BlogCta /></section>
+      {related.length > 0 && (
+        <section class="b-section" aria-labelledby="b-related">
+          <div class="b-section__head"><h2 id="b-related">Related articles</h2><a href="/blog/">All articles</a></div>
+          <div class="b-grid">{related.map((p) => <PostCard post={p} />)}</div>
+        </section>
+      )}
+    </div>
+  </main>
+  <Footer t={t} lang="en" />
+</Layout>
+
+{showToc && (
+  <script>
+    // The table of contents marks the section being read.
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('.b-toc a')];
+    const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+    const seen = new Set<string>();
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) (e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id));
+      const first = [...byId.keys()].find((id) => seen.has(id));
+      if (!first) return;
+      links.forEach((a) => a.removeAttribute('aria-current'));
+      byId.get(first)?.setAttribute('aria-current', 'true');
+    }, { rootMargin: '-90px 0px -65% 0px' });
+    byId.forEach((_a, id) => { const h = document.getElementById(id); if (h) io.observe(h); });
+  </script>
+)}

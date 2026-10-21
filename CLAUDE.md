@@ -17,7 +17,8 @@ Astro static site for `fineguide.ai` marketing pages, blog, and the platform sho
 | Path | Purpose |
 |---|---|
 | `src/` | Astro pages, components, layouts |
-| `blog/` | Blog posts (Markdown content) |
+| `src/blog.ts`, `src/pages/blog/`, `src/components/blog/`, `src/styles/blog.css` | The blog at `/blog/`: posts read from the FineGuide API at build time |
+| `apache/fineguide.conf` | The production Apache's rules: clean URLs, RO/MD redirect, pricing cookie, the old WordPress addresses |
 | `platform/` | Platform feature pages |
 | `public/` | Static assets (images, fonts, favicons) |
 | `docs/` | Long-form internal docs (workflows, prompts, business descriptions) |
@@ -43,7 +44,7 @@ For working on the landing in concert with the rest of the platform, run `../ai-
 - **Static-only**. No server runtime; everything builds to static HTML/CSS/JS via Astro.
 - **Tailwind v4** via `@tailwindcss/vite`.
 - **Multilingual**: pages may have `-ro` / `-en` variants depending on the route; check `src/pages/` for the current scheme.
-- **Blog**: posts are Markdown files in `blog/` consumed by Astro's content collections.
+- **Blog**: posts live in the FineGuide API (ai-backoffice-api `src/modules/blog`), not in this repo. `src/blog.ts` reads the published ones at build time (the Dockerfile `ADD`s `https://fineguide.ai/api/core/blog/posts?full=1&limit=1000` as `.blog-posts.json`, so a publish busts the build cache), renders the Markdown and sanitises it against an allowlist, and copies each image into `/blog/media/`. Publishing a post makes the API ask Jenkins to rebuild this site. Locally: `npm run build` fetches the posts from production (or set `FINEGUIDE_API`). Full reference: [ai-fineguide-project docs/BLOG.md](../ai-fineguide-project/docs/BLOG.md). The blog was WordPress until 2026-10-21 (retired: PHP2Shell) — no PHP runs here any more; never add it back.
 - **Internal docs**: `docs/ai-assistant-workflows.md`, `docs/prompt.md`, `docs/goals.md`, `docs/website-description.md` describe content strategy + AI-assistant workflows specific to this site.
 
 ## Troubleshooting

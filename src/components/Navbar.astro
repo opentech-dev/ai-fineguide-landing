@@ -76,6 +76,7 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
       <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.enterprise}</a>
       <a href={getLocalizedPath('/partners', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.partners}</a>
       <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.contact}</a>
+      <a href="/blog/" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.blog}</a>
     </div>
 
     <div class="flex items-center gap-3">
@@ -137,6 +138,7 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
     <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.enterprise}</a>
     <a href={getLocalizedPath('/partners', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.partners}</a>
     <a href={getLocalizedPath('/contact', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.contact}</a>
+    <a href="/blog/" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.blog}</a>
     <div class="pt-4 mt-3 border-t border-[var(--color-border)]">
       <a
         id="nav-auth-mobile"

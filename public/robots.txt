@@ -8,3 +8,4 @@ Disallow: /node_modules/
 Crawl-delay: 1
 
 Sitemap: https://fineguide.ai/sitemap.xml
+Sitemap: https://fineguide.ai/blog/sitemap.xml

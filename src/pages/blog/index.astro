@@ -1,0 +1,154 @@
+---
+/**
+ * /blog/ — the Fineguide Blog (src/blog.ts reads the posts from the API at build time). The old blog's order, kept:
+ * the hero with its topics and search, Featured (the newest featured post wide, beside the next, then three more),
+ * Latest articles, and Explore — a tile per topic. Typing in the search box swaps the sections for the posts that
+ * match, all of them, as you type. Kept out of search while there is nothing on it.
+ */
+import '../../styles/blog.css';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import BlogHero from '../../components/blog/BlogHero.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import BlogCta from '../../components/blog/BlogCta.astro';
+import { useTranslations } from '../../i18n/utils';
+import { blogCategories, blogPosts, categoryPath, SITE } from '../../blog';
+
+const t = useTranslations('en');
+const posts = await blogPosts();
+const categories = await blogCategories();
+const featured = posts.filter((p) => p.featured);
+const [lead, side, ...moreFeatured] = featured;
+const rest = moreFeatured.slice(0, 3);
+const shownFeatured = new Set([lead, side, ...rest].filter(Boolean).map((p) => p!.slug));
+const latest = posts.filter((p) => !shownFeatured.has(p.slug));
+const usedCovers = new Set<string>();
+const title = 'Fineguide Blog — AI assistants, CRM and customer conversations';
+const description =
+  'Expert insights, proven strategies and real-world guides to help you master AI customer interactions: AI assistants, CRM, voice AI and integrations with Fineguide.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  hreflang={false}
+  noindex={posts.length === 0}
+  breadcrumb={[['/blog/', 'Blog']]}
+  alternates={[{ type: 'application/rss+xml', href: '/blog/rss.xml', title: 'Fineguide Blog' }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${SITE}/blog/#blog`,
+    name: 'Fineguide Blog',
+    url: `${SITE}/blog/`,
+    description,
+    inLanguage: 'en',
+    publisher: { '@type': 'Organization', name: 'Fineguide.ai', url: SITE },
+    ...(posts[0] ? { dateModified: posts.reduce((m, p) => (p.updatedAt > m ? p.updatedAt : m), posts[0].updatedAt) } : {}),
+    blogPost: posts.slice(0, 50).map((p) => ({
+      '@type': 'BlogPosting',
+      '@id': `${SITE}${p.path}#post`,
+      headline: p.title,
+      description: p.description,
+      url: `${SITE}${p.path}`,
+      datePublished: p.publishedAt,
+      dateModified: p.updatedAt,
+      ...(p.coverUrl ? { image: p.coverUrl } : {}),
+      keywords: p.tags,
+    })),
+  }}
+>
+  <Navbar t={t} lang="en" />
+  <main id="main-content" class="blog">
+    <BlogHero
+      title="Fineguide"
+      accent="Blog"
+      lede="Expert insights, proven strategies, and real-world guides to help you master AI customer interactions."
+      categories={categories}
+      current="all"
+      search
+    />
+
+    <div class="b-wrap" id="b-sections">
+      {posts.length === 0 && <p class="b-empty">The first posts are on their way.</p>}
+
+      {lead && (
+        <section class="b-section" aria-labelledby="b-featured">
+          <div class="b-section__head"><h2 id="b-featured">Featured</h2></div>
+          <div class="b-featured">
+            <PostCard post={lead} variant="lead" eager />
+            {side && <PostCard post={side} eager />}
+          </div>
+          {rest.length > 0 && <div class="b-featured__rest">{rest.map((p) => <PostCard post={p} />)}</div>}
+        </section>
+      )}
+
+      {latest.length > 0 && (
+        <section class="b-section" aria-labelledby="b-latest">
+          <div class="b-section__head"><h2 id="b-latest">Latest articles</h2><a href="/blog/rss.xml">RSS feed</a></div>
+          <div class="b-grid">{latest.map((p, i) => <PostCard post={p} eager={!lead && i < 3} />)}</div>
+        </section>
+      )}
+
+      {categories.length > 0 && (
+        <section class="b-section" aria-labelledby="b-explore">
+          <div class="b-section__head"><h2 id="b-explore">Explore by topic</h2></div>
+          <div class="b-topics">
+            {categories.map((c) => {
+              // Each topic its own picture: the newest post's cover that no tile before it shows.
+              const cover = c.posts.find((p) => p.coverUrl && !usedCovers.has(p.coverUrl)) ?? c.posts.find((p) => p.coverUrl);
+              if (cover?.coverUrl) usedCovers.add(cover.coverUrl);
+              return (
+                <a class="b-topic" href={categoryPath(c.label)}>
+                  {cover && <img src={cover.coverUrl!} alt="" loading="lazy" decoding="async" />}
+                  <b>{c.label}</b>
+                  <span>{c.posts.length} {c.posts.length === 1 ? 'article' : 'articles'}</span>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {posts.length > 0 && <section class="b-section"><BlogCta /></section>}
+    </div>
+
+    <div class="b-wrap" id="b-results" hidden>
+      <section class="b-section" aria-live="polite">
+        <div class="b-section__head"><h2 id="b-results-title">Results</h2></div>
+        <div class="b-grid">{posts.map((p) => <PostCard post={p} />)}</div>
+        <p class="b-empty" id="b-none" hidden>No article matches that. Try fewer words, or pick a topic above.</p>
+      </section>
+    </div>
+  </main>
+  <Footer t={t} lang="en" />
+</Layout>
+
+<script>
+  // The search box: every word typed must be in a post's title, summary, topics or tags.
+  const input = document.getElementById('b-search') as HTMLInputElement | null;
+  const sections = document.getElementById('b-sections')!;
+  const results = document.getElementById('b-results')!;
+  const none = document.getElementById('b-none')!;
+  const heading = document.getElementById('b-results-title')!;
+  const cards = [...results.querySelectorAll<HTMLElement>('[data-search]')];
+  const run = () => {
+    const words = (input?.value ?? '').toLowerCase().split(/\s+/).filter(Boolean);
+    const searching = words.length > 0;
+    sections.hidden = searching;
+    results.hidden = !searching;
+    if (!searching) return;
+    let n = 0;
+    for (const c of cards) {
+      const hit = words.every((w) => c.dataset.search!.includes(w));
+      c.hidden = !hit;
+      if (hit) n++;
+    }
+    none.hidden = n > 0;
+    heading.textContent = n === 1 ? '1 article' : `${n} articles`;
+  };
+  input?.addEventListener('input', run);
+  const q = new URLSearchParams(location.search).get('q');
+  if (input && q) { input.value = q; run(); }
+</script>
