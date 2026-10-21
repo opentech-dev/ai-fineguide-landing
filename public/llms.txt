@@ -78,6 +78,7 @@ Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCR
 - [Partners](https://fineguide.ai/partners): Partner program for agencies, integrators and consultants: earn 30% of every invoice the customers you refer pay, for as long as they stay, and pass part of it on to them as a discount if you choose.
 - [Schedule a demo](https://fineguide.ai/schedule-demo): Book a 15-minute walkthrough of Fineguide on your operation.
 - [Contact](https://fineguide.ai/contact): Get in touch with the Fineguide team.
+- [Blog](https://fineguide.ai/blog/): Guides, product news and how-tos on AI assistants, CRM, voice AI and integrations. Every post is also served as Markdown at its address with `.md` in place of the trailing slash (e.g. https://fineguide.ai/blog/kommo-integration-guide.md); the feed is https://fineguide.ai/blog/rss.xml.
 
 ## Optional
 

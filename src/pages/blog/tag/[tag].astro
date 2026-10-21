@@ -1,0 +1,61 @@
+---
+/**
+ * /blog/tag/<slug>/ — the posts under one tag, at the old blog's tag addresses. Kept out of search until it holds
+ * TAG_INDEX_MIN posts: one post under a tag is a thin page.
+ */
+import '../../../styles/blog.css';
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import BlogHero from '../../../components/blog/BlogHero.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import BlogCta from '../../../components/blog/BlogCta.astro';
+import { useTranslations } from '../../../i18n/utils';
+import { blogCategories, blogTags, SITE, TAG_INDEX_MIN, tagPath } from '../../../blog';
+
+export async function getStaticPaths() {
+  const [tags, categories] = await Promise.all([blogTags(), blogCategories()]);
+  return tags.map((g) => ({ params: { tag: g.slug }, props: { label: g.label, posts: g.posts, categories } }));
+}
+
+type Group = Awaited<ReturnType<typeof blogTags>>[number];
+const { label, posts, categories } = Astro.props as Group & { categories: Group[] };
+const t = useTranslations('en');
+const path = tagPath(label);
+const title = `${label} | Fineguide Blog`;
+const description = `Articles about ${label} from the Fineguide Blog.`;
+---
+
+<Layout
+  title={title}
+  description={description}
+  hreflang={false}
+  noindex={posts.length < TAG_INDEX_MIN}
+  breadcrumb={[['/blog/', 'Blog'], [path, label]]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    url: `${SITE}${path}`,
+    description,
+    isPartOf: { '@id': `${SITE}/blog/#blog` },
+  }}
+>
+  <Navbar t={t} lang="en" />
+  <main id="main-content" class="blog">
+    <BlogHero
+      eyebrow="Tag"
+      title=""
+      accent={`#${label}`}
+      lede={`${posts.length} ${posts.length === 1 ? 'article' : 'articles'} tagged ${label}.`}
+      categories={categories}
+    />
+    <div class="b-wrap">
+      <section class="b-section">
+        <div class="b-grid">{posts.map((p, i) => <PostCard post={p} eager={i < 3} />)}</div>
+      </section>
+      <section class="b-section"><BlogCta /></section>
+    </div>
+  </main>
+  <Footer t={t} lang="en" />
+</Layout>

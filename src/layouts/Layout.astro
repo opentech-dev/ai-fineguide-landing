@@ -14,6 +14,17 @@ interface Props {
   /** Keep a page out of the index (none currently need it, but thank-you
       pages and the like will). */
   noindex?: boolean;
+  /** A blog post: og:type article with its dates and tags. The API checks the
+      live page for `article:modified_time` to know a publish has landed. */
+  article?: { publishedTime: string; modifiedTime: string; section?: string; tags?: string[]; author?: string };
+  /** The page's own language when it is not the site's (a post in Russian). */
+  contentLang?: string;
+  /** Pages with no Romanian twin (the blog) leave out the hreflang pair. */
+  hreflang?: boolean;
+  /** The breadcrumb under Home, when the page is deeper than one level. */
+  breadcrumb?: Array<[path: string, label: string]>;
+  /** Extra <link rel="alternate"> (the blog's feed, a post's Markdown copy). */
+  alternates?: Array<{ type: string; href: string; title: string }>;
 }
 
 const {
@@ -23,10 +34,15 @@ const {
   ogImage = '/images/og-default.png',
   jsonLd,
   noindex = false,
+  article,
+  contentLang,
+  hreflang = true,
+  breadcrumb,
+  alternates = [],
 } = Astro.props;
 
 const SITE = 'https://fineguide.ai';
-const htmlLang = lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang;
+const htmlLang = contentLang ?? (lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang);
 const ogLocale =
   lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'en_US';
 
@@ -36,7 +52,7 @@ const ogLocale =
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = new URL(path, SITE).href;
 const ogUrl = canonical;
-const ogImageUrl = new URL(ogImage, SITE).href;
+const ogImageUrl = /^https?:\/\//.test(ogImage) ? ogImage : new URL(ogImage, SITE).href;
 
 // Each page declares its own translation. x-default points at English: it is the
 // fallback for a reader whose language we do not publish.
@@ -68,6 +84,7 @@ const organizationLd = {
 // already written ("CRM | … | Fineguide.ai").
 const isHome = path === '/' || path === '/ro/';
 const leafLabel = title.split('|')[0].trim();
+const trail: Array<[string, string]> = breadcrumb ?? [[path, leafLabel]];
 const breadcrumbLd = isHome
   ? null
   : {
@@ -80,7 +97,7 @@ const breadcrumbLd = isHome
           name: 'Home',
           item: new URL(lang === 'ro' ? '/ro/' : '/', SITE).href,
         },
-        { '@type': 'ListItem', position: 2, name: leafLabel, item: canonical },
+        ...trail.map(([p, name], i) => ({ '@type': 'ListItem', position: i + 2, name, item: new URL(p, SITE).href })),
       ],
     };
 ---
@@ -96,11 +113,17 @@ const breadcrumbLd = isHome
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={enHref} />
-    <link rel="alternate" hreflang="ro" href={roHref} />
-    <link rel="alternate" hreflang="x-default" href={enHref} />
+    {hreflang && <link rel="alternate" hreflang="en" href={enHref} />}
+    {hreflang && <link rel="alternate" hreflang="ro" href={roHref} />}
+    {hreflang && <link rel="alternate" hreflang="x-default" href={enHref} />}
+    {alternates.map((a) => <link rel="alternate" type={a.type} href={a.href} title={a.title} />)}
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    {article && <meta property="article:published_time" content={article.publishedTime} />}
+    {article && <meta property="article:modified_time" content={article.modifiedTime} />}
+    {article?.section && <meta property="article:section" content={article.section} />}
+    {article?.author && <meta property="article:author" content={article.author} />}
+    {article?.tags?.map((t) => <meta property="article:tag" content={t} />)}
     <meta property="og:url" content={ogUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -175,6 +198,8 @@ const breadcrumbLd = isHome
         }
 
         var path = window.location.pathname;
+        // The blog is in one language: there is no /ro/blog to send anyone to.
+        if (path.indexOf('/blog') === 0) return;
         var isRo = path.startsWith('/ro');
         var langs = navigator.languages || [navigator.language || ''];
         var wantsRo = langs.some(function(l) { return l.startsWith('ro'); });

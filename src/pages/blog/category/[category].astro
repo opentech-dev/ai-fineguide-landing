@@ -1,0 +1,61 @@
+---
+/**
+ * /blog/category/<slug>/ — one topic's posts, newest first: the old blog's category pages, at the old addresses.
+ */
+import '../../../styles/blog.css';
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import BlogHero from '../../../components/blog/BlogHero.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import BlogCta from '../../../components/blog/BlogCta.astro';
+import { useTranslations } from '../../../i18n/utils';
+import { blogCategories, categoryPath, SITE } from '../../../blog';
+
+export async function getStaticPaths() {
+  const categories = await blogCategories();
+  return categories.map((c) => ({ params: { category: c.slug }, props: { label: c.label, posts: c.posts, categories } }));
+}
+
+const { label, posts, categories } = Astro.props as Awaited<ReturnType<typeof blogCategories>>[number] & { categories: Awaited<ReturnType<typeof blogCategories>> };
+const t = useTranslations('en');
+const path = categoryPath(label);
+const title = `${label} | Fineguide Blog`;
+const description = `${label} from the Fineguide Blog: ${posts.length} ${posts.length === 1 ? 'article' : 'articles'} on AI assistants, CRM and customer conversations.`;
+---
+
+<Layout
+  title={title}
+  description={description}
+  hreflang={false}
+  breadcrumb={[['/blog/', 'Blog'], [path, label]]}
+  alternates={[{ type: 'application/rss+xml', href: '/blog/rss.xml', title: 'Fineguide Blog' }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    url: `${SITE}${path}`,
+    description,
+    isPartOf: { '@id': `${SITE}/blog/#blog` },
+    hasPart: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `${SITE}${p.path}`, datePublished: p.publishedAt })),
+  }}
+>
+  <Navbar t={t} lang="en" />
+  <main id="main-content" class="blog">
+    <BlogHero
+      eyebrow="Fineguide Blog"
+      title=""
+      accent={label}
+      lede={`${posts.length} ${posts.length === 1 ? 'article' : 'articles'}, newest first.`}
+      categories={categories}
+      current={label}
+    />
+    <div class="b-wrap">
+      <section class="b-section">
+        <div class="b-grid">{posts.map((p, i) => <PostCard post={p} eager={i < 3} />)}</div>
+      </section>
+      <section class="b-section"><BlogCta /></section>
+    </div>
+  </main>
+  <Footer t={t} lang="en" />
+</Layout>

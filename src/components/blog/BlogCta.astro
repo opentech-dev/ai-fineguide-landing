@@ -1,0 +1,18 @@
+---
+/** The blog's one call to action: try Fineguide, or talk to us. */
+interface Props {
+  heading?: string;
+}
+const { heading = 'Put an AI assistant to work for your business.' } = Astro.props;
+---
+
+<aside class="b-cta">
+  <div>
+    <h2>{heading}</h2>
+    <p>Fineguide answers your customers on your site, Instagram, WhatsApp and the phone, captures every lead into its CRM, and hands over to your team when it should.</p>
+  </div>
+  <div class="b-cta__actions">
+    <a class="b-btn b-btn--primary" href="https://app.fineguide.ai/register">Start free</a>
+    <a class="b-btn b-btn--ghost" href="/schedule-demo/">Book a demo</a>
+  </div>
+</aside>
