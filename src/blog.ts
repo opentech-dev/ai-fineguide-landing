@@ -46,8 +46,14 @@ export const labelSlug = (label: string): string =>
 export const categoryPath = (c: string): string => `/blog/category/${labelSlug(c)}/`;
 export const tagPath = (t: string): string => `/blog/tag/${labelSlug(t)}/`;
 
-/** A tag page is kept out of search until it holds this many posts — one post under a tag is a thin page. */
-export const TAG_INDEX_MIN = 2;
+/** A tag page is kept out of search until it holds this many posts — a tag with one or two posts is a thin page. */
+export const TAG_INDEX_MIN = 3;
+
+/** The blog's own type: Fraunces for titles (as on onetransform.ai, here with its SOFT axis for rounder, warmer
+    terminals, and its italic for the accent words), Source Serif 4 for reading; Inter stays for the small interface
+    text. Only the blog's pages load them. */
+export const BLOG_FONTS =
+  'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap';
 
 type Group = { label: string; slug: string; posts: RenderedPost[] };
 function groups(pick: (p: RenderedPost) => string[]): Promise<Group[]> {
@@ -67,6 +73,22 @@ function groups(pick: (p: RenderedPost) => string[]): Promise<Group[]> {
 }
 /** Every category with its posts (newest first), the fullest first. */
 export const blogCategories = (): Promise<Group[]> => groups((p) => p.categories);
+/**
+ * The tags that get a place in search: at least TAG_INDEX_MIN posts, and not the very list a topic or a fuller tag
+ * already shows (the amoCRM and Kommo tags hold the same three posts: one page of them is enough).
+ */
+export async function indexedTags(): Promise<Set<string>> {
+  const [cats, tags] = await Promise.all([blogCategories(), blogTags()]);
+  const key = (posts: RenderedPost[]) => posts.map((p) => p.slug).sort().join(' ');
+  const seen = new Set(cats.map((c) => key(c.posts)));
+  const out = new Set<string>();
+  for (const t of tags) {
+    const k = key(t.posts);
+    if (t.posts.length >= TAG_INDEX_MIN && !seen.has(k)) out.add(t.label);
+    seen.add(k);
+  }
+  return out;
+}
 /** Every tag with its posts (newest first), the most used first. */
 export const blogTags = (): Promise<Group[]> => groups((p) => p.tags);
 
@@ -156,6 +178,7 @@ async function read(): Promise<BlogPost[]> {
  */
 const MEDIA_RE = /https:\/\/[a-z0-9.-]+\/api\/core\/blog\/media\/([0-9a-f]{24}\.(?:png|jpg|webp|gif))/g;
 const mediaFiles = new Map<string, string>();
+const coverFiles = new Set<string>();
 /** An API image address as the site's own, noting it for the copy; any other address as it is. */
 function siteMedia(text: string): string {
   return text.replace(MEDIA_RE, (url, file: string) => {
@@ -163,11 +186,23 @@ function siteMedia(text: string): string {
     return `/blog/media/${file}`;
   });
 }
-/** The images the posts use, as `{ file, source }` — the build fetches each from the API. */
-export async function blogMedia(): Promise<Array<{ file: string; source: string }>> {
+/** The images the posts use, as `{ file, source, cover }` — the build fetches each from the API. */
+export async function blogMedia(): Promise<Array<{ file: string; source: string; cover: boolean }>> {
   await blogPosts();
-  return [...mediaFiles].map(([file, source]) => ({ file, source }));
+  return [...mediaFiles].map(([file, source]) => ({ file, source, cover: coverFiles.has(file) }));
 }
+
+/**
+ * Cards and topic tiles show a cover at most about 400 px wide (800 on a 2× screen), so they load an 800 px WebP copy
+ * the build makes beside the original (src/pages/blog/media/[file].ts) — an original can be several MB, and the
+ * index shows them all. GIFs stay as they are: they may move.
+ */
+export const THUMB_WIDTH = 800;
+const THUMBABLE = /\.(png|jpg|webp)$/;
+export const thumbName = (file: string): string => file.replace(THUMBABLE, `-${THUMB_WIDTH}.webp`);
+/** A cover's card-sized copy, or the address itself when it has none. */
+export const thumbOf = (src: string): string =>
+  /^\/blog\/media\/[0-9a-f]{24}\.(png|jpg|webp)$/.test(src) ? src.replace(THUMBABLE, `-${THUMB_WIDTH}.webp`) : src;
 /** A site path as a whole address, for feeds, cards and structured data. */
 export const absolute = (pathOrUrl: string): string => (pathOrUrl.startsWith('/') ? `${SITE}${pathOrUrl}` : pathOrUrl);
 
@@ -176,6 +211,7 @@ async function load(): Promise<RenderedPost[]> {
   const out: RenderedPost[] = [];
   for (const raw of posts) {
     const p = { ...raw, body: siteMedia(raw.body), coverUrl: raw.coverUrl ? siteMedia(raw.coverUrl) : null };
+    if (p.coverUrl?.startsWith('/blog/media/')) coverFiles.add(p.coverUrl.slice('/blog/media/'.length));
     const { html, headings } = await renderMarkdown(p.body);
     const words = p.body.split(/\s+/).filter(Boolean).length;
     out.push({ ...p, html, headings, words, minutes: Math.max(1, Math.round(words / 230)), path: `/blog/${p.slug}/` });

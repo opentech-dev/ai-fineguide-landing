@@ -15,7 +15,7 @@ import Footer from '../../components/Footer.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import BlogCta from '../../components/blog/BlogCta.astro';
 import { useTranslations } from '../../i18n/utils';
-import { absolute, blogPosts, categoryPath, longDate, relatedTo, SITE, tagPath, type RenderedPost } from '../../blog';
+import { absolute, BLOG_FONTS, blogPosts, categoryPath, longDate, relatedTo, SITE, tagPath, type RenderedPost } from '../../blog';
 
 export async function getStaticPaths() {
   const posts = await blogPosts();
@@ -44,6 +44,8 @@ const initial = post.author.replace(/^The\s+/i, '').charAt(0).toUpperCase();
   ogImage={cover}
   contentLang={post.lang}
   hreflang={false}
+  stylesheets={[BLOG_FONTS]}
+  chat="on-demand"
   article={{ publishedTime: post.publishedAt, modifiedTime: post.updatedAt, section: topic, tags: post.tags, author: post.author }}
   breadcrumb={[['/blog/', 'Blog'], ...(topic ? [[categoryPath(topic), topic] as [string, string]] : []), [post.path, post.title]]}
   alternates={[

@@ -13,7 +13,7 @@ import BlogHero from '../../components/blog/BlogHero.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import BlogCta from '../../components/blog/BlogCta.astro';
 import { useTranslations } from '../../i18n/utils';
-import { blogCategories, blogPosts, categoryPath, SITE } from '../../blog';
+import { BLOG_FONTS, blogCategories, blogPosts, categoryPath, SITE, thumbOf } from '../../blog';
 
 const t = useTranslations('en');
 const posts = await blogPosts();
@@ -24,6 +24,17 @@ const rest = moreFeatured.slice(0, 3);
 const shownFeatured = new Set([lead, side, ...rest].filter(Boolean).map((p) => p!.slug));
 const latest = posts.filter((p) => !shownFeatured.has(p.slug));
 const usedCovers = new Set<string>();
+// "Start here": the four newest tutorials (the newest posts when there are not three yet).
+const tutorials = posts.filter((p) => p.categories.includes('Tutorials'));
+const picks = (tutorials.length >= 3 ? tutorials : posts).slice(0, 4);
+const lastUpdate = posts.reduce((m, p) => (p.updatedAt > m ? p.updatedAt : m), posts[0]?.updatedAt ?? '');
+const facts: Array<[string, string]> = posts.length
+  ? [
+      [String(posts.length), posts.length === 1 ? 'article' : 'articles'],
+      [String(categories.length), categories.length === 1 ? 'topic' : 'topics'],
+      [new Date(lastUpdate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }), 'latest update'],
+    ]
+  : [];
 const title = 'Fineguide Blog — AI assistants, CRM and customer conversations';
 const description =
   'Expert insights, proven strategies and real-world guides to help you master AI customer interactions: AI assistants, CRM, voice AI and integrations with Fineguide.';
@@ -33,6 +44,8 @@ const description =
   title={title}
   description={description}
   hreflang={false}
+  stylesheets={[BLOG_FONTS]}
+  chat="on-demand"
   noindex={posts.length === 0}
   breadcrumb={[['/blog/', 'Blog']]}
   alternates={[{ type: 'application/rss+xml', href: '/blog/rss.xml', title: 'Fineguide Blog' }]}
@@ -62,9 +75,13 @@ const description =
   <Navbar t={t} lang="en" />
   <main id="main-content" class="blog">
     <BlogHero
-      title="Fineguide"
-      accent="Blog"
-      lede="Expert insights, proven strategies, and real-world guides to help you master AI customer interactions."
+      eyebrow="Fineguide Blog"
+      title="Ideas for teams that run on"
+      accent="conversations"
+      after="."
+      lede="Practical guides, product news and field notes on AI assistants, CRM, voice and automation, from the team that builds Fineguide."
+      facts={facts}
+      picks={picks}
       categories={categories}
       current="all"
       search
@@ -101,7 +118,7 @@ const description =
               if (cover?.coverUrl) usedCovers.add(cover.coverUrl);
               return (
                 <a class="b-topic" href={categoryPath(c.label)}>
-                  {cover && <img src={cover.coverUrl!} alt="" loading="lazy" decoding="async" />}
+                  {cover && <img src={thumbOf(cover.coverUrl!)} alt="" loading="lazy" decoding="async" />}
                   <b>{c.label}</b>
                   <span>{c.posts.length} {c.posts.length === 1 ? 'article' : 'articles'}</span>
                 </a>
