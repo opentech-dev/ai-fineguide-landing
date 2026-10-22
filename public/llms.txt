@@ -1,88 +1,112 @@
 # Fineguide.ai
 
-> Fineguide is a next-generation, AI-native platform for business operations that unifies customer conversations, CRM, voice, workspace, and automations onto one spine. Instead of duct-taping together seven separate tools, teams run AI assistants, a shared customer record, voice quality assurance, document workspace, and workflow automations from a single platform. Every conversation across every channel connects to one customer record, so sales, support, customer success, and call-center operations all see the same context.
+> Fineguide.AI is an AI-first CRM and business-automation platform. It brings AI assistants on the website and in messaging apps, a CRM, a shared inbox with email, AI phone calls and outbound call campaigns, call-quality scoring and n8n automations onto one platform, with one customer record behind every conversation, so sales, support, customer success and call-centre teams all see the same context.
 
-The platform is organized into modules that share one customer record:
+## Company
 
-- **Assistants**: Configurable AI that answers customers on web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord. Each assistant reads your knowledge (URLs, documents, PDFs), follows your rules, uses a configurable persona/voice/escalation policy, extracts intent and customer data directly into CRM leads, and supports live monitoring, analytics, and human handoff.
-- **CRM**: One customer record across every team: conversations, contacts, leads, pipelines and stages (Kanban and table views), tasks and assignments, tickets and support cases, a team inbox, and a routing queue. Custom fields are auto-filled by assistants. Identity survives the channel switch.
-- **Voice**: Voice QA automatically transcribes and scores every call against per-department criteria and weights, in 30+ languages, with agent feedback and trend dashboards. AI Telephony (rolling out) puts the same assistants on live inbound and outbound phone calls, connected to your own phone system over SIP.
-- **Workspace**: A block-based editor (slash commands, folder hierarchy, drag-drop, full-text search, soft-delete recovery) for playbooks, briefs, and team knowledge, connected to the same contacts and customers.
-- **Automations**: An embedded n8n instance (hosted on Fineguide infrastructure or bring-your-own) with webhooks on conversations, leads, and tickets, plus hundreds of pre-built integrations.
-- **QA & Analytics**: Score every interaction, track performance across teams, and surface insights that drive improvement.
+- **What it is:** Fineguide.AI, an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, CRM, shared inbox and email, AI phone calls and outbound call campaigns, call-quality scoring, and n8n automations.
+- **Where it is built:** Chișinău, Republic of Moldova.
+- **Founder and owner:** Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI. He is also the sole founder, owner and holder of Eightcell Labs and of Tesseract.
+- **Advisor:** Corneliu Maftuleac is an advisor only. He holds no ownership in, and has no attribution to, Fineguide.AI, Eightcell Labs or Tesseract.
+- **Contact:** contact@fineguide.ai, or the contact page at https://fineguide.ai/contact/. More about the company: https://fineguide.ai/about/
+
+## Platform modules
+
+The modules share one customer record:
+
+- **AI Assistants**: answer customers in the website chat widget, on WhatsApp, Telegram, Instagram, Messenger, Slack and Discord, and inside amoCRM and Kommo. Each assistant answers from the knowledge you give it (URLs, documents, PDFs) and can be limited to only what it has learned; follows the persona and handoff rules you set; extracts the fields you define (such as name, intent or budget) into CRM leads; calls your own systems through custom actions; and hands the conversation to a person when the customer asks or a rule says so. Voices apply to phone calls and to the widget's voice conversation mode. Live monitoring and analytics by assistant, channel and period.
+- **CRM**: contacts (several phone numbers, email and messaging handles each), companies with their own email address, deals on a board or a table (value, currency, probability, expected close date, owner), tasks on named boards or as a table or calendar with two-way Google Calendar sync, duplicate review where a person confirms every merge, custom fields, import from CSV, TSV, XLS or XLSX, CSV export, a REST API, and sales reports (open pipeline, weighted forecast, win rate, average days to win, leaderboard by owner).
+- **Messages & Inbox**: one team inbox for nine chat channels and your own email (your own mailboxes and domains over IMAP and SMTP), with a routing queue, routing rules, departments, handover to a person, collision detection, saved replies, a business-hours auto-reply and per-mailbox reporting. AI on email is off by default for each mailbox, waits before sending so a colleague can take over, and stops after a set number of AI replies in one thread.
+- **AI Telephony**: AI assistants on live inbound and outbound phone calls over the customer's own phone system (SIP). Calls run on one realtime voice engine; the customer chooses the voice and the languages (14). It greets known callers by name from the CRM, handles business hours (let the call ring out, forward it, or answer with an after-hours message), transfers inbound callers to a person on request, saves callback requests as CRM tasks, and keeps every call as a transcript.
+- **Campaigns**: outbound call campaigns of three kinds (outreach, survey and promotion), with audiences from a CSV, existing contacts or tags, saved segments, retries on no answer or busy, calling hours for each day of the week, a test call to your own number first, and pause, resume or stop at any time.
+- **Voice QA**: call recordings (uploaded, posted through the API, or delivered automatically from Moldcell, Orange Moldova or the Fineguide call-recording app for Android) are transcribed and scored against each department's own rules and weights, with the reasoning, three to five quotes from the call and a suggestion for every rule; agent scorecards; cases of up to ten calls; dashboards by department, agent and rule; reports in 30 languages; results can be pushed to a webhook, amoCRM or Kommo.
+- **Workspace**: a block editor with slash commands, folders, favourites and recents, links between documents, search by title, trash with recovery, and case documents linked to contacts.
+- **Automations**: n8n automations on an instance Fineguide hosts for you, or on your own n8n instance connected to Fineguide. An n8n workflow that starts with a webhook can be imported as an assistant action. Assistant actions are HTTP calls built from a pasted cURL command, using stored secrets, with a test panel. Assistant webhooks are sent on these events: message, session opened, session closed, ticket, message rated, collected-information update, and Facebook Lead Ads lead form.
 
 ## What makes Fineguide different
 
-- **One platform, not a stack.** Conversations, CRM, voice, workspace, and automations share a single customer record, replacing the seven tools teams would otherwise integrate by hand. No export/import dance between systems.
-- **AI-native from the ground up**, not a chatbot bolted onto legacy software. The same configurable assistants run across chat channels and (rolling out) live phone calls.
-- **Channel-agnostic identity.** A customer's record and conversation history persist across web, messaging apps, and voice, so sales, support, customer success, and call-center teams all see the same context.
-- **Automation depth via embedded n8n** (hosted or bring-your-own), with webhooks on conversations, leads, and tickets and hundreds of pre-built integrations.
-- **Enterprise-ready:** on-premise deployment on your own infrastructure, platform adaptation, SLAs and consultancy.
-- **Pricing that scales with use**: plans differ by credits, team seats and knowledge base space, and CRM, Inbox, Messages and workflows never use credits.
+- **One platform, not a stack.** Conversations, CRM, email, voice, workspace and automations share a single customer record, replacing the separate tools teams would otherwise integrate by hand.
+- **AI-first**, not a chatbot bolted onto older software. The same configurable assistants answer on chat channels and on live phone calls.
+- **Channel-agnostic identity.** A customer's record and conversation history persist across the website, messaging apps, email and phone calls.
+- **Automations through n8n**, hosted by Fineguide or your own, plus assistant actions and webhooks.
+- **Enterprise services by contract:** on-premise deployment on the customer's own infrastructure, platform adaptation, SLAs, a dedicated account manager, training and consultancy.
+- **Pricing that scales with use:** plans differ by credits, team seats and knowledge base space. The CRM, Messages, reports, integrations, and reading and sending email use no credits.
 
 ## Who it's for
 
-- **Sales teams**: qualify leads faster with AI assistants that capture intent and write structured records into CRM.
-- **Support centers**: handle volume without growing headcount.
-- **Call-center operations**: evaluate call quality automatically and coach agents in real time with Voice QA.
+- **Business owners**: every enquiry answered, including outside office hours.
+- **Sales teams**: qualify leads faster with assistants that capture intent and write structured records into the CRM.
+- **Support teams**: handle volume without growing headcount, with chat and email in one team inbox.
+- **Call-centre operations**: score every call automatically with Voice QA, coach agents with the evidence behind each mark, and run outbound call campaigns.
 - **Customer success teams**: keep accounts coherent across every channel on one shared record.
 
 ## Pricing
 
-Every plan runs on credits. AI replies and voice minutes use credits; the CRM, Inbox, Messages, workflows, reports and integrations never do. One subscription per organization, prices in euro. There is a Free plan (no card needed) and no time-limited trial. No setup fees; cancel anytime.
+Every plan runs on credits. AI replies, AI email drafts, call scoring and AI phone calls use credits; the CRM, Messages, reports, integrations, and reading and sending email do not. One subscription per organization. There is a Free plan (no card needed) and no time-limited trial. No setup fees; cancel anytime.
 
-**Monthly or yearly:** paid plans can be billed monthly or once a year. Yearly costs 20% less: Starter €960 a year (€80 a month), Business €1,920 (€160), Premium €4,800 (€400). Credits still arrive every month, extra credits are 15% cheaper (€34, €26 and €21 per 1,000), and extra seats are billed monthly. Monthly or yearly is chosen when subscribing; switching later means cancelling and subscribing again. Free has no yearly option.
+**Currency:** customers in Europe pay in euros. Everywhere else pays in US dollars, at the dollar prices on the English pricing page. The country on the billing details decides which.
 
-**What a credit buys:** 1 credit = one standard AI reply. Call scoring (Voice QA) = 12 credits a minute. AI phone calls (AI Telephony) = 10 credits a minute, or 30 on the premium agent engine.
+**Monthly or yearly:** paid plans can be billed monthly or once a year. Yearly costs 20% less: Starter €960 a year (€80 a month), Business €1,920 (€160), Premium €4,800 (€400); in dollars $1,152 ($96 a month), $2,304 ($192) and $5,664 ($472). Credits still arrive every month, extra credits are 15% cheaper (€34, €26 and €21 per 1,000), and extra seats are billed monthly. Monthly or yearly is chosen when subscribing; switching later means cancelling and subscribing again. Free has no yearly option.
 
-- **Free**: €0, forever. 200 credits, given once (they do not renew), about 200 AI replies. You + 1 teammate, no extra seats. Knowledge base about 200 documents (1M characters). Extra credits €45 per 1,000. Community support.
-- **Starter**: €100/month. 3,000 credits every month, about 3,000 AI replies or 250 minutes of call scoring. You + 3 teammates, then €20 per person a month. Knowledge base about 1,000 documents (5M characters). Extra credits €40 per 1,000. Email support.
-- **Business**: €200/month (most popular). 8,000 credits every month, about 8,000 AI replies or 660 minutes of call scoring. You + 5 teammates, then €18 per person a month. Knowledge base about 2,000 documents (10M characters). Extra credits €30 per 1,000. Priority support.
-- **Premium**: €500/month. 25,000 credits every month, about 25,000 AI replies or 2,080 minutes of call scoring. You + 10 teammates, then €15 per person a month. Knowledge base about 4,000 documents (20M characters). Extra credits €24 per 1,000. Dedicated support.
-- **Enterprise**: custom plans with custom credit packages, volume discounts, priority support & SLA, a dedicated account manager, on-premise deployment, and platform adaptation.
+**What a credit buys:** 1 credit = one standard AI reply, or one AI draft of an email reply. Call scoring (Voice QA) = 12 credits a minute; transcribing without scoring costs half. AI phone calls (AI Telephony) = 10 credits a minute, counted per answered minute with a one-minute minimum, unless the plan sets its own rates.
 
-**When credits run out:** AI replies, call scoring and new AI phone calls pause (a call already under way finishes). CRM, Inbox, Messages, workflows and your data keep working. Buy credits at any time and the AI resumes straight away; on paid plans, automatic top-up can add credits before anything pauses, up to a monthly limit you set.
+- **Free**: €0, forever. 200 credits, given once (they do not renew), about 200 AI replies. You + 1 teammate, no extra seats. Knowledge base about 200 documents (1M characters). Extra credits €45 per 1,000 ($53). Community support.
+- **Starter**: €100/month ($119). 3,000 credits every month, about 3,000 AI replies or 250 minutes of call scoring. You + 3 teammates, then €20 ($24) per person a month. Knowledge base about 1,000 documents (5M characters). Extra credits €40 per 1,000 ($47). Email support.
+- **Business**: €200/month ($239), most popular. 8,000 credits every month, about 8,000 AI replies or 660 minutes of call scoring. You + 5 teammates, then €18 ($22) per person a month. Knowledge base about 2,000 documents (10M characters). Extra credits €30 per 1,000 ($36). Priority support.
+- **Premium**: €500/month ($589). 25,000 credits every month, about 25,000 AI replies or 2,080 minutes of call scoring. You + 10 teammates, then €15 ($18) per person a month. Knowledge base about 4,000 documents (20M characters). Extra credits €24 per 1,000 ($29). Dedicated support.
+- **Enterprise**: custom plans with custom credit packages, volume discounts, priority support and SLAs, a dedicated account manager, on-premise deployment and platform adaptation, agreed in a contract.
+
+**When credits run out:** AI replies (including AI drafts and AI replies in the Inbox), call scoring and new AI phone calls pause; a call already under way finishes. The CRM, Messages, reading and sending email, and your data and settings are not affected. Buy credits at any time and the AI resumes straight away; on paid plans, automatic top-up can add credits before anything pauses, up to a monthly limit you set.
 
 **Add-ons**, each bought on its own:
 
-- **Extra seats**: €20 per person a month on Starter, €18 on Business, €15 on Premium, billed with the plan. Not available on Free.
+- **Extra seats**: €20 ($24) per person a month on Starter, €18 ($22) on Business, €15 ($18) on Premium, billed with the plan. Not available on Free.
 - **Extra credits**: €45 per 1,000 on Free, €40 on Starter, €30 on Business, €24 on Premium. They add to your balance and stay while you keep the same plan.
-- **Context Packs**: €5 a month per pack, +5,000,000 characters (about 1,000 documents) of knowledge base space, on any plan. Each pack is its own monthly charge; a pack can be removed as long as your content still fits without it.
+- **Context Packs**: €5 ($6) a month per pack, +5,000,000 characters (about 1,000 documents) of knowledge base space, on any plan. Each pack is its own monthly charge; a pack can be removed as long as your content still fits without it.
 
-**How credits are counted:** a standard AI reply is 1 credit; a reply that needs 2 to 4 actions (such as a lookup or a CRM update) is 2 credits, 5 to 7 actions is 3. Attachments cost nothing extra. Voice QA has a one-minute minimum per call. AI Telephony calls are counted from when the call is answered, with a one-minute minimum; voice chats in the website widget count as AI replies.
+**How credits are counted:** a standard AI reply is 1 credit; a reply that needs 2 to 4 actions (such as a lookup or a CRM update) is 2 credits, 5 to 7 actions is 3. Attachments cost nothing extra. In the Inbox, reading and sending email is free, an AI draft (the Draft reply button) is 1 credit, and replies the AI writes in the Inbox's AI modes count as AI replies. Voice QA has a one-minute minimum per call. AI Telephony calls are counted from when the call is answered, never while it rings, with a one-minute minimum; voice chats in the website widget count as AI replies.
 
 ## Pricing FAQ
 
 - **Do unused credits carry over?** No. Paid plans refresh credits on each billing date; unused credits do not carry over. Free's 200 credits are given once.
-- **Which currency am I charged in?** Euro, for now. The English pricing page can show US dollar prices for reference (shown to US visitors by default): Starter $119, Business $239, Premium $589 a month; yearly $1,152, $2,304 and $5,664. They are the euro prices converted at 1.17 and rounded. Subscribers pay the euro price.
+- **Which currency am I charged in?** Customers in Europe pay in euros. Everywhere else pays in US dollars, at the dollar prices on the pricing page. The country on your billing details decides which.
 - **What happens to credits I buy?** They have no expiry date but belong to your current plan. If you change plan or cancel, unused bought credits do not move with you.
 - **Can I change plan?** Yes. Free to paid starts straight away. Changes between paid plans, up or down, take effect on your next billing date.
 - **How do I cancel?** From billing settings. The plan runs to the end of the paid month, then the account moves to Free.
 - **Who counts as a seat?** Everyone invited, including pending invitations. The account owner is not counted.
 - **What if the knowledge base is full?** A warning is sent at 85%. When full, new content is not added until you remove some, add a Context Pack or move to a bigger plan.
 
+## Partners
+
+Agencies, integrators and consultants earn 20% of every invoice the customers they refer pay, for as long as those customers stay, and can pass part of it on to them as a discount (for example, a 10% client discount leaves the partner 10% of the list price). Payouts in US dollars from $200, or as Fineguide credits. Joining is free: https://fineguide.ai/partners/
+
 ## Integrations & languages
 
-Integrates with: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, AmoCRM, Kommo, Zendesk, HelpScout, and n8n (plus hundreds more via n8n workflows). The platform supports 30+ languages across voice transcription and customer conversations, and the site is localized in English (`/`) and Romanian (`/ro/`).
+- **Channels:** website chat widget, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, amoCRM and Kommo.
+- **Other integrations:** Zendesk, HelpScout, Google Calendar (two-way task sync), Facebook Lead Ads, and n8n, with hundreds more integrations through n8n workflows. Voice QA receives calls from Moldcell, Orange Moldova and the Fineguide call-recording app for Android.
+- **Languages:** call-quality reports (Voice QA) in 30 languages; AI phone calls in 14 (English, Romanian, Russian, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Arabic, Japanese, Korean and Chinese); the website chat widget's interface in 24. The site is in English (`/`) and Romanian (`/ro/`).
 
 ## Pages
 
-- [Home](https://fineguide.ai/): Platform overview: unify conversations, CRM, channels, and workflows, powered by AI from the ground up.
-- [AI Assistants](https://fineguide.ai/ai-assistants): Deploy AI assistants that automate conversations across web, WhatsApp, Telegram, Instagram, Messenger, Slack, and Discord.
-- [CRM](https://fineguide.ai/crm): Conversations, leads, and tasks on one shared customer record for every team.
-- [Voice QA](https://fineguide.ai/voice-qa): Automatic transcription and scoring on every call, with per-department evaluation criteria.
-- [AI Telephony](https://fineguide.ai/voice-ai): AI agents on live inbound and outbound phone calls.
-- [Workspace](https://fineguide.ai/workspace): Block-based documents and team knowledge that live alongside the customer record.
-- [Pricing](https://fineguide.ai/pricing): Plans from €0 to €500 a month, what each includes, and what a credit buys; start free with 200 credits.
-- [Enterprise](https://fineguide.ai/enterprise): On-premise deployment, custom plans, platform adaptation, and consultancy for teams at scale.
-- [Partners](https://fineguide.ai/partners): Partner program for agencies, integrators and consultants: earn 30% of every invoice the customers you refer pay, for as long as they stay, and pass part of it on to them as a discount if you choose.
-- [Schedule a demo](https://fineguide.ai/schedule-demo): Book a 15-minute walkthrough of Fineguide on your operation.
-- [Contact](https://fineguide.ai/contact): Get in touch with the Fineguide team.
+- [Home](https://fineguide.ai/): Platform overview: conversations, CRM, channels and automations, built on AI from the ground up.
+- [AI Assistants](https://fineguide.ai/ai-assistants/): AI assistants on the website, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord.
+- [CRM](https://fineguide.ai/crm/): Contacts, companies, deals, tasks and duplicate review on one shared customer record.
+- [Messages & Inbox](https://fineguide.ai/messages/): One team inbox for nine chat channels and your own email, with routing, departments and handover to a person.
+- [AI Telephony](https://fineguide.ai/voice-ai/): AI assistants on live inbound and outbound phone calls over your own phone system.
+- [Campaigns](https://fineguide.ai/campaigns/): Outbound call campaigns (outreach, survey, promotion) worked by AI assistants.
+- [Voice QA](https://fineguide.ai/voice-qa/): Automatic transcription and scoring of every recorded call, against per-department rules.
+- [Workspace](https://fineguide.ai/workspace/): Block-based documents, playbooks and case files beside the customer record.
+- [Automations](https://fineguide.ai/automations/): n8n automations, assistant actions built from a cURL command, and assistant webhooks.
+- [Pricing](https://fineguide.ai/pricing/): Plans from €0 to €500 a month, what each includes, and what a credit buys; start free with 200 credits.
+- [Enterprise](https://fineguide.ai/enterprise/): On-premise deployment, custom plans, platform adaptation, SLAs and consultancy, agreed in a contract.
+- [Partners](https://fineguide.ai/partners/): Partner program for agencies, integrators and consultants: earn 20% of every invoice the customers you refer pay, for as long as they stay, and pass part of it on to them as a discount if you choose.
+- [About](https://fineguide.ai/about/): The company, where it is built, its founder and owner, and how to reach it.
+- [Schedule a demo](https://fineguide.ai/schedule-demo/): Book a 30-minute walkthrough of Fineguide on your operation.
+- [Contact](https://fineguide.ai/contact/): Get in touch with the Fineguide team.
 - [Blog](https://fineguide.ai/blog/): Guides, product news and how-tos on AI assistants, CRM, voice AI and integrations. Every post is also served as Markdown at its address with `.md` in place of the trailing slash (e.g. https://fineguide.ai/blog/kommo-integration-guide.md); the feed is https://fineguide.ai/blog/rss.xml.
 
 ## Optional
 
-- [Documentation](https://app.fineguide.ai/docs): Product documentation for active users, admins, and developers.
-- [Privacy Policy](https://fineguide.ai/privacy-policy): personal data is handled under Moldova's Law No. 195/2024 on personal data protection, and the GDPR where it applies. Advertising cookies load only with consent.
-- [Terms of Service](https://fineguide.ai/terms-of-service)
+- [Privacy Policy](https://fineguide.ai/privacy-policy/): personal data is handled under Moldova's Law No. 195/2024 on personal data protection, and the GDPR where it applies. Advertising cookies load only with consent.
+- [Terms of Service](https://fineguide.ai/terms-of-service/)
 - [Romanian site](https://fineguide.ai/ro/): Romanian-language version of the platform pages.

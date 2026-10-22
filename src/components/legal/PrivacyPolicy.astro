@@ -8,10 +8,11 @@
 // - trackers, storage keys, lifetimes: src/layouts/Layout.astro,
 //   src/components/CookieConsent.astro, src/components/Navbar.astro,
 //   the chat widget (ai-chat-injector), Dockerfile
-// - hosting: ai-fineguide-project/docs/INFRASTRUCTURE.md (AWS us-east-1 for
-//   the application, dedicated EU servers for the databases, Cloudflare)
-// - vendors: ai-backoffice-api dependencies (Stripe, OpenAI, Anthropic,
-//   Google Gemini, ElevenLabs, AWS S3 and SES)
+// - providers: named here by CATEGORY on purpose (hosting and infrastructure,
+//   file storage and email delivery, network and security, AI models and
+//   voice, a payment processor). The owner does not want the hosting, the
+//   locations or the vendors behind the service published, so do not add
+//   their names back; the real list lives in the internal infrastructure docs.
 // - regulator details: datepersonale.md
 // Never write that we are "compliant" or "certified" (scripts/verify-claims.mjs).
 import type { Lang } from '../../i18n/utils';
@@ -58,7 +59,7 @@ const email = 'office@fineguide.ai';
         <h3>Când vizitezi site-ul</h3>
         <ul>
           <li><strong>Date:</strong> adresa IP, tipul de browser și dispozitiv, paginile accesate, data și ora.</li>
-          <li><strong>De ce:</strong> ca să afișăm site-ul, să-l protejăm de abuzuri și să rezolvăm erori. Aceste date trec prin serverele noastre și prin Cloudflare.</li>
+          <li><strong>De ce:</strong> ca să afișăm site-ul, să-l protejăm de abuzuri și să rezolvăm erori. Aceste date sunt prelucrate de noi și de furnizorii de găzduire, rețea și securitate din secțiunea 5.</li>
           <li><strong>Temei:</strong> interesul nostru legitim de a opera un site sigur.</li>
           <li><strong>Cât timp:</strong> doar cât este necesar pentru securitate și depanare, apoi sunt șterse.</li>
         </ul>
@@ -110,7 +111,7 @@ const email = 'office@fineguide.ai';
         <h3>Când ai un cont Fineguide</h3>
         <ul>
           <li><strong>Date:</strong> numele, emailul, organizația, setările contului, datele de facturare și modul în care folosești serviciul.</li>
-          <li><strong>De ce:</strong> ca să furnizăm serviciul, să facturăm și să oferim suport. Plățile sunt procesate de <strong>Stripe</strong>.</li>
+          <li><strong>De ce:</strong> ca să furnizăm serviciul, să facturăm și să oferim suport. Plățile sunt procesate de un procesator de plăți (secțiunea 5).</li>
           <li><strong>Temei:</strong> executarea contractului; obligația legală pentru documentele contabile.</li>
           <li><strong>Cât timp:</strong> cât timp contul este activ, apoi cât cer legile contabile și fiscale pentru facturi.</li>
         </ul>
@@ -125,7 +126,7 @@ const email = 'office@fineguide.ai';
         </ul>
 
         <h3>Fonturi</h3>
-        <p>Paginile încarcă fonturi de la <strong>Google Fonts</strong>. Acest serviciu primește adresa ta IP când pagina se încarcă. <strong>Temei:</strong> interesul nostru legitim de a afișa site-ul corect.</p>
+        <p>Paginile încarcă fonturi de la un serviciu extern de fonturi. Acest serviciu primește adresa ta IP când pagina se încarcă. <strong>Temei:</strong> interesul nostru legitim de a afișa site-ul corect.</p>
 
         <h3>Blogul</h3>
         <p>Dacă lași un comentariu pe blog, acolo unde comentariile sunt deschise, primim numele, emailul, comentariul și adresa IP, ca să-l publicăm și să prevenim spamul.</p>
@@ -136,16 +137,18 @@ const email = 'office@fineguide.ai';
         <h2>5. Cui transmitem datele</h2>
         <p>Nu vindem datele tale. Le transmitem doar furnizorilor care ne ajută să oferim serviciul și care le prelucrează în numele nostru:</p>
         <ul>
-          <li><strong>Găzduire și rețea:</strong> Amazon Web Services (aplicația, stocarea fișierelor și trimiterea emailurilor), servere dedicate în Uniunea Europeană (bazele de date) și Cloudflare.</li>
-          <li><strong>Modele AI și voce:</strong> OpenAI, Anthropic, Google (Gemini) și ElevenLabs.</li>
-          <li><strong>Plăți:</strong> Stripe.</li>
+          <li><strong>Găzduire și infrastructură:</strong> furnizorii care rulează aplicația și bazele de date.</li>
+          <li><strong>Stocarea fișierelor și trimiterea emailurilor:</strong> furnizorii care păstrează fișierele încărcate și livrează emailurile.</li>
+          <li><strong>Rețea și securitate:</strong> furnizorii care livrează site-ul și îl protejează de atacuri și abuzuri.</li>
+          <li><strong>Modele AI și voce:</strong> furnizorii modelelor AI și ai tehnologiei vocale care generează răspunsuri, transcrieri și vorbire.</li>
+          <li><strong>Plăți:</strong> un procesator de plăți.</li>
           <li><strong>Programări:</strong> Calendly.</li>
-          <li><strong>Publicitate, doar cu acordul tău:</strong> Google și Meta Platforms.</li>
+          <li><strong>Parteneri de publicitate și analiză, doar cu acordul tău:</strong> Google și Meta Platforms (secțiunea 4).</li>
         </ul>
         <p>Putem dezvălui date și autorităților, atunci când legea ne obligă.</p>
 
         <h2>6. Transferuri în afara Republicii Moldova</h2>
-        <p>Unii dintre acești furnizori prelucrează date în Uniunea Europeană sau în Spațiul Economic European, iar alții în Statele Unite ori în alte țări. Transferurile către țări care nu asigură un nivel adecvat de protecție au loc doar pe un temei permis de Legea nr. 195/2024, de exemplu clauze contractuale standard. Ne poți cere detalii la <a href={`mailto:${email}`}>{email}</a>.</p>
+        <p>Unii dintre acești furnizori pot prelucra date în afara Republicii Moldova, inclusiv în afara Uniunii Europene și a Spațiului Economic European. Atunci când o fac, ne bazăm pe garanții adecvate permise de Legea nr. 195/2024 și, acolo unde se aplică, de GDPR, cum ar fi clauzele contractuale standard sau deciziile privind nivelul adecvat de protecție. Ne poți cere detalii la <a href={`mailto:${email}`}>{email}</a>.</p>
 
         <h2 id="drepturile-tale" class="scroll-mt-24">7. Drepturile tale</h2>
         <p>Ai dreptul:</p>
@@ -205,7 +208,7 @@ const email = 'office@fineguide.ai';
         <h3>When you visit the website</h3>
         <ul>
           <li><strong>Data:</strong> IP address, browser and device type, pages requested, date and time.</li>
-          <li><strong>Why:</strong> to deliver the site, protect it from abuse and fix errors. This data passes through our servers and Cloudflare.</li>
+          <li><strong>Why:</strong> to deliver the site, protect it from abuse and fix errors. This data is processed by us and by the hosting, network and security providers listed in section 5.</li>
           <li><strong>Legal basis:</strong> our legitimate interest in running a secure website.</li>
           <li><strong>How long:</strong> only as long as needed for security and troubleshooting, then it is deleted.</li>
         </ul>
@@ -257,7 +260,7 @@ const email = 'office@fineguide.ai';
         <h3>When you have a Fineguide account</h3>
         <ul>
           <li><strong>Data:</strong> name, email, organisation, account settings, billing details and how you use the service.</li>
-          <li><strong>Why:</strong> to provide the service, bill for it and support you. Payments are processed by <strong>Stripe</strong>.</li>
+          <li><strong>Why:</strong> to provide the service, bill for it and support you. Payments are handled by a payment processor (section 5).</li>
           <li><strong>Legal basis:</strong> performance of our contract; legal obligation for accounting records.</li>
           <li><strong>How long:</strong> while the account is active, then as long as accounting and tax law requires for invoices.</li>
         </ul>
@@ -272,7 +275,7 @@ const email = 'office@fineguide.ai';
         </ul>
 
         <h3>Fonts</h3>
-        <p>Pages load fonts from <strong>Google Fonts</strong>. That service receives your IP address when the page loads. <strong>Legal basis:</strong> our legitimate interest in displaying the site correctly.</p>
+        <p>Pages load fonts from a third-party font service. That service receives your IP address when the page loads. <strong>Legal basis:</strong> our legitimate interest in displaying the site correctly.</p>
 
         <h3>The blog</h3>
         <p>If you leave a comment on the blog where comments are open, we receive your name, email, comment and IP address, to publish it and prevent spam.</p>
@@ -283,16 +286,18 @@ const email = 'office@fineguide.ai';
         <h2>5. Who receives your data</h2>
         <p>We do not sell your data. We share it only with providers who help us run the service and process it on our behalf:</p>
         <ul>
-          <li><strong>Hosting and network:</strong> Amazon Web Services (the application, file storage and sending email), dedicated servers in the European Union (databases), and Cloudflare.</li>
-          <li><strong>AI models and voice:</strong> OpenAI, Anthropic, Google (Gemini) and ElevenLabs.</li>
-          <li><strong>Payments:</strong> Stripe.</li>
+          <li><strong>Hosting and infrastructure:</strong> the providers that run the application and its databases.</li>
+          <li><strong>File storage and email delivery:</strong> the providers that store uploaded files and deliver email.</li>
+          <li><strong>Network and security:</strong> the providers that deliver the site and protect it from attacks and abuse.</li>
+          <li><strong>AI models and voice:</strong> the providers of the AI models and voice technology that generate replies, transcripts and speech.</li>
+          <li><strong>Payments:</strong> a payment processor.</li>
           <li><strong>Scheduling:</strong> Calendly.</li>
-          <li><strong>Advertising, only with your consent:</strong> Google and Meta Platforms.</li>
+          <li><strong>Advertising and analytics partners, only with your consent:</strong> Google and Meta Platforms (section 4).</li>
         </ul>
         <p>We may also disclose data to public authorities where the law requires us to.</p>
 
         <h2>6. Transfers outside the Republic of Moldova</h2>
-        <p>Some of these providers process data in the European Union or the European Economic Area, and others in the United States or other countries. Transfers to countries that do not ensure an adequate level of protection take place only on a basis allowed by Law No. 195/2024, for example standard contractual clauses. You can ask us for details at <a href={`mailto:${email}`}>{email}</a>.</p>
+        <p>Some of these providers may process data outside the Republic of Moldova, including outside the European Union and the European Economic Area. Where they do, we rely on appropriate safeguards allowed by Law No. 195/2024 and, where it applies, the GDPR, such as standard contractual clauses or adequacy decisions. You can ask us for details at <a href={`mailto:${email}`}>{email}</a>.</p>
 
         <h2 id="your-rights" class="scroll-mt-24">7. Your rights</h2>
         <p>You have the right to:</p>

@@ -28,6 +28,7 @@ export const en = {
     tagline: 'The next-generation platform for business operations, bringing conversations, CRM, voice, and workspace onto one AI-native spine.',
     product: 'Product',
     company: 'Company',
+    about: 'About',
     scheduleDemo: 'Schedule a demo',
     enterprise: 'Enterprise',
     partners: 'Partners',
@@ -73,7 +74,7 @@ export const en = {
       },
       {
         name: 'CRM',
-        desc: 'Conversations, contacts, companies, leads, pipelines, tasks, team inbox, and routing queue.',
+        desc: 'Contacts, companies, deals and pipelines, tasks, duplicate review, and sales reports.',
       },
       {
         name: 'Voice',
@@ -81,7 +82,7 @@ export const en = {
       },
       {
         name: 'Messages',
-        desc: 'A dedicated home for every conversation your assistants handle, with its own reporting.',
+        desc: 'Every conversation your assistants handle, in a team inbox with a routing queue, handover to a person, and its own reporting.',
       },
       {
         name: 'Inbox',
@@ -93,7 +94,7 @@ export const en = {
       },
       {
         name: 'Automations',
-        desc: 'Build workflows visually inside Fineguide, or connect n8n to wire it into the rest of your stack.',
+        desc: 'n8n automations, on an instance Fineguide hosts for you or your own, plus assistant actions and webhooks that connect Fineguide to the rest of your tools.',
       },
       {
         name: 'QA & Analytics',
@@ -128,7 +129,7 @@ export const en = {
       'Pipelines and stages, Kanban and table views',
       'Tasks, assignments, and due dates',
       'Company records with their own email and history',
-      'Team inbox and routing queue',
+      'Duplicate review, with a person confirming every merge',
       'Custom fields auto-filled by assistants',
     ],
     screenshotAlt: 'Illustration of one customer record linked to a conversation, a chart, a task, a call recording and a company',
@@ -155,7 +156,7 @@ export const en = {
     eyebrow: 'Messages & Inbox',
     title: 'Every conversation lands somewhere a person can take over.',
     body:
-      'Chat and email arrive in the same workspace, with a queue, routing rules and departments behind them. The assistant handles what it can; the moment it cannot, a colleague already has the thread and the customer record in front of them.',
+      'Chat and email arrive in one team inbox, with a routing queue, rules and departments behind it. The assistant handles what it can; the moment it cannot, a colleague already has the thread and the customer record in front of them.',
     linkLabel: 'Explore Messages & Inbox',
   },
   // --- Campaigns (outbound telephony) ---
@@ -177,23 +178,23 @@ export const en = {
       features: [
         'Block editor with slash commands',
         'Folder hierarchy and drag-drop',
-        'Full-text search across the workspace',
-        'Soft-delete trash with recovery',
+        'Search by document title',
+        'Trash with recovery',
       ],
     },
     automations: {
       eyebrow: 'Automations',
-      title: 'Read the conversation. Update the record. No one touches it.',
+      title: 'Connect Fineguide to the rest of your tools.',
       body:
-        'A visual workflow builder inside Fineguide: drag steps onto a canvas, let AI pull the fields out of a conversation, and write them straight into the CRM. Plus an embedded n8n instance, hosted or bring-your-own, for everything beyond it.',
+        'Run n8n automations on an instance Fineguide hosts for you, or connect the one you already run. Give your assistants actions that call your own systems, and send what happens in a conversation to any address that accepts a webhook.',
       linkLabel: 'Explore automations',
       features: [
-        'AI extracts typed fields from the conversation that triggered the run',
-        'Create, update, and find contacts, leads, and companies',
-        'Move leads between pipeline stages, add tags, open tasks',
-        'Branch on conditions and loop over matching records',
-        'Hosted n8n on Fineguide infrastructure, or bring your own',
-        'Webhooks and hundreds of pre-built integrations through n8n',
+        'An n8n instance hosted for you by Fineguide, or your own connected to it',
+        'Import an n8n workflow that starts with a webhook as an assistant action',
+        'Custom actions built from a pasted cURL command, with stored secrets and a test panel',
+        'Webhooks on messages, sessions, tickets, ratings and collected information',
+        'Facebook Lead Ads form submissions passed on as a webhook event',
+        'Hundreds of ready-made integrations through n8n',
       ],
     },
   },
@@ -204,11 +205,11 @@ export const en = {
     items: [
       {
         figure: '24/7',
-        prose: 'AI coverage in under two seconds, on every channel you have connected.',
+        prose: 'assistants answering on every channel you have connected, nights and weekends included.',
       },
       {
-        figure: '30+',
-        prose: 'languages supported across voice transcription and customer conversations.',
+        figure: '30',
+        prose: 'languages for call-quality reports. AI phone calls speak 14, and the website chat widget comes in 24.',
       },
       {
         figure: 'One',
@@ -221,22 +222,21 @@ export const en = {
   industries: {
     eyebrow: 'Built for',
     body:
-      'Sales teams use Fineguide to qualify faster. Support centers use it to handle volume without growing headcount. Call centers use it to evaluate quality and coach in real time. Customer success teams use it to keep accounts coherent across channels.',
+      'Sales teams use Fineguide to qualify faster. Support centers use it to handle volume without growing headcount. Call centers use it to score every call and coach agents with the evidence behind each mark. Customer success teams use it to keep accounts coherent across channels.',
     audiences: 'Sales · Support · Customer success · Call center operations',
   },
 
   // --- Integrations ribbon ---
   // Security strip. docs/goals.md lists "Security & compliance (high level)"
-  // under what belongs on the website, and the landing page had no mention of
-  // it at all. Every claim here is the enterprise page's own wording, which is
-  // backed by the self-hosted Docker stack in ai-fineguide-project. Note it
-  // says we SUPPORT compliance reviews - it does not claim certification, and
-  // must not start to.
+  // under what belongs on the website. On-premise deployment is a contracted
+  // enterprise service, and the copy says so. Note it says we SUPPORT
+  // compliance reviews - it does not claim certification, and must not start
+  // to. Never name where the hosted service runs or what it runs on.
   security: {
     eyebrow: 'Security',
     title: 'Your data, on your terms.',
     body:
-      'Run Fineguide on your own infrastructure when you need to: your cloud, your private cluster, or bare metal. Data stays inside your network boundary, and we support your compliance reviews and security audits.',
+      'When you need it, Fineguide can be deployed on your own infrastructure under an enterprise contract, so you decide what leaves your network. We also support your compliance reviews and security audits.',
     linkLabel: 'See enterprise deployment',
   },
 
@@ -261,7 +261,6 @@ export const en = {
       'Kommo',
       'Zendesk',
       'HelpScout',
-      'Notion',
       'n8n',
     ],
   },
@@ -270,7 +269,7 @@ export const en = {
   finalCta: {
     heading: 'Ready to consolidate?',
     body:
-      'See Fineguide running on your operation in a 15-minute walkthrough.',
+      'See Fineguide running on your operation in a 30-minute walkthrough.',
     ctaPrimary: 'Get started',
     ctaSecondary: 'Talk to sales',
   },
@@ -326,12 +325,12 @@ export const en = {
         {
           title: 'Learning Context',
           body:
-            'Upload documents, link URLs, or attach PDFs. The assistant grounds every answer in what you give it, with no hallucinated facts.',
+            'Upload documents, link URLs, or attach PDFs. The assistant answers from the knowledge you give it, and you can limit it to only what it has learned from you.',
         },
         {
           title: 'Voice',
           body:
-            'Text-to-speech voices for spoken responses. Pick a voice, or just a male or female one, and preview it before it goes live.',
+            'The voice the assistant speaks with on phone calls and in the voice conversation mode of your website widget. Pick a voice, or just a male or female one, and preview it before it goes live.',
         },
         {
           title: 'Session Variables',
@@ -341,7 +340,7 @@ export const en = {
         {
           title: 'Actions',
           body:
-            'Trigger webhooks, API calls, or workflows from within a conversation. Book meetings, create tickets, hand off to humans.',
+            'Call your own systems from inside a conversation: an HTTP action built from a pasted cURL command, or an n8n workflow imported as an action. Book meetings through your own booking system, open tickets, hand off to a person.',
         },
         {
           title: 'Human Handoff',
@@ -354,10 +353,10 @@ export const en = {
       eyebrow: 'From conversation to CRM',
       heading: 'Every chat becomes a structured record.',
       body:
-        'What used to require a rep copying notes from a chat window into a spreadsheet now happens automatically, and accurately.',
+        'What used to require a rep copying notes from a chat window into a spreadsheet now happens automatically, while the conversation is still going.',
       steps: [
         'Customer starts a conversation on any connected channel',
-        'Assistant identifies intent, extracts the fields you defined, and grounds answers in your knowledge',
+        'Assistant identifies intent, extracts the fields you defined, and answers from your knowledge',
         'A CRM lead is created, or merged with an existing contact, without manual entry',
         'Custom fields populate the lead so the data is searchable, segmentable, and automation-ready',
         'Live conversations roll up in the workspace; analytics aggregate by assistant, channel, and time',
@@ -406,7 +405,7 @@ export const en = {
     },
     finalCta: {
       heading: 'Ready to deploy?',
-      body: 'See an assistant configured for your business in a 15-minute walkthrough.',
+      body: 'See an assistant configured for your business in a 30-minute walkthrough.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -451,7 +450,7 @@ export const en = {
         },
         {
           name: 'Tasks',
-          desc: 'Follow-ups and callbacks on boards you name yourself, or as a table or a calendar. Every task knows whether a person, an assistant, a conversation or a workflow created it.',
+          desc: 'Follow-ups and callbacks on boards you name yourself, or as a table or a calendar. Every task knows whether a person, an assistant or a conversation created it.',
         },
         {
           name: 'Duplicates',
@@ -523,7 +522,7 @@ export const en = {
         'Assistants capture the person mid-conversation and book a follow-up task, rather than leaving a note nobody reads',
         'Import contacts from CSV, TSV, XLS or XLSX, map the columns yourself, and let it run in the background',
         'Export the contacts you have selected to CSV, choosing which fields and in what order, custom fields included',
-        'Workflows create and update contacts, companies and deals, move a deal to the next stage, add tags and raise tasks',
+        'Assistant webhooks send each message, ticket and collected field to your own systems or to n8n as it happens',
         'A REST API with your own keys covers contacts, companies, deals, tasks, tags, comments and custom fields',
         'Contacts and companies carry an external id, so a sync from your ERP or shop can run again without making copies',
       ],
@@ -584,15 +583,17 @@ export const en = {
         },
       ],
     },
+    // Since 2026-10-17 there is one realtime voice engine and no engine or
+    // model picker. Never name the vendors behind it.
     voice: {
       eyebrow: 'On the call',
-      heading: 'Choose the engine, the voice and the languages.',
+      heading: 'Choose the voice and the languages.',
       body:
         'The same assistant configuration you use for chat, with the choices a phone call adds. Everything here is set per assistant.',
       items: [
         {
-          term: 'Four engines',
-          desc: 'OpenAI Realtime, Google Gemini Live, ElevenLabs Agents, or Gemini paired with a separate voice from ElevenLabs, Google Chirp 3 HD, Gemini or OpenAI.',
+          term: 'Built for live calls',
+          desc: 'Every call runs on one realtime voice engine that listens and answers while the caller speaks. There is no engine or model to choose: you pick the voice and the languages.',
         },
         {
           term: 'Voices',
@@ -600,7 +601,7 @@ export const en = {
         },
         {
           term: 'Languages',
-          desc: 'Give one assistant several languages, from English, Romanian and Russian to Arabic, Japanese and Chinese. It replies in the language the caller is speaking.',
+          desc: 'Fourteen: English, Romanian, Russian, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Arabic, Japanese, Korean and Chinese. Give one assistant several, and it replies in the language the caller is speaking.',
         },
         {
           term: 'Interruptions',
@@ -622,6 +623,7 @@ export const en = {
         'Survey answers and promotion outcomes extracted from every completed call',
         'A test call to your own phone before any real contact is dialled',
         'Retries on no answer or busy, with the delay you choose',
+        'Calling hours for each day of the week, so a campaign only dials when you allow it',
       ],
       linkLabel: 'See Campaigns',
     },
@@ -645,7 +647,7 @@ export const en = {
         },
         {
           term: 'Rates',
-          desc: '10 credits a minute on OpenAI, Gemini or the Gemini-plus-voice engine, and 30 on the premium agent engine, unless your plan sets its own rates.',
+          desc: '10 credits a minute, whichever voice and language the assistant uses, unless your plan sets its own rates.',
         },
         {
           term: 'No surprise bills',
@@ -666,13 +668,13 @@ export const en = {
     meta: {
       title: 'Workspace: Documents Beside Your Customers | Fineguide',
       description:
-        'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts, leads, and conversations your team is already working with.',
+        'A block-based editor for playbooks, briefs and team knowledge, with folders, favourites, links between documents and case files tied to your contacts.',
     },
     hero: {
       title: 'Documents that live',
       titleAccent: ' with the customer.',
       subtitle:
-        'A block-based editor for playbooks, briefs, and team knowledge, connected to the same contacts and customers your team is already working with.',
+        'A block-based editor for playbooks, briefs, and team knowledge, in the same product as the contacts and customers your team is already working with.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -686,46 +688,46 @@ export const en = {
       eyebrow: 'The editor',
       heading: 'Blocks, not blank pages.',
       body:
-        'Headings, lists, quotes, code, callouts, and tables. Every block is composable. Slash commands speed up writing. Keyboard shortcuts speed up everything else.',
+        'Headings, lists, checklists, quotes, code, tables, images and files. Every block is composable. Slash commands speed up writing. Keyboard shortcuts speed up everything else.',
       blocks: [
         {
           title: 'Block-based structure',
           body:
-            'Headings, paragraphs, lists, quotes, code, tables, callouts. Drag to reorder, indent to nest, transform between types with a keystroke.',
+            'Headings, paragraphs, lists, checklists, quotes, code and tables. Drag to reorder, indent to nest, and drop images and files straight into the page.',
         },
         {
           title: 'Slash commands',
           body:
-            'Type a slash to pull up every block type, embed, and shortcut. No menu hunting, no formatting interruptions.',
+            'Type a slash to pull up every block type and shortcut. No menu hunting, no formatting interruptions.',
         },
         {
-          title: 'Real-time updates',
+          title: 'Links between documents',
           body:
-            'Edits propagate immediately across the team. Comments and mentions attach to the block, not a stale email thread.',
+            'Point to another document from inside the text. One click opens it, so a playbook can lead straight to the brief or the checklist it depends on.',
         },
       ],
     },
     structure: {
       eyebrow: 'Organization',
-      heading: 'Hierarchy, search, and recovery.',
+      heading: 'Hierarchy, favourites, and recovery.',
       body:
-        'Workspace organizes itself around the way your team actually thinks, with folders for departments, documents for playbooks, recents and favorites for what you touched last week.',
+        'Workspace organizes itself around the way your team actually thinks, with folders for departments, documents for playbooks, recents and favourites for what you touched last week.',
       bullets: [
         'Folder and document hierarchy with drag-and-drop reorder',
-        'Recents and favorites for the docs you live in',
-        'Full-text search across the entire workspace',
-        'Soft-delete trash with recovery, so deleting is not destructive',
+        'Recents and favourites for the docs you live in',
+        'Search by document title across the workspace',
+        'Trash with recovery, so deleting is not destructive',
       ],
     },
     connected: {
       eyebrow: 'Connected to your customers',
-      heading: 'Documents that know who they are about.',
+      heading: 'Case documents that know who they are about.',
       body:
-        'Link a document to a contact, a lead, or a customer record. The next person who opens that customer in CRM sees the playbook, the call summary, or the proposal that already exists. Nothing gets lost in Slack archaeology.',
+        'A case document carries the contacts it concerns, along with its own properties. Whoever opens the case sees who it is about, and the notes, files and decisions stay together in one place instead of scattered across chat threads.',
     },
     finalCta: {
       heading: 'Ready to consolidate?',
-      body: 'See workspace, CRM, and assistants together in a 15-minute walkthrough.',
+      body: 'See workspace, CRM, and assistants together in a 30-minute walkthrough.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -904,29 +906,34 @@ export const en = {
     },
     finalCta: {
       heading: 'Stop sampling. Start scoring.',
-      body: 'See Voice QA running on your own recordings in a 15-minute walkthrough.',
+      body: 'See Voice QA running on your own recordings in a 30-minute walkthrough.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
   },
 
-  // --- Automations Page (workflow engine + n8n) ---
-  // Hard constraint, enforced by scripts/verify-claims.mjs: the seven step
-  // types in PLANNED_STEP_TYPES (classify, summarize, translate, reply, notify,
-  // send_email, webhook) can be authored in the builder but have NO runtime -
-  // the engine pauses the run when it reaches one. None may appear here. Nor
-  // may any per-step credit price: workflow runs do not consume credits.
+  // --- Automations Page (n8n, assistant actions, webhooks) ---
+  // The visual workflow builder is admin-only in the product and is NOT sold
+  // here. This page covers what customers have today: n8n (hosted by Fineguide
+  // or their own), assistant actions (HTTP calls from a pasted cURL command,
+  // stored secrets, a test panel; n8n workflows that start with a webhook,
+  // imported as actions) and assistant webhooks. Webhook events are the ones
+  // the platform actually sends (EVENT_META in agents/webhooks/types.ts):
+  // CREATE_LEAD is offered but never sent, so leads are not listed.
+  // scripts/verify-claims.mjs still scans this block for the builder's
+  // planned step types (classify, summarize, translate, reply, notify,
+  // send_email); none may appear here.
   automationsPage: {
     meta: {
-      title: 'Visual Workflow Builder for CRM | Fineguide',
+      title: 'Automations with n8n, Actions and Webhooks | Fineguide',
       description:
-        'Read a conversation, pull the fields out of it, branch on what you find, and update the CRM. Twelve triggers and eighteen actions, no code.',
+        'n8n automations hosted for you or on your own instance, assistant actions built from a cURL command, and webhooks on conversations, tickets and lead forms.',
     },
     hero: {
-      title: 'Read the conversation.',
-      titleAccent: ' Update the record. No one touches it.',
+      title: 'Connect the conversation',
+      titleAccent: ' to the rest of your business.',
       subtitle:
-        'A visual builder where a workflow starts from something that actually happened (a call going through Voice QA, a lead landing, a form arriving) and finishes with your CRM already correct.',
+        'Run n8n automations on an instance Fineguide hosts for you, give your assistants actions that call your own systems, and send what happens in a conversation wherever it needs to go.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -934,83 +941,77 @@ export const en = {
       eyebrow: 'Automations',
       screenshotAlt: 'Reviewing reports on a tablet at a desk',
     },
-    triggers: {
-      eyebrow: 'Twelve triggers',
-      heading: 'A workflow starts from something that happened.',
+    n8n: {
+      eyebrow: 'n8n automations',
+      heading: 'Hosted for you, or your own.',
       body:
-        'Not a schedule you hope lines up with reality. The events your platform already emits are the events a workflow can start from.',
+        'n8n is where the work that leaves Fineguide gets done: your billing system, your warehouse, an internal API, or any of the hundreds of services n8n already connects to.',
       items: [
         {
-          name: 'Assistant activity',
-          desc: 'A session starting or ending, a reply being rated, or the assistant finishing collecting the information you asked it for.',
+          name: 'Hosted by Fineguide',
+          desc: 'Let Fineguide set up an n8n instance for you and connect it to your account, with nothing to install or look after.',
         },
         {
-          name: 'Records appearing',
-          desc: 'A contact created from a conversation, or a lead created anywhere in the CRM.',
+          name: 'Your own instance',
+          desc: 'Already run n8n? Connect it with its address and an API token, and keep the workflows you have.',
         },
         {
-          name: 'Calls and tickets',
-          desc: 'A call finishing in Voice QA, transcribed or scored, or a ticket being opened.',
+          name: 'Workflows as actions',
+          desc: 'Import an n8n workflow that starts with a webhook, and it becomes an action your assistant can call in the middle of a conversation.',
         },
         {
-          name: 'Outside and on demand',
-          desc: 'A form submission, an inbound webhook, a schedule, or a person pressing run.',
+          name: 'Hundreds of integrations',
+          desc: 'Everything n8n connects to is within reach, without waiting for us to build an integration of our own.',
         },
       ],
     },
     actions: {
-      eyebrow: 'Eighteen actions',
-      heading: 'What a workflow can actually do today.',
+      eyebrow: 'Assistant actions',
+      heading: 'Let the assistant call your systems.',
       body:
-        'Every action listed here runs today. The builder also shows a few blocks that are still being built; the product marks those, and they are not sold here.',
+        'An action is an HTTP request the assistant can make while it talks to a customer, such as checking an order, looking up availability or booking a slot in the system you already use.',
       items: [
         {
-          term: 'Read and extract',
-          desc: 'Pull structured fields out of a conversation or a transcript with AI, and carry them forward as typed variables the next step can use.',
+          term: 'From a cURL command',
+          desc: 'Paste a cURL command and the action is built from it: the address, the method, the headers and the body.',
         },
         {
-          term: 'Branch',
-          desc: 'Conditions on anything in scope, including the fields you just extracted, so one workflow covers the several ways a conversation can go.',
+          term: 'Stored secrets',
+          desc: 'Keep API keys and tokens as stored secrets and use them in your actions, instead of writing them into each request.',
         },
         {
-          term: 'Loop',
-          desc: 'Iterate over a list and run the same steps for each element. Loops can sit inside other loops, and each one keeps track of its own item.',
+          term: 'Test before it goes live',
+          desc: 'Run the action from the test panel and see what your system sends back, before the assistant uses it with a customer.',
         },
         {
-          term: 'Find',
-          desc: 'Look up a contact by whatever identifier you have, or query for many records at once and act on the set.',
+          term: 'In the conversation',
+          desc: 'The assistant calls the action when the customer’s request needs it, and answers with what your system returned.',
         },
         {
-          term: 'Create, update, remove',
-          desc: 'Full write access to contacts, leads and companies: nine actions across the three, so a workflow can finish the job rather than filing a note for someone.',
-        },
-        {
-          term: 'Move and tag',
-          desc: 'Advance a lead to another pipeline stage and apply tags, which is how most of these workflows end.',
-        },
-        {
-          term: 'Assign work',
-          desc: 'Create a task so a person picks up exactly the part that needs a person.',
+          term: 'What it costs',
+          desc: 'A reply that needs 2 to 4 actions costs 2 credits, and 5 to 7 actions cost 3, instead of the usual 1.',
         },
       ],
     },
-    n8n: {
-      eyebrow: 'Beyond the platform',
-      heading: 'And when the work leaves Fineguide.',
+    webhooks: {
+      eyebrow: 'Webhooks',
+      heading: 'Send each event where it needs to go.',
       body:
-        'The built-in builder covers the CRM. For everything past it, such as your billing system, your warehouse or an internal API, the n8n bridge picks up where it stops.',
+        'Give an assistant a webhook address and choose the events it should report. Each one arrives as it happens, ready for n8n or any system with an HTTP endpoint.',
       bullets: [
-        'Use the hosted n8n instance, or point us at one you already run',
-        'Hundreds of integrations on the n8n side, none of which we have to build',
-        'Webhooks on conversations, leads and tickets for anything with an HTTP endpoint',
-        'Workflow runs are part of your plan, so they do not consume credits',
-        'Every run is inspectable step by step, so a failure tells you which step and why',
+        'A message sent or received',
+        'A session opened, or a session closed',
+        'A ticket created',
+        'A reply rated by the customer',
+        'An update to the information the assistant collects',
+        'A lead form submitted on your Facebook page, through Facebook Lead Ads',
+        'An optional header on every call, so your endpoint can check where it came from',
       ],
     },
     finalCta: {
-      heading: 'Build one and watch it run.',
+      heading: 'Connect your first automation.',
       body:
-        'Start from a trigger you already have, add the two or three steps that follow, and stop doing that part by hand.',
+        'Connect n8n, give your assistant one action it can call, and stop doing that part by hand.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -1055,8 +1056,8 @@ export const en = {
           desc: 'Slack and Discord, for the communities and internal channels where your customers already are.',
         },
         {
-          name: 'Web and widgets',
-          desc: 'Your own site, plus JivoChat for teams already running it.',
+          name: 'Your website',
+          desc: 'The chat widget on your own site, with its interface in 24 languages and a voice conversation mode for visitors who would rather talk.',
         },
         {
           name: 'CRM-native chat',
@@ -1096,7 +1097,7 @@ export const en = {
       eyebrow: 'Inbox',
       heading: 'Real email, not a contact form.',
       body:
-        'Connect the mailbox you already send from over IMAP and SMTP. Because the mail leaves your server rather than ours, your deliverability and sender reputation stay yours.',
+        'Connect the mailbox you already send from over IMAP and SMTP. Because replies go out through your own mailbox, your deliverability and sender reputation stay yours.',
       bullets: [
         'Connect your own mailboxes and your own domains over IMAP and SMTP',
         'Routing rules decide which mailbox a message belongs to and who picks it up',
@@ -1196,6 +1197,10 @@ export const en = {
           desc: 'Retry on no answer or busy, with your own delay per outcome. A contact who declines is never dialled again by that campaign.',
         },
         {
+          term: 'Calling hours',
+          desc: 'Set the hours a campaign may call on each day of the week. Outside those hours, nobody on the list is dialled.',
+        },
+        {
           term: 'Test calls',
           desc: 'Place the campaign against your own number and hear exactly what a customer would, before a single real contact is dialled.',
         },
@@ -1236,19 +1241,21 @@ export const en = {
   pricingPage: {
     heading: 'Pay for what your AI does.<br /><span class="text-[var(--color-primary)]">Everything else is included.</span>',
     subtitle:
-      'Every plan runs on credits. AI replies and voice minutes use them. Your CRM, inbox, messages and workflows never do.',
+      'Every plan runs on credits. AI replies, AI email drafts and voice minutes use them. Your CRM, Messages, reports and the email you read and send never do.',
     bullets: ['Free plan, no card needed', 'No setup fees', 'Cancel anytime'],
   },
 
   // What a credit buys: shown above the plans so their numbers mean something.
-  // Rates: VOICE_CREDITS_PER_MIN in the API's pricing-config.ts.
+  // Rates: VOICE_CREDITS_PER_MIN in the API's pricing-config.ts. AI phone calls
+  // are one rate (10 a minute) since the voice engine picker was removed on
+  // 2026-10-17. Workflows are not in the "included" lists: they can use credits.
   pricingExplainer: {
     eyebrow: 'What a credit buys',
     items: [
-      { value: '1 credit', term: 'AI reply', desc: 'A standard reply from an assistant, in any channel.' },
+      { value: '1 credit', term: 'AI reply', desc: 'A standard reply from an assistant, in any channel. An AI draft of an email reply is 1 credit too.' },
       { value: '12 credits', term: 'A minute of call scoring', desc: 'Voice QA transcribes a call and scores it against your criteria.' },
-      { value: '10 credits', term: 'A minute of AI phone call', desc: 'AI Telephony answering or making a call. 30 a minute on the premium agent engine.' },
-      { value: '0 credits', term: 'Everything else', desc: 'CRM, Inbox, Messages, workflows and reports.' },
+      { value: '10 credits', term: 'A minute of AI phone call', desc: 'AI Telephony answering or making a call, counted from the moment it is answered.' },
+      { value: '0 credits', term: 'Included in your plan', desc: 'The CRM, Messages, reports, and reading and sending email.' },
     ],
   },
 
@@ -1337,7 +1344,8 @@ export const en = {
 
   // At zero credits: bot-availability.service.ts stops replies,
   // voice-qa-credit.service.ts stops scoring, voice-billing.service.ts refuses
-  // new calls. CRM, Inbox, Messages and workflows have no credit check.
+  // new calls. The CRM, Messages, reports and reading and sending email have
+  // no credit check; AI drafts and AI replies in the Inbox do use credits.
   // Auto top-up is opt-in (isAutoRefillEnabled), capped, and never runs on Free.
   pricingRunOut: {
     eyebrow: 'When credits run out',
@@ -1346,12 +1354,12 @@ export const en = {
       'Buy more credits at any time and the AI picks up again straight away. On a paid plan you can also turn on automatic top-up, so credits are added before it pauses, up to a monthly limit you set.',
     pausesLabel: 'Pauses',
     pauses: [
-      'AI replies in every channel',
+      'AI replies in every channel, and AI drafts in the Inbox',
       'Call scoring',
       'New AI phone calls. A call already under way finishes.',
     ],
     keepsLabel: 'Keeps working',
-    keeps: ['CRM and contacts', 'Inbox and Messages', 'Workflows', 'Your data and settings'],
+    keeps: ['CRM and contacts', 'Messages, answered by your team', 'Reading and sending email', 'Your data and settings'],
   },
 
   pricingAddons: {
@@ -1413,11 +1421,15 @@ export const en = {
       },
       {
         term: 'AI phone calls',
-        desc: 'Counted from the moment the call is answered, not while it rings, with a one-minute minimum. 10 credits a minute, or 30 on the premium agent engine. Voice chats in your website widget count as AI replies.',
+        desc: 'Counted from the moment the call is answered, not while it rings, with a one-minute minimum: 10 credits a minute, unless your plan sets its own rates. Voice chats in your website widget count as AI replies.',
+      },
+      {
+        term: 'Email in the Inbox',
+        desc: 'Reading and sending email is free. An AI draft of a reply, from the Draft reply button, costs 1 credit, and replies the AI writes in the Inbox’s AI modes count as AI replies.',
       },
       {
         term: 'Always free',
-        desc: 'CRM, Inbox, Messages, workflows, reports and integrations never use credits.',
+        desc: 'The CRM, Messages, reports and integrations never use credits.',
       },
     ],
   },
@@ -1443,7 +1455,7 @@ export const en = {
     subtitle: 'The rules, in plain words.',
     currency: { q: 'Which currency am I charged in?', a: 'Customers in Europe pay in euros. Everywhere else pays in US dollars, at the dollar prices on this page. The country on your billing details decides which.' },
     items: [
-      { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, and a minute of AI phone call is 10, or 30 on the premium agent engine. Everything else on the platform is included in your plan.' },
+      { q: 'What is a credit?', a: 'Credits pay for the work the AI does. A standard AI reply is 1 credit, a minute of call scoring is 12, a minute of AI phone call is 10, and an AI draft of an email reply is 1. The CRM, Messages, reports, and reading and sending email are included in your plan.' },
       { q: 'Do unused credits carry over?', a: 'No. On a paid plan your credits refresh on each billing date, and anything unused does not carry over. The 200 credits on Free are given once and do not refresh.' },
       { q: 'What happens to credits I buy?', a: 'They add to your balance and have no expiry date, but they belong to your current plan. If you change plan or cancel, unused credits you bought do not move with you.' },
       { q: 'Can I change plan?', a: 'Yes, at any time. Moving from Free to a paid plan starts straight away. Moving between paid plans, up or down, takes effect on your next billing date.' },
@@ -1459,25 +1471,29 @@ export const en = {
   enterpriseMeta: {
     title: 'Enterprise: On-Premise & Consultancy | Fineguide.ai',
     description:
-      'Custom plans, on-premise deployment on your own infrastructure, platform adaptation and consultancy for teams with security or scale requirements.',
+      'Custom plans, on-premise deployment, platform adaptation, SLAs and consultancy, agreed in a contract, for teams with security or scale requirements.',
   },
+  // Everything on this page is a contracted service: on-premise deployment,
+  // platform adaptation, SLAs, a dedicated account manager and training are
+  // agreed per customer. There is no SSO or identity-provider integration in
+  // the product, so none is offered here.
   enterprisePage: {
     hero: {
       title: 'Enterprise on your',
       titleAccent: ' terms.',
       subtitle:
-        'Dedicated service for teams that operate at scale, with custom plans, on-premise deployment, platform adaptation, and consultancy that turns the platform into outcomes.',
+        'Dedicated service for teams that operate at scale: custom plans, on-premise deployment, platform adaptation and consultancy, each agreed in your contract.',
       cta: 'Contact sales',
     },
     service: {
       eyebrow: 'Dedicated service',
       heading: 'A team that knows your operation.',
       body:
-        'Every enterprise deployment is supported by a team that knows your stack, your contracts, and your customers, from onboarding through expansion.',
+        'Enterprise service is set out in a contract and delivered by a team that learns your processes, your systems and your customers, from onboarding through expansion.',
       items: [
         'Dedicated account manager',
         'Onboarding lead and migration assistance',
-        'Priority support with named SLAs',
+        'Priority support, with SLAs written into the contract',
         'Quarterly reviews and roadmap input',
       ],
     },
@@ -1485,23 +1501,23 @@ export const en = {
       eyebrow: 'On-premise deployment',
       heading: 'Run Fineguide on your infrastructure.',
       body:
-        'For teams in regulated industries or with strict data sovereignty requirements, Fineguide deploys entirely on your own infrastructure, with your network, your security policies, and your compliance regime. No data leaves your perimeter.',
+        'For teams in regulated industries or with strict data sovereignty requirements, we can deploy Fineguide on your own infrastructure as a contracted service, inside your network and under your security policies and compliance regime. You decide what, if anything, leaves your perimeter.',
       items: [
         {
           title: 'Your environment',
-          body: 'Self-hosted on your cloud, private cluster, or bare metal. We support the deployment; you own the infrastructure.',
+          body: 'Deployed on infrastructure you own or choose. We carry out and support the deployment under the contract; the infrastructure stays yours.',
         },
         {
           title: 'Your perimeter',
           body: 'Data stays inside your network boundary. No outbound traffic to third-party services unless you allow it.',
         },
         {
-          title: 'Your identity layer',
-          body: 'Integrates with your IdP, SSO, and existing access policies. Authentication and audit follow your standards.',
+          title: 'Your service terms',
+          body: 'Service levels, support hours, training and a dedicated account manager, agreed in the contract rather than promised on a web page.',
         },
         {
           title: 'Your compliance',
-          body: 'Support for compliance review, security audits, and ongoing assessments, including HIPAA, ISO 27001, regional regulations, and beyond.',
+          body: 'Support for compliance review, security audits, and ongoing assessments against the frameworks you work under, such as HIPAA, ISO 27001 or regional regulations.',
         },
       ],
     },
@@ -1509,7 +1525,7 @@ export const en = {
       eyebrow: 'Adaptation',
       heading: 'Shaped to your operation.',
       body:
-        'No two enterprise operations look the same. We adapt Fineguide to yours, with custom integrations with your internal systems, white-labeled deployments, and workflow customization that matches the way your team actually works.',
+        'No two enterprise operations look the same. Under the contract, we adapt Fineguide to yours, with custom integrations with your internal systems, white-labeled deployments, and customization that matches the way your team actually works.',
       items: [
         'Custom integrations with your internal systems',
         'White-label and brand-aligned deployment',
@@ -1526,7 +1542,7 @@ export const en = {
         'Implementation and deployment strategy',
         'Conversation design and assistant tuning',
         'Operations consulting for sales, support, and call centers',
-        'Training, enablement, and team certification',
+        'Training and enablement for your team',
       ],
     },
     plans: {
@@ -1558,23 +1574,23 @@ export const en = {
 
   // --- Partners Page ---
   // Every claim here is backed by the partner module in ai-backoffice-api
-  // (modules/payment/partner). The 30% is the partner's margin: it is stamped on
-  // each partner at approval, so admins must approve at 30%
-  // (PARTNER_COMMISSION_DEFAULT_PERCENT applies when they leave it blank). A
+  // (modules/payment/partner). The 20% is the partner's margin: it is the
+  // default stamped on a newly approved partner (PARTNER_COMMISSION_DEFAULT_PERCENT)
+  // and can be edited per partner, so keep the copy at the default. A
   // client discount comes out of that margin and commission is taken on list
   // price (splitMargin / splitInvoice), which is what the discount table shows.
   // Discounts only reach the client while PARTNER_CLIENT_DISCOUNTS_ENABLED is on.
   partnersMeta: {
-    title: 'Partner Program: Earn 30% Commission | Fineguide.ai',
+    title: 'Partner Program: Earn 20% Commission | Fineguide.ai',
     description:
-      'Become a Fineguide partner. Earn 30% of every invoice the customers you bring pay, and pass part of it on to them as a discount if you choose.',
+      'Become a Fineguide partner. Earn 20% of every invoice the customers you bring pay, and pass part of it on to them as a discount if you choose.',
   },
   partnersPage: {
     hero: {
       title: 'Grow with',
       titleAccent: ' Fineguide.',
       subtitle:
-        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn 30% of every invoice they pay, and share part of it with them as a discount if you choose.',
+        'For agencies, integrators and consultants who bring Fineguide to their clients. Earn 20% of every invoice they pay, and share part of it with them as a discount if you choose.',
       cta: 'Become a partner',
     },
     intro: {
@@ -1587,29 +1603,29 @@ export const en = {
       points: [
         { title: 'You', body: 'Bring the client, set Fineguide up around their systems, and charge for your own services.' },
         { title: 'We', body: 'Run the platform and keep it improving, so what you set up keeps getting better.' },
-        { title: 'Together', body: '30% of what each client pays Fineguide goes to you, month after month.' },
+        { title: 'Together', body: '20% of what each client pays Fineguide goes to you, month after month.' },
       ],
     },
     commission: {
       eyebrow: 'Partner commission',
-      figure: '30%',
+      figure: '20%',
       heading: 'Of every invoice your customers pay.',
       body:
-        'Not a one-off referral fee. Every month a customer you brought pays Fineguide, 30% of that invoice is yours, for as long as they stay.',
+        'Not a one-off referral fee. Every month a customer you brought pays Fineguide, 20% of that invoice is yours, for as long as they stay.',
     },
     discounts: {
       eyebrow: 'Discounts for your clients',
-      heading: 'Keep all 30%, or share it.',
+      heading: 'Keep all 20%, or share it.',
       body:
-        'Your 30% is yours to split. Keep all of it, or give the clients you bring a discount out of it to help close the deal. You choose the discount for each client, and your share is always worked out on the list price.',
+        'Your 20% is yours to split. Keep all of it, or give the clients you bring a discount out of it to help close the deal. You choose the discount for each client, and your share is always worked out on the list price.',
       discountLabel: 'Client discount',
       keepLabel: 'You keep',
       rows: [
-        { discount: '0%', keep: '30%' },
-        { discount: '10%', keep: '20%' },
-        { discount: '20%', keep: '10%' },
+        { discount: '0%', keep: '20%' },
+        { discount: '5%', keep: '15%' },
+        { discount: '10%', keep: '10%' },
       ],
-      example: 'For every $100 of list price with a 10% discount, your client pays $90 and $20 is yours.',
+      example: 'For every $100 of list price with a 10% discount, your client pays $90 and $10 is yours.',
     },
     whyBuy: {
       eyebrow: 'Why your clients will buy',
@@ -1690,9 +1706,9 @@ export const en = {
         { q: 'Do I need to be a Fineguide customer?', a: 'You need a Fineguide account to apply, and the Free plan is enough. You do not need a paid plan to become a partner.' },
         { q: 'How are clients linked to me?', a: 'Through your referral link. When a client creates their account from it, that account is linked to you from day one. The first partner an account is linked to is the one that counts, and it is never moved to another partner.' },
         { q: 'What if a client signs up without my link?', a: 'Write to us at contact@fineguide.ai with the client\'s details. We will check it and link the new account to you.' },
-        { q: 'Can I charge my clients for my own services?', a: 'Yes. Setup, integration, training and ongoing support are your services, priced and invoiced by you. Your 30% commission comes on top.' },
+        { q: 'Can I charge my clients for my own services?', a: 'Yes. Setup, integration, training and ongoing support are your services, priced and invoiced by you. Your 20% commission comes on top.' },
         { q: 'How long do I earn commission?', a: 'For as long as the customer keeps paying. There is no cut-off date, so you earn month after month, not only in the first year.' },
-        { q: 'How do discounts for my clients work?', a: 'You set a discount for each client in the partner portal, up to your 30%. It comes out of your share: give a client 10% off and you keep 20% of the list price.' },
+        { q: 'How do discounts for my clients work?', a: 'You set a discount for each client in the partner portal, up to your 20%. It comes out of your share: give a client 10% off and you keep 10% of the list price.' },
         { q: 'Can I see what my clients pay?', a: 'Yes. The portal lists your clients, their payments and the commission each one earned you, and you can export your commission ledger at any time.' },
         { q: 'How and when do I get paid?', a: 'Your balance grows as your customers pay. Once it reaches $200 you can withdraw it by bank transfer, to an IBAN, a US bank account or by SWIFT. You can also turn any part of it into Fineguide credits whenever you like.' },
         { q: 'What happens if a client cancels?', a: 'Commission stops when their payments stop. Everything you earned before that stays in your balance.' },
@@ -1714,6 +1730,100 @@ export const en = {
       subtitle: 'Sign up, open the partner portal and complete the form. It takes a few minutes.',
       ctaLabel: 'Go to the partner portal',
       ctaHref: 'https://partners.fineguide.ai',
+    },
+  },
+
+  // --- About Page ---
+  // Ownership facts, stated as the owner gave them: Liviu Maftuleac is the sole
+  // founder, owner and holder of Fineguide.AI, Eightcell Labs and Tesseract.
+  // Corneliu Maftuleac is an advisor only, with no ownership or attribution;
+  // never describe him as a founder, owner, holder, author or team lead.
+  // Everything here is shown to visitors as normal page text.
+  aboutMeta: {
+    title: 'About Fineguide.AI | Company, Founder and Contact',
+    description:
+      'Fineguide.AI is an AI-first CRM and automation platform built in Chișinău, Moldova. Meet the company, its founder Liviu Maftuleac, and how to reach us.',
+  },
+  aboutPage: {
+    hero: {
+      eyebrow: 'About',
+      title: 'The company behind',
+      titleAccent: ' Fineguide.AI.',
+      subtitle:
+        'Fineguide.AI is an AI-first CRM and business-automation platform, built in Chișinău, Moldova, for the teams that talk to customers every day.',
+    },
+    company: {
+      eyebrow: 'What Fineguide is',
+      heading: 'One platform for the work around your customers.',
+      body:
+        'Fineguide brings AI assistants, a CRM, a shared inbox, AI phone calls and call-quality scoring onto one platform, so a business can answer every customer, keep one record of each of them, and see how every call went. The AI takes the repetitive part; your team keeps the relationships.',
+      audienceLabel: 'Who it is for',
+      audience: [
+        'Business owners who want every enquiry answered, including outside office hours',
+        'Sales teams qualifying leads and working a pipeline',
+        'Support teams sharing one inbox for chat and email',
+        'Call-centre teams scoring calls and running outbound call campaigns',
+      ],
+    },
+    platform: {
+      eyebrow: 'The platform',
+      heading: 'What Fineguide does.',
+      items: [
+        {
+          name: 'AI Assistants',
+          desc: 'Answer customers on your website, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord, from the knowledge you give them, and write what they learn into the CRM.',
+        },
+        {
+          name: 'CRM',
+          desc: 'Contacts, companies, deals and pipelines, tasks, duplicate review and sales reports, all on one customer record.',
+        },
+        {
+          name: 'Messages and Inbox',
+          desc: 'A team inbox for every chat channel and your own email, with a routing queue, departments and handover to a person.',
+        },
+        {
+          name: 'AI Telephony and Campaigns',
+          desc: 'AI phone calls on your own numbers over SIP, inbound and outbound, plus outreach, survey and promotion call campaigns.',
+        },
+        {
+          name: 'Voice QA',
+          desc: 'Every recorded call transcribed and scored against your own rules, per department, with the quotes behind each mark.',
+        },
+        {
+          name: 'Workspace',
+          desc: 'Block-based documents for playbooks, briefs and case files linked to your contacts.',
+        },
+        {
+          name: 'Automations',
+          desc: 'n8n automations on an instance Fineguide hosts for you or on your own, plus assistant actions and webhooks.',
+        },
+      ],
+    },
+    origin: {
+      eyebrow: 'Where we are',
+      heading: 'Built in Chișinău, Moldova.',
+      body:
+        'Fineguide.AI is designed and built in Chișinău, in the Republic of Moldova. This site is available in English and Romanian.',
+    },
+    founder: {
+      eyebrow: 'Company and founder',
+      heading: 'Who owns Fineguide.AI.',
+      name: 'Liviu Maftuleac',
+      role: 'Founder, owner and holder',
+      body:
+        'Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI. He is also the sole founder, owner and holder of Eightcell Labs and of Tesseract.',
+    },
+    advisors: {
+      eyebrow: 'Advisors',
+      body:
+        'Corneliu Maftuleac is an advisor. He holds no ownership in, and has no attribution to, Fineguide.AI, Eightcell Labs or Tesseract.',
+    },
+    contact: {
+      heading: 'Get in touch.',
+      body: 'For questions about the company, the platform or working together, write to us.',
+      emailLabel: 'Email',
+      email: 'contact@fineguide.ai',
+      linkLabel: 'Go to the contact page',
     },
   },
 

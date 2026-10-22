@@ -40,16 +40,16 @@ const jsonLd = {
       />
     </PageHero>
 
-    <Band tone="dark" eyebrow={p.triggers.eyebrow} heading={p.triggers.heading} body={p.triggers.body}>
-      <EditorialRows variant="dark" items={p.triggers.items.map((i) => ({ term: i.name, desc: i.desc }))} />
+    <Band tone="dark" eyebrow={p.n8n.eyebrow} heading={p.n8n.heading} body={p.n8n.body}>
+      <EditorialRows variant="dark" items={p.n8n.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
 
     <Band eyebrow={p.actions.eyebrow} heading={p.actions.heading} body={p.actions.body}>
       <EditorialRows items={p.actions.items} />
     </Band>
 
-    <Band tone="tint" eyebrow={p.n8n.eyebrow} heading={p.n8n.heading} body={p.n8n.body}>
-      <RuleList items={p.n8n.bullets} />
+    <Band tone="tint" eyebrow={p.webhooks.eyebrow} heading={p.webhooks.heading} body={p.webhooks.body}>
+      <RuleList items={p.webhooks.bullets} />
     </Band>
 
     <ClosingCta lang={lang} {...p.finalCta} />
