@@ -19,9 +19,9 @@ const { t, lang } = Astro.props as { t: Translations; lang: string };
 //
 // Monthly / yearly and euro / dollar: every price is in the HTML in all its
 // forms, and the switch below only flips data attributes on <html>. The
-// dollar switch is English only; the Romanian page is in euro.
+// dollar switch is on the English and Russian pages; the Romanian page is in euro.
 const p = t.pricingPlans;
-const allowUsd = lang === 'en';
+const allowUsd = lang !== 'ro';
 const tokens = pageTokens();
 const cards = p.plans.map((plan, i) => ({
   plan,

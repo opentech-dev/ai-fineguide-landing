@@ -84,7 +84,7 @@ Agencies, integrators and consultants earn 20% of every invoice the customers th
 
 - **Channels:** website chat widget, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, amoCRM and Kommo.
 - **Other integrations:** Zendesk, HelpScout, Google Calendar (two-way task sync), Facebook Lead Ads, and n8n, with hundreds more integrations through n8n workflows. Voice QA receives calls from Moldcell, Orange Moldova and the Fineguide call-recording app for Android.
-- **Languages:** call-quality reports (Voice QA) in 30 languages; AI phone calls in 14 (English, Romanian, Russian, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Arabic, Japanese, Korean and Chinese); the website chat widget's interface in 24. The site is in English (`/`) and Romanian (`/ro/`).
+- **Languages:** call-quality reports (Voice QA) in 30 languages; AI phone calls in 14 (English, Romanian, Russian, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Arabic, Japanese, Korean and Chinese); the website chat widget's interface in 24. The site is in English (`/`), Romanian (`/ro/`) and Russian (`/ru/`).
 
 ## Pages
 
@@ -100,8 +100,9 @@ Agencies, integrators and consultants earn 20% of every invoice the customers th
 - [Pricing](https://fineguide.ai/pricing/): Plans from €0 to €500 a month, what each includes, and what a credit buys; start free with 200 credits.
 - [Enterprise](https://fineguide.ai/enterprise/): On-premise deployment, custom plans, platform adaptation, SLAs and consultancy, agreed in a contract.
 - [Partners](https://fineguide.ai/partners/): Partner program for agencies, integrators and consultants: earn 20% of every invoice the customers you refer pay, for as long as they stay, and pass part of it on to them as a discount if you choose.
-- [Compare](https://fineguide.ai/compare/): Fineguide side by side with Kommo and amoCRM, HubSpot, Pipedrive, Bitrix24, Odoo and Zoho CRM: plans, billing, AI, channels, phone, call scoring and languages, each competitor fact linked to the vendor's own page and dated. Romanian copies under /ro/compare/; Russian at /ru/compare/ (hub and Kommo/amoCRM).
+- [Compare](https://fineguide.ai/compare/): Fineguide side by side with Kommo and amoCRM, HubSpot, Pipedrive, Bitrix24, Odoo and Zoho CRM: AI, channels, phone, call scoring, languages and data, each competitor fact linked to the vendor's own page and dated. Every comparison also in Romanian (/ro/compare/) and Russian (/ru/compare/).
 - [About](https://fineguide.ai/about/): The company, where it is built, its founder and owner, and how to reach it.
+- [Liviu Maftuleac](https://fineguide.ai/about/liviu-maftuleac/): The founder's profile: sole founder, owner and holder of Fineguide.AI, Eightcell Labs and Tesseract, and author of the Fineguide blog.
 - [Schedule a demo](https://fineguide.ai/schedule-demo/): Book a 30-minute walkthrough of Fineguide on your operation.
 - [Contact](https://fineguide.ai/contact/): Get in touch with the Fineguide team.
 - [Blog](https://fineguide.ai/blog/): Guides, product news and how-tos on AI assistants, CRM, voice AI and integrations. Every post is also served as Markdown at its address with `.md` in place of the trailing slash (e.g. https://fineguide.ai/blog/kommo-integration-guide.md); the feed is https://fineguide.ai/blog/rss.xml.
@@ -111,3 +112,4 @@ Agencies, integrators and consultants earn 20% of every invoice the customers th
 - [Privacy Policy](https://fineguide.ai/privacy-policy/): personal data is handled under Moldova's Law No. 195/2024 on personal data protection, and the GDPR where it applies. Advertising cookies load only with consent.
 - [Terms of Service](https://fineguide.ai/terms-of-service/)
 - [Romanian site](https://fineguide.ai/ro/): Romanian-language version of the platform pages.
+- [Russian site](https://fineguide.ai/ru/): Russian-language version of the platform pages.

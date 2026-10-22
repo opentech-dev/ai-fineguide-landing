@@ -38,7 +38,11 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
       <div class="panel-frame">
         <img
           src="/images/hero-image.png"
-          alt="Fineguide assistant analytics: average score, score distribution, satisfaction and sentiment"
+          alt={{
+            en: 'Fineguide assistant analytics: average score, score distribution, satisfaction and sentiment',
+            ro: 'Analiza asistentului Fineguide: scorul mediu, distribuția scorurilor, satisfacția și sentimentul',
+            ru: 'Аналитика ассистента Fineguide: средняя оценка, распределение оценок, удовлетворённость и тональность',
+          }[lang]}
           width="1420"
           height="851"
           class="w-full h-auto block"

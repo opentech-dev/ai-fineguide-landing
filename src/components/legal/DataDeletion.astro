@@ -1,7 +1,7 @@
 ---
 // How to delete the data Fineguide receives from Meta (Facebook, Instagram, WhatsApp) — the
-// "user data deletion" page Meta asks every app using Facebook Login for. Both languages in one
-// file, mirrored like PrivacyPolicy.astro; the facts match its "connected accounts" section.
+// "user data deletion" page Meta asks every app using Facebook Login for. All three languages in
+// one file, mirrored like PrivacyPolicy.astro; the facts match its "connected accounts" section.
 import type { Lang } from '../../i18n/utils';
 
 interface Props {
@@ -14,7 +14,7 @@ const email = 'office@fineguide.ai';
 
 <section class="pt-32 md:pt-40 pb-8 px-6">
   <div class="max-w-3xl mx-auto text-center">
-    <h1 class="text-3xl md:text-4xl font-bold">{lang === 'ro' ? 'Ștergerea datelor primite de la Meta' : 'Deleting data received from Meta'}</h1>
+    <h1 class="text-3xl md:text-4xl font-bold">{lang === 'ro' ? 'Ștergerea datelor primite de la Meta' : lang === 'ru' ? 'Удаление данных, полученных от Meta' : 'Deleting data received from Meta'}</h1>
   </div>
 </section>
 
@@ -35,6 +35,23 @@ const email = 'office@fineguide.ai';
         <ul>
           <li>Compania căreia i-ai scris sau al cărei formular l-ai completat decide asupra datelor tale; adresează-i cererea mai întâi.</li>
           <li>Ne poți scrie și nouă la <a href={`mailto:${email}`}>{email}</a>, cu pagina căreia i-ai scris și emailul sau telefonul folosit. Transmitem cererea companiei și, acolo unde ștergerea ne revine nouă, o facem și îți confirmăm în cel mult 30 de zile.</li>
+        </ul>
+      </>
+    ) : lang === 'ru' ? (
+      <>
+        <p>Fineguide получает данные из Facebook, Instagram и WhatsApp только тогда, когда компания подключает свою страницу или аккаунт к ассистенту Fineguide: сообщения и комментарии, которые им отправляют, ответы, отправленные через лид-формы страницы, и токены доступа, которые выдаёт Meta. Как мы их используем: <a href="/ru/privacy-policy#connected-accounts">политика конфиденциальности</a>.</p>
+
+        <h2>Если вы — компания, которая подключила страницу или аккаунт</h2>
+        <ul>
+          <li>В Fineguide откройте ассистента → <strong>Connect Apps</strong> → Facebook, Instagram или WhatsApp → <strong>Disconnect</strong>. Мы сразу удаляем токены доступа и прекращаем обрабатывать данные страницы или аккаунта.</li>
+          <li>Удалите поступившие оттуда диалоги, контакты и сделки в своей учётной записи или напишите на <a href={`mailto:${email}`}>{email}</a> с адреса электронной почты учётной записи; мы удалим их и подтвердим это в течение 30 дней.</li>
+          <li>Вы также можете в любой момент отозвать доступ приложения в Facebook: <strong>Настройки → Бизнес-интеграции</strong> → Fineguide.ai → Удалить.</li>
+        </ul>
+
+        <h2>Если вы писали компании, которая пользуется Fineguide</h2>
+        <ul>
+          <li>Решения о ваших данных принимает компания, которой вы писали или чью форму вы заполнили; сначала обратитесь к ней.</li>
+          <li>Вы также можете написать нам на <a href={`mailto:${email}`}>{email}</a>, указав страницу, с которой вы связывались, и адрес электронной почты или телефон, которые вы использовали. Мы передадим запрос компании, а если удалить данные должны мы, удалим их и подтвердим это в течение 30 дней.</li>
         </ul>
       </>
     ) : (

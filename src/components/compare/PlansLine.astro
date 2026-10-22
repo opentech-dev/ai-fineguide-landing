@@ -1,0 +1,22 @@
+---
+/**
+ * The one line about Fineguide's own plans: "Fineguide's plans: Free, then from €100 a month for the whole
+ * organization — see pricing", linked to the pricing page in the reader's language. The figure comes from
+ * src/data/pricing.ts. It states Fineguide's price only: these pages never show a competitor's price, so
+ * the line is not phrased as a comparison.
+ */
+import { fineguidePlansFrom, sitePath, type CompareLang } from '../../data/compare';
+import { LABELS } from './labels';
+
+interface Props {
+  lang: CompareLang;
+  class?: string;
+}
+
+const { lang, class: className = '' } = Astro.props as Props;
+const L = LABELS[lang];
+---
+<p class={`max-w-4xl text-base text-[var(--color-muted)] leading-relaxed ${className}`}>
+  {L.fgPlans.text(fineguidePlansFrom(lang))}
+  <a href={sitePath(lang, '/pricing/')} class="font-semibold text-[var(--color-primary)] hover:underline">{L.fgPlans.link}</a>
+</p>

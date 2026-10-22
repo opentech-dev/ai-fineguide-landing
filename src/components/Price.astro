@@ -15,9 +15,9 @@ const { money, lang } = Astro.props as Props;
 const eur = (n: number) => `€${formatAmount(n, lang)}`;
 const usd = (n: number) => `$${formatAmount(n, lang)}`;
 const hasYearly = money.yearlyEur !== undefined;
-// Dollars are offered on the English page only; the Romanian page carries no
+// Dollars are offered on the English and Russian pages (readers outside Europe); the Romanian page carries no
 // hidden dollar amounts for search engines to quote.
-const withUsd = lang === 'en';
+const withUsd = lang !== 'ro';
 ---
 {hasYearly ? (
   <><span class="only-monthly"><span class="only-eur">{eur(money.eur)}</span>{withUsd && <span class="only-usd">{usd(money.usd)}</span>}</span><span class="only-yearly"><span class="only-eur">{eur(money.yearlyEur!)}</span>{withUsd && <span class="only-usd">{usd(money.yearlyUsd!)}</span>}</span></>

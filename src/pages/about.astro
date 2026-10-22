@@ -4,11 +4,12 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
+import { FOUNDER, founderRef } from '../data/people';
 
 const lang = getLangFromUrl(Astro.url) as Lang;
 const t = useTranslations(lang);
 const a = t.aboutPage;
-const pageUrl = lang === 'ro' ? 'https://fineguide.ai/ro/about/' : 'https://fineguide.ai/about/';
+const pageUrl = new URL(getLocalizedPath('/about', lang), 'https://fineguide.ai').href;
 
 // The ownership facts on this page are stated in visible text below; the
 // structured data only repeats them.
@@ -26,7 +27,7 @@ const jsonLd = {
     url: 'https://fineguide.ai/',
     email: a.contact.email,
     address: { '@type': 'PostalAddress', addressLocality: 'Chișinău', addressCountry: 'MD' },
-    founder: { '@type': 'Person', name: a.founder.name },
+    founder: founderRef,
   },
 };
 ---
@@ -110,6 +111,12 @@ const jsonLd = {
           <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-white">{a.founder.name}</h3>
           <p class="mt-2 text-base text-[#c7b8ff]">{a.founder.role}</p>
           <p class="mt-5 text-lg md:text-xl text-gray-300 leading-relaxed">{a.founder.body}</p>
+          <a href={getLocalizedPath(FOUNDER.path, lang)} class="mt-6 inline-flex items-center gap-1.5 text-base font-semibold text-[#c7b8ff] hover:text-white transition-colors">
+            {t.founderPage.profileLink}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
         </div>
         <div id="advisors" class="scroll-mt-24 mt-12 max-w-3xl rounded-xl border border-white/10 px-6 py-5">
           <p class="eyebrow-light mb-2">{a.advisors.eyebrow}</p>

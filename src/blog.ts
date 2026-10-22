@@ -16,6 +16,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import { authorName } from './data/people';
 
 const API = (process.env.FINEGUIDE_API ?? 'https://fineguide.ai').replace(/\/$/, '');
 export const SITE = 'https://fineguide.ai';
@@ -210,7 +211,8 @@ async function load(): Promise<RenderedPost[]> {
   const posts = await read();
   const out: RenderedPost[] = [];
   for (const raw of posts) {
-    const p = { ...raw, body: siteMedia(raw.body), coverUrl: raw.coverUrl ? siteMedia(raw.coverUrl) : null };
+    // The author by full name ("Liviu" in the API is Liviu Maftuleac), so bylines, feeds and structured data agree.
+    const p = { ...raw, author: authorName(raw.author), body: siteMedia(raw.body), coverUrl: raw.coverUrl ? siteMedia(raw.coverUrl) : null };
     if (p.coverUrl?.startsWith('/blog/media/')) coverFiles.add(p.coverUrl.slice('/blog/media/'.length));
     const { html, headings } = await renderMarkdown(p.body);
     const words = p.body.split(/\s+/).filter(Boolean).length;

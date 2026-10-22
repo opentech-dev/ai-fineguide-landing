@@ -4,32 +4,30 @@ import type { CompareCopy } from '../../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs Odoo: alternativă Odoo CRM, construită pe AI',
-  description: 'Alternativă Odoo pentru echipele care lucrează cu clienții, comparată punct cu punct: prețuri, agenți AI, WhatsApp, telefonie și evaluarea apelurilor.',
+  description: 'Alternativă Odoo pentru echipele care lucrează cu clienții, comparată punct cu punct: agenți AI, WhatsApp, telefonie, evaluarea apelurilor și găzduire.',
   crumb: 'Odoo',
   h1: 'Fineguide vs Odoo:',
   h1Accent: 'conversația cu clientul, în profunzime',
   shortAnswer:
-    'Odoo este o suită completă pentru afacere (CRM, contabilitate, stocuri, HR, eCommerce și altele), cu preț per utilizator, un plan gratuit pentru o singură aplicație și reduceri în primul an. Fineguide acoperă o parte din această muncă, conversația cu clientul, mai în profunzime: asistenți AI pe chat, email și apeluri în direct, un CRM pe o singură fișă de client și evaluarea apelurilor. Dacă ai nevoie de un ERP, alege Odoo; dacă ai nevoie de AI care să se ocupe de clienți, alege Fineguide.',
+    'Odoo este o suită completă pentru afacere (CRM, contabilitate, stocuri, HR, eCommerce și altele). Fineguide acoperă o parte din această muncă, conversația cu clientul, mai în profunzime: asistenți AI pe chat, email și apeluri în direct, un CRM pe o singură fișă de client și evaluarea apelurilor. Dacă ai nevoie de un ERP, alege Odoo; dacă ai nevoie de AI care să se ocupe de clienți, alege Fineguide.',
   tableHeading: 'Odoo și Fineguide, rând cu rând',
   competitorStronger: {
     heading: 'Unde Odoo este mai puternic',
     items: [
-      { text: 'Un ERP, nu doar un CRM. Vânzări, contabilitate, stocuri, HR, proiecte, punct de vânzare, eCommerce și site vin toate în planurile Standard și Custom, la un singur preț per utilizator.', refs: ['odoo:pricing'] },
-      { text: 'Opțiuni de găzduire: Odoo Online sau, cu planul Custom, Odoo.sh ori on-premise.', refs: ['odoo:pricing'] },
-      { text: 'Personalizare: Odoo Studio, mai multe companii și API extern pe Custom.', refs: ['odoo:pricing'] },
-      { text: 'One App Free: o aplicație, plus cele de care depinde, gratuită pentru utilizatori nelimitați.', refs: ['odoo:pricing'] },
+      { text: 'Un ERP, nu doar un CRM. Vânzări, contabilitate, stocuri, HR, proiecte, punct de vânzare, eCommerce și site vin toate în planurile Standard și Custom.', refs: ['odoo:plans'] },
+      { text: 'Opțiuni de găzduire: Odoo Online sau, cu planul Custom, Odoo.sh ori on-premise.', refs: ['odoo:plans'] },
+      { text: 'Personalizare: Odoo Studio, mai multe companii și API extern pe Custom.', refs: ['odoo:plans'] },
       { text: 'Agenți AI în interiorul suitei, care răspund din PDF-uri, linkuri web, fișiere din Documents și articole din Knowledge, plus un agent AI pentru Live Chat care răspunde vizitatorilor și escaladează conversația pentru preluare de către un om.', refs: ['odoo:ai-agents', 'odoo:ai-live-chat'] },
     ],
   },
   fineguideStronger: {
     heading: 'Unde Fineguide este mai puternic',
     items: [
-      { text: 'Canale de mesagerie fără un nivel de abonament în plus: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord și widgetul de pe site vin cu fiecare plan. Aplicația WhatsApp din Odoo funcționează doar în Odoo Enterprise și cere un cont WhatsApp Business Platform.', refs: ['fg:fg-llms', 'odoo:whatsapp'] },
+      { text: 'Canale de mesagerie pe toate planurile: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord și widgetul de pe site. Aplicația WhatsApp din Odoo funcționează doar în Odoo Enterprise și cere un cont WhatsApp Business Platform.', refs: ['fg:fg-llms', 'odoo:whatsapp'] },
       { text: 'AI care preia apelul. Asistenții Fineguide răspund ei înșiși la apeluri în direct, primite și efectuate, prin SIP-ul tău, în 14 limbi. Aplicația Phone din Odoo conectează apelurile utilizatorilor prin intermediul unui furnizor VoIP.', refs: ['fg:fg-voice-ai', 'odoo:phone'] },
       { text: 'Evaluarea calității apelurilor: Voice QA notează fiecare apel înregistrat după regulile fiecărui departament, cu citate, sugestii, fișe de scor pe operator și rapoarte în 30 de limbi.', refs: ['fg:fg-voice-qa'] },
       { text: 'Campanii de apeluri (prospectare, sondaj, promoție) derulate de asistenți AI, cu un apel de test pe numărul tău înainte de pornire.', refs: ['fg:fg-campaigns'] },
-      { text: 'Prețuri fără salt după primul an. Reducerea Odoo ține 12 luni pentru utilizatorii comandați inițial; prețurile lunare și anuale Fineguide nu au reducere de început.', refs: ['odoo:pricing', 'fg:fg-pricing'] },
-      { text: 'Site și suport în română, cu echipa în Chișinău.', refs: ['fg:fg-llms'] },
+      { text: 'Site în română, engleză și rusă, suport în română și engleză, cu echipa în Chișinău.', refs: ['fg:fg-llms'] },
     ],
   },
   choose: {
@@ -39,8 +37,7 @@ const copy: CompareCopy = {
       items: [
         'vrei contabilitate, stocuri, HR și CRM în aceeași bază de date;',
         'plănuiești multă personalizare, cu Studio sau cu propriii programatori;',
-        'vrei să găzduiești singur, pe Odoo.sh sau on-premise;',
-        'ai nevoie de o singură aplicație și One App Free îți ajunge.',
+        'vrei să găzduiești singur, pe Odoo.sh sau on-premise.',
       ],
     },
     fineguide: {
@@ -66,19 +63,9 @@ const copy: CompareCopy = {
   },
   faq: [
     {
-      q: 'Odoo CRM este gratuit?',
-      a: 'Planul One App Free din Odoo oferă o aplicație (plus cele de care depinde) pentru utilizatori nelimitați pe Odoo Online, deci doar CRM-ul poate fi gratuit. Planul Free Fineguide are 200 de credite oferite o singură dată pentru răspunsuri AI, pentru tine plus un coleg.',
-      refs: ['odoo:pricing', 'fg:fg-pricing'],
-    },
-    {
-      q: 'Cât costă Odoo?',
-      a: 'Pe pagina în dolari, la 21 octombrie 2026, Standard costa $24,90 per utilizator pe lună la plata anuală sau $31,10 lunar, iar Custom $49,00 sau $61,10. Sunt prețuri pentru primul an; după 12 luni urcă la $31,10 / $38,90 și $61,00 / $76,20. Sunt cifrele în dolari pe care ni le-a arătat pagina; verific-o din țara ta înainte să cumperi.',
-      refs: ['odoo:pricing'],
-    },
-    {
       q: 'Odoo are agenți AI?',
-      a: 'Da. Aplicația AI din Odoo îți permite să construiești agenți care răspund din PDF-uri, linkuri web, fișiere din Documents și articole din Knowledge, pe modele ChatGPT sau Gemini, și adaugă un agent AI în Live Chat. Pagina de prețuri listează Agentic AI la planul Custom.',
-      refs: ['odoo:ai-agents', 'odoo:ai-live-chat', 'odoo:pricing'],
+      a: 'Da. Aplicația AI din Odoo îți permite să construiești agenți care răspund din PDF-uri, linkuri web, fișiere din Documents și articole din Knowledge, pe modele ChatGPT sau Gemini, și adaugă un agent AI în Live Chat. Odoo listează Agentic AI la planul Custom.',
+      refs: ['odoo:ai-agents', 'odoo:ai-live-chat', 'odoo:plans'],
     },
     {
       q: 'Poate Odoo să facă apeluri?',

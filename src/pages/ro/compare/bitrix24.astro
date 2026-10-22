@@ -4,20 +4,19 @@ import type { CompareCopy } from '../../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs Bitrix24: alternativă Bitrix24 cu AI',
-  description: 'Alternativă Bitrix24 comparată punct cu punct: prețuri fixe, AI, canale de contact center, telefonie și evaluarea apelurilor, din surse oficiale.',
+  description: 'Alternativă Bitrix24 comparată punct cu punct: AI, canale de contact center, telefonie, evaluarea apelurilor și ediția on-premise, din surse oficiale.',
   crumb: 'Bitrix24',
   h1: 'Fineguide vs Bitrix24:',
   h1Accent: 'un CRM construit în jurul conversației',
   shortAnswer:
-    'Bitrix24 este un spațiu de lucru vast (CRM, sarcini, proiecte, site-uri, HR și telefonie), vândut la preț fix pe organizație, cu plan gratuit și ediție on-premise. Fineguide este mai îngust: un CRM construit pe AI, în care asistenții răspund pe chat, email și la telefon din aceeași fișă de client și în care fiecare apel înregistrat poate fi evaluat. Alege Bitrix24 pentru un spațiu de lucru al întregii companii; alege Fineguide când munca înseamnă conversații și apeluri cu clienții.',
+    'Bitrix24 este un spațiu de lucru vast (CRM, sarcini, proiecte, site-uri, HR și telefonie), cu ediție on-premise. Fineguide este mai îngust: un CRM construit pe AI, în care asistenții răspund pe chat, email și la telefon din aceeași fișă de client și în care fiecare apel înregistrat poate fi evaluat. Alege Bitrix24 pentru un spațiu de lucru al întregii companii; alege Fineguide când munca înseamnă conversații și apeluri cu clienții.',
   tableHeading: 'Bitrix24 și Fineguide, rând cu rând',
   competitorStronger: {
     heading: 'Unde Bitrix24 este mai puternic',
     items: [
-      { text: 'Amploare. Sarcini și proiecte (Kanban și Gantt), calendare comune, chat și apeluri video, constructor de site-uri, semnătură electronică, unelte de HR și pontaj, în același cont cu CRM-ul.', refs: ['bitrix24:pricing'] },
-      { text: 'Utilizatori incluși. Standard acoperă 50 de utilizatori, iar Professional 100, la un preț fix ($144 și $289 pe lună sau $99 și $199 la plata anuală), mult mai mulți oameni decât include orice plan Fineguide.', refs: ['bitrix24:pricing', 'fg:fg-pricing'] },
-      { text: 'Telefonie proprie: închiriezi un număr virtual de la furnizorul integrat sau conectezi centrala de birou ori din cloud prin conectorul SIP; call tracking pe Professional.', refs: ['bitrix24:telephony', 'bitrix24:pricing'] },
-      { text: 'Ediție on-premise gata de instalat, cu acces la codul sursă. Instalarea on-premise a Fineguide se stabilește printr-un contract Enterprise.', refs: ['bitrix24:pricing', 'fg:fg-enterprise'] },
+      { text: 'Amploare. Sarcini și proiecte (Kanban și Gantt), calendare comune, chat și apeluri video, constructor de site-uri, semnătură electronică, unelte de HR și pontaj, în același cont cu CRM-ul.', refs: ['bitrix24:plans'] },
+      { text: 'Telefonie proprie: închiriezi un număr virtual de la furnizorul integrat sau conectezi centrala de birou ori din cloud prin conectorul SIP; call tracking pe Professional.', refs: ['bitrix24:telephony', 'bitrix24:plans'] },
+      { text: 'Ediție on-premise gata de instalat, cu acces la codul sursă. Instalarea on-premise a Fineguide se stabilește printr-un contract Enterprise.', refs: ['bitrix24:plans', 'fg:fg-enterprise'] },
       { text: 'Mai multe canale de contact center într-un singur loc, inclusiv Viber și Bitrix24 Network; Fineguide nu are Viber în listă.', refs: ['bitrix24:channels'] },
     ],
   },
@@ -29,7 +28,7 @@ const copy: CompareCopy = {
       { text: 'Evaluare după regulile tale, nu doar după un script. Voice QA notează fiecare apel înregistrat după regulile și ponderile fiecărui departament, cu citate și o sugestie pentru fiecare regulă, și rapoarte în 30 de limbi. CoPilot din Bitrix24 măsoară cât de bine urmează un apel scriptul de vânzări.', refs: ['fg:fg-voice-qa', 'bitrix24:speech'] },
       { text: 'Înregistrări care vin singure de la Moldcell, Orange Moldova sau din aplicația Fineguide de înregistrare a apelurilor pentru Android.', refs: ['fg:fg-llms'] },
       { text: 'Un scop mai restrâns: echipa care lucrează cu clienții primește o singură fișă de client și un singur inbox pentru chat și email, fără să configureze mai întâi un spațiu de lucru al companiei.', refs: ['fg:fg-messages'] },
-      { text: 'În română: site-ul și suportul Fineguide sunt în română și engleză, iar interfața widgetului de chat există în 24 de limbi.', refs: ['fg:fg-llms'] },
+      { text: 'În română: site-ul Fineguide este în română, engleză și rusă, suportul în română și engleză, iar interfața widgetului de chat există în 24 de limbi.', refs: ['fg:fg-llms'] },
     ],
   },
   choose: {
@@ -38,7 +37,6 @@ const copy: CompareCopy = {
       label: 'Alege Bitrix24 dacă…',
       items: [
         'vrei un singur instrument pentru toată compania: sarcini, proiecte, intranet, HR și CRM;',
-        'ai zeci de utilizatori și prețul fix pe companie este ce ține costul jos;',
         'vrei o ediție on-premise pe care o instalezi singur;',
         'ai nevoie de telefonie cu numere închiriate direct din produs.',
       ],
@@ -66,16 +64,6 @@ const copy: CompareCopy = {
   },
   faq: [
     {
-      q: 'Bitrix24 este gratuit?',
-      a: 'Bitrix24 are un plan gratuit, dar FAQ-ul lui spune că telefonia și aplicațiile din Market sunt disponibile doar pe planurile plătite; există și o perioadă de probă de 15 zile pentru planurile superioare. Planul Free Fineguide include 200 de credite oferite o singură dată pentru răspunsuri AI, pentru tine plus un coleg.',
-      refs: ['bitrix24:pricing', 'fg:fg-pricing'],
-    },
-    {
-      q: 'Cum se plătește Bitrix24?',
-      a: 'La preț fix pe organizație. Pe bitrix24.com, la 21 octombrie 2026, planurile Essentials costau $69, $144, $289 și $579 pe lună pentru 5, 50, 100 și de la 250 de utilizatori, sau $49, $99, $199 și $399 la plata anuală; planurile Vibe+ costau $89, $199, $399 și $799 pe lună. O ofertă de lansare Vibe+ ține până la 10 decembrie 2026, iar reînnoirile sunt la prețurile obișnuite.',
-      refs: ['bitrix24:pricing'],
-    },
-    {
       q: 'Poate Bitrix24 să evalueze apelurile?',
       a: 'CoPilot transcrie înregistrările și dă fiecărui apel analizat un scor care arată cât de bine se potrivește cu scriptul de vânzări. Voice QA din Fineguide evaluează fiecare apel după regulile și ponderile departamentului care l-a preluat, cu citate și o sugestie pentru fiecare regulă.',
       refs: ['bitrix24:speech', 'fg:fg-voice-qa'],
@@ -83,7 +71,7 @@ const copy: CompareCopy = {
     {
       q: 'Bitrix24 poate rula on-premise?',
       a: 'Da, Bitrix24 vinde o ediție on-premise pe care o găzduiești pe serverul tău, cu acces la codul sursă. Fineguide oferă instalare on-premise pe infrastructura ta printr-un contract Enterprise.',
-      refs: ['bitrix24:pricing', 'fg:fg-enterprise'],
+      refs: ['bitrix24:plans', 'fg:fg-enterprise'],
     },
     {
       q: 'Ce mesagerii conectează Bitrix24?',

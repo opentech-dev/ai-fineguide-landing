@@ -4,21 +4,20 @@ import type { CompareCopy } from '../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs Pipedrive: a Pipedrive alternative with AI chat',
-  description: 'A Pipedrive alternative compared fact by fact: seat prices, AI features, WhatsApp, calling and call scoring, checked on Pipedrive’s own pages.',
+  description: 'A Pipedrive alternative compared fact by fact: AI features, WhatsApp and messaging channels, calling and call scoring, checked on Pipedrive’s own pages.',
   crumb: 'Pipedrive',
   h1: 'Fineguide vs Pipedrive:',
   h1Accent: 'AI that talks to your customers',
   shortAnswer:
-    'Pipedrive is a focused, well-established pipeline CRM priced per seat, with more than 500 integrations and AI features that help the seller write, summarise and report. It has no built-in calling, and its WhatsApp integration is still in beta on Growth and above. Fineguide is an AI-first CRM whose assistants answer customers on chat, email and live phone calls, priced per organization, with a Free plan.',
+    'Pipedrive is a focused, well-established pipeline CRM, with more than 500 integrations and AI features that help the seller write, summarise and report. It has no built-in calling, and its WhatsApp integration is still in beta on Growth and above. Fineguide is an AI-first CRM whose assistants answer customers on chat, email and live phone calls.',
   tableHeading: 'Pipedrive vs Fineguide at a glance',
   competitorStronger: {
     heading: 'Where Pipedrive is stronger',
     items: [
-      { text: 'Pipeline depth and polish: automations and nurturing sequences, subscription and forecast reports, contracts and e-signatures, custom scoring, and add-ons for projects, campaigns, web visitors and documents.', refs: ['pipedrive:pricing'] },
-      { text: 'Integrations: more than 500 apps, including Zapier, Zoom and Lemlist. Fineguide’s native list is short and leans on n8n.', refs: ['pipedrive:pricing', 'fg:fg-llms'] },
-      { text: 'Email-first selling: full email sync with tracking from Growth, and AI email writing, summaries and suggested replies on Premium and Ultimate.', refs: ['pipedrive:pricing', 'pipedrive:ai'] },
-      { text: 'Meeting intelligence: Pipedrive Nova briefs you before meetings, transcribes calls and suggests CRM updates afterwards.', refs: ['pipedrive:pricing'] },
-      { text: 'A low price per seat for one or two sellers: Lite is $14 a seat a month billed yearly ($24 monthly), against €100 a month for Fineguide Starter.', refs: ['pipedrive:pricing', 'fg:fg-pricing'] },
+      { text: 'Pipeline depth and polish: automations and nurturing sequences, subscription and forecast reports, contracts and e-signatures, custom scoring, and add-ons for projects, campaigns, web visitors and documents.', refs: ['pipedrive:plans'] },
+      { text: 'Integrations: more than 500 apps, including Zapier, Zoom and Lemlist. Fineguide’s native list is short and leans on n8n.', refs: ['pipedrive:plans', 'fg:fg-llms'] },
+      { text: 'Email-first selling: full email sync with tracking from Growth, and AI email writing, summaries and suggested replies on Premium and Ultimate.', refs: ['pipedrive:plans', 'pipedrive:ai'] },
+      { text: 'Meeting intelligence: Pipedrive Nova briefs you before meetings, transcribes calls and suggests CRM updates afterwards.', refs: ['pipedrive:plans'] },
     ],
   },
   fineguideStronger: {
@@ -27,9 +26,7 @@ const copy: CompareCopy = {
       { text: 'Messaging channels on every plan: the website widget, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord. Pipedrive’s WhatsApp integration is on Growth and above, in beta and not yet open to every customer.', refs: ['fg:fg-llms', 'pipedrive:whatsapp'] },
       { text: 'AI that answers customers, not only the seller. Assistants answer from your knowledge, write the fields you define into CRM leads (on paid plans) and hand over to a person. The AI features Pipedrive lists help the seller: importing data, building reports, writing and summarising email.', refs: ['fg:fg-assistants', 'pipedrive:ai'] },
       { text: 'Phone calls built in. Assistants take live inbound and outbound calls over your own SIP and run outbound campaigns, and Voice QA scores recorded calls. Pipedrive has no built-in calling and points to Marketplace apps.', refs: ['fg:fg-voice-ai', 'fg:fg-voice-qa', 'pipedrive:calls'] },
-      { text: 'Team pricing. Fineguide Business is €200 a month ($239 outside Europe) for you plus five teammates; six seats of Pipedrive Premium cost 6 × $59 = $354 a month billed yearly, or 6 × $79 = $474 monthly.', refs: ['fg:fg-pricing', 'pipedrive:pricing'] },
-      { text: 'A Free plan with no time limit: 200 one-time credits for you plus one teammate. Pipedrive offers a 14-day trial.', refs: ['fg:fg-pricing', 'pipedrive:pricing'] },
-      { text: 'Romanian: Fineguide’s site and support are in English and Romanian, and the chat widget interface comes in 24 languages, including Romanian and Russian.', refs: ['fg:fg-llms'] },
+      { text: 'Romanian: Fineguide’s site is in English, Romanian and Russian, its support in English and Romanian, and the chat widget interface comes in 24 languages, including Romanian and Russian.', refs: ['fg:fg-llms'] },
     ],
   },
   choose: {
@@ -39,8 +36,7 @@ const copy: CompareCopy = {
       items: [
         'your sellers work deals mainly by email and meetings, and want the pipeline to stay simple;',
         'you rely on apps from a 500-plus integration marketplace;',
-        'you want e-signatures, contracts and forecasting in the CRM itself;',
-        'you are one or two sellers and the lowest price per seat matters most.',
+        'you want e-signatures, contracts and forecasting in the CRM itself.',
       ],
     },
     fineguide: {
@@ -48,7 +44,6 @@ const copy: CompareCopy = {
       items: [
         'your customers reach you on WhatsApp, Telegram, Instagram or the website, and you want AI to answer them;',
         'phone calls matter: inbound, outbound campaigns or call-quality scoring;',
-        'you want one price for the team and monthly billing;',
         'you need Romanian on the site, in support and in the chat widget.',
       ],
     },
@@ -66,11 +61,6 @@ const copy: CompareCopy = {
   },
   faq: [
     {
-      q: 'Does Pipedrive have a free plan?',
-      a: 'Not on its pricing page on 21 October 2026: it offers a 14-day free trial with no card. Fineguide has a Free plan with no time limit (200 one-time credits, you plus one teammate).',
-      refs: ['pipedrive:pricing', 'fg:fg-pricing'],
-    },
-    {
       q: 'Can Pipedrive make phone calls?',
       a: 'Pipedrive’s knowledge base says it has no built-in calling integration; calls go through Marketplace apps such as CloudTalk or Aircall, or through Pipedrive’s mobile apps. Fineguide’s AI assistants answer and place calls over your own SIP phone system.',
       refs: ['pipedrive:calls', 'fg:fg-voice-ai'],
@@ -82,7 +72,7 @@ const copy: CompareCopy = {
     },
     {
       q: 'Which Pipedrive plans include AI?',
-      a: 'The AI import assistant, AI report creation and the Sales Assistant are on every plan; AI email writing, summaries and suggested replies are on Premium and Ultimate. Every Fineguide plan includes AI assistants, paid in credits.',
+      a: 'The AI import assistant, AI report creation and the Sales Assistant are on every plan; AI email writing, summaries and suggested replies are on Premium and Ultimate. Every Fineguide plan includes AI assistants.',
       refs: ['pipedrive:ai', 'fg:fg-pricing'],
     },
     {

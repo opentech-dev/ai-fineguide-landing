@@ -4,20 +4,19 @@ import type { CompareCopy } from '../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs Bitrix24: a Bitrix24 alternative built on AI',
-  description: 'A Bitrix24 alternative compared fact by fact: flat prices, AI, contact-centre channels, telephony and call scoring, checked on Bitrix24’s own pages.',
+  description: 'A Bitrix24 alternative compared fact by fact: AI, contact-centre channels, telephony, call scoring and on-premise options, checked on Bitrix24’s own pages.',
   crumb: 'Bitrix24',
   h1: 'Fineguide vs Bitrix24:',
   h1Accent: 'a CRM built around the conversation',
   shortAnswer:
-    'Bitrix24 is a broad workspace (CRM, tasks, projects, sites, HR and telephony) sold at a flat price per organization, with a free plan and an on-premise edition. Fineguide is narrower: an AI-first CRM where assistants answer chat, email and live calls from one customer record, and where every recorded call can be scored. Pick Bitrix24 for an all-in-one company workspace; pick Fineguide when customer conversations and calls are the work.',
+    'Bitrix24 is a broad workspace (CRM, tasks, projects, sites, HR and telephony), with an on-premise edition. Fineguide is narrower: an AI-first CRM where assistants answer chat, email and live calls from one customer record, and where every recorded call can be scored. Pick Bitrix24 for an all-in-one company workspace; pick Fineguide when customer conversations and calls are the work.',
   tableHeading: 'Bitrix24 vs Fineguide at a glance',
   competitorStronger: {
     heading: 'Where Bitrix24 is stronger',
     items: [
-      { text: 'Breadth. Tasks and projects (Kanban and Gantt), shared calendars, chat and video calls, a website builder, e-signature, HR tools and time tracking sit in the same account as the CRM.', refs: ['bitrix24:pricing'] },
-      { text: 'Users included. Standard covers 50 users and Professional 100 for one flat price ($144 and $289 a month, or $99 and $199 billed yearly), far more people than any Fineguide plan includes.', refs: ['bitrix24:pricing', 'fg:fg-pricing'] },
-      { text: 'Telephony of its own: rent a virtual number from the built-in provider, or connect an office or cloud PBX with the SIP connector; call tracking on Professional.', refs: ['bitrix24:telephony', 'bitrix24:pricing'] },
-      { text: 'An on-premise edition off the shelf, with access to the source code. Fineguide’s on-premise deployment is agreed in an Enterprise contract.', refs: ['bitrix24:pricing', 'fg:fg-enterprise'] },
+      { text: 'Breadth. Tasks and projects (Kanban and Gantt), shared calendars, chat and video calls, a website builder, e-signature, HR tools and time tracking sit in the same account as the CRM.', refs: ['bitrix24:plans'] },
+      { text: 'Telephony of its own: rent a virtual number from the built-in provider, or connect an office or cloud PBX with the SIP connector; call tracking on Professional.', refs: ['bitrix24:telephony', 'bitrix24:plans'] },
+      { text: 'An on-premise edition off the shelf, with access to the source code. Fineguide’s on-premise deployment is agreed in an Enterprise contract.', refs: ['bitrix24:plans', 'fg:fg-enterprise'] },
       { text: 'More contact-centre channels in one place, Viber and Bitrix24 Network included; Fineguide does not list Viber.', refs: ['bitrix24:channels'] },
     ],
   },
@@ -29,7 +28,7 @@ const copy: CompareCopy = {
       { text: 'Call scoring by your rules, not only a script. Voice QA scores every recorded call against each department’s rules and weights, with quotes and a suggestion for every rule, and reports in 30 languages. Bitrix24’s CoPilot scores how closely a call follows a sales script.', refs: ['fg:fg-voice-qa', 'bitrix24:speech'] },
       { text: 'Recordings that arrive on their own from Moldcell, Orange Moldova or the Fineguide call-recording app for Android.', refs: ['fg:fg-llms'] },
       { text: 'A smaller scope: a customer-facing team gets one customer record and one inbox for chat and email, without setting up a company workspace first.', refs: ['fg:fg-messages'] },
-      { text: 'Romanian: Fineguide’s site and support are in English and Romanian, and its chat widget interface comes in 24 languages.', refs: ['fg:fg-llms'] },
+      { text: 'Romanian: Fineguide’s site is in English, Romanian and Russian, its support in English and Romanian, and its chat widget interface comes in 24 languages.', refs: ['fg:fg-llms'] },
     ],
   },
   choose: {
@@ -38,7 +37,6 @@ const copy: CompareCopy = {
       label: 'Choose Bitrix24 if…',
       items: [
         'you want one tool for the whole company: tasks, projects, intranet, HR and CRM;',
-        'you have dozens of users and a flat price per company is what keeps the cost down;',
         'you want an on-premise edition you install yourself;',
         'you need telephony with numbers rented inside the product.',
       ],
@@ -66,16 +64,6 @@ const copy: CompareCopy = {
   },
   faq: [
     {
-      q: 'Is Bitrix24 free?',
-      a: 'Bitrix24 has a free plan, but its FAQ says telephony and Market apps are available only on paid plans; there is also a 15-day trial of the higher tiers. Fineguide’s Free plan includes 200 one-time credits for AI replies, for you plus one teammate.',
-      refs: ['bitrix24:pricing', 'fg:fg-pricing'],
-    },
-    {
-      q: 'How is Bitrix24 priced?',
-      a: 'At a flat price per organization. On bitrix24.com on 21 October 2026, the Essentials plans cost $69, $144, $289 and $579 a month for 5, 50, 100 and from 250 users, or $49, $99, $199 and $399 billed yearly; the Vibe+ plans cost $89, $199, $399 and $799 a month. A Vibe+ launch offer runs until 10 December 2026, and renewals are at regular prices.',
-      refs: ['bitrix24:pricing'],
-    },
-    {
       q: 'Can Bitrix24 score calls?',
       a: 'Its CoPilot transcribes call recordings and gives each analysed call a score for how closely it matches a sales script. Fineguide’s Voice QA scores each call against the rules and weights of the department that handled it, with quotes and a suggestion for every rule.',
       refs: ['bitrix24:speech', 'fg:fg-voice-qa'],
@@ -83,7 +71,7 @@ const copy: CompareCopy = {
     {
       q: 'Does Bitrix24 run on-premise?',
       a: 'Yes, Bitrix24 sells an on-premise edition to host on your own server, with access to the source code. Fineguide offers on-premise deployment on your own infrastructure under an Enterprise contract.',
-      refs: ['bitrix24:pricing', 'fg:fg-enterprise'],
+      refs: ['bitrix24:plans', 'fg:fg-enterprise'],
     },
     {
       q: 'Which messengers does Bitrix24 connect?',

@@ -4,32 +4,30 @@ import type { CompareCopy } from '../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs HubSpot: a HubSpot alternative with AI calls',
-  description: 'A HubSpot alternative compared fact by fact: seat prices, onboarding fees, AI agents, WhatsApp, calling and languages, checked on HubSpot’s pages.',
+  description: 'A HubSpot alternative compared fact by fact: AI agents, WhatsApp and messaging, calling, call scoring and languages, checked on HubSpot’s own pages.',
   crumb: 'HubSpot',
   h1: 'Fineguide vs HubSpot:',
-  h1Accent: 'one team price, AI on every channel',
+  h1Accent: 'AI on chat, email and phone calls',
   shortAnswer:
-    'HubSpot is the bigger, more mature platform: free tools, more than 2,000 app integrations and AI agents paid with HubSpot Credits, priced per seat, with a required onboarding fee on Professional and Enterprise. Fineguide is a smaller AI-first CRM priced per organization, with AI assistants on chat, email and live phone calls, Voice QA call scoring and support in Romanian. Choose HubSpot for ecosystem and marketing depth; choose Fineguide for customer conversations and calls on one record at a flat team price.',
+    'HubSpot is the bigger, more mature platform: more than 2,000 app integrations, marketing, service and content tools beside sales, and AI agents of its own. Fineguide is a smaller AI-first CRM, with AI assistants on chat, email and live phone calls, Voice QA call scoring and support in Romanian. Choose HubSpot for ecosystem and marketing depth; choose Fineguide for customer conversations and calls on one record.',
   tableHeading: 'HubSpot Sales Hub vs Fineguide at a glance',
   competitorStronger: {
     heading: 'Where HubSpot is stronger',
     items: [
-      { text: 'Ecosystem. HubSpot lists more than 2,000 apps and web services that integrate with it. Fineguide’s native list is short and leans on n8n for the rest.', refs: ['hubspot:pricing', 'fg:fg-llms'] },
-      { text: 'Breadth. Sales Hub sits beside marketing, service, content and data tools on one platform, with sequences, forecasting, deal journey analytics and a sandbox account in the upper tiers.', refs: ['hubspot:pricing'] },
-      { text: 'Calling and conversation intelligence of its own: calling from Starter, and call transcription and coaching on Professional and Enterprise.', refs: ['hubspot:pricing'] },
-      { text: 'More AI agents to build with: the Customer Agent works across chat, email, forms and calling, and Agent Builder lets you make custom agents.', refs: ['hubspot:pricing'] },
+      { text: 'Ecosystem. HubSpot lists more than 2,000 apps and web services that integrate with it. Fineguide’s native list is short and leans on n8n for the rest.', refs: ['hubspot:plans', 'fg:fg-llms'] },
+      { text: 'Breadth. Sales Hub sits beside marketing, service, content and data tools on one platform, with sequences, forecasting, deal journey analytics and a sandbox account in the upper tiers.', refs: ['hubspot:plans'] },
+      { text: 'Calling and conversation intelligence of its own: calling from Starter, and call transcription and coaching on Professional and Enterprise.', refs: ['hubspot:plans'] },
+      { text: 'More AI agents to build with: the Customer Agent works across chat, email, forms and calling, and Agent Builder lets you make custom agents.', refs: ['hubspot:plans'] },
       { text: 'A choice of hosting region: the United States, Canada, Australia or the EU (Germany).', refs: ['hubspot:hosting'] },
     ],
   },
   fineguideStronger: {
     heading: 'Where Fineguide is stronger',
     items: [
-      { text: 'One price for the team. Fineguide Business is €200 a month ($239 outside Europe) for you plus five teammates. On HubSpot, six seats of Professional start at 6 × $90 = $540 a month, plus a required one-time $1,500 onboarding fee.', refs: ['fg:fg-pricing', 'hubspot:pricing'] },
-      { text: 'No onboarding fee and no annual commitment. Fineguide has no setup fees and bills monthly or yearly; HubSpot Professional needs an annual commitment.', refs: ['fg:fg-pricing', 'hubspot:pricing'] },
-      { text: 'WhatsApp without buying a second hub. Fineguide’s plans differ only in credits, seats and knowledge-base space, so WhatsApp, Telegram, Instagram, Messenger, Slack and Discord come with each one. HubSpot’s WhatsApp inbox needs Marketing Hub or Service Hub Professional or Enterprise.', refs: ['fg:fg-llms', 'hubspot:whatsapp'] },
+      { text: 'WhatsApp on every plan. Fineguide’s plans differ only in credits, included teammates and knowledge-base space, so WhatsApp, Telegram, Instagram, Messenger, Slack and Discord come with each one. HubSpot’s WhatsApp inbox needs Marketing Hub or Service Hub Professional or Enterprise.', refs: ['fg:fg-llms', 'hubspot:whatsapp'] },
       { text: 'AI on your own phone system. Assistants answer live inbound and outbound calls over your SIP and run outbound campaigns (outreach, survey, promotion), in 14 call languages including Romanian and Russian.', refs: ['fg:fg-voice-ai', 'fg:fg-campaigns'] },
       { text: 'Call scoring against your own rules. Voice QA scores every recorded call by each department’s rules and weights, with quotes and a suggestion per rule and reports in 30 languages; recordings can arrive on their own from Moldcell, Orange Moldova or the Fineguide recording app for Android.', refs: ['fg:fg-voice-qa', 'fg:fg-llms'] },
-      { text: 'Romanian and Russian. HubSpot’s 17 interface languages include neither. Fineguide’s chat widget interface and AI calls cover both, and its site and support are in Romanian.', refs: ['hubspot:languages', 'fg:fg-llms'] },
+      { text: 'Romanian and Russian. HubSpot’s 17 interface languages include neither. Fineguide’s chat widget interface and AI calls cover both, its site is in English, Romanian and Russian, and its support in English and Romanian.', refs: ['hubspot:languages', 'fg:fg-llms'] },
     ],
   },
   choose: {
@@ -40,7 +38,7 @@ const copy: CompareCopy = {
         'you want marketing automation, content and service tools on the same platform as sales;',
         'you depend on apps from a marketplace of more than 2,000 integrations;',
         'you need to pick a hosting region, such as the EU;',
-        'your team works in one of HubSpot’s 17 interface languages and the budget covers seats and onboarding.',
+        'your team works in one of HubSpot’s 17 interface languages.',
       ],
     },
     fineguide: {
@@ -48,7 +46,6 @@ const copy: CompareCopy = {
       items: [
         'your customers write on WhatsApp, Telegram or Instagram and also call you, and you want AI on all of it;',
         'you run a call centre and want every recorded call scored;',
-        'you want one team price, monthly billing and no onboarding fee;',
         'you serve customers in Romanian or Russian.',
       ],
     },
@@ -70,24 +67,14 @@ const copy: CompareCopy = {
       a: 'For teams whose work is talking to customers, yes: it replaces the CRM, the shared inbox and the chat and phone AI. It does not replace HubSpot’s marketing and content tools, so a team that relies on those should weigh that first.',
     },
     {
-      q: 'Does HubSpot charge an onboarding fee?',
-      a: 'On the US-dollar pricing page we read on 21 October 2026, Professional carries a required one-time onboarding fee of $1,500 and Enterprise $3,500; none is listed for Starter. Fineguide has no setup fees.',
-      refs: ['hubspot:pricing', 'fg:fg-pricing'],
-    },
-    {
       q: 'Is HubSpot available in Romanian?',
-      a: 'Not as an interface language: HubSpot lists 17, and Romanian and Russian are not among them; they appear only as languages for creating content. Fineguide’s site and support are in Romanian, and its chat widget interface includes Romanian and Russian.',
+      a: 'Not as an interface language: HubSpot lists 17, and Romanian and Russian are not among them; they appear only as languages for creating content. Fineguide’s site is in English, Romanian and Russian, its support in English and Romanian, and its chat widget interface includes Romanian and Russian.',
       refs: ['hubspot:languages', 'fg:fg-llms'],
     },
     {
       q: 'Can I connect WhatsApp to HubSpot Sales Hub?',
       a: 'HubSpot’s knowledge base says connecting WhatsApp to the inbox needs Marketing Hub or Service Hub at Professional or Enterprise. In Fineguide, WhatsApp is a channel on every plan.',
       refs: ['hubspot:whatsapp', 'fg:fg-llms'],
-    },
-    {
-      q: 'How do HubSpot Credits compare with Fineguide credits?',
-      a: 'Both meter AI in credits, but the units differ. HubSpot includes 500, 3,000 or 5,000 credits on Starter, Professional and Enterprise; Fineguide includes 3,000, 8,000 or 25,000 a month on Starter, Business and Premium, where one credit is one standard AI reply. Compare the work you expect the AI to do, not the raw numbers.',
-      refs: ['hubspot:pricing', 'fg:fg-pricing'],
     },
     {
       q: 'Can I move from HubSpot to Fineguide without losing data?',

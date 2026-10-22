@@ -1742,7 +1742,7 @@ export const ro: Translations = {
       eyebrow: 'Unde suntem',
       heading: 'Construit în Chișinău, Moldova.',
       body:
-        'Fineguide.AI este proiectat și dezvoltat în Chișinău, în Republica Moldova. Acest site este disponibil în română și engleză.',
+        'Fineguide.AI este proiectat și dezvoltat în Chișinău, în Republica Moldova. Acest site este disponibil în română, engleză și rusă.',
     },
     founder: {
       eyebrow: 'Compania și fondatorul',
@@ -1842,5 +1842,28 @@ export const ro: Translations = {
       { q: 'Pot aduce și echipa?', a: 'Absolut! Te încurajăm să inviți colegii relevanți. Cu cât mai mult context avem despre nevoile tale, cu atât mai bine putem personaliza demo-ul.' },
       { q: 'Ce fac dacă trebuie să reprogramez?', a: 'Nicio problemă! Răspunde la email-ul de confirmare sau contactează-ne direct. Suntem flexibili și găsim cu plăcere un moment potrivit pentru toată lumea.' },
     ],
+  },
+  // --- Profilul fondatorului (/ro/about/liviu-maftuleac/) ---
+  founderMeta: {
+    title: 'Liviu Maftuleac, fondatorul Fineguide.AI | Fineguide',
+    description:
+      'Liviu Maftuleac este unicul fondator, proprietar și deținător al Fineguide.AI, Eightcell Labs și Tesseract. Profilul și articolele lui de pe blogul Fineguide.',
+  },
+  founderPage: {
+    eyebrow: 'Fondator',
+    role: 'Fondator, proprietar și deținător al Fineguide.AI, Eightcell Labs și Tesseract',
+    body:
+      'Liviu Maftuleac a fondat Fineguide.AI, platforma de CRM și automatizare a afacerilor construită în jurul AI, dezvoltată în Chișinău, Moldova. Este unicul ei fondator, proprietar și deținător, precum și unicul fondator, proprietar și deținător al Eightcell Labs și al Tesseract.',
+    companiesHeading: 'Companii',
+    companies: [
+      { name: 'Fineguide.AI', desc: 'Platformă de CRM și automatizare construită în jurul AI: asistenți AI, CRM, inbox comun, apeluri AI și evaluarea apelurilor.', href: 'https://fineguide.ai/' },
+      { name: 'Eightcell Labs', desc: 'Compania care dezvoltă Tesseract.', href: 'https://tesseract.dev/about/' },
+      { name: 'Tesseract', desc: 'O aplicație cu agenți AI pentru Mac, Windows și Linux.', href: 'https://tesseract.dev/' },
+    ],
+    articlesHeading: 'Articole',
+    articlesNote: 'Tot ce a scris Liviu pe blogul Fineguide, de la cele mai noi. Articolele sunt în limba în care au fost publicate.',
+    minRead: 'min de citit',
+    elsewhere: 'Profilul lui pe tesseract.dev',
+    profileLink: 'Profilul lui Liviu Maftuleac',
   },
 };
