@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import llmsFull from './src/integrations/llms-full.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,8 @@ export default defineConfig({
     locales: ['en', 'ro'],
     routing: { prefixDefaultLocale: false },
   },
+  // /llms-full.txt, written from the built pages after the build (src/integrations/llms-full.mjs).
+  integrations: [llmsFull()],
   vite: {
     plugins: [tailwindcss()]
   }
