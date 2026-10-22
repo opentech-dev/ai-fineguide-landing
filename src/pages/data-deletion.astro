@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import DataDeletion from '../components/legal/DataDeletion.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Deleting data received from Meta | Fineguide.ai"
+  description="How a business or a person asks Fineguide.ai to delete the data it received from Facebook, Instagram or WhatsApp."
+  lang={lang}
+>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+
+  <DataDeletion lang={lang} />
+
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>
+

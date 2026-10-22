@@ -1,0 +1,103 @@
+---
+// How to delete the data Fineguide receives from Meta (Facebook, Instagram, WhatsApp) — the
+// "user data deletion" page Meta asks every app using Facebook Login for. Both languages in one
+// file, mirrored like PrivacyPolicy.astro; the facts match its "connected accounts" section.
+import type { Lang } from '../../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const email = 'office@fineguide.ai';
+---
+
+<section class="pt-32 md:pt-40 pb-8 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-3xl md:text-4xl font-bold">{lang === 'ro' ? 'Ștergerea datelor primite de la Meta' : 'Deleting data received from Meta'}</h1>
+  </div>
+</section>
+
+<section class="pb-20 md:pb-28 px-6">
+  <div class="max-w-3xl mx-auto prose-legal">
+    {lang === 'ro' ? (
+      <>
+        <p>Fineguide primește date de la Facebook, Instagram și WhatsApp doar atunci când o companie își conectează pagina sau contul la un asistent Fineguide: mesajele și comentariile trimise acestuia, răspunsurile din formularele de lead ale paginii și tokenurile de acces pe care Meta le emite. Cum le folosim: <a href="/ro/privacy-policy#conturi-conectate">politica de confidențialitate</a>.</p>
+
+        <h2>Dacă ești compania care a conectat pagina sau contul</h2>
+        <ul>
+          <li>În Fineguide, deschide asistentul → <strong>Connect Apps</strong> → Facebook, Instagram sau WhatsApp → <strong>Disconnect</strong>. Ștergem pe loc tokenurile de acces și nu mai prelucrăm datele paginii sau contului.</li>
+          <li>Conversațiile, contactele și oportunitățile venite de acolo le poți șterge din contul tău, sau ne poți scrie la <a href={`mailto:${email}`}>{email}</a> de pe emailul contului; le ștergem și îți confirmăm în cel mult 30 de zile.</li>
+          <li>Poți retrage oricând și accesul aplicației din Facebook: <strong>Setări → Integrări de afaceri</strong> → Fineguide.ai → Elimină.</li>
+        </ul>
+
+        <h2>Dacă ai scris unei companii care folosește Fineguide</h2>
+        <ul>
+          <li>Compania căreia i-ai scris sau al cărei formular l-ai completat decide asupra datelor tale; adresează-i cererea mai întâi.</li>
+          <li>Ne poți scrie și nouă la <a href={`mailto:${email}`}>{email}</a>, cu pagina căreia i-ai scris și emailul sau telefonul folosit. Transmitem cererea companiei și, acolo unde ștergerea ne revine nouă, o facem și îți confirmăm în cel mult 30 de zile.</li>
+        </ul>
+      </>
+    ) : (
+      <>
+        <p>Fineguide receives data from Facebook, Instagram and WhatsApp only when a business connects its Page or account to a Fineguide assistant: the messages and comments sent to it, the answers submitted in the Page's lead forms, and the access tokens Meta issues. How we use it: <a href="/privacy-policy#connected-accounts">privacy policy</a>.</p>
+
+        <h2>If you are the business that connected the Page or account</h2>
+        <ul>
+          <li>In Fineguide, open the assistant → <strong>Connect Apps</strong> → Facebook, Instagram or WhatsApp → <strong>Disconnect</strong>. We delete the access tokens straight away and stop processing the Page's or account's data.</li>
+          <li>Delete the conversations, contacts and deals that came from it in your account, or write to <a href={`mailto:${email}`}>{email}</a> from the account's email; we delete them and confirm within 30 days.</li>
+          <li>You can also remove the app's access in Facebook at any time: <strong>Settings → Business integrations</strong> → Fineguide.ai → Remove.</li>
+        </ul>
+
+        <h2>If you wrote to a business that uses Fineguide</h2>
+        <ul>
+          <li>The business you messaged, or whose form you filled in, decides about your data; ask it first.</li>
+          <li>You can also write to us at <a href={`mailto:${email}`}>{email}</a> with the Page you contacted and the email or phone you used. We pass the request to the business and, where deleting is ours to do, delete and confirm within 30 days.</li>
+        </ul>
+      </>
+    )}
+  </div>
+</section>
+
+<style>
+  .prose-legal {
+    color: var(--color-muted);
+    line-height: 1.75;
+  }
+  .prose-legal h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose-legal h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal p {
+    margin-bottom: 1rem;
+  }
+  .prose-legal ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .prose-legal ul li {
+    margin-bottom: 0.5rem;
+  }
+  .prose-legal strong {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+  .prose-legal a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-legal a:hover {
+    opacity: 0.8;
+  }
+</style>

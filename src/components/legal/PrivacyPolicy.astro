@@ -21,7 +21,7 @@ interface Props {
 }
 
 const { lang = 'en' } = Astro.props;
-const updated = lang === 'ro' ? '15 septembrie 2026' : '15 September 2026';
+const updated = lang === 'ro' ? '22 octombrie 2026' : '22 October 2026';
 const email = 'office@fineguide.ai';
 ---
 
@@ -113,6 +113,15 @@ const email = 'office@fineguide.ai';
           <li><strong>De ce:</strong> ca să furnizăm serviciul, să facturăm și să oferim suport. Plățile sunt procesate de <strong>Stripe</strong>.</li>
           <li><strong>Temei:</strong> executarea contractului; obligația legală pentru documentele contabile.</li>
           <li><strong>Cât timp:</strong> cât timp contul este activ, apoi cât cer legile contabile și fiscale pentru facturi.</li>
+        </ul>
+
+        <h3 id="conturi-conectate" class="scroll-mt-24">Când o companie conectează Facebook, Instagram sau WhatsApp</h3>
+        <ul>
+          <li><strong>Date:</strong> numele și identificatorul paginii sau contului și tokenurile de acces pe care Meta le emite pentru el; mesajele și comentariile trimise acestuia; răspunsurile din formularele de lead ale paginii de Facebook (Lead Ads), cum ar fi numele, emailul, telefonul și întrebările proprii ale formularului.</li>
+          <li><strong>De ce:</strong> ca asistentul companiei să răspundă la mesaje și comentarii, iar conversațiile și formularele trimise să apară drept contacte și oportunități în CRM-ul ei din Fineguide și să ajungă la sistemele pe care compania le conectează. Mesajele sunt prelucrate de furnizorii de modele AI din secțiunea 5 ca să se genereze răspunsurile asistentului. Folosim aceste date doar pentru aceste funcții.</li>
+          <li><strong>Rol și temei:</strong> compania este operatorul datelor clienților săi; noi le prelucrăm în numele ei, conform contractului cu ea (secțiunea 3).</li>
+          <li><strong>Cât timp:</strong> tokenurile, până când compania deconectează pagina sau contul; mesajele, contactele și oportunitățile, cât timp compania le păstrează în contul său.</li>
+          <li><strong>Ștergere:</strong> vezi <a href="/ro/data-deletion">cum se șterg datele primite de la Meta</a>.</li>
         </ul>
 
         <h3>Fonturi</h3>
@@ -251,6 +260,15 @@ const email = 'office@fineguide.ai';
           <li><strong>Why:</strong> to provide the service, bill for it and support you. Payments are processed by <strong>Stripe</strong>.</li>
           <li><strong>Legal basis:</strong> performance of our contract; legal obligation for accounting records.</li>
           <li><strong>How long:</strong> while the account is active, then as long as accounting and tax law requires for invoices.</li>
+        </ul>
+
+        <h3 id="connected-accounts" class="scroll-mt-24">When a business connects Facebook, Instagram or WhatsApp</h3>
+        <ul>
+          <li><strong>Data:</strong> the name and id of the Page or account and the access tokens Meta issues for it; the messages and comments people send to it; and the answers people submit in the Page's Facebook lead forms (Lead Ads), such as name, email, phone and the form's own questions.</li>
+          <li><strong>Why:</strong> so the business's assistant can answer messages and comments, and so its conversations and form submissions appear as contacts and deals in its Fineguide CRM and reach the systems the business connects to it. Messages are processed by the AI model providers in section 5 to generate the assistant's replies. We use this data only for these functions.</li>
+          <li><strong>Role and legal basis:</strong> the business is the controller of its customers' data; we process it on the business's behalf, under our contract with it (section 3).</li>
+          <li><strong>How long:</strong> the tokens until the business disconnects the Page or account; the messages, contacts and deals for as long as the business keeps them in its account.</li>
+          <li><strong>Deletion:</strong> see <a href="/data-deletion">how to delete data received from Meta</a>.</li>
         </ul>
 
         <h3>Fonts</h3>
