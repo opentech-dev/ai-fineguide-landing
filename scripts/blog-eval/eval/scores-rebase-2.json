@@ -1,0 +1,355 @@
+{
+ "cases": {
+  "index": {
+   "m_contrast": {
+    "score": 9,
+    "evidence": "1 unique contrast faults (design_check, 4 views)",
+    "issues": [
+     "desktop-light: contrast on <span.text-[var(--color-border)]> \"|\" 1.2:1 needs 4.5"
+    ]
+   },
+   "m_layout": {
+    "score": 10.0,
+    "evidence": "0 unique overflow/clipped/overlap/gutter faults (the closed Platform menu and the cookie banner filtered)",
+    "issues": []
+   },
+   "m_tap": {
+    "score": 8.0,
+    "evidence": "4 unique controls too small to tap on the phone",
+    "issues": [
+     "phone-light: tap-target on <a.sr-only.focus:not-sr-only> \"Skip to content\" 1\u00d71",
+     "phone-light: tap-target on <a> \"RSS feed\" 62\u00d722",
+     "phone-light: tap-target on <a.text-sm.text-[var(--color-muted)]> \"Home\" 121\u00d720",
+     "phone-light: tap-target on <a.text-sm.text-[var(--color-muted)]> \"AI Assistants\" 121\u00d720"
+    ]
+   },
+   "m_images": {
+    "score": 9,
+    "evidence": "1 unique image faults (failed, low-res, stretched)",
+    "issues": [
+     "desktop-light: image-low-res on <img> \"\" /blog/media/6d373972d8d46662eae3179b-800.webp"
+    ]
+   },
+   "m_runtime": {
+    "score": 6,
+    "evidence": "0 hidden/font/empty faults, 0 exceptions, 1 console errors, 1 failed requests",
+    "issues": [
+     "runtime errors {'exceptions': 0, 'failed_requests': 1, 'console_errors': 1}"
+    ]
+   },
+   "m_weight": {
+    "score": 4,
+    "evidence": "4.08 MB downloaded after scrolling to the end (desktop)",
+    "issues": [
+     "heavy files: d674e928012ba2dfc3452c2e.png 317 KB, db261188-35321d099b76c856.js 257 KB, 5687-9beb2818fdcb2894.js 507 KB"
+    ]
+   },
+   "m_reading": {
+    "score": 6.75,
+    "evidence": "Flesch reading ease 47 over 1425 words",
+    "issues": [
+     "reading ease 47 is below 60: shorter sentences and words"
+    ]
+   },
+   "m_semantics": {
+    "score": 10.0,
+    "evidence": "0 structure errors",
+    "issues": []
+   },
+   "m_phone_nav": {
+    "score": 10.0,
+    "evidence": "20/20 top-bar destinations reachable on a 390 px phone",
+    "issues": []
+   },
+   "m_first_screen": {
+    "score": 10.0,
+    "evidence": "first screen: 1440px h1=yes entry=yes; 390px h1=yes entry=yes",
+    "issues": []
+   },
+   "m_measure": {
+    "score": 5.43,
+    "evidence": "median 42.7 characters per line over 1 wrapping paragraphs; 1 outside 45\u201380",
+    "issues": [
+     "median line length 42.7 is outside 45\u201380",
+     "1 paragraphs set outside 45\u201380 characters a line"
+    ]
+   },
+   "j_purpose": {
+    "score": 8.5,
+    "evidence": "desktop-1: pill 'FINEGUIDE BLOG', headline 'Ideas for teams that run on conversations.', lede 'Practical guides, product news and field notes on AI assistants, CRM, voice and automation, from the team that builds Fineguide.', stats '30 articles / 5 topics / Oct 22 latest update', and a 'Start here' panel. Clearly Fineguide's blog and what it covers in one glance.",
+    "issues": [
+     "desktop-1: the stats row (30 articles, 5 topics) is filler and does not say why to read",
+     "desktop-1/phone-strip-1: the page does not say who the blog is for (business owners, support managers)",
+     "The 2024-2025 catalogue (duplicate 'Ai Assistant with Math formulas support', old model announcements) dilutes the premium promise of the hero"
+    ]
+   },
+   "j_hierarchy": {
+    "score": 7.5,
+    "evidence": "desktop-1: huge serif headline with gradient italic 'conversations' is a clear focal point, Start here card on the right, then filter bar, then Featured with one wide lead card (Claude Code Browser Plugin) beside a smaller card and three small cards. Section titles (Featured, Latest articles, Explore by topic) are consistent serif headings.",
+    "issues": [
+     "desktop-2 to desktop-4: Latest articles is a flat 3-column grid of about 20 identical cards; nothing leads or recedes",
+     "desktop-1: the hero has two competing blocks (headline and the Start here card) plus a chat bubble overlapping the area right below it",
+     "desktop-1: Featured repeats five articles that then appear again in the Latest list, so the eye meets the same covers twice",
+     "desktop-5: the last card of Latest articles sits alone in the grid, leaving a large empty area"
+    ]
+   },
+   "j_typography": {
+    "score": 8.5,
+    "evidence": "desktop-1: serif display headline with italic gradient accent, italic 'Start here' and 01-04 numerals, serif card titles and serif excerpts paired with a clean sans for meta, chips and nav. Card titles have character and the scale is deliberate. phone-strip-1: headline wraps cleanly, lede is comfortable.",
+    "issues": [
+     "desktop-2/3: serif excerpts at the same size as titles' neighbours in 3 columns feel dense; excerpts are long, ending with ellipses mid-sentence ('suppo...', 'W...')",
+     "desktop-2: the Russian card title '\u041a\u0430\u043a \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0418\u0418-\u0430\u0441\u0441\u0438\u0441\u0442\u0435\u043d\u0442\u0430...' on an English page; the heavy serif Cyrillic looks different and the excerpt hyphenation '\u0418\u0418-/\u0430\u0441\u0441\u0438\u0441\u0442\u0435\u043d\u0442' is ragged",
+     "desktop-1: small grey meta text (dates, 'Tutorials 3 min read') is low weight against the dark navy",
+     "desktop-5: the Explore by topic labels sit on mid-grey gradients and the footer text is small"
+    ]
+   },
+   "j_color": {
+    "score": 8.0,
+    "evidence": "desktop-1: deep indigo-to-navy background with a violet glow behind the hero, purple active chip, pastel gradient accent on 'conversations', lavender 'Read more' links. Palette is consistent and warm-violet. CTA band in desktop-5 has a matching violet light.",
+    "issues": [
+     "desktop-2 to desktop-5: below the hero the page is a flat dark navy with no light or atmosphere, so about 4000 px feel the same",
+     "desktop-5: the footer is an abrupt near-white band against the dark page; it breaks the atmosphere",
+     "Cover images bring unrelated colours (orange Claude tile, green chalkboard, white logo tiles) that fight the violet palette"
+    ]
+   },
+   "j_findability": {
+    "score": 8.0,
+    "evidence": "desktop-1: Start here with four numbered guides, topic chips with counts (All, News 13, Updates 12, Tutorials 8, CRM 6, Automations 2), a search field, a Featured block; desktop-5: Explore by topic cards and an RSS link. phone-strip-1: chips wrap into three rows and a search field follows.",
+    "issues": [
+     "desktop-2/3/4: Latest articles has about 20 posts with no pagination, load-more or sorting; a long single scroll",
+     "desktop-1/desktop-5: topic chips at the top and Explore by topic at the bottom duplicate each other",
+     "desktop-1: Updates (12) and News (13) are vague, overlapping categories; the 2024 old posts are mixed in with new ones",
+     "phone-strip-1: the topic chips wrap unevenly into a ragged three-row block and push Featured far down the page"
+    ]
+   },
+   "j_imagery": {
+    "score": 5.5,
+    "evidence": "desktop-2: covers mix white logo tiles ('IIElevenLabsGrants', 'amoCRM.'), screenshots cropped mid-text (the 'Turn messages into sales' hero shot cropped on the left, desktop-1; the knowledge-base screenshot in desktop-2), and purple branded artwork. desktop-3: stock photos of call-centre staff and a chalkboard 'E = mc2' used for 'Ai Assistant with Math formulas support'. desktop-3: the card 'The Week in AI' has an empty purple frame with just the word 'News'. desktop-4: the black 'AI' tile is dark on dark.",
+    "issues": [
+     "desktop-3: the 'The Week in AI' card has an empty placeholder cover with only the word 'News'",
+     "desktop-3/4: stock photos (headset staff, chalkboard) and an AI-generated isometric illustration clash with branded purple covers",
+     "desktop-2: white logo tiles (ElevenLabs, amoCRM, OpenAI, Helpscout) are glaring bright rectangles on the dark page",
+     "desktop-1: the lead card's screenshot is cropped so text reads 'ssages into sales.' and the browser plugin panel is cut off",
+     "desktop-3/4: the 'Math formulas' post appears twice with identical title and excerpt",
+     "desktop-3: the mascot cover has the chip overlapping the cut-off character head",
+     "desktop-5: topic cards use faded reused covers whose content is unreadable and muddy"
+    ]
+   },
+   "j_consistency": {
+    "score": 8.0,
+    "evidence": "Cards share one radius, border, chip style, meta line, serif title and 'Read more' link across Featured (desktop-1/2), Latest (desktop-2 to 5) and phone strips. Sections use the same left-aligned serif headings. CTA band buttons match the header's rounded style.",
+    "issues": [
+     "desktop-1: the Featured cards use three different sizes and heights while Latest uses uniform ones; the lead card's text column differs in tone from the rest",
+     "desktop-5: Explore by topic cards use a different overlay look (faded image with gradient) from the article cards",
+     "desktop-5: the footer is light-themed while the page, header-over-hero and CTA are dark; the header is light too, so header and footer are consistent with each other but not with the page",
+     "desktop-1: the header is a light bar over a dark hero; chip labels switch between grey-translucent over images and dark navy over illustrations"
+    ]
+   },
+   "j_credibility": {
+    "score": 6.5,
+    "evidence": "desktop-1 hero, serif type and Start here panel look professional. But desktop-3 shows an empty-cover card and a duplicated 'Ai Assistant with Math formulas support', desktop-2 has a Russian post and 'Fineguide' vs 'FineGuide' spelled both ways, and 'Intro to FineGuide.AI' excerpt shows a raw URL 'https://fineguide.ai'.",
+    "issues": [
+     "desktop-3/4: duplicated post titles and an empty cover read as unfinished",
+     "desktop-2/4: inconsistent brand spelling (Fineguide, FineGuide, Fineguide.AI, Fineguide.ai) in titles",
+     "desktop-4: 'Intro to FineGuide.AI' excerpt ends with a raw URL and has a different card height",
+     "desktop-3: titles such as 'Ai Assistant with Math formulas support' are lower-case 'Ai' and weak for a premium company",
+     "desktop-1: a chat widget bubble sits over the page and, on phone-strip-1, covers the first Start here item"
+    ]
+   },
+   "j_next": {
+    "score": 7.5,
+    "evidence": "desktop-1: Start here, Read more arrows on every card; desktop-2: RSS feed link; desktop-5: a CTA band 'Put an AI assistant to work for your business.' with white 'Start free' and outlined 'Book a demo' buttons, then footer. phone-strip-4: CTA stacks well.",
+    "issues": [
+     "desktop-2: the RSS feed link is a tiny grey text at the far right, easy to miss; there is no email subscribe option",
+     "desktop-5: the CTA only appears once, at the very end after about 5000 px of scrolling",
+     "desktop-5: no 'see all topics' or pagination step after the last card",
+     "phone-strip-1: the chat bubble overlaps the Start here list"
+    ]
+   },
+   "j_organic": {
+    "score": 7.0,
+    "evidence": "desktop-1: soft violet glow, 28 px rounded cards, italic gradient word, rounded pill chips and numbered italic list give warmth. Rounded Explore by topic tiles and the CTA band add softness.",
+    "issues": [
+     "desktop-2 to desktop-5: the Latest list is a rigid uniform 3-column grid of boxy rounded rectangles, no rhythm change or illustration",
+     "desktop-5: Explore by topic is a row of 4 plus an orphan card, which feels template-like",
+     "desktop-5: the footer is a plain white link list with no warmth or personality",
+     "desktop-2 to desktop-4: no breaks, quotes, or editorial interludes between rows; the page feels like a long catalogue"
+    ]
+   }
+  },
+  "post": {
+   "m_contrast": {
+    "score": 9,
+    "evidence": "1 unique contrast faults (design_check, 4 views)",
+    "issues": [
+     "desktop-light: contrast on <span.text-[var(--color-border)]> \"|\" 1.2:1 needs 4.5"
+    ]
+   },
+   "m_layout": {
+    "score": 10.0,
+    "evidence": "0 unique overflow/clipped/overlap/gutter faults (the closed Platform menu and the cookie banner filtered)",
+    "issues": []
+   },
+   "m_tap": {
+    "score": 8.0,
+    "evidence": "4 unique controls too small to tap on the phone",
+    "issues": [
+     "phone-light: tap-target on <a.sr-only.focus:not-sr-only> \"Skip to content\" 1\u00d71",
+     "phone-light: tap-target on <a> \"Blog\" 30\u00d721",
+     "phone-light: tap-target on <a> \"Tutorials\" 57\u00d721",
+     "phone-light: tap-target on <a> \"All articles\" 71\u00d722"
+    ]
+   },
+   "m_images": {
+    "score": 10.0,
+    "evidence": "0 unique image faults (failed, low-res, stretched)",
+    "issues": []
+   },
+   "m_runtime": {
+    "score": 6,
+    "evidence": "0 hidden/font/empty faults, 0 exceptions, 1 console errors, 1 failed requests",
+    "issues": [
+     "runtime errors {'exceptions': 0, 'failed_requests': 1, 'console_errors': 1}"
+    ]
+   },
+   "m_weight": {
+    "score": 6,
+    "evidence": "3.36 MB downloaded after scrolling to the end (desktop)",
+    "issues": [
+     "heavy files: db261188-35321d099b76c856.js 257 KB, 5687-9beb2818fdcb2894.js 507 KB"
+    ]
+   },
+   "m_reading": {
+    "score": 10.0,
+    "evidence": "Flesch reading ease 64 over 1652 words",
+    "issues": []
+   },
+   "m_semantics": {
+    "score": 8,
+    "evidence": "1 structure errors",
+    "issues": [
+     "heading jumps h1\u2192h3: \"Why knowledge matters\""
+    ]
+   },
+   "m_phone_nav": {
+    "score": 10.0,
+    "evidence": "16/16 top-bar destinations reachable on a 390 px phone",
+    "issues": []
+   },
+   "m_first_screen": {
+    "score": 10.0,
+    "evidence": "first screen: 1440px h1=yes entry=yes; 390px h1=yes entry=yes",
+    "issues": []
+   },
+   "m_measure": {
+    "score": 9.67,
+    "evidence": "median 64.3 characters per line over 24 wrapping paragraphs; 2 outside 45\u201380",
+    "issues": [
+     "2 paragraphs set outside 45\u201380 characters a line"
+    ]
+   },
+   "j_purpose": {
+    "score": 7.5,
+    "evidence": "judge-desktop-1: Fineguide logo and nav, breadcrumb 'Blog > Tutorials', large serif title 'How to add knowledge to your AI assistant: Answer real business questions', lede, byline 'Liviu, May 14, 2026, 7 min read'. The page is clearly Fineguide's and the topic is obvious; the end CTA 'Put an AI assistant to work for your business.' explains the product.",
+    "issues": [
+     "desktop-1: nothing on the page says what the Fineguide blog covers beyond this one post; there is no blog name or tagline, only the breadcrumb 'Blog'",
+     "desktop-1: the right half of the hero is empty dark space, and the header 'Blog' link is no stronger than the other nav links",
+     "desktop-1: the chat widget bubble 'Hi! How can I help you today?' overlaps the hero screenshot's right edge"
+    ]
+   },
+   "j_hierarchy": {
+    "score": 7.0,
+    "evidence": "desktop-1: the large serif h1 is a clear focal point, then lede, byline, hero screenshot. Body headings are clear (desktop-3 'Step 1:...' in bold serif). desktop-6: the gradient CTA card and the 'Related articles' heading mark clear section starts.",
+    "issues": [
+     "desktop-2 to desktop-5: the body is one long, uniform column of short bullet lists; there are no pull quotes, callouts or visual breaks, so long stretches have no focal point",
+     "desktop-5: h3 subheads ('1. Adding too much too early') are only slightly bigger than the body, so they barely mark a section start",
+     "desktop-2: the sticky 'On this page' table of contents ends mid-item ('How to test whether the' is cut off) and then leaves a large empty left column for the rest of the page",
+     "desktop-1: the 8-bullet 'Why knowledge matters' lists and the 20+ short bullets make the page feel monotonous"
+    ]
+   },
+   "j_typography": {
+    "score": 7.5,
+    "evidence": "A deliberate pairing: a bold display serif for titles (desktop-1 h1, 'Related articles'), a text serif for the body, Inter for the nav, byline, TOC and buttons. Line length is about 70 characters (desktop-3) with generous leading. Titles have character. Phone strips are comfortable at roughly 36 characters a line.",
+    "issues": [
+     "desktop-3 and desktop-4: bullet lists are set with very loose spacing between single-word items ('current', 'specific', 'consistent'), which wastes space and weakens rhythm",
+     "desktop-5: the h3 level ('1. Adding too much too early') is too close to the body size",
+     "desktop-1: the TOC labels are small, muted Inter, low in contrast against the dark ground, and wrap unevenly",
+     "desktop-6: the inline code chips use a monospace face that clashes with the serif body in the ordered list",
+     "phone-strip-1: the h1 sets very tight at 5 lines, and the widget overlaps the first body line ('well-writ...')"
+    ]
+   },
+   "j_color": {
+    "score": 7.0,
+    "evidence": "A consistent deep navy/indigo ground with a violet glow in the hero (desktop-1), violet bullets and links, a purple-to-indigo gradient CTA card (desktop-6) and indigo cards in Related. Accents are purposeful: violet marks bullets, links and the CTA. The warm light is only the hero glow.",
+    "issues": [
+     "desktop-2 to desktop-5: below the hero the ground is flat near-black navy with no variation or light, so the middle of the page feels heavy",
+     "desktop-7: the abrupt switch to a near-white footer after the dark page is jarring and breaks the atmosphere",
+     "desktop-1: the white screenshot on the dark ground is a harsh bright block",
+     "the palette is cool-only; nothing in it reads as the 'warm' or 'cozy' the owner asked for"
+    ]
+   },
+   "j_findability": {
+    "score": 6.0,
+    "evidence": "desktop-1: breadcrumb 'Blog > Tutorials' for the way back, and a TOC ('ON THIS PAGE') that lists every section for jumping around the long post. desktop-5: tag chips #Tutorials #AI Agent... and desktop-6/7: 'Related articles' with three cards and an 'All articles' link.",
+    "issues": [
+     "desktop-5: tag chips are small and low-contrast, and it is not clear whether they are links",
+     "desktop-6/7: the three related articles are only loosely related (a Claude Code browser plugin and a small-business piece); none continues this tutorial series",
+     "no search, topic navigation, or previous/next within the post",
+     "desktop-2: the sticky TOC is clipped mid-item and disappears after the first screen on desktop, so it does not follow the reader",
+     "phone-strip-1: the TOC is not present at all on the phone"
+    ]
+   },
+   "j_imagery": {
+    "score": 6.0,
+    "evidence": "desktop-1: the hero screenshot is crisp, in a rounded frame with a soft shadow. desktop-2/desktop-4: the in-article screenshots are framed consistently. desktop-7: the Related covers are three different styles: a UI screenshot cropped at both edges, a UI screenshot with overlapping title text, and a stock-style illustration.",
+    "issues": [
+     "desktop-6/7: the first related cover is a UI screenshot cropped mid-card (left edge cut) and the second has the headline 'Turn messages into sales. With AI.' sliced by the category chip 'NEWS' that sits on top of it; both look like accidents",
+     "desktop-7: the third cover is a generic stock illustration, which clashes with the product screenshots and the dark palette",
+     "desktop-2 and desktop-4: the in-article screenshots are small white UI crops with tiny unreadable text, and they float on the dark ground with a white border",
+     "desktop-1: the hero screenshot is a plain white UI with a mostly empty lower half"
+    ]
+   },
+   "j_consistency": {
+    "score": 7.5,
+    "evidence": "Radii, borders and shadows are shared by the screenshots, blockquote (desktop-4), CTA card (desktop-6), Related cards and tag chips (desktop-6/7); the serif/Inter split is applied the same way throughout. Buttons in the CTA (desktop-6) are consistent with the header's 'Sign in'.",
+    "issues": [
+     "desktop-7: the footer is a different world: a light background, a different logo size and left alignment at 80 px while the page content is inset at 104 px",
+     "desktop-6: the content column at 500 px and the CTA/Related at 104 px make three different left edges",
+     "desktop-1 vs desktop-7: the header is light grey on a dark page, and the footer is white, so the chrome does not match the dark article",
+     "desktop-1: the hero screenshot is wider than and offset from the body column, so it does not align with the text"
+    ]
+   },
+   "j_credibility": {
+    "score": 7.0,
+    "evidence": "A professional layout with a good serif title, author avatar, reading time, a TOC, a solid CTA card, tidy footer links and a cookie/legal row (desktop-7). The copy is clear and plain.",
+    "issues": [
+     "desktop-1: the live chat widget bubble sits on top of the hero screenshot, and on phone (phone-strip-1) it covers the first body paragraph text",
+     "desktop-7: 'Related' cards have broken-looking crops and a stock illustration (cheap spots)",
+     "desktop-3 to desktop-5: very long bullet lists of single words read like a template-written article, not a premium editorial",
+     "the author is shown only as 'Liviu' with no surname, role or link",
+     "desktop-7: the white footer with a tiny logo looks unrelated to the dark page"
+    ]
+   },
+   "j_next": {
+    "score": 7.0,
+    "evidence": "desktop-6: a clear gradient CTA card 'Put an AI assistant to work for your business.' with 'Start free' and 'Book a demo', placed after the article and the tags; then 'Related articles' with 'Read more ->' and 'All articles' links. On phone (phone-strip-3) the CTA stacks cleanly.",
+    "issues": [
+     "desktop-1 to desktop-5: there is no in-article next step in the 7 min read, for example a link to 'Create your first AI assistant' where the text discusses setup",
+     "desktop-6: the CTA is generic and not tied to this tutorial's topic (knowledge/learning context)",
+     "desktop-6: 'All articles' is a small, low-contrast link in the corner",
+     "there is no feed or newsletter follow option anywhere on the page"
+    ]
+   },
+   "j_organic": {
+    "score": 5.5,
+    "evidence": "Soft rounded corners on the cards, screenshots and CTA (desktop-6), the violet hero glow (desktop-1) and the serif type give some warmth. Otherwise the page is a conventional dark article template with boxy screenshot frames and flat panels.",
+    "issues": [
+     "desktop-2 to desktop-5: no organic shapes, illustration, pull quotes, or varied rhythm; the page is a flat navy column",
+     "desktop-1: the hero's right half is empty and the glow is the only atmospheric detail",
+     "desktop-7: the cards are plain navy rectangles; the footer is a plain white template block",
+     "desktop-4: the blockquote callout is the only designed content element in the whole article body"
+    ]
+   }
+  }
+ }
+}
