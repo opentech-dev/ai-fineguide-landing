@@ -1,66 +1,26 @@
 ---
-/**
- * The head of every blog list: an editorial headline (its accent word in soft italic Fraunces, warm gradient) under a
- * night sky with slow organic light, the lede, a few facts, and on the index a "Start here" panel of the guides worth
- * reading first. Under it, one glass bar with the topics (the current one marked) and, on the index, the search box.
- */
-import { categoryPath, type RenderedPost } from '../../blog';
+/** Shared masthead and topic navigation for the blog's listing pages. */
+import { categoryPath } from '../../blog';
 
 interface Props {
   eyebrow?: string;
-  /** The headline: the words before the accent, the accent (italic, gradient), and what follows it. */
   title: string;
-  accent: string;
-  after?: string;
   lede: string;
-  /** Short facts under the lede: [value, label] — "30" "articles". */
-  facts?: Array<[string, string]>;
-  /** The "Start here" panel's posts (the index only). */
-  picks?: RenderedPost[];
   categories: Array<{ label: string; posts: unknown[] }>;
   /** The category this page lists, or 'all' on the index; none on a tag page. */
   current?: string;
   search?: boolean;
 }
-const { eyebrow, title, accent, after = '', lede, facts = [], picks = [], categories, current, search = false } = Astro.props;
+const { eyebrow, title, lede, categories, current, search = false } = Astro.props;
 ---
 
-<header class={`b-hero${picks.length ? ' b-hero--split' : ''}`}>
-  <div class="b-hero__light" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="b-wrap b-hero__grid">
-    <div class="b-hero__copy">
-      {eyebrow && <span class="b-eyebrow">{eyebrow}</span>}
-      <h1>{title ? `${title} ` : ''}<em class="b-accent">{accent}</em>{after}</h1>
-      <p class="b-lede">{lede}</p>
-      {facts.length > 0 && (
-        <ul class="b-facts">
-          {facts.map(([value, label]) => <li><b>{value}</b> {label}</li>)}
-        </ul>
-      )}
-    </div>
-
-    {picks.length > 0 && (
-      <aside class="b-start" aria-labelledby="b-start-title">
-        <p class="b-start__head" id="b-start-title"><em>Start here</em><span>Guides worth your first ten minutes</span></p>
-        <ol>
-          {picks.map((p, i) => (
-            <li>
-              <a href={p.path}>
-                <span class="b-start__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <span class="b-start__t">
-                  <b>{p.title}</b>
-                  <small>{p.categories[0] ?? 'Guide'} · {p.minutes} min read</small>
-                </span>
-                <svg class="b-start__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </aside>
-    )}
-  </div>
-
+<header class="b-hero">
   <div class="b-wrap">
+    {eyebrow && <p class="b-eyebrow">{eyebrow}</p>}
+    <div class="b-hero__copy">
+      <h1>{title}</h1>
+      <p class="b-lede">{lede}</p>
+    </div>
     <div class="b-bar">
       <nav class="b-chips" aria-label="Topics">
         <a class="b-chip" href="/blog/" aria-current={current === 'all' ? 'page' : undefined}>All</a>

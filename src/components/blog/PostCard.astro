@@ -1,6 +1,6 @@
 ---
 /**
- * A post in a list: its cover (or a violet placeholder with its topic), first category, date, reading time, title
+ * A post in a list: its cover (or a brand-tinted placeholder), first category, date, reading time, title
  * and summary. `lead` is the wide card at the head of the Featured row. `data-search` carries the words the index's
  * search box matches.
  */
@@ -22,12 +22,12 @@ const search = [post.title, post.description, ...post.categories, ...post.tags].
     {post.coverUrl
       ? <img src={variant === 'lead' ? post.coverUrl : thumbOf(post.coverUrl)} alt={post.coverAlt ?? ''} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager && variant === 'lead' ? 'high' : undefined} />
       : <div class="b-card__ph" aria-hidden="true"><span>{topic ?? 'Fineguide'}</span></div>}
-    {topic && <span class="b-cat">{topic}</span>}
   </div>
   <div class="b-card__body">
-    <p class="b-meta"><time datetime={post.publishedAt}>{shortDate(post.publishedAt)}</time><span>{post.minutes} min read</span></p>
+    {topic && <span class="b-cat">{topic}</span>}
     <h3>{post.title}</h3>
     <p class="b-card__sum">{post.description}</p>
-    <span class="b-card__more">Read more</span>
+    <p class="b-meta"><time datetime={post.publishedAt}>{shortDate(post.publishedAt)}</time><span>{post.minutes} min read</span></p>
+    {variant === 'lead' && <span class="b-card__more">Read article <span aria-hidden="true">↗</span></span>}
   </div>
 </a>

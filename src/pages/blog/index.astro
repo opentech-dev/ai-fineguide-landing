@@ -1,8 +1,7 @@
 ---
 /**
- * /blog/ — the Fineguide Blog (src/blog.ts reads the posts from the API at build time). The old blog's order, kept:
- * the hero with its topics and search, Featured (the newest featured post wide, beside the next, then three more),
- * Latest articles, and Explore — a tile per topic. Typing in the search box swaps the sections for the posts that
+ * /blog/ — the Fineguide Blog (src/blog.ts reads the posts from the API at build time).
+ * Typing in the search box swaps the sections for the posts that
  * match, all of them, as you type. Kept out of search while there is nothing on it.
  */
 import '../../styles/blog.css';
@@ -12,29 +11,21 @@ import Footer from '../../components/Footer.astro';
 import BlogHero from '../../components/blog/BlogHero.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import BlogCta from '../../components/blog/BlogCta.astro';
+import StartHere from '../../components/blog/StartHere.astro';
 import { useTranslations } from '../../i18n/utils';
-import { BLOG_FONTS, blogCategories, blogPosts, categoryPath, SITE, thumbOf } from '../../blog';
+import { blogCategories, blogPosts, categoryPath, SITE } from '../../blog';
 
 const t = useTranslations('en');
 const posts = await blogPosts();
 const categories = await blogCategories();
 const featured = posts.filter((p) => p.featured);
-const [lead, side, ...moreFeatured] = featured;
+const [lead, ...moreFeatured] = featured;
 const rest = moreFeatured.slice(0, 3);
-const shownFeatured = new Set([lead, side, ...rest].filter(Boolean).map((p) => p!.slug));
+const shownFeatured = new Set([lead, ...rest].filter(Boolean).map((p) => p!.slug));
 const latest = posts.filter((p) => !shownFeatured.has(p.slug));
-const usedCovers = new Set<string>();
-// "Start here": the four newest tutorials (the newest posts when there are not three yet).
+// "Start here": three recent tutorials, or recent posts when there are fewer than three tutorials.
 const tutorials = posts.filter((p) => p.categories.includes('Tutorials'));
-const picks = (tutorials.length >= 3 ? tutorials : posts).slice(0, 4);
-const lastUpdate = posts.reduce((m, p) => (p.updatedAt > m ? p.updatedAt : m), posts[0]?.updatedAt ?? '');
-const facts: Array<[string, string]> = posts.length
-  ? [
-      [String(posts.length), posts.length === 1 ? 'article' : 'articles'],
-      [String(categories.length), categories.length === 1 ? 'topic' : 'topics'],
-      [new Date(lastUpdate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }), 'latest update'],
-    ]
-  : [];
+const picks = (tutorials.length >= 3 ? tutorials : posts).slice(0, 3);
 const title = 'Fineguide Blog — AI assistants, CRM and customer conversations';
 const description =
   'Expert insights, proven strategies and real-world guides to help you master AI customer interactions: AI assistants, CRM, voice AI and integrations with Fineguide.';
@@ -44,7 +35,6 @@ const description =
   title={title}
   description={description}
   hreflang={false}
-  stylesheets={[BLOG_FONTS]}
   chat="on-demand"
   noindex={posts.length === 0}
   breadcrumb={[['/blog/', 'Blog']]}
@@ -75,13 +65,8 @@ const description =
   <Navbar t={t} lang="en" />
   <main id="main-content" class="blog">
     <BlogHero
-      eyebrow="Fineguide Blog"
-      title="Ideas for teams that run on"
-      accent="conversations"
-      after="."
-      lede="Practical guides, product news and field notes on AI assistants, CRM, voice and automation, from the team that builds Fineguide."
-      facts={facts}
-      picks={picks}
+      title="The Fineguide blog"
+      lede="Practical guides on AI assistants, CRM and automation. From the team building Fineguide."
       categories={categories}
       current="all"
       search
@@ -93,9 +78,9 @@ const description =
       {lead && (
         <section class="b-section" aria-labelledby="b-featured">
           <div class="b-section__head"><h2 id="b-featured">Featured</h2></div>
-          <div class="b-featured">
+          <div class:list={['b-featured', picks.length > 0 && 'b-featured--with-guides']}>
             <PostCard post={lead} variant="lead" eager />
-            {side && <PostCard post={side} eager />}
+            {picks.length > 0 && <StartHere posts={picks} />}
           </div>
           {rest.length > 0 && <div class="b-featured__rest">{rest.map((p) => <PostCard post={p} />)}</div>}
         </section>
@@ -112,18 +97,13 @@ const description =
         <section class="b-section" aria-labelledby="b-explore">
           <div class="b-section__head"><h2 id="b-explore">Explore by topic</h2></div>
           <div class="b-topics">
-            {categories.map((c) => {
-              // Each topic its own picture: the newest post's cover that no tile before it shows.
-              const cover = c.posts.find((p) => p.coverUrl && !usedCovers.has(p.coverUrl)) ?? c.posts.find((p) => p.coverUrl);
-              if (cover?.coverUrl) usedCovers.add(cover.coverUrl);
-              return (
+            {categories.map((c) => (
                 <a class="b-topic" href={categoryPath(c.label)}>
-                  {cover && <img src={thumbOf(cover.coverUrl!)} alt="" loading="lazy" decoding="async" />}
                   <b>{c.label}</b>
                   <span>{c.posts.length} {c.posts.length === 1 ? 'article' : 'articles'}</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
                 </a>
-              );
-            })}
+            ))}
           </div>
         </section>
       )}

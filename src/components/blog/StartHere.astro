@@ -1,0 +1,26 @@
+---
+import type { RenderedPost } from '../../blog';
+
+interface Props {
+  posts: RenderedPost[];
+}
+const { posts } = Astro.props;
+---
+
+<aside class="b-start" aria-labelledby="b-start-title">
+  <h2 id="b-start-title">Start here</h2>
+  <p class="b-start__intro">Get more from Fineguide</p>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={post.path} lang={post.lang !== 'en' ? post.lang : undefined}>
+          <span>
+            <b>{post.title}</b>
+            <small>{post.minutes} min read</small>
+          </span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+        </a>
+      </li>
+    ))}
+  </ul>
+</aside>
