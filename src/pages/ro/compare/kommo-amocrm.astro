@@ -1,0 +1,167 @@
+---
+import ComparePage from '../../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Alternativă amoCRM și Kommo: Fineguide, CRM cu AI',
+  description: 'Alternativă amoCRM și Kommo, comparată pe surse oficiale: prețuri, agenți AI, canale, apeluri și facturare. Un CRM cu inteligență artificială din Moldova.',
+  crumb: 'Kommo și amoCRM',
+  h1: 'Fineguide vs Kommo și amoCRM:',
+  h1Accent: 'alternativa construită pe AI',
+  shortAnswer:
+    'Kommo (numit amoCRM până în octombrie 2022) și amoCRM sunt CRM-uri de vânzări mature, construite în jurul mesageriei, cu preț per utilizator și plată pentru cel puțin șase luni odată. Fineguide este un CRM cu inteligență artificială, cu preț pe organizație, plată lunară sau anuală și un plan Free, iar asistenții lui AI răspund și la telefon și evaluează apelurile înregistrate. Dacă echipa ta lucrează deja în Kommo sau amoCRM, poți pune asistenții Fineguide direct acolo, fără să schimbi CRM-ul.',
+  tableHeading: 'Kommo, amoCRM și Fineguide, rând cu rând',
+  competitorStronger: {
+    heading: 'Unde Kommo și amoCRM sunt mai puternice',
+    items: [
+      {
+        text: 'Maturitate și ecosistem. Ambele site-uri au un copyright care pornește din 2009 (Kommo este numele luat de produsul internațional amoCRM în octombrie 2022), iar FAQ-ul de prețuri Kommo numără peste 100 de integrări în marketplace. Lista de integrări native Fineguide e mai scurtă (Zendesk, HelpScout, Google Calendar, Facebook Lead Ads, amoCRM și Kommo); restul trece prin n8n.',
+        refs: ['kommo:pricing', 'amocrm:pricing', 'kommo:rebrand', 'fg:fg-llms'],
+      },
+      {
+        text: 'Mai multe canale de mesagerie. Kommo conectează și TikTok, pe lângă WhatsApp, Instagram, Messenger și Telegram, iar planul Pro permite canale nelimitate și până la 50 de agenți AI. Fineguide nu are TikTok în listă.',
+        refs: ['kommo:pricing'],
+      },
+      {
+        text: 'Unelte de vânzări șlefuite în ani: boții fără cod, mesajele în masă, paginile de programări și sincronizarea audiențelor cu platformele de reclame în Kommo; constructorul Salesbot, automatizările Digital Pipeline, formularele web și scorul NPS în amoCRM.',
+        refs: ['kommo:pricing', 'amocrm:pricing'],
+      },
+      {
+        text: 'Un start mai ieftin pentru una sau două persoane care au nevoie de mai mult decât planul Free: Kommo Base costă $25 per utilizator pe lună, față de €100 pe lună pentru Fineguide Starter, cu condiția să plătești șase luni în avans.',
+        refs: ['kommo:pricing', 'fg:fg-pricing'],
+      },
+      {
+        text: 'Parteneri de implementare. amoCRM oferă implementare la cheie prin parteneri, iar Kommo are parteneri oficiali și un serviciu de experți.',
+        refs: ['amocrm:pricing', 'kommo:pricing'],
+      },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'De ce Fineguide, ca alternativă la amoCRM și Kommo',
+    items: [
+      {
+        text: 'Plată din care poți ieși oricând. Fineguide se plătește lunar sau anual, are plan Free fără card, nu are taxe de instalare, iar abonamentul se anulează oricând. Nici Kommo, nici amoCRM nu au plată lunară: ambele pornesc de la șase luni.',
+        refs: ['fg:fg-pricing', 'kommo:pricing', 'amocrm:pricing'],
+      },
+      {
+        text: 'Un singur preț pentru echipă. Fiecare plan include titularul contului plus 1, 3, 5 sau 10 colegi. O echipă de șase oameni pe Kommo Pro plătește 6 × $45 = $270 pe lună, facturat ca $1.620 pentru șase luni; pe Fineguide Business plătește €200 pe lună, facturat lunar. Cele două produse numără diferit creditele AI, așa că pune în balanță și volumul de AI de care ai nevoie.',
+        refs: ['kommo:pricing', 'fg:fg-pricing'],
+      },
+      {
+        text: 'AI la telefon. Aceiași asistenți care răspund pe chat preiau apeluri în direct, primite și efectuate, prin centrala ta telefonică (SIP), în 14 limbi, inclusiv română și rusă, și derulează campanii de apeluri. Agentul AI din Kommo răspunde la mesaje și, pe Pro, la mesajele vocale; niciuna dintre paginile de prețuri nu menționează AI pe apeluri în direct.',
+        refs: ['fg:fg-voice-ai', 'fg:fg-campaigns', 'kommo:ai-agent', 'kommo:pricing', 'amocrm:pricing'],
+      },
+      {
+        text: 'Evaluarea apelurilor, inclusă. Voice QA transcrie fiecare apel înregistrat și îl evaluează după regulile fiecărui departament, cu rapoarte în 30 de limbi, și poate trimite rezultatele în amoCRM sau Kommo. Înregistrările pot veni singure de la Moldcell, Orange Moldova sau din aplicația Fineguide de înregistrare a apelurilor pentru Android.',
+        refs: ['fg:fg-voice-qa', 'fg:fg-llms'],
+      },
+      {
+        text: 'Fără cheie API proprie. Asistenții Fineguide folosesc creditele incluse în fiecare plan. Agentul AI din amoCRM cere cheia ta OpenAI sau YandexGPT și apare abia de la planul Профессиональный.',
+        refs: ['fg:fg-pricing', 'amocrm:ai-agent'],
+      },
+      {
+        text: 'În română, cu echipa în Chișinău. Site-ul și suportul Fineguide sunt în română și engleză, iar interfața widgetului de chat există în 24 de limbi, inclusiv româna și rusa. Printre limbile de interfață Kommo nu se află româna. Pentru firmele din Moldova contează și că datele personale sunt prelucrate conform Legii nr. 195/2024.',
+        refs: ['fg:fg-llms', 'kommo:languages', 'fg:fg-privacy'],
+      },
+    ],
+  },
+  choose: {
+    heading: 'Pe cine alegi',
+    competitor: {
+      label: 'Alege Kommo sau amoCRM dacă…',
+      items: [
+        'vânzările tale rulează deja în Kommo sau amoCRM, cu boți, pâlnii și integrări de care depinde echipa (și tot poți adăuga Fineguide acolo);',
+        'vinzi mai ales prin mesagerie, inclusiv pe TikTok, și vrei până la 50 de agenți AI pe un singur plan;',
+        'îți convine să plătești șase luni sau mai mult în avans, în dolari (Kommo) sau în ruble (amoCRM);',
+        'ai nevoie de o integrare gata făcută din marketplace, la care Fineguide ajunge doar prin n8n.',
+      ],
+    },
+    fineguide: {
+      label: 'Alege Fineguide dacă…',
+      items: [
+        'vrei un CRM cu inteligență artificială care răspunde pe chat, email și la telefon, din aceeași fișă de client;',
+        'evaluezi calitatea apelurilor sau derulezi campanii de apeluri;',
+        'vrei plată lunară, un plan Free și un singur preț pentru toată echipa;',
+        'lucrezi în română sau în Moldova și vrei un furnizor din Chișinău, cu suport în română.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Cum treci de la Kommo sau amoCRM',
+    intro:
+      'Nu trebuie să muți totul din prima zi. Multe echipe încep cu un asistent Fineguide pus direct în Kommo sau amoCRM-ul pe care îl folosesc deja și mută CRM-ul abia când sunt pregătite.',
+    steps: [
+      {
+        title: 'Începe cu planul Free',
+        body: 'Creează un cont Fineguide (fără card), dă-i unui asistent cunoștințele tale (adresele site-ului, documente, PDF-uri) și testează-l în widgetul de chat de pe site.',
+      },
+      {
+        title: 'Pune-l la lucru în Kommo sau amoCRM',
+        body: { text: 'Conectează integrarea amoCRM sau Kommo, ca asistentul să le răspundă clienților acolo, și trimite scorurile Voice QA înapoi în același CRM.', refs: ['fg:fg-llms'] },
+      },
+      {
+        title: 'Exportă datele',
+        body: {
+          text: 'Din Kommo, exportă lead-urile, contactele și companiile în .xlsx sau .csv. În amoCRM, filtrează lista de tranzacții pe toate etapele înainte de export, ca să ia și tranzacțiile închise.',
+          refs: ['kommo:export', 'amocrm:export'],
+        },
+      },
+      {
+        title: 'Importă în Fineguide',
+        body: { text: 'Importă fișierul (CSV, TSV, XLS sau XLSX) în CRM-ul Fineguide, potrivește coloanele cu câmpurile tale personalizate și verifică duplicatele: fiecare unire o confirmă un om.', refs: ['fg:fg-llms'] },
+      },
+      {
+        title: 'Mută canalele și apelurile',
+        body: 'Conectează WhatsApp, Telegram, Instagram sau Messenger direct la Fineguide, adaugă-ți căsuțele de email și conectează centrala telefonică prin SIP dacă vrei AI pe apeluri.',
+      },
+    ],
+  },
+  faq: [
+    {
+      q: 'Fineguide este o alternativă la Kommo sau un add-on?',
+      a: 'Amândouă. Fineguide este un CRM complet, cu propriul inbox de echipă, deci poate înlocui Kommo sau amoCRM. Asistenții lui AI lucrează însă și în amoCRM și Kommo, iar Voice QA poate trimite acolo scorurile apelurilor, așa că poți păstra CRM-ul și adăuga Fineguide.',
+      refs: ['fg:fg-llms'],
+    },
+    {
+      q: 'Pot plăti Kommo sau amoCRM lunar?',
+      a: 'Nu, la data de 21 octombrie 2026. FAQ-ul de prețuri Kommo spune că plata lunară nu este disponibilă și că abonamentul minim este de șase luni; lista de prețuri amoCRM spune că prețurile sunt stabilite pentru abonamente de cel puțin șase luni, fără plată lunară. Fineguide se plătește lunar sau anual.',
+      refs: ['kommo:pricing', 'amocrm:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Kommo sau amoCRM au interfață în română?',
+      a: 'Centrul de ajutor Kommo listează engleza, indoneziana, portugheza (Brazilia), rusa, spaniola (America Latină) și turca, deci nu. Site-ul și centrul de ajutor amoCRM sunt în rusă. Workspace-ul Fineguide este în engleză, dar site-ul și suportul sunt în română și engleză, iar interfața widgetului de chat există în 24 de limbi, inclusiv româna.',
+      refs: ['kommo:languages', 'amocrm:pricing', 'fg:fg-llms'],
+    },
+    {
+      q: 'Ce iese mai ieftin pentru o echipă de șase oameni?',
+      a: 'La prețurile de listă, Kommo Pro costă 6 × $45 = $270 pe lună, plătiți ca $1.620 pentru șase luni. Fineguide Business costă €200 pe lună, acoperă titularul plus cinci colegi, cu 8.000 de credite pe lună, și se plătește lunar. Fiecare produs numără creditele AI în felul lui, așa că compară volumul de lucru pe care îl aștepți de la AI, nu doar prețul pe loc.',
+      refs: ['kommo:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Am nevoie de propria cheie OpenAI?',
+      a: 'Pentru agentul AI din amoCRM, da: pagina de ajutor îți cere să alegi OpenAI sau YandexGPT și să introduci cheia API. Agentul AI din Kommo folosește creditele AI care vin cu fiecare loc. Asistenții Fineguide folosesc creditele incluse în plan.',
+      refs: ['amocrm:ai-agent', 'kommo:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Poate AI-ul să răspundă la telefon?',
+      a: 'Asistenții Fineguide răspund și sună în direct prin centrala ta telefonică SIP, în 14 limbi, inclusiv română și rusă. Agentul AI din Kommo răspunde la mesajele primite și, pe Pro, la mesajele vocale; pe paginile de prețuri Kommo și amoCRM nu am găsit AI pe apeluri în direct.',
+      refs: ['fg:fg-voice-ai', 'kommo:ai-agent', 'kommo:pricing', 'amocrm:pricing'],
+    },
+    {
+      q: 'Fineguide este un CRM din Moldova?',
+      a: 'Da. Fineguide.AI este proiectat și dezvoltat în Chișinău, Republica Moldova, iar datele personale sunt prelucrate conform Legii nr. 195/2024 privind protecția datelor cu caracter personal și GDPR, acolo unde se aplică. Clienții din Europa, inclusiv din Moldova, plătesc în euro.',
+      refs: ['fg:fg-llms', 'fg:fg-privacy', 'fg:fg-pricing'],
+    },
+  ],
+  closing: {
+    heading: 'Încearcă Fineguide lângă Kommo sau amoCRM',
+    body: 'Începe cu planul Free, fără card, și pune un asistent la lucru în CRM-ul pe care îl folosești deja.',
+  },
+  extraLinks: [
+    { href: '/blog/kommo-integration-guide/', label: 'Ghid: conectează asistentul AI la Kommo (în engleză)' },
+    { href: '/blog/is-kommo-the-same-as-amocrm/', label: 'Kommo și amoCRM sunt același lucru? (în engleză)' },
+  ],
+};
+---
+
+<ComparePage lang="ro" slug="kommo-amocrm" copy={copy} />

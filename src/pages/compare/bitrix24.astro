@@ -1,0 +1,107 @@
+---
+import ComparePage from '../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Fineguide vs Bitrix24: a Bitrix24 alternative built on AI',
+  description: 'A Bitrix24 alternative compared fact by fact: flat prices, AI, contact-centre channels, telephony and call scoring, checked on Bitrix24’s own pages.',
+  crumb: 'Bitrix24',
+  h1: 'Fineguide vs Bitrix24:',
+  h1Accent: 'a CRM built around the conversation',
+  shortAnswer:
+    'Bitrix24 is a broad workspace (CRM, tasks, projects, sites, HR and telephony) sold at a flat price per organization, with a free plan and an on-premise edition. Fineguide is narrower: an AI-first CRM where assistants answer chat, email and live calls from one customer record, and where every recorded call can be scored. Pick Bitrix24 for an all-in-one company workspace; pick Fineguide when customer conversations and calls are the work.',
+  tableHeading: 'Bitrix24 vs Fineguide at a glance',
+  competitorStronger: {
+    heading: 'Where Bitrix24 is stronger',
+    items: [
+      { text: 'Breadth. Tasks and projects (Kanban and Gantt), shared calendars, chat and video calls, a website builder, e-signature, HR tools and time tracking sit in the same account as the CRM.', refs: ['bitrix24:pricing'] },
+      { text: 'Users included. Standard covers 50 users and Professional 100 for one flat price ($144 and $289 a month, or $99 and $199 billed yearly), far more people than any Fineguide plan includes.', refs: ['bitrix24:pricing', 'fg:fg-pricing'] },
+      { text: 'Telephony of its own: rent a virtual number from the built-in provider, or connect an office or cloud PBX with the SIP connector; call tracking on Professional.', refs: ['bitrix24:telephony', 'bitrix24:pricing'] },
+      { text: 'An on-premise edition off the shelf, with access to the source code. Fineguide’s on-premise deployment is agreed in an Enterprise contract.', refs: ['bitrix24:pricing', 'fg:fg-enterprise'] },
+      { text: 'More contact-centre channels in one place, Viber and Bitrix24 Network included; Fineguide does not list Viber.', refs: ['bitrix24:channels'] },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'Where Fineguide is stronger',
+    items: [
+      { text: 'AI that answers customers. Assistants learn from your URLs, documents and PDFs, answer on the website widget, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord, write the fields you define into CRM leads (on paid plans) and hand over to a person.', refs: ['fg:fg-assistants'] },
+      { text: 'AI on live phone calls, over your own SIP, in 14 languages including Romanian and Russian, plus outbound call campaigns with retries and calling hours.', refs: ['fg:fg-voice-ai', 'fg:fg-campaigns', 'fg:fg-llms'] },
+      { text: 'Call scoring by your rules, not only a script. Voice QA scores every recorded call against each department’s rules and weights, with quotes and a suggestion for every rule, and reports in 30 languages. Bitrix24’s CoPilot scores how closely a call follows a sales script.', refs: ['fg:fg-voice-qa', 'bitrix24:speech'] },
+      { text: 'Recordings that arrive on their own from Moldcell, Orange Moldova or the Fineguide call-recording app for Android.', refs: ['fg:fg-llms'] },
+      { text: 'A smaller scope: a customer-facing team gets one customer record and one inbox for chat and email, without setting up a company workspace first.', refs: ['fg:fg-messages'] },
+      { text: 'Romanian: Fineguide’s site and support are in English and Romanian, and its chat widget interface comes in 24 languages.', refs: ['fg:fg-llms'] },
+    ],
+  },
+  choose: {
+    heading: 'Who should choose which',
+    competitor: {
+      label: 'Choose Bitrix24 if…',
+      items: [
+        'you want one tool for the whole company: tasks, projects, intranet, HR and CRM;',
+        'you have dozens of users and a flat price per company is what keeps the cost down;',
+        'you want an on-premise edition you install yourself;',
+        'you need telephony with numbers rented inside the product.',
+      ],
+    },
+    fineguide: {
+      label: 'Choose Fineguide if…',
+      items: [
+        'your team spends the day on customer chats, emails and calls, and you want AI to take its share;',
+        'you score call quality, or want to start;',
+        'you run outbound call campaigns;',
+        'you want a vendor in Chișinău with support in Romanian.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Switching from Bitrix24',
+    intro: 'Bitrix24 exports CRM data from its list view. Plan the contacts step: only contacts marked for export are included.',
+    steps: [
+      { title: 'Start on the Free plan', body: 'Create a Fineguide account (no card needed), give an assistant your website and documents, and test it in the chat widget.' },
+      { title: 'Export from Bitrix24', body: { text: 'Switch the CRM to List view and export leads, deals, contacts and companies as xls or csv. Turn on “Included in export” for the contacts you want, and check that your plan allows contact export.', refs: ['bitrix24:export'] } },
+      { title: 'Import into Fineguide', body: { text: 'Import the files (CSV, TSV, XLS or XLSX), map the columns to custom fields and confirm duplicates before they merge.', refs: ['fg:fg-llms'] } },
+      { title: 'Reconnect channels', body: { text: 'Connect WhatsApp, Telegram, Instagram, Messenger and your own mailboxes to Fineguide’s team inbox, with routing rules and departments.', refs: ['fg:fg-messages'] } },
+      { title: 'Move calls', body: { text: 'Connect your phone system to Fineguide over SIP for AI on calls, or keep your PBX as it is and send the recordings to Voice QA.', refs: ['fg:fg-voice-ai', 'fg:fg-voice-qa'] } },
+    ],
+  },
+  faq: [
+    {
+      q: 'Is Bitrix24 free?',
+      a: 'Bitrix24 has a free plan, but its FAQ says telephony and Market apps are available only on paid plans; there is also a 15-day trial of the higher tiers. Fineguide’s Free plan includes 200 one-time credits for AI replies, for you plus one teammate.',
+      refs: ['bitrix24:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'How is Bitrix24 priced?',
+      a: 'At a flat price per organization. On bitrix24.com on 21 October 2026, the Essentials plans cost $69, $144, $289 and $579 a month for 5, 50, 100 and from 250 users, or $49, $99, $199 and $399 billed yearly; the Vibe+ plans cost $89, $199, $399 and $799 a month. A Vibe+ launch offer runs until 10 December 2026, and renewals are at regular prices.',
+      refs: ['bitrix24:pricing'],
+    },
+    {
+      q: 'Can Bitrix24 score calls?',
+      a: 'Its CoPilot transcribes call recordings and gives each analysed call a score for how closely it matches a sales script. Fineguide’s Voice QA scores each call against the rules and weights of the department that handled it, with quotes and a suggestion for every rule.',
+      refs: ['bitrix24:speech', 'fg:fg-voice-qa'],
+    },
+    {
+      q: 'Does Bitrix24 run on-premise?',
+      a: 'Yes, Bitrix24 sells an on-premise edition to host on your own server, with access to the source code. Fineguide offers on-premise deployment on your own infrastructure under an Enterprise contract.',
+      refs: ['bitrix24:pricing', 'fg:fg-enterprise'],
+    },
+    {
+      q: 'Which messengers does Bitrix24 connect?',
+      a: 'Its Contact Center connects WhatsApp, live chat, Bitrix24 Network, Instagram, Facebook, Viber and Telegram. Fineguide connects the website widget, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord, and works inside amoCRM and Kommo.',
+      refs: ['bitrix24:channels', 'fg:fg-assistants'],
+    },
+    {
+      q: 'How do I move from Bitrix24 to Fineguide?',
+      a: 'Export from Bitrix24’s CRM list view as xls or csv (mark contacts as included in export first), then import the files into the Fineguide CRM and confirm duplicates before they merge.',
+      refs: ['bitrix24:export', 'fg:fg-llms'],
+    },
+  ],
+  closing: {
+    heading: 'Give your customer team its own AI',
+    body: 'Start on the Free plan, no card needed, and see an assistant handle your real questions before you move anything.',
+  },
+  extraLinks: [{ href: '/campaigns/', label: 'Outbound call campaigns' }],
+};
+---
+
+<ComparePage lang="en" slug="bitrix24" copy={copy} />

@@ -1,0 +1,106 @@
+---
+import ComparePage from '../../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Fineguide vs Odoo: alternativă Odoo CRM, construită pe AI',
+  description: 'Alternativă Odoo pentru echipele care lucrează cu clienții, comparată punct cu punct: prețuri, agenți AI, WhatsApp, telefonie și evaluarea apelurilor.',
+  crumb: 'Odoo',
+  h1: 'Fineguide vs Odoo:',
+  h1Accent: 'conversația cu clientul, în profunzime',
+  shortAnswer:
+    'Odoo este o suită completă pentru afacere (CRM, contabilitate, stocuri, HR, eCommerce și altele), cu preț per utilizator, un plan gratuit pentru o singură aplicație și reduceri în primul an. Fineguide acoperă o parte din această muncă, conversația cu clientul, mai în profunzime: asistenți AI pe chat, email și apeluri în direct, un CRM pe o singură fișă de client și evaluarea apelurilor. Dacă ai nevoie de un ERP, alege Odoo; dacă ai nevoie de AI care să se ocupe de clienți, alege Fineguide.',
+  tableHeading: 'Odoo și Fineguide, rând cu rând',
+  competitorStronger: {
+    heading: 'Unde Odoo este mai puternic',
+    items: [
+      { text: 'Un ERP, nu doar un CRM. Vânzări, contabilitate, stocuri, HR, proiecte, punct de vânzare, eCommerce și site vin toate în planurile Standard și Custom, la un singur preț per utilizator.', refs: ['odoo:pricing'] },
+      { text: 'Opțiuni de găzduire: Odoo Online sau, cu planul Custom, Odoo.sh ori on-premise.', refs: ['odoo:pricing'] },
+      { text: 'Personalizare: Odoo Studio, mai multe companii și API extern pe Custom.', refs: ['odoo:pricing'] },
+      { text: 'One App Free: o aplicație, plus cele de care depinde, gratuită pentru utilizatori nelimitați.', refs: ['odoo:pricing'] },
+      { text: 'Agenți AI în interiorul suitei, care răspund din PDF-uri, linkuri web, fișiere din Documents și articole din Knowledge, plus un agent AI pentru Live Chat care răspunde vizitatorilor și escaladează conversația pentru preluare de către un om.', refs: ['odoo:ai-agents', 'odoo:ai-live-chat'] },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'Unde Fineguide este mai puternic',
+    items: [
+      { text: 'Canale de mesagerie fără un nivel de abonament în plus: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord și widgetul de pe site vin cu fiecare plan. Aplicația WhatsApp din Odoo funcționează doar în Odoo Enterprise și cere un cont WhatsApp Business Platform.', refs: ['fg:fg-llms', 'odoo:whatsapp'] },
+      { text: 'AI care preia apelul. Asistenții Fineguide răspund ei înșiși la apeluri în direct, primite și efectuate, prin SIP-ul tău, în 14 limbi. Aplicația Phone din Odoo conectează apelurile utilizatorilor prin intermediul unui furnizor VoIP.', refs: ['fg:fg-voice-ai', 'odoo:phone'] },
+      { text: 'Evaluarea calității apelurilor: Voice QA notează fiecare apel înregistrat după regulile fiecărui departament, cu citate, sugestii, fișe de scor pe operator și rapoarte în 30 de limbi.', refs: ['fg:fg-voice-qa'] },
+      { text: 'Campanii de apeluri (prospectare, sondaj, promoție) derulate de asistenți AI, cu un apel de test pe numărul tău înainte de pornire.', refs: ['fg:fg-campaigns'] },
+      { text: 'Prețuri fără salt după primul an. Reducerea Odoo ține 12 luni pentru utilizatorii comandați inițial; prețurile lunare și anuale Fineguide nu au reducere de început.', refs: ['odoo:pricing', 'fg:fg-pricing'] },
+      { text: 'Site și suport în română, cu echipa în Chișinău.', refs: ['fg:fg-llms'] },
+    ],
+  },
+  choose: {
+    heading: 'Pe cine alegi',
+    competitor: {
+      label: 'Alege Odoo dacă…',
+      items: [
+        'vrei contabilitate, stocuri, HR și CRM în aceeași bază de date;',
+        'plănuiești multă personalizare, cu Studio sau cu propriii programatori;',
+        'vrei să găzduiești singur, pe Odoo.sh sau on-premise;',
+        'ai nevoie de o singură aplicație și One App Free îți ajunge.',
+      ],
+    },
+    fineguide: {
+      label: 'Alege Fineguide dacă…',
+      items: [
+        'munca înseamnă să le răspunzi clienților pe chat, email și la telefon și vrei ca AI-ul să facă o bună parte;',
+        'evaluezi apeluri sau derulezi campanii de apeluri;',
+        'vrei canale de mesagerie pe orice plan;',
+        'folosești deja Odoo pentru partea administrativă și ai nevoie, lângă el, de un strat pentru conversațiile cu clienții.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Cum muți CRM-ul din Odoo',
+    intro: 'Dacă Odoo îți ține și contabilitatea sau stocurile, păstrează-l pentru asta și mută doar conversațiile cu clienții și înregistrările din CRM.',
+    steps: [
+      { title: 'Începe cu planul Free', body: 'Creează un cont Fineguide (fără card), dă-i unui asistent site-ul și documentele tale și testează-l în widgetul de chat.' },
+      { title: 'Exportă din Odoo', body: { text: 'Selectează înregistrările din CRM, alege Action, apoi Export, și salvează fișierul ca .csv sau .xls.', refs: ['odoo:export'] } },
+      { title: 'Importă în Fineguide', body: { text: 'Importă fișierul (CSV, TSV, XLS sau XLSX), potrivește coloanele cu câmpurile personalizate și confirmă duplicatele înainte să fie unite.', refs: ['fg:fg-llms'] } },
+      { title: 'Conectează canalele și apelurile', body: { text: 'Conectează WhatsApp, Telegram, Instagram, Messenger și căsuțele de email, plus centrala telefonică prin SIP dacă vrei AI pe apeluri.', refs: ['fg:fg-messages', 'fg:fg-voice-ai'] } },
+      { title: 'Păstrează sistemele legate', body: { text: 'Folosește API-ul REST Fineguide, webhook-urile și fluxurile n8n ca să trimiți ce se întâmplă într-o conversație către restul sistemelor tale.', refs: ['fg:fg-llms'] } },
+    ],
+  },
+  faq: [
+    {
+      q: 'Odoo CRM este gratuit?',
+      a: 'Planul One App Free din Odoo oferă o aplicație (plus cele de care depinde) pentru utilizatori nelimitați pe Odoo Online, deci doar CRM-ul poate fi gratuit. Planul Free Fineguide are 200 de credite oferite o singură dată pentru răspunsuri AI, pentru tine plus un coleg.',
+      refs: ['odoo:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Cât costă Odoo?',
+      a: 'Pe pagina în dolari, la 21 octombrie 2026, Standard costa $24,90 per utilizator pe lună la plata anuală sau $31,10 lunar, iar Custom $49,00 sau $61,10. Sunt prețuri pentru primul an; după 12 luni urcă la $31,10 / $38,90 și $61,00 / $76,20. Sunt cifrele în dolari pe care ni le-a arătat pagina; verific-o din țara ta înainte să cumperi.',
+      refs: ['odoo:pricing'],
+    },
+    {
+      q: 'Odoo are agenți AI?',
+      a: 'Da. Aplicația AI din Odoo îți permite să construiești agenți care răspund din PDF-uri, linkuri web, fișiere din Documents și articole din Knowledge, pe modele ChatGPT sau Gemini, și adaugă un agent AI în Live Chat. Pagina de prețuri listează Agentic AI la planul Custom.',
+      refs: ['odoo:ai-agents', 'odoo:ai-live-chat', 'odoo:pricing'],
+    },
+    {
+      q: 'Poate Odoo să facă apeluri?',
+      a: 'Da, prin aplicația Phone, care are nevoie de un furnizor VoIP ca să facă apeluri; Axivox, DIDWW și OnSIP sunt cei verificați. Asistenții AI Fineguide răspund și sună ei înșiși prin propria ta centrală SIP.',
+      refs: ['odoo:phone', 'fg:fg-voice-ai'],
+    },
+    {
+      q: 'Ar trebui să înlocuiesc Odoo cu Fineguide?',
+      a: 'Doar partea de conversații cu clienții. Dacă Odoo îți ține contabilitatea, stocurile sau HR-ul, păstrează-l. Fineguide înlocuiește CRM-ul, inboxul și AI-ul care vorbește cu clienții și se leagă de alte sisteme prin API-ul REST, webhook-uri și n8n.',
+      refs: ['fg:fg-llms'],
+    },
+    {
+      q: 'Cum mut datele din Odoo CRM în Fineguide?',
+      a: 'Exportă înregistrările din Odoo cu Action, apoi Export, în .csv sau .xls, și importă-le în CRM-ul Fineguide, care citește CSV, TSV, XLS și XLSX și cere confirmarea unui om pentru fiecare unire de duplicate.',
+      refs: ['odoo:export', 'fg:fg-llms'],
+    },
+  ],
+  closing: {
+    heading: 'Pune AI-ul pe partea afacerii care vorbește cu clienții',
+    body: 'Începe cu planul Free, fără card, și lasă un asistent să le răspundă clienților, în timp ce Odoo rămâne la partea administrativă.',
+  },
+};
+---
+
+<ComparePage lang="ro" slug="odoo" copy={copy} />

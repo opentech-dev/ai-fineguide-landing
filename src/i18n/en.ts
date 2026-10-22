@@ -29,6 +29,7 @@ export const en = {
     product: 'Product',
     company: 'Company',
     about: 'About',
+    compare: 'Compare',
     scheduleDemo: 'Schedule a demo',
     enterprise: 'Enterprise',
     partners: 'Partners',

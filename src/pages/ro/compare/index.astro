@@ -1,0 +1,42 @@
+---
+import CompareHub from '../../../components/compare/CompareHub.astro';
+import type { HubCopy } from '../../../components/compare/types';
+
+const copy: HubCopy = {
+  title: 'Fineguide comparat cu alte CRM-uri: surse și date',
+  description: 'Cum se compară Fineguide cu Kommo, amoCRM, HubSpot, Pipedrive, Bitrix24, Odoo și Zoho CRM, cu prețuri și condiții verificate pe paginile furnizorilor.',
+  h1: 'Fineguide față de alte CRM-uri,',
+  h1Accent: 'punct cu punct',
+  intro:
+    'Aceste pagini pun Fineguide lângă alte șapte CRM-uri, pe rând. Fiecare spune unde celălalt produs este mai puternic, unde e Fineguide și pe cine să alegi, iar fiecare informație despre concurență trimite la pagina oficială a furnizorului.',
+  listHeading: 'Comparațiile, de la A la Z',
+  methodHeading: 'Cum comparăm',
+  method: [
+    {
+      term: 'Doar surse oficiale',
+      desc: 'Fiecare informație despre un concurent vine de pe pagina lui de prețuri sau din centrul lui de ajutor și este numerotată și legată sub pagina respectivă.',
+    },
+    {
+      term: 'Datate și reverificate lunar',
+      desc: 'Am citit toate sursele pe 21 octombrie 2026. Furnizorii își schimbă prețurile și arată prețuri diferite în funcție de țară, așa că, dacă pagina indicată spune altceva decât noi, are dreptate pagina furnizorului.',
+    },
+    {
+      term: 'Lăsat deoparte, niciodată ghicit',
+      desc: 'Când pagina furnizorului nu spune ceva, tabelul arată asta în loc să completeze golul.',
+    },
+    {
+      term: 'Fără clasamente',
+      desc: 'Sunt pagini față în față, nu un top zece. Fiecare are o secțiune simplă „alege-i pe ei dacă… alege Fineguide dacă…”, iar celălalt produs câștigă adesea la unele rânduri.',
+    },
+  ],
+  aboutHeading: 'Ce este Fineguide',
+  about:
+    'Fineguide.AI este o platformă de CRM și automatizare construită pe AI, dezvoltată în Chișinău, Moldova. Reunește pe aceeași fișă de client asistenți AI pe site și în aplicațiile de mesagerie, un CRM, un inbox comun cu email, apeluri AI și campanii de apeluri, evaluarea calității apelurilor și automatizări n8n, ca echipele de vânzări, suport și call center să vadă același context. Planurile pornesc de la €0 și ajung la €500 pe lună pentru toată organizația.',
+  closing: {
+    heading: 'Compară pe propriile tale conversații',
+    body: 'Începe cu planul Free, fără card, sau programează o prezentare de 30 de minute pe operațiunile tale.',
+  },
+};
+---
+
+<CompareHub lang="ro" copy={copy} />

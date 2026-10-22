@@ -31,6 +31,7 @@ export const ro: Translations = {
     product: 'Produs',
     company: 'Companie',
     about: 'Despre noi',
+    compare: 'Comparații',
     scheduleDemo: 'Programează un demo',
     enterprise: 'Enterprise',
     partners: 'Parteneri',

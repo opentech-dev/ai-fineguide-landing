@@ -1,0 +1,106 @@
+---
+import ComparePage from '../../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Fineguide vs Pipedrive: alternativă Pipedrive cu chat AI',
+  description: 'Alternativă Pipedrive comparată punct cu punct: preț per loc, funcții AI, WhatsApp, apeluri și evaluarea lor, verificate pe paginile oficiale Pipedrive.',
+  crumb: 'Pipedrive',
+  h1: 'Fineguide vs Pipedrive:',
+  h1Accent: 'AI care vorbește cu clienții tăi',
+  shortAnswer:
+    'Pipedrive este un CRM de pipeline concentrat și bine pus la punct, cu preț per loc, peste 500 de integrări și funcții AI care îl ajută pe vânzător să scrie, să rezume și să facă rapoarte. Nu are apeluri integrate, iar integrarea WhatsApp e încă în beta, pe Growth și mai sus. Fineguide este un CRM construit pe AI, cu asistenți care le răspund clienților pe chat, email și la telefon, cu preț pe organizație și un plan Free.',
+  tableHeading: 'Pipedrive și Fineguide, rând cu rând',
+  competitorStronger: {
+    heading: 'Unde Pipedrive este mai puternic',
+    items: [
+      { text: 'Profunzimea pipeline-ului: automatizări și secvențe de urmărire, rapoarte de abonamente și prognoze, contracte și semnătură electronică, scoruri personalizate și add-on-uri pentru proiecte, campanii, vizitatori web și documente.', refs: ['pipedrive:pricing'] },
+      { text: 'Integrări: peste 500 de aplicații, între care Zapier, Zoom și Lemlist. Lista nativă Fineguide e scurtă și se sprijină pe n8n.', refs: ['pipedrive:pricing', 'fg:fg-llms'] },
+      { text: 'Vânzare pe email: sincronizare completă a emailului, cu urmărire, de la Growth, plus scrierea, rezumarea și răspunsurile sugerate cu AI pe Premium și Ultimate.', refs: ['pipedrive:pricing', 'pipedrive:ai'] },
+      { text: 'Pregătirea întâlnirilor: Pipedrive Nova îți face un rezumat înainte de întâlnire, transcrie apelurile și propune actualizări în CRM după aceea.', refs: ['pipedrive:pricing'] },
+      { text: 'Preț mic pe loc pentru unul sau doi vânzători: Lite costă $14 pe loc pe lună la plata anuală ($24 lunar), față de €100 pe lună pentru Fineguide Starter.', refs: ['pipedrive:pricing', 'fg:fg-pricing'] },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'Unde Fineguide este mai puternic',
+    items: [
+      { text: 'Canale de mesagerie pe toate planurile: widgetul de pe site, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord. Integrarea WhatsApp din Pipedrive este pe Growth și mai sus, în beta, și nu e încă deschisă tuturor clienților.', refs: ['fg:fg-llms', 'pipedrive:whatsapp'] },
+      { text: 'AI care le răspunde clienților, nu doar vânzătorului. Asistenții răspund din cunoștințele tale, scriu câmpurile alese de tine în lead-urile din CRM (pe planurile plătite) și predau conversația unui om. Funcțiile AI listate de Pipedrive îl ajută pe vânzător: import de date, rapoarte, scrierea și rezumarea emailurilor.', refs: ['fg:fg-assistants', 'pipedrive:ai'] },
+      { text: 'Apeluri incluse. Asistenții preiau apeluri în direct, primite și efectuate, prin SIP-ul tău și derulează campanii, iar Voice QA evaluează apelurile înregistrate. Pipedrive nu are apeluri integrate și trimite la aplicații din Marketplace.', refs: ['fg:fg-voice-ai', 'fg:fg-voice-qa', 'pipedrive:calls'] },
+      { text: 'Preț pentru echipă. Fineguide Business costă €200 pe lună pentru titular plus cinci colegi; șase locuri Pipedrive Premium costă 6 × $59 = $354 pe lună la plata anuală sau 6 × $79 = $474 lunar.', refs: ['fg:fg-pricing', 'pipedrive:pricing'] },
+      { text: 'Un plan Free fără limită de timp: 200 de credite oferite o singură dată, pentru tine plus un coleg. Pipedrive oferă o perioadă de probă de 14 zile.', refs: ['fg:fg-pricing', 'pipedrive:pricing'] },
+      { text: 'În română: site-ul și suportul Fineguide sunt în română și engleză, iar interfața widgetului de chat există în 24 de limbi, inclusiv româna și rusa.', refs: ['fg:fg-llms'] },
+    ],
+  },
+  choose: {
+    heading: 'Pe cine alegi',
+    competitor: {
+      label: 'Alege Pipedrive dacă…',
+      items: [
+        'vânzătorii tăi lucrează tranzacțiile mai ales pe email și în întâlniri și vor un pipeline simplu;',
+        'te bazezi pe aplicații dintr-un marketplace cu peste 500 de integrări;',
+        'vrei semnătură electronică, contracte și prognoze direct în CRM;',
+        'sunteți unul sau doi vânzători și contează cel mai mult prețul pe loc.',
+      ],
+    },
+    fineguide: {
+      label: 'Alege Fineguide dacă…',
+      items: [
+        'clienții te caută pe WhatsApp, Telegram, Instagram sau pe site și vrei ca AI-ul să le răspundă;',
+        'apelurile contează: primite, campanii de apeluri sau evaluarea calității;',
+        'vrei un singur preț pentru echipă și plată lunară;',
+        'ai nevoie de română pe site, în suport și în widgetul de chat.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Cum treci de la Pipedrive',
+    intro: 'Export, import, apoi canalele: întâi se mută înregistrările din CRM, iar AI-ul și canalele urmează când ești pregătit.',
+    steps: [
+      { title: 'Începe cu planul Free', body: 'Creează un cont Fineguide (fără card), dă-i unui asistent site-ul și documentele tale și încearcă-l în widgetul de chat.' },
+      { title: 'Exportă din Pipedrive', body: { text: 'Folosește instrumentul Export data din Pipedrive și alege Excel sau CSV pentru fiecare tip de înregistrare pe care vrei să-l muți.', refs: ['pipedrive:export'] } },
+      { title: 'Importă în Fineguide', body: { text: 'Importă fișierele (CSV, TSV, XLS sau XLSX), potrivește coloanele cu câmpurile personalizate și verifică duplicatele înainte de orice unire.', refs: ['fg:fg-llms'] } },
+      { title: 'Adu emailul și canalele', body: { text: 'Conectează-ți căsuțele de email prin IMAP și SMTP, apoi WhatsApp, Telegram, Instagram sau Messenger, cu reguli de distribuire și departamente.', refs: ['fg:fg-messages'] } },
+      { title: 'Adaugă apelurile când ai nevoie', body: { text: 'Conectează centrala telefonică prin SIP pentru AI pe apeluri sau trimite înregistrările în Voice QA pentru evaluare.', refs: ['fg:fg-voice-ai', 'fg:fg-voice-qa'] } },
+    ],
+  },
+  faq: [
+    {
+      q: 'Pipedrive are plan gratuit?',
+      a: 'Nu pe pagina de prețuri, la 21 octombrie 2026: oferă o perioadă de probă gratuită de 14 zile, fără card. Fineguide are un plan Free fără limită de timp (200 de credite oferite o singură dată, pentru tine plus un coleg).',
+      refs: ['pipedrive:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Poate Pipedrive să facă apeluri?',
+      a: 'Baza de cunoștințe Pipedrive spune că nu are o integrare de apeluri proprie; apelurile trec prin aplicații din Marketplace, ca CloudTalk sau Aircall, ori prin aplicațiile mobile Pipedrive. Asistenții AI Fineguide răspund și sună prin propria ta centrală SIP.',
+      refs: ['pipedrive:calls', 'fg:fg-voice-ai'],
+    },
+    {
+      q: 'Pipedrive funcționează cu WhatsApp?',
+      a: 'Da, pe Growth și mai sus, ca funcție beta pe care Pipedrive spune că nu o are încă fiecare client. În Fineguide, WhatsApp este un canal pe toate planurile, la care răspund aceiași asistenți ca pe celelalte canale.',
+      refs: ['pipedrive:whatsapp', 'fg:fg-llms'],
+    },
+    {
+      q: 'Ce planuri Pipedrive includ AI?',
+      a: 'Asistentul AI de import, rapoartele create cu AI și Sales Assistant sunt pe toate planurile; scrierea, rezumarea și răspunsurile sugerate pentru email sunt pe Premium și Ultimate. Fiecare plan Fineguide include asistenți AI, plătiți în credite.',
+      refs: ['pipedrive:ai', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Este Fineguide o alternativă bună la Pipedrive pentru un call center?',
+      a: 'E construit pentru o astfel de muncă: AI pe apeluri în direct, campanii de apeluri și Voice QA, care evaluează fiecare apel înregistrat după regulile fiecărui departament, cu citatele din spatele fiecărei note. Punctul forte al Pipedrive este gestionarea tranzacțiilor pentru echipele de vânzări.',
+      refs: ['fg:fg-voice-ai', 'fg:fg-campaigns', 'fg:fg-voice-qa'],
+    },
+    {
+      q: 'Cum mut datele din Pipedrive în Fineguide?',
+      a: 'Exportă datele din Pipedrive în Excel sau CSV, importă-le în CRM-ul Fineguide (CSV, TSV, XLS sau XLSX), potrivește câmpurile personalizate și confirmă duplicatele înainte să fie unite.',
+      refs: ['pipedrive:export', 'fg:fg-llms'],
+    },
+  ],
+  closing: {
+    heading: 'Lasă AI-ul să preia prima conversație',
+    body: 'Începe cu planul Free, fără card, și vezi un asistent răspunzându-le clienților tăi înainte să muți vreo tranzacție.',
+  },
+};
+---
+
+<ComparePage lang="ro" slug="pipedrive" copy={copy} />

@@ -1,0 +1,431 @@
+---
+/**
+ * One head-to-head comparison: Fineguide against one competitor (or Kommo and amoCRM together, which are
+ * the same company's two editions). The facts and their sources come from src/data/compare.ts; the page
+ * file passes its own copy. Sections run in the order answer engines quote them: short answer, table,
+ * where they are stronger, where Fineguide is stronger, who should choose which, switching, FAQ, sources.
+ *
+ * Russian pages render with the English site chrome (there is no /ru/ locale yet) and their own
+ * contentLang. A comparison published in Russian names all three copies as one hreflang cluster.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import ClosingCta from '../ClosingCta.astro';
+import Refs from './Refs.astro';
+import { useTranslations, type Lang } from '../../i18n/utils';
+import {
+  CHECKED,
+  COMPARE_PAGES,
+  COMPETITORS,
+  FINEGUIDE_SOURCES,
+  ROW_ORDER,
+  comparePath,
+  fineguideFacts,
+  pick,
+  planList,
+  sitePath,
+  type CompareLang,
+  type Fact,
+} from '../../data/compare';
+import { LABELS } from './labels';
+import type { CompareCopy, Line } from './types';
+
+interface Props {
+  lang: CompareLang;
+  slug: string;
+  copy: CompareCopy;
+}
+
+const { lang, slug, copy } = Astro.props as Props;
+
+const SITE = 'https://fineguide.ai';
+const siteLang: Lang = lang === 'ru' ? 'en' : lang;
+const t = useTranslations(siteLang);
+const L = LABELS[lang];
+
+const page = COMPARE_PAGES.find((p) => p.slug === slug);
+if (!page) throw new Error(`Unknown comparison "${slug}": add it to COMPARE_PAGES in src/data/compare.ts`);
+const rivals = page.competitors.map((id) => COMPETITORS[id]);
+const fg = fineguideFacts(lang);
+const path = comparePath(lang, slug);
+const url = new URL(path, SITE).href;
+
+// One numbered list of sources for the whole page: the competitors' pages first, then Fineguide's own.
+type Footnote = { key: string; n: number; title: string; url: string; external: boolean };
+const footnotes: Footnote[] = [];
+for (const r of rivals) {
+  for (const s of r.sources) {
+    footnotes.push({ key: `${r.id}:${s.id}`, n: footnotes.length + 1, title: s.title, url: s.url, external: true });
+  }
+}
+const fgUsed = new Set(ROW_ORDER.flatMap((k) => fg[k].src));
+for (const s of FINEGUIDE_SOURCES) {
+  if (!fgUsed.has(s.id)) continue;
+  footnotes.push({
+    key: `fg:${s.id}`,
+    n: footnotes.length + 1,
+    title: s.title,
+    url: new URL(sitePath(lang, s.url), SITE).href,
+    external: false,
+  });
+}
+const byKey = new Map(footnotes.map((f) => [f.key, f]));
+const nums = (keys: string[] = []) =>
+  keys.map((k) => {
+    const f = byKey.get(k);
+    if (!f) throw new Error(`Comparison "${slug}" (${lang}) cites "${k}", which is not in its sources`);
+    return f.n;
+  });
+const factNums = (owner: string, f: Fact | null) => (f ? nums(f.src.map((id) => `${owner}:${id}`)) : []);
+const lineText = (l: Line) => (typeof l === 'string' ? l : l.text);
+const lineNums = (l: Line) => (typeof l === 'string' ? [] : nums(l.refs));
+
+const productLinks = [
+  { href: sitePath(lang, '/pricing/'), label: L.links.pricing },
+  { href: sitePath(lang, '/ai-assistants/'), label: L.links.assistants },
+  { href: sitePath(lang, '/crm/'), label: L.links.crm },
+  { href: sitePath(lang, '/voice-qa/'), label: L.links.voiceQa },
+  { href: sitePath(lang, '/contact/'), label: L.links.contact },
+  ...(copy.extraLinks ?? []),
+];
+const otherComparisons = COMPARE_PAGES.filter((p) => p.slug !== slug).map((p) => ({
+  href: comparePath(lang, p.slug),
+  label: `Fineguide vs ${pick(p.label, lang)}${p.langs.includes(lang) ? '' : L.englishOnly}`,
+}));
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: copy.title,
+    url,
+    inLanguage: lang,
+    description: copy.description,
+    dateModified: CHECKED,
+    isPartOf: { '@type': 'WebSite', name: 'Fineguide.ai', url: `${SITE}/` },
+    about: [
+      {
+        '@type': 'SoftwareApplication',
+        name: 'Fineguide',
+        url: `${SITE}/`,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+      },
+      ...rivals.map((r) => ({
+        '@type': 'SoftwareApplication',
+        name: r.name,
+        url: r.url,
+        applicationCategory: 'BusinessApplication',
+      })),
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: lang,
+    mainEntity: copy.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+
+const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-balance';
+---
+
+<Layout
+  title={copy.title}
+  description={copy.description}
+  lang={siteLang}
+  contentLang={lang === 'ru' ? 'ru' : undefined}
+  hreflang={page.langs.includes('ru') ? page.langs.map((l) => [l, comparePath(l, slug)]) : true}
+  jsonLd={jsonLd}
+  breadcrumb={[
+    [comparePath(lang), L.crumb],
+    [path, copy.crumb],
+  ]}
+>
+  <Navbar t={t} lang={siteLang} />
+
+  <main id="main-content">
+    <!-- Question and short answer -->
+    <section class="pt-36 pb-16 md:pt-44 md:pb-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          <a href={comparePath(lang)} class="hover:underline">{L.eyebrow}</a>
+          <span aria-hidden="true"> · </span>
+          <time datetime={CHECKED}>{L.checkedOn}</time>
+        </p>
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,8vw,3rem)] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[var(--color-foreground)] text-balance">
+          {copy.h1}
+          <span class="text-[var(--color-primary)]">{copy.h1Accent}</span>
+        </h1>
+        <div class="mt-10 max-w-4xl rounded-xl border border-[var(--color-border)] band-tint px-6 py-6 md:px-8 md:py-7">
+          <p class="eyebrow mb-3">{L.shortAnswer}</p>
+          <p class="text-lg md:text-xl text-[var(--color-foreground)] leading-relaxed text-pretty">{copy.shortAnswer}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The table -->
+    <section id="at-a-glance" class="scroll-mt-24 py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={`${h2} text-[var(--color-foreground)]`}>{copy.tableHeading}</h2>
+        <p class="mt-6 max-w-4xl text-base md:text-lg text-[var(--color-muted)] leading-relaxed">{L.tableNote}</p>
+        <div class="mt-12 -mx-6 px-6 overflow-x-auto">
+          <table role="table" class={`cmp-table w-full ${rivals.length > 1 ? 'md:min-w-[62rem]' : 'md:min-w-[46rem]'} text-left border-collapse`}>
+            <caption class="sr-only">{copy.tableHeading}</caption>
+            <thead role="rowgroup">
+              <tr role="row" class="border-b border-[var(--color-border)]">
+                <td class="pb-4 pr-6 w-40"></td>
+                <th scope="col" class="pb-4 pr-6 align-bottom text-lg font-semibold text-[var(--color-primary)]">Fineguide</th>
+                {rivals.map((r) => (
+                  <th scope="col" class="pb-4 pr-6 align-bottom text-lg font-semibold text-[var(--color-foreground)]">{r.name}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+              {ROW_ORDER.map((key) => (
+                <tr role="row" class="border-b border-[var(--color-border)] align-top">
+                  <th scope="row" role="rowheader" class="py-5 pr-6 text-sm font-semibold text-[var(--color-foreground)]">{L.rows[key]}</th>
+                  <td role="cell" data-label="Fineguide" data-fg class="py-5 pr-6 text-sm leading-relaxed text-[var(--color-foreground)]">
+                    {pick(fg[key], lang)}
+                    <Refs nums={factNums('fg', fg[key])} />
+                  </td>
+                  {rivals.map((r) => {
+                    const f = r.facts[key];
+                    return (
+                      <td role="cell" data-label={r.name} class="py-5 pr-6 text-sm leading-relaxed text-[var(--color-foreground)]">
+                        {key === 'plans' && <span class="block mb-1 font-medium">{planList(r, lang)}</span>}
+                        {f ? (
+                          <>
+                            {pick(f, lang)}
+                            <Refs nums={factNums(r.id, f)} />
+                          </>
+                        ) : (
+                          <span class="text-[var(--color-muted)]">{L.notStated}</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where the competitor is stronger -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={`${h2} text-[var(--color-foreground)]`}>{copy.competitorStronger.heading}</h2>
+        <ul class="mt-12 max-w-4xl">
+          {copy.competitorStronger.items.map((item) => (
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">
+              {lineText(item)}
+              <Refs nums={lineNums(item)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Where Fineguide is stronger (dark editorial break) -->
+    <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{copy.fineguideStronger.heading}</h2>
+        <ul class="mt-12 max-w-4xl">
+          {copy.fineguideStronger.items.map((item) => (
+            <li class="border-t border-white/10 py-5 text-lg text-gray-200 leading-relaxed">
+              {lineText(item)}
+              <Refs nums={lineNums(item)} tone="dark" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Who should choose which -->
+    <section class="py-20 md:py-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={`${h2} text-[var(--color-foreground)]`}>{copy.choose.heading}</h2>
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+          {[copy.choose.competitor, copy.choose.fineguide].map((col, i) => (
+            <div>
+              <h3 class={`text-xl md:text-2xl font-semibold tracking-tight ${i === 1 ? 'text-[var(--color-primary)]' : 'text-[var(--color-foreground)]'}`}>
+                {col.label}
+              </h3>
+              <ul class="mt-6">
+                {col.items.map((it) => (
+                  <li class="border-t border-[var(--color-border)] py-4 text-base text-[var(--color-foreground)] leading-relaxed">{it}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Switching -->
+    <section id="switching" class="scroll-mt-24 py-20 md:py-28 px-6 band-tint">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={`${h2} text-[var(--color-foreground)]`}>{copy.switching.heading}</h2>
+        <p class="mt-6 max-w-4xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">{copy.switching.intro}</p>
+        <ol class="mt-12 max-w-4xl border-b border-[var(--color-border)]">
+          {copy.switching.steps.map((step, i) => (
+            <li class="flex gap-6 border-t border-[var(--color-border)] py-6">
+              <span class="font-[var(--font-display)] text-2xl md:text-3xl font-semibold text-[var(--color-primary)] tabular-nums shrink-0 w-10">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h3 class="text-lg md:text-xl font-semibold text-[var(--color-foreground)]">{step.title}</h3>
+                <p class="mt-2 text-base text-[var(--color-muted)] leading-relaxed">
+                  {lineText(step.body)}
+                  <Refs nums={lineNums(step.body)} />
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ, visible: the FAQPage structured data repeats these words -->
+    <section id="faq" class="scroll-mt-24 py-20 md:py-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={`${h2} text-[var(--color-foreground)]`}>{L.faqHeading}</h2>
+        <dl class="mt-12 max-w-4xl">
+          {copy.faq.map((f) => (
+            <div class="border-t border-[var(--color-border)] py-6">
+              <dt class="text-lg md:text-xl font-semibold text-[var(--color-foreground)]">{f.q}</dt>
+              <dd class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">
+                {f.a}
+                <Refs nums={nums(f.refs)} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Internal links -->
+    <section class="py-20 md:py-24 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{L.keepReading}</h2>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          <div>
+            <p class="eyebrow mb-3">{L.productPages}</p>
+            <ul>
+              {productLinks.map((l) => (
+                <li class="border-t border-[var(--color-border)] py-4">
+                  <a href={l.href} class="text-lg text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow mb-3">{L.otherComparisons}</p>
+            <ul>
+              {otherComparisons.map((l) => (
+                <li class="border-t border-[var(--color-border)] py-4">
+                  <a href={l.href} class="text-lg text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{l.label}</a>
+                </li>
+              ))}
+              <li class="border-t border-[var(--color-border)] py-4">
+                <a href={comparePath(lang)} class="inline-flex items-center gap-1.5 text-base font-semibold text-[var(--color-primary)] hover:underline">
+                  {L.hubEyebrow}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources" class="scroll-mt-24 py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{L.sourcesHeading}</h2>
+        <ol class="mt-8 max-w-4xl space-y-4 text-sm text-[var(--color-muted)] leading-relaxed">
+          {footnotes.map((f) => (
+            <li id={`source-${f.n}`} class="scroll-mt-24 flex gap-3">
+              <span class="tabular-nums shrink-0 w-9">[{f.n}]</span>
+              <span class="min-w-0">
+                <a
+                  href={f.url}
+                  rel={f.external ? 'nofollow noopener' : undefined}
+                  class="text-[var(--color-foreground)] underline decoration-[var(--color-border)] underline-offset-4 hover:text-[var(--color-primary)]"
+                >
+                  {f.title}
+                </a>
+                <span class="block text-xs break-all">{f.url.replace(/^https?:\/\//, '')}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+        <p class="mt-10 max-w-4xl text-sm text-[var(--color-muted)] leading-relaxed">{L.correction}</p>
+      </div>
+    </section>
+
+    <ClosingCta
+      lang={siteLang}
+      rule
+      heading={copy.closing.heading}
+      body={copy.closing.body}
+      ctaPrimary={L.ctaPrimary}
+      ctaSecondary={L.ctaSecondary}
+    />
+  </main>
+
+  <Footer t={t} lang={siteLang} />
+</Layout>
+
+<style>
+  /* On a phone the table would need sideways scrolling nobody notices: each row becomes a block — the row's name,
+     then Fineguide's cell and each competitor's, each under its name (the roles keep it a table for screen readers). */
+  @media (max-width: 767px) {
+    .cmp-table,
+    .cmp-table tbody,
+    .cmp-table tr,
+    .cmp-table th,
+    .cmp-table td {
+      display: block;
+    }
+    .cmp-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+    .cmp-table tbody tr {
+      padding: 1.5rem 0 1.25rem;
+    }
+    .cmp-table tbody th {
+      padding: 0 0 0.25rem;
+      font-size: 1rem;
+    }
+    .cmp-table td {
+      padding: 0.75rem 0 0;
+    }
+    .cmp-table td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .cmp-table td[data-fg]::before {
+      color: var(--color-primary);
+    }
+  }
+</style>

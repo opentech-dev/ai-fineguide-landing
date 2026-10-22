@@ -1,0 +1,105 @@
+---
+import ComparePage from '../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Fineguide vs Zoho CRM: an AI-first Zoho CRM alternative',
+  description: 'A Zoho CRM alternative compared fact by fact: editions, Zia AI tiers, WhatsApp, calling, languages and contracts, checked on Zoho’s own pages.',
+  crumb: 'Zoho CRM',
+  h1: 'Fineguide vs Zoho CRM:',
+  h1Accent: 'AI assistants on every plan',
+  shortAnswer:
+    'Zoho CRM is a mature, flexible CRM with five editions from free to Ultimate, no contracts, 28 interface languages including Russian, and data centres in nine regions; most of its Zia AI sits in Enterprise and Ultimate. Fineguide is an AI-first CRM where assistants on every plan answer chat, email and live calls, and Voice QA scores recorded calls, at one price per organization. Zoho wins on breadth and customisation; Fineguide on conversational AI and calls.',
+  tableHeading: 'Zoho CRM vs Fineguide at a glance',
+  competitorStronger: {
+    heading: 'Where Zoho CRM is stronger',
+    items: [
+      { text: 'Customisation and process tools: custom modules, CPQ, customer portals, approval processes, a developer sandbox and field-level encryption.', refs: ['zoho:pricing'] },
+      { text: 'Languages: 28 interface languages, Russian included.', refs: ['zoho:pricing'] },
+      { text: 'Data centres in the US, Europe, India, Australia, Japan, Canada, Saudi Arabia, the UAE and Singapore.', refs: ['zoho:datacenters'] },
+      { text: 'A wide family of products and integrations: Bigin, Desk, Campaigns and CRM Plus, and more than 100 telephony and PBX integrations.', refs: ['zoho:pricing', 'zoho:comparison'] },
+      { text: 'A bigger free tier for seats: the free edition takes 3 users, against you plus one teammate on Fineguide Free.', refs: ['zoho:pricing', 'fg:fg-pricing'] },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'Where Fineguide is stronger',
+    items: [
+      { text: 'Customer-facing AI on every plan. Fineguide’s plans differ only in credits, seats and knowledge-base space. Zoho’s pricing page lists AI agents from Professional, and its edition comparison marks Zia’s prediction, conversational AI and email AI for Enterprise and Ultimate.', refs: ['fg:fg-llms', 'zoho:pricing', 'zoho:comparison'] },
+      { text: 'Messaging built in beyond WhatsApp: Telegram, Instagram, Messenger, Slack, Discord and the website widget. Zoho CRM integrates WhatsApp itself and reaches other messengers through Marketplace apps.', refs: ['fg:fg-assistants', 'zoho:whatsapp', 'zoho:marketplace'] },
+      { text: 'AI on live phone calls over your own SIP, in 14 languages, and outbound AI call campaigns.', refs: ['fg:fg-voice-ai', 'fg:fg-campaigns'] },
+      { text: 'Call-quality scoring: Voice QA transcribes and scores every recorded call against each department’s rules, with reports in 30 languages.', refs: ['fg:fg-voice-qa'] },
+      { text: 'Romanian. Zoho’s 28 interface languages do not include it; Fineguide’s site and support are in Romanian, and its chat widget interface includes Romanian and Russian.', refs: ['zoho:pricing', 'fg:fg-llms'] },
+    ],
+  },
+  choose: {
+    heading: 'Who should choose which',
+    competitor: {
+      label: 'Choose Zoho CRM if…',
+      items: [
+        'you need deep customisation: custom modules, portals, CPQ and approvals;',
+        'your team works in one of Zoho’s 28 interface languages;',
+        'you want a data centre in a specific region;',
+        'you already use other Zoho products.',
+      ],
+    },
+    fineguide: {
+      label: 'Choose Fineguide if…',
+      items: [
+        'you want AI to answer customers on every channel, on whichever plan you start with;',
+        'your customers write on Telegram, Instagram or Messenger as well as WhatsApp;',
+        'phone calls matter: AI on calls, outbound campaigns or call scoring;',
+        'you work in Romanian.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Switching from Zoho CRM',
+    intro: 'Zoho exports each module to a spreadsheet, and Fineguide reads the same formats, so the move is mostly a matter of mapping your fields.',
+    steps: [
+      { title: 'Start on the Free plan', body: 'Create a Fineguide account (no card needed), give an assistant your website and documents, and test it in the chat widget.' },
+      { title: 'Export from Zoho CRM', body: { text: 'Export each module (leads, contacts, accounts, deals) in CSV or XLSX.', refs: ['zoho:export'] } },
+      { title: 'Import into Fineguide', body: { text: 'Import the files (CSV, TSV, XLS or XLSX), map the columns to custom fields and confirm duplicates before they merge.', refs: ['fg:fg-llms'] } },
+      { title: 'Reconnect channels and email', body: { text: 'Connect WhatsApp, Telegram, Instagram, Messenger and your own mailboxes to the team inbox, with routing rules and departments.', refs: ['fg:fg-messages'] } },
+      { title: 'Rebuild workflows', body: { text: 'Recreate automations in n8n, hosted by Fineguide or your own instance, and give assistants actions that call your systems.', refs: ['fg:fg-llms'] } },
+    ],
+  },
+  faq: [
+    {
+      q: 'Is Zoho CRM free?',
+      a: 'Zoho CRM has a free edition for up to 3 users. Fineguide’s Free plan covers you plus one teammate, with 200 one-time credits for AI replies.',
+      refs: ['zoho:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Which Zoho CRM edition has Zia AI?',
+      a: 'Zoho’s pricing page lists AI agents from Professional and extended AI on Enterprise. In its edition comparison, Zia’s prediction, conversational AI and email AI rows are marked for Enterprise and Ultimate only, and some Zia features work in English only.',
+      refs: ['zoho:pricing', 'zoho:comparison'],
+    },
+    {
+      q: 'Does Zoho CRM support Romanian?',
+      a: 'Zoho lists 28 interface languages, including Russian, but not Romanian. Fineguide’s workspace is in English; its site and support are in Romanian and English, and its chat widget interface comes in 24 languages, Romanian included.',
+      refs: ['zoho:pricing', 'fg:fg-llms'],
+    },
+    {
+      q: 'Does Zoho CRM require a contract?',
+      a: 'No. Zoho says there are no contracts or commitments: you pay monthly or yearly and can change plan when you need to. Fineguide also bills monthly or yearly, with no setup fees.',
+      refs: ['zoho:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Can Zoho CRM connect WhatsApp and Telegram?',
+      a: 'Zoho CRM has its own WhatsApp integration; other messengers come through Marketplace apps. Fineguide connects WhatsApp, Telegram, Instagram, Messenger, Slack and Discord directly.',
+      refs: ['zoho:whatsapp', 'zoho:marketplace', 'fg:fg-assistants'],
+    },
+    {
+      q: 'How do I move from Zoho CRM to Fineguide?',
+      a: 'Export each module from Zoho CRM in CSV or XLSX, import the files into the Fineguide CRM, map your fields and confirm duplicates before they merge.',
+      refs: ['zoho:export', 'fg:fg-llms'],
+    },
+  ],
+  closing: {
+    heading: 'AI on every channel, from the first plan',
+    body: 'Start on the Free plan, no card needed, and see what an assistant does with your own customers’ questions.',
+  },
+};
+---
+
+<ComparePage lang="en" slug="zoho" copy={copy} />

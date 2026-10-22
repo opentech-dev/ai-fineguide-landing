@@ -1,0 +1,106 @@
+---
+import ComparePage from '../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Fineguide vs Odoo: an Odoo CRM alternative built on AI',
+  description: 'An Odoo alternative for customer-facing teams, compared fact by fact: prices, AI agents, WhatsApp, phone and call scoring, checked on Odoo’s pages.',
+  crumb: 'Odoo',
+  h1: 'Fineguide vs Odoo:',
+  h1Accent: 'the customer conversation, done in depth',
+  shortAnswer:
+    'Odoo is a full business suite (CRM, accounting, inventory, HR, eCommerce and more) priced per user, with a free single-app plan and first-year discounts. Fineguide covers one part of that job, the customer conversation, in more depth: AI assistants on chat, email and live phone calls, a CRM on one customer record, and call scoring. If you need an ERP, choose Odoo; if you need AI to handle your customers, choose Fineguide.',
+  tableHeading: 'Odoo vs Fineguide at a glance',
+  competitorStronger: {
+    heading: 'Where Odoo is stronger',
+    items: [
+      { text: 'An ERP, not only a CRM. Sales, accounting, inventory, HR, projects, point of sale, eCommerce and website all come in the Standard and Custom plans at one price per user.', refs: ['odoo:pricing'] },
+      { text: 'Hosting choices: Odoo Online, or Odoo.sh or on-premise with the Custom plan.', refs: ['odoo:pricing'] },
+      { text: 'Customisation: Odoo Studio, multi-company and an external API on Custom.', refs: ['odoo:pricing'] },
+      { text: 'One App Free: one app, with the apps it depends on, free for unlimited users.', refs: ['odoo:pricing'] },
+      { text: 'AI agents inside the suite, answering from PDFs, web links, Documents files and Knowledge articles, and a Livechat AI agent that answers visitors and escalates to human follow-up.', refs: ['odoo:ai-agents', 'odoo:ai-live-chat'] },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'Where Fineguide is stronger',
+    items: [
+      { text: 'Messaging channels without an extra subscription tier: WhatsApp, Telegram, Instagram, Messenger, Slack, Discord and the website widget come with every plan. Odoo’s WhatsApp app works only in Odoo Enterprise and needs a WhatsApp Business Platform account.', refs: ['fg:fg-llms', 'odoo:whatsapp'] },
+      { text: 'AI that takes the call. Fineguide’s assistants answer live inbound and outbound calls themselves, over your own SIP, in 14 languages. Odoo’s Phone app connects your users’ calls through a VoIP provider.', refs: ['fg:fg-voice-ai', 'odoo:phone'] },
+      { text: 'Call-quality scoring: Voice QA scores every recorded call against each department’s rules, with quotes, suggestions, agent scorecards and reports in 30 languages.', refs: ['fg:fg-voice-qa'] },
+      { text: 'Outbound call campaigns (outreach, survey, promotion) worked by AI assistants, with a test call to your own number first.', refs: ['fg:fg-campaigns'] },
+      { text: 'Prices with no first-year step-up. Odoo’s discount lasts 12 months for the users first ordered; Fineguide’s monthly and yearly prices carry no introductory discount.', refs: ['odoo:pricing', 'fg:fg-pricing'] },
+      { text: 'Romanian site and support, and a team in Chișinău.', refs: ['fg:fg-llms'] },
+    ],
+  },
+  choose: {
+    heading: 'Who should choose which',
+    competitor: {
+      label: 'Choose Odoo if…',
+      items: [
+        'you want accounting, inventory, HR and CRM in one database;',
+        'you plan to customise heavily with Studio or your own developers;',
+        'you want to self-host on Odoo.sh or on-premise;',
+        'you need only one app and One App Free covers it.',
+      ],
+    },
+    fineguide: {
+      label: 'Choose Fineguide if…',
+      items: [
+        'the job is answering customers on chat, email and phone, and you want AI to do much of it;',
+        'you score calls or run outbound call campaigns;',
+        'you want messaging channels on every plan;',
+        'you already run Odoo for the back office and need a customer-conversation layer next to it.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Moving your CRM from Odoo',
+    intro: 'If Odoo also runs your accounting or inventory, keep it for that and move only the customer conversation and CRM records.',
+    steps: [
+      { title: 'Start on the Free plan', body: 'Create a Fineguide account (no card needed), give an assistant your website and documents, and test it in the chat widget.' },
+      { title: 'Export from Odoo', body: { text: 'Select the CRM records, choose Action, then Export, and save the file as .csv or .xls.', refs: ['odoo:export'] } },
+      { title: 'Import into Fineguide', body: { text: 'Import the file (CSV, TSV, XLS or XLSX), map the columns to custom fields and confirm duplicates before they merge.', refs: ['fg:fg-llms'] } },
+      { title: 'Connect channels and calls', body: { text: 'Connect WhatsApp, Telegram, Instagram, Messenger and your mailboxes, and your phone system over SIP if you want AI on calls.', refs: ['fg:fg-messages', 'fg:fg-voice-ai'] } },
+      { title: 'Keep the systems talking', body: { text: 'Use Fineguide’s REST API, webhooks and n8n workflows to pass what happens in a conversation to the rest of your stack.', refs: ['fg:fg-llms'] } },
+    ],
+  },
+  faq: [
+    {
+      q: 'Is Odoo CRM free?',
+      a: 'Odoo’s One App Free plan gives one app (with the apps it depends on) to unlimited users on Odoo Online, so CRM alone can be free. Fineguide’s Free plan has 200 one-time credits for AI replies, for you plus one teammate.',
+      refs: ['odoo:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'How much does Odoo cost?',
+      a: 'On the US-dollar page on 21 October 2026, Standard was $24.90 per user a month billed yearly or $31.10 monthly, and Custom $49.00 or $61.10. Those are first-year prices; after 12 months they rise to $31.10 / $38.90 and $61.00 / $76.20. These are the US-dollar figures the page showed us; check it from your own country before you buy.',
+      refs: ['odoo:pricing'],
+    },
+    {
+      q: 'Does Odoo have AI agents?',
+      a: 'Yes. Odoo’s AI app lets you build agents that answer from PDFs, web links, Documents files and Knowledge articles, on ChatGPT or Gemini models, and adds an AI agent to Live Chat. Its pricing page lists Agentic AI with the Custom plan.',
+      refs: ['odoo:ai-agents', 'odoo:ai-live-chat', 'odoo:pricing'],
+    },
+    {
+      q: 'Can Odoo make phone calls?',
+      a: 'Yes, with the Phone app, which needs a VoIP service provider to make calls; Axivox, DIDWW and OnSIP are the verified ones. Fineguide’s AI assistants answer and place calls themselves over your own SIP phone system.',
+      refs: ['odoo:phone', 'fg:fg-voice-ai'],
+    },
+    {
+      q: 'Should I replace Odoo with Fineguide?',
+      a: 'Only the customer-conversation part. If Odoo runs your accounting, stock or HR, keep it. Fineguide replaces the CRM, inbox and customer-facing AI, and connects to other systems through its REST API, webhooks and n8n.',
+      refs: ['fg:fg-llms'],
+    },
+    {
+      q: 'How do I move Odoo CRM data to Fineguide?',
+      a: 'Export the records from Odoo with Action, then Export, as .csv or .xls, and import them into the Fineguide CRM, which reads CSV, TSV, XLS and XLSX and asks a person to confirm every duplicate merge.',
+      refs: ['odoo:export', 'fg:fg-llms'],
+    },
+  ],
+  closing: {
+    heading: 'Put AI on the customer side of the business',
+    body: 'Start on the Free plan, no card needed, and let an assistant answer your customers while Odoo keeps running the back office.',
+  },
+};
+---
+
+<ComparePage lang="en" slug="odoo" copy={copy} />
