@@ -42,9 +42,9 @@ export const ro: Translations = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | Platformă AI pentru relația cu clienții',
+    title: 'Fineguide | CRM cu AI și automatizare pentru afaceri',
     description:
-      'Platforma de nouă generație pentru relația cu clienții. Reunește conversațiile, CRM-ul, canalele și fluxurile de lucru, construită pe AI de la bun început.',
+      'CRM cu inteligență artificială: asistenți AI pe site și în mesagerie, oportunități, sarcini, inbox comun, apeluri AI și evaluarea apelurilor. Începe gratuit.',
   },
 
   // --- Hero ---
@@ -1208,7 +1208,7 @@ export const ro: Translations = {
 
   // --- Pricing Page ---
   pricingMeta: {
-    title: 'Prețuri | Fineguide.ai',
+    title: 'Prețuri | Fineguide CRM cu AI: planuri de la €0 pe lună',
     description:
       'Planuri de la €0 la €500 pe lună sau cu 20% mai puțin plătite anual. Vezi ce include fiecare: credite, locuri în echipă, cunoștințe și suport.',
   },
