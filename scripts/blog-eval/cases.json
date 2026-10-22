@@ -1,0 +1,26 @@
+{
+  "index": {
+    "path": "/blog/",
+    "entry": ".b-start a, .b-featured .b-card, .b-grid .b-card",
+    "page": "the blog's front page (fineguide.ai/blog/)",
+    "role": "iterated"
+  },
+  "post": {
+    "path": "/blog/how-to-add-knowledge-to-your-ai-assistant-answer-real-business-questions/",
+    "entry": ".b-byline",
+    "page": "a long tutorial post (fineguide.ai/blog/how-to-add-knowledge-to-your-ai-assistant-answer-real-business-questions/)",
+    "role": "iterated"
+  },
+  "category": {
+    "path": "/blog/category/tutorials/",
+    "entry": ".b-grid .b-card",
+    "page": "a topic page listing every tutorial (fineguide.ai/blog/category/tutorials/)",
+    "role": "held-out"
+  },
+  "post2": {
+    "path": "/blog/kommo-integration-guide/",
+    "entry": ".b-byline",
+    "page": "an integration guide post (fineguide.ai/blog/kommo-integration-guide/)",
+    "role": "held-out"
+  }
+}
