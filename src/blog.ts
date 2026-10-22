@@ -50,12 +50,6 @@ export const tagPath = (t: string): string => `/blog/tag/${labelSlug(t)}/`;
 /** A tag page is kept out of search until it holds this many posts — a tag with one or two posts is a thin page. */
 export const TAG_INDEX_MIN = 3;
 
-/** The blog's own type: Fraunces for titles (as on onetransform.ai, here with its SOFT axis for rounder, warmer
-    terminals, and its italic for the accent words), Source Serif 4 for reading; Inter stays for the small interface
-    text. Only the blog's pages load them. */
-export const BLOG_FONTS =
-  'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap';
-
 type Group = { label: string; slug: string; posts: RenderedPost[] };
 function groups(pick: (p: RenderedPost) => string[]): Promise<Group[]> {
   return blogPosts().then((posts) => {

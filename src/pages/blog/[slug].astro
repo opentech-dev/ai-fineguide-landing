@@ -3,7 +3,7 @@
  * One post — /blog/<slug>/, an address that never changes once it is published (the API refuses a new slug). Built
  * from the API at deploy time (src/blog.ts), its Markdown rendered and sanitised there. The old blog's article, kept
  * and calmed: topic and breadcrumb, the headline, its summary, the byline, the cover in a rounded frame, then the
- * article on night with a table of contents beside it (wide screens, three headings or more), its tags, the one call
+ * article with a table of contents beside it (wide screens, three headings or more), its tags, the one call
  * to action, and related articles. For search and answer engines: BlogPosting structured data and a breadcrumb,
  * Open Graph `article` with its dates (the API looks for `article:modified_time` to know a publish has landed), its
  * cover as the share card, and its Markdown at /blog/<slug>.md.
@@ -16,7 +16,7 @@ import PostCard from '../../components/blog/PostCard.astro';
 import BlogCta from '../../components/blog/BlogCta.astro';
 import { getLocalizedPath, LANGS, useTranslations, type Lang } from '../../i18n/utils';
 import { FOUNDER, founderRef } from '../../data/people';
-import { absolute, BLOG_FONTS, blogPosts, categoryPath, longDate, relatedTo, SITE, tagPath, type RenderedPost } from '../../blog';
+import { absolute, blogPosts, categoryPath, longDate, relatedTo, SITE, tagPath, type RenderedPost } from '../../blog';
 
 export async function getStaticPaths() {
   const posts = await blogPosts();
@@ -49,7 +49,6 @@ const authorPath = post.author === FOUNDER.name
   ogImage={cover}
   contentLang={post.lang}
   hreflang={false}
-  stylesheets={[BLOG_FONTS]}
   chat="on-demand"
   article={{ publishedTime: post.publishedAt, modifiedTime: post.updatedAt, section: topic, tags: post.tags, author: authorPath ? absolute(authorPath) : post.author }}
   breadcrumb={[['/blog/', 'Blog'], ...(topic ? [[categoryPath(topic), topic] as [string, string]] : []), [post.path, post.title]]}
