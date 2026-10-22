@@ -261,7 +261,8 @@ for (const [loc, L] of Object.entries(LOCALES)) {
   ck(`${loc} Context Pack +${packCapacity / 1e6}M`, new RegExp(`\\+${packCapacity / 1e6}M ${L.chars}`).test(text), `+${packCapacity / 1e6}M`);
   ck(`${loc} Voice QA ${voiceQa} ${L.credits}`, text.includes(`${voiceQa} ${L.credits}`), `${voiceQa}`);
   ck(`${loc} Voice AI ${voiceAi} ${L.credits}`, text.includes(`${voiceAi} ${L.credits}`), `${voiceAi}`);
-  ck(`${loc} premium-engine rate ${voiceEleven}`, new RegExp(`${voiceEleven}[^.]{0,24}premium`, 'i').test(text), `${voiceEleven}`);
+  // One realtime voice engine since 2026-10-17: the page names no premium-engine rate.
+  ck(`${loc} names no premium voice engine`, !/premium (?:agent )?engine|motorul premium/i.test(text), 'premium engine');
   ck(`${loc} has a monthly/yearly switch`, /data-set-period="yearly"/.test(raw), 'data-set-period');
   ck(`${loc} ${L.currencies.includes('usd') ? 'has' : 'has no'} a currency switch`,
     /data-set-currency="usd"/.test(raw) === L.currencies.includes('usd'), 'data-set-currency');

@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const a = t.aboutPage;
+const pageUrl = lang === 'ro' ? 'https://fineguide.ai/ro/about/' : 'https://fineguide.ai/about/';
+
+// The ownership facts on this page are stated in visible text below; the
+// structured data only repeats them.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: t.aboutMeta.title,
+  url: pageUrl,
+  inLanguage: lang,
+  description: t.aboutMeta.description,
+  mainEntity: {
+    '@type': 'Organization',
+    '@id': 'https://fineguide.ai/#org',
+    name: 'Fineguide.AI',
+    url: 'https://fineguide.ai/',
+    email: a.contact.email,
+    address: { '@type': 'PostalAddress', addressLocality: 'Chișinău', addressCountry: 'MD' },
+    founder: { '@type': 'Person', name: a.founder.name },
+  },
+};
+---
+
+<Layout title={t.aboutMeta.title} description={t.aboutMeta.description} lang={lang} jsonLd={jsonLd}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{a.hero.eyebrow}</p>
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
+          {a.hero.title}
+          <span class="text-[var(--color-primary)]">{a.hero.titleAccent}</span>
+        </h1>
+        <p class="mt-8 max-w-5xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">
+          {a.hero.subtitle}
+        </p>
+      </div>
+    </section>
+
+    <!-- What Fineguide is, and who it is for -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{a.company.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {a.company.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+          {a.company.body}
+        </p>
+        <p class="eyebrow mt-14 mb-2">{a.company.audienceLabel}</p>
+        <ul class="max-w-3xl">
+          {a.company.audience.map((item) => (
+            <li class="border-t border-[var(--color-border)] py-5 text-lg text-[var(--color-foreground)] leading-relaxed">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- The platform -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{a.platform.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {a.platform.heading}
+        </h2>
+        <dl class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {a.platform.items.map((item) => (
+            <div class="border-t border-[var(--color-border)] pt-5">
+              <dt class="text-xl md:text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">{item.name}</dt>
+              <dd class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{item.desc}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Where it is built -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{a.origin.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {a.origin.heading}
+        </h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+          {a.origin.body}
+        </p>
+      </div>
+    </section>
+
+    <!-- Company and founder, with the advisors note (dark editorial break) -->
+    <section id="founder" class="scroll-mt-24 py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow-light mb-5">{a.founder.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
+          {a.founder.heading}
+        </h2>
+        <div class="mt-12 max-w-3xl border-t border-white/10 pt-6">
+          <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-white">{a.founder.name}</h3>
+          <p class="mt-2 text-base text-[#c7b8ff]">{a.founder.role}</p>
+          <p class="mt-5 text-lg md:text-xl text-gray-300 leading-relaxed">{a.founder.body}</p>
+        </div>
+        <div id="advisors" class="scroll-mt-24 mt-12 max-w-3xl rounded-xl border border-white/10 px-6 py-5">
+          <p class="eyebrow-light mb-2">{a.advisors.eyebrow}</p>
+          <p class="text-base text-gray-300 leading-relaxed">{a.advisors.body}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-24 md:py-32 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">
+          {a.contact.heading}
+        </h2>
+        <p class="mt-5 max-w-2xl text-lg text-[var(--color-muted)] leading-relaxed">
+          {a.contact.body}
+        </p>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-12 max-w-3xl">
+          <div>
+            <p class="eyebrow mb-3">{a.contact.emailLabel}</p>
+            <a
+              href={`mailto:${a.contact.email}`}
+              class="text-xl md:text-2xl text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors break-all"
+            >
+              {a.contact.email}
+            </a>
+          </div>
+          <div class="sm:self-end">
+            <a
+              href={getLocalizedPath('/contact', lang)}
+              class="inline-flex items-center gap-1.5 text-base font-semibold text-[var(--color-primary)] hover:underline"
+            >
+              {a.contact.linkLabel}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>

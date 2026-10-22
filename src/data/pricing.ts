@@ -16,7 +16,7 @@
  */
 
 /**
- * Dollar billing is live: each euro price in Stripe carries its dollar figure
+ * Dollar billing is live: each euro price at the payment processor carries its dollar figure
  * as a `currency_options` entry, and the app charges a customer outside Europe
  * the dollar price shown here. So the dollar view carries no "billed in euros"
  * line any more.

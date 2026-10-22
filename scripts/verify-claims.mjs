@@ -262,22 +262,22 @@ if (fs.existsSync(schemaPath)) {
     const copy = block[1].split('\n').filter((l) => !/^\s*\/\//.test(l)).join('\n');
     for (const [re, why] of VOICE_PAGE_BANNED) if (re.test(copy)) pageHits.push(`${locale}: ${why}`);
     const std = copy.match(/(\d+) (?:credits a minute|credite pe minut)/);
-    const premium = copy.match(/(\d+) (?:on the|pe motorul) premium/);
-    pageRates[locale] = [std?.[1], premium?.[1]];
+    // One realtime voice engine since 2026-10-17: no premium engine, so no second rate on the page.
+    if (/(?:on the|pe motorul) premium/.test(copy)) pageHits.push(`${locale}: a premium voice engine the product no longer offers`);
+    pageRates[locale] = std?.[1];
   }
   ok(pageHits.length === 0, `Voice AI page sells nothing the product lacks${pageHits.length ? ' -> ' + pageHits.join('; ') : ''}`);
 
   // Rates on the page must be the rates in the billing config.
   const pricing = fs.readFileSync(`${API}/pricing/pricing-config.ts`, 'utf8');
   const aiStd = pricing.match(/aiGoogle:\s*(\d+)/)?.[1];
-  const aiPremium = pricing.match(/aiElevenlabs:\s*(\d+)/)?.[1];
   const billing = fs.readFileSync(`${API}/modules/voice/voice-billing.service.ts`, 'utf8');
   const minSeconds = billing.match(/MINIMUM_BILLABLE_SECONDS = (\d+)/)?.[1];
   const rateBad = Object.entries(pageRates)
-    .filter(([, [s, p]]) => s !== aiStd || p !== aiPremium)
-    .map(([loc, [s, p]]) => `${loc}: page ${s}/${p}, config ${aiStd}/${aiPremium}`);
-  ok(aiStd && aiPremium && rateBad.length === 0,
-     `Voice AI page rates match pricing-config (${aiStd} standard, ${aiPremium} premium engine)${rateBad.length ? ' -> ' + rateBad.join('; ') : ''}`);
+    .filter(([, s]) => s !== aiStd)
+    .map(([loc, s]) => `${loc}: page ${s}, config ${aiStd}`);
+  ok(aiStd && rateBad.length === 0,
+     `Voice AI page rate matches pricing-config (${aiStd} credits a minute)${rateBad.length ? ' -> ' + rateBad.join('; ') : ''}`);
   ok(minSeconds === '60', `Voice AI page "one-minute minimum" matches MINIMUM_BILLABLE_SECONDS (${minSeconds})`);
 }
 
