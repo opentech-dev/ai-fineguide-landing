@@ -40,9 +40,9 @@ export const en = {
 
   // --- Homepage meta ---
   indexMeta: {
-    title: 'Fineguide.ai | AI Platform for Customer Operations',
+    title: 'Fineguide | AI-first CRM and business automation platform',
     description:
-      'The next-generation platform for business operations. Unify conversations, CRM, channels, and workflows, powered by AI from the ground up.',
+      'An AI-first CRM: AI assistants on your website and messaging apps, deals and tasks, a shared inbox, AI phone calls and call scoring. Start free.',
   },
 
   // --- Hero ---
@@ -1234,7 +1234,7 @@ export const en = {
 
   // --- Pricing Page ---
   pricingMeta: {
-    title: 'Pricing | Fineguide.ai',
+    title: 'Pricing | Fineguide AI CRM: plans from €0 a month',
     description:
       'Plans from €0 to €500 a month, or 20% less paid yearly. See what each plan includes: credits, team seats, knowledge base space and support.',
   },
@@ -1829,7 +1829,7 @@ export const en = {
 
   // --- Contact Page ---
   contactMeta: {
-    title: 'Contact | Fineguide.ai',
+    title: 'Contact Fineguide | AI CRM built in Chișinău, Moldova',
     description: 'Contact the Fineguide team. We\'re here for questions, technical support, or to discuss how the AI platform can help your business.',
   },
   contact: {
