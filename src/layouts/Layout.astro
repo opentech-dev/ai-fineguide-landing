@@ -25,6 +25,11 @@ interface Props {
   breadcrumb?: Array<[path: string, label: string]>;
   /** Extra <link rel="alternate"> (the blog's feed, a post's Markdown copy). */
   alternates?: Array<{ type: string; href: string; title: string }>;
+  /** Extra stylesheets this page alone needs (the blog's fonts). */
+  stylesheets?: string[];
+  /** The Fineguide chat: 'auto' loads it with the page (its greeting bubble included); 'on-demand' shows a quiet
+      launcher and loads the chat only when the reader asks for it — the blog, where the bubble sat over the text. */
+  chat?: 'auto' | 'on-demand';
 }
 
 const {
@@ -39,7 +44,10 @@ const {
   hreflang = true,
   breadcrumb,
   alternates = [],
+  stylesheets = [],
+  chat = 'auto',
 } = Astro.props;
+const CHATBOT_ID = 'b5b3f5f1-7d78-4bd2-93cd-3f3a8e6cde47';
 
 const SITE = 'https://fineguide.ai';
 const htmlLang = contentLang ?? (lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang);
@@ -67,15 +75,24 @@ const roHref = new URL(withSlash(switchLangPath(path, 'ro')), SITE).href;
 const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 // Site-wide identity. Emitted once per page so any page can be the one a
-// crawler happens to land on first.
+// crawler happens to land on first; other blocks point at it by its @id. The
+// facts are the ones the About page shows (src/pages/about.astro): the founder
+// as the owner states it, the city, the public contact. No hosting or vendors.
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Fineguide.ai',
-  url: SITE,
-  logo: `${SITE}/images/fineguide-logo.png`,
+  '@id': `${SITE}/#org`,
+  name: 'Fineguide.AI',
+  alternateName: ['Fineguide', 'FineGuide', 'fineguide.ai'],
+  url: `${SITE}/`,
+  logo: { '@type': 'ImageObject', url: `${SITE}/images/fineguide-mark-512.png`, width: 512, height: 512 },
   description:
-    'AI-native platform unifying customer conversations, CRM, voice and workflows for business operations teams.',
+    'Fineguide.AI is an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, a CRM, a shared inbox with email, AI phone calls and outbound call campaigns, and call-quality scoring.',
+  founder: { '@type': 'Person', name: 'Liviu Maftuleac' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Chișinău', addressCountry: 'MD' },
+  contactPoint: [
+    { '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@fineguide.ai', telephone: '+373-60-419-281', availableLanguage: ['en', 'ro'] },
+  ],
 };
 
 // The site is flat - every page is one level under the locale root - so a
@@ -83,6 +100,12 @@ const organizationLd = {
 // label is the title up to the first separator, which is how these titles are
 // already written ("CRM | … | Fineguide.ai").
 const isHome = path === '/' || path === '/ro/';
+// The site itself, on its two home pages (where Google looks for it).
+const websiteLd = isHome
+  ? { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: 'Fineguide.AI', inLanguage: lang, publisher: { '@id': `${SITE}/#org` } }
+  : null;
+// The standard share card is 1200 × 630; any other image (a post's cover) says nothing it cannot back up.
+const defaultCard = ogImage === '/images/og-default.png';
 const leafLabel = title.split('|')[0].trim();
 const trail: Array<[string, string]> = breadcrumb ?? [[path, leafLabel]];
 const breadcrumbLd = isHome
@@ -110,7 +133,8 @@ const breadcrumbLd = isHome
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Fineguide.ai" />
-    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    {/* A page kept out of the index still passes its links on (a thin tag page links real posts). */}
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
 
     <link rel="canonical" href={canonical} />
     {hreflang && <link rel="alternate" hreflang="en" href={enHref} />}
@@ -130,8 +154,8 @@ const breadcrumbLd = isHome
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Fineguide.ai" />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    {defaultCard && <meta property="og:image:width" content="1200" />}
+    {defaultCard && <meta property="og:image:height" content="630" />}
     <meta property="og:image:alt" content={title} />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -144,6 +168,7 @@ const breadcrumbLd = isHome
       is:inline
       set:html={JSON.stringify(organizationLd)}
     />
+    {websiteLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteLd)} />}
     {
       breadcrumbLd && (
         <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)} />
@@ -160,10 +185,13 @@ const breadcrumbLd = isHome
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* The site's fonts as a stylesheet link, not a CSS @import (which the browser only finds after the CSS loads) */}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+    {stylesheets.map((href) => <link rel="stylesheet" href={href} />)}
 
     <!-- Fineguide AI Chatbot -->
-    <script is:inline>var FINEGUIDE_CHATBOT_ID = 'b5b3f5f1-7d78-4bd2-93cd-3f3a8e6cde47';</script>
-    <script is:inline src="https://cdn.fineguide.ai/fineguide.min.js"></script>
+    {chat === 'auto' && <script is:inline define:vars={{ id: CHATBOT_ID }}>window.FINEGUIDE_CHATBOT_ID = id;</script>}
+    {chat === 'auto' && <script is:inline defer src="https://cdn.fineguide.ai/fineguide.min.js"></script>}
 
 <!-- Google Ads and the Meta Pixel load from CookieConsent, only after the visitor accepts. -->
 
@@ -176,6 +204,43 @@ const breadcrumbLd = isHome
 
     <CookieConsent lang={lang} />
 
+    {chat === 'on-demand' && (
+      <button type="button" id="fg-ask" class="fg-ask" aria-label={htmlLang === 'ro' ? 'Întreabă Fineguide' : 'Ask Fineguide'}>
+        <svg viewBox="0 0 2180 2171" aria-hidden="true"><path d="M980.811 44.4505C1040.2 -14.8097 1136.37 -14.8179 1195.76 44.4323L1270.64 119.128L1453 301.054L1261.04 492.631L1088.28 320.267L320.646 1086.3L608.532 1373.57L992.347 990.514L1184.3 1182.09L800.391 1565.06L973.159 1737.42L781.208 1929L44.6354 1193.9C-14.8797 1134.5 -14.8782 1038.1 44.6384 978.71L980.811 44.4505Z" fill="#fff" /><path d="M1106.87 873.625L1299.56 1065.2L1569.3 797.054L1858.3 1084.32L895 2041.9L980.357 2126.76C1039.69 2185.74 1135.53 2185.74 1194.86 2126.77L2135.15 1192.12C2194.95 1132.68 2194.95 1035.96 2135.15 976.509L1569.3 414L1106.87 873.625Z" fill="#c4b5fd" /></svg>
+        <span>{htmlLang === 'ro' ? 'Întreabă Fineguide' : 'Ask Fineguide'}</span>
+      </button>
+      <style is:inline>
+        .fg-ask { position: fixed; right: 20px; bottom: 20px; z-index: 2147483000; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 10px 12px; border: 1px solid rgba(196, 181, 253, 0.35); border-radius: 999px; background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; font: 600 14px/1 Inter, system-ui, sans-serif; box-shadow: 0 12px 30px -10px rgba(76, 29, 149, 0.7); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .fg-ask:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -10px rgba(76, 29, 149, 0.85); }
+        .fg-ask svg { width: 22px; height: 22px; flex: none; }
+        .fg-ask[aria-busy='true'] { opacity: 0.75; cursor: progress; }
+        @media (max-width: 639px) { .fg-ask { right: 14px; bottom: 14px; padding: 12px; } .fg-ask span { display: none; } }
+        @media (prefers-reduced-motion: reduce) { .fg-ask { transition: none; } }
+      </style>
+      <script is:inline define:vars={{ id: CHATBOT_ID }}>
+        (function () {
+          var btn = document.getElementById('fg-ask');
+          if (!btn) return;
+          // The chat loads on the first click, then opens itself; the launcher steps aside for the chat's own button.
+          btn.addEventListener('click', function () {
+            if (btn.getAttribute('aria-busy') === 'true') return;
+            btn.setAttribute('aria-busy', 'true');
+            window.FINEGUIDE_CHATBOT_ID = id;
+            var s = document.createElement('script');
+            s.src = 'https://cdn.fineguide.ai/fineguide.min.js';
+            s.async = true;
+            s.onerror = function () { btn.removeAttribute('aria-busy'); };
+            document.head.appendChild(s);
+            var tries = 0;
+            (function open() {
+              if (typeof window.$__fg_window_open === 'function') { window.$__fg_window_open(); btn.remove(); return; }
+              if (++tries < 100) setTimeout(open, 100); else btn.removeAttribute('aria-busy');
+            })();
+          });
+        })();
+      </script>
+    )}
+
     <script>
       const io = new IntersectionObserver(
         (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
@@ -184,38 +249,9 @@ const breadcrumbLd = isHome
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     </script>
 
-    <script is:inline>
-      (function() {
-        function setLangPref(lang) {
-          localStorage.setItem('fg-lang', lang);
-          document.cookie = 'fg-lang=' + lang + ';path=/;max-age=31536000;SameSite=Lax';
-        }
-
-        var pref = localStorage.getItem('fg-lang');
-        if (pref) {
-          if (document.cookie.indexOf('fg-lang=') === -1) setLangPref(pref);
-          return;
-        }
-
-        var path = window.location.pathname;
-        // The blog is in one language: there is no /ro/blog to send anyone to.
-        if (path.indexOf('/blog') === 0) return;
-        var isRo = path.startsWith('/ro');
-        var langs = navigator.languages || [navigator.language || ''];
-        var wantsRo = langs.some(function(l) { return l.startsWith('ro'); });
-
-        if (wantsRo && !isRo) {
-          setLangPref('ro');
-          window.location.replace('/ro' + (path === '/' ? '' : path));
-        } else if (!wantsRo && isRo) {
-          var enPath = path.replace(/^\/ro/, '') || '/';
-          setLangPref('en');
-          window.location.replace(enPath);
-        } else {
-          setLangPref(isRo ? 'ro' : 'en');
-        }
-      })();
-    </script>
+    {/* No client-side language redirect: Google renders pages with an English browser, so a script that sends
+        anyone off /ro/ hid the whole Romanian site from search. Apache sends a first visit to "/" from Moldova or
+        Romania to /ro/ (apache/fineguide.conf); the footer's language switch is a plain link. */}
 
   </body>
 </html>

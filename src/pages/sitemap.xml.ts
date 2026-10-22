@@ -1,0 +1,37 @@
+// /sitemap.xml — the site's own pages (the blog has /blog/sitemap.xml; robots.txt names both), written from the pages
+// that exist, so a new page is in it the day it ships. Each address with its trailing slash — the one its canonical
+// names — and, where the page has a Romanian twin, the en / ro / x-default alternates on both entries (Google ignores
+// a pair that does not point back). No <lastmod>: an inaccurate date is worse than none, and IndexNow tells Bing
+// and Yandex when something changes.
+import type { APIRoute } from 'astro';
+
+const SITE = 'https://fineguide.ai';
+const files = Object.keys(import.meta.glob('./**/*.astro'));
+const toPath = (file: string): string => {
+  const p = file.replace(/^\.\//, '/').replace(/\.astro$/, '').replace(/(^|\/)index$/, '$1');
+  return p.endsWith('/') ? p : `${p}/`;
+};
+// The blog lists itself; dynamic routes have no single address; the 404 page is not a page to find.
+const pages = files.filter((f) => !f.startsWith('./blog/') && !f.includes('[') && f !== './404.astro').map(toPath);
+const has = new Set(pages);
+
+const alt = (en: string, ro: string) =>
+  `<xhtml:link rel="alternate" hreflang="en" href="${SITE}${en}"/><xhtml:link rel="alternate" hreflang="ro" href="${SITE}${ro}"/><xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${en}"/>`;
+
+export const GET: APIRoute = () => {
+  const urls = pages.sort().map((p) => {
+    const isRo = p.startsWith('/ro/');
+    const en = isRo ? p.replace(/^\/ro/, '') || '/' : p;
+    const ro = isRo ? p : `/ro${p}`;
+    const pair = has.has(en) && has.has(ro);
+    return `  <url><loc>${SITE}${p}</loc>${pair ? alt(en, ro) : ''}</url>`;
+  });
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ...urls,
+    '</urlset>',
+    '',
+  ].join('\n');
+  return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
+};

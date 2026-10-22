@@ -1,0 +1,42 @@
+---
+/**
+ * The page a missing address shows (apache/fineguide.conf: ErrorDocument 404 /404.html). It answers 404, stays out
+ * of search, and points to the places people usually meant.
+ */
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('en');
+const links: Array<[string, string, string]> = [
+  ['/', 'Home', 'What Fineguide does, in one page'],
+  ['/blog/', 'Blog', 'Guides, product news and field notes'],
+  ['/pricing/', 'Pricing', 'Plans from free to enterprise'],
+  ['/contact/', 'Contact', 'Talk to the team'],
+];
+---
+
+<Layout lang="en" title="Page not found | Fineguide.ai" description="This address does not exist on fineguide.ai. Here are the pages people usually look for." noindex hreflang={false}>
+  <Navbar t={t} lang="en" />
+  <main id="main-content">
+    <section class="pt-32 md:pt-40 pb-20 px-6">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-sm font-semibold tracking-widest uppercase text-[var(--color-accent)] mb-4">404</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">This page is not here.</h1>
+        <p class="text-[var(--color-muted)] text-lg mb-12">The address may be old or mistyped. These are the pages people usually look for:</p>
+        <ul class="grid sm:grid-cols-2 gap-4">
+          {links.map(([href, label, note]) => (
+            <li>
+              <a href={href} class="block rounded-2xl border border-[var(--color-border)] bg-white px-6 py-5 hover:border-[var(--color-accent)] transition-colors">
+                <span class="block font-semibold">{label}</span>
+                <span class="block text-sm text-[var(--color-muted)] mt-1">{note}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer t={t} lang="en" />
+</Layout>

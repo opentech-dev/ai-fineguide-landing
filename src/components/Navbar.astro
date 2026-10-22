@@ -204,36 +204,7 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
     }
   });
 
-  // Check if user is authenticated and update nav buttons accordingly
-  (async () => {
-    const APP_URL = 'https://app.fineguide.ai';
-    const API_URL = `${APP_URL}/api/core`;
-
-    try {
-      const res = await fetch(`${API_URL}/auth/refresh`, {
-        method: 'GET',
-        credentials: 'include',
-      });
-
-      if (!res.ok) return;
-
-      const desktopBtn = document.getElementById('nav-auth-desktop') as HTMLAnchorElement | null;
-      const mobileBtn = document.getElementById('nav-auth-mobile') as HTMLAnchorElement | null;
-
-      [desktopBtn, mobileBtn].forEach((link) => {
-        if (!link) return;
-        const dashboardText = link.dataset.dashboardText || 'Dashboard';
-        link.href = APP_URL;
-        // Preserve child SVG icon (mobile button), only replace text node
-        const textNode = Array.from(link.childNodes).find((n) => n.nodeType === Node.TEXT_NODE);
-        if (textNode) {
-          textNode.textContent = dashboardText;
-        } else {
-          link.prepend(document.createTextNode(dashboardText));
-        }
-      });
-    } catch {
-      // Auth check failed silently - keep "Sign in" button
-    }
-  })();
+  // No signed-in check here: asking app.fineguide.ai/api/core/auth/refresh from this origin is refused by CORS on
+  // every page view (a console error and a failed request for every visitor), and "Sign in" already takes someone
+  // who is signed in straight to the app.
 </script>

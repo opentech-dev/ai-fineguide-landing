@@ -1,7 +1,7 @@
 ---
 /**
- * /blog/tag/<slug>/ — the posts under one tag, at the old blog's tag addresses. Kept out of search until it holds
- * TAG_INDEX_MIN posts: one post under a tag is a thin page.
+ * /blog/tag/<slug>/ — the posts under one tag, at the old blog's tag addresses. Kept out of search (its links still
+ * followed) unless blog.ts's indexedTags() takes it: enough posts, and not a list a topic or a fuller tag already shows.
  */
 import '../../../styles/blog.css';
 import Layout from '../../../layouts/Layout.astro';
@@ -11,7 +11,7 @@ import BlogHero from '../../../components/blog/BlogHero.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import BlogCta from '../../../components/blog/BlogCta.astro';
 import { useTranslations } from '../../../i18n/utils';
-import { blogCategories, blogTags, SITE, TAG_INDEX_MIN, tagPath } from '../../../blog';
+import { BLOG_FONTS, blogCategories, blogTags, indexedTags, SITE, tagPath } from '../../../blog';
 
 export async function getStaticPaths() {
   const [tags, categories] = await Promise.all([blogTags(), blogCategories()]);
@@ -30,7 +30,9 @@ const description = `Articles about ${label} from the Fineguide Blog.`;
   title={title}
   description={description}
   hreflang={false}
-  noindex={posts.length < TAG_INDEX_MIN}
+  stylesheets={[BLOG_FONTS]}
+  chat="on-demand"
+  noindex={!(await indexedTags()).has(label)}
   breadcrumb={[['/blog/', 'Blog'], [path, label]]}
   jsonLd={{
     '@context': 'https://schema.org',

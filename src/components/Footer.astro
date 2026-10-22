@@ -5,7 +5,9 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 
 const currentPath = Astro.url.pathname;
 const otherLang: Lang = lang === 'ro' ? 'en' : 'ro';
-const switchPath = switchLangPath(currentPath, otherLang);
+// The blog is in one language: from a post, the other language's door is its home page, not a /ro/blog/ address
+// that only redirects back.
+const switchPath = currentPath.startsWith('/blog') ? switchLangPath('/', otherLang) : switchLangPath(currentPath, otherLang);
 ---
 
 <footer class="border-t border-[var(--color-border)]/50 py-12 px-6">
