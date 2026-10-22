@@ -19,8 +19,9 @@ interface Props {
   article?: { publishedTime: string; modifiedTime: string; section?: string; tags?: string[]; author?: string };
   /** The page's own language when it is not the site's (a post in Russian). */
   contentLang?: string;
-  /** Pages with no Romanian twin (the blog) leave out the hreflang pair. */
-  hreflang?: boolean;
+  /** Pages with no Romanian twin (the blog) leave out the hreflang pair. A page with twins beyond en/ro (a
+      comparison's Russian copy) names the whole cluster, [lang, path] for each, English among them. */
+  hreflang?: boolean | Array<[lang: string, path: string]>;
   /** The breadcrumb under Home, when the page is deeper than one level. */
   breadcrumb?: Array<[path: string, label: string]>;
   /** Extra <link rel="alternate"> (the blog's feed, a post's Markdown copy). */
@@ -52,7 +53,7 @@ const CHATBOT_ID = 'b5b3f5f1-7d78-4bd2-93cd-3f3a8e6cde47';
 const SITE = 'https://fineguide.ai';
 const htmlLang = contentLang ?? (lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang);
 const ogLocale =
-  lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'en_US';
+  contentLang === 'ru' ? 'ru_RU' : lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'en_US';
 
 // Astro writes every route as `<path>/index.html`, so the served URL always has
 // a trailing slash. Canonical must match that exactly or it points at a URL that
@@ -71,6 +72,15 @@ const ogImageUrl = /^https?:\/\//.test(ogImage) ? ogImage : new URL(ogImage, SIT
 const withSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
 const enHref = new URL(withSlash(switchLangPath(path, 'en')), SITE).href;
 const roHref = new URL(withSlash(switchLangPath(path, 'ro')), SITE).href;
+
+const hreflangCluster: Array<[string, string]> = Array.isArray(hreflang)
+  ? [
+      ...hreflang.map(([l, p]): [string, string] => [l, new URL(p, SITE).href]),
+      ['x-default', new URL(hreflang.find(([l]) => l === 'en')![1], SITE).href],
+    ]
+  : hreflang
+    ? [['en', enHref], ['ro', roHref], ['x-default', enHref]]
+    : [];
 
 const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
@@ -137,9 +147,7 @@ const breadcrumbLd = isHome
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
 
     <link rel="canonical" href={canonical} />
-    {hreflang && <link rel="alternate" hreflang="en" href={enHref} />}
-    {hreflang && <link rel="alternate" hreflang="ro" href={roHref} />}
-    {hreflang && <link rel="alternate" hreflang="x-default" href={enHref} />}
+    {hreflangCluster.map(([l, href]) => <link rel="alternate" hreflang={l} href={href} />)}
     {alternates.map((a) => <link rel="alternate" type={a.type} href={a.href} title={a.title} />)}
 
     <meta property="og:type" content={article ? 'article' : 'website'} />
@@ -198,7 +206,7 @@ const breadcrumbLd = isHome
   </head>
   <body class="min-h-screen">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--color-primary)] focus:text-white focus:text-sm focus:font-semibold">
-      {htmlLang === 'en' ? 'Skip to content' : 'Sari la conținut'}
+      {htmlLang === 'ro' ? 'Sari la conținut' : htmlLang === 'ru' ? 'Перейти к содержанию' : 'Skip to content'}
     </a>
     <slot />
 

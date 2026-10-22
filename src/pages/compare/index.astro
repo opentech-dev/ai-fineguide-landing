@@ -1,0 +1,42 @@
+---
+import CompareHub from '../../components/compare/CompareHub.astro';
+import type { HubCopy } from '../../components/compare/types';
+
+const copy: HubCopy = {
+  title: 'Fineguide vs other CRMs: sourced, dated comparisons',
+  description: 'How Fineguide compares with Kommo, amoCRM, HubSpot, Pipedrive, Bitrix24, Odoo and Zoho CRM, with every price and term checked on the vendor’s page.',
+  h1: 'Fineguide vs other CRMs,',
+  h1Accent: 'fact by fact',
+  intro:
+    'These pages put Fineguide next to seven other CRMs, one at a time. Each one says where the other product is stronger, where Fineguide is, and who should choose which, with every competitor fact linked to the vendor’s own page.',
+  listHeading: 'The comparisons, A to Z',
+  methodHeading: 'How we compare',
+  method: [
+    {
+      term: 'Official sources only',
+      desc: 'Every competitor fact comes from the vendor’s pricing page or help centre, and each one is numbered and linked under its page.',
+    },
+    {
+      term: 'Dated, and re-checked monthly',
+      desc: 'We read every source on 21 October 2026. Vendors change prices and show different ones by country, so if the linked page disagrees with ours, the vendor’s page is right.',
+    },
+    {
+      term: 'Left out, never guessed',
+      desc: 'When a vendor page does not state something, the table says so instead of filling it in.',
+    },
+    {
+      term: 'No ranking',
+      desc: 'These are head-to-head pages, not a top-ten list. Each one has a plain “choose them if… choose Fineguide if…” section, and the other product often wins on some rows.',
+    },
+  ],
+  aboutHeading: 'What Fineguide is',
+  about:
+    'Fineguide.AI is an AI-first CRM and business-automation platform built in Chișinău, Moldova. It puts AI assistants on the website and in messaging apps, a CRM, a shared inbox with email, AI phone calls and outbound call campaigns, call-quality scoring and n8n automations on one customer record, so sales, support and call-centre teams see the same context. Plans run from €0 to €500 a month for the whole organization.',
+  closing: {
+    heading: 'Compare it on your own conversations',
+    body: 'Start on the Free plan, no card needed, or book a 30-minute walkthrough of Fineguide on your operation.',
+  },
+};
+---
+
+<CompareHub lang="en" copy={copy} />

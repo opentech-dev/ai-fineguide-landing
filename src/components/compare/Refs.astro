@@ -1,0 +1,14 @@
+---
+/** Footnote markers, "[1][3]", each linking to its line in the page's source list. */
+interface Props {
+  nums: number[];
+  tone?: 'light' | 'dark';
+}
+const { nums, tone = 'light' } = Astro.props as Props;
+const unique = [...new Set(nums)];
+---
+{unique.length > 0 && (
+  <sup class={`ml-1 whitespace-nowrap text-[0.7em] ${tone === 'dark' ? 'text-gray-400' : 'text-[var(--color-muted)]'}`}>
+    {unique.map((n) => <a href={`#source-${n}`} class="hover:underline">[{n}]</a>)}
+  </sup>
+)}

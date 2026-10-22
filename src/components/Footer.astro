@@ -6,8 +6,10 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 const currentPath = Astro.url.pathname;
 const otherLang: Lang = lang === 'ro' ? 'en' : 'ro';
 // The blog is in one language: from a post, the other language's door is its home page, not a /ro/blog/ address
-// that only redirects back.
-const switchPath = currentPath.startsWith('/blog') ? switchLangPath('/', otherLang) : switchLangPath(currentPath, otherLang);
+// that only redirects back. A Russian page (English chrome) has a Romanian twin at the same path without /ru.
+const switchPath = currentPath.startsWith('/blog')
+  ? switchLangPath('/', otherLang)
+  : switchLangPath(currentPath.replace(/^\/ru(?=\/)/, ''), otherLang);
 ---
 
 <footer class="border-t border-[var(--color-border)]/50 py-12 px-6">
@@ -39,6 +41,7 @@ const switchPath = currentPath.startsWith('/blog') ? switchLangPath('/', otherLa
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{t.footer.company}</p>
           <div class="flex flex-col gap-2">
             <a href={getLocalizedPath('/about', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.about}</a>
+            <a href={getLocalizedPath('/compare', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.compare}</a>
             <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.enterprise}</a>
             <a href={getLocalizedPath('/partners', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.partners}</a>
             <a href={getLocalizedPath('/schedule-demo', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.scheduleDemo}</a>

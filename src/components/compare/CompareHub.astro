@@ -1,0 +1,148 @@
+---
+/**
+ * The /compare/ hub: what Fineguide is, how the comparisons are made, and the list of them, alphabetically
+ * (no ranking). A comparison not yet published in the reader's language links to its English copy.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import ClosingCta from '../ClosingCta.astro';
+import { useTranslations, type Lang } from '../../i18n/utils';
+import { CHECKED, COMPARE_PAGES, comparePath, pick, type CompareLang } from '../../data/compare';
+import { LABELS } from './labels';
+import type { HubCopy } from './types';
+
+interface Props {
+  lang: CompareLang;
+  copy: HubCopy;
+}
+
+const { lang, copy } = Astro.props as Props;
+
+const SITE = 'https://fineguide.ai';
+const siteLang: Lang = lang === 'ru' ? 'en' : lang;
+const t = useTranslations(siteLang);
+const L = LABELS[lang];
+const path = comparePath(lang);
+const url = new URL(path, SITE).href;
+
+const items = COMPARE_PAGES.map((p) => ({
+  href: comparePath(lang, p.slug),
+  name: `Fineguide vs ${pick(p.label, lang)}`,
+  summary: pick(p.summary, lang),
+  translated: p.langs.includes(lang),
+}));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: copy.title,
+  url,
+  inLanguage: lang,
+  description: copy.description,
+  dateModified: CHECKED,
+  about: { '@type': 'SoftwareApplication', name: 'Fineguide', url: `${SITE}/`, applicationCategory: 'BusinessApplication' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      url: new URL(it.href, SITE).href,
+    })),
+  },
+};
+
+const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)] text-balance';
+---
+
+<Layout
+  title={copy.title}
+  description={copy.description}
+  lang={siteLang}
+  contentLang={lang === 'ru' ? 'ru' : undefined}
+  hreflang={(['en', 'ro', 'ru'] as const).map((l) => [l, comparePath(l)])}
+  jsonLd={jsonLd}
+  breadcrumb={[[path, L.crumb]]}
+>
+  <Navbar t={t} lang={siteLang} />
+
+  <main id="main-content">
+    <section class="pt-36 pb-16 md:pt-44 md:pb-24 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          {L.hubEyebrow}
+          <span aria-hidden="true"> · </span>
+          <time datetime={CHECKED}>{L.checkedOn}</time>
+        </p>
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)] text-balance">
+          {copy.h1}
+          <span class="text-[var(--color-primary)]">{copy.h1Accent}</span>
+        </h1>
+        <p class="mt-8 max-w-5xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed text-pretty">{copy.intro}</p>
+      </div>
+    </section>
+
+    <!-- The comparisons -->
+    <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{copy.listHeading}</h2>
+        <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {items.map((it) => (
+            <li>
+              <a
+                href={it.href}
+                class="card-hover block h-full rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 md:p-8"
+              >
+                <h3 class="text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">{it.name}</h3>
+                <p class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{it.summary}</p>
+                <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)]">
+                  {L.readComparison}{it.translated ? '' : L.englishOnly}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- How we compare (dark editorial break) -->
+    <section class="py-24 md:py-32 px-6 bg-[#0f1117] text-white dark-grain">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-balance">{copy.methodHeading}</h2>
+        <dl class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {copy.method.map((m) => (
+            <div class="border-t border-white/10 pt-5">
+              <dt class="text-xl md:text-2xl font-semibold tracking-tight text-white">{m.term}</dt>
+              <dd class="mt-3 text-base text-gray-300 leading-relaxed">{m.desc}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-14 max-w-3xl text-base text-gray-300 leading-relaxed">{L.correction}</p>
+      </div>
+    </section>
+
+    <!-- What Fineguide is -->
+    <section class="py-20 md:py-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{copy.aboutHeading}</h2>
+        <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">{copy.about}</p>
+      </div>
+    </section>
+
+    <ClosingCta
+      lang={siteLang}
+      rule
+      heading={copy.closing.heading}
+      body={copy.closing.body}
+      ctaPrimary={L.ctaPrimary}
+      ctaSecondary={L.ctaSecondary}
+    />
+  </main>
+
+  <Footer t={t} lang={siteLang} />
+</Layout>

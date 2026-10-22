@@ -1,0 +1,106 @@
+---
+import ComparePage from '../../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../../components/compare/types';
+
+const copy: CompareCopy = {
+  title: 'Fineguide vs HubSpot: alternativă HubSpot cu apeluri AI',
+  description: 'Alternativă HubSpot comparată punct cu punct: preț per loc, taxe de onboarding, agenți AI, WhatsApp, apeluri și limbi, verificate pe paginile HubSpot.',
+  crumb: 'HubSpot',
+  h1: 'Fineguide vs HubSpot:',
+  h1Accent: 'un preț pentru echipă, AI pe fiecare canal',
+  shortAnswer:
+    'HubSpot este platforma mai mare și mai matură: instrumente gratuite, peste 2.000 de integrări și agenți AI plătiți cu HubSpot Credits, cu preț per loc și taxă de onboarding obligatorie pe Professional și Enterprise. Fineguide este un CRM mai mic, construit pe AI, cu preț pe organizație, asistenți AI pe chat, email și apeluri în direct, evaluarea apelurilor cu Voice QA și suport în română. Alege HubSpot pentru ecosistem și marketing; alege Fineguide pentru conversațiile și apelurile cu clienții, pe o singură fișă, la un preț fix pentru echipă.',
+  tableHeading: 'HubSpot Sales Hub și Fineguide, rând cu rând',
+  competitorStronger: {
+    heading: 'Unde HubSpot este mai puternic',
+    items: [
+      { text: 'Ecosistem. HubSpot listează peste 2.000 de aplicații și servicii web care se integrează cu el. Lista nativă Fineguide e scurtă și se sprijină pe n8n pentru rest.', refs: ['hubspot:pricing', 'fg:fg-llms'] },
+      { text: 'Amploare. Sales Hub stă pe aceeași platformă cu uneltele de marketing, service, conținut și date, cu secvențe, prognoze, analiza parcursului tranzacțiilor și cont sandbox pe planurile superioare.', refs: ['hubspot:pricing'] },
+      { text: 'Apeluri și conversation intelligence proprii: apeluri de la Starter, transcriere și coaching pe Professional și Enterprise.', refs: ['hubspot:pricing'] },
+      { text: 'Mai mulți agenți AI de construit: Customer Agent lucrează pe chat, email, formulare și apeluri, iar Agent Builder îți permite să-ți faci agenți proprii.', refs: ['hubspot:pricing'] },
+      { text: 'Regiunea de găzduire la alegere: Statele Unite, Canada, Australia sau UE (Germania).', refs: ['hubspot:hosting'] },
+    ],
+  },
+  fineguideStronger: {
+    heading: 'Unde Fineguide este mai puternic',
+    items: [
+      { text: 'Un preț pentru toată echipa. Fineguide Business costă €200 pe lună pentru titular plus cinci colegi. Pe HubSpot, șase locuri Professional pornesc de la 6 × $90 = $540 pe lună, plus o taxă unică și obligatorie de onboarding de $1.500.', refs: ['fg:fg-pricing', 'hubspot:pricing'] },
+      { text: 'Fără taxă de onboarding și fără angajament anual. Fineguide nu are taxe de instalare și se plătește lunar sau anual; HubSpot Professional cere angajament anual.', refs: ['fg:fg-pricing', 'hubspot:pricing'] },
+      { text: 'WhatsApp fără un al doilea hub. Planurile Fineguide diferă doar prin credite, locuri și spațiul bazei de cunoștințe, așa că WhatsApp, Telegram, Instagram, Messenger, Slack și Discord vin cu fiecare dintre ele. Inboxul WhatsApp din HubSpot cere Marketing Hub sau Service Hub Professional ori Enterprise.', refs: ['fg:fg-llms', 'hubspot:whatsapp'] },
+      { text: 'AI pe propria centrală telefonică. Asistenții răspund la apeluri în direct, primite și efectuate, prin SIP-ul tău și derulează campanii (prospectare, sondaj, promoție), în 14 limbi, inclusiv română și rusă.', refs: ['fg:fg-voice-ai', 'fg:fg-campaigns'] },
+      { text: 'Evaluarea apelurilor după regulile tale. Voice QA notează fiecare apel înregistrat după regulile și ponderile fiecărui departament, cu citate și o sugestie pentru fiecare regulă și rapoarte în 30 de limbi; înregistrările pot veni singure de la Moldcell, Orange Moldova sau din aplicația Fineguide pentru Android.', refs: ['fg:fg-voice-qa', 'fg:fg-llms'] },
+      { text: 'Română și rusă. Cele 17 limbi de interfață HubSpot nu includ niciuna dintre ele. Interfața widgetului Fineguide și apelurile AI le acoperă pe amândouă, iar site-ul și suportul sunt în română.', refs: ['hubspot:languages', 'fg:fg-llms'] },
+    ],
+  },
+  choose: {
+    heading: 'Pe cine alegi',
+    competitor: {
+      label: 'Alege HubSpot dacă…',
+      items: [
+        'vrei automatizare de marketing, conținut și service pe aceeași platformă cu vânzările;',
+        'depinzi de aplicații dintr-un marketplace cu peste 2.000 de integrări;',
+        'trebuie să alegi regiunea de găzduire, de exemplu UE;',
+        'echipa lucrează într-una dintre cele 17 limbi de interfață HubSpot, iar bugetul acoperă locurile și onboardingul.',
+      ],
+    },
+    fineguide: {
+      label: 'Alege Fineguide dacă…',
+      items: [
+        'clienții îți scriu pe WhatsApp, Telegram sau Instagram și te și sună, iar tu vrei AI pe toate;',
+        'ai un call center și vrei ca fiecare apel înregistrat să fie evaluat;',
+        'vrei un preț pentru echipă, plată lunară și nicio taxă de onboarding;',
+        'ai clienți care vorbesc română sau rusă.',
+      ],
+    },
+  },
+  switching: {
+    heading: 'Cum treci de la HubSpot',
+    intro: 'Înregistrările vin într-un fișier tabelar, iar canalele se reconectează pe rând, așa că poți folosi ambele sisteme în paralel până când echipa e pregătită.',
+    steps: [
+      { title: 'Începe cu planul Free', body: 'Creează un cont Fineguide (fără card), dă-i unui asistent site-ul și documentele tale și testează-l în widgetul de chat.' },
+      { title: 'Exportă din HubSpot', body: { text: 'Din fiecare listă de contacte, companii sau tranzacții, folosește Export; HubSpot generează fișiere CSV sau XLSX.', refs: ['hubspot:export'] } },
+      { title: 'Importă în Fineguide', body: { text: 'Importă fișierele (CSV, TSV, XLS sau XLSX), potrivește coloanele cu câmpurile personalizate și verifică duplicatele: fiecare unire o confirmă un om.', refs: ['fg:fg-llms'] } },
+      { title: 'Conectează canalele și emailul', body: { text: 'Adaugă-ți căsuțele de email prin IMAP și SMTP, apoi WhatsApp, Telegram, Instagram sau Messenger, și distribuie conversațiile cu reguli și departamente.', refs: ['fg:fg-messages'] } },
+      { title: 'Refă automatizările', body: { text: 'Recreează fluxurile în n8n (găzduit de Fineguide sau propriul tău n8n) și dă-le asistenților acțiuni construite dintr-o comandă cURL.', refs: ['fg:fg-llms'] } },
+    ],
+  },
+  faq: [
+    {
+      q: 'Este Fineguide o alternativă la HubSpot pentru echipe mici?',
+      a: 'Pentru echipele a căror muncă este să vorbească cu clienții, da: înlocuiește CRM-ul, inboxul comun și AI-ul pe chat și la telefon. Nu înlocuiește uneltele de marketing și conținut ale HubSpot, așa că o echipă care se bazează pe ele ar trebui să țină cont de asta.',
+    },
+    {
+      q: 'HubSpot percepe o taxă de onboarding?',
+      a: 'Pe pagina de prețuri în dolari, citită pe 21 octombrie 2026, Professional are o taxă de onboarding unică și obligatorie de $1.500, iar Enterprise de $3.500; pentru Starter nu apare niciuna. Fineguide nu are taxe de instalare.',
+      refs: ['hubspot:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'HubSpot este disponibil în română?',
+      a: 'Nu ca limbă de interfață: HubSpot listează 17 limbi, iar româna și rusa nu sunt printre ele; apar doar ca limbi pentru crearea de conținut. Site-ul și suportul Fineguide sunt în română, iar interfața widgetului de chat include româna și rusa.',
+      refs: ['hubspot:languages', 'fg:fg-llms'],
+    },
+    {
+      q: 'Pot conecta WhatsApp la HubSpot Sales Hub?',
+      a: 'Baza de cunoștințe HubSpot spune că pentru conectarea WhatsApp la inbox ai nevoie de Marketing Hub sau Service Hub Professional ori Enterprise. În Fineguide, WhatsApp este un canal disponibil pe toate planurile.',
+      refs: ['hubspot:whatsapp', 'fg:fg-llms'],
+    },
+    {
+      q: 'Cum se compară HubSpot Credits cu creditele Fineguide?',
+      a: 'Ambele măsoară AI-ul în credite, dar unitățile diferă. HubSpot include 500, 3.000 sau 5.000 de credite pe Starter, Professional și Enterprise; Fineguide include 3.000, 8.000 sau 25.000 pe lună pe Starter, Business și Premium, unde un credit înseamnă un răspuns AI obișnuit. Compară munca pe care o aștepți de la AI, nu cifrele brute.',
+      refs: ['hubspot:pricing', 'fg:fg-pricing'],
+    },
+    {
+      q: 'Pot trece de la HubSpot la Fineguide fără să pierd date?',
+      a: 'Exportă contactele, companiile și tranzacțiile din HubSpot în CSV sau XLSX, apoi importă-le în CRM-ul Fineguide, care citește CSV, TSV, XLS și XLSX și cere confirmarea unui om pentru fiecare unire de duplicate.',
+      refs: ['hubspot:export', 'fg:fg-llms'],
+    },
+  ],
+  closing: {
+    heading: 'Vezi Fineguide pe conversațiile tale',
+    body: 'Începe cu planul Free, fără card, sau programează o prezentare de 30 de minute pe operațiunile tale.',
+  },
+  extraLinks: [{ href: '/ro/voice-ai/', label: 'Telefonia AI pe propria centrală' }],
+};
+---
+
+<ComparePage lang="ro" slug="hubspot" copy={copy} />
