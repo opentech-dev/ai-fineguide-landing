@@ -4,31 +4,30 @@ import type { CompareCopy } from '../../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs Zoho CRM: alternativă Zoho CRM cu AI',
-  description: 'Alternativă Zoho CRM comparată punct cu punct: ediții, nivelurile Zia AI, WhatsApp, apeluri, limbi și contracte, verificate pe paginile oficiale Zoho.',
+  description: 'Alternativă Zoho CRM comparată punct cu punct: Zia AI pe ediții, WhatsApp și mesagerii, apeluri, evaluarea lor și limbi, verificate pe paginile Zoho.',
   crumb: 'Zoho CRM',
   h1: 'Fineguide vs Zoho CRM:',
   h1Accent: 'asistenți AI pe fiecare plan',
   shortAnswer:
-    'Zoho CRM este un CRM matur și flexibil, cu cinci ediții, de la gratuit la Ultimate, fără contracte, cu 28 de limbi de interfață, inclusiv rusa, și centre de date în nouă regiuni; cea mai mare parte din AI-ul Zia este pe Enterprise și Ultimate. Fineguide este un CRM construit pe AI, în care asistenții de pe orice plan răspund pe chat, email și la telefon, iar Voice QA evaluează apelurile înregistrate, la un preț pe organizație. Zoho câștigă la amploare și personalizare; Fineguide la AI conversațional și apeluri.',
+    'Zoho CRM este un CRM matur și flexibil, cu 28 de limbi de interfață, inclusiv rusa, și centre de date în nouă regiuni; cea mai mare parte din AI-ul Zia este pe Enterprise și Ultimate. Fineguide este un CRM construit pe AI, în care asistenții de pe orice plan răspund pe chat, email și la telefon, iar Voice QA evaluează apelurile înregistrate. Zoho câștigă la amploare și personalizare; Fineguide la AI conversațional și apeluri.',
   tableHeading: 'Zoho CRM și Fineguide, rând cu rând',
   competitorStronger: {
     heading: 'Unde Zoho CRM este mai puternic',
     items: [
-      { text: 'Personalizare și procese: module personalizate, CPQ, portaluri pentru clienți, procese de aprobare, sandbox pentru dezvoltatori și criptare la nivel de câmp.', refs: ['zoho:pricing'] },
-      { text: 'Limbi: 28 de limbi de interfață, inclusiv rusa.', refs: ['zoho:pricing'] },
+      { text: 'Personalizare și procese: module personalizate, CPQ, portaluri pentru clienți, procese de aprobare, sandbox pentru dezvoltatori și criptare la nivel de câmp.', refs: ['zoho:plans'] },
+      { text: 'Limbi: 28 de limbi de interfață, inclusiv rusa.', refs: ['zoho:plans'] },
       { text: 'Centre de date în SUA, Europa, India, Australia, Japonia, Canada, Arabia Saudită, Emiratele Arabe Unite și Singapore.', refs: ['zoho:datacenters'] },
-      { text: 'O familie largă de produse și integrări: Bigin, Desk, Campaigns și CRM Plus, plus peste 100 de integrări de telefonie și PBX.', refs: ['zoho:pricing', 'zoho:comparison'] },
-      { text: 'Mai multe locuri gratuite: ediția gratuită primește 3 utilizatori, față de titular plus un coleg pe Fineguide Free.', refs: ['zoho:pricing', 'fg:fg-pricing'] },
+      { text: 'O familie largă de produse și integrări: Bigin, Desk, Campaigns și CRM Plus, plus peste 100 de integrări de telefonie și PBX.', refs: ['zoho:plans', 'zoho:comparison'] },
     ],
   },
   fineguideStronger: {
     heading: 'Unde Fineguide este mai puternic',
     items: [
-      { text: 'AI pentru clienți pe fiecare plan. Planurile Fineguide diferă doar prin credite, locuri și spațiul bazei de cunoștințe. Pagina de prețuri Zoho listează agenți AI de la Professional, iar comparația edițiilor bifează predicțiile, AI-ul conversațional și AI-ul pentru email din Zia la Enterprise și Ultimate.', refs: ['fg:fg-llms', 'zoho:pricing', 'zoho:comparison'] },
+      { text: 'AI pentru clienți pe fiecare plan. Planurile Fineguide diferă doar prin credite, colegii incluși și spațiul bazei de cunoștințe. Zoho listează agenți AI de la Professional, iar comparația edițiilor bifează predicțiile, AI-ul conversațional și AI-ul pentru email din Zia la Enterprise și Ultimate.', refs: ['fg:fg-llms', 'zoho:plans', 'zoho:comparison'] },
       { text: 'Mesagerie dincolo de WhatsApp, inclusă: Telegram, Instagram, Messenger, Slack, Discord și widgetul de pe site. Zoho CRM integrează singur WhatsApp, iar celelalte mesagerii vin prin aplicații din Marketplace.', refs: ['fg:fg-assistants', 'zoho:whatsapp', 'zoho:marketplace'] },
       { text: 'AI pe apeluri în direct, prin SIP-ul tău, în 14 limbi, și campanii de apeluri derulate de AI.', refs: ['fg:fg-voice-ai', 'fg:fg-campaigns'] },
       { text: 'Evaluarea calității apelurilor: Voice QA transcrie și notează fiecare apel înregistrat după regulile fiecărui departament, cu rapoarte în 30 de limbi.', refs: ['fg:fg-voice-qa'] },
-      { text: 'Româna. Cele 28 de limbi de interfață Zoho nu o includ; site-ul și suportul Fineguide sunt în română, iar interfața widgetului de chat include româna și rusa.', refs: ['zoho:pricing', 'fg:fg-llms'] },
+      { text: 'Româna. Cele 28 de limbi de interfață Zoho nu o includ; site-ul Fineguide este în română, engleză și rusă, suportul în română și engleză, iar interfața widgetului de chat include româna și rusa.', refs: ['zoho:plans', 'fg:fg-llms'] },
     ],
   },
   choose: {
@@ -65,24 +64,14 @@ const copy: CompareCopy = {
   },
   faq: [
     {
-      q: 'Zoho CRM este gratuit?',
-      a: 'Zoho CRM are o ediție gratuită pentru cel mult 3 utilizatori. Planul Free Fineguide acoperă titularul plus un coleg, cu 200 de credite oferite o singură dată pentru răspunsuri AI.',
-      refs: ['zoho:pricing', 'fg:fg-pricing'],
-    },
-    {
       q: 'Ce ediție Zoho CRM are Zia AI?',
-      a: 'Pagina de prețuri Zoho listează agenți AI de la Professional și AI extins pe Enterprise. În comparația edițiilor, rândurile Zia pentru predicții, AI conversațional și AI pentru email sunt bifate doar la Enterprise și Ultimate, iar unele funcții Zia merg doar în engleză.',
-      refs: ['zoho:pricing', 'zoho:comparison'],
+      a: 'Zoho listează agenți AI de la Professional și AI extins pe Enterprise. În comparația edițiilor, rândurile Zia pentru predicții, AI conversațional și AI pentru email sunt bifate doar la Enterprise și Ultimate, iar unele funcții Zia merg doar în engleză.',
+      refs: ['zoho:plans', 'zoho:comparison'],
     },
     {
       q: 'Zoho CRM are interfață în română?',
-      a: 'Zoho listează 28 de limbi de interfață, inclusiv rusa, dar nu și româna. Workspace-ul Fineguide este în engleză; site-ul și suportul sunt în română și engleză, iar interfața widgetului de chat există în 24 de limbi, inclusiv româna.',
-      refs: ['zoho:pricing', 'fg:fg-llms'],
-    },
-    {
-      q: 'Zoho CRM cere contract?',
-      a: 'Nu. Zoho spune că nu există contracte sau angajamente: plătești lunar sau anual și schimbi planul când ai nevoie. Și Fineguide se plătește lunar sau anual, fără taxe de instalare.',
-      refs: ['zoho:pricing', 'fg:fg-pricing'],
+      a: 'Zoho listează 28 de limbi de interfață, inclusiv rusa, dar nu și româna. Workspace-ul Fineguide este în engleză; site-ul este în română, engleză și rusă, suportul în română și engleză, iar interfața widgetului de chat există în 24 de limbi, inclusiv româna.',
+      refs: ['zoho:plans', 'fg:fg-llms'],
     },
     {
       q: 'Zoho CRM se poate conecta la WhatsApp și Telegram?',

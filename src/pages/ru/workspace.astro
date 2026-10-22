@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import Band from '../../components/Band.astro';
+import EditorialRows from '../../components/EditorialRows.astro';
+import RuleList from '../../components/RuleList.astro';
+import ClosingCta from '../../components/ClosingCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const p = t.workspacePage;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Fineguide Workspace',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: p.meta.description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+};
+---
+
+<Layout title={p.meta.title} description={p.meta.description} lang={lang} jsonLd={jsonLd}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
+      <figure class="panel-frame">
+        <img
+          src="/images/screenshots/workspace-blocknote.png"
+          alt={p.intro.screenshotAlt}
+          width="2390"
+          height="1354"
+          class="w-full h-auto block"
+          loading="eager"
+        />
+      </figure>
+    </PageHero>
+
+    <Band tone="dark" eyebrow={p.editor.eyebrow} heading={p.editor.heading} body={p.editor.body}>
+      <EditorialRows
+        variant="dark"
+        columns={3}
+        items={p.editor.blocks.map((b) => ({ term: b.title, desc: b.body }))}
+      />
+    </Band>
+
+    {/* "Connected" was a band of its own holding one paragraph. It is the point
+        the structure list builds to, so it closes that band instead. */}
+    <Band tone="tint" eyebrow={p.structure.eyebrow} heading={p.structure.heading} body={p.structure.body}>
+      <RuleList items={p.structure.bullets} />
+      <div class="mt-16 grid gap-6 md:grid-cols-[minmax(150px,200px)_1fr] md:gap-x-10">
+        <p class="eyebrow pt-2">{p.connected.eyebrow}</p>
+        <div>
+          <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)] text-balance">
+            {p.connected.heading}
+          </h3>
+          <p class="mt-4 max-w-3xl text-lg text-[var(--color-muted)] leading-relaxed text-pretty">
+            {p.connected.body}
+          </p>
+        </div>
+      </div>
+    </Band>
+
+    <ClosingCta lang={lang} {...p.finalCta} />
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>

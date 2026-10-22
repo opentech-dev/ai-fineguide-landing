@@ -1,12 +1,15 @@
 ---
 /**
  * The /compare/ hub: what Fineguide is, how the comparisons are made, and the list of them, alphabetically
- * (no ranking). A comparison not yet published in the reader's language links to its English copy.
+ * (no ranking). Published in English, Romanian and Russian, each with its own site chrome; Layout names the
+ * en/ro/ru twins as the page's hreflang cluster. No competitor prices (see src/data/compare.ts); the one
+ * line about Fineguide's own plans comes from PlansLine.astro.
  */
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 import ClosingCta from '../ClosingCta.astro';
+import PlansLine from './PlansLine.astro';
 import { useTranslations, type Lang } from '../../i18n/utils';
 import { CHECKED, COMPARE_PAGES, comparePath, pick, type CompareLang } from '../../data/compare';
 import { LABELS } from './labels';
@@ -20,7 +23,7 @@ interface Props {
 const { lang, copy } = Astro.props as Props;
 
 const SITE = 'https://fineguide.ai';
-const siteLang: Lang = lang === 'ru' ? 'en' : lang;
+const siteLang: Lang = lang;
 const t = useTranslations(siteLang);
 const L = LABELS[lang];
 const path = comparePath(lang);
@@ -30,7 +33,6 @@ const items = COMPARE_PAGES.map((p) => ({
   href: comparePath(lang, p.slug),
   name: `Fineguide vs ${pick(p.label, lang)}`,
   summary: pick(p.summary, lang),
-  translated: p.langs.includes(lang),
 }));
 
 const jsonLd = {
@@ -61,8 +63,6 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
   title={copy.title}
   description={copy.description}
   lang={siteLang}
-  contentLang={lang === 'ru' ? 'ru' : undefined}
-  hreflang={(['en', 'ro', 'ru'] as const).map((l) => [l, comparePath(l)])}
   jsonLd={jsonLd}
   breadcrumb={[[path, L.crumb]]}
 >
@@ -98,7 +98,7 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
                 <h3 class="text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">{it.name}</h3>
                 <p class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{it.summary}</p>
                 <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)]">
-                  {L.readComparison}{it.translated ? '' : L.englishOnly}
+                  {L.readComparison}
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
@@ -131,6 +131,7 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
       <div class="max-w-7xl mx-auto">
         <h2 class={h2}>{copy.aboutHeading}</h2>
         <p class="mt-6 max-w-5xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">{copy.about}</p>
+        <PlansLine lang={lang} class="mt-6" />
       </div>
     </section>
 

@@ -5,25 +5,28 @@
  * file passes its own copy. Sections run in the order answer engines quote them: short answer, table,
  * where they are stronger, where Fineguide is stronger, who should choose which, switching, FAQ, sources.
  *
- * Russian pages render with the English site chrome (there is no /ru/ locale yet) and their own
- * contentLang. A comparison published in Russian names all three copies as one hreflang cluster.
+ * The table compares capabilities only: no competitor prices, by the owner's decision (see the header of
+ * src/data/compare.ts). Under it, one line states Fineguide's own plans (PlansLine.astro).
+ *
+ * Every comparison is published in English, Romanian and Russian, each with its own site chrome; Layout
+ * names the en/ro/ru twins as the page's hreflang cluster.
  */
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 import ClosingCta from '../ClosingCta.astro';
 import Refs from './Refs.astro';
+import PlansLine from './PlansLine.astro';
 import { useTranslations, type Lang } from '../../i18n/utils';
 import {
   CHECKED,
   COMPARE_PAGES,
   COMPETITORS,
+  FINEGUIDE_FACTS as fg,
   FINEGUIDE_SOURCES,
   ROW_ORDER,
   comparePath,
-  fineguideFacts,
   pick,
-  planList,
   sitePath,
   type CompareLang,
   type Fact,
@@ -40,18 +43,18 @@ interface Props {
 const { lang, slug, copy } = Astro.props as Props;
 
 const SITE = 'https://fineguide.ai';
-const siteLang: Lang = lang === 'ru' ? 'en' : lang;
+const siteLang: Lang = lang;
 const t = useTranslations(siteLang);
 const L = LABELS[lang];
 
 const page = COMPARE_PAGES.find((p) => p.slug === slug);
 if (!page) throw new Error(`Unknown comparison "${slug}": add it to COMPARE_PAGES in src/data/compare.ts`);
 const rivals = page.competitors.map((id) => COMPETITORS[id]);
-const fg = fineguideFacts(lang);
 const path = comparePath(lang, slug);
 const url = new URL(path, SITE).href;
 
-// One numbered list of sources for the whole page: the competitors' pages first, then Fineguide's own.
+// One numbered list of sources for the whole page: the competitors' pages first, then Fineguide's own (those
+// that the table or this page's copy cites).
 type Footnote = { key: string; n: number; title: string; url: string; external: boolean };
 const footnotes: Footnote[] = [];
 for (const r of rivals) {
@@ -59,7 +62,16 @@ for (const r of rivals) {
     footnotes.push({ key: `${r.id}:${s.id}`, n: footnotes.length + 1, title: s.title, url: s.url, external: true });
   }
 }
-const fgUsed = new Set(ROW_ORDER.flatMap((k) => fg[k].src));
+const copyRefs = [
+  ...[...copy.competitorStronger.items, ...copy.fineguideStronger.items, ...copy.switching.steps.map((s) => s.body)].flatMap(
+    (l) => (typeof l === 'string' ? [] : l.refs),
+  ),
+  ...copy.faq.flatMap((f) => f.refs ?? []),
+];
+const fgUsed = new Set([
+  ...ROW_ORDER.flatMap((k) => fg[k].src),
+  ...copyRefs.filter((k) => k.startsWith('fg:')).map((k) => k.slice(3)),
+]);
 for (const s of FINEGUIDE_SOURCES) {
   if (!fgUsed.has(s.id)) continue;
   footnotes.push({
@@ -91,7 +103,7 @@ const productLinks = [
 ];
 const otherComparisons = COMPARE_PAGES.filter((p) => p.slug !== slug).map((p) => ({
   href: comparePath(lang, p.slug),
-  label: `Fineguide vs ${pick(p.label, lang)}${p.langs.includes(lang) ? '' : L.englishOnly}`,
+  label: `Fineguide vs ${pick(p.label, lang)}`,
 }));
 
 const jsonLd = [
@@ -139,8 +151,6 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
   title={copy.title}
   description={copy.description}
   lang={siteLang}
-  contentLang={lang === 'ru' ? 'ru' : undefined}
-  hreflang={page.langs.includes('ru') ? page.langs.map((l) => [l, comparePath(l, slug)]) : true}
   jsonLd={jsonLd}
   breadcrumb={[
     [comparePath(lang), L.crumb],
@@ -198,7 +208,6 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
                     const f = r.facts[key];
                     return (
                       <td role="cell" data-label={r.name} class="py-5 pr-6 text-sm leading-relaxed text-[var(--color-foreground)]">
-                        {key === 'plans' && <span class="block mb-1 font-medium">{planList(r, lang)}</span>}
                         {f ? (
                           <>
                             {pick(f, lang)}
@@ -215,6 +224,7 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
             </tbody>
           </table>
         </div>
+        <PlansLine lang={lang} class="mt-10" />
       </div>
     </section>
 

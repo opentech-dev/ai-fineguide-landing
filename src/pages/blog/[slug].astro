@@ -14,7 +14,8 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import BlogCta from '../../components/blog/BlogCta.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getLocalizedPath, LANGS, useTranslations, type Lang } from '../../i18n/utils';
+import { FOUNDER, founderRef } from '../../data/people';
 import { absolute, BLOG_FONTS, blogPosts, categoryPath, longDate, relatedTo, SITE, tagPath, type RenderedPost } from '../../blog';
 
 export async function getStaticPaths() {
@@ -36,6 +37,10 @@ const related = relatedTo(post, all);
 const topic = post.categories[0];
 const updated = post.updatedAt.slice(0, 10) !== post.publishedAt.slice(0, 10);
 const initial = post.author.replace(/^The\s+/i, '').charAt(0).toUpperCase();
+// The founder's byline links to his profile, in the post's language where the site has one.
+const authorPath = post.author === FOUNDER.name
+  ? getLocalizedPath(FOUNDER.path, (LANGS as string[]).includes(post.lang) ? (post.lang as Lang) : 'en')
+  : undefined;
 ---
 
 <Layout
@@ -46,7 +51,7 @@ const initial = post.author.replace(/^The\s+/i, '').charAt(0).toUpperCase();
   hreflang={false}
   stylesheets={[BLOG_FONTS]}
   chat="on-demand"
-  article={{ publishedTime: post.publishedAt, modifiedTime: post.updatedAt, section: topic, tags: post.tags, author: post.author }}
+  article={{ publishedTime: post.publishedAt, modifiedTime: post.updatedAt, section: topic, tags: post.tags, author: authorPath ? absolute(authorPath) : post.author }}
   breadcrumb={[['/blog/', 'Blog'], ...(topic ? [[categoryPath(topic), topic] as [string, string]] : []), [post.path, post.title]]}
   alternates={[
     { type: 'text/markdown', href: `${post.path.replace(/\/$/, '')}.md`, title: `${post.title} (Markdown)` },
@@ -64,7 +69,7 @@ const initial = post.author.replace(/^The\s+/i, '').charAt(0).toUpperCase();
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     ...(cover ? { image: { '@type': 'ImageObject', url: cover, ...(post.coverAlt ? { caption: post.coverAlt } : {}) }, thumbnailUrl: cover } : {}),
-    author: post.author === 'The Fineguide team' ? { '@type': 'Organization', name: 'Fineguide.ai', url: SITE } : { '@type': 'Person', name: post.author },
+    author: authorPath ? founderRef : post.author === 'The Fineguide team' ? { '@type': 'Organization', name: 'Fineguide.ai', url: SITE } : { '@type': 'Person', name: post.author },
     publisher: { '@type': 'Organization', name: 'Fineguide.ai', url: SITE, logo: { '@type': 'ImageObject', url: `${SITE}/images/fineguide-logo.png` } },
     isPartOf: { '@id': `${SITE}/blog/#blog` },
     inLanguage: post.lang,
@@ -89,7 +94,7 @@ const initial = post.author.replace(/^The\s+/i, '').charAt(0).toUpperCase();
           <div class="b-byline">
             <span class="b-avatar" aria-hidden="true">{initial}</span>
             <span>
-              <b>{post.author}</b>
+              {authorPath ? <a href={authorPath} rel="author" class="b-author"><b>{post.author}</b></a> : <b>{post.author}</b>}
               <span class="b-meta">
                 <time datetime={post.publishedAt}>{longDate(post.publishedAt)}</time>
                 <span>{post.minutes} min read</span>

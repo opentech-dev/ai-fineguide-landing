@@ -125,7 +125,7 @@ export function planTokens(i: number): Record<string, Money> {
  */
 export function formatAmount(n: number, lang: string): string {
   if (!Number.isInteger(n)) throw new Error(`Price ${n} has cents; round it in src/data/pricing.ts`);
-  return n.toLocaleString(lang === 'ro' ? 'de-DE' : 'en-US', { maximumFractionDigits: 0 });
+  return n.toLocaleString(lang === 'ro' ? 'de-DE' : lang === 'ru' ? 'ru-RU' : 'en-US', { maximumFractionDigits: 0 });
 }
 
 /** Split "Then {seat1} per person" into text and token parts. */

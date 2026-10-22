@@ -1,17 +1,22 @@
 import { en } from './en';
 import { ro } from './ro';
+import { ru } from './ru';
 
-export type Lang = 'en' | 'ro';
+export type Lang = 'en' | 'ro' | 'ru';
+/** Every language the site is published in; English lives at the root, the others under /ro/ and /ru/. */
+export const LANGS: Lang[] = ['en', 'ro', 'ru'];
+export const LANG_NAMES: Record<Lang, string> = { en: 'English', ro: 'Română', ru: 'Русский' };
 import type { Translations } from './types';
 export type { Translations };
 
 /** Set to `false` when `ro.ts` holds real Romanian copy again (not re-exporting `en`). */
 export const RO_LOCALE_MIRRORS_ENGLISH = false;
 
-const translations: Record<Lang, Translations> = { en, ro };
+const translations: Record<Lang, Translations> = { en, ro, ru };
+const PREFIX = /^\/(ro|ru)(?=\/|$)/;
 
 export function getLangFromUrl(url: URL): Lang {
-  return url.pathname.startsWith('/ro') ? 'ro' : 'en';
+  return (url.pathname.match(PREFIX)?.[1] as Lang | undefined) ?? 'en';
 }
 
 export function useTranslations(lang: Lang): Translations {
@@ -30,11 +35,11 @@ function withSlash(path: string): string {
 }
 
 export function getLocalizedPath(path: string, lang: Lang): string {
-  const clean = path.replace(/^\/ro(?=\/|$)/, '') || '/';
-  return withSlash(lang === 'ro' ? `/ro${clean === '/' ? '/' : clean}` : clean);
+  const clean = path.replace(PREFIX, '') || '/';
+  return withSlash(lang === 'en' ? clean : `/${lang}${clean}`);
 }
 
+/** The same page in another language: /ro/crm/ → /ru/crm/. */
 export function switchLangPath(currentPath: string, targetLang: Lang): string {
-  const stripped = currentPath.replace(/^\/ro(?=\/|$)/, '') || '/';
-  return withSlash(targetLang === 'ro' ? `/ro${stripped === '/' ? '/' : stripped}` : stripped);
+  return getLocalizedPath(currentPath, targetLang);
 }

@@ -1,0 +1,132 @@
+---
+// The founder's profile, and the author page every blog byline links to. Only what the owner states (the About
+// page's founder facts), the companies, and his articles — no biography beyond that. The same page lives under /ro/
+// and /ru/; tesseract.dev has its twin, and each names the other in `sameAs` (src/data/people.ts).
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import type { Lang } from '../../../i18n/utils';
+import { FOUNDER } from '../../../data/people';
+import { blogPosts, absolute } from '../../../blog';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const f = t.founderPage;
+const SITE = 'https://fineguide.ai';
+const path = getLocalizedPath(FOUNDER.path, lang);
+const url = new URL(path, SITE).href;
+
+const posts = (await blogPosts()).filter((p) => p.author === FOUNDER.name);
+const locale = { en: 'en-US', ro: 'ro-RO', ru: 'ru-RU' }[lang];
+const date = (iso: string) =>
+  new Date(iso).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+// A profile page (schema.org ProfilePage) whose main entity is the person; the Organization's `founder` and every
+// post's `author` point at the same @id.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  url,
+  name: t.founderMeta.title,
+  inLanguage: lang,
+  description: t.founderMeta.description,
+  mainEntity: {
+    '@type': 'Person',
+    '@id': FOUNDER.id,
+    name: FOUNDER.name,
+    url: new URL(FOUNDER.path, SITE).href,
+    jobTitle: f.role,
+    worksFor: { '@id': `${SITE}/#org` },
+    sameAs: [...FOUNDER.sameAs],
+    subjectOf: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: absolute(p.path) })),
+  },
+};
+---
+
+<Layout
+  title={t.founderMeta.title}
+  description={t.founderMeta.description}
+  lang={lang}
+  jsonLd={jsonLd}
+  breadcrumb={[
+    [getLocalizedPath('/about', lang), t.footer.about],
+    [path, FOUNDER.name],
+  ]}
+>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <!-- Who he is -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-24 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          <a href={getLocalizedPath('/about', lang)} class="hover:underline">{t.footer.about}</a>
+          <span aria-hidden="true"> · </span>{f.eyebrow}
+        </p>
+        <div class="flex items-center gap-5 md:gap-7">
+          <span
+            class="flex-none grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-[var(--color-primary)] text-white font-[var(--font-display)] text-2xl md:text-4xl font-semibold"
+            aria-hidden="true">LM</span
+          >
+          <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)]">
+            {FOUNDER.name}
+          </h1>
+        </div>
+        <p class="mt-6 text-lg md:text-xl font-medium text-[var(--color-primary)]">{f.role}</p>
+        <p class="mt-6 max-w-4xl text-xl md:text-2xl text-[var(--color-muted)] leading-relaxed">{f.body}</p>
+      </div>
+    </section>
+
+    <!-- The companies -->
+    <section class="py-20 md:py-24 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">{f.companiesHeading}</h2>
+        <ul class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {f.companies.map((c) => (
+            <li class="rounded-xl border border-[var(--color-border)] bg-white px-6 py-6">
+              <a href={c.href} class="text-lg font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{c.name}</a>
+              <p class="mt-2 text-base text-[var(--color-muted)] leading-relaxed">{c.desc}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+          {[
+            { href: FOUNDER.linkedin, label: 'LinkedIn' },
+            { href: FOUNDER.tesseract, label: f.elsewhere },
+          ].map((l) => (
+            <a href={l.href} rel="me" class="inline-flex items-center gap-1.5 text-base font-semibold text-[var(--color-primary)] hover:underline">
+              {l.label}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          ))}
+        </p>
+      </div>
+    </section>
+
+    <!-- His articles -->
+    {posts.length > 0 && (
+      <section class="py-20 md:py-24 px-6 border-t border-[var(--color-border)]/60">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">{f.articlesHeading}</h2>
+          <p class="mt-4 max-w-3xl text-lg text-[var(--color-muted)] leading-relaxed">{f.articlesNote}</p>
+          <ol class="mt-10 max-w-4xl divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+            {posts.map((p) => (
+              <li class="py-5">
+                <a href={p.path} lang={p.lang} class="text-lg md:text-xl font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{p.title}</a>
+                <p class="mt-1.5 text-sm text-[var(--color-muted)]">
+                  <time datetime={p.publishedAt}>{date(p.publishedAt)}</time>
+                  <span aria-hidden="true"> · </span>{p.minutes} {f.minRead}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>

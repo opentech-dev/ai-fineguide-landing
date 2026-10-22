@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import EditorialHero from '../../components/EditorialHero.astro';
+import OverviewIntro from '../../components/OverviewIntro.astro';
+import ModuleSpread from '../../components/ModuleSpread.astro';
+import VoiceSpread from '../../components/VoiceSpread.astro';
+import CampaignsSpread from '../../components/CampaignsSpread.astro';
+import ConversationsSpread from '../../components/ConversationsSpread.astro';
+import WorkspaceAndAutomations from '../../components/WorkspaceAndAutomations.astro';
+import InlineNumbers from '../../components/InlineNumbers.astro';
+import Industries from '../../components/Industries.astro';
+import IntegrationsRibbon from '../../components/IntegrationsRibbon.astro';
+import SecurityStrip from '../../components/SecurityStrip.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout title={t.indexMeta.title} description={t.indexMeta.description} lang={lang}>
+  <Navbar t={t} lang={lang} />
+  <main id="main-content">
+    <EditorialHero t={t} lang={lang} />
+    <OverviewIntro t={t} />
+    <ModuleSpread
+      spread={t.assistantsSpread}
+      image="/images/screenshots/assistants-analytics.png"
+      imageWidth={2880}
+      imageHeight={1454}
+      linkHref={getLocalizedPath('/ai-assistants', lang)}
+      linkLabel={t.moduleLinks.assistants}
+    />
+    <ModuleSpread
+      spread={t.crmSpread}
+      tinted={true}
+      linkHref={getLocalizedPath('/crm', lang)}
+      linkLabel={t.moduleLinks.crm}
+    />
+    <ConversationsSpread t={t} lang={lang} />
+    <VoiceSpread t={t} />
+    <CampaignsSpread t={t} lang={lang} />
+    <WorkspaceAndAutomations t={t} lang={lang} />
+    <InlineNumbers t={t} />
+    <Industries t={t} />
+    <IntegrationsRibbon t={t} />
+    <SecurityStrip t={t} lang={lang} />
+    <FinalCta t={t} lang={lang} />
+  </main>
+  <Footer t={t} lang={lang} />
+</Layout>

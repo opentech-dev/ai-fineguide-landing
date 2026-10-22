@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
-import { RO_LOCALE_MIRRORS_ENGLISH, switchLangPath, type Lang } from '../i18n/utils';
+import { LANGS, RO_LOCALE_MIRRORS_ENGLISH, getLocalizedPath, switchLangPath, type Lang } from '../i18n/utils';
 import CookieConsent from '../components/CookieConsent.astro';
+import { founderRef } from '../data/people';
 
 interface Props {
   title: string;
@@ -19,8 +20,8 @@ interface Props {
   article?: { publishedTime: string; modifiedTime: string; section?: string; tags?: string[]; author?: string };
   /** The page's own language when it is not the site's (a post in Russian). */
   contentLang?: string;
-  /** Pages with no Romanian twin (the blog) leave out the hreflang pair. A page with twins beyond en/ro (a
-      comparison's Russian copy) names the whole cluster, [lang, path] for each, English among them. */
+  /** Every site page has an English, Romanian and Russian copy and names all three; the blog, in one language,
+      leaves the cluster out. A page whose copies sit at other paths names them, [lang, path] each, English among them. */
   hreflang?: boolean | Array<[lang: string, path: string]>;
   /** The breadcrumb under Home, when the page is deeper than one level. */
   breadcrumb?: Array<[path: string, label: string]>;
@@ -52,8 +53,8 @@ const CHATBOT_ID = 'b5b3f5f1-7d78-4bd2-93cd-3f3a8e6cde47';
 
 const SITE = 'https://fineguide.ai';
 const htmlLang = contentLang ?? (lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en' : lang);
-const ogLocale =
-  contentLang === 'ru' ? 'ru_RU' : lang === 'ro' && RO_LOCALE_MIRRORS_ENGLISH ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'en_US';
+const OG_LOCALES: Record<string, string> = { en: 'en_US', ro: 'ro_RO', ru: 'ru_RU' };
+const ogLocale = OG_LOCALES[htmlLang] ?? 'en_US';
 
 // Astro writes every route as `<path>/index.html`, so the served URL always has
 // a trailing slash. Canonical must match that exactly or it points at a URL that
@@ -70,8 +71,7 @@ const ogImageUrl = /^https?:\/\//.test(ogImage) ? ogImage : new URL(ogImage, SIT
 // names a different URL than the canonical is self-contradictory, so normalise
 // both alternates the same way the canonical is normalised.
 const withSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
-const enHref = new URL(withSlash(switchLangPath(path, 'en')), SITE).href;
-const roHref = new URL(withSlash(switchLangPath(path, 'ro')), SITE).href;
+const langHref = (l: Lang) => new URL(withSlash(switchLangPath(path, l)), SITE).href;
 
 const hreflangCluster: Array<[string, string]> = Array.isArray(hreflang)
   ? [
@@ -79,7 +79,7 @@ const hreflangCluster: Array<[string, string]> = Array.isArray(hreflang)
       ['x-default', new URL(hreflang.find(([l]) => l === 'en')![1], SITE).href],
     ]
   : hreflang
-    ? [['en', enHref], ['ro', roHref], ['x-default', enHref]]
+    ? [...LANGS.map((l): [string, string] => [l, langHref(l)]), ['x-default', langHref('en')]]
     : [];
 
 const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -98,7 +98,7 @@ const organizationLd = {
   logo: { '@type': 'ImageObject', url: `${SITE}/images/fineguide-mark-512.png`, width: 512, height: 512 },
   description:
     'Fineguide.AI is an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, a CRM, a shared inbox with email, AI phone calls and outbound call campaigns, and call-quality scoring.',
-  founder: { '@type': 'Person', name: 'Liviu Maftuleac' },
+  founder: founderRef,
   address: { '@type': 'PostalAddress', addressLocality: 'Chișinău', addressCountry: 'MD' },
   contactPoint: [
     { '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@fineguide.ai', telephone: '+373-60-419-281', availableLanguage: ['en', 'ro'] },
@@ -109,11 +109,12 @@ const organizationLd = {
 // breadcrumb is fully derivable and no page has to hand-write one. The leaf
 // label is the title up to the first separator, which is how these titles are
 // already written ("CRM | … | Fineguide.ai").
-const isHome = path === '/' || path === '/ro/';
-// The site itself, on its two home pages (where Google looks for it).
+const isHome = path === '/' || path === '/ro/' || path === '/ru/';
+// The site itself, on its home pages (where Google looks for it).
 const websiteLd = isHome
   ? { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: 'Fineguide.AI', inLanguage: lang, publisher: { '@id': `${SITE}/#org` } }
   : null;
+const askLabel = { en: 'Ask Fineguide', ro: 'Întreabă Fineguide', ru: 'Спросить Fineguide' }[htmlLang] ?? 'Ask Fineguide';
 // The standard share card is 1200 × 630; any other image (a post's cover) says nothing it cannot back up.
 const defaultCard = ogImage === '/images/og-default.png';
 const leafLabel = title.split('|')[0].trim();
@@ -128,7 +129,7 @@ const breadcrumbLd = isHome
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: new URL(lang === 'ro' ? '/ro/' : '/', SITE).href,
+          item: new URL(getLocalizedPath('/', lang), SITE).href,
         },
         ...trail.map(([p, name], i) => ({ '@type': 'ListItem', position: i + 2, name, item: new URL(p, SITE).href })),
       ],
@@ -206,16 +207,16 @@ const breadcrumbLd = isHome
   </head>
   <body class="min-h-screen">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--color-primary)] focus:text-white focus:text-sm focus:font-semibold">
-      {htmlLang === 'ro' ? 'Sari la conținut' : htmlLang === 'ru' ? 'Перейти к содержанию' : 'Skip to content'}
+      {{ en: 'Skip to content', ro: 'Sari la conținut', ru: 'Перейти к содержанию' }[htmlLang] ?? 'Skip to content'}
     </a>
     <slot />
 
     <CookieConsent lang={lang} />
 
     {chat === 'on-demand' && (
-      <button type="button" id="fg-ask" class="fg-ask" aria-label={htmlLang === 'ro' ? 'Întreabă Fineguide' : 'Ask Fineguide'}>
+      <button type="button" id="fg-ask" class="fg-ask" aria-label={askLabel}>
         <svg viewBox="0 0 2180 2171" aria-hidden="true"><path d="M980.811 44.4505C1040.2 -14.8097 1136.37 -14.8179 1195.76 44.4323L1270.64 119.128L1453 301.054L1261.04 492.631L1088.28 320.267L320.646 1086.3L608.532 1373.57L992.347 990.514L1184.3 1182.09L800.391 1565.06L973.159 1737.42L781.208 1929L44.6354 1193.9C-14.8797 1134.5 -14.8782 1038.1 44.6384 978.71L980.811 44.4505Z" fill="#fff" /><path d="M1106.87 873.625L1299.56 1065.2L1569.3 797.054L1858.3 1084.32L895 2041.9L980.357 2126.76C1039.69 2185.74 1135.53 2185.74 1194.86 2126.77L2135.15 1192.12C2194.95 1132.68 2194.95 1035.96 2135.15 976.509L1569.3 414L1106.87 873.625Z" fill="#c4b5fd" /></svg>
-        <span>{htmlLang === 'ro' ? 'Întreabă Fineguide' : 'Ask Fineguide'}</span>
+        <span>{askLabel}</span>
       </button>
       <style is:inline>
         .fg-ask { position: fixed; right: 20px; bottom: 20px; z-index: 2147483000; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 10px 12px; border: 1px solid rgba(196, 181, 253, 0.35); border-radius: 999px; background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; font: 600 14px/1 Inter, system-ui, sans-serif; box-shadow: 0 12px 30px -10px rgba(76, 29, 149, 0.7); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
@@ -258,8 +259,9 @@ const breadcrumbLd = isHome
     </script>
 
     {/* No client-side language redirect: Google renders pages with an English browser, so a script that sends
-        anyone off /ro/ hid the whole Romanian site from search. Apache sends a first visit to "/" from Moldova or
-        Romania to /ro/ (apache/fineguide.conf); the footer's language switch is a plain link. */}
+        anyone off /ro/ hid the whole Romanian site from search. Apache sends a first visit to "/" to /ru/ when the
+        browser's first language is Russian, else to /ro/ from Moldova or Romania (apache/fineguide.conf); the
+        footer's language switch is a plain link. */}
 
   </body>
 </html>

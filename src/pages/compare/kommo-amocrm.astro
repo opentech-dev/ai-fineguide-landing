@@ -4,35 +4,31 @@ import type { CompareCopy } from '../../components/compare/types';
 
 const copy: CompareCopy = {
   title: 'Fineguide vs Kommo and amoCRM: an AI-first alternative',
-  description: 'A Kommo and amoCRM alternative, compared fact by fact: prices, AI agents, channels, phone calls and billing terms, checked on vendor pages.',
+  description: 'A Kommo and amoCRM alternative, compared fact by fact: AI agents, messaging channels, phone calls, call scoring and languages, checked on vendor pages.',
   crumb: 'Kommo and amoCRM',
   h1: 'Fineguide vs Kommo and amoCRM:',
   h1Accent: 'an AI-first alternative',
   shortAnswer:
-    'Kommo (called amoCRM until October 2022) and amoCRM are mature, messenger-first sales CRMs, priced per user and paid for at least six months at a time. Fineguide is an AI-first CRM priced per organization, billed monthly or yearly, with a Free plan, and its AI assistants also take live phone calls and score recorded ones. If your team already runs Kommo or amoCRM, you can add Fineguide’s assistants inside it instead of switching.',
+    'Kommo (called amoCRM until October 2022) and amoCRM are mature, messenger-first sales CRMs. Fineguide is an AI-first CRM whose AI assistants also take live phone calls and score recorded ones. If your team already runs Kommo or amoCRM, you can add Fineguide’s assistants inside it instead of switching.',
   tableHeading: 'Kommo vs amoCRM vs Fineguide at a glance',
   competitorStronger: {
     heading: 'Where Kommo and amoCRM are stronger',
     items: [
       {
-        text: 'Maturity and ecosystem. Both sites carry a copyright line that runs from 2009 (Kommo is the name amoCRM’s international product took in October 2022), and Kommo’s pricing FAQ counts more than 100 integrations on its marketplace. Fineguide’s own list of native integrations is shorter (Zendesk, HelpScout, Google Calendar, Facebook Lead Ads, amoCRM and Kommo); everything else goes through n8n.',
-        refs: ['kommo:pricing', 'amocrm:pricing', 'kommo:rebrand', 'fg:fg-llms'],
+        text: 'Maturity and ecosystem. Both sites carry a copyright line that runs from 2009 (Kommo is the name amoCRM’s international product took in October 2022), and Kommo’s FAQ counts more than 100 integrations on its marketplace. Fineguide’s own list of native integrations is shorter (Zendesk, HelpScout, Google Calendar, Facebook Lead Ads, amoCRM and Kommo); everything else goes through n8n.',
+        refs: ['kommo:plans', 'amocrm:plans', 'kommo:rebrand', 'fg:fg-llms'],
       },
       {
         text: 'Messenger reach. Kommo connects TikTok as well as WhatsApp, Instagram, Messenger and Telegram, and its Pro plan allows unlimited channels and up to 50 AI agents. Fineguide does not list TikTok.',
-        refs: ['kommo:pricing'],
+        refs: ['kommo:plans'],
       },
       {
         text: 'Sales tools built up over years: Kommo’s no-code bots, broadcasting, booking pages and audience sync to ad platforms; amoCRM’s Salesbot builder, Digital Pipeline automation, web forms and an NPS score.',
-        refs: ['kommo:pricing', 'amocrm:pricing'],
-      },
-      {
-        text: 'A cheaper start for one or two people who need more than Fineguide’s Free plan: Kommo Base is $25 per user a month, against €100 a month for Fineguide Starter, provided you can pay six months up front.',
-        refs: ['kommo:pricing', 'fg:fg-pricing'],
+        refs: ['kommo:plans', 'amocrm:plans'],
       },
       {
         text: 'Implementation partners. amoCRM’s site offers turnkey implementation through partners, and Kommo lists official partners and an expert-partner service.',
-        refs: ['amocrm:pricing', 'kommo:pricing'],
+        refs: ['amocrm:plans', 'kommo:plans'],
       },
     ],
   },
@@ -40,16 +36,8 @@ const copy: CompareCopy = {
     heading: 'Where Fineguide is stronger',
     items: [
       {
-        text: 'Billing you can leave. Fineguide bills monthly or yearly, has a Free plan with no card, no setup fees, and you can cancel anytime. Neither Kommo nor amoCRM offers monthly payment: both start at six months.',
-        refs: ['fg:fg-pricing', 'kommo:pricing', 'amocrm:pricing'],
-      },
-      {
-        text: 'One price for the team. Each plan includes you plus 1, 3, 5 or 10 teammates. A team of six on Kommo Pro pays 6 × $45 = $270 a month, billed as $1,620 for six months; on Fineguide Business it pays €200 a month ($239 outside Europe), billed monthly. The two count AI credits differently, so compare the AI volume you expect as well.',
-        refs: ['kommo:pricing', 'fg:fg-pricing'],
-      },
-      {
-        text: 'AI on the phone. The same assistants that answer chats take live inbound and outbound calls over your own phone system (SIP), in 14 languages including Romanian and Russian, and run outbound call campaigns. Kommo’s AI agent answers messages and, on Pro, voice notes; neither vendor’s pricing page lists AI on live calls.',
-        refs: ['fg:fg-voice-ai', 'fg:fg-campaigns', 'kommo:ai-agent', 'kommo:pricing', 'amocrm:pricing'],
+        text: 'AI on the phone. The same assistants that answer chats take live inbound and outbound calls over your own phone system (SIP), in 14 languages including Romanian and Russian, and run outbound call campaigns. Kommo’s AI agent answers messages and, on Pro, voice notes; none of the Kommo or amoCRM pages we checked lists AI on live calls.',
+        refs: ['fg:fg-voice-ai', 'fg:fg-campaigns', 'kommo:ai-agent', 'kommo:plans', 'amocrm:plans'],
       },
       {
         text: 'Call-quality scoring built in. Voice QA transcribes every recorded call and scores it against each department’s rules, with reports in 30 languages, and can push the results into amoCRM or Kommo.',
@@ -60,7 +48,7 @@ const copy: CompareCopy = {
         refs: ['fg:fg-pricing', 'amocrm:ai-agent'],
       },
       {
-        text: 'Romanian, and a team in Chișinău. Fineguide’s site and support are in English and Romanian, and its chat widget interface comes in 24 languages, including Romanian and Russian. Kommo’s interface languages do not include Romanian.',
+        text: 'Romanian, and a team in Chișinău. Fineguide’s site is in English, Romanian and Russian, its support in English and Romanian, and its chat widget interface comes in 24 languages, including Romanian and Russian. Kommo’s interface languages do not include Romanian.',
         refs: ['fg:fg-llms', 'kommo:languages'],
       },
     ],
@@ -72,7 +60,6 @@ const copy: CompareCopy = {
       items: [
         'your sales already run in Kommo or amoCRM, with bots, pipelines and integrations the team depends on (you can still add Fineguide inside it);',
         'you sell mainly through messengers, TikTok included, and want up to 50 AI agents on one plan;',
-        'paying six months or more up front, in US dollars (Kommo) or roubles (amoCRM), suits your budget;',
         'you need a ready-made marketplace integration that Fineguide reaches only through n8n.',
       ],
     },
@@ -81,7 +68,6 @@ const copy: CompareCopy = {
       items: [
         'you want AI that answers chat, email and phone calls from one customer record;',
         'you score call quality or run outbound call campaigns;',
-        'you want monthly billing, a Free plan and one price for the whole team;',
         'you work in Romanian, or in Moldova, and want a vendor based in Chișinău with support in Romanian.',
       ],
     },
@@ -123,29 +109,19 @@ const copy: CompareCopy = {
       refs: ['fg:fg-llms'],
     },
     {
-      q: 'Can I pay for Kommo or amoCRM monthly?',
-      a: 'Not as of 21 October 2026. Kommo’s pricing FAQ says monthly payment is not available and the minimum subscription is six months; amoCRM’s price list says prices are set for subscriptions of six months or longer, with no monthly payment. Fineguide bills monthly or yearly.',
-      refs: ['kommo:pricing', 'amocrm:pricing', 'fg:fg-pricing'],
-    },
-    {
       q: 'Does Kommo or amoCRM have a Romanian interface?',
-      a: 'Kommo’s help centre lists English, Indonesian, Portuguese (Brazil), Russian, Spanish (Latin America) and Turkish, so no. amoCRM’s site and help centre are in Russian. Fineguide’s workspace is in English, its site and support are in English and Romanian, and its chat widget interface comes in 24 languages, Romanian included.',
-      refs: ['kommo:languages', 'amocrm:pricing', 'fg:fg-llms'],
-    },
-    {
-      q: 'Which is cheaper for a team of six?',
-      a: 'On list prices, Kommo Pro costs 6 × $45 = $270 a month, paid as $1,620 for six months. Fineguide Business costs €200 a month in Europe or $239 elsewhere, covers you plus five teammates with 8,000 credits a month, and is billed monthly. Each product counts AI credits its own way, so compare the AI work you expect, not only the seat price.',
-      refs: ['kommo:pricing', 'fg:fg-pricing'],
+      a: 'Kommo’s help centre lists English, Indonesian, Portuguese (Brazil), Russian, Spanish (Latin America) and Turkish, so no. amoCRM’s site and help centre are in Russian. Fineguide’s workspace is in English, its site is in English, Romanian and Russian, its support in English and Romanian, and its chat widget interface comes in 24 languages, Romanian included.',
+      refs: ['kommo:languages', 'amocrm:plans', 'fg:fg-llms'],
     },
     {
       q: 'Do I need my own OpenAI key?',
-      a: 'For amoCRM’s AI agent, yes: its help page has you choose OpenAI or YandexGPT and enter your API key. Kommo’s AI agent uses the AI credits that come with each seat. Fineguide’s assistants use the credits included in your plan.',
-      refs: ['amocrm:ai-agent', 'kommo:pricing', 'fg:fg-pricing'],
+      a: 'For amoCRM’s AI agent, yes: its help page has you choose OpenAI or YandexGPT and enter your API key. Kommo’s AI agent runs on Kommo’s own AI credits. Fineguide’s assistants use the credits included in your plan.',
+      refs: ['amocrm:ai-agent', 'kommo:plans', 'fg:fg-pricing'],
     },
     {
       q: 'Can the AI answer phone calls?',
-      a: 'Fineguide’s assistants answer live inbound and outbound calls over your own SIP phone system, in 14 languages including Romanian and Russian. Kommo’s AI agent answers incoming messages and, on Pro, voice notes; we found no AI on live calls on Kommo’s or amoCRM’s pricing pages.',
-      refs: ['fg:fg-voice-ai', 'kommo:ai-agent', 'kommo:pricing', 'amocrm:pricing'],
+      a: 'Fineguide’s assistants answer live inbound and outbound calls over your own SIP phone system, in 14 languages including Romanian and Russian. Kommo’s AI agent answers incoming messages and, on Pro, voice notes; we found no AI on live calls on the Kommo and amoCRM pages we checked.',
+      refs: ['fg:fg-voice-ai', 'kommo:ai-agent', 'kommo:plans', 'amocrm:plans'],
     },
     {
       q: 'How do I move my data from amoCRM or Kommo?',

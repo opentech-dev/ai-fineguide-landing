@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import Band from '../../components/Band.astro';
+import EditorialRows from '../../components/EditorialRows.astro';
+import StepList from '../../components/StepList.astro';
+import ClosingCta from '../../components/ClosingCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const p = t.assistantsPage;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Fineguide AI Assistants',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: p.meta.description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+};
+---
+
+<Layout title={p.meta.title} description={p.meta.description} lang={lang} jsonLd={jsonLd}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <PageHero eyebrow={p.intro.eyebrow} lang={lang} {...p.hero}>
+      <figure class="panel-frame">
+        <img
+          src="/images/screenshots/assistants-analytics.png"
+          alt={p.intro.screenshotAlt}
+          width="2880"
+          height="1454"
+          class="w-full h-auto block"
+          loading="eager"
+        />
+      </figure>
+    </PageHero>
+
+    <Band tone="tint" eyebrow={p.channels.eyebrow} heading={p.channels.heading} body={p.channels.body}>
+      <EditorialRows items={p.channels.groups.map((g) => ({ term: g.label, desc: g.items }))} />
+    </Band>
+
+    <Band tone="dark" eyebrow={p.configuration.eyebrow} heading={p.configuration.heading} body={p.configuration.body}>
+      <EditorialRows
+        variant="dark"
+        items={p.configuration.blocks.map((b) => ({ term: b.title, desc: b.body }))}
+      />
+    </Band>
+
+    <Band eyebrow={p.extraction.eyebrow} heading={p.extraction.heading} body={p.extraction.body}>
+      <StepList steps={p.extraction.steps} />
+    </Band>
+
+    <Band tone="tint" eyebrow={p.leadAnatomy.eyebrow} heading={p.leadAnatomy.heading} body={p.leadAnatomy.body}>
+      {/* Lead card mockup, built in code so it can never leak real data */}
+      <div class="max-w-2xl mx-auto bg-white border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden">
+        <div class="px-6 py-4 bg-[var(--color-background)] border-b border-[var(--color-border)] flex items-center justify-between">
+          <p class="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--color-foreground)]">
+            {p.leadAnatomy.card.title}
+          </p>
+          <p class="text-xs text-[var(--color-muted)]">{p.leadAnatomy.card.meta}</p>
+        </div>
+        <dl class="px-6 py-6 space-y-3.5">
+          {
+            p.leadAnatomy.card.fields.map((f) => (
+              <div class="flex items-baseline justify-between gap-4 text-sm md:text-base">
+                <dt class="text-[var(--color-muted)] shrink-0">{f.label}</dt>
+                <dd class="text-[var(--color-foreground)] text-right flex items-center gap-2">
+                  <span>{f.value}</span>
+                  {f.ai && (
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-1.5 py-0.5 rounded">
+                      {p.leadAnatomy.card.footerLabel}
+                    </span>
+                  )}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        <div class="px-6 py-4 bg-[var(--color-background)] border-t border-[var(--color-border)]">
+          <p class="text-xs text-[var(--color-muted)] leading-relaxed">{p.leadAnatomy.card.footerNote}</p>
+        </div>
+      </div>
+
+      <div class="mt-20">
+        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">
+          {p.leadAnatomy.industries.heading}
+        </h3>
+        <p class="mt-4 max-w-4xl text-lg text-[var(--color-muted)] leading-relaxed">
+          {p.leadAnatomy.industries.body}
+        </p>
+        <EditorialRows
+          class="mt-10"
+          items={p.leadAnatomy.industries.list.map((it) => ({ term: it.label, desc: it.fields }))}
+        />
+      </div>
+    </Band>
+
+    <ClosingCta lang={lang} {...p.finalCta} />
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>

@@ -116,7 +116,7 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80vw] overflow-y-auto overscroll-contain bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-out md:hidden">
   <div class="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border)]">
     <img src="/images/logo/fineguide_lg.svg" alt="Fineguide" class="h-8" />
-    <button id="mobile-menu-close" class="p-2 text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors" aria-label="Close menu">
+    <button id="mobile-menu-close" class="p-2 text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors" aria-label={{ en: 'Close menu', ro: 'Închide meniul', ru: 'Закрыть меню' }[lang]}>
       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>

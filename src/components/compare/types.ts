@@ -1,6 +1,6 @@
 /** The copy each comparison page file passes to ComparePage.astro, and each hub to CompareHub.astro. */
 
-/** A line of copy, optionally footnoted: refs are "kommo:pricing" (competitor:source) or "fg:fg-pricing". */
+/** A line of copy, optionally footnoted: refs are "kommo:plans" (competitor:source) or "fg:fg-voice-ai". */
 export type Line = string | { text: string; refs: string[] };
 
 export interface CompareCopy {
