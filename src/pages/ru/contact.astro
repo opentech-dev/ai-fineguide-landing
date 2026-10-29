@@ -106,6 +106,8 @@ const t = useTranslations(lang);
             data-submitting={t.contact.submitting}
             data-success={t.contact.successMessage}
             data-error={t.contact.errorMessage}
+            data-bot-check-failed={t.contact.botCheckFailed}
+            data-bot-check-challenge={t.contact.botCheckChallenge}
             data-submit-text={t.contact.submitButton}
             data-subject-prefix={t.contact.subjectLabel}
           >
@@ -195,6 +197,11 @@ const t = useTranslations(lang);
 </Layout>
 
 <script>
+  import { botCheckHeaders, isBotCheckRefusal, onBotChallenge } from '../../lib/bot-check';
+
+  // The tickets route asks for the bot check (chat-api lib/bot-check.ts).
+  const CHAT_API = 'https://fineguide.ai/api/chat';
+
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const errorEl = document.getElementById('form-error')!;
   const successEl = document.getElementById('form-success')!;
@@ -208,6 +215,14 @@ const t = useTranslations(lang);
   const errorMessage = form.dataset.error!;
   const submitText = form.dataset.submitText!;
   const subjectPrefix = form.dataset.subjectPrefix!;
+  const botCheckFailed = form.dataset.botCheckFailed!;
+  const botCheckChallenge = form.dataset.botCheckChallenge!;
+
+  // While Cloudflare has its box up, say to tick it; the button alone only spins.
+  onBotChallenge((showing) => {
+    if (showing) showError(botCheckChallenge);
+    else errorEl.classList.add('hidden');
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -229,18 +244,25 @@ const t = useTranslations(lang);
     const fullMessage = subject ? `${subjectPrefix}: ${subject}\n\n${message}` : message;
 
     try {
-      const res = await fetch('https://fineguide.ai/api/chat/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/fc103e0a-b3d8-4920-96d0-492169ce7d06/tickets', {
+      const res = await fetch(`${CHAT_API}/web/ccf37b6c-d90d-4a23-8670-5934f846bb31/sessions/fc103e0a-b3d8-4920-96d0-492169ce7d06/tickets`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-fingerprint': 'fg-website-2234123457' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-fingerprint': 'fg-website-2234123457',
+          ...(await botCheckHeaders('contact', CHAT_API)),
+        },
         body: JSON.stringify({ customerEmail: email, customerName: name, customerMessage: fullMessage }),
       });
-      if (!res.ok) throw new Error('Request failed');
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { code?: string } | null;
+        throw Object.assign(new Error('Request failed'), { code: body?.code });
+      }
 
       successEl.innerHTML = `<div class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg text-sm flex items-center gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>${successMessage}</div>`;
       successEl.classList.remove('hidden');
       form.reset();
-    } catch {
-      showError(errorMessage);
+    } catch (err) {
+      showError(isBotCheckRefusal(err) ? botCheckFailed : errorMessage);
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" /></svg> ${submitText}`;

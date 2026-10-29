@@ -1858,6 +1858,8 @@ export const en = {
     submitting: 'Sending...',
     successMessage: 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.',
     errorMessage: 'An error occurred. Please try again.',
+    botCheckFailed: 'We couldn\'t confirm that you are a person. Please try again.',
+    botCheckChallenge: 'Please tick the box at the bottom of the page to confirm you\'re a person.',
     validationName: 'Name is required.',
     validationEmail: 'Please enter a valid email address.',
     validationMessage: 'Message is required.',

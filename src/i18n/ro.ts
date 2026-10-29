@@ -1798,6 +1798,8 @@ export const ro: Translations = {
     submitting: 'Se trimite...',
     successMessage: 'Mulțumim! Mesajul tău a fost trimis. Îți răspundem cât mai curând.',
     errorMessage: 'A apărut o eroare. Te rugăm să încerci din nou.',
+    botCheckFailed: 'Nu am putut confirma că ești o persoană. Te rugăm să încerci din nou.',
+    botCheckChallenge: 'Bifează caseta din partea de jos a paginii pentru a confirma că ești o persoană.',
     validationName: 'Numele este obligatoriu.',
     validationEmail: 'Te rugăm să introduci o adresă de email validă.',
     validationMessage: 'Mesajul este obligatoriu.',
