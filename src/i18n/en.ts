@@ -1736,7 +1736,7 @@ export const en = {
 
   // --- About Page ---
   // Ownership facts, stated as the owner gave them: Liviu Maftuleac is the sole
-  // founder, owner and holder of Fineguide.AI, Eightcell Labs and Tesseract.
+  // founder, owner and holder of Fineguide.AI and Eightcell Labs.
   // Corneliu Maftuleac is an advisor only, with no ownership or attribution;
   // never describe him as a founder, owner, holder, author or team lead.
   // Everything here is shown to visitors as normal page text.
@@ -1812,12 +1812,12 @@ export const en = {
       name: 'Liviu Maftuleac',
       role: 'Founder, owner and holder',
       body:
-        'Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI. He is also the sole founder, owner and holder of Eightcell Labs and of Tesseract.',
+        'Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI. He is also the sole founder, owner and holder of Eightcell Labs.',
     },
     advisors: {
       eyebrow: 'Advisors',
       body:
-        'Corneliu Maftuleac is an advisor. He holds no ownership in, and has no attribution to, Fineguide.AI, Eightcell Labs or Tesseract.',
+        'Corneliu Maftuleac is an advisor. He holds no ownership in, and has no attribution to, Fineguide.AI or Eightcell Labs.',
     },
     contact: {
       heading: 'Get in touch.',
@@ -1910,23 +1910,21 @@ export const en = {
   founderMeta: {
     title: 'Liviu Maftuleac, founder of Fineguide.AI | Fineguide',
     description:
-      'Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI, Eightcell Labs and Tesseract. His profile and his articles on the Fineguide blog.',
+      'Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI and Eightcell Labs. His profile and his articles on the Fineguide blog.',
   },
   founderPage: {
     eyebrow: 'Founder',
-    role: 'Founder, owner and holder of Fineguide.AI, Eightcell Labs and Tesseract',
+    role: 'Founder, owner and holder of Fineguide.AI and Eightcell Labs',
     body:
-      'Liviu Maftuleac founded Fineguide.AI, the AI-first CRM and business-automation platform built in Chișinău, Moldova. He is its sole founder, owner and holder, and the sole founder, owner and holder of Eightcell Labs and of Tesseract.',
+      'Liviu Maftuleac founded Fineguide.AI, the AI-first CRM and business-automation platform built in Chișinău, Moldova. He is its sole founder, owner and holder, and the sole founder, owner and holder of Eightcell Labs.',
     companiesHeading: 'Companies',
     companies: [
       { name: 'Fineguide.AI', desc: 'AI-first CRM and business-automation platform: AI assistants, CRM, a shared inbox, AI phone calls and call scoring.', href: 'https://fineguide.ai/' },
-      { name: 'Eightcell Labs', desc: 'The company that makes Tesseract.', href: 'https://tesseract.dev/about/' },
-      { name: 'Tesseract', desc: 'An AI agent app for Mac, Windows and Linux.', href: 'https://tesseract.dev/' },
+      { name: 'Eightcell Labs', desc: 'A company he founded and owns.' },
     ],
     articlesHeading: 'Articles',
     articlesNote: 'Everything Liviu has written on the Fineguide blog, newest first.',
     minRead: 'min read',
-    elsewhere: 'His profile on tesseract.dev',
     profileLink: 'Liviu Maftuleac’s profile',
   },
 } as const;

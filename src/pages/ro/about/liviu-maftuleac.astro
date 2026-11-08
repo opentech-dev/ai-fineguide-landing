@@ -1,7 +1,7 @@
 ---
 // The founder's profile, and the author page every blog byline links to. Only what the owner states (the About
 // page's founder facts), the companies, and his articles — no biography beyond that. The same page lives under /ro/
-// and /ru/; tesseract.dev has its twin, and each names the other in `sameAs` (src/data/people.ts).
+// and /ru/; his name and addresses are in src/data/people.ts.
 import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
@@ -82,19 +82,20 @@ const jsonLd = {
     <section class="py-20 md:py-24 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]">{f.companiesHeading}</h2>
-        <ul class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <ul class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
           {f.companies.map((c) => (
             <li class="rounded-xl border border-[var(--color-border)] bg-white px-6 py-6">
-              <a href={c.href} class="text-lg font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{c.name}</a>
+              {'href' in c ? (
+                <a href={c.href} class="text-lg font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{c.name}</a>
+              ) : (
+                <span class="text-lg font-semibold text-[var(--color-foreground)]">{c.name}</span>
+              )}
               <p class="mt-2 text-base text-[var(--color-muted)] leading-relaxed">{c.desc}</p>
             </li>
           ))}
         </ul>
         <p class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-          {[
-            { href: FOUNDER.linkedin, label: 'LinkedIn' },
-            { href: FOUNDER.tesseract, label: f.elsewhere },
-          ].map((l) => (
+          {[{ href: FOUNDER.linkedin, label: 'LinkedIn' }].map((l) => (
             <a href={l.href} rel="me" class="inline-flex items-center gap-1.5 text-base font-semibold text-[var(--color-primary)] hover:underline">
               {l.label}
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">

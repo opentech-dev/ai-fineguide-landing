@@ -1758,12 +1758,12 @@ export const ru: Translations = {
       name: 'Liviu Maftuleac',
       role: 'Основатель, владелец и правообладатель',
       body:
-        'Liviu Maftuleac — единственный основатель, владелец и правообладатель Fineguide.AI. Он также является единственным основателем, владельцем и правообладателем Eightcell Labs и Tesseract.',
+        'Liviu Maftuleac — единственный основатель, владелец и правообладатель Fineguide.AI. Он также является единственным основателем, владельцем и правообладателем Eightcell Labs.',
     },
     advisors: {
       eyebrow: 'Советники',
       body:
-        'Corneliu Maftuleac — советник. Ему не принадлежат ни доли, ни авторство в Fineguide.AI, Eightcell Labs или Tesseract.',
+        'Corneliu Maftuleac — советник. Ему не принадлежат ни доли, ни авторство в Fineguide.AI или Eightcell Labs.',
     },
     contact: {
       heading: 'Свяжитесь с нами.',
@@ -1855,23 +1855,21 @@ export const ru: Translations = {
   founderMeta: {
     title: 'Liviu Maftuleac, основатель Fineguide.AI | Fineguide',
     description:
-      'Liviu Maftuleac — единственный основатель, владелец и правообладатель Fineguide.AI, Eightcell Labs и Tesseract. Его профиль и статьи в блоге Fineguide.',
+      'Liviu Maftuleac — единственный основатель, владелец и правообладатель Fineguide.AI и Eightcell Labs. Его профиль и статьи в блоге Fineguide.',
   },
   founderPage: {
     eyebrow: 'Основатель',
-    role: 'Основатель, владелец и правообладатель Fineguide.AI, Eightcell Labs и Tesseract',
+    role: 'Основатель, владелец и правообладатель Fineguide.AI и Eightcell Labs',
     body:
-      'Liviu Maftuleac основал Fineguide.AI — платформу CRM и автоматизации бизнеса, изначально построенную на ИИ и созданную в Кишинёве, Молдова. Он — её единственный основатель, владелец и правообладатель, а также единственный основатель, владелец и правообладатель Eightcell Labs и Tesseract.',
+      'Liviu Maftuleac основал Fineguide.AI — платформу CRM и автоматизации бизнеса, изначально построенную на ИИ и созданную в Кишинёве, Молдова. Он — её единственный основатель, владелец и правообладатель, а также единственный основатель, владелец и правообладатель Eightcell Labs.',
     companiesHeading: 'Компании',
     companies: [
       { name: 'Fineguide.AI', desc: 'Платформа CRM и автоматизации, построенная вокруг ИИ: ИИ-ассистенты, CRM, общий ящик входящих, ИИ-звонки и оценка звонков.', href: 'https://fineguide.ai/' },
-      { name: 'Eightcell Labs', desc: 'Компания, которая создаёт Tesseract.', href: 'https://tesseract.dev/about/' },
-      { name: 'Tesseract', desc: 'Приложение с ИИ-агентами для Mac, Windows и Linux.', href: 'https://tesseract.dev/' },
+      { name: 'Eightcell Labs', desc: 'Компания, которую он основал и которой владеет.' },
     ],
     articlesHeading: 'Статьи',
     articlesNote: 'Всё, что Liviu написал в блоге Fineguide, от новых к старым. Статьи — на том языке, на котором они опубликованы.',
     minRead: 'мин чтения',
-    elsewhere: 'Его профиль на tesseract.dev',
     profileLink: 'Профиль Liviu Maftuleac',
   },
 };
