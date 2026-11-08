@@ -2,7 +2,7 @@
 // page weight · reading ease · structure · phone navigation · first screen · line length. Writes raw numbers; score.py
 // maps them to 1–10 (the rubric's `how`). <entry-selector> is what a reader must see in the first screen besides the
 // headline: the way into the articles on a list, the byline on a post.
-// Playwright from PLAYWRIGHT_MODULE (evaluate.sh points it at Tesseract's, whose browser build is installed).
+// Playwright from PLAYWRIGHT_MODULE when set (a copy whose browser build is installed), else this repo's.
 const pw = await import(process.env.PLAYWRIGHT_MODULE ?? 'playwright');
 const { chromium } = pw.default ?? pw;
 import fs from 'node:fs';

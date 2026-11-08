@@ -1,14 +1,14 @@
 #!/bin/bash
 # Evaluate the built blog for one round: design_check + judge screens + measure.mjs per case, one after the other.
 # usage: ./evaluate.sh <label> <case>...   e.g. ./evaluate.sh baseline-1 index post   (cases in cases.json)
-# Needs: the site built (npm run build → dist/), Tesseract's canvas-design design_check (TESSERACT, default the sibling
-# checkout), Playwright (this repo's node_modules) and PIL for python3.
+# Needs: the site built (npm run build → dist/), the canvas-design design_check script (DESIGN_CHECK=<path to
+# design_check.mjs>), Playwright with its browser installed (this repo's node_modules, or PLAYWRIGHT_MODULE=<path to
+# playwright/index.mjs>) and PIL for python3.
 set -u
 HERE="$(cd "$(dirname "$0")" && pwd)"
 DIST="$HERE/../../dist"
-TESSERACT="${TESSERACT:-$HERE/../../../tesseract}"
-DC="$TESSERACT/apps/desktop/resources/builtin-skills/canvas-design/scripts/design_check.mjs"
-export PLAYWRIGHT_MODULE="${PLAYWRIGHT_MODULE:-$TESSERACT/node_modules/playwright/index.mjs}"
+DC="${DESIGN_CHECK:?set DESIGN_CHECK to the path of design_check.mjs}"
+[ -n "${PLAYWRIGHT_MODULE:-}" ] && export PLAYWRIGHT_MODULE
 LABEL="$1"; shift
 PORT=4410
 node "$HERE/serve.mjs" "$DIST" $PORT >/dev/null 2>&1 &

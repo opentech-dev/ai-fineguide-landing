@@ -1,7 +1,7 @@
 # Blog evaluation — the improve-results loop for fineguide.ai/blog/
 
-The frozen test the blog's design was improved against (Tesseract's `improve-results` skill). Run it on the built
-site, then let `loop.py` decide whether a change is kept.
+The frozen test the blog's design was improved against (the iterative-improve loop). Run it on the built site,
+then let the loop's `loop.py` decide whether a change is kept.
 
 - `eval/rubric.json` — 21 metrics: 11 **measured** (design_check faults for contrast, layout, tap targets, images and
   runtime; page weight, reading ease, structure basics, phone navigation, first screen and line length —
@@ -21,12 +21,14 @@ cd scripts/blog-eval && ./evaluate.sh round-7 index post
 python3 mkprompts.py round-7 index post
 # for each case: a FRESH helper (same model every round; this run: Sonnet) runs rounds/round-7/<case>/judge-prompt.txt
 python3 score.py round-7 index post > eval/scores-round-7.json
-python3 ../../../tesseract/apps/desktop/resources/builtin-skills/improve-results/scripts/loop.py record \
+python3 "$IMPROVE_LOOP" record \
   --ledger eval/ledger.json --scores eval/scores-round-7.json --label round-7 --change "…" --hypothesis "…"
 ```
 
-Needs the Tesseract checkout beside this repo (`TESSERACT=…` otherwise): canvas-design's `design_check.mjs` and
-Tesseract's Playwright (whose browser build is installed; `PLAYWRIGHT_MODULE` points at it), and PIL for python3.
+Needs: the canvas-design `design_check.mjs` (`DESIGN_CHECK=/path/to/design_check.mjs`), the iterative-improve
+loop's `loop.py` (`IMPROVE_LOOP=/path/to/loop.py`), Playwright with its browser build installed (this repo's
+`node_modules` after `npm ci && npx playwright install chromium`, or
+`PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs`), and PIL for python3.
 Judges see `shots.mjs` screens: every image loaded and decoded, the cookie choice already made. `rounds/` (the
 screenshots) is not committed. The final check: `python3 pairwise.py <openai key file> rounds <first> <best> out.json`
 — gpt-5.5 compares the first and the best version, in both orders.

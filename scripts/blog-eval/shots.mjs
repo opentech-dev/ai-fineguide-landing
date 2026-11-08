@@ -2,7 +2,7 @@
 // made (a returning visitor; the banner is the site's, not the blog's). Desktop 1440 px cut into 1440×1600 screens at
 // actual size; phone 390 px cut into 390×1600 screens (evaluate.sh puts three side by side). Whole page, up to 40,000 px.
 // usage: node shots.mjs <url> <outdir>
-// Playwright from PLAYWRIGHT_MODULE (evaluate.sh points it at Tesseract's, whose browser build is installed).
+// Playwright from PLAYWRIGHT_MODULE when set (a copy whose browser build is installed), else this repo's.
 const pw = await import(process.env.PLAYWRIGHT_MODULE ?? 'playwright');
 const { chromium } = pw.default ?? pw;
 import fs from 'node:fs';
