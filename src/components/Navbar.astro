@@ -1,6 +1,7 @@
 ---
 import type { Translations, Lang } from '../i18n/utils';
 import { getLocalizedPath } from '../i18n/utils';
+import { MCP_NAV_LABEL } from '../data/mcp';
 const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 ---
 
@@ -70,6 +71,11 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
             class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
             >{t.nav.automations}</a
           >
+          <a
+            href={getLocalizedPath('/mcp', lang)}
+            class="block px-4 py-2 text-sm text-[var(--color-muted)] hover:bg-gray-50 hover:text-[var(--color-foreground)]"
+            >{MCP_NAV_LABEL[lang]}</a
+          >
         </div>
       </details>
       <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
@@ -133,6 +139,7 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
     <a href={getLocalizedPath('/campaigns', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.campaigns}</a>
     <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.workspace}</a>
     <a href={getLocalizedPath('/automations', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.automations}</a>
+    <a href={getLocalizedPath('/mcp', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{MCP_NAV_LABEL[lang]}</a>
     <div class="my-2 border-t border-[var(--color-border)]" />
     <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.pricing}</a>
     <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg">{t.nav.enterprise}</a>

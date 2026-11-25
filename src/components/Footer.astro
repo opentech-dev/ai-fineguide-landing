@@ -1,6 +1,7 @@
 ---
 import type { Translations, Lang } from '../i18n/utils';
 import { LANGS, LANG_NAMES, getLocalizedPath, switchLangPath } from '../i18n/utils';
+import { MCP_NAV_LABEL } from '../data/mcp';
 const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
 
 const currentPath = Astro.url.pathname;
@@ -46,6 +47,7 @@ const legal = {
             <a href={getLocalizedPath('/campaigns', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.campaigns}</a>
             <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.workspace}</a>
             <a href={getLocalizedPath('/automations', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.automations}</a>
+            <a href={getLocalizedPath('/mcp', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{MCP_NAV_LABEL[lang]}</a>
             <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
           </div>
         </div>

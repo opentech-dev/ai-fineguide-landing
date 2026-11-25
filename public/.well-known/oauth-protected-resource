@@ -1,0 +1,1 @@
+{"resource":"https://fineguide.ai/api/core/mcp","authorization_servers":["https://fineguide.ai/api/core"],"scopes_supported":["read","write"],"bearer_methods_supported":["header"],"resource_name":"FineGuide","resource_documentation":"https://fineguide.ai/mcp/"}

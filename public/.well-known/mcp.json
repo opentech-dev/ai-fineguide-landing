@@ -1,0 +1,36 @@
+{
+  "name": "ai.fineguide/fineguide",
+  "title": "FineGuide",
+  "version": "1.0.0",
+  "description": "Work in your FineGuide CRM, AI assistants, inbox, workflows and Voice QA from any AI app.",
+  "websiteUrl": "https://fineguide.ai/mcp/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://fineguide.ai/api/core/mcp"
+    }
+  ],
+  "authentication": {
+    "type": "oauth2",
+    "protectedResourceMetadata": "https://fineguide.ai/api/core/.well-known/oauth-protected-resource",
+    "apiKey": {
+      "header": "Authorization",
+      "scheme": "Bearer",
+      "prefix": "fgk_"
+    }
+  },
+  "icons": [
+    {
+      "src": "https://fineguide.ai/images/fineguide-mark-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "publisher": {
+    "name": "FineGuide",
+    "parentOrganization": "Eightcell Labs, Inc.",
+    "email": "ops@fineguide.ai"
+  }
+}
