@@ -21,7 +21,35 @@ const lang = getLangFromUrl(Astro.url) as Lang;
 const t = useTranslations(lang);
 ---
 
-<Layout title={t.indexMeta.title} description={t.indexMeta.description} lang={lang}>
+<Layout
+  title={t.indexMeta.title}
+  description={t.indexMeta.description}
+  lang={lang}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': 'https://fineguide.ai/#app',
+    name: 'Fineguide',
+    url: 'https://fineguide.ai/',
+    applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'CRM',
+    operatingSystem: 'Web',
+    description: t.indexMeta.description,
+    publisher: { '@id': 'https://fineguide.ai/#org' },
+    featureList: [
+      'AI CRM: contacts, companies, deals, tasks',
+      'AI assistants on website chat, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord and JivoChat',
+      'Shared inbox for chat and email',
+      'AI voice agents on inbound and outbound calls over SIP',
+      'Outbound call campaigns',
+      'Call quality scoring (Voice QA)',
+      'Visual workflow builder and n8n automations',
+      'AI knowledge base',
+      'MCP server',
+    ],
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', description: 'Free plan' },
+  }}
+>
   <Navbar t={t} lang={lang} />
   <main id="main-content">
     <EditorialHero t={t} lang={lang} />
