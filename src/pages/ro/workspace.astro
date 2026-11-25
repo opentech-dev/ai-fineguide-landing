@@ -7,6 +7,7 @@ import Band from '../../components/Band.astro';
 import EditorialRows from '../../components/EditorialRows.astro';
 import RuleList from '../../components/RuleList.astro';
 import ClosingCta from '../../components/ClosingCta.astro';
+import ProductAnswers from '../../components/ProductAnswers.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import type { Lang } from '../../i18n/utils';
 
@@ -44,6 +45,8 @@ const jsonLd = {
       </figure>
     </PageHero>
 
+    <ProductAnswers page="workspace" lang={lang} part="definition" />
+
     <Band tone="dark" eyebrow={p.editor.eyebrow} heading={p.editor.heading} body={p.editor.body}>
       <EditorialRows
         variant="dark"
@@ -68,6 +71,8 @@ const jsonLd = {
         </div>
       </div>
     </Band>
+
+    <ProductAnswers page="workspace" lang={lang} part="faq" />
 
     <ClosingCta lang={lang} {...p.finalCta} />
   </main>

@@ -1,0 +1,47 @@
+---
+/**
+ * The answer-first parts of a product page (src/data/product-faq.ts): `part="definition"` under the hero, the words
+ * an AI assistant quotes for "what is …"; `part="faq"` before the closing call to action, the questions buyers ask,
+ * shown on the page and repeated as FAQPage structured data.
+ */
+import { PRODUCT_FAQ, type ProductPage } from '../data/product-faq';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  page: ProductPage;
+  lang: Lang;
+  part: 'definition' | 'faq';
+}
+
+const { page, lang, part } = Astro.props as Props;
+const f = PRODUCT_FAQ[page][lang];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: f.items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
+};
+---
+
+{part === 'definition' ? (
+  <section id="what-is" class="px-6 pb-8">
+    <div class="max-w-7xl mx-auto border-t border-[var(--color-border)] pt-14">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{f.definitionHeading}</h2>
+      <p class="mt-5 max-w-4xl text-lg md:text-xl leading-relaxed text-[var(--color-foreground)] text-pretty">{f.definition}</p>
+    </div>
+  </section>
+) : (
+  <section id="faq" class="scroll-mt-24 py-20 md:py-28 px-6">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-balance text-[var(--color-foreground)]">{f.heading}</h2>
+      <dl class="mt-12 max-w-4xl">
+        {f.items.map((i) => (
+          <div class="border-t border-[var(--color-border)] py-6">
+            <dt class="text-lg md:text-xl font-semibold text-[var(--color-foreground)]">{i.q}</dt>
+            <dd class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{i.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+)}

@@ -7,6 +7,7 @@ import Band from '../../components/Band.astro';
 import EditorialRows from '../../components/EditorialRows.astro';
 import RuleList from '../../components/RuleList.astro';
 import ClosingCta from '../../components/ClosingCta.astro';
+import ProductAnswers from '../../components/ProductAnswers.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import type { Lang } from '../../i18n/utils';
 
@@ -42,6 +43,8 @@ const jsonLd = {
       />
     </PageHero>
 
+    <ProductAnswers page="messages" lang={lang} part="definition" />
+
     <Band tone="dark" eyebrow={p.channels.eyebrow} heading={p.channels.heading} body={p.channels.body}>
       <EditorialRows variant="dark" items={p.channels.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
@@ -57,6 +60,8 @@ const jsonLd = {
     <Band eyebrow={p.safety.eyebrow} heading={p.safety.heading} body={p.safety.body}>
       <EditorialRows items={p.safety.items} />
     </Band>
+
+    <ProductAnswers page="messages" lang={lang} part="faq" />
 
     <ClosingCta lang={lang} rule {...p.finalCta} />
   </main>

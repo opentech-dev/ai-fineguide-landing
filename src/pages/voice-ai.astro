@@ -7,6 +7,7 @@ import Band from '../components/Band.astro';
 import EditorialRows from '../components/EditorialRows.astro';
 import RuleList from '../components/RuleList.astro';
 import ClosingCta from '../components/ClosingCta.astro';
+import ProductAnswers from '../components/ProductAnswers.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 
@@ -42,6 +43,8 @@ const jsonLd = {
       />
     </PageHero>
 
+    <ProductAnswers page="voice-ai" lang={lang} part="definition" />
+
     <Band tone="dark" eyebrow={p.inbound.eyebrow} heading={p.inbound.heading} body={p.inbound.body}>
       <EditorialRows variant="dark" items={p.inbound.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
@@ -66,6 +69,8 @@ const jsonLd = {
     <Band eyebrow={p.afterCall.eyebrow} heading={p.afterCall.heading} body={p.afterCall.body}>
       <EditorialRows items={p.afterCall.items} />
     </Band>
+
+    <ProductAnswers page="voice-ai" lang={lang} part="faq" />
 
     <ClosingCta lang={lang} rule {...p.finalCta} />
   </main>

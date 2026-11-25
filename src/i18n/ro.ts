@@ -905,13 +905,12 @@ export const ro: Translations = {
   },
 
   // --- Pagina Automatizări (n8n, acțiuni pentru asistenți, webhook-uri) ---
-  // Aceleași afirmații ca în en.ts. Editorul vizual de workflow-uri nu este
-  // disponibil clienților, așa că nu îl promovăm aici.
+  // Aceleași afirmații ca în en.ts, inclusiv editorul vizual de fluxuri (planurile plătite).
   automationsPage: {
     meta: {
-      title: 'Automatizări cu n8n, acțiuni și webhook-uri | Fineguide',
+      title: 'Automatizarea fluxurilor de lucru cu AI și n8n | Fineguide',
       description:
-        'Automatizări n8n găzduite pentru tine sau pe instanța ta, acțiuni pentru asistenți create dintr-o comandă cURL și webhook-uri pentru conversații și formulare.',
+        'Editor vizual de fluxuri cu pași AI, n8n găzduit pentru tine sau al tău, acțiuni pentru asistenți dintr-o comandă cURL și webhook-uri pentru conversații.',
     },
     hero: {
       title: 'Leagă conversația',
@@ -924,6 +923,38 @@ export const ro: Translations = {
     intro: {
       eyebrow: 'Automatizări',
       screenshotAlt: 'Analiza rapoartelor pe tabletă, la birou',
+    },
+    builder: {
+      eyebrow: 'Editor de fluxuri',
+      heading: 'Desenezi automatizarea, pas cu pas.',
+      body:
+        'Pe planurile plătite, Fineguide are propriul editor vizual de fluxuri de lucru: un declanșator sus, pașii sub el și căi separate acolo unde fluxul se ramifică. Lucrează cu aceleași contacte, dealuri, inbox și apeluri ca restul platformei, iar un ghid inclus explică fiecare parte.',
+      items: [
+        {
+          name: 'Declanșatori',
+          desc: 'Un chat început sau rezolvat, informații colectate actualizate, un contact creat dintr-un chat, o cerere de suport, un email sosit într-o căsuță, un apel primit, transcris sau evaluat în Voice QA, un contact, deal, companie sau sarcină creată ori modificată, un program cu ore și zile sau o cerere trimisă de un formular ori alt sistem la adresa proprie a fluxului.',
+        },
+        {
+          name: 'Pași',
+          desc: 'Dacă / altfel, căi separate, „pentru fiecare” și așteptare; creezi, modifici sau ștergi contacte, dealuri, companii și sarcini, cauți înregistrări, muți un deal în altă etapă, adaugi etichete și comentarii; rutezi o conversație de email, trimiți un email, anunți un coleg; clasifici, rezumi și extragi date din text cu AI; și faci cereri HTTP către alte sisteme.',
+        },
+        {
+          name: 'Șabloane',
+          desc: '12 fluxuri gata făcute, de exemplu rutarea unui email nou, escaladarea unuia fără răspuns, rezumatul apelului pe contact, coaching după un apel cu scor mic, dealuri stagnante în diminețile zilelor lucrătoare și o sarcină pentru fiecare cerere de suport. Fiecare devine ciorna ta, cu notițe pe canvas despre ce trebuie schimbat.',
+        },
+        {
+          name: 'Teste',
+          desc: 'Rulezi fluxul pe un chat, apel, email sau înregistrare reală și citești ce ar face, în propoziții, pas cu pas. Un test nu scrie nimic, nu trimite nimic și nu anunță pe nimeni; schimbi valori ca să încerci alt caz și salvezi testele pe care vrei să le repeți.',
+        },
+        {
+          name: 'Secrete',
+          desc: 'Cheile API se salvează o singură dată pentru organizație, fiecare cu adresele exacte la care poate fi trimisă, și se folosesc după nume în pașii HTTP. O cheie salvată nu mai este afișată niciodată și nu apare în istoricul rulărilor.',
+        },
+        {
+          name: 'Rulări și credite',
+          desc: 'Fiecare rulare se păstrează cu ce a primit fiecare pas, ce a produs și cât a costat. Pașii pot reîncerca și pot lua o cale de rezervă când eșuează, modificările unui flux activ așteaptă până le publici, iar fiecare pas executat costă cel puțin un credit.',
+        },
+      ],
     },
     n8n: {
       eyebrow: 'Automatizări n8n',

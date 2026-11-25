@@ -914,8 +914,9 @@ export const en = {
   },
 
   // --- Automations Page (n8n, assistant actions, webhooks) ---
-  // The visual workflow builder is admin-only in the product and is NOT sold
-  // here. This page covers what customers have today: n8n (hosted by Fineguide
+  // The visual workflow builder (modules/workflows) is open to customers on paid
+  // plans since 2026-10-26, under the same `workflows` module as n8n; workflow
+  // steps use credits. Never sell a step in PLANNED_STEP_TYPES (translate, reply). This page covers what customers have today: n8n (hosted by Fineguide
   // or their own), assistant actions (HTTP calls from a pasted cURL command,
   // stored secrets, a test panel; n8n workflows that start with a webhook,
   // imported as actions) and assistant webhooks. Webhook events are the ones
@@ -926,9 +927,9 @@ export const en = {
   // send_email); none may appear here.
   automationsPage: {
     meta: {
-      title: 'Automations with n8n, Actions and Webhooks | Fineguide',
+      title: 'Workflow Automation with AI, n8n and Webhooks | Fineguide',
       description:
-        'n8n automations hosted for you or on your own instance, assistant actions built from a cURL command, and webhooks on conversations, tickets and lead forms.',
+        'A visual workflow builder with AI steps, n8n hosted for you or your own, assistant actions from a cURL command, and webhooks on chats, tickets and lead forms.',
     },
     hero: {
       title: 'Connect the conversation',
@@ -941,6 +942,38 @@ export const en = {
     intro: {
       eyebrow: 'Automations',
       screenshotAlt: 'Reviewing reports on a tablet at a desk',
+    },
+    builder: {
+      eyebrow: 'Workflow builder',
+      heading: 'Draw the automation, step by step.',
+      body:
+        'On paid plans, Fineguide has its own visual workflow builder: one trigger at the top, the steps under it, and separate paths where the flow splits. It works on the same contacts, deals, inbox and calls as the rest of the platform, and a built-in guide explains every part of it.',
+      items: [
+        {
+          name: 'Triggers',
+          desc: 'A chat started or resolved, collected info updated, a contact created from a chat, a support request, an email arriving in a mailbox, a call received, transcribed or scored in Voice QA, a contact, deal, company or task created or changed, a schedule of times and days, or a post from a form or another system to the workflow’s own address.',
+        },
+        {
+          name: 'Steps',
+          desc: 'If / else, Split path, For each and Wait; create, update or delete contacts, deals, companies and tasks, find records, move a deal’s stage, add tags and comments; route an email thread, send an email, notify a teammate; Classify, Summarize and Extract text with AI; and HTTP requests to other systems.',
+        },
+        {
+          name: 'Templates',
+          desc: '12 ready workflows, such as routing a new email, escalating an unanswered one, a call summary on the contact, coaching after a low-scoring call, stale deals on weekday mornings and a task for each support request. Each becomes your own draft, with notes on the canvas saying what to change.',
+        },
+        {
+          name: 'Tests',
+          desc: 'Run the workflow on one of your real chats, calls, email threads or records and read what it would do, in sentences, step by step. A test writes nothing, sends nothing and notifies nobody; change values to try another case and save the tests worth repeating.',
+        },
+        {
+          name: 'Secrets',
+          desc: 'API keys are saved once for the organization, each with the exact addresses it may be sent to, and used by name in HTTP steps. A saved key is never shown again and never written into run history.',
+        },
+        {
+          name: 'Runs and credits',
+          desc: 'Every run is kept with what each step was given, what it produced and what it cost. Steps can retry and take a fallback path when they fail, edits to a live workflow wait until you publish them, and each step that runs costs at least one credit.',
+        },
+      ],
     },
     n8n: {
       eyebrow: 'n8n automations',

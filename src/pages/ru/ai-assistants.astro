@@ -7,6 +7,7 @@ import Band from '../../components/Band.astro';
 import EditorialRows from '../../components/EditorialRows.astro';
 import StepList from '../../components/StepList.astro';
 import ClosingCta from '../../components/ClosingCta.astro';
+import ProductAnswers from '../../components/ProductAnswers.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import type { Lang } from '../../i18n/utils';
 
@@ -43,6 +44,8 @@ const jsonLd = {
         />
       </figure>
     </PageHero>
+
+    <ProductAnswers page="ai-assistants" lang={lang} part="definition" />
 
     <Band tone="tint" eyebrow={p.channels.eyebrow} heading={p.channels.heading} body={p.channels.body}>
       <EditorialRows items={p.channels.groups.map((g) => ({ term: g.label, desc: g.items }))} />
@@ -103,6 +106,8 @@ const jsonLd = {
         />
       </div>
     </Band>
+
+    <ProductAnswers page="ai-assistants" lang={lang} part="faq" />
 
     <ClosingCta lang={lang} {...p.finalCta} />
   </main>
