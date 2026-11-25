@@ -45,6 +45,10 @@ const jsonLd = {
 
     <ProductAnswers page="automations" lang={lang} part="definition" />
 
+    <Band eyebrow={p.builder.eyebrow} heading={p.builder.heading} body={p.builder.body}>
+      <EditorialRows items={p.builder.items.map((i) => ({ term: i.name, desc: i.desc }))} />
+    </Band>
+
     <Band tone="dark" eyebrow={p.n8n.eyebrow} heading={p.n8n.heading} body={p.n8n.body}>
       <EditorialRows variant="dark" items={p.n8n.items.map((i) => ({ term: i.name, desc: i.desc }))} />
     </Band>
