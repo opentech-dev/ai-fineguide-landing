@@ -77,7 +77,7 @@ const solution: Solution = {
           },
           {
             term: 'One inbox for chat and email',
-            desc: 'Connect your own mailboxes from Google, Microsoft or any IMAP server, or start with an address Fineguide provides. Threads move through Open, Pending, Snoozed and Resolved, and rules assign, route and tag new email by sender, subject or mailbox.',
+            desc: 'Connect your own mailboxes from Google, Microsoft or any IMAP server. Threads move through Open, Pending, Snoozed and Resolved, and rules assign, route and tag new email by sender, subject or mailbox.',
           },
           {
             term: 'Tools for the team',
@@ -99,7 +99,7 @@ const solution: Solution = {
         body: 'Most of the setup is choices you make once for the assistant and once for the team.',
         items: [
           'Give the assistant your website pages, documents and FAQ, and connect your chat channels.',
-          'Connect your support mailbox over IMAP and SMTP, or create an address Fineguide provides.',
+          'Connect your support mailbox over IMAP and SMTP.',
           'Choose when chats go to a person, then set up departments, routing and business hours.',
           'Turn on the support request button, and connect Zendesk or Help Scout if your team works there.',
           'Work requests from the queue and the Inbox, and follow ratings and reports as they come in.',
@@ -111,7 +111,7 @@ const solution: Solution = {
         items: [
           {
             term: 'Channels',
-            desc: '9 chat channels (website chat widget, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, amoCRM and Kommo) and your own email over IMAP and SMTP.',
+            desc: '10 chat channels (website chat widget, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, JivoChat, amoCRM and Kommo) and your own email over IMAP and SMTP.',
           },
           {
             term: 'Statuses',
@@ -175,7 +175,7 @@ const solution: Solution = {
           },
           {
             q: 'What is an AI help desk?',
-            a: 'An AI help desk answers common questions itself and passes the rest to a person. In Fineguide, the assistant answers from your knowledge base on chat and email and hands the conversation over, with its full history, when the customer asks or a rule says so.',
+            a: 'An AI help desk answers common questions itself and passes the rest to a person. In Fineguide, the assistant answers chats from your knowledge base, drafts or sends email replies from the thread itself, and hands the conversation over, with its full history, when the customer asks or a rule says so.',
           },
           {
             q: 'Can a chatbot hand the conversation to a live agent?',
@@ -247,7 +247,7 @@ const solution: Solution = {
           },
           {
             term: 'Un inbox pentru chat și email',
-            desc: 'Conectezi propriile căsuțe de la Google, Microsoft sau orice server IMAP ori pornești cu o adresă oferită de Fineguide. Conversațiile trec prin stările Deschis, În așteptare, Amânat și Rezolvat, iar regulile atribuie, direcționează și etichetează emailurile noi după expeditor, subiect sau căsuță.',
+            desc: 'Conectezi propriile căsuțe de la Google, Microsoft sau orice server IMAP. Conversațiile trec prin stările Deschis, În așteptare, Amânat și Rezolvat, iar regulile atribuie, direcționează și etichetează emailurile noi după expeditor, subiect sau căsuță.',
           },
           {
             term: 'Unelte pentru echipă',
@@ -269,7 +269,7 @@ const solution: Solution = {
         body: 'Cea mai mare parte a configurării sunt alegeri pe care le faci o dată pentru asistent și o dată pentru echipă.',
         items: [
           'Îi dai asistentului paginile site-ului, documentele și întrebările frecvente și conectezi canalele de chat.',
-          'Conectezi căsuța de suport prin IMAP și SMTP sau creezi o adresă oferită de Fineguide.',
+          'Conectezi căsuța de suport prin IMAP și SMTP.',
           'Alegi când ajung conversațiile la un om, apoi setezi departamentele, rutarea și programul de lucru.',
           'Activezi butonul de cerere de suport și conectezi Zendesk sau Help Scout, dacă echipa lucrează acolo.',
           'Preiei cererile din coadă și din Inbox și urmărești evaluările și rapoartele pe măsură ce apar.',
@@ -281,7 +281,7 @@ const solution: Solution = {
         items: [
           {
             term: 'Canale',
-            desc: '9 canale de chat (widgetul de pe site, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, amoCRM și Kommo), plus emailul tău, prin IMAP și SMTP.',
+            desc: '10 canale de chat (widgetul de pe site, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, JivoChat, amoCRM și Kommo), plus emailul tău, prin IMAP și SMTP.',
           },
           {
             term: 'Stări',
@@ -345,7 +345,7 @@ const solution: Solution = {
           },
           {
             q: 'Ce este un helpdesk cu AI?',
-            a: 'Un helpdesk cu AI răspunde singur la întrebările obișnuite și îi lasă unui om restul. În Fineguide, asistentul răspunde din baza ta de cunoștințe, în chat și pe email, și predă conversația cu tot istoricul când clientul o cere sau când o regulă o spune.',
+            a: 'Un helpdesk cu AI răspunde singur la întrebările obișnuite și îi lasă unui om restul. În Fineguide, asistentul răspunde în chat din baza ta de cunoștințe, scrie sau trimite răspunsuri la email pornind de la conversație și predă conversația cu tot istoricul când clientul o cere sau când o regulă o spune.',
           },
           {
             q: 'Cum funcționează preluarea conversației de către un operator?',
@@ -417,7 +417,7 @@ const solution: Solution = {
           },
           {
             term: 'Один ящик для чатов и почты',
-            desc: 'Подключите свои ящики в Google, Microsoft или на любом IMAP-сервере или начните с адреса, который даёт Fineguide. Переписки проходят статусы «Открыта», «В ожидании», «Отложена» и «Решена», а правила назначают, маршрутизируют и помечают тегами новые письма по отправителю, теме или ящику.',
+            desc: 'Подключите свои ящики в Google, Microsoft или на любом IMAP-сервере. Переписки проходят статусы «Открыта», «В ожидании», «Отложена» и «Решена», а правила назначают, маршрутизируют и помечают тегами новые письма по отправителю, теме или ящику.',
           },
           {
             term: 'Инструменты команды',
@@ -439,7 +439,7 @@ const solution: Solution = {
         body: 'Большая часть настройки делается один раз для ассистента и один раз для команды.',
         items: [
           'Дайте ассистенту страницы сайта, документы и FAQ и подключите каналы чата.',
-          'Подключите ящик поддержки по IMAP и SMTP или создайте адрес, который даёт Fineguide.',
+          'Подключите ящик поддержки по IMAP и SMTP.',
           'Выберите, когда диалог переходит к человеку, и настройте отделы, маршрутизацию и часы работы.',
           'Включите кнопку заявки в поддержку и подключите Zendesk или Help Scout, если команда работает там.',
           'Разбирайте обращения из очереди и входящих и следите за оценками и отчётами.',
@@ -451,7 +451,7 @@ const solution: Solution = {
         items: [
           {
             term: 'Каналы',
-            desc: '9 каналов чата (виджет на сайте, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, amoCRM и Kommo) и ваша почта по IMAP и SMTP.',
+            desc: '10 каналов чата (виджет на сайте, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, JivoChat, amoCRM и Kommo) и ваша почта по IMAP и SMTP.',
           },
           {
             term: 'Статусы',
@@ -515,7 +515,7 @@ const solution: Solution = {
           },
           {
             q: 'Что такое хелпдеск с ИИ?',
-            a: 'Это хелпдеск, в котором ИИ сам отвечает на типовые вопросы, а остальное передаёт человеку. В Fineguide ассистент отвечает по вашей базе знаний в чатах и в почте и передаёт диалог со всей историей, когда клиент просит или срабатывает правило.',
+            a: 'Это хелпдеск, в котором ИИ сам отвечает на типовые вопросы, а остальное передаёт человеку. В Fineguide ассистент отвечает в чатах по вашей базе знаний, готовит или отправляет ответы на письма по самой переписке и передаёт диалог со всей историей, когда клиент просит или срабатывает правило.',
           },
           {
             q: 'Как настроить передачу диалога оператору?',

@@ -18,6 +18,17 @@ const solutions = {
   ro: { heading: 'Soluții', items: [['/call-center', 'Soft pentru call center'], ['/help-desk', 'Helpdesk'], ['/knowledge-base', 'Bază de cunoștințe AI']] },
   ru: { heading: 'Решения', items: [['/call-center', 'Программа для колл-центра'], ['/help-desk', 'Хелпдеск'], ['/knowledge-base', 'База знаний с ИИ']] },
 }[lang];
+// The channel and industry pages (src/data/solutions), each language's labels.
+const channels = {
+  en: { heading: 'Channels', items: [['/website-ai-chatbot', 'Website chat'], ['/whatsapp-ai-chatbot', 'WhatsApp'], ['/telegram-ai-bot', 'Telegram'], ['/instagram-ai-chatbot', 'Instagram'], ['/messenger-ai-chatbot', 'Messenger'], ['/jivochat-ai-bot', 'JivoChat'], ['/ai-email-assistant', 'Email'], ['/voice-ai', 'Phone']] },
+  ro: { heading: 'Canale', items: [['/website-ai-chatbot', 'Chat pe site'], ['/whatsapp-ai-chatbot', 'WhatsApp'], ['/telegram-ai-bot', 'Telegram'], ['/instagram-ai-chatbot', 'Instagram'], ['/messenger-ai-chatbot', 'Messenger'], ['/jivochat-ai-bot', 'JivoChat'], ['/ai-email-assistant', 'Email'], ['/voice-ai', 'Telefon']] },
+  ru: { heading: 'Каналы', items: [['/website-ai-chatbot', 'Чат на сайте'], ['/whatsapp-ai-chatbot', 'WhatsApp'], ['/telegram-ai-bot', 'Telegram'], ['/instagram-ai-chatbot', 'Instagram'], ['/messenger-ai-chatbot', 'Messenger'], ['/jivochat-ai-bot', 'JivoChat'], ['/ai-email-assistant', 'Почта'], ['/voice-ai', 'Телефон']] },
+}[lang];
+const industries = {
+  en: { heading: 'Industries', items: [['/industries/real-estate', 'Real estate'], ['/industries/ecommerce', 'Online stores'], ['/industries/clinics', 'Clinics and services'], ['/industries/education', 'Education'], ['/industries/hotels-travel', 'Hotels and travel'], ['/call-center', 'Call centers']] },
+  ro: { heading: 'Domenii', items: [['/industries/real-estate', 'Imobiliare'], ['/industries/ecommerce', 'Magazine online'], ['/industries/clinics', 'Clinici și servicii'], ['/industries/education', 'Educație'], ['/industries/hotels-travel', 'Hoteluri și turism'], ['/call-center', 'Call centere']] },
+  ru: { heading: 'Отрасли', items: [['/industries/real-estate', 'Недвижимость'], ['/industries/ecommerce', 'Интернет-магазины'], ['/industries/clinics', 'Клиники и услуги'], ['/industries/education', 'Образование'], ['/industries/hotels-travel', 'Отели и туризм'], ['/call-center', 'Колл-центры']] },
+}[lang];
 const legal = {
   en: { rights: '#your-rights', dataProtection: 'Data protection', cookies: 'Cookie settings' },
   ro: { rights: '#drepturile-tale', dataProtection: 'Protecția datelor', cookies: 'Setări cookie' },
@@ -55,6 +66,22 @@ const legal = {
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{solutions.heading}</p>
           <div class="flex flex-col gap-2">
             {solutions.items.map(([href, label]) => (
+              <a href={getLocalizedPath(href, lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{label}</a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{channels.heading}</p>
+          <div class="flex flex-col gap-2">
+            {channels.items.map(([href, label]) => (
+              <a href={getLocalizedPath(href, lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{label}</a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{industries.heading}</p>
+          <div class="flex flex-col gap-2">
+            {industries.items.map(([href, label]) => (
               <a href={getLocalizedPath(href, lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{label}</a>
             ))}
           </div>
