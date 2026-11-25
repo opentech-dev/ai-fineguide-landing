@@ -11,6 +11,12 @@ const switches = LANGS.filter((l) => l !== lang).map((l) => ({
   name: LANG_NAMES[l],
   href: currentPath.startsWith('/blog') ? switchLangPath('/', l) : switchLangPath(currentPath, l),
 }));
+// The capability pages (src/data/solutions), under their own heading so the product list stays the modules.
+const solutions = {
+  en: { heading: 'Solutions', items: [['/call-center', 'Call center software'], ['/help-desk', 'Help desk'], ['/knowledge-base', 'AI knowledge base']] },
+  ro: { heading: 'Soluții', items: [['/call-center', 'Soft pentru call center'], ['/help-desk', 'Helpdesk'], ['/knowledge-base', 'Bază de cunoștințe AI']] },
+  ru: { heading: 'Решения', items: [['/call-center', 'Программа для колл-центра'], ['/help-desk', 'Хелпдеск'], ['/knowledge-base', 'База знаний с ИИ']] },
+}[lang];
 const legal = {
   en: { rights: '#your-rights', dataProtection: 'Data protection', cookies: 'Cookie settings' },
   ro: { rights: '#drepturile-tale', dataProtection: 'Protecția datelor', cookies: 'Setări cookie' },
@@ -27,7 +33,7 @@ const legal = {
           {t.footer.tagline}
         </p>
       </div>
-      <div class="flex gap-12">
+      <div class="flex flex-wrap gap-x-12 gap-y-8">
         <div>
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{t.footer.product}</p>
           <div class="flex flex-col gap-2">
@@ -41,6 +47,14 @@ const legal = {
             <a href={getLocalizedPath('/workspace', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.workspace}</a>
             <a href={getLocalizedPath('/automations', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.automations}</a>
             <a href={getLocalizedPath('/pricing', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.nav.pricing}</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{solutions.heading}</p>
+          <div class="flex flex-col gap-2">
+            {solutions.items.map(([href, label]) => (
+              <a href={getLocalizedPath(href, lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{label}</a>
+            ))}
           </div>
         </div>
         <div>

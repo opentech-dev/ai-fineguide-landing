@@ -1,0 +1,165 @@
+---
+/**
+ * A capability or channel page (src/data/solutions): the answer-first definition right under the hero (the words
+ * an AI assistant quotes), what it does, how to start, the facts in numbers, related pages and the questions people
+ * ask, which are also the page's FAQPage data. Same kit as the product pages: PageHero, Band, EditorialRows,
+ * StepList, ClosingCta.
+ */
+import Layout from '../layouts/Layout.astro';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
+import PageHero from './PageHero.astro';
+import Band from './Band.astro';
+import EditorialRows from './EditorialRows.astro';
+import StepList from './StepList.astro';
+import ClosingCta from './ClosingCta.astro';
+import { getLangFromUrl, getLocalizedPath, useTranslations, type Lang } from '../i18n/utils';
+import { solution } from '../data/solutions';
+import { blogPosts } from '../blog';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props as Props;
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const s = solution(slug);
+const c = s.copy[lang];
+const SITE = 'https://fineguide.ai';
+const url = new URL(getLocalizedPath(`/${slug}`, lang), SITE).href;
+const img = `/images/photos/${s.image}`;
+const base = img.replace(/\.(jpg|png)$/, '');
+// Intrinsic sizes of public/images/photos (the WebP set beside each is 640, 1024 and full width, capped at 1600).
+const DIMS: Record<string, [number, number]> = {"office-golden.jpg": [1584, 672], "partner-handshake.jpg": [1672, 941], "account-review.jpg": [1376, 768], "voice-desk.jpg": [1376, 768], "tablet-review.jpg": [1376, 768], "agent-call.jpg": [1408, 768], "call-review.jpg": [1376, 768], "channels-phone.jpg": [1376, 768], "partner-consultant.jpg": [1200, 800], "partner-call.jpg": [900, 1124], "partner-payout.jpg": [1200, 800], "team-collab.jpg": [1408, 768]};
+const [w, h] = DIMS[s.image] ?? [1376, 768];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: s.appName,
+    url,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: c.meta.description,
+    inLanguage: lang,
+    publisher: { '@id': `${SITE}/#org` },
+    featureList: c.capabilities.items.map((i) => i.term),
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', description: 'Free plan' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: c.faq.items.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+const posts = await blogPosts();
+const reading = (s.reading ?? []).map((p) => posts.find((x) => x.path === p)).filter((x) => x !== undefined);
+const READING = { en: 'Further reading', ro: 'De citit mai departe', ru: 'Читать дальше' }[lang];
+const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-balance text-[var(--color-foreground)]';
+---
+
+<Layout title={c.meta.title} description={c.meta.description} lang={lang} jsonLd={jsonLd} ogImage={img}>
+  <Navbar t={t} lang={lang} />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow={c.hero.eyebrow}
+      title={c.hero.title}
+      titleAccent={c.hero.titleAccent}
+      subtitle={c.hero.subtitle}
+      ctaPrimary={t.assistantsPage.hero.ctaPrimary}
+      ctaSecondary={t.assistantsPage.hero.ctaSecondary}
+      lang={lang}
+    >
+      <img
+        src={img}
+        srcset={`${base}-640.webp 640w, ${base}-1024.webp 1024w, ${base}.webp ${Math.min(w, 1600)}w`}
+        sizes="(min-width: 1024px) 58vw, 100vw"
+        alt={s.imageAlt[lang]}
+        width={w}
+        height={h}
+        class="w-full h-auto rounded-xl border border-[var(--color-border)] shadow-2xl"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </PageHero>
+
+    <!-- The answer first: a definition that stands on its own when quoted -->
+    <section id="what-is" class="px-6 pb-8">
+      <div class="max-w-7xl mx-auto border-t border-[var(--color-border)] pt-14">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{c.definition.heading}</h2>
+        <p class="mt-5 max-w-4xl text-lg md:text-xl leading-relaxed text-[var(--color-foreground)] text-pretty">{c.definition.body}</p>
+      </div>
+    </section>
+
+    <Band eyebrow={c.capabilities.eyebrow} heading={c.capabilities.heading} body={c.capabilities.body}>
+      <EditorialRows items={c.capabilities.items} />
+    </Band>
+
+    <Band tone="tint" eyebrow={c.steps.eyebrow} heading={c.steps.heading} body={c.steps.body}>
+      <StepList steps={c.steps.items} />
+    </Band>
+
+    <Band tone="dark" eyebrow={c.facts.eyebrow} heading={c.facts.heading}>
+      <EditorialRows variant="dark" items={c.facts.items} />
+    </Band>
+
+    <section class="py-20 md:py-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{c.related.eyebrow}</p>
+        <h2 class={h2}>{c.related.heading}</h2>
+        <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          {c.related.links.map((l) => (
+            <li class="border-t border-[var(--color-border)] py-6">
+              <a href={l.path.startsWith('/blog/') ? l.path : getLocalizedPath(l.path, lang)} class="text-lg md:text-xl font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{l.label}</a>
+              <p class="mt-2 text-base text-[var(--color-muted)] leading-relaxed">{l.desc}</p>
+            </li>
+          ))}
+        </ul>
+        {reading.length > 0 && (
+          <div class="mt-14">
+            <p class="eyebrow mb-3">{READING}</p>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+              {reading.map((r) => (
+                <li class="border-t border-[var(--color-border)] py-4">
+                  <a href={r.path} class="text-base md:text-lg text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{r.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- FAQ, visible: the FAQPage structured data repeats these words -->
+    <section id="faq" class="scroll-mt-24 py-20 md:py-28 px-6 band-tint">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{c.faq.heading}</h2>
+        <dl class="mt-12 max-w-4xl">
+          {c.faq.items.map((f) => (
+            <div class="border-t border-[var(--color-border)] py-6">
+              <dt class="text-lg md:text-xl font-semibold text-[var(--color-foreground)]">{f.q}</dt>
+              <dd class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <ClosingCta
+      heading={c.closing.heading}
+      body={c.closing.body}
+      ctaPrimary={t.assistantsPage.hero.ctaPrimary}
+      ctaSecondary={t.assistantsPage.hero.ctaSecondary}
+      lang={lang}
+    />
+  </main>
+
+  <Footer t={t} lang={lang} />
+</Layout>
