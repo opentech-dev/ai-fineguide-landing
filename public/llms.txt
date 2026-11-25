@@ -97,7 +97,6 @@ Agencies, integrators and consultants earn 20% of every invoice the customers th
 - [Voice QA](https://fineguide.ai/voice-qa/): Automatic transcription and scoring of every recorded call, against per-department rules.
 - [Workspace](https://fineguide.ai/workspace/): Block-based documents, playbooks and case files beside the customer record.
 - [Automations](https://fineguide.ai/automations/): n8n automations, assistant actions built from a cURL command, and assistant webhooks.
-- [MCP server](https://fineguide.ai/mcp/): connect ChatGPT, Claude, Cursor, VS Code or any MCP client to a Fineguide workspace at https://fineguide.ai/api/core/mcp (Streamable HTTP; OAuth 2.1 sign-in with the person's Fineguide account, or an API key). 312 actions across the CRM, AI assistants and their knowledge, conversations and analytics, workflows, the inbox and Voice QA, each run as the signed-in person with their own permissions.
 - [Pricing](https://fineguide.ai/pricing/): Plans from €0 to €500 a month, what each includes, and what a credit buys; start free with 200 credits.
 - [Enterprise](https://fineguide.ai/enterprise/): On-premise deployment, custom plans, platform adaptation, SLAs and consultancy, agreed in a contract.
 - [Partners](https://fineguide.ai/partners/): Partner program for agencies, integrators and consultants: earn 20% of every invoice the customers you refer pay, for as long as they stay, and pass part of it on to them as a discount if you choose.
