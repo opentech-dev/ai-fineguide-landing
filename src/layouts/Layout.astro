@@ -213,8 +213,10 @@ const breadcrumbLd = isHome
     {stylesheets.length > 0 && <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />}
     {stylesheets.map((href) => <link rel="stylesheet" href={href} />)}
 
-    <!-- Fineguide AI Chatbot. It is an app of its own (a frame with its scripts), so it starts once the page itself has
-         loaded: the page's text and images come first, then the chat. Its greeting waits a few seconds anyway. -->
+    <!-- Fineguide AI Chatbot. It is an app of its own (a frame with ~600 KB of scripts), so on this site it starts on the
+         visitor's first sign of life (a tap, a scroll, a key, focus) or, failing that, when the browser is idle a few
+         seconds after the page has loaded. The page's own text and images always come first; the chat's greeting
+         waits a few seconds anyway. This only changes when fineguide.ai loads its own chat, not the widget. -->
     {chat === 'auto' && (
       <script is:inline define:vars={{ id: CHATBOT_ID }}>
         window.FINEGUIDE_CHATBOT_ID = id;
@@ -225,8 +227,23 @@ const breadcrumbLd = isHome
             s.async = true;
             document.head.appendChild(s);
           }
-          if (document.readyState === 'complete') start();
-          else window.addEventListener('load', start, { once: true });
+          var started = false;
+          var EVENTS = ['pointerdown', 'touchstart', 'keydown', 'scroll', 'focusin', 'mousemove'];
+          function go() {
+            if (started) return;
+            started = true;
+            EVENTS.forEach(function (e) { window.removeEventListener(e, go, true); });
+            start();
+          }
+          EVENTS.forEach(function (e) { window.addEventListener(e, go, { capture: true, passive: true, once: true }); });
+          function idle() {
+            setTimeout(function () {
+              if (window.requestIdleCallback) window.requestIdleCallback(go, { timeout: 3000 });
+              else go();
+            }, 6000);
+          }
+          if (document.readyState === 'complete') idle();
+          else window.addEventListener('load', idle, { once: true });
         })();
       </script>
     )}
