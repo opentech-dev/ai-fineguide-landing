@@ -1867,7 +1867,7 @@ export const en = {
     faqSubheading: 'About the contact and support process',
     faq: [
       { q: 'How quickly will I get a response?', a: 'We typically respond within 2-4 hours on business days (Monday-Friday, 9:00-18:00). For urgent matters, please mention it in your message.' },
-      { q: 'Can I schedule a demo instead?', a: 'Of course! You can <a href="/schedule-demo">schedule a personalized demo</a> to see Fineguide in action. Our specialists will present the platform based on your specific needs.' },
+      { q: 'Can I schedule a demo instead?', a: 'Of course! You can <a href="/schedule-demo/">schedule a personalized demo</a> to see Fineguide in action. Our specialists will present the platform based on your specific needs.' },
       { q: 'What information should I include?', a: 'Include your company name, current customer challenges and what you want to achieve with AI automation. The more details you provide, the better we can tailor our response.' },
     ],
   },

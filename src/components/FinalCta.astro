@@ -9,6 +9,8 @@ const { t, lang = 'en' } = Astro.props as { t: Translations; lang?: Lang };
     <div class="relative isolate overflow-hidden rounded-[22px] px-6 py-20 md:px-16 md:py-28 text-center">
       <img
         src="/images/photos/office-golden.jpg"
+          srcset="/images/photos/office-golden-640.webp 640w, /images/photos/office-golden-1024.webp 1024w, /images/photos/office-golden.webp 1584w"
+          sizes="(min-width: 1024px) 58vw, 100vw"
         alt=""
         aria-hidden="true"
         width="1584"

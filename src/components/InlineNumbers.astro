@@ -22,6 +22,8 @@ const { t } = Astro.props as { t: Translations };
     <figure>
       <img
         src="/images/photos/agent-call.jpg"
+          srcset="/images/photos/agent-call-640.webp 640w, /images/photos/agent-call-1024.webp 1024w, /images/photos/agent-call.webp 1408w"
+          sizes="(min-width: 1024px) 58vw, 100vw"
         alt={t.photos.agentHeadset}
         width="1408"
         height="768"

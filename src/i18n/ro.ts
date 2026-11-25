@@ -1807,7 +1807,7 @@ export const ro: Translations = {
     faqSubheading: 'Despre procesul de contact și suport',
     faq: [
       { q: 'Cât de repede primesc răspuns?', a: 'De obicei răspundem în 2-4 ore în zilele lucrătoare (luni-vineri, 9:00-18:00). Pentru urgențe, te rugăm să menționezi acest lucru în mesaj.' },
-      { q: 'Pot programa un demo în loc?', a: 'Bineînțeles! Poți <a href="/schedule-demo">programa un demo personalizat</a> pentru a vedea Fineguide în acțiune. Specialiștii noștri îți vor prezenta platforma în funcție de nevoile tale.' },
+      { q: 'Pot programa un demo în loc?', a: 'Bineînțeles! Poți <a href="/ro/schedule-demo/">programa un demo personalizat</a> pentru a vedea Fineguide în acțiune. Specialiștii noștri îți vor prezenta platforma în funcție de nevoile tale.' },
       { q: 'Ce informații ar trebui să includ?', a: 'Include numele companiei, provocările actuale cu clienții și ce vrei să obții cu automatizarea AI. Cu cât ne dai mai multe detalii, cu atât răspunsul nostru va fi mai util.' },
     ],
   },

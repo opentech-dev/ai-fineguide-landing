@@ -101,7 +101,15 @@ const organizationLd = {
   founder: founderRef,
   // The same entity elsewhere: Fineguide's Wikidata item (created 2026-10-22, every statement referenced to this site)
   // and its G2 profile (approved 2026-10-22, claimed by us), where buyers and AI assistants look for reviews.
-  sameAs: ['https://www.wikidata.org/wiki/Q141808770', 'https://www.g2.com/products/fineguide-ai-fineguide/reviews'],
+  sameAs: [
+    'https://www.wikidata.org/wiki/Q141808770',
+    'https://www.g2.com/products/fineguide-ai-fineguide/reviews',
+    'https://www.linkedin.com/company/fineguide',
+    'https://www.youtube.com/@fineguide',
+    'https://www.instagram.com/fineguide_ai/',
+    'https://www.producthunt.com/products/fineguide-ai',
+    'https://www.saashub.com/fineguide',
+  ],
   // The company that runs Fineguide (owner, 2026-11-25): Eightcell Labs, Inc., a Delaware corporation.
   parentOrganization: { '@type': 'Organization', name: 'Eightcell Labs, Inc.', address: { '@type': 'PostalAddress', addressRegion: 'DE', addressCountry: 'US' } },
   address: { '@type': 'PostalAddress', streetAddress: '3979 Albany Post Road #620', addressLocality: 'Hyde Park', addressRegion: 'NY', postalCode: '12538', addressCountry: 'US' },
@@ -134,7 +142,7 @@ const breadcrumbLd = isHome
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Home',
+          name: ({ en: 'Home', ro: 'Acasă', ru: 'Главная' } as Record<string, string>)[lang] ?? 'Home',
           item: new URL(getLocalizedPath('/', lang), SITE).href,
         },
         ...trail.map(([p, name], i) => ({ '@type': 'ListItem', position: i + 2, name, item: new URL(p, SITE).href })),
@@ -198,15 +206,30 @@ const breadcrumbLd = isHome
     <meta name="theme-color" content="#f7f8fa" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    {/* The site's fonts as a stylesheet link, not a CSS @import (which the browser only finds after the CSS loads) */}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+    {/* The site's own fonts (src/styles/global.css, public/fonts): the Latin files every page paints with. */}
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    {htmlLang === 'ru' && <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin />}
+    {stylesheets.length > 0 && <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />}
     {stylesheets.map((href) => <link rel="stylesheet" href={href} />)}
 
-    <!-- Fineguide AI Chatbot -->
-    {chat === 'auto' && <script is:inline define:vars={{ id: CHATBOT_ID }}>window.FINEGUIDE_CHATBOT_ID = id;</script>}
-    {chat === 'auto' && <script is:inline defer src="https://cdn.fineguide.ai/fineguide.min.js"></script>}
+    <!-- Fineguide AI Chatbot. It is an app of its own (a frame with its scripts), so it starts once the page itself has
+         loaded: the page's text and images come first, then the chat. Its greeting waits a few seconds anyway. -->
+    {chat === 'auto' && (
+      <script is:inline define:vars={{ id: CHATBOT_ID }}>
+        window.FINEGUIDE_CHATBOT_ID = id;
+        (function () {
+          function start() {
+            var s = document.createElement('script');
+            s.src = 'https://cdn.fineguide.ai/fineguide.min.js';
+            s.async = true;
+            document.head.appendChild(s);
+          }
+          if (document.readyState === 'complete') start();
+          else window.addEventListener('load', start, { once: true });
+        })();
+      </script>
+    )}
 
 <!-- Google Ads and the Meta Pixel load from CookieConsent, only after the visitor accepts. -->
 

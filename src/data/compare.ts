@@ -118,7 +118,7 @@ const kommo: Competitor = {
     { id: 'languages', title: 'Kommo support: Change your language', url: 'https://support.kommo.com/docs/change-your-language' },
     { id: 'privacy', title: 'Kommo: Privacy Policy, section 13', url: 'https://www.kommo.com/privacy/' },
     { id: 'export', title: 'Kommo support: Import data into Kommo (export formats)', url: 'https://support.kommo.com/docs/en/import-data-into-kommo' },
-    { id: 'rebrand', title: 'Kommo blog: Rebranding, amoCRM has evolved into Kommo (11 October 2022)', url: 'https://www.kommo.com/blog/amocrm-rebranding/' },
+    { id: 'rebrand', title: 'Kommo blog: Rebranding, amoCRM has evolved into Kommo (11 October 2022)', url: 'https://web.archive.org/web/20260618020228/https://www.kommo.com/blog/amocrm-rebranding/' },
   ],
 };
 kommo.dataLocation = kommo.facts.data;

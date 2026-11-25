@@ -20,6 +20,8 @@ const { t } = Astro.props as { t: Translations };
     <figure class="md:order-first">
       <img
         src="/images/photos/channels-phone.jpg"
+          srcset="/images/photos/channels-phone-640.webp 640w, /images/photos/channels-phone-1024.webp 1024w, /images/photos/channels-phone.webp 1376w"
+          sizes="(min-width: 1024px) 58vw, 100vw"
         alt={t.photos.channelsPhone}
         width="1376"
         height="768"
