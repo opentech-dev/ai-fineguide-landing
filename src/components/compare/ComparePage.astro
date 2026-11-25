@@ -19,8 +19,8 @@ import Refs from './Refs.astro';
 import PlansLine from './PlansLine.astro';
 import { useTranslations, type Lang } from '../../i18n/utils';
 import {
-  CHECKED,
   COMPARE_PAGES,
+  checkedOf,
   COMPETITORS,
   FINEGUIDE_FACTS as fg,
   FINEGUIDE_SOURCES,
@@ -31,7 +31,7 @@ import {
   type CompareLang,
   type Fact,
 } from '../../data/compare';
-import { LABELS } from './labels';
+import { LABELS, checkedLine } from './labels';
 import type { CompareCopy, Line } from './types';
 
 interface Props {
@@ -50,6 +50,7 @@ const L = LABELS[lang];
 const page = COMPARE_PAGES.find((p) => p.slug === slug);
 if (!page) throw new Error(`Unknown comparison "${slug}": add it to COMPARE_PAGES in src/data/compare.ts`);
 const rivals = page.competitors.map((id) => COMPETITORS[id]);
+const CHECKED = checkedOf(page.competitors);
 const path = comparePath(lang, slug);
 const url = new URL(path, SITE).href;
 
@@ -166,7 +167,7 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
         <p class="eyebrow mb-5">
           <a href={comparePath(lang)} class="hover:underline">{L.eyebrow}</a>
           <span aria-hidden="true"> · </span>
-          <time datetime={CHECKED}>{L.checkedOn}</time>
+          <time datetime={CHECKED}>{checkedLine(lang, CHECKED)}</time>
         </p>
         <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,8vw,3rem)] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[var(--color-foreground)] text-balance">
           {copy.h1}
@@ -183,7 +184,7 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
     <section id="at-a-glance" class="scroll-mt-24 py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
         <h2 class={`${h2} text-[var(--color-foreground)]`}>{copy.tableHeading}</h2>
-        <p class="mt-6 max-w-4xl text-base md:text-lg text-[var(--color-muted)] leading-relaxed">{L.tableNote}</p>
+        <p class="mt-6 max-w-4xl text-base md:text-lg text-[var(--color-muted)] leading-relaxed">{CHECKED === '2026-10-21' ? L.tableNote : L.tableNote.replace(/21 October 2026|21 octombrie 2026|21 октября 2026 года/, checkedLine(lang, CHECKED).replace(L.checkedPrefix, '').trim().replace(/ г\.$/, ' года'))}</p>
         <div class="mt-12 -mx-6 px-6 overflow-x-auto">
           <table role="table" class={`cmp-table w-full ${rivals.length > 1 ? 'md:min-w-[62rem]' : 'md:min-w-[46rem]'} text-left border-collapse`}>
             <caption class="sr-only">{copy.tableHeading}</caption>

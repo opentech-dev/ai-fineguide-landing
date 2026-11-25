@@ -14,11 +14,25 @@
  * Fineguide is hosted or which providers it runs on.
  */
 import { PLANS, formatAmount } from './pricing';
+import * as p_aircall_talkdesk from './compare-pages/aircall-talkdesk';
+import * as p_callminer_observe_ai from './compare-pages/callminer-observe-ai';
+import * as p_freshdesk from './compare-pages/freshdesk';
+import * as p_intercom from './compare-pages/intercom';
+import * as p_jivochat from './compare-pages/jivochat';
+import * as p_salesforce from './compare-pages/salesforce';
+import * as p_tidio from './compare-pages/tidio';
+import * as p_vapi_retell from './compare-pages/vapi-retell';
+import * as p_zapier_make from './compare-pages/zapier-make';
+import * as p_zendesk from './compare-pages/zendesk';
+
+/** The pages added on 2026-11-25 (one file each: competitors, hub entry, en/ro/ru copy), facts checked that day. */
+const MORE = [p_aircall_talkdesk, p_callminer_observe_ai, p_freshdesk, p_intercom, p_jivochat, p_salesforce, p_tidio, p_vapi_retell, p_zapier_make, p_zendesk] as unknown as Array<{ competitors: Competitor[]; page: ComparePageMeta; copy: Record<CompareLang, unknown> }>;
 
 export const CHECKED = '2026-10-21';
 
 export type CompareLang = 'en' | 'ro' | 'ru';
-export type CompetitorId = 'kommo' | 'amocrm' | 'hubspot' | 'pipedrive' | 'bitrix24' | 'odoo' | 'zoho';
+/** The CRMs above plus the competitors of the pages in src/data/compare-pages/ (live chat, help desk, automation, call center). */
+export type CompetitorId = string;
 
 /** Copy in each language: every comparison is published in all three. */
 export interface Text {
@@ -439,14 +453,22 @@ const zoho: Competitor = {
 };
 zoho.dataLocation = zoho.facts.data;
 
-export const COMPETITORS: Record<CompetitorId, Competitor> = { kommo, amocrm, hubspot, pipedrive, bitrix24, odoo, zoho };
+export const COMPETITORS: Record<CompetitorId, Competitor> = {
+  kommo, amocrm, hubspot, pipedrive, bitrix24, odoo, zoho,
+  ...Object.fromEntries(MORE.flatMap((m) => m.competitors).map((c) => [c.id, c])),
+};
 
 // ---------------------------------------------------------------------------------------------------------
 // The comparison pages, alphabetically (the hub lists them in this order: no ranking)
 // ---------------------------------------------------------------------------------------------------------
 
+/** The hub groups the comparisons by the kind of tool Fineguide replaces or joins. */
+export type CompareCategory = 'crm' | 'live-chat' | 'help-desk' | 'automation' | 'call-center';
+export const CATEGORY_ORDER: CompareCategory[] = ['crm', 'live-chat', 'help-desk', 'automation', 'call-center'];
+
 export interface ComparePageMeta {
   slug: string;
+  category?: CompareCategory;
   competitors: CompetitorId[];
   label: Text;
   summary: Text;
@@ -454,7 +476,7 @@ export interface ComparePageMeta {
   langs: CompareLang[];
 }
 
-export const COMPARE_PAGES: ComparePageMeta[] = [
+const CRM_PAGES: ComparePageMeta[] = [
   {
     slug: 'bitrix24',
     competitors: ['bitrix24'],
@@ -523,6 +545,18 @@ export const COMPARE_PAGES: ComparePageMeta[] = [
   },
 ];
 
+const CATEGORY: Record<string, CompareCategory> = {"intercom": "live-chat", "tidio": "live-chat", "jivochat": "live-chat", "zendesk": "help-desk", "freshdesk": "help-desk", "salesforce": "crm", "zapier-make": "automation", "vapi-retell": "call-center", "aircall-talkdesk": "call-center", "callminer-observe-ai": "call-center"};
+export const COMPARE_PAGES: ComparePageMeta[] = [
+  ...CRM_PAGES.map((p) => ({ ...p, category: 'crm' as const })),
+  ...MORE.map((m) => ({ ...m.page, category: CATEGORY[m.page.slug] ?? 'crm' })),
+].sort((a, b) => a.slug.localeCompare(b.slug));
+
+/** The newest date any competitor on a page (or on the hub) was checked. */
+export function checkedOf(ids?: CompetitorId[]): string {
+  const all = (ids ?? Object.keys(COMPETITORS)).map((id) => COMPETITORS[id]?.checked ?? CHECKED);
+  return all.sort().pop() ?? CHECKED;
+}
+
 // ---------------------------------------------------------------------------------------------------------
 // Fineguide's column (public/llms.txt and the product pages; never hosting or providers)
 // ---------------------------------------------------------------------------------------------------------
@@ -538,6 +572,10 @@ export const FINEGUIDE_SOURCES: Source[] = [
   { id: 'fg-enterprise', title: 'Fineguide: Enterprise', url: '/enterprise/' },
   { id: 'fg-privacy', title: 'Fineguide: Privacy Policy', url: '/privacy-policy/' },
   { id: 'fg-llms', title: 'Fineguide: product facts (llms.txt)', url: '/llms.txt' },
+  { id: 'fg-automations', title: 'Fineguide: Automations', url: '/automations/' },
+  { id: 'fg-help-desk', title: 'Fineguide: Help desk', url: '/help-desk/' },
+  { id: 'fg-call-center', title: 'Fineguide: Call center software', url: '/call-center/' },
+  { id: 'fg-knowledge-base', title: 'Fineguide: AI knowledge base', url: '/knowledge-base/' },
 ];
 
 /** The text in `lang`. A page must never fall back to another language silently, so a gap fails the build. */
@@ -565,9 +603,9 @@ export const FINEGUIDE_FACTS: Record<RowKey, Fact> = {
     src: ['fg-assistants', 'fg-pricing'],
   },
   channels: {
-    en: 'Website chat widget, WhatsApp, Telegram, Instagram, Messenger, Slack and Discord, and inside amoCRM and Kommo. One team inbox for chat and your own email (IMAP and SMTP).',
-    ro: 'Widgetul de chat de pe site, WhatsApp, Telegram, Instagram, Messenger, Slack și Discord, plus direct în amoCRM și Kommo. Un singur inbox de echipă pentru chat și emailul tău (IMAP și SMTP).',
-    ru: 'Чат-виджет на сайте, WhatsApp, Telegram, Instagram, Messenger, Slack и Discord, а также внутри amoCRM и Kommo. Общий inbox команды для чатов и вашей собственной почты (IMAP и SMTP).',
+    en: 'Website chat widget, WhatsApp, Telegram (a bot or a user account), Instagram, Messenger, Slack and Discord, and inside amoCRM, Kommo and JivoChat. One team inbox for chat and your own email (IMAP and SMTP).',
+    ro: 'Widgetul de chat de pe site, WhatsApp, Telegram (bot sau cont de utilizator), Instagram, Messenger, Slack și Discord, plus direct în amoCRM, Kommo și JivoChat. Un singur inbox de echipă pentru chat și emailul tău (IMAP și SMTP).',
+    ru: 'Чат-виджет на сайте, WhatsApp, Telegram (бот или пользовательский аккаунт), Instagram, Messenger, Slack и Discord, а также внутри amoCRM, Kommo и JivoChat. Общий inbox команды для чатов и вашей собственной почты (IMAP и SMTP).',
     src: ['fg-assistants', 'fg-messages'],
   },
   phone: {
@@ -589,9 +627,9 @@ export const FINEGUIDE_FACTS: Record<RowKey, Fact> = {
     src: ['fg-llms'],
   },
   data: {
-    en: 'Personal data handled under Moldova’s Law No. 195/2024 on personal data protection, and the GDPR where it applies. On-premise deployment on your own infrastructure under an Enterprise contract.',
-    ro: 'Datele personale sunt prelucrate conform Legii nr. 195/2024 privind protecția datelor cu caracter personal și GDPR, acolo unde se aplică. Instalare on-premise pe infrastructura ta, prin contract Enterprise.',
-    ru: 'Персональные данные обрабатываются по Закону Республики Молдова № 195/2024 о защите персональных данных и по GDPR, где он применяется. Развёртывание on-premise на вашей инфраструктуре — по договору Enterprise.',
+    en: 'Personal data handled under the GDPR where it applies, as the privacy policy describes. On-premise deployment on your own infrastructure under an Enterprise contract.',
+    ro: 'Datele personale sunt prelucrate conform GDPR, acolo unde se aplică, așa cum descrie politica de confidențialitate. Instalare on-premise pe infrastructura ta, prin contract Enterprise.',
+    ru: 'Персональные данные обрабатываются по GDPR, где он применяется, как описано в политике конфиденциальности. Развёртывание on-premise на вашей инфраструктуре — по договору Enterprise.',
     src: ['fg-privacy', 'fg-enterprise'],
   },
 };

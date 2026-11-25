@@ -11,8 +11,8 @@ import Footer from '../Footer.astro';
 import ClosingCta from '../ClosingCta.astro';
 import PlansLine from './PlansLine.astro';
 import { useTranslations, type Lang } from '../../i18n/utils';
-import { CHECKED, COMPARE_PAGES, comparePath, pick, type CompareLang } from '../../data/compare';
-import { LABELS } from './labels';
+import { CATEGORY_ORDER, COMPARE_PAGES, checkedOf, comparePath, pick, type CompareLang } from '../../data/compare';
+import { LABELS, checkedLine } from './labels';
 import type { HubCopy } from './types';
 
 interface Props {
@@ -29,7 +29,9 @@ const L = LABELS[lang];
 const path = comparePath(lang);
 const url = new URL(path, SITE).href;
 
+const CHECKED = checkedOf();
 const items = COMPARE_PAGES.map((p) => ({
+  category: p.category ?? 'crm',
   href: comparePath(lang, p.slug),
   name: `Fineguide vs ${pick(p.label, lang)}`,
   summary: pick(p.summary, lang),
@@ -74,7 +76,7 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
         <p class="eyebrow mb-5">
           {L.hubEyebrow}
           <span aria-hidden="true"> · </span>
-          <time datetime={CHECKED}>{L.checkedOn}</time>
+          <time datetime={CHECKED}>{checkedLine(lang, CHECKED)}</time>
         </p>
         <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,9vw,3rem)] sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] text-[var(--color-foreground)] text-balance">
           {copy.h1}
@@ -88,14 +90,17 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
     <section class="py-20 md:py-28 px-6 border-t border-[var(--color-border)]/60">
       <div class="max-w-7xl mx-auto">
         <h2 class={h2}>{copy.listHeading}</h2>
-        <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {items.map((it) => (
+        {CATEGORY_ORDER.filter((c) => items.some((it) => it.category === c)).map((c) => (
+        <>
+        <h3 id={c} class="scroll-mt-24 mt-16 text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{L.categories[c]}</h3>
+        <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {items.filter((it) => it.category === c).map((it) => (
             <li>
               <a
                 href={it.href}
                 class="card-hover block h-full rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 md:p-8"
               >
-                <h3 class="text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">{it.name}</h3>
+                <h4 class="text-2xl font-semibold tracking-tight text-[var(--color-foreground)]">{it.name}</h4>
                 <p class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{it.summary}</p>
                 <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)]">
                   {L.readComparison}
@@ -107,6 +112,8 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
             </li>
           ))}
         </ul>
+        </>
+        ))}
       </div>
     </section>
 

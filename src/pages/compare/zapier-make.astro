@@ -1,0 +1,7 @@
+---
+import ComparePage from '../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../components/compare/types';
+import { copy } from '../../data/compare-pages/zapier-make';
+---
+
+<ComparePage lang="en" slug="zapier-make" copy={copy.en as CompareCopy} />

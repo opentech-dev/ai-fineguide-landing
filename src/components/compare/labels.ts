@@ -8,6 +8,9 @@ export interface CompareLabels {
   eyebrow: string;
   hubEyebrow: string;
   checkedOn: string;
+  /** The same, without the date: the date comes from the competitors' `checked` (checkedLine below). */
+  checkedPrefix: string;
+  categories: Record<'crm' | 'live-chat' | 'help-desk' | 'automation' | 'call-center', string>;
   shortAnswer: string;
   rows: Record<RowKey, string>;
   notStated: string;
@@ -32,6 +35,8 @@ export const LABELS: Record<CompareLang, CompareLabels> = {
     eyebrow: 'Comparison',
     hubEyebrow: 'Compare',
     checkedOn: 'Checked on vendor pages, 21 October 2026',
+    checkedPrefix: 'Checked on vendor pages,',
+    categories: { crm: 'CRMs', 'live-chat': 'Live chat and AI chatbots', 'help-desk': 'Help desks and customer support', automation: 'Business automation', 'call-center': 'Call center, voice AI and speech analytics' },
     shortAnswer: 'Short answer',
     rows: {
       ai: 'AI agent',
@@ -70,6 +75,8 @@ export const LABELS: Record<CompareLang, CompareLabels> = {
     eyebrow: 'Comparație',
     hubEyebrow: 'Comparații',
     checkedOn: 'Verificat pe paginile oficiale, 21 octombrie 2026',
+    checkedPrefix: 'Verificat pe paginile oficiale,',
+    categories: { crm: 'CRM-uri', 'live-chat': 'Chat live și chatboți AI', 'help-desk': 'Helpdesk și suport clienți', automation: 'Automatizarea afacerii', 'call-center': 'Call center, AI vocal și analiza apelurilor' },
     shortAnswer: 'Pe scurt',
     rows: {
       ai: 'Agent AI',
@@ -108,6 +115,8 @@ export const LABELS: Record<CompareLang, CompareLabels> = {
     eyebrow: 'Сравнение',
     hubEyebrow: 'Сравнения',
     checkedOn: 'Проверено по официальным страницам 21 октября 2026',
+    checkedPrefix: 'Проверено по официальным страницам',
+    categories: { crm: 'CRM', 'live-chat': 'Онлайн-чаты и ИИ-чат-боты', 'help-desk': 'Хелпдески и поддержка клиентов', automation: 'Автоматизация бизнеса', 'call-center': 'Колл-центр, голосовой ИИ и речевая аналитика' },
     shortAnswer: 'Коротко',
     rows: {
       ai: 'ИИ-агент',
@@ -143,3 +152,10 @@ export const LABELS: Record<CompareLang, CompareLabels> = {
     crumb: 'Сравнения',
   },
 };
+
+/** "Checked on vendor pages, 25 November 2026" in the page's language, from an ISO date. */
+export function checkedLine(lang: 'en' | 'ro' | 'ru', iso: string): string {
+  const d = new Date(`${iso}T12:00:00Z`);
+  const date = new Intl.DateTimeFormat({ en: 'en-GB', ro: 'ro-RO', ru: 'ru-RU' }[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
+  return `${LABELS[lang].checkedPrefix} ${date}`;
+}

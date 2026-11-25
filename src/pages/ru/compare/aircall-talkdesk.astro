@@ -1,0 +1,7 @@
+---
+import ComparePage from '../../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../../components/compare/types';
+import { copy } from '../../../data/compare-pages/aircall-talkdesk';
+---
+
+<ComparePage lang="ru" slug="aircall-talkdesk" copy={copy.ru as CompareCopy} />

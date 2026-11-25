@@ -1,0 +1,7 @@
+---
+import ComparePage from '../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../components/compare/types';
+import { copy } from '../../data/compare-pages/zendesk';
+---
+
+<ComparePage lang="en" slug="zendesk" copy={copy.en as CompareCopy} />
