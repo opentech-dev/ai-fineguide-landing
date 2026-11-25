@@ -102,9 +102,12 @@ const organizationLd = {
   // The same entity elsewhere: Fineguide's Wikidata item (created 2026-10-22, every statement referenced to this site)
   // and its G2 profile (approved 2026-10-22, claimed by us), where buyers and AI assistants look for reviews.
   sameAs: ['https://www.wikidata.org/wiki/Q141808770', 'https://www.g2.com/products/fineguide-ai-fineguide/reviews'],
-  address: { '@type': 'PostalAddress', addressLocality: 'Chișinău', addressCountry: 'MD' },
+  // The company that runs Fineguide (owner, 2026-11-25): Eightcell Labs, Inc., a Delaware corporation.
+  parentOrganization: { '@type': 'Organization', name: 'Eightcell Labs, Inc.', address: { '@type': 'PostalAddress', addressRegion: 'DE', addressCountry: 'US' } },
+  address: { '@type': 'PostalAddress', streetAddress: '3979 Albany Post Road #620', addressLocality: 'Hyde Park', addressRegion: 'NY', postalCode: '12538', addressCountry: 'US' },
+  areaServed: 'Worldwide',
   contactPoint: [
-    { '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@fineguide.ai', telephone: '+373-60-419-281', availableLanguage: ['en', 'ro'] },
+    { '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@fineguide.ai', telephone: '+1-408-313-8452', availableLanguage: ['en', 'ro', 'ru'], areaServed: 'Worldwide' },
   ],
 };
 

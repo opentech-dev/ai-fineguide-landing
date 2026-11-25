@@ -578,7 +578,7 @@ export const ro: Translations = {
         },
         {
           name: 'Operatori conectați',
-          desc: 'Moldcell, Orange Moldova și aplicația Fineguide de înregistrare a apelurilor pentru Android aduc singure apelurile noi, verificate în fiecare minut.',
+          desc: 'O centrală telefonică conectată (centrala virtuală Moldcell are un șablon gata făcut) și aplicația Fineguide de înregistrare a apelurilor pentru Android aduc singure apelurile noi, verificate în fiecare minut.',
         },
         {
           name: 'Evaluare automată',
@@ -812,7 +812,7 @@ export const ro: Translations = {
         },
         {
           name: 'Apelanți recunoscuți',
-          desc: 'Activează salutul pe nume: un apelant al cărui număr e în CRM este salutat pe prenume, iar asistentul vede deja compania din care sună.',
+          desc: 'Activează salutul pe nume: un apelant al cărui număr e în CRM este salutat pe prenume.',
         },
         {
           name: 'Program de lucru',
@@ -1125,7 +1125,7 @@ export const ro: Translations = {
       title: 'Campanii de apeluri',
       titleAccent: ' care se derulează singure.',
       subtitle:
-        'Alegi lista, iar asistenții sună contactele unul câte unul, în ritmul tău, cu rezultatul urmărit pentru fiecare.',
+        'Alegi lista, iar asistenții sună contactele în ritmul tău, cu atâtea apeluri simultane câte setezi, cu rezultatul urmărit pentru fiecare.',
       ctaPrimary: 'Începe acum',
       ctaSecondary: 'Programează un demo',
     },
@@ -1681,7 +1681,7 @@ export const ro: Translations = {
   aboutMeta: {
     title: 'Despre Fineguide.AI | Compania, fondatorul, contact',
     description:
-      'Fineguide.AI este o platformă de CRM și automatizare bazată pe AI, din Chișinău, Moldova. Despre companie, fondatorul Liviu Maftuleac și cum ne scrii.',
+      'Fineguide.AI este o platformă de CRM și automatizare bazată pe AI, operată de Eightcell Labs, Inc., o corporație din Delaware. Despre companie, fondator și contact.',
   },
   aboutPage: {
     hero: {
@@ -1689,7 +1689,7 @@ export const ro: Translations = {
       title: 'Compania din spatele',
       titleAccent: ' Fineguide.AI.',
       subtitle:
-        'Fineguide.AI este o platformă de CRM și automatizare a afacerii construită pe AI, dezvoltată în Chișinău, Moldova, pentru echipele care vorbesc zilnic cu clienții.',
+        'Fineguide.AI este o platformă de CRM și automatizare a afacerii construită pe AI, pentru echipele care vorbesc zilnic cu clienții, oriunde ar lucra.',
     },
     company: {
       eyebrow: 'Ce este Fineguide',
@@ -1740,9 +1740,9 @@ export const ro: Translations = {
     },
     origin: {
       eyebrow: 'Unde suntem',
-      heading: 'Construit în Chișinău, Moldova.',
+      heading: 'Operat de Eightcell Labs, Inc.',
       body:
-        'Fineguide.AI este proiectat și dezvoltat în Chișinău, în Republica Moldova. Acest site este disponibil în română, engleză și rusă.',
+        'Fineguide.AI este operat de Eightcell Labs, Inc., o corporație din Delaware, 3979 Albany Post Road #620, Hyde Park, NY 12538, Statele Unite ale Americii. Telefon +1 408 313 8452, email ops@fineguide.ai. Fineguide lucrează cu companii din toată lumea; acest site este disponibil în română, engleză și rusă.',
     },
     founder: {
       eyebrow: 'Compania și fondatorul',
@@ -1855,7 +1855,7 @@ export const ro: Translations = {
     eyebrow: 'Fondator',
     role: 'Fondator, proprietar și deținător al Fineguide.AI și Eightcell Labs',
     body:
-      'Liviu Maftuleac a fondat Fineguide.AI, platforma de CRM și automatizare a afacerilor construită în jurul AI, dezvoltată în Chișinău, Moldova. Este unicul ei fondator, proprietar și deținător, precum și unicul fondator, proprietar și deținător al Eightcell Labs.',
+      'Liviu Maftuleac a fondat Fineguide.AI, platforma de CRM și automatizare a afacerilor construită în jurul AI. Este unicul ei fondator, proprietar și deținător, precum și unicul fondator, proprietar și deținător al Eightcell Labs.',
     companiesHeading: 'Companii',
     companies: [
       { name: 'Fineguide.AI', desc: 'Platformă de CRM și automatizare construită în jurul AI: asistenți AI, CRM, inbox comun, apeluri AI și evaluarea apelurilor.', href: 'https://fineguide.ai/' },

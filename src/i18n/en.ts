@@ -572,7 +572,7 @@ export const en = {
         },
         {
           name: 'Callers it recognises',
-          desc: 'Turn on greeting by name, and a caller whose number is in the CRM is welcomed by their first name, with their company already in front of the assistant.',
+          desc: 'Turn on greeting by name, and a caller whose number is in the CRM is welcomed by their first name.',
         },
         {
           name: 'Business hours',
@@ -782,7 +782,7 @@ export const en = {
         },
         {
           name: 'Connected carriers',
-          desc: 'Moldcell, Orange Moldova and the Fineguide call recording app for Android deliver new calls on their own, checked every minute.',
+          desc: 'A connected phone system (Moldcell’s virtual PBX has a ready template) and the Fineguide call recording app for Android deliver new calls on their own, checked every minute.',
         },
         {
           name: 'Automatic scoring',
@@ -1151,7 +1151,7 @@ export const en = {
       title: 'Outbound calling',
       titleAccent: ' that runs itself.',
       subtitle:
-        'Point a campaign at a list and the assistants dial it one at a time, at your pace, with every outcome tracked per contact.',
+        'Point a campaign at a list and the assistants dial it at your pace, as many calls at once as you set, with every outcome tracked per contact.',
       ctaPrimary: 'Get started',
       ctaSecondary: 'Schedule a demo',
     },
@@ -1743,7 +1743,7 @@ export const en = {
   aboutMeta: {
     title: 'About Fineguide.AI | Company, Founder and Contact',
     description:
-      'Fineguide.AI is an AI-first CRM and automation platform built in Chișinău, Moldova. Meet the company, its founder Liviu Maftuleac, and how to reach us.',
+      'Fineguide.AI is an AI-first CRM and automation platform run by Eightcell Labs, Inc., a Delaware corporation. Meet the company, its founder and how to reach us.',
   },
   aboutPage: {
     hero: {
@@ -1751,7 +1751,7 @@ export const en = {
       title: 'The company behind',
       titleAccent: ' Fineguide.AI.',
       subtitle:
-        'Fineguide.AI is an AI-first CRM and business-automation platform, built in Chișinău, Moldova, for the teams that talk to customers every day.',
+        'Fineguide.AI is an AI-first CRM and business-automation platform for the teams that talk to customers every day, wherever they work.',
     },
     company: {
       eyebrow: 'What Fineguide is',
@@ -1802,9 +1802,9 @@ export const en = {
     },
     origin: {
       eyebrow: 'Where we are',
-      heading: 'Built in Chișinău, Moldova.',
+      heading: 'Run by Eightcell Labs, Inc.',
       body:
-        'Fineguide.AI is designed and built in Chișinău, in the Republic of Moldova. This site is available in English, Romanian and Russian.',
+        'Fineguide.AI is run by Eightcell Labs, Inc., a Delaware corporation, 3979 Albany Post Road #620, Hyde Park, NY 12538, United States. Phone +1 408 313 8452, email ops@fineguide.ai. Fineguide serves companies worldwide; this site is available in English, Romanian and Russian.',
     },
     founder: {
       eyebrow: 'Company and founder',
@@ -1830,7 +1830,7 @@ export const en = {
 
   // --- Contact Page ---
   contactMeta: {
-    title: 'Contact Fineguide | AI CRM built in Chișinău, Moldova',
+    title: 'Contact Fineguide | AI-first CRM and automation platform',
     description: 'Contact the Fineguide team. We\'re here for questions, technical support, or to discuss how the AI platform can help your business.',
   },
   contact: {
@@ -1916,7 +1916,7 @@ export const en = {
     eyebrow: 'Founder',
     role: 'Founder, owner and holder of Fineguide.AI and Eightcell Labs',
     body:
-      'Liviu Maftuleac founded Fineguide.AI, the AI-first CRM and business-automation platform built in Chișinău, Moldova. He is its sole founder, owner and holder, and the sole founder, owner and holder of Eightcell Labs.',
+      'Liviu Maftuleac founded Fineguide.AI, the AI-first CRM and business-automation platform. He is its sole founder, owner and holder, and the sole founder, owner and holder of Eightcell Labs.',
     companiesHeading: 'Companies',
     companies: [
       { name: 'Fineguide.AI', desc: 'AI-first CRM and business-automation platform: AI assistants, CRM, a shared inbox, AI phone calls and call scoring.', href: 'https://fineguide.ai/' },

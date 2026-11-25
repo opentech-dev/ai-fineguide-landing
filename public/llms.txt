@@ -5,7 +5,7 @@
 ## Company
 
 - **What it is:** Fineguide.AI, an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, CRM, shared inbox and email, AI phone calls and outbound call campaigns, call-quality scoring, and n8n automations.
-- **Where it is built:** Chișinău, Republic of Moldova.
+- **Company:** Fineguide.AI is run by Eightcell Labs, Inc., a Delaware corporation, 3979 Albany Post Road #620, Hyde Park, NY 12538, United States. Phone +1 408 313 8452. Fineguide serves companies worldwide.
 - **Founder and owner:** Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI. He is also the sole founder, owner and holder of Eightcell Labs.
 - **Advisor:** Corneliu Maftuleac is an advisor only. He holds no ownership in, and has no attribution to, Fineguide.AI or Eightcell Labs.
 - **Contact:** contact@fineguide.ai, or the contact page at https://fineguide.ai/contact/. More about the company: https://fineguide.ai/about/
@@ -19,7 +19,7 @@ The modules share one customer record:
 - **Messages & Inbox**: one team inbox for nine chat channels and your own email (your own mailboxes and domains over IMAP and SMTP), with a routing queue, routing rules, departments, handover to a person, collision detection, saved replies, a business-hours auto-reply and per-mailbox reporting. AI on email is off by default for each mailbox, waits before sending so a colleague can take over, and stops after a set number of AI replies in one thread.
 - **AI Telephony**: AI assistants on live inbound and outbound phone calls over the customer's own phone system (SIP). Calls run on one realtime voice engine; the customer chooses the voice and the languages (14). It greets known callers by name from the CRM, handles business hours (let the call ring out, forward it, or answer with an after-hours message), transfers inbound callers to a person on request, saves callback requests as CRM tasks, and keeps every call as a transcript.
 - **Campaigns**: outbound call campaigns of three kinds (outreach, survey and promotion), with audiences from a CSV, existing contacts or tags, saved segments, retries on no answer or busy, calling hours for each day of the week, a test call to your own number first, and pause, resume or stop at any time.
-- **Voice QA**: call recordings (uploaded, posted through the API, or delivered automatically from Moldcell, Orange Moldova or the Fineguide call-recording app for Android) are transcribed and scored against each department's own rules and weights, with the reasoning, three to five quotes from the call and a suggestion for every rule; agent scorecards; cases of up to ten calls; dashboards by department, agent and rule; reports in 30 languages; results can be pushed to a webhook, amoCRM or Kommo.
+- **Voice QA**: call recordings (uploaded, posted through the API, or delivered automatically from a connected phone system, such as Moldcell's virtual PBX, or the Fineguide call-recording app for Android) are transcribed and scored against each department's own rules and weights, with the reasoning, three to five quotes from the call and a suggestion for every rule; agent scorecards; cases of up to ten calls; dashboards by department, agent and rule; reports in 30 languages; results can be pushed to a webhook, amoCRM or Kommo.
 - **Workspace**: a block editor with slash commands, folders, favourites and recents, links between documents, search by title, trash with recovery, and case documents linked to contacts.
 - **Automations**: n8n automations on an instance Fineguide hosts for you, or on your own n8n instance connected to Fineguide. An n8n workflow that starts with a webhook can be imported as an assistant action. Assistant actions are HTTP calls built from a pasted cURL command, using stored secrets, with a test panel. Assistant webhooks are sent on these events: message, session opened, session closed, ticket, message rated, collected-information update, and Facebook Lead Ads lead form.
 
@@ -82,8 +82,8 @@ Agencies, integrators and consultants earn 20% of every invoice the customers th
 
 ## Integrations & languages
 
-- **Channels:** website chat widget, WhatsApp, Telegram, Instagram, Messenger, Slack, Discord, amoCRM and Kommo.
-- **Other integrations:** Zendesk, HelpScout, Google Calendar (two-way task sync), Facebook Lead Ads, and n8n, with hundreds more integrations through n8n workflows. Voice QA receives calls from Moldcell, Orange Moldova and the Fineguide call-recording app for Android.
+- **Channels:** website chat widget, WhatsApp, Telegram (a bot or a Telegram user account), Instagram, Messenger, Slack, Discord, JivoChat (the assistant answers Jivo chats and hands over to Jivo operators), amoCRM and Kommo.
+- **Other integrations:** Zendesk, HelpScout, Google Calendar (two-way task sync), Facebook Lead Ads, and n8n, with hundreds more integrations through n8n workflows. Voice QA receives calls from connected phone systems (Moldcell's virtual PBX has a ready template) and the Fineguide call-recording app for Android.
 - **Languages:** call-quality reports (Voice QA) in 30 languages; AI phone calls in 14 (English, Romanian, Russian, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Arabic, Japanese, Korean and Chinese); the website chat widget's interface in 24. The site is in English (`/`), Romanian (`/ro/`) and Russian (`/ru/`).
 
 ## Pages
