@@ -21,10 +21,16 @@ RUN npm run build
 # (src/blog.ts; it was WordPress until 2026-10-21 — see apache/fineguide.conf).
 FROM httpd:2.4
 
+# curl for the Cloudflare cache purge after each deploy (docker/start.sh).
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/*
+
 COPY apache/fineguide.conf /usr/local/apache2/conf/extra/fineguide.conf
 RUN echo 'Include conf/extra/fineguide.conf' >> /usr/local/apache2/conf/httpd.conf
 
 # Copy built static files from build stage to Apache document root
 COPY --from=build /app/dist /usr/local/apache2/htdocs/
 
+COPY docker/start.sh /usr/local/bin/start.sh
+
 EXPOSE 80
+CMD ["/usr/local/bin/start.sh"]
