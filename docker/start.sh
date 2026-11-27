@@ -10,7 +10,9 @@ purge() {
     --data '{"hosts":["fineguide.ai"]}' \
     "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" || true
 }
-# Twice: once the rollout has switched traffic to this pod (about a minute), and again in case the old pod was still
-# answering the edge at the first purge.
-( sleep 60; purge; sleep 120; purge ) &
+# Three times: as soon as this pod answers (the rollout switches traffic within seconds, so a new blog post, /blog/
+# and the sitemaps are fresh at once), then at one and three minutes in case the old pod was still answering the edge.
+# Error pages (4xx/5xx) are never kept at the edge (the Cache Rule's status_code_ttl), so a post requested while it
+# was still a draft does not stay "not found" after it publishes.
+( sleep 10; purge; sleep 50; purge; sleep 120; purge ) &
 exec httpd-foreground
