@@ -22,7 +22,7 @@ interface Props {
 }
 
 const { lang = 'en' } = Astro.props;
-const updated = lang === 'ro' ? '25 noiembrie 2026' : lang === 'ru' ? '25 ноября 2026 г.' : '25 November 2026';
+const updated = lang === 'ro' ? '27 noiembrie 2026' : lang === 'ru' ? '27 ноября 2026 г.' : '27 November 2026';
 const email = 'ops@fineguide.ai';
 ---
 
@@ -76,6 +76,15 @@ const email = 'ops@fineguide.ai';
         </ul>
         <p><strong>Temei:</strong> interesul nostru legitim de a-ți oferi site-ul în forma cerută.</p>
 
+        <h3>Statistica site-ului</h3>
+        <ul>
+          <li><strong>Date:</strong> pentru fiecare vizită pe paginile noastre: pagina, site-ul care a trimis spre ea (doar numele lui, de exemplu google.com), cuvintele de campanie din link (parametrii <code>utm_</code>; linkurile pe care le publicăm au un cod scurt în <code>utm_source</code>), țara (dedusă din rețea, adresa în sine nu este păstrată), tipul de dispozitiv și de sistem, fusul orar și clicurile pe linkurile noastre de înregistrare, demo, contact și prețuri. Nu păstrăm niciun identificator, nicio adresă IP și nimic care să deosebească un vizitator de altul.</li>
+          <li><strong>În browserul tău:</strong> <strong>fg_src</strong>, <strong>fg_ref</strong> și <strong>fg_utm</strong> (cookie-uri, 30 de zile): linkul sau site-ul care te-a adus ultima dată, ca un cont deschis ulterior să știe de unde a venit; <strong>fg_first</strong> (cookie, 90 de zile): primul astfel de link; <strong>fg_q</strong> (stocare locală): vizitele care așteaptă să fie trimise; <strong>fg_ours</strong> (cookie, doar în browserele echipei noastre): le scoate din numărătoare.</li>
+          <li><strong>De ce:</strong> ca să știm ce pagini, linkuri și site-uri aduc vizitatori și clienți, și să îmbunătățim site-ul și conținutul. Nu sunt folosite pentru publicitate, nu sunt combinate cu cookie-urile de publicitate și nu sunt transmise nimănui.</li>
+          <li><strong>Temei:</strong> interesul nostru legitim de a măsura propriul site.</li>
+          <li><strong>Cât timp:</strong> cookie-urile ca mai sus; numărătorile cât avem nevoie de ele ca să comparăm perioadele.</li>
+        </ul>
+
         <h3>Măsurarea reclamelor (doar cu acordul tău)</h3>
         <ul>
           <li><strong>Google Ads</strong> (Google) și <strong>Meta Pixel</strong> (Meta Platforms) se încarcă numai după ce apeși „Accept” în fereastra privind cookie-urile.</li>
@@ -110,7 +119,7 @@ const email = 'ops@fineguide.ai';
 
         <h3>Când ai un cont Fineguide</h3>
         <ul>
-          <li><strong>Date:</strong> numele, emailul, organizația, setările contului, datele de facturare și modul în care folosești serviciul.</li>
+          <li><strong>Date:</strong> numele, emailul, organizația, setările contului, datele de facturare și modul în care folosești serviciul; la deschiderea contului, de unde a venit (linkul sau site-ul din cookie-urile de statistică de mai sus).</li>
           <li><strong>De ce:</strong> ca să furnizăm serviciul, să facturăm și să oferim suport. Plățile sunt procesate de un procesator de plăți (secțiunea 5).</li>
           <li><strong>Temei:</strong> executarea contractului; obligația legală pentru documentele contabile.</li>
           <li><strong>Cât timp:</strong> cât timp contul este activ, apoi cât cer legile contabile și fiscale pentru facturi.</li>
@@ -225,6 +234,15 @@ const email = 'ops@fineguide.ai';
         </ul>
         <p><strong>Правовое основание:</strong> наш законный интерес в предоставлении сайта в том виде, который вы запросили.</p>
 
+        <h3>Статистика сайта</h3>
+        <ul>
+          <li><strong>Данные:</strong> для каждого посещения наших страниц: страница, сайт, который на неё сослался (только его имя, например google.com), слова кампании в ссылке (параметры <code>utm_</code>; ссылки, которые мы публикуем, содержат короткий код в <code>utm_source</code>), страна (определяется по сети, сам адрес не сохраняется), тип устройства и системы, ваш часовой пояс, а также нажатия на наши ссылки регистрации, демонстрации, контактов и цен. Мы не храним никаких идентификаторов, IP-адресов и ничего, что отличало бы одного посетителя от другого.</li>
+          <li><strong>В вашем браузере:</strong> <strong>fg_src</strong>, <strong>fg_ref</strong> и <strong>fg_utm</strong> (cookie, 30 дней): ссылка или сайт, которые привели вас в последний раз, чтобы учётная запись, созданная позже, знала, откуда она пришла; <strong>fg_first</strong> (cookie, 90 дней): первая такая ссылка; <strong>fg_q</strong> (локальное хранилище): посещения, ожидающие отправки; <strong>fg_ours</strong> (cookie, только в браузерах нашей команды): исключает их из подсчёта.</li>
+          <li><strong>Зачем:</strong> чтобы знать, какие страницы, ссылки и сайты приводят посетителей и клиентов, и улучшать сайт и наши материалы. Эти данные не используются для рекламы, не объединяются с рекламными файлами cookie и никому не передаются.</li>
+          <li><strong>Правовое основание:</strong> наш законный интерес в измерении посещаемости собственного сайта.</li>
+          <li><strong>Как долго:</strong> файлы cookie хранятся в течение указанных выше сроков, подсчёты хранятся столько, сколько нужно для сравнения периодов.</li>
+        </ul>
+
         <h3>Измерение эффективности рекламы (только с вашего согласия)</h3>
         <ul>
           <li><strong>Google Ads</strong> (Google) и <strong>Meta Pixel</strong> (Meta Platforms) загружаются только после того, как вы нажмёте «Принять» в окне о файлах cookie.</li>
@@ -259,7 +277,7 @@ const email = 'ops@fineguide.ai';
 
         <h3>Когда у вас есть учётная запись Fineguide</h3>
         <ul>
-          <li><strong>Данные:</strong> имя, адрес электронной почты, организация, настройки учётной записи, платёжные данные и то, как вы пользуетесь сервисом.</li>
+          <li><strong>Данные:</strong> имя, адрес электронной почты, организация, настройки учётной записи, платёжные данные и то, как вы пользуетесь сервисом; при создании учётной записи также сохраняется, откуда она пришла (ссылка или сайт из файлов cookie статистики, указанных выше).</li>
           <li><strong>Зачем:</strong> чтобы предоставлять сервис, выставлять за него счета и оказывать вам поддержку. Платежи обрабатывает платёжный провайдер (раздел 5).</li>
           <li><strong>Правовое основание:</strong> исполнение нашего договора; юридическая обязанность в отношении бухгалтерских документов.</li>
           <li><strong>Как долго:</strong> пока учётная запись активна, а затем столько, сколько бухгалтерское и налоговое законодательство требует хранить счета.</li>
@@ -374,6 +392,15 @@ const email = 'ops@fineguide.ai';
         </ul>
         <p><strong>Legal basis:</strong> our legitimate interest in providing the site in the form you requested.</p>
 
+        <h3>Site statistics</h3>
+        <ul>
+          <li><strong>Data:</strong> for each visit to our pages: the page, the site that linked to it (its name only, such as google.com), the campaign words in the link (the <code>utm_</code> parameters; links we publish carry a short code as <code>utm_source</code>), the country (derived from the network, the address itself is not kept), the kind of device and system, your time zone, and clicks on our sign-up, demo, contact and pricing links. No identifier, no IP address and nothing that tells one visitor from another is kept.</li>
+          <li><strong>In your browser:</strong> <strong>fg_src</strong>, <strong>fg_ref</strong> and <strong>fg_utm</strong> (cookies, 30 days): which link or site brought you last, so an account you open afterwards knows where it came from; <strong>fg_first</strong> (cookie, 90 days): the first such link; <strong>fg_q</strong> (local storage): visits waiting to be sent; <strong>fg_ours</strong> (cookie, our team's browsers only): leaves them out of the count.</li>
+          <li><strong>Why:</strong> to know which pages, links and sites bring visitors and customers, so we improve the site and our content. They are not used for advertising, not combined with advertising cookies and not shared with anyone.</li>
+          <li><strong>Legal basis:</strong> our legitimate interest in measuring our own website.</li>
+          <li><strong>How long:</strong> the cookies as above; the counts as long as we need them to compare periods.</li>
+        </ul>
+
         <h3>Advertising measurement (only with your consent)</h3>
         <ul>
           <li><strong>Google Ads</strong> (Google) and the <strong>Meta Pixel</strong> (Meta Platforms) load only after you press "Accept" in the cookie window.</li>
@@ -408,7 +435,7 @@ const email = 'ops@fineguide.ai';
 
         <h3>When you have a Fineguide account</h3>
         <ul>
-          <li><strong>Data:</strong> name, email, organisation, account settings, billing details and how you use the service.</li>
+          <li><strong>Data:</strong> name, email, organisation, account settings, billing details and how you use the service; when the account is opened, where it came from (the link or site in the statistics cookies above).</li>
           <li><strong>Why:</strong> to provide the service, bill for it and support you. Payments are handled by a payment processor (section 5).</li>
           <li><strong>Legal basis:</strong> performance of our contract; legal obligation for accounting records.</li>
           <li><strong>How long:</strong> while the account is active, then as long as accounting and tax law requires for invoices.</li>
