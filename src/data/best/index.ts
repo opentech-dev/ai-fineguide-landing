@@ -12,8 +12,10 @@ import callQa from './call-center-qa-software';
 import aiCrm from './ai-crm';
 import websiteChatbots from './ai-chatbots-for-websites';
 import callCenter from './call-center-software';
+import respondIoAlternatives from './respond-io-alternatives';
+import kommoAlternatives from './kommo-amocrm-alternatives';
 
-export const BEST_GUIDES: BestGuide[] = [automation, omnichannel, customerService, websiteChatbots, voiceAgents, callCenter, callQa, aiCrm];
+export const BEST_GUIDES: BestGuide[] = [automation, omnichannel, customerService, websiteChatbots, voiceAgents, callCenter, callQa, aiCrm, kommoAlternatives, respondIoAlternatives];
 
 export function guide(slug: string): BestGuide {
   const g = BEST_GUIDES.find((x) => x.slug === slug);

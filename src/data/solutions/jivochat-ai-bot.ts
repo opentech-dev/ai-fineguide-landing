@@ -48,7 +48,7 @@ const solution: Solution = {
       definition: {
         heading: 'What is a JivoChat AI bot?',
         body:
-          "A JivoChat AI bot is an AI assistant connected to JivoChat as a bot, so it answers the chats Jivo sends it before an operator does. Fineguide connects to JivoChat through Jivo's Bot API: the assistant replies in the same Jivo chat from your website pages, documents and FAQ, collects the customer's details into the Fineguide CRM, and invites a Jivo operator into the chat when the customer asks for a person or one of your handoff rules matches.",
+          "Fineguide is an AI bot for JivoChat: an AI assistant connected to JivoChat as a bot, so it answers the chats Jivo sends it before an operator does. It connects through Jivo's Bot API: the assistant replies in the same Jivo chat from your website pages, documents and FAQ, collects the customer's details into the Fineguide CRM, and invites a Jivo operator into the chat when the customer asks for a person or one of your handoff rules matches.",
       },
       capabilities: {
         eyebrow: 'What it does',
@@ -210,7 +210,7 @@ const solution: Solution = {
       definition: {
         heading: 'Ce este un chatbot AI pentru JivoChat?',
         body:
-          'Un chatbot AI pentru JivoChat este un asistent AI conectat la JivoChat ca bot, care răspunde la conversațiile primite de la Jivo înaintea unui operator. Fineguide se conectează la JivoChat prin Bot API-ul Jivo: asistentul răspunde în același chat Jivo din paginile site-ului, documentele și întrebările frecvente pe care i le dai, strânge datele clientului în CRM-ul Fineguide și invită un operator Jivo în chat când clientul cere un om sau se potrivește una dintre regulile tale de predare.',
+          'Fineguide este un chatbot AI pentru JivoChat: un asistent AI conectat la JivoChat ca bot, care răspunde la conversațiile primite de la Jivo înaintea unui operator. Se conectează prin Bot API-ul Jivo: asistentul răspunde în același chat Jivo din paginile site-ului, documentele și întrebările frecvente pe care i le dai, strânge datele clientului în CRM-ul Fineguide și invită un operator Jivo în chat când clientul cere un om sau se potrivește una dintre regulile tale de predare.',
       },
       capabilities: {
         eyebrow: 'Ce face',
@@ -372,7 +372,7 @@ const solution: Solution = {
       definition: {
         heading: 'Что такое ИИ-бот для Jivo?',
         body:
-          'ИИ-бот для Jivo представляет собой ИИ-ассистента, подключённого к JivoChat как бот: он отвечает на чаты, которые передаёт ему Jivo, раньше оператора. Fineguide подключается к JivoChat через Bot API Jivo: ассистент отвечает в том же чате Jivo по страницам сайта, документам и FAQ, собирает данные клиента в CRM Fineguide и приглашает оператора Jivo в чат, когда клиент просит человека или срабатывает одно из ваших правил передачи.',
+          'Fineguide — это ИИ-бот для Jivo: ИИ-ассистент, подключённый к JivoChat как бот, который отвечает на чаты, переданные ему Jivo, раньше оператора. Он подключается через Bot API Jivo: ассистент отвечает в том же чате Jivo по страницам сайта, документам и FAQ, собирает данные клиента в CRM Fineguide и приглашает оператора Jivo в чат, когда клиент просит человека или срабатывает одно из ваших правил передачи.',
       },
       capabilities: {
         eyebrow: 'Возможности',
