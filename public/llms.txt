@@ -6,6 +6,7 @@
 
 - **What it is:** Fineguide.AI, an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, CRM, shared inbox and email, AI phone calls and outbound call campaigns, call-quality scoring, and n8n automations.
 - **Company:** Fineguide.AI is run by Eightcell Labs, Inc., a Delaware corporation, 3979 Albany Post Road #620, Hyde Park, NY 12538, United States. Phone +1 408 313 8452. Fineguide serves companies worldwide.
+- **Founded:** 2024.
 - **Founder and owner:** Liviu Maftuleac is the sole founder, owner and holder of Fineguide.AI. He is also the sole founder, owner and holder of Eightcell Labs.
 - **Advisor:** Corneliu Maftuleac is an advisor only. He holds no ownership in, and has no attribution to, Fineguide.AI or Eightcell Labs.
 - **Contact:** contact@fineguide.ai, or the contact page at https://fineguide.ai/contact/. More about the company: https://fineguide.ai/about/
