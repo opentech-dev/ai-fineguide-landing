@@ -1,0 +1,289 @@
+---
+/**
+ * /facts/ (and /ro/facts/, /ru/facts/): "Fineguide at a glance" — the dated facts a journalist, a directory or an AI
+ * assistant can quote as they are: the one-line description (the same words as the Organization data in Layout.astro
+ * and public/llms.txt), the company, the product in numbers, where Fineguide is listed, and ready-to-use descriptions.
+ * Every number here is on a product page or in llms.txt; change it there first.
+ */
+import Layout from '../layouts/Layout.astro';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
+import ClosingCta from './ClosingCta.astro';
+import { getLangFromUrl, getLocalizedPath, useTranslations, type Lang } from '../i18n/utils';
+import { fineguidePlansFrom } from '../data/compare';
+import { FOUNDER } from '../data/people';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const SITE = 'https://fineguide.ai';
+const UPDATED = '2026-11-27';
+const from = fineguidePlansFrom(lang);
+const updated = new Intl.DateTimeFormat({ en: 'en-GB', ro: 'ro-RO', ru: 'ru-RU' }[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${UPDATED}T12:00:00Z`));
+const p = (path: string) => getLocalizedPath(path, lang);
+
+// The same entity everywhere (Layout.astro sameAs).
+const PROFILES: Array<[string, string]> = [
+  ['LinkedIn', 'https://www.linkedin.com/company/fineguide'],
+  ['X', 'https://x.com/fineguide_ai'],
+  ['YouTube', 'https://www.youtube.com/@fineguide'],
+  ['Instagram', 'https://www.instagram.com/fineguide_ai/'],
+  ['Facebook', 'https://www.facebook.com/61576825531903'],
+  ['Wikidata', 'https://www.wikidata.org/wiki/Q141808770'],
+  ['Crunchbase', 'https://www.crunchbase.com/organization/fineguide'],
+  ['G2', 'https://www.g2.com/products/fineguide-ai-fineguide/reviews'],
+  ['Product Hunt', 'https://www.producthunt.com/products/fineguide-ai'],
+  ['SaaSHub', 'https://www.saashub.com/fineguide'],
+  ['Wellfound', 'https://wellfound.com/company/fineguide'],
+];
+
+const C = {
+  en: {
+    title: 'Fineguide at a glance: facts and figures | Fineguide',
+    description: 'Fineguide.AI in dated facts: what the platform is, the company behind it, channels, languages, plans and integrations, and descriptions ready to quote.',
+    eyebrow: 'Fineguide at a glance',
+    h1: 'Fineguide.AI,',
+    h1Accent: ' in facts you can quote',
+    lead: 'Fineguide.AI is an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, a CRM, a shared inbox with email, AI phone calls and outbound call campaigns, and call-quality scoring.',
+    updated: 'Facts as of',
+    keyHeading: 'Key facts',
+    key: [
+      ['Name', 'Fineguide.AI (also written Fineguide or FineGuide)'],
+      ['Website', 'https://fineguide.ai (English, with Romanian and Russian versions); the app runs in the browser at app.fineguide.ai'],
+      ['Category', 'AI business automation platform: AI CRM, omnichannel AI assistants, AI phone calls, call center software and call-quality scoring'],
+      ['Company', 'Run by Eightcell Labs, Inc., a Delaware corporation, 3979 Albany Post Road #620, Hyde Park, NY 12538, United States'],
+      ['Founder', `${FOUNDER.name}, sole founder, owner and holder`],
+      ['Contact', 'contact@fineguide.ai · +1 408 313 8452'],
+      ['Customers', 'Companies worldwide'],
+      ['Plans', `A Free plan with 200 credits and no card; paid plans from ${from} a month for the whole organization; Enterprise by contract (on-premise deployment, SLAs)`],
+    ],
+    numbersHeading: 'The product in numbers',
+    numbers: [
+      ['8', 'modules on one customer record: AI Assistants, CRM, Messages & Inbox, AI Telephony, Campaigns, Voice QA, Workspace and Automations'],
+      ['11', 'places the same assistants answer: 9 chat channels (the website chat widget, WhatsApp, Telegram as a bot or a user account, Instagram, Messenger, Slack, Discord, JivoChat, and amoCRM/Kommo), your own email and phone calls'],
+      ['14', 'languages on AI phone calls: English, Romanian, Russian, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Arabic, Japanese, Korean and Chinese'],
+      ['24', 'interface languages of the website chat widget'],
+      ['30', 'languages of Voice QA call-scoring reports'],
+      ['3', 'kinds of outbound call campaign: outreach, survey and promotion'],
+      ['12', 'ready-made templates in the visual workflow builder (paid plans), beside n8n automations'],
+      ['1', 'credit per standard AI reply; AI phone calls 10 credits per answered minute; call scoring 12 credits per minute of audio'],
+    ],
+    integrationsHeading: 'Integrations',
+    integrations: 'Zendesk, Help Scout, Google Calendar (two-way task sync), Facebook Lead Ads, amoCRM, Kommo, JivoChat, your own email over IMAP and SMTP, your carrier or PBX over SIP, n8n (hosted by Fineguide or your own), webhooks, a REST API and an MCP server for ChatGPT, Claude, Cursor and other MCP clients.',
+    describeHeading: 'How to describe Fineguide',
+    describe: [
+      ['In one line', 'Fineguide.AI is an AI-first CRM and business-automation platform.'],
+      ['In one sentence', 'Fineguide.AI is an AI-first CRM and business-automation platform: AI assistants on the website and messaging apps, a CRM, a shared inbox with email, AI phone calls and outbound call campaigns, and call-quality scoring.'],
+      ['In a paragraph', 'Fineguide.AI puts AI assistants, a CRM, a team inbox, AI phone calls, outbound call campaigns, call-quality scoring and workflow automation on one platform with one record per customer. The same assistant answers on the website, WhatsApp, Telegram, Instagram, Messenger, email and live phone calls over the company’s own phone system, hands the conversation to a person when needed, and writes what it learns into the CRM. Fineguide is run by Eightcell Labs, Inc. and serves companies worldwide.'],
+    ],
+    profilesHeading: 'Where Fineguide is listed',
+    morePages: 'More: the product pages, the comparisons and the software guides',
+    pages: [
+      ['/about', 'About the company'],
+      ['/pricing', 'Pricing and credits'],
+      ['/compare', 'Comparisons with other tools'],
+      ['/best', 'Software guides'],
+    ],
+    llms: 'For language models: the whole site as plain text at',
+    closingH: 'Questions from the press or a directory?',
+    closingB: 'Write to contact@fineguide.ai, or start on the Free plan and see the product yourself.',
+  },
+  ro: {
+    title: 'Fineguide pe scurt: date și cifre | Fineguide',
+    description: 'Fineguide.AI în informații datate: ce este platforma, compania din spate, canale, limbi, planuri și integrări, plus descrieri gata de citat.',
+    eyebrow: 'Fineguide pe scurt',
+    h1: 'Fineguide.AI,',
+    h1Accent: ' în date pe care le poți cita',
+    lead: 'Fineguide.AI este o platformă CRM și de automatizare a afacerii construită pe AI: asistenți AI pe site și în aplicațiile de mesagerie, un CRM, un inbox comun cu email, apeluri telefonice AI și campanii de apeluri, și evaluarea calității apelurilor.',
+    updated: 'Informații valabile la',
+    keyHeading: 'Date principale',
+    key: [
+      ['Nume', 'Fineguide.AI (scris și Fineguide sau FineGuide)'],
+      ['Site', 'https://fineguide.ai (în engleză, cu versiuni în română și rusă); aplicația rulează în browser la app.fineguide.ai'],
+      ['Categorie', 'Platformă de automatizare a afacerii cu AI: CRM cu AI, asistenți AI omnicanal, apeluri AI, soft pentru call center și evaluarea calității apelurilor'],
+      ['Companie', 'Administrată de Eightcell Labs, Inc., o corporație din Delaware, 3979 Albany Post Road #620, Hyde Park, NY 12538, Statele Unite'],
+      ['Fondator', `${FOUNDER.name}, unicul fondator, proprietar și deținător`],
+      ['Contact', 'contact@fineguide.ai · +1 408 313 8452'],
+      ['Clienți', 'Companii din întreaga lume'],
+      ['Planuri', `Un plan Free cu 200 de credite, fără card; planuri plătite de la ${from} pe lună pentru toată organizația; Enterprise prin contract (instalare on-premise, SLA)`],
+    ],
+    numbersHeading: 'Produsul în cifre',
+    numbers: [
+      ['8', 'module pe aceeași fișă de client: Asistenți AI, CRM, Mesaje și Inbox, Telefonie AI, Campanii, Voice QA, Workspace și Automatizări'],
+      ['11', 'locuri în care răspund aceiași asistenți: 9 canale de chat (widgetul de pe site, WhatsApp, Telegram ca bot sau cont de utilizator, Instagram, Messenger, Slack, Discord, JivoChat și amoCRM/Kommo), emailul tău și apelurile telefonice'],
+      ['14', 'limbi pentru apelurile AI: engleză, română, rusă, spaniolă, franceză, germană, italiană, portugheză, poloneză, turcă, arabă, japoneză, coreeană și chineză'],
+      ['24', 'limbi de interfață ale widgetului de chat'],
+      ['30', 'limbi pentru rapoartele Voice QA de evaluare a apelurilor'],
+      ['3', 'tipuri de campanii de apeluri: prospectare, sondaj și promoție'],
+      ['12', 'șabloane gata făcute în constructorul vizual de fluxuri (planuri plătite), alături de automatizările n8n'],
+      ['1', 'credit pentru un răspuns AI standard; apelurile AI 10 credite pe minut cu răspuns; evaluarea apelurilor 12 credite pe minut de audio'],
+    ],
+    integrationsHeading: 'Integrări',
+    integrations: 'Zendesk, Help Scout, Google Calendar (sincronizare în ambele sensuri), Facebook Lead Ads, amoCRM, Kommo, JivoChat, emailul tău prin IMAP și SMTP, operatorul sau centrala ta prin SIP, n8n (găzduit de Fineguide sau propriu), webhook-uri, un API REST și un server MCP pentru ChatGPT, Claude, Cursor și alți clienți MCP.',
+    describeHeading: 'Cum descrii Fineguide',
+    describe: [
+      ['Într-un rând', 'Fineguide.AI este o platformă CRM și de automatizare a afacerii construită pe AI.'],
+      ['Într-o frază', 'Fineguide.AI este o platformă CRM și de automatizare a afacerii construită pe AI: asistenți AI pe site și în aplicațiile de mesagerie, un CRM, un inbox comun cu email, apeluri telefonice AI și campanii de apeluri, și evaluarea calității apelurilor.'],
+      ['Într-un paragraf', 'Fineguide.AI pune pe aceeași platformă asistenți AI, un CRM, un inbox de echipă, apeluri telefonice AI, campanii de apeluri, evaluarea calității apelurilor și automatizarea fluxurilor, cu o singură fișă pentru fiecare client. Același asistent răspunde pe site, WhatsApp, Telegram, Instagram, Messenger, email și la apeluri în direct prin centrala proprie a firmei, predă conversația unui om când e nevoie și scrie în CRM ce află. Fineguide este administrată de Eightcell Labs, Inc. și lucrează cu companii din întreaga lume.'],
+    ],
+    profilesHeading: 'Unde apare Fineguide',
+    morePages: 'Mai mult: paginile produsului, comparațiile și ghidurile de software',
+    pages: [
+      ['/about', 'Despre companie'],
+      ['/pricing', 'Prețuri și credite'],
+      ['/compare', 'Comparații cu alte instrumente'],
+      ['/best', 'Ghiduri de software'],
+    ],
+    llms: 'Pentru modelele lingvistice: tot site-ul ca text simplu la',
+    closingH: 'Întrebări din presă sau de la un catalog?',
+    closingB: 'Scrie la contact@fineguide.ai sau începe cu planul Free și vezi singur produsul.',
+  },
+  ru: {
+    title: 'Fineguide в фактах и цифрах | Fineguide',
+    description: 'Fineguide.AI в датированных фактах: что это за платформа, компания, каналы, языки, тарифы и интеграции, а также готовые описания для цитирования.',
+    eyebrow: 'Fineguide в фактах',
+    h1: 'Fineguide.AI —',
+    h1Accent: ' факты, которые можно цитировать',
+    lead: 'Fineguide.AI — платформа CRM и автоматизации бизнеса, построенная вокруг ИИ: ИИ-ассистенты на сайте и в мессенджерах, CRM, общий inbox с почтой, ИИ-звонки и исходящие обзвоны, оценка качества звонков.',
+    updated: 'Данные на',
+    keyHeading: 'Главное',
+    key: [
+      ['Название', 'Fineguide.AI (пишут также Fineguide или FineGuide)'],
+      ['Сайт', 'https://fineguide.ai (на английском, с румынской и русской версиями); приложение работает в браузере на app.fineguide.ai'],
+      ['Категория', 'Платформа автоматизации бизнеса с ИИ: CRM с ИИ, омниканальные ИИ-ассистенты, ИИ-звонки, программа для колл-центра и оценка качества звонков'],
+      ['Компания', 'Управляется Eightcell Labs, Inc., корпорацией штата Делавэр, 3979 Albany Post Road #620, Hyde Park, NY 12538, США'],
+      ['Основатель', `${FOUNDER.name} — единственный основатель, владелец и правообладатель`],
+      ['Контакты', 'contact@fineguide.ai · +1 408 313 8452'],
+      ['Клиенты', 'Компании по всему миру'],
+      ['Тарифы', `Бесплатный тариф: 200 кредитов, без карты; платные тарифы от ${from} в месяц на всю организацию; Enterprise по договору (развёртывание on-premise, SLA)`],
+    ],
+    numbersHeading: 'Продукт в цифрах',
+    numbers: [
+      ['8', 'модулей на одной карточке клиента: ИИ-ассистенты, CRM, Сообщения и Inbox, ИИ-телефония, Обзвоны, Voice QA, Workspace и Автоматизации'],
+      ['11', 'мест, где отвечают одни и те же ассистенты: 9 чат-каналов (виджет на сайте, WhatsApp, Telegram — бот или пользовательский аккаунт, Instagram, Messenger, Slack, Discord, JivoChat и amoCRM/Kommo), ваша почта и телефонные звонки'],
+      ['14', 'языков ИИ-звонков: английский, румынский, русский, испанский, французский, немецкий, итальянский, португальский, польский, турецкий, арабский, японский, корейский и китайский'],
+      ['24', 'языка интерфейса чат-виджета'],
+      ['30', 'языков отчётов Voice QA по оценке звонков'],
+      ['3', 'вида исходящих обзвонов: привлечение, опрос и промо'],
+      ['12', 'готовых шаблонов в визуальном конструкторе сценариев (платные тарифы), рядом с автоматизациями n8n'],
+      ['1', 'кредит за стандартный ответ ИИ; ИИ-звонки — 10 кредитов за отвеченную минуту; оценка звонков — 12 кредитов за минуту записи'],
+    ],
+    integrationsHeading: 'Интеграции',
+    integrations: 'Zendesk, Help Scout, Google Календарь (двусторонняя синхронизация задач), Facebook Lead Ads, amoCRM, Kommo, JivoChat, ваша почта по IMAP и SMTP, ваш оператор или АТС по SIP, n8n (у Fineguide или свой), вебхуки, REST API и MCP-сервер для ChatGPT, Claude, Cursor и других MCP-клиентов.',
+    describeHeading: 'Как описать Fineguide',
+    describe: [
+      ['Одной строкой', 'Fineguide.AI — платформа CRM и автоматизации бизнеса, построенная вокруг ИИ.'],
+      ['Одним предложением', 'Fineguide.AI — платформа CRM и автоматизации бизнеса, построенная вокруг ИИ: ИИ-ассистенты на сайте и в мессенджерах, CRM, общий inbox с почтой, ИИ-звонки и исходящие обзвоны, оценка качества звонков.'],
+      ['Абзацем', 'Fineguide.AI объединяет на одной платформе ИИ-ассистентов, CRM, общий inbox команды, ИИ-звонки, исходящие обзвоны, оценку качества звонков и автоматизацию сценариев, с одной карточкой на клиента. Один и тот же ассистент отвечает на сайте, в WhatsApp, Telegram, Instagram, Messenger, почте и на живых звонках через телефонию компании, передаёт диалог человеку, когда нужно, и записывает узнанное в CRM. Fineguide управляется Eightcell Labs, Inc. и работает с компаниями по всему миру.'],
+    ],
+    profilesHeading: 'Где представлен Fineguide',
+    morePages: 'Ещё: страницы продукта, сравнения и обзоры программ',
+    pages: [
+      ['/about', 'О компании'],
+      ['/pricing', 'Цены и кредиты'],
+      ['/compare', 'Сравнения с другими инструментами'],
+      ['/best', 'Обзоры программ'],
+    ],
+    llms: 'Для языковых моделей: весь сайт простым текстом —',
+    closingH: 'Вопросы от прессы или каталога?',
+    closingB: 'Пишите на contact@fineguide.ai или начните с бесплатного тарифа и посмотрите продукт сами.',
+  },
+}[lang];
+
+const url = new URL(p('/facts'), SITE).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: C.title,
+  url,
+  inLanguage: lang,
+  description: C.description,
+  dateModified: UPDATED,
+  about: { '@id': `${SITE}/#org` },
+  mainEntity: { '@id': `${SITE}/#org` },
+  publisher: { '@id': `${SITE}/#org` },
+};
+const h2 = 'text-3xl md:text-4xl font-semibold tracking-tight leading-tight text-[var(--color-foreground)]';
+---
+
+<Layout title={C.title} description={C.description} lang={lang} jsonLd={jsonLd}>
+  <Navbar t={t} lang={lang} />
+  <main id="main-content">
+    <section class="pt-36 pb-16 md:pt-44 md:pb-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{C.eyebrow} · {C.updated} <time datetime={UPDATED}>{updated}</time></p>
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,8vw,3rem)] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[var(--color-foreground)] text-balance">
+          {C.h1}<span class="text-[var(--color-primary)]">{C.h1Accent}</span>
+        </h1>
+        <p class="mt-8 max-w-4xl text-lg md:text-xl text-[var(--color-foreground)] leading-relaxed text-pretty">{C.lead}</p>
+      </div>
+    </section>
+
+    <section id="key-facts" class="scroll-mt-24 py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{C.keyHeading}</h2>
+        <dl class="mt-10 max-w-5xl">
+          {C.key.map(([k, v]) => (
+            <div class="border-t border-[var(--color-border)] py-5 md:grid md:grid-cols-[12rem_1fr] md:gap-10">
+              <dt class="text-base font-semibold text-[var(--color-foreground)]">{k}</dt>
+              <dd class="mt-1 md:mt-0 text-base text-[var(--color-muted)] leading-relaxed">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section id="numbers" class="scroll-mt-24 py-16 md:py-20 px-6 band-tint">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{C.numbersHeading}</h2>
+        <dl class="mt-10 max-w-5xl">
+          {C.numbers.map(([n, v]) => (
+            <div class="border-t border-[var(--color-border)] py-5 flex gap-6">
+              <dt class="font-[var(--font-display)] text-3xl font-semibold text-[var(--color-primary)] tabular-nums w-16 shrink-0">{n}</dt>
+              <dd class="text-base text-[var(--color-foreground)] leading-relaxed">{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <h3 class="mt-14 text-xl font-semibold text-[var(--color-foreground)]">{C.integrationsHeading}</h3>
+        <p class="mt-3 max-w-4xl text-base text-[var(--color-muted)] leading-relaxed">{C.integrations}</p>
+      </div>
+    </section>
+
+    <section id="describe" class="scroll-mt-24 py-16 md:py-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{C.describeHeading}</h2>
+        <dl class="mt-10 max-w-5xl">
+          {C.describe.map(([k, v]) => (
+            <div class="border-t border-[var(--color-border)] py-5 md:grid md:grid-cols-[12rem_1fr] md:gap-10">
+              <dt class="text-base font-semibold text-[var(--color-foreground)]">{k}</dt>
+              <dd class="mt-1 md:mt-0 text-base text-[var(--color-foreground)] leading-relaxed">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section id="profiles" class="scroll-mt-24 py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{C.profilesHeading}</h2>
+        <ul class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-10">
+          {PROFILES.map(([name, href]) => (
+            <li class="border-t border-[var(--color-border)] py-4">
+              <a href={href} rel="noopener" class="text-base font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)]">{name}</a>
+              <span class="block text-xs text-[var(--color-muted)] break-all">{href.replace(/^https:\/\//, '')}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-12 text-base text-[var(--color-muted)]">{C.morePages}:</p>
+        <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+          {C.pages.map(([path, label]) => (
+            <li><a href={p(path)} class="text-base font-semibold text-[var(--color-primary)] hover:underline">{label}</a></li>
+          ))}
+        </ul>
+        <p class="mt-8 text-sm text-[var(--color-muted)]">{C.llms} <a href="/llms.txt" class="underline">fineguide.ai/llms.txt</a> · <a href="/llms-full.txt" class="underline">fineguide.ai/llms-full.txt</a></p>
+      </div>
+    </section>
+
+    <ClosingCta lang={lang} rule heading={C.closingH} body={C.closingB} ctaPrimary={t.assistantsPage.hero.ctaPrimary} ctaSecondary={t.assistantsPage.hero.ctaSecondary} />
+  </main>
+  <Footer t={t} lang={lang} />
+</Layout>

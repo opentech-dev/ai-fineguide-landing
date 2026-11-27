@@ -1,0 +1,112 @@
+---
+/**
+ * /best/ (and /ro/best/, /ru/best/): the list of "best X" guides (src/data/best), how they are written, and a link to
+ * the head-to-head comparisons. Published in English, Romanian and Russian.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import ClosingCta from '../ClosingCta.astro';
+import { useTranslations, type Lang } from '../../i18n/utils';
+import { comparePath, pick, type CompareLang } from '../../data/compare';
+import { LABELS as CL } from '../compare/labels';
+import { BEST_GUIDES, BEST_LABELS, bestPath } from '../../data/best';
+
+interface Props {
+  lang: CompareLang;
+}
+const { lang } = Astro.props as Props;
+const SITE = 'https://fineguide.ai';
+const t = useTranslations(lang as Lang);
+const L = BEST_LABELS[lang];
+const C = {
+  en: {
+    title: 'Best business software guides 2026 | Fineguide',
+    description: 'Fair round-ups of AI chatbots, AI customer service, AI voice agents, call center QA, AI CRM and business automation tools, each fact sourced and dated.',
+    h1: 'Software guides:',
+    h1Accent: ' the tools people compare, side by side',
+    intro:
+      'Each guide answers one question people ask before they buy, such as "what is the best omnichannel chatbot platform?", with the tools they usually weigh. Tools are listed alphabetically, Fineguide among them under its own letter; every fact about another product links to that vendor’s own page and carries the date it was read. No prices: they change too often to be fair.',
+    listHeading: 'The guides',
+    compareText: 'Looking at one tool against Fineguide? The comparisons go row by row.',
+    compareLink: 'See all comparisons',
+    closingH: 'Try Fineguide on your own customers',
+    closingB: 'Start on the Free plan with 200 credits, no card needed, or book a 30-minute walkthrough.',
+  },
+  ro: {
+    title: 'Ghiduri de software pentru afaceri 2026 | Fineguide',
+    description: 'Sinteze corecte despre chatboți AI, customer service cu AI, agenți vocali AI, evaluarea apelurilor, CRM cu AI și automatizare, cu surse și date.',
+    h1: 'Ghiduri de software:',
+    h1Accent: ' instrumentele pe care le compară oamenii, alături',
+    intro:
+      'Fiecare ghid răspunde la o întrebare pe care oamenii o pun înainte să cumpere, de exemplu „care este cea mai bună platformă de chatbot omnicanal?”, cu instrumentele pe care le cântăresc de obicei. Instrumentele sunt în ordine alfabetică, Fineguide la litera lui; fiecare informație despre alt produs are link spre pagina oficială a furnizorului și data la care a fost citită. Fără prețuri: se schimbă prea des ca să fie o comparație corectă.',
+    listHeading: 'Ghidurile',
+    compareText: 'Vrei un singur instrument față în față cu Fineguide? Comparațiile merg rând cu rând.',
+    compareLink: 'Vezi toate comparațiile',
+    closingH: 'Încearcă Fineguide pe clienții tăi',
+    closingB: 'Începe cu planul Free, cu 200 de credite, fără card, sau programează o prezentare de 30 de minute.',
+  },
+  ru: {
+    title: 'Обзоры бизнес-программ 2026 | Fineguide',
+    description: 'Честные обзоры ИИ-чат-ботов, ИИ для поддержки, голосовых ИИ-агентов, оценки звонков, CRM с ИИ и автоматизации: каждый факт с источником и датой.',
+    h1: 'Обзоры программ:',
+    h1Accent: ' инструменты, которые сравнивают, рядом',
+    intro:
+      'Каждый обзор отвечает на вопрос, который задают перед покупкой, например «какая омниканальная платформа чат-ботов лучше?», и показывает инструменты, которые обычно сравнивают. Инструменты идут по алфавиту, Fineguide — на своей букве; каждый факт о другом продукте ведёт на официальную страницу производителя и помечен датой. Без цен: они меняются слишком часто, чтобы сравнение было честным.',
+    listHeading: 'Обзоры',
+    compareText: 'Нужен один инструмент против Fineguide? Сравнения идут строка за строкой.',
+    compareLink: 'Все сравнения',
+    closingH: 'Попробуйте Fineguide на своих клиентах',
+    closingB: 'Начните с бесплатного тарифа: 200 кредитов, без карты. Или запишитесь на 30-минутную демонстрацию.',
+  },
+}[lang];
+const path = bestPath(lang);
+const updated = BEST_GUIDES.map((g) => g.updated).sort().pop();
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: C.title,
+  url: new URL(path, SITE).href,
+  inLanguage: lang,
+  description: C.description,
+  dateModified: updated,
+  publisher: { '@id': `${SITE}/#org` },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: BEST_GUIDES.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.copy[lang].meta.title.replace(/ \| Fineguide$/, ''), url: new URL(bestPath(lang, g.slug), SITE).href })),
+  },
+};
+---
+
+<Layout title={C.title} description={C.description} lang={lang as Lang} jsonLd={jsonLd} breadcrumb={[[path, L.crumb]]}>
+  <Navbar t={t} lang={lang as Lang} />
+  <main id="main-content">
+    <section class="pt-36 pb-16 md:pt-44 md:pb-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">{L.eyebrow}</p>
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,8vw,3rem)] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[var(--color-foreground)] text-balance">
+          {C.h1}<span class="text-[var(--color-primary)]">{C.h1Accent}</span>
+        </h1>
+        <p class="mt-8 max-w-4xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">{C.intro}</p>
+      </div>
+    </section>
+    <section class="py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-[var(--color-foreground)]">{C.listHeading}</h2>
+        <ul class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          {BEST_GUIDES.map((g) => (
+            <li class="border-t border-[var(--color-border)] py-6">
+              <a href={bestPath(lang, g.slug)} class="text-lg md:text-xl font-semibold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{g.copy[lang].meta.title.replace(/ \| Fineguide$/, '')}</a>
+              <p class="mt-2 text-base text-[var(--color-muted)] leading-relaxed">{pick(g.summary, lang)}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-12 text-base text-[var(--color-muted)]">
+          {C.compareText} <a href={comparePath(lang)} class="font-semibold text-[var(--color-primary)] hover:underline">{C.compareLink}</a>
+        </p>
+      </div>
+    </section>
+    <ClosingCta lang={lang as Lang} rule heading={C.closingH} body={C.closingB} ctaPrimary={CL[lang].ctaPrimary} ctaSecondary={CL[lang].ctaSecondary} />
+  </main>
+  <Footer t={t} lang={lang as Lang} />
+</Layout>

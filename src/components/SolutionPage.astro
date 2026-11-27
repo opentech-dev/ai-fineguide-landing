@@ -45,6 +45,7 @@ const jsonLd = [
     description: c.meta.description,
     inLanguage: lang,
     publisher: { '@id': `${SITE}/#org` },
+    dateModified: s.checked,
     featureList: c.capabilities.items.map((i) => i.term),
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', description: 'Free plan' },
   },
@@ -61,6 +62,10 @@ const jsonLd = [
 const posts = await blogPosts();
 const reading = (s.reading ?? []).map((p) => posts.find((x) => x.path === p)).filter((x) => x !== undefined);
 const READING = { en: 'Further reading', ro: 'De citit mai departe', ru: 'Читать дальше' }[lang];
+// The date the page's claims were last checked against the product, shown under the definition (answer engines and
+// readers both look for how current a page is).
+const checkedDate = new Intl.DateTimeFormat({ en: 'en-GB', ro: 'ro-RO', ru: 'ru-RU' }[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${s.checked}T12:00:00Z`));
+const CHECKED_LABEL = { en: 'Facts checked against the product on', ro: 'Informații verificate pe produs la', ru: 'Факты сверены с продуктом' }[lang];
 const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-balance text-[var(--color-foreground)]';
 ---
 
@@ -95,12 +100,19 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
       <div class="max-w-7xl mx-auto border-t border-[var(--color-border)] pt-14">
         <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{c.definition.heading}</h2>
         <p class="mt-5 max-w-4xl text-lg md:text-xl leading-relaxed text-[var(--color-foreground)] text-pretty">{c.definition.body}</p>
+        <p class="mt-4 text-sm text-[var(--color-muted)]">{CHECKED_LABEL} <time datetime={s.checked}>{checkedDate}</time></p>
       </div>
     </section>
 
     <Band eyebrow={c.capabilities.eyebrow} heading={c.capabilities.heading} body={c.capabilities.body}>
       <EditorialRows items={c.capabilities.items} />
     </Band>
+
+    {c.audience && (
+      <Band tone="tint" eyebrow={c.audience.eyebrow} heading={c.audience.heading}>
+        <EditorialRows items={c.audience.items} />
+      </Band>
+    )}
 
     <Band tone="tint" eyebrow={c.steps.eyebrow} heading={c.steps.heading} body={c.steps.body}>
       <StepList steps={c.steps.items} />
@@ -110,7 +122,30 @@ const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leadin
       <EditorialRows variant="dark" items={c.facts.items} />
     </Band>
 
-    <section class="py-20 md:py-28 px-6">
+    {c.alternatives && (
+      <section id="alternatives" class="scroll-mt-24 py-20 md:py-28 px-6">
+        <div class="max-w-7xl mx-auto">
+          <p class="eyebrow mb-5">{c.alternatives.eyebrow}</p>
+          <h2 class={h2}>{c.alternatives.heading}</h2>
+          <p class="mt-6 max-w-4xl text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">{c.alternatives.body}</p>
+          <dl class="mt-12 max-w-5xl">
+            {c.alternatives.items.map((a) => (
+              <div class="border-t border-[var(--color-border)] py-6 md:grid md:grid-cols-[18rem_1fr] md:gap-10">
+                <dt class="text-lg font-semibold text-[var(--color-foreground)]">{a.term}</dt>
+                <dd class="mt-2 md:mt-0 text-base text-[var(--color-muted)] leading-relaxed">
+                  {a.desc}
+                  {a.path && (
+                    <a href={getLocalizedPath(a.path, lang)} class="ml-1 font-semibold text-[var(--color-primary)] hover:underline">{a.label}</a>
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+    )}
+
+    <section class={`py-20 md:py-28 px-6${c.alternatives ? ' border-t border-[var(--color-border)]/60' : ''}`}>
       <div class="max-w-7xl mx-auto">
         <p class="eyebrow mb-5">{c.related.eyebrow}</p>
         <h2 class={h2}>{c.related.heading}</h2>

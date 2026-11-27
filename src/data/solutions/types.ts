@@ -16,6 +16,11 @@ export interface SolutionCopy {
   steps: { eyebrow: string; heading: string; body: string; items: string[] };
   /** Hard facts in numbers and names: languages, channels, integrations, plans that include it, credits. 4–6 rows. */
   facts: { eyebrow: string; heading: string; items: { term: string; desc: string }[] };
+  /** Who it is for (category pages): 3–5 kinds of team, each with what it gets. Rendered after the capabilities. */
+  audience?: { eyebrow: string; heading: string; items: { term: string; desc: string }[] };
+  /** How it compares with the usual alternatives (category pages): capabilities only, no prices; each row may link to
+      the comparison or "best" guide that carries the vendor-sourced facts. Rendered after the facts. */
+  alternatives?: { eyebrow: string; heading: string; body: string; items: { term: string; desc: string; path?: string; label?: string }[] };
   /** Internal links to related pages. `path` is the English path WITHOUT language prefix, e.g. '/voice-qa' or '/blog/kommo-integration-guide/'. 3–5 links. */
   related: { eyebrow: string; heading: string; links: { path: string; label: string; desc: string }[] };
   /** 5–7 questions in the words people type into Google or ask ChatGPT; answers 1–3 sentences, factual. Rendered visibly AND as FAQPage. */

@@ -24,9 +24,13 @@ import * as p_tidio from './compare-pages/tidio';
 import * as p_vapi_retell from './compare-pages/vapi-retell';
 import * as p_zapier_make from './compare-pages/zapier-make';
 import * as p_zendesk from './compare-pages/zendesk';
+import * as p_respond_io_trengo from './compare-pages/respond-io-trengo';
+import * as p_chatbase from './compare-pages/chatbase';
+import * as p_five9 from './compare-pages/five9';
+import * as p_synthflow from './compare-pages/synthflow';
 
-/** The pages added on 2026-11-25 (one file each: competitors, hub entry, en/ro/ru copy), facts checked that day. */
-const MORE = [p_aircall_talkdesk, p_callminer_observe_ai, p_freshdesk, p_intercom, p_jivochat, p_salesforce, p_tidio, p_vapi_retell, p_zapier_make, p_zendesk] as unknown as Array<{ competitors: Competitor[]; page: ComparePageMeta; copy: Record<CompareLang, unknown> }>;
+/** The pages added on 2026-11-25 (and on 2026-11-27: respond.io + Trengo, Chatbase, Five9, Synthflow) (one file each: competitors, hub entry, en/ro/ru copy), facts checked that day. */
+const MORE = [p_aircall_talkdesk, p_callminer_observe_ai, p_freshdesk, p_intercom, p_jivochat, p_salesforce, p_tidio, p_vapi_retell, p_zapier_make, p_zendesk, p_respond_io_trengo, p_chatbase, p_five9, p_synthflow] as unknown as Array<{ competitors: Competitor[]; page: ComparePageMeta; copy: Record<CompareLang, unknown> }>;
 
 export const CHECKED = '2026-10-21';
 
@@ -545,7 +549,7 @@ const CRM_PAGES: ComparePageMeta[] = [
   },
 ];
 
-const CATEGORY: Record<string, CompareCategory> = {"intercom": "live-chat", "tidio": "live-chat", "jivochat": "live-chat", "zendesk": "help-desk", "freshdesk": "help-desk", "salesforce": "crm", "zapier-make": "automation", "vapi-retell": "call-center", "aircall-talkdesk": "call-center", "callminer-observe-ai": "call-center"};
+const CATEGORY: Record<string, CompareCategory> = {"intercom": "live-chat", "tidio": "live-chat", "jivochat": "live-chat", "zendesk": "help-desk", "freshdesk": "help-desk", "salesforce": "crm", "zapier-make": "automation", "vapi-retell": "call-center", "aircall-talkdesk": "call-center", "callminer-observe-ai": "call-center", "respond-io-trengo": "live-chat", "chatbase": "live-chat", "five9": "call-center", "synthflow": "call-center"};
 export const COMPARE_PAGES: ComparePageMeta[] = [
   ...CRM_PAGES.map((p) => ({ ...p, category: 'crm' as const })),
   ...MORE.map((m) => ({ ...m.page, category: CATEGORY[m.page.slug] ?? 'crm' })),

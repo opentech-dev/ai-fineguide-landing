@@ -14,9 +14,9 @@ const switches = LANGS.filter((l) => l !== lang).map((l) => ({
 }));
 // The capability pages (src/data/solutions), under their own heading so the product list stays the modules.
 const solutions = {
-  en: { heading: 'Solutions', items: [['/call-center', 'Call center software'], ['/help-desk', 'Help desk'], ['/knowledge-base', 'AI knowledge base']] },
-  ro: { heading: 'Soluții', items: [['/call-center', 'Soft pentru call center'], ['/help-desk', 'Helpdesk'], ['/knowledge-base', 'Bază de cunoștințe AI']] },
-  ru: { heading: 'Решения', items: [['/call-center', 'Программа для колл-центра'], ['/help-desk', 'Хелпдеск'], ['/knowledge-base', 'База знаний с ИИ']] },
+  en: { heading: 'Solutions', items: [['/business-automation', 'AI business automation'], ['/omnichannel-chatbot', 'Omnichannel AI chatbot'], ['/ai-customer-service', 'AI customer service'], ['/call-center', 'Call center software'], ['/help-desk', 'Help desk'], ['/knowledge-base', 'AI knowledge base']] },
+  ro: { heading: 'Soluții', items: [['/business-automation', 'Automatizarea afacerii cu AI'], ['/omnichannel-chatbot', 'Chatbot AI omnicanal'], ['/ai-customer-service', 'Customer service cu AI'], ['/call-center', 'Soft pentru call center'], ['/help-desk', 'Helpdesk'], ['/knowledge-base', 'Bază de cunoștințe AI']] },
+  ru: { heading: 'Решения', items: [['/business-automation', 'Автоматизация бизнеса с ИИ'], ['/omnichannel-chatbot', 'Омниканальный ИИ-чат-бот'], ['/ai-customer-service', 'ИИ для обслуживания клиентов'], ['/call-center', 'Программа для колл-центра'], ['/help-desk', 'Хелпдеск'], ['/knowledge-base', 'База знаний с ИИ']] },
 }[lang];
 // The channel and industry pages (src/data/solutions), each language's labels.
 const channels = {
@@ -28,6 +28,12 @@ const industries = {
   en: { heading: 'Industries', items: [['/industries/real-estate', 'Real estate'], ['/industries/ecommerce', 'Online stores'], ['/industries/clinics', 'Clinics and services'], ['/industries/education', 'Education'], ['/industries/hotels-travel', 'Hotels and travel'], ['/call-center', 'Call centers']] },
   ro: { heading: 'Domenii', items: [['/industries/real-estate', 'Imobiliare'], ['/industries/ecommerce', 'Magazine online'], ['/industries/clinics', 'Clinici și servicii'], ['/industries/education', 'Educație'], ['/industries/hotels-travel', 'Hoteluri și turism'], ['/call-center', 'Call centere']] },
   ru: { heading: 'Отрасли', items: [['/industries/real-estate', 'Недвижимость'], ['/industries/ecommerce', 'Интернет-магазины'], ['/industries/clinics', 'Клиники и услуги'], ['/industries/education', 'Образование'], ['/industries/hotels-travel', 'Отели и туризм'], ['/call-center', 'Колл-центры']] },
+}[lang];
+// Company column extras: the "best X" guides (src/data/best) and the dated facts page.
+const extras = {
+  en: { guides: 'Software guides', facts: 'Fineguide at a glance' },
+  ro: { guides: 'Ghiduri de software', facts: 'Fineguide pe scurt' },
+  ru: { guides: 'Обзоры программ', facts: 'Fineguide в фактах' },
 }[lang];
 const legal = {
   en: { rights: '#your-rights', dataProtection: 'Data protection', cookies: 'Cookie settings' },
@@ -90,7 +96,9 @@ const legal = {
           <p class="text-sm font-semibold text-[var(--color-foreground)] mb-3">{t.footer.company}</p>
           <div class="flex flex-col gap-2">
             <a href={getLocalizedPath('/about', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.about}</a>
+            <a href={getLocalizedPath('/facts', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{extras.facts}</a>
             <a href={getLocalizedPath('/compare', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.compare}</a>
+            <a href={getLocalizedPath('/best', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{extras.guides}</a>
             <a href={getLocalizedPath('/enterprise', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.enterprise}</a>
             <a href={getLocalizedPath('/partners', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.partners}</a>
             <a href={getLocalizedPath('/schedule-demo', lang)} class="text-sm text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors">{t.footer.scheduleDemo}</a>

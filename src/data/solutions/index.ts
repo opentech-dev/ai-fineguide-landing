@@ -20,10 +20,13 @@ import industriesEcommerce from './industries-ecommerce';
 import industriesClinics from './industries-clinics';
 import industriesEducation from './industries-education';
 import industriesHotelsTravel from './industries-hotels-travel';
+import businessAutomation from './business-automation';
+import omnichannelChatbot from './omnichannel-chatbot';
+import aiCustomerService from './ai-customer-service';
 
 
 export const SOLUTIONS: Solution[] = [
-  callCenter, helpDesk, knowledgeBase,
+  businessAutomation, omnichannelChatbot, aiCustomerService, callCenter, helpDesk, knowledgeBase,
   whatsappAiChatbot, telegramAiBot, jivochatAiBot, instagramAiChatbot, messengerAiChatbot, websiteAiChatbot, aiEmailAssistant, industriesRealEstate, industriesEcommerce, industriesClinics, industriesEducation, industriesHotelsTravel,
 ];
 

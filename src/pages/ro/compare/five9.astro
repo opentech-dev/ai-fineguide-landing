@@ -1,0 +1,7 @@
+---
+import ComparePage from '../../../components/compare/ComparePage.astro';
+import type { CompareCopy } from '../../../components/compare/types';
+import { copy } from '../../../data/compare-pages/five9';
+---
+
+<ComparePage lang="ro" slug="five9" copy={copy.ro as CompareCopy} />

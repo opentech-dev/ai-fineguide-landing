@@ -1,0 +1,281 @@
+---
+/**
+ * One "best X" guide (src/data/best): the short answer, what the category is, how the tools were chosen, a table of
+ * who each tool suits, then each tool in alphabetical order with its sourced capability facts (src/data/compare.ts,
+ * read on the vendor's own pages; no prices), the questions people ask, and the numbered sources. Fineguide publishes
+ * the guide and says so at the top; it is listed under its own letter, like every other tool.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import ClosingCta from '../ClosingCta.astro';
+import Refs from '../compare/Refs.astro';
+import { useTranslations, getLocalizedPath, type Lang } from '../../i18n/utils';
+import { COMPETITORS, FINEGUIDE_FACTS, FINEGUIDE_SOURCES, comparePath, pick, sitePath, type CompareLang, type Fact } from '../../data/compare';
+import { LABELS as CL } from '../compare/labels';
+import { guide, bestPath, BEST_LABELS } from '../../data/best';
+
+interface Props {
+  lang: CompareLang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props as Props;
+const SITE = 'https://fineguide.ai';
+const t = useTranslations(lang as Lang);
+const g = guide(slug);
+const c = g.copy[lang];
+const L = BEST_LABELS[lang];
+const path = bestPath(lang, slug);
+const url = new URL(path, SITE).href;
+const fmt = (iso: string) =>
+  new Intl.DateTimeFormat({ en: 'en-GB', ro: 'ro-RO', ru: 'ru-RU' }[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${iso}T12:00:00Z`));
+
+type Tool = { id: string; name: string; url: string; checked: string; facts: Record<string, Fact | null>; bestFor: string; compare?: string; sources: { id: string; title: string; url: string }[]; fg: boolean };
+const tools: Tool[] = g.picks
+  .map((p): Tool => {
+    if (p.id === 'fineguide') {
+      return { id: 'fg', name: 'Fineguide', url: `${SITE}${getLocalizedPath('/', lang as Lang)}`, checked: g.updated, facts: FINEGUIDE_FACTS, bestFor: pick(p.bestFor, lang), sources: FINEGUIDE_SOURCES, fg: true };
+    }
+    const r = COMPETITORS[p.id];
+    if (!r) throw new Error(`Best guide "${slug}" names "${p.id}", which is not in COMPETITORS (src/data/compare.ts)`);
+    return { id: r.id, name: r.name, url: r.url, checked: r.checked, facts: r.facts, bestFor: pick(p.bestFor, lang), compare: p.compare, sources: r.sources, fg: false };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name, 'en'));
+
+// One numbered source list for the page: each tool's pages that its shown rows cite, in the order the tools appear.
+type Footnote = { key: string; n: number; title: string; url: string; external: boolean };
+const footnotes: Footnote[] = [];
+for (const tool of tools) {
+  const used = new Set(g.rows.flatMap((k) => tool.facts[k]?.src ?? []));
+  for (const s of tool.sources) {
+    if (!used.has(s.id)) continue;
+    const href = tool.fg ? new URL(sitePath(lang, s.url), SITE).href : s.url;
+    footnotes.push({ key: `${tool.id}:${s.id}`, n: footnotes.length + 1, title: s.title, url: href, external: !tool.fg });
+  }
+}
+const byKey = new Map(footnotes.map((f) => [f.key, f.n]));
+const factNums = (tool: Tool, f: Fact | null) => (f ? f.src.map((id) => byKey.get(`${tool.id}:${id}`)).filter((n): n is number => n !== undefined) : []);
+const anchor = (tool: Tool) => `tool-${tool.id}`;
+const oldest = tools.map((x) => x.checked).sort()[0];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: c.meta.title,
+    description: c.meta.description,
+    url,
+    inLanguage: lang,
+    datePublished: g.updated,
+    dateModified: g.updated,
+    author: { '@id': `${SITE}/#org` },
+    publisher: { '@id': `${SITE}/#org` },
+    mainEntityOfPage: url,
+    about: { '@type': 'Thing', name: c.crumb },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: c.listHeading,
+    itemListOrder: 'https://schema.org/ItemListUnordered',
+    numberOfItems: tools.length,
+    itemListElement: tools.map((tool, i) => ({ '@type': 'ListItem', position: i + 1, name: tool.name, url: tool.fg ? `${SITE}/` : tool.url })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: lang,
+    mainEntity: c.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+const h2 = 'text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-balance text-[var(--color-foreground)]';
+---
+
+<Layout
+  title={c.meta.title}
+  description={c.meta.description}
+  lang={lang as Lang}
+  jsonLd={jsonLd}
+  breadcrumb={[
+    [bestPath(lang), L.crumb],
+    [path, c.crumb],
+  ]}
+>
+  <Navbar t={t} lang={lang as Lang} />
+
+  <main id="main-content">
+    <section class="pt-36 pb-16 md:pt-44 md:pb-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="eyebrow mb-5">
+          <a href={bestPath(lang)} class="hover:underline">{L.eyebrow}</a>
+          <span aria-hidden="true"> · </span>
+          {L.updated} <time datetime={g.updated}>{fmt(g.updated)}</time>
+        </p>
+        <h1 class="font-[var(--font-display)] text-[clamp(2.25rem,8vw,3rem)] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[var(--color-foreground)] text-balance">
+          {c.h1}
+          <span class="text-[var(--color-primary)]">{c.h1Accent}</span>
+        </h1>
+        <div class="mt-10 max-w-4xl rounded-xl border border-[var(--color-border)] band-tint px-6 py-6 md:px-8 md:py-7">
+          <p class="eyebrow mb-3">{CL[lang].shortAnswer}</p>
+          <p class="text-lg md:text-xl text-[var(--color-foreground)] leading-relaxed text-pretty">{c.shortAnswer}</p>
+        </div>
+        <p class="mt-6 max-w-4xl text-sm text-[var(--color-muted)] leading-relaxed">{L.disclosure(fmt(oldest), fmt(g.updated))}</p>
+      </div>
+    </section>
+
+    <section id="what-is" class="scroll-mt-24 py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{c.definition.heading}</h2>
+        <p class="mt-5 max-w-4xl text-lg md:text-xl leading-relaxed text-[var(--color-foreground)] text-pretty">{c.definition.body}</p>
+      </div>
+    </section>
+
+    <!-- Who each tool suits, at a glance -->
+    <section id="at-a-glance" class="scroll-mt-24 py-20 md:py-24 px-6 band-tint">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{c.glanceHeading}</h2>
+        <div class="mt-10 -mx-6 px-6 overflow-x-auto">
+          <table class="w-full md:min-w-[40rem] text-left border-collapse">
+            <caption class="sr-only">{c.glanceHeading}</caption>
+            <thead>
+              <tr class="border-b border-[var(--color-border)]">
+                <th scope="col" class="pb-3 pr-6 text-sm font-semibold text-[var(--color-muted)] w-48">{L.tool}</th>
+                <th scope="col" class="pb-3 pr-6 text-sm font-semibold text-[var(--color-muted)]">{L.bestFor}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tools.map((tool) => (
+                <tr class="border-b border-[var(--color-border)] align-top">
+                  <th scope="row" class={`py-4 pr-6 text-base font-semibold ${tool.fg ? 'text-[var(--color-primary)]' : 'text-[var(--color-foreground)]'}`}>
+                    <a href={`#${anchor(tool)}`} class="hover:underline">{tool.name}</a>
+                  </th>
+                  <td class="py-4 pr-6 text-base leading-relaxed text-[var(--color-foreground)]">{tool.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- The tools, alphabetically -->
+    <section id="tools" class="scroll-mt-24 py-20 md:py-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{c.listHeading}</h2>
+        <p class="mt-6 max-w-4xl text-base text-[var(--color-muted)] leading-relaxed">{L.alphabetical}</p>
+        <ol class="mt-12">
+          {tools.map((tool, i) => (
+            <li id={anchor(tool)} class="scroll-mt-24 border-t border-[var(--color-border)] py-10">
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                <span class="font-[var(--font-display)] text-2xl font-semibold text-[var(--color-primary)] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{tool.name}</h3>
+                <a href={tool.url} rel={tool.fg ? undefined : 'nofollow noopener'} class="text-sm text-[var(--color-muted)] underline decoration-[var(--color-border)] underline-offset-4 hover:text-[var(--color-primary)]">{tool.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>
+              </div>
+              <p class="mt-4 max-w-4xl text-lg text-[var(--color-foreground)] leading-relaxed"><strong>{L.bestFor}:</strong> {tool.bestFor}</p>
+              <dl class="mt-6 max-w-5xl">
+                {g.rows.map((k) => {
+                  const f = tool.facts[k];
+                  return (
+                    <div class="border-t border-[var(--color-border)]/70 py-4 md:grid md:grid-cols-[14rem_1fr] md:gap-8">
+                      <dt class="text-sm font-semibold text-[var(--color-foreground)]">{CL[lang].rows[k]}</dt>
+                      <dd class="mt-1 md:mt-0 text-base text-[var(--color-muted)] leading-relaxed">
+                        {f ? (
+                          <>
+                            {pick(f, lang)}
+                            <Refs nums={factNums(tool, f)} />
+                          </>
+                        ) : (
+                          CL[lang].notStated
+                        )}
+                      </dd>
+                    </div>
+                  );
+                })}
+              </dl>
+              <p class="mt-4 text-sm text-[var(--color-muted)]">
+                {tool.fg ? L.fgChecked : L.checked} <time datetime={tool.checked}>{fmt(tool.checked)}</time>
+                {tool.compare && (
+                  <>
+                    <span aria-hidden="true"> · </span>
+                    <a href={comparePath(lang, tool.compare)} class="font-semibold text-[var(--color-primary)] hover:underline">{L.compare(tool.name)}</a>
+                  </>
+                )}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- How the tools were chosen -->
+    <section id="method" class="scroll-mt-24 py-20 md:py-24 px-6 band-tint">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{c.method.heading}</h2>
+        <dl class="mt-12 max-w-5xl">
+          {c.method.items.map((m) => (
+            <div class="border-t border-[var(--color-border)] py-6 md:grid md:grid-cols-[18rem_1fr] md:gap-10">
+              <dt class="text-lg font-semibold text-[var(--color-foreground)]">{m.term}</dt>
+              <dd class="mt-2 md:mt-0 text-base text-[var(--color-muted)] leading-relaxed">{m.desc}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section id="faq" class="scroll-mt-24 py-20 md:py-28 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class={h2}>{CL[lang].faqHeading}</h2>
+        <dl class="mt-12 max-w-4xl">
+          {c.faq.map((f) => (
+            <div class="border-t border-[var(--color-border)] py-6">
+              <dt class="text-lg md:text-xl font-semibold text-[var(--color-foreground)]">{f.q}</dt>
+              <dd class="mt-3 text-base text-[var(--color-muted)] leading-relaxed">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-24 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{CL[lang].keepReading}</h2>
+        <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          {g.related.map((r) => (
+            <li class="border-t border-[var(--color-border)] py-4">
+              <a href={getLocalizedPath(r.path, lang as Lang)} class="text-lg text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors">{pick(r.label, lang)}</a>
+            </li>
+          ))}
+          <li class="border-t border-[var(--color-border)] py-4">
+            <a href={bestPath(lang)} class="text-lg font-semibold text-[var(--color-primary)] hover:underline">{L.allGuides}</a>
+          </li>
+          <li class="border-t border-[var(--color-border)] py-4">
+            <a href={comparePath(lang)} class="text-lg font-semibold text-[var(--color-primary)] hover:underline">{L.allComparisons}</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sources" class="scroll-mt-24 py-16 md:py-20 px-6 border-t border-[var(--color-border)]/60">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-foreground)]">{L.sources}</h2>
+        <ol class="mt-8 max-w-4xl space-y-4 text-sm text-[var(--color-muted)] leading-relaxed">
+          {footnotes.map((f) => (
+            <li id={`source-${f.n}`} class="scroll-mt-24 flex gap-3">
+              <span class="tabular-nums shrink-0 w-9">[{f.n}]</span>
+              <span class="min-w-0">
+                <a href={f.url} rel={f.external ? 'nofollow noopener' : undefined} class="text-[var(--color-foreground)] underline decoration-[var(--color-border)] underline-offset-4 hover:text-[var(--color-primary)]">{f.title}</a>
+                <span class="block text-xs break-all">{f.url.replace(/^https?:\/\//, '')}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+        <p class="mt-10 max-w-4xl text-sm text-[var(--color-muted)] leading-relaxed">{CL[lang].correction}</p>
+      </div>
+    </section>
+
+    <ClosingCta lang={lang as Lang} rule heading={c.closing.heading} body={c.closing.body} ctaPrimary={CL[lang].ctaPrimary} ctaSecondary={CL[lang].ctaSecondary} />
+  </main>
+
+  <Footer t={t} lang={lang as Lang} />
+</Layout>
